@@ -1,0 +1,16 @@
+name = "Hugo Bootswatch"
+license = "MIT"
+licenselink = "https://github.com/nilproductions/hugo-bootswatch/LICENSE.md"
+description = "Bootswatch Theme (Bootstrap 3) for Hugo"
+homepage = "https://jeremylwright.github.io/
+tags = ["bootstrap", "bootswatch"]
+features = []
+min_version= 0.13
+
+[author]
+
+# If porting an existing theme
+[original]
+  name = "Nicholas Whittier" 
+  homepage = "http://imperialwicket.com"
+  repo = "https://github.com/nilproductions/hugo-bootswatch"
