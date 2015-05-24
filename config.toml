@@ -1,3 +1,6 @@
-baseurl = "http://yourSiteHere/"
+baseurl = "https://codestrokes.com/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Code Strokes"
+pygmentsuseclasses = true
+[permalinks]
+    posts = "/:year/:month/:slug/"

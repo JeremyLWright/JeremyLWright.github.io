@@ -1,9 +1,16 @@
-+++
-date = "2015-05-22T21:23:13-07:00"
-draft = true
-title = "about"
+---
+title: About
+---
 
-+++
-### Headline
+My name is Jeremy Wright.
 
-Hello
+I love software, and the impact we make on the individuals in our world. My
+perspective on quality is ever evolving and this blog is intended as
+breadcrumbs describing that change.
+
+If you would like to know more about my opinions try some of my articles, I’d
+love to hear your comments and discussions.
+
+If you would like to know more about me, checkout
+[LinkedIn](https://www.linkedin.com/pub/jeremy-wright/5b/8/844)
+

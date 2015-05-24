@@ -1,0 +1,17 @@
+---
+author: admin
+comments: true
+date: 2012-01-22 18:10:30+00:00
+layout: post
+slug: modern-c
+title: Modern C++
+wordpress_id: 507
+tags:
+- C++
+---
+
+I found an awesome talk on how the new changes of C++11 are modernizing, an already fantastically powerful language. [http://channel9.msdn.com/Events/BUILD/BUILD2011/TOOL-835T](http://channel9.msdn.com/Events/BUILD/BUILD2011/TOOL-835T).
+
+In this talk, Herb Sutter does two things I feel are quite admirable. Firstly, despite this being a Microsoft conference, he talks only about standard, portable C++ until the final minutes.
+
+Secondly, he very clearly, compares idioms we currently use, to the new C++11 idioms. This made it very easy for me to see the value of what C++11 provides. If you want to start using C++11 in your own projects checkout this talk!
