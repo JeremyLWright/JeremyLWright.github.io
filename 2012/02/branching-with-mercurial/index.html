@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+    <title>Code Strokes</title>
+
+<link href="" rel="alternate" type="application/rss+xml" title="Code Strokes" />
+<link href="" rel="feed" type="application/rss+xml" title="Code Strokes" />
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" media="all" rel="stylesheet">
+
+
+<link rel="stylesheet" type="text/css" href="/css/default.css" />
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css">
+<link href='//fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+
+
+
+<link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/images/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+<link rel="manifest" href="/images/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/images/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" type="text/css" href="/css/styles/default.css" />
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body id="page-top" class="index">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-23129291-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+	<div class="container">
+		
+		<div class="navbar-header page-scroll">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+    <a class="navbar-brand page-scroll" href="/">Code Strokes</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="hidden">
+                <a href="/"></a>
+                </li>
+                <li><a href="/about/">About</a></li>
+                
+                <li><a href="/"></a></li>
+                
+                <li><a href="/posts">posts</a></li>
+                
+			
+			</ul>
+		</div>
+		
+	</div>
+	
+</nav>
+
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1><a href="http://localhost:1313/2012/02/branching-with-mercurial/">Branching with Mercurial</a></h1>
+            </div>
+            <span class="section-subheading text-muted">Mon, Feb 20, 2012</span>
+            <div class="post">
+                <p>Mercurial supports two separate methods for branching. The first is built into how distributed version control functions, in that every clone is a branch itself. This is the branching method Joel Sposky recommends on hginit.com. The second method is called <em><a href="http://mercurial.selenic.com/wiki/Branch">local branches</a></em>. Initially I liked the local branch method; I liked it for the fact that I felt smart for using it. It did not improve productivity. There is a simple reason for this, with local branches it is difficult to diff the branch to the main branch of development e.g. the trunk. This post will walk through local branches, how I used then, and finally, how I quit local branches in favor of a cloning approach.</p>
+
+<!-- more -->
+
+<p>I use version control because I like to experiment when I code. I frequently approach a class design as: What if <em>this</em> happened? Frequently, people comment, &ldquo;I don&rsquo;t need version control; I&rsquo;m just one person.&rdquo; This is a rather naive perspective on version control. Yes, version control can be used to collaborate work between different people or different teams. In fact, originally, this was it&rsquo;s primary use case, however version control is so much more.</p>
+
+<p>Personally, I feel very unsafe when working without version control, its coding without a safety net. Once you get something working, you don&rsquo;t want to touch it because you might never be able to get it back to this working state again. Version control fixes this behavior. When you get a semi-working version of something <strong>tag it</strong> then keep working; if you get something better, tag again. If you break it completely, revert back to the previous tag.  Its a great tool. Branches are that idea on steroids. I use branches extensively, at work I tag of ever issue number, for school/home I tag on each capricious thought. One project I implemented the <a href="http://www.codestrokes.com/2011/10/parallel-game-of-life/">Game of Life</a>, as a conduit to experiment with OpenMP. At one time I had 6 parallel branches each with a different experiment or idea:</p>
+
+<ul>
+<li><p>Parallel Game of Life</p>
+
+<ul>
+<li><p>data_dependency_tests</p></li>
+
+<li><p>octave_experiments</p></li>
+
+<li><p>pthread_vs_openmp</p></li>
+
+<li><p>graphical_debugger</p></li>
+
+<li><p>parallel-game-of-life</p></li>
+
+<li><p>SDL_ext_experiments</p></li>
+</ul></li>
+</ul>
+
+<p>Originally, I tried using local-branches. This is the <em>hg branch</em> command. Just type hg branch, and a branch name, then keep working. To switch between branches use hg update -c <branch_name>. This is the problem. Its hard to work on multiple branches at that same time. I was constantly switching between branches, and that wasn&rsquo;t very productive.</p>
+
+<p>The one upside to local branches is that all the branches are carried with the repository, so you can work on multiple branches on different computers just by cloning one repository. However the loss of productivity by constantly switching between different branches was too much. I now do something different. I clone for a branch. When I check out a new project, I create a directory first, then clone my remote-repository into that folder with the name _top _i.e. top-level. Then I hg clone any branches I want and start working. This makes it very easy to merge, between working copies, and diff changes. Then If I don&rsquo;t like an idea I can throw it away completely, and it doesn&rsquo;t dirty my changeset history!</p>
+
+<p>Here is a snapshot of a project with all branches:</p>
+
+<p><a href="http://www.codestrokes.com/wp-content/uploads/2012/02/Screenshot-GOF.png"><img src="http://www.codestrokes.com/wp-content/uploads/2012/02/Screenshot-GOF-300x272.png" alt="" />
+</a></p>
+
+<p>Now I can create a tab in vim, and open each branch into a separate tab. Awesome!</p>
+
+            </div>
+        </div>
+
+ 
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'codestrokes2'; 
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+     </div>
+</section> 
+     
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+
+<script data-no-instant>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
+

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+    <title>Code Strokes</title>
+
+<link href="" rel="alternate" type="application/rss+xml" title="Code Strokes" />
+<link href="" rel="feed" type="application/rss+xml" title="Code Strokes" />
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" media="all" rel="stylesheet">
+
+
+<link rel="stylesheet" type="text/css" href="/css/default.css" />
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css">
+<link href='//fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+
+
+
+<link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/images/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+<link rel="manifest" href="/images/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/images/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" type="text/css" href="/css/styles/default.css" />
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body id="page-top" class="index">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-23129291-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+	<div class="container">
+		
+		<div class="navbar-header page-scroll">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+    <a class="navbar-brand page-scroll" href="/">Code Strokes</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="hidden">
+                <a href="/"></a>
+                </li>
+                <li><a href="/about/">About</a></li>
+                
+                <li><a href="/"></a></li>
+                
+                <li><a href="/posts">posts</a></li>
+                
+			
+			</ul>
+		</div>
+		
+	</div>
+	
+</nav>
+
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1><a href="http://localhost:1313/2014/05/design-for-testability-via-security/">Design for Testability via Security </a></h1>
+            </div>
+            <span class="section-subheading text-muted">Sat, May 3, 2014</span>
+            <div class="post">
+                
+
+<p>I was discussing bootloader design with a colleague of mine the other day. We were attempting to load new a third-party hardware component. The device has a poor protocol, and a useless verification step. This discussion got me thinking however how the concepts used to build a strong self-enforcing security protocol, also apply to building a testable, and reliable communication protocol. Thus, security helps us build better products not because they are secure, but because they are verifiable.
+&lt;!&ndash; more &ndash;&gt;
+This idea initially struck me as strange, since many of the secure software interfaces I&rsquo;ve used in the past, are quite obtuse. This is not a fundamental aspect of security, by rather an artifact of poor design (think OpenSSL). This is sad, since security is already a difficult concept, and requires a great deal of study to maintain throughout the life cycle of a product. Secure interfaces should make security easier, not more difficult. This is however a separate rant. So back to the bootloader.</p>
+
+<p>This specific device is connected by a CAN bus. This is not critical to my argument except the fact that CAN is a reliable, but slow and message order is not guaranteed. In fact, within a window of 4 packets, order is essentially random. Think about this for a moment: load firmware with random message order. The goal is to design a protocol to work with this. Firmware loading fits into a three step process: Prepare, Load, Verify. This process works independent of underlying storage techniques. For example, NAND must be erased on a full page boundary, that can be done in the prepare step. Loading to a file system, Prepare might be a simple NOP.</p>
+
+<p>Firstly, know that the final, verification step is essential. Some environments, the bootloader runs out of RAM, if the load process fails, and the hardware reboots without verification, the bootloader may no longer function, and you just build a sweet digital brick. So verification must check that the firmware the user attempted to load, matches the firmware written to the flash. There are several mechanisms to verify this. The hardware my colleague and I are working with, simply reads the flash back to you. At a high level this sounds fine.</p>
+
+<pre><code>Loader ---&gt; Send Data     ---&gt; Bootloader
+Loader ---&gt; Data Complete ---&gt; Bootloader
+Loader ---&gt; Verify        ---&gt; Bootloader
+Loader &lt;--- Send Data     &lt;--- Bootloader
+Loader Loader Verifies data matches.
+</code></pre>
+
+<p>Remember, message order is random. If the bootloader dumps its flash back on the CAN bus, without a sequence number or flash addresses, the data that comes back is completely useless. Each data packet is intact, but is position within the overall data block is unknown. The best one can do is probabilisticly reorder the packets to attempt to get a confidence the bootloader has the same data we attempted to send. Okay, so what would be better? Lets model this as a security problem and design a secure document sending protocol.</p>
+
+<h3 id="prepare:9d165bcce3b5cd91e19ccd1b43634f44">Prepare</h3>
+
+<p>Alice and Bob want to exchange a document. (Any protocol can be made more &ldquo;secure&rdquo; by describing it with <a href="https://xkcd.com/1323/">Alice and Bob.</a>) The communication channel is UDP, untrusted, and public. How should Alice and Bob communicate? Every security protocol starts with authentication. Bob wants to verify the sender is Alice. Alice wants to verify it&rsquo;s sending the document to Bob, and not someone else. So lets negotiate a key based on a preshared secret. This will form the prepare step of our high-level bootloader model.
+<table >
+<tr ></p>
+
+<p><td >Alice generates a nonce.
+</td></p>
+
+<p><td >
+</td></p>
+
+<p><td >Bob waiting for message.
+</td>
+</tr>
+<tr ></p>
+
+<p><td >Alice encrypts bob_public_key(nonce_alice:sha256(nonce_alice))
+</td></p>
+
+<p><td >-&gt;
+</td></p>
+
+<p><td >Bob
+</td>
+</tr>
+<tr ></p>
+
+<p><td >Alice
+</td></p>
+
+<p><td >&lt;-
+</td></p>
+
+<p><td >Bob decrypts the message.
+Bob generates a new nonce. Bob encrypts
+alice_public_key(nonce_bob:sha256(nonce_bob):nonce_alice:sha256(nonce_alice))</p>
+
+<p></td>
+</tr>
+</table></p>
+
+<p>Alice now has Bob&rsquo;s nonce. Bob has Alice&rsquo;s nonce. Any listening attacker only has 2 messages of cipher text. Bob know&rsquo;s the message was sent from Alice because only Alice has Alice&rsquo;s private key,thus only Alice could have made the nonce message. Bob knows the nonce was intentional because Alice included the secure hash of the nonce.</p>
+
+<p>This protocol is protected against replay attack since Bob decrypts the nonce and hash, and reencrypts with Alice&rsquo;s public key. This allows Alice to verify Bob received her original message. Furthermore the messages are protected against manipulation because all messages include hashes. Bob, and Alice are authenticated. Additionally, they share a new, secret session key.</p>
+
+<p>Alice builds the session key, &ldquo;sha256(nonce_bob:nonce_alice)&ldquo;.</p>
+
+<p>Bob builds the session key, &ldquo;sha256(nonce_bob:nonce_alice)&ldquo;.</p>
+
+<p>Now only Bob and Alice at this time instance can have this new shared secret. Alice and Bob can now communicate securely. <del>Let&rsquo;s load some firmware to Bob now.</del> Let&rsquo;s transfer a document to Bob now.</p>
+
+<h3 id="transfer:9d165bcce3b5cd91e19ccd1b43634f44">Transfer</h3>
+
+<p>Alice creates a document and signs it e.g. document:alice_private_key(sha256(document)).  Notice that Alice&rsquo;s private key is used to encrypt here. This is correct. We want Bob to receive the document, create a hash of the document. Bob then uses Alice&rsquo;s public key to &ldquo;encrypt&rdquo; the signature sent by Alice. He will get the plain text hash, and compare. The signature does not protect the hash i.e. it does not provide confidentiality since anyone can decrypt with the public key. Instead the signature provides integrity. The hash protects that the document was unchanged. The signature of the hash protects that the hash was computed only by Alice.</p>
+
+<p>Alice breaks up the document into packets to send over UDP. Each packet includes a sequence number and a hash of that message.</p>
+
+<p>packet = aes(session_key, i:document[i]:sha256(i:document[i]))</p>
+
+<p>The session key encrypts the entire message to provide confidentiality. This also strengthens the Man in the middle attack, since this session_key is ephemeral. Since it exists for only this authenticated session, an attacker cannot resend this data later to Bob. The sha256 hash provides integrity i.e. <del>transmission errors</del> malicious corruption. Bob verifies each individual packet by calculating the has of the received document[i], and comparing it. If the packets arrive out of order, which in <del>CAN</del> UDP they will, Bob can sort them.</p>
+
+<p>Once Bob has the entire message he can verify the signature.  Bob now has the document, all listeners only have cipher version of the document. Furthermore, Bob can verify the entire document is valid. Bob will <del>erase his flash, and load the new firmware into memory</del> PROFIT!</p>
+
+<h3 id="verify:9d165bcce3b5cd91e19ccd1b43634f44">Verify</h3>
+
+<p>The device my colleague and I are trying to fix simply dumped the document back to Alice.  Essentially:</p>
+
+<p>packet = document[i]</p>
+
+<p>Each packet isn&rsquo;t protected from corruption. The order of the document is unverifiable. The best Alice can do is attempt to verify multiple times hoping the document messages randomly converge on the document Alice originally sent. This is the same as using <a href="http://en.wikipedia.org/wiki/Bogosort">Bogosort</a> as a verification step. Not awesome. Instead we&rsquo;ve built up some very secure machinery to <del>load software reliably</del> transfer a document securely.</p>
+
+<p>One method, although rather naive would be for Bob to send back the document to Alice in the same manner, encrypting each packet and the final signature. This however is very wasteful. Instead Alice only needs to confirm that Bob has the document in its entirely, that it is in the flash, and that all packets were loaded in the correct order. Bob simply needs to send a signature. Bob then reads his flash, and calculates a sha256. Bob then sends 1 message:</p>
+
+<p>packet = aes(session_key, bob_private_key(sha256(flash_read)))</p>
+
+<p>The packet is confidential because it is encrypted by aes. The message is protected from integrity because Alice already has the hash, she simple needs to verify that it matches the know value. Note that if Alice didn&rsquo;t have the hash already we would include a hash of the hash to provide further integrity. Alice knows that it was Bob who verified the flash because the hash is signed with Bob&rsquo;s key. Lastly, Alice knows the message is part of this load session and not a previous one replayed by an attacker because the whole message is encrypted by a session key.</p>
+
+<h3 id="conclusion:9d165bcce3b5cd91e19ccd1b43634f44">Conclusion</h3>
+
+<p>Alice and Bob now have a protocol secure against a number of attacks, but how is this useful for a bootloader? Each attack can be modeled as random noise, transmission errors, or other external effects would impede the flow of traffic. Security simply provides a more common vernacular for discussing transmission issues. It&rsquo;s also easier to reason about adversarial attackers rather than electrical interference. By translating the problem into a security one, we can model all these affects as &ldquo;bad people&rdquo; and it is a lot more fun to slay dragons, than it is to protect against some amorphous something.</p>
+
+<p>Okay, but what does this have to do with testability? Ah. It&rsquo;s subtle, but the same process we took to make our protocol secure also made each step verifiable. For instance, the final verification step could have been as simple as Bob sending an ACK that he verified the document&rsquo;s signature. This however isn&rsquo;t secure. An ACK can be faked, or replayed. Instead Bob build a cryptographically secure signature for Alice to verify. From a tester&rsquo;s perspective Alice is the &ldquo;verifier&rdquo;, and Bob generates test data. Bob cannot be trusted to verify something himself, the test must generate auditable output. Thus the same process which drove us to make a secure response, also generated a auditable one for the tester to report. Thus security is more useful than simply protecting our data, it helps us design better products.</p>
+
+            </div>
+        </div>
+
+ 
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'codestrokes2'; 
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+     </div>
+</section> 
+     
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+
+<script data-no-instant>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
+

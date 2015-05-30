@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+    <title>Code Strokes</title>
+
+<link href="" rel="alternate" type="application/rss+xml" title="Code Strokes" />
+<link href="" rel="feed" type="application/rss+xml" title="Code Strokes" />
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" media="all" rel="stylesheet">
+
+
+<link rel="stylesheet" type="text/css" href="/css/default.css" />
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css">
+<link href='//fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+
+
+
+<link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/images/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+<link rel="manifest" href="/images/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/images/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" type="text/css" href="/css/styles/default.css" />
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body id="page-top" class="index">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-23129291-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+	<div class="container">
+		
+		<div class="navbar-header page-scroll">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+    <a class="navbar-brand page-scroll" href="/">Code Strokes</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="hidden">
+                <a href="/"></a>
+                </li>
+                <li><a href="/about/">About</a></li>
+                
+                <li><a href="/"></a></li>
+                
+                <li><a href="/posts">posts</a></li>
+                
+			
+			</ul>
+		</div>
+		
+	</div>
+	
+</nav>
+
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1><a href="http://localhost:1313/2014/08/what-is-a-unit-test/">What is a Unit Test?</a></h1>
+            </div>
+            <span class="section-subheading text-muted">Thu, Aug 28, 2014</span>
+            <div class="post">
+                <p>I&rsquo;m taking a Software Testing and Verification course as part of my Master&rsquo;s work. Our first assignment was to write a short paper describing a unit test, then implement selection sort and test it under that philosophy. Sarcastically, I commented to my colleagues the triviality of this question. The first response was, &ldquo;Wow, I don&rsquo;t think that is such an easy question.&rdquo; A technical discussion ensued. This is that log.
+&lt;!&ndash; more &ndash;&gt;</p>
+
+<blockquote>Definition 1:
+Given a function in the mathematical sense, i.e. no side-effect, a unit test treats the function as a black box and passes it input and expects a given output. Conversely, an integration test tests entites which are not pure functions using a mock to control state.</blockquote>
+
+<blockquote>Definition 2:
+A unit test de-tangles dependencies so one can test a submodules prior to merging ([complecting](http://www.infoq.com/presentations/Simple-Made-Easy)) it's functionality with another module.</blockquote>
+
+<blockquote>[Wikipedia](http://en.wikipedia.org/wiki/Unit_testing):
+In computer programming, unit testing is a software testing method by which individual units of source code, sets of one or more computer program modules together with associated control data, usage procedures, and operating procedures are tested to determine if they are fit for use</blockquote>
+
+<p>I proposed the first definition above, which is mostly influence from my Haskell QuickCheck experience.  During lecture today the professor presented levels of testing.</p>
+
+<p>Unit Testing
+Integration Testing
+System Testing
+Alpha Testing
+Beta Testing</p>
+
+<p>The theme here? Each successive layer of testing include more modules and more functionality. Unit testing is the most basic. It doesn&rsquo;t  have to provide a pure interface, it can be dirty, it can have side effects, but before I promote some software module to the next stage, I want some confidence its working. The professor went on to ask, &ldquo;What if we had a test team, a separately paid person to write the unit tests? Would that work? Would that be a good idea?&rdquo;</p>
+
+<p>My initial response was, &ldquo;No! those tests are mine!&rdquo; This is my definition of a unit test, private tests.</p>
+
+<p>Definition I hold now:
+A unit test is a test to provide the developer some confidence a region of code works as intended before other people see the code and the developer is open to mockery and scandal.</p>
+
+<p>This definition supposed unit tests are more emotional, or egocentric than technical, but when I think about how, and where I choose to unit test heavily, and where I choose to test more lightly it centers around areas of code I would be embarrassed to get wrong. To get back to the homework assignment, the first goal was to implement selection sort:</p>
+
+<p>Unit under test</p>
+
+<pre><code>#include &lt;iterator&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+template &lt;typename InputIterator&gt;
+void selection_sort(InputIterator b, InputIterator e)
+{
+    for(InputIterator c = b; c != e ; ++c){
+        auto m = std::min_element(c, e);
+        std::swap(*m, *c);
+    }
+}
+</code></pre>
+
+<p>Selection sort is pretty naive (O(n^2)) but its straight-forward to implement, and std::algorithms make it even easier to understand. As a side note, this is the real strength of the STL algorithms: clarity. This code has very few opportunities for bugs because of the reliance on STL algorithms. Additionally, it&rsquo;s readable! Additionally, it&rsquo;s templated so everyone will think you are a badass (unless there is a bug in it, in which case they judge you every time you whip out the <em>typename</em>). To prevent this horrific alternate future we can unit test.  Furthermore, we can take a page from the FPGA/ASIC guys and use randomized tests. (As opposed to direct tests).</p>
+
+<p>Randomized tests construct random input and feed it through the unit under test.  A secondary implementation of the function verifies the result. In this case we are luck that the invariant of a &ldquo;sorted list&rdquo; is easy to check.  In fact there is a standard algorithm for it: std::is_sorted().</p>
+
+<p>Using GTest we construct a parameterized test. We then construct a list of random vectors and instantiate the test with the 10000 separate vectors. GTest provides a lot of value here.  If a single test fails, GTest will print out the parameter value when that particular test failed the build. Since we are using random data, this is critical so we can setup regression tests.</p>
+
+<pre><code>#include &quot;sort.hpp&quot;
+#include &quot;gtest/gtest.h&quot;
+#include &lt;vector&gt;
+#include &lt;random&gt;
+#include &lt;limits&gt;
+#include &lt;cassert&gt;
+#include &lt;iostream&gt;
+
+using TestInput = std::vector&lt;int&gt;;
+
+class RandomizedTest : public testing::TestWithParam&lt;TestInput&gt; {};
+TEST_P(RandomizedTest, Sorting)
+{
+   auto vs = GetParam();
+   selection_sort(std::begin(vs), std::end(vs));
+   ASSERT_TRUE(std::is_sorted(std::begin(vs), std::end(vs)));
+}
+
+std::vector&lt;std::vector&lt;int&gt;&gt; GenerateTestCases()
+{
+ std::vector&lt;TestInput&gt; test_cases;
+ std::numeric_limits&lt;int&gt; limits;
+
+ std::mt19937 engine(time(0)); // Fixed seed of 0
+ std::uniform_int_distribution&lt;int&gt; range_dist(0,1500);
+ std::uniform_int_distribution&lt;int&gt; element_dist(0, limits.max());
+
+ size_t n = 10000;
+ auto f = [&amp;](){return element_dist(engine);};
+ std::generate_n(std::back_inserter(test_cases), n, 
+     [&amp;](){ 
+         TestInput vs;
+         std::generate_n(std::back_inserter(vs), range_dist(engine), f);
+         return vs;
+     });
+ return test_cases;
+}
+
+INSTANTIATE_TEST_CASE_P(
+ GeneralAndSpecial,
+ RandomizedTest,
+ testing::ValuesIn(GenerateTestCases()));
+</code></pre>
+
+<p>Build Script</p>
+
+<pre><code>project(hw1)
+
+include(ExternalProject)
+ExternalProject_Add(
+    GTest 
+    URL http://googletest.googlecode.com/files/gtest-1.7.0.zip
+    INSTALL_COMMAND &quot;&quot;
+    )
+
+ExternalProject_Get_Property(GTest source_dir)
+include_directories(${source_dir}/include)
+
+
+ExternalProject_Get_Property(GTest binary_dir)
+link_directories(${binary_dir})
+
+
+set(CMAKE_CXX_FLAGS &quot;-O3 -std=gnu++11&quot;)
+add_executable(hw1 main.cpp)
+add_executable(test test.cpp)
+add_dependencies(test GTest)
+target_link_libraries(test gtest gtest_main pthread rt)
+</code></pre>
+
+<p>These tests take nearly 5 seconds to run, but randomization gives us another cool feature. Typically with directed tests, once the tests pass the probability of that test failing int he future is pretty low. Randomized tests are different every time you run them. While the invariant of the input are constant the input itself changes greatly, and exercises code in ways a human may not imagine.</p>
+
+<p>tldr;
+- Unit tests help you save face.
+- Random tests kick directed tests&rsquo; teeth in.</p>
+
+            </div>
+        </div>
+
+ 
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'codestrokes2'; 
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+     </div>
+</section> 
+     
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+
+<script data-no-instant>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
+

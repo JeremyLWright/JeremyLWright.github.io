@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Productivity on Code Strokes</title>
+    <link>http://localhost:1313/tags/productivity/</link>
+    <description>Recent content in Productivity on Code Strokes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 22 Jan 2012 17:53:43 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Abusing RAM</title>
+      <link>http://localhost:1313/2012/01/abusing-ram/</link>
+      <pubDate>Sun, 22 Jan 2012 17:53:43 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2012/01/abusing-ram/</guid>
+      <description>
+
+&lt;p&gt;My system has 16GB of RAM, but since I run Linux I rarely use more than about 3GB.  So how do I justify such a extreme amounts of memory? Ramdisks.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;I run Lubuntu1, but hopefully this works for you too. Basically, I create a ramdisk and mount it in /mnt/ramdisk, then I setup the login/logout scripts to transfer to and from the ramdisk.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-1-create-a-ramdisk:4c2ae4fdc68e60bb59f3d712c5b1190c&#34;&gt;Step 1: Create a ramdisk&lt;/h3&gt;
+
+&lt;p&gt;Add this line to your fstab:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;none /mnt/ramdisk tmpfs defaults 0 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;By default a tmpfs will initialize to half of the total system RAM. If this is not desirable, you may use the size option to override the default.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-2-modify-profile:4c2ae4fdc68e60bb59f3d712c5b1190c&#34;&gt;Step 2: Modify .profile&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;.profile&lt;/em&gt; gets executed when a user logs in on a Ubuntu based system. .bash_profile will work for bash only shells. Add this script segment to .profile:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#Setup the RAM disk Cache, if it doesn&#39;t exist
+if [ ! -d &amp;quot;/mnt/ramdisk/$USERNAME&amp;quot; ] ; then
+    mkdir /mnt/ramdisk/$USERNAME
+    cp -a $HOME/.cache /mnt/ramdisk/$USERNAME/
+    rm -rf $HOME/.cache 
+    ln -s /mnt/ramdisk/$USERNAME/.cache $HOME/.cache
+fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This script snippet will create a folder in the ramdisk to house your .cache folder, then create a symbolic link into it. I saw a significant speed improvement for internet browsing over a disk based cache.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-3-modify-bash-logout:4c2ae4fdc68e60bb59f3d712c5b1190c&#34;&gt;Step 3: Modify .bash_logout&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;.bash_logout&lt;/em&gt; gets executed when a user logs out of a Ubuntu based system. Add this script segment to .bash_logout:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# If the RAM disk cache exists, copy it back to non-volatile
+if [ -d &amp;quot;/mnt/ramdisk/$USERNAME/.cache&amp;quot; ] ; then
+    rm -f .cache
+    cp -a /mnt/ramdisk/$USERNAME/.cache $HOME
+fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;this script snipped will copy your .cache bask to disk when you logout. This does 2 things. Firstly, it preserves your cache between reboots, which helps maintain high performance. Secondly, it reduces the ram usage if multiple people use the system.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-4-enjoy:4c2ae4fdc68e60bb59f3d712c5b1190c&#34;&gt;Step 4: Enjoy&lt;/h3&gt;
+
+&lt;p&gt;Enjoy, as application now run faster. But you are not done, you still have piles of empty RAM bits waiting to be used; find other folders on the system begging to be mounted to ram. tmp, /var/run, /var/lock are sexy options2.&lt;/p&gt;
+
+&lt;h5 id=&#34;footnotes:4c2ae4fdc68e60bb59f3d712c5b1190c&#34;&gt;Footnotes&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;I hate Unity.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Reference: &lt;a href=&#34;https://wiki.archlinux.org/index.php/Fstab#tmpfs&#34;&gt;https://wiki.archlinux.org/index.php/Fstab#tmpfs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Good Tools, Excellent Results</title>
+      <link>http://localhost:1313/2011/08/good-tools-excellent-results/</link>
+      <pubDate>Sun, 21 Aug 2011 07:23:25 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2011/08/good-tools-excellent-results/</guid>
+      <description>&lt;p&gt;This semester for the C++ practicum we are building a clone of Zork.  Like many games of the genre, Zork is driven by a database.  Our implementation is a JSON database.  I chose JSON for a few reasons, but most importantly because its a human readable format that&amp;rsquo;s simple to understand.  I started by editing JSON files by hand in a text editor, however I found very quickly that investigating in a quick tool greatly improved my quality.&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;I chose JSON as a format. Next, I needed a schema.  Currently the schema design is as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;Clearing&amp;quot;: {
+ &amp;quot;Description&amp;quot;: &amp;quot;You are in a clearing. There is a berry bramble to your right.&amp;quot;,
+ &amp;quot;Exits&amp;quot;: {
+     &amp;quot;East&amp;quot;: &amp;quot;Up a Tree&amp;quot;,
+     &amp;quot;North&amp;quot;: &amp;quot;Grating Room&amp;quot;,
+     &amp;quot;South&amp;quot;: &amp;quot;Clearing&amp;quot;,
+     &amp;quot;West&amp;quot;: &amp;quot;&amp;quot;
+ },
+ &amp;quot;Items&amp;quot;: [&amp;quot;Berries&amp;quot;, &amp;quot;Sword&amp;quot;]
+ }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If nothing else its simple. So I started to layout the map, editing the JSON database directly in my text editor.  I found that even with such a simple schema, in a simple format such as JSON, it is incredible difficult to manage more than a few rooms.  I needed a better tool, a Map Editor.&lt;/p&gt;
+
+&lt;p&gt;Python to the rescue.  Using PyQt and Qt Designer I was able to whip up a dirty little map editor in an evening (totally about 3 hours).&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2011/08/Screenshot-Practicum-Game-Editor.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2011/08/Screenshot-Practicum-Game-Editor-1024x786.png&#34; alt=&#34;&#34; /&gt;
+&lt;/a&gt;With this I can not manage a much larger database, giving my players a much more immersive environment.  Secondly, my students can use and even extend the tool to make even better game play.&lt;/p&gt;
+
+&lt;p&gt;I wasted quite a bit of time hand editing JSON files, when such a simple tool could be built in less than half the time.  I took it as just another example of, &amp;ldquo;Sometimes you have to slow down to speed up.&amp;rdquo;  Take time to make your tools work.  Take time to make the right tools, and it will always pay dividends.&lt;/p&gt;
+
+&lt;p&gt;Source Code is available here: &lt;a href=&#34;https://bitbucket.org/jwright/gamecomponents&#34;&gt;https://bitbucket.org/jwright/gamecomponents&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

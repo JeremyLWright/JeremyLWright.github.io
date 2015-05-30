@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C11 on Code Strokes</title>
+    <link>http://localhost:1313/tags/c11/</link>
+    <description>Recent content in C11 on Code Strokes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 12 Feb 2014 08:50:00 -0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/c11/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Massively Intelligent Non-Deterministic Luminating Effortless Super Solver</title>
+      <link>http://localhost:1313/2014/02/cracking-subciphercpp/</link>
+      <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
+      
+      <guid>http://localhost:1313/2014/02/cracking-subciphercpp/</guid>
+      <description>&lt;p&gt;I worked the title of this article several times before I finally settled on the subtly epic heading you see above. Hopefully this title will funnel people off google into my blog (delicious SEO). I wanted to push the A.I. component of my solution because A.I. is awesome and mysterious, and cool (and can like solve jeopardy). I was quickly disillusioned however. Really, A.I. isn&amp;rsquo;t magic, rather it&amp;rsquo;s just the same thing computers have been doing for a long time: computing. Sadly this realization took several months in an A.I. class before I was sufficiently crestfallen. A.I. patterns including the hill climbing algorithm used here are indeed &amp;ldquo;intelligent&amp;rdquo; but really it a reflecting of the algorithm designer, not the entity executing the algorithm. So I built a substitution cipher solver in C++. It&amp;rsquo;s fast it uses random numbers i.e. non-deterministic, it uses an A.I. algorithm i.e. Intelligent, it uses threads i.e. Massively, it deciphers i.e. luminates the text and it solves super stuff therefore the title is completely justified. I give you my Massively Intelligent Non-Deterministic Luminating Effortless Super Solver (MINDLESS). If none of that interests you then please stick around and follow the side quest of looking for &lt;a href=&#34;http://justenoughcraig.blogspot.com/2014/01/just-say-no-to-passive-aggressive.html&#34;&gt;emotionally charged parenthesis&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Cracking substitution ciphers were a fun puzzle I pursued as a child. Substitution ciphers are monoalphabetic ciphers. Meaning a single letter maps to a single letter and that mapping is static. This is opposed to polyalphabetic ciphers where the mapping of letters changes throughout the message. Vigenère Cipher is an example. Given a substitution cipher what are tools are available to the &amp;ldquo;cryptanalyst&amp;rdquo; (the person to breaks ciphers). Firstly, frequency analysis. Frequency analysis supposes the the distribution of letters within the message is essentially the same as the distribution of letters in the English language (&lt;a href=&#34;http://en.wikipedia.org/wiki/Frequency_analysis&#34;&gt;http://en.wikipedia.org/wiki/Frequency_analysis&lt;/a&gt;). However if the message is short, or if the message is intentionally written to skew the letter distribution this technique is difficult. This post looks at a different approach, an artificial intelligence technique called hill climbing.&lt;/p&gt;
+
+&lt;p&gt;Hill Climbing is simply a search technique that uses a &amp;ldquo;fitness&amp;rdquo; measurement (fancy word for number or quality) to determine if the current search path is a useful one.&lt;/p&gt;
+
+&lt;p&gt;First step in building the substitution solver is to assemble some functions that will perform the substitution. I love the string functions in Python to I ported str.translate() to a form useful for my needs
+&lt;pre lang=&#34;cpp&#34; escaped=&#34;true&#34;&gt;std::string translate( cost std::string &amp;amp; str, const std::string &amp;amp; table)
+{
+    std::string s(str);
+    std::string::size_type len = str.size();&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if ( table.size() != 256 )
+{
+    throw std::runtime_error(&amp;quot;Improper table size. Size must be 256 chars&amp;quot;);
+}
+
+for ( std::string::size_type i = 0; i &amp;amp;lt; len; ++i )
+{
+    s[i] = table[ s[i] ];
+}
+return s;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+
+&lt;p&gt;std::string maketrans(std::string key)
+{
+    char t1data[256];
+    std::iota(std::begin(t1data), std::end(t1data), 0);
+    size_t i = &amp;lsquo;A&amp;rsquo;;
+    size_t d = &amp;lsquo;a&amp;rsquo; - &amp;lsquo;A&amp;rsquo;;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;for(auto k = std::begin(key); k != std::end(key); ++i, ++k)
+{
+    t1data[i] = *k;
+    t1data[i+d] = std::tolower(*k);
+}
+return std::string(t1data, 256);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/pre&gt;
+This leverages the fact that in C/C++, characters are simply numbers in ascii. Given a key, we can translate any text:
+&lt;pre lang=&#34;cpp&#34; escaped=&#34;true&#34;&gt;std::string substitute(std::string text, std::string key)
+{
+    auto t1 = pystring::maketrans(key);
+    return pystring::translate(text, t1);
+}&lt;/pre&gt;
+Now we need a fitness measurement. Ngrams are a useful tool here. Ngrams are partial words, and since we are more likely to find partial words in our search than full words, we need to give the program a mechanism for measuring this. This &lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2014/02/quadgrams.7z&#34;&gt;ngram&lt;/a&gt; database is a list of quadgrams and their relative frequency in the English language.&lt;/p&gt;
+
+&lt;pre lang=&#34;cpp&#34; escaped=&#34;false&#34;&gt;#include &lt;map&gt;
+#include &lt;istream&gt;
+#include &lt;string&gt;
+#include &lt;ctgmath&gt;
+#include &lt;iostream&gt;
+struct ngram_score 
+{
+    struct ngram_datum {
+        int freq;
+        double weight;
+    };
+    std::map&lt;std::string, ngram_datum&gt; ngrams;
+    double floor;
+    size_t l;
+    size_t n{0};
+    ngram_score(std::istream&amp; in)
+    {
+        std::string line;
+        while(in)
+        {
+            std::string ngram;
+            int freq;
+            in &gt;&gt; ngram;
+            in &gt;&gt; freq;
+            ngrams[ngram].freq = freq;
+            n += freq;
+        }
+
+        for(auto&amp; i : ngrams)
+        {
+            i.second.weight = std::log10((double)(i.second.freq)/n);
+        }
+        floor = std::log10(0.01/n);
+        l = 4; //for quadgrams.
+    }
+
+    double score(std::string text)
+    {
+        double score{0};
+        auto c = std::begin(text);
+        auto e = std::end(text);
+        for(; c+l-1 != e; ++c)
+        {
+            //Get a string of correct length
+            std::string ngram(c, c+l);
+            auto it=ngrams.find(ngram);
+            if(it != ngrams.end())
+                score += it-&gt;second.weight;
+            else
+                score += floor;
+        }
+        return score;
+    }
+};&lt;/pre&gt;
+
+&lt;p&gt;We can use this as a scorer for a length of text.
+&lt;pre lang=&#34;cpp&#34; escaped=&#34;false&#34;&gt;std::ifstream fin(&amp;ldquo;../quadgrams.txt&amp;rdquo;);
+ngram_score fitness(fin);
+auto score = fitness.score(plaintext);&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;We now have a substitution tool to make substitutions, and we have a numerical way of measuring the resultant quality. Next is to implement the search, this is the mystical artificial intelligence in the program.
+&lt;pre lang=&#34;cpp&#34; escaped=&#34;false&#34;&gt;
+struct cipher {
+    std::string key;
+    double score;
+    std::string plaintext;
+    friend std::ostream&amp;amp; operator&amp;lt;&amp;lt;(std::ostream&amp;amp; os, cipher const &amp;amp; c);
+};&lt;/p&gt;
+
+&lt;p&gt;cipher break_substitution(std::string cipher_text, std::string skey)
+{
+    std::transform(std::begin(cipher_text), std::end(cipher_text), std::begin(cipher_text), ::toupper);
+    std::uniform_int_distribution&lt;int&gt; distribution(0,25);&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cipher p;
+p.key = skey;
+p.plaintext = substitute(cipher_text, p.key);
+p.score = fitness.score(p.plaintext); 
+for(size_t i = 0; i &amp;lt; 1000; ++i) //Look at that intelligent for loop
+{
+    cipher c(p);
+    auto a = distribution(g);
+    auto b = distribution(g);
+    std::iter_swap(std::begin(c.key)+a, std::begin(c.key)+b); //randomly tweak our key
+    c.plaintext = substitute(cipher_text, c.key);
+    c.score = fitness.score(c.plaintext);  //Measure the quality of the new key.
+    if(c.score &amp;gt; p.score)
+    {
+        p = c; //update the parent
+        i = 0; //We&#39;ve made an improvement
+    }
+}
+return p;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;So artificial intelligence, it&amp;rsquo;s just computation.  The trick is that we are a little more intelligent that brute force.  Our algorithm is to generate a random key, substitute the cipher text with that key and measure the quality of the result, i.e., how many partial words are in the result.  Now swap 2 characters, and measure it again. If the result is better continue swapping with that key, if the result is worse throw away that key (branch of the search tree), and return to the previous key (p in this example).&lt;/p&gt;
+
+&lt;p&gt;In this post we looked at how MINDLESS can break substitution ciphers using hill climbing.  If you were following the side-quest, I hope you enjoyed yourself (or rather are overwhelming cross (because of the parenthesis), but be thankful they are balanced).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Sean Parent: No Raw Loops</title>
+      <link>http://localhost:1313/2013/11/sean-parent-no-raw-loops/</link>
+      <pubDate>Sun, 24 Nov 2013 22:14:50 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2013/11/sean-parent-no-raw-loops/</guid>
+      <description>&lt;p&gt;A group of colleagues and I watched Sean Parent&amp;rsquo;s Going Native Talk on &amp;ldquo;&lt;a href=&#34;http://channel9.msdn.com/Events/GoingNative/2013/Cpp-Seasoning&#34;&gt;C++ Seasoning&lt;/a&gt;&amp;rdquo;. Parent takes some extreme views on how to use C++, but his examples for using the STL to simplify code are phenomenal. For a recent AI project I decided to apply Parent&amp;rsquo;s &lt;em&gt;goal&lt;/em&gt; of &amp;ldquo;no raw loops&amp;rdquo;, I was blown away by the transformation&amp;hellip; err std::transformation this had on my code. In this post I indented to demonstrate several complex code blocks, or overly specific code blocks what were replaced by some STL magic. Alexander Stepanov says, &amp;ldquo;&lt;a href=&#34;http://www.youtube.com/watch?v=COuHLky7E2Q&#34;&gt;&amp;hellip;code is a liability.&lt;/a&gt;&amp;rdquo; The more code a program has the more likely it contains bugs. The fewer lines of code, the lesser the opportunity for a bug. I haven&amp;rsquo;t quiet decided if I agree with this point, but it does induce thought either way. Sean Parent&amp;rsquo;s methodology seems to agree, for the purposes of this post we&amp;rsquo;ll agree as well.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;So the assignment statement:&lt;/p&gt;
+
+&lt;blockquote&gt;Suppose that you have purchased a bag of candy which has two flavor: cherry (c) and lime (l). We do not know exactly what kind of bag we bought, but we know that it is one of the following types:
+
+&gt; 
+&gt; 
+    
+&gt;   1. 100% cherry (10% likely)
+&gt; 
+    
+&gt;   2. 75% cherry (20% likely)
+&gt; 
+    
+&gt;   3. 50% cherry (40% likely)
+&gt; 
+    
+&gt;   4. 25% cherry (20% likely)
+&gt; 
+    
+&gt;   5. 0% cherry (10% likely)
+&gt; 
+
+You take 11 pieces of candy, all happen to be lime. What bag do you most likely have, and what is the probability the next candy will be a lime?&lt;/blockquote&gt;
+
+&lt;p&gt;So lets start with encoding our data.  First we have 2 types of candy: cherry and lime.  Lets represent that:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class lime_type{};
+class cherry_type{};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We might expand this later, but for now we just need a way to overload functions on lime candies or cherry candies. This will work just fine.&lt;/p&gt;
+
+&lt;p&gt;Next we have some bags, and associated probabilities&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;enum Bag {
+Bag1 =1,
+Bag2,
+Bag3,
+Bag4,
+Bag5};
+
+std::vector&amp;lt;Bag&amp;gt; const bags{Bag1, Bag2, Bag3, Bag4, Bag5};
+
+map&amp;lt;Bag, double&amp;gt; apriori{
+{Bag1, 0.1},
+{Bag2, 0.2},
+{Bag3, 0.4},
+{Bag4, 0.2},
+{Bag5, 0.1}
+};
+
+map&amp;lt;Bag, std::pair&amp;lt;double, double&amp;gt;&amp;gt; candy_dist{
+{Bag1, {1.00, 0.00}},
+{Bag2, {0.75, 0.25}},
+{Bag3, {0.50, 0.50}},
+{Bag4, {0.25, 0.75}},
+{Bag5, {0.00, 1.00}}
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Again, pretty straight forward, but the magic is about to happen&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;Next we have to consume data from a file. Each data set is represented by a series of l or c on a single line. We need to print a graph for each line.  Our example data file looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;jwright@jwright-LinuxAwesome:~/workspaces/school/cse471/hw15$ cat data1.txt
+l l
+l l l l l l l l l l l l
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So for our first STL use case. (Actually Boost here, since gcc 4.7.1 doesn&amp;rsquo;t support regex yet, but this functionality will work in gcc 4.9.1).&lt;/p&gt;
+
+&lt;p&gt;The before:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;std::ifstream fin(filename);
+    string line;
+    while(fin &amp;gt;&amp;gt; line)
+    {
+        if(line == &amp;quot;l&amp;quot;)
+            cout &amp;lt;&amp;lt; &amp;quot;Lime&amp;quot; &amp;lt;&amp;lt; endl;
+        if(line == &amp;quot;c&amp;quot;)
+            cout &amp;lt;&amp;lt; &amp;quot;cherry&amp;quot; &amp;lt;&amp;lt; endl;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What&amp;rsquo;s wrong with this code block? Consider if our ls and cs aren&amp;rsquo;t white space delimited. Sensor data is noisy/messy all the time. It would be prudent to deal with this case. This code doesn&amp;rsquo;t block on newlines, and streams all the newlines together. We could wrap this code block with a std::getline() loop, but that&amp;rsquo;s going the wrong direction. No raw loops&amp;hellip; What does the STL provide to deal with this? Essentially we want to tokenize each line with _c_s or _l_s as tokens.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;boost::regex reg(&amp;quot;c|l&amp;quot;); //Construct the regular expression here, since it&#39;s expensive
+while(std::getline(fin,line))
+{ 
+    boost::sregex_token_iterator pos(begin(line), end(line), reg);
+    boost::sregex_token_iterator end;
+    std::for_each(pos, end, [](boost::sregex_token_iterator tok)
+    {
+        process(tok-&amp;gt;str());
+    });
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This code isn&amp;rsquo;t directly shorter, but it is certainly more robust. We can deal with extra noise in our data file, and the regex will skip over it gracefully calling our process function once for each l and c it finds on each line.&lt;/p&gt;
+
+&lt;p&gt;Now that we&amp;rsquo;re warmed up, lets check out some better examples. Conditional probabilities have lots of summations, and product chains in them. My initial hack unrolled all these summations. This is both verbose, which can hide errors, but if we can reduce the number of lines we will increase our reliability. First up.&lt;/p&gt;
+
+&lt;p&gt;$$ P( Candy = Lime | Data) = \Sigma_{Bags}(P(lime, Bag_i | Data) $$&lt;/p&gt;
+
+&lt;p&gt;My first hack, looks like something that congealed in a gutter:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;double p(cherry_type, data_type)
+{
+//
+// \sigma_bags(p(lime, Bag_i | data))
+//
+double a =
+p(lime_type(), Bag1)*p(Bag1, data_type()) +
+p(lime_type(), Bag2)*p(Bag2, data_type()) +
+p(lime_type(), Bag3)*p(Bag3, data_type()) +
+p(lime_type(), Bag3)*p(Bag4, data_type()) +
+p(lime_type(), Bag5)*p(Bag5, data_type());
+
+return a;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This version is has the sad property that a C programmer might say, &amp;ldquo;Awesome, he unrolled the loops. That code will be fast.&amp;rdquo; Stephan T. Lavavej says , &amp;ldquo;&lt;a href=&#34;http://channel9.msdn.com/Events/GoingNative/2013/Don-t-Help-the-Compiler&#34;&gt;Don&amp;rsquo;t help the compiler&lt;/a&gt;&amp;rdquo;. I agree. -funroll-loops will unroll the loops much better than I can.In fact this code as a bug in it. See it?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;double p(cherry_type, data_type)
+{
+//
+// \sigma_bags(p(lime, Bag_i | data))
+//
+double a =
+p(lime_type(), Bag1)*p(Bag1, data_type()) +
+p(lime_type(), Bag2)*p(Bag2, data_type()) +
+p(lime_type(), Bag3)*p(Bag3, data_type()) +
+p(lime_type(), Bag3)*p(Bag4, data_type()) + //Boom, check out that hot copy-paste error.
+p(lime_type(), Bag5)*p(Bag5, data_type());
+
+return a;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Corrected, but still not &amp;ldquo;correct&amp;rdquo;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;double p(lime_type, data_type)
+{
+//
+// \sigma_bags(p(lime, Bag_i | data))
+//
+double a =
+p(lime_type(), Bag1)*p(Bag1, data_type()) +
+p(lime_type(), Bag2)*p(Bag2, data_type()) +
+p(lime_type(), Bag3)*p(Bag3, data_type()) +
+p(lime_type(), Bag4)*p(Bag4, data_type()) + //Boom, check out that hot copy-paste error.
+p(lime_type(), Bag5)*p(Bag5, data_type());
+
+return a;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Beside being verbose, and prone to error. It isn&amp;rsquo;t generate. If we grow our dataset, the loop is not wrong. Can we be sure that we&amp;rsquo;ll find every unrolled loop, and fix it? We can do better.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;double p(lime_type, data_type)
+{
+    //
+    // \sigma_bags(p(lime, Bag_i | data))
+    //   
+    std::vector&amp;lt;double&amp;gt; partials(bags.size());
+    std::transform(begin(bags), end(bags), begin(partials), [](Bag b){ return p(lime_type(), b)*p(b, data_type()); });
+    double a = std::accumulate(begin(partials), end(partials), 0.0 ); //Gotcha 0.0 instead of 0. 0 will cast the result to an int
+    return a;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This version is shorter. The compiler is free to optimize the STL algorithms as needed even unrolling the loops if the compiler deems it will improve the code. This code is readable, but futhermore we can explain this code to a mathematician. Stroustroup says, &amp;ldquo;Express abstracts as the expert in the field does.&amp;rdquo; This function does exactly that. The first step is to compute partial products of $$ P( Lime, Bag_i) * P(Bag_i | Data) $$. Then add the products together. We are agnostic to the number of bags.&lt;/p&gt;
+
+&lt;p&gt;Next what about debugging. I&amp;rsquo;m searching for a bug, and sometimes print statements are the best way to work it out. Lets print out a vector.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vector prob;
+//...
+cout &amp;lt;&amp;lt; &amp;quot;{&amp;quot;;
+for(auto&amp;amp; p : prob)
+    cout &amp;lt;&amp;lt; p &amp;lt;&amp;lt; &amp;quot;, &amp;quot;;
+cout &amp;lt;&amp;lt; &amp;quot;}&amp;quot;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This cannot be bad right? We used the new, shiny range-based for. What can one complain about.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vector prob;
+//...
+cout &amp;lt;&amp;lt; &amp;quot;{&amp;quot;;
+std::copy(std::begin(prob), std::end(prob), std::ostream_iterator&amp;lt;double&amp;gt;(cout, &amp;quot;, &amp;quot;));
+cout &amp;lt;&amp;lt; &amp;quot;}&amp;quot;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;However we can do &lt;a href=&#34;https://github.com/louisdx/cxx-prettyprint&#34;&gt;even better&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include 
+cout &amp;lt;&amp;lt; prob;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Even though this program was small, the opportunity to improve quality, and robustness, is ever present. C++ is a growing language, and it&amp;rsquo;s new capabilities are really improving the corner cases in software. One key tool in doing so is learning the STL.  I encourage you to study the STL.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Anderson Smart-Pointer Idiom Updated!</title>
+      <link>http://localhost:1313/2012/05/anderson-smart-pointer-idiom-updated/</link>
+      <pubDate>Sun, 06 May 2012 07:00:10 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2012/05/anderson-smart-pointer-idiom-updated/</guid>
+      <description>&lt;p&gt;C++11 provides us with a ton of new tools for expressing complex ideas in an efficient way. C++11 is unique among modern languages in that it provides a productive syntax, while also generating exceptionally fast code. For the first time ever, software engineers are responsible for increasing the performance of software systems. For decades we&amp;rsquo;ve been standing on the shoulders of hardware engineers. Hardware engineers have been increasing the clock speeds of our processors, but we&amp;rsquo;ve hit a physical limit. It&amp;rsquo;s our turn to pick up the baton in this relay race and get to the finish line. C++11 provides a number of tools to help us get there, and smart pointers are one such tool.
+&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
+The &lt;a href=&#34;http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/&#34;&gt;Anderson Smart-Pointer idiom&lt;/a&gt; is a pattern developed by a &lt;a href=&#34;http://www.chrisanderman.com/&#34;&gt;colleague of mine&lt;/a&gt;. It supplants the constructor of a class with a factory method, to eliminate all raw pointers in a software system. Secondly, it provides typedefs for the smart pointers so one may use a terse type to express a more verbose concept. C++11 provides three tools which allow us to make this pattern more generic, while also increasing its performance.&lt;/p&gt;
+
+&lt;p&gt;C++11 allows us to apply the &lt;a href=&#34;http://en.wikipedia.org/wiki/Don&#39;t_repeat_yourself&#34;&gt;DRY&lt;/a&gt; principle to the factory method.  Variadic templates allow us to render a completely generic version of the factory method. Until C++11, one was forced to duplicate the parameter list of the constructor in the factor method. This violates DRY, making maintenance more difficult. The factory construct now looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;template&amp;lt;typename... Ts&amp;gt;
+ static SmartClass::Ptr construct(Ts... vs)
+ {
+ SmartClass::Ptr c = std::make_shared&amp;lt;SmartClass&amp;gt;(SmartClass(vs...));
+ c-&amp;gt;self = c;
+ return c;
+ }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Except for the class name, this method never changes. This is powerful since it creates a &lt;a href=&#34;http://en.wikipedia.org/wiki/Separation_of_concerns&#34;&gt;separation of concerns&lt;/a&gt;. The factory method is only concerned with creating a smart-pointer handle to some dynamically created object. Any specific details in the constructor, i.e. the parameters, are forwarded to the actual constructor. This renders thee factory method completely generic.&lt;/p&gt;
+
+&lt;p&gt;Line 4 also debuts another C++11 addition: perfect-forwarding. C++11 contains a special non-member constructor for shared pointers. This special constructor leverages the STL&amp;rsquo;s &lt;a href=&#34;http://en.cppreference.com/w/cpp/utility/forward&#34;&gt;perfect-forwarding&lt;/a&gt; to remove as much function-call overhead as possible. This small fragment of code, leverages the massively powerful &lt;a href=&#34;http://en.wikipedia.org/wiki/C%2B%2B11#Rvalue_references_and_move_constructors&#34;&gt;move-semantics&lt;/a&gt; in C++11, generating extremely efficient code.&lt;/p&gt;
+
+&lt;p&gt;The last component which rounds out our updated idiom is that the smart pointer templates are now part of the standard namespace. Together the entire pattern looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;memory&amp;gt;
+#include &amp;lt;iostream&amp;gt;
+
+class SmartClass
+{
+public:
+typedef std::shared_ptr&amp;lt;SmartClass&amp;gt; Ptr;
+typedef std::weak_ptr&amp;lt;SmartClass&amp;gt; WeakPtr;
+template&amp;lt;typename... Ts&amp;gt;
+static SmartClass::Ptr construct(Ts... vs)
+{
+SmartClass::Ptr c = std::make_shared&amp;lt;SmartClass&amp;gt;(SmartClass(vs...));
+c-&amp;gt;self = c;
+return c;
+}
+virtual ~SmartClass();
+private:
+SmartClass(int param1, char param2);
+SmartClass::WeakPtr self;
+
+};
+
+int main(int argc, const char *argv[])
+{
+SmartClass::Ptr p = SmartClass::construct(2, &#39;c&#39;);
+return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice two things about the updated pattern. Even though the construct method is a template, we do not have to explicitly enumerate the constructor&amp;rsquo;s types at the call site (line 25). Secondly, even though we&amp;rsquo;re using a template, the entire class does not have to exist in the header file, only the template part, i.e. the construct method needs to be in the header. This is useful since it allows one to hide business logic in the cpp file, while still leveraging a generic template.&lt;/p&gt;
+
+&lt;p&gt;The updated Anderson smart-pointer idiom, extends an already powerful pattern into a more generic, high performance pattern. By applying &lt;a href=&#34;http://en.wikipedia.org/wiki/Don&#39;t_repeat_yourself&#34;&gt;DRY&lt;/a&gt; to the factory method, we are able to create a completely generic version of the constructor, which improves maintenance and separates the concerns of class construction from the memory management. Secondly, by leveraging the move semantics of &lt;em&gt;make_shared&amp;lt;&amp;gt;()&lt;/em&gt;, we create a shared_ptr with almost zero overhead. Lastly, the most powerful piece of this update is that  the public interface if this pattern has zero change. Code which already uses this patterns doesn&amp;rsquo;t have to change. Updating the factory method and recompiling will pull in all the benefits.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Talk at SoDA</title>
+      <link>http://localhost:1313/2012/03/talk-at-soda/</link>
+      <pubDate>Sat, 31 Mar 2012 18:48:55 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2012/03/talk-at-soda/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://vimeo.com/39505796&#34;&gt;SoDA Meeting: Embedded Scripting for Games&lt;/a&gt; from &lt;a href=&#34;http://vimeo.com/asusoda&#34;&gt;SoDA @ ASU&lt;/a&gt; on &lt;a href=&#34;http://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Multicast Delegates in C&#43;&#43;11</title>
+      <link>http://localhost:1313/2012/03/multicast-delegates-in-c11/</link>
+      <pubDate>Sun, 25 Mar 2012 05:32:43 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2012/03/multicast-delegates-in-c11/</guid>
+      <description>&lt;p&gt;C# has a wonderfully flexible delegate system capable of multicast events.  This simple tool makes event driven software easier to write, and reduces coupling between objects. In 2003 Herb Sutter implemented a general form of the Observer pattern [1].  He called this the multi_function. It uses a mixture of TR1 and boost components to build a multi-cast delegate similar to C#&amp;rsquo;s.  Fast-forward 9 years, and we now have variadic-templates thanks to C++11.  Variadic-Templates allow us to patch a missing component in Sutter&amp;rsquo;s multi_function.
+&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;Variadic Templates sound like a overwhelming cacophony. Templates are complex enough already, why do we need to add more complexity to the issue? However, Variadic Templates don&amp;rsquo;t have to be as difficult as they could be.  Variadic Templates have the potential to destroy readability. They are extremely abstract tools. At a recent conference, Andrei Alexandrescu, not wanting to disappoint, defined the variadic-variadic-template-template [3]. Templates can be abused, and the varadic is no exception. However, when used judiciously varadic templates are just a tool that can solve some very real-world issues.&lt;/p&gt;
+
+&lt;p&gt;We are going to use the type expansion effects of variadic templates to consolidate some code. Sutter uses a template to implement to operator() of his multi_function. When one calls this operator, multi_function in-turn calls the operator() of each stored function. Hence, the multi-cast behavior.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;void operator()() const {
+    for( std::list&amp;lt;tr1::function&amp;lt;F&amp;gt; &amp;gt;::const_iterator i = l_.begin(); i != l_.end(); ++i )
+      (*i)();
+  }
+
+  template&amp;lt;typename T1&amp;gt;
+  void operator()( T1 t1 ) const {
+    for( std::list&amp;lt;tr1::function&amp;lt;F&amp;gt; &amp;gt;::const_iterator i = l_.begin(); i != l_.end(); ++i )
+      (*i)( t1 );
+  }
+
+  template&amp;lt;typename T1, typename T2&amp;gt;
+  void operator()( T1 t1, T2 t2 ) const {
+    for( std::list&amp;lt;tr1::function&amp;lt;F&amp;gt; &amp;gt;::const_iterator i = l_.begin(); i != l_.end(); ++i )
+      (*i)( t1, t2 );
+  }
+
+  template&amp;lt;typename T1, typename T2, typename T3&amp;gt;
+  void operator()( T1 t1, T2 t2, T3 t3 ) const {
+    for( std::list&amp;lt;tr1::function&amp;lt;F&amp;gt; &amp;gt;::const_iterator i = l_.begin(); i != l_.end(); ++i )
+      (*i)( t1, t2, t3 );
+  }
+
+  // etc.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The _etc _is the point.  This implementation is quite limiting, one has to implement the operator() for every possible number of operands in the target function. Google Mock also has a similar issue [4]. Google fixes it by using a code generator that implements the method up to a large number of parameters. C++11 fixes this.&lt;/p&gt;
+
+&lt;p&gt;Templates are designed to generate code at compile time to leverage source code reuse. Alexandrescu says that templates are source-code reuse, while inheritance is binary reuse. Since source code is more general than binary, templates are more general than inheritance.  Variadic templates allow the compiler to accept a variable number of arguments then at compile time, special syntax is used to expand the expressions.  Here is the above code consolidated into a variadic.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;template&amp;lt;typename... Ts&amp;gt; //Expand all the Types into a comma separated list
+void operator()(Ts... vs) const {
+
+    for(auto i = begin(l_); i != end(l_); ++i) //Iterator over the callbacks
+    {
+        (*i)(vs...); //Expand all the values into a comma separated list
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Simpler, right? Sadly, gcc currently has a bug which prevents variadics and lambdas from playing nicely together [2].  The power of this expression is the new &amp;hellip; syntax.  I follow Alexandrescu&amp;rsquo;s cue to pluralize the template arguments, Ts and vs respectively. Ts are Types, and vs are Values.  The compiler will accept any number arguments, and type-safely expand the argument list. This vastly expands to generality of this class, without drastically increasing the complexity. This is certainly simpler than using separate code-generation phase to expand the type lists prior to compilation.&lt;/p&gt;
+
+&lt;p&gt;Variadic Templates are a powerful tool; there is certainly the potential to create some very obsucated code with this tool. However with judicious use, very useful and extensive interfaces are possible.&lt;/p&gt;
+
+&lt;p&gt;Thank you to the stackoverflow community for guidance on this, and a massive thank you to Herb Sutter for implementing the original multi_function.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://drdobbs.com/cpp/184403873?pgno=3&#34;&gt;http://drdobbs.com/cpp/184403873?pgno=3&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://stackoverflow.com/questions/9856859/variadic-template-lambda-expansion&#34;&gt;http://stackoverflow.com/questions/9856859/variadic-template-lambda-expansion&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://gcc.gnu.org/bugzilla/show_bug.cgi?id=41933&#34;&gt;http://gcc.gnu.org/bugzilla/show_bug.cgi?id=41933&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://channel9.msdn.com/Events/GoingNative/GoingNative-2012/Variadic-Templates-are-Funadic&#34;&gt;http://channel9.msdn.com/Events/GoingNative/GoingNative-2012/Variadic-Templates-are-Funadic&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://code.google.com/p/googlemock&#34;&gt;http://code.google.com/p/googlemock&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

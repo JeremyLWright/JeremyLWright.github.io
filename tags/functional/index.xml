@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Functional on Code Strokes</title>
+    <link>http://localhost:1313/tags/functional/</link>
+    <description>Recent content in Functional on Code Strokes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 22 Apr 2013 05:29:11 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/functional/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Haskell Day 1 (Again)</title>
+      <link>http://localhost:1313/2013/04/haskell-day-1-again/</link>
+      <pubDate>Mon, 22 Apr 2013 05:29:11 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2013/04/haskell-day-1-again/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve restarted my haskell programming education. Here is my implementation of &lt;a href=&#34;http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/&#34;&gt;FizzBuzz&lt;/a&gt;
+&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fizzbuzz x | x `mod` 15 == 0 = &amp;quot;FIZZBUZZ&amp;quot;
+           | x `mod` 3  == 0 = &amp;quot;FIZZ&amp;quot;
+           | x `mod` 5  == 0 = &amp;quot;BUZZ&amp;quot;
+           | otherwise       = show x
+
+main = print (map fizzbuzz [1..100])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;[suffusion-adsense client=&amp;lsquo;ca-pub-6284398857369558&amp;rsquo; slot=&amp;lsquo;1495369305&amp;rsquo; width=&amp;lsquo;728&amp;rsquo; height=&amp;lsquo;90&amp;rsquo;]&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

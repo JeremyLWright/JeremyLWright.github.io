@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+    <title>Code Strokes</title>
+
+<link href="" rel="alternate" type="application/rss+xml" title="Code Strokes" />
+<link href="" rel="feed" type="application/rss+xml" title="Code Strokes" />
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" media="all" rel="stylesheet">
+
+
+<link rel="stylesheet" type="text/css" href="/css/default.css" />
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css">
+<link href='//fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+
+
+
+<link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/images/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+<link rel="manifest" href="/images/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/images/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" type="text/css" href="/css/styles/default.css" />
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body id="page-top" class="index">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-23129291-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+	<div class="container">
+		
+		<div class="navbar-header page-scroll">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+    <a class="navbar-brand page-scroll" href="/">Code Strokes</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="hidden">
+                <a href="/"></a>
+                </li>
+                <li><a href="/about/">About</a></li>
+                
+                <li><a href="/"></a></li>
+                
+                <li><a href="/posts">posts</a></li>
+                
+			
+			</ul>
+		</div>
+		
+	</div>
+	
+</nav>
+
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1><a href="http://localhost:1313/2012/08/the-turbulent-history-of-managed-code/">The Turbulent History of Managed Code</a></h1>
+            </div>
+            <span class="section-subheading text-muted">Tue, Aug 28, 2012</span>
+            <div class="post">
+                
+
+<p>Managed Code is a fascinating technology; Just-In-Time compilation provides advanced run-time optimization and strong type safety can <a href="http://channel9.msdn.com/Shows/Going+Deep/Singularity-III-Revenge-of-the-SIP">render the hardware MMU obsolete</a>. However the managed code renaissance is again in decline, and interestingly more than technology, business is changing the managed/native landscape. More than any other other metric, managed code is about maximizing programmer productivity.</p>
+
+<!-- more -->
+
+<p>In 1977, Infocom released Zork. Zork was an innovative game. Its <a href="http://www.inform-fiction.org/manual/html/s34.html">sophisticated</a> linguistics made for an immersive experience for its adventurers.  Language wasn&rsquo;t the only innovation made by Infocom. Infocom released Zork on a custom virtual machine called the Z-Machine. Z-Machine functioned as an abstraction layer to the hardware, allowing one code base to run on multiple separate architectures. The Z-Machine was a major technical advancement, but more than that it allowed programmers to work on a single code base rather than writing duplicate code for differing architectures.</p>
+
+<p>The Z-Machine afforded enormous financial benefit by allowing simultaneous release to multiple architectures. However, as Infocom discovered during the development of Cornerstone, Z-Machine did have an enormous performance overhead. Cornerstone was a business database application. Infocom decided early in development that the flexibility Z-Machine afforded Zork, would benefit Cornerstone. Cornerstone however, was not the slow paced text adventure game of Zork. Cornerstone was a serious business class application designed to compete with dBase and FoxPro. Z-Machine permitted more productive programmers but at the cost of performance. Performance Cornerstone direly required.</p>
+
+<p>The Java programming language, arguably the most popular language in the world, was <a href="http://en.wikipedia.org/wiki/Write_once,_run_anywhere">solely designed</a> to optimize programmer&rsquo;s productivity. Sun first touted this noble goal with the statement, &ldquo;Write once, run anywhere&rdquo;. Java makes many compromises in the name of <em>safety from the programmer</em>. The managed coder is prevented from low level access to hardware in the name of safety. If the coder cannot segfault, program will be more stable. Java automatically range checks all arrays, and provides a periodic garbage collector, all in the name of stability, security and productivity. Performance is not a metric for this target.</p>
+
+<p>When Java was release, the hardware at the time was advancing rapidly. Clockspeeds were accelerating at an alarming rate. Hardware engineer&rsquo;s enormous effort allowed software engineers to trade performance. Simultaneously, business applications were growing ever larger. Larger applications meant larger teams. These large teams leveraged Java to help manage some of the preceived ___ problems_ with native code. Simultaneously, this trade of performance afforded the businesses to target multiple architectures from a single code base. Managed code was making a huge surge.</p>
+
+<p>In 2002, Microsoft was working on Longhorn, and Microsoft started down the same perilous road as Infocom. Jim Allchin released an edict stating that all OS interfaces shall be M<em>anaged Interfaced</em>._ _The question of the time was, &ldquo;Can Managed Code solve all important problems?&rdquo;, leaving native code only to device drivers. Those who touch the metal.  Native interfaces were permitted, but never in place of managed ones. Microsoft saw the productivity managed interfaces afforded programmers. This meant a healthier bottom line. Microsoft attempted to leverage this harder than anyone had before.  Infocom build a database on managed technologies. Microsoft wanted to build an operating system! Longhorn had an ambitious list of features and managed code was at the center of it all. Eventually, Microsoft forwent managed code and quickly released Vista. Microsoft discovered what Infocom discovered years prior, there are certain limits to managed code&rsquo;s capabilities.</p>
+
+<p>Fast forward to the era of cloud computing, which is simply a re-branding of yesteryear&rsquo;s time-share systems. Processing time is once again premium to programmer&rsquo;s time. On the hardware side, we&rsquo;ve hit a limit with clock speeds. Increasing the performance of our software applications is no longer up to the hardware engineers, its now our responsibility. We no longer have the luxury of managed code.  Our responsibility is to compute some result and release the systems&rsquo; resources, or for battery powered devices return to low power mode. Native code is the only tool we currently have to leverage the hardware and meet our performance goals.</p>
+
+<p>Embedded systems are now ubiquitous, where the name of the game is battery life, and immersive apps. Nothing permits us to leverage the advanced features of these embedded processors like native code does. Managed code is faster now too, and will always have a place in application development. However when there is a linear relationship between cost and runtime, Native code is king.</p>
+
+<h4 id="references:5d862b683b62e00a04451b62b40cdb50">References</h4>
+
+<ul>
+<li><p><a href="http://msdn.microsoft.com/en-us/library/ms993883.aspx">http://msdn.microsoft.com/en-us/library/ms993883.aspx</a></p></li>
+
+<li><p><a href="http://www.theinquirer.net/inquirer/news/1004218/longhorn-to-have-managed-interfaces">http://www.theinquirer.net/inquirer/news/1004218/longhorn-to-have-managed-interfaces</a></p></li>
+
+<li><p><a href="http://en.wikipedia.org/wiki/Z-machine">http://en.wikipedia.org/wiki/Z-machine</a></p></li>
+
+<li><p><a href="http://en.wikipedia.org/wiki/Zork">http://en.wikipedia.org/wiki/Zork</a></p></li>
+
+<li><p><a href="http://www.inform-fiction.org/zmachine/standards/index.html">http://www.inform-fiction.org/zmachine/standards/index.html</a></p></li>
+
+<li><p><a href="http://en.wikipedia.org/wiki/Java_performance">http://en.wikipedia.org/wiki/Java_performance</a></p></li>
+
+<li><p><a href="http://en.wikipedia.org/wiki/Jim_Allchin">http://en.wikipedia.org/wiki/Jim_Allchin</a></p></li>
+
+<li><p><a href="http://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/-Not-Your-Father-s-C-?format=html5">http://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/-Not-Your-Father-s-C-?format=html5</a></p></li>
+
+<li><p><a href="http://herbsutter.com/2012/04/02/reader-qa-when-will-better-jits-save-managed-code/">http://herbsutter.com/2012/04/02/reader-qa-when-will-better-jits-save-managed-code/</a></p></li>
+
+<li><p><a href="http://www.gotw.ca/publications/concurrency-ddj.htm">http://www.gotw.ca/publications/concurrency-ddj.htm</a></p></li>
+
+<li><p><a href="http://herbsutter.com/welcome-to-the-jungle/">http://herbsutter.com/welcome-to-the-jungle/</a></p></li>
+</ul>
+
+            </div>
+        </div>
+
+ 
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'codestrokes2'; 
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+     </div>
+</section> 
+     
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+
+<script data-no-instant>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
+

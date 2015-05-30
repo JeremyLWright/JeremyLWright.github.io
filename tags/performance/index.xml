@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Performance on Code Strokes</title>
+    <link>http://localhost:1313/tags/performance/</link>
+    <description>Recent content in Performance on Code Strokes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 14 Jul 2013 23:00:11 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/performance/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Is Monolithic Code Faster?</title>
+      <link>http://localhost:1313/2013/07/is-monolithic-code-faster/</link>
+      <pubDate>Sun, 14 Jul 2013 23:00:11 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2013/07/is-monolithic-code-faster/</guid>
+      <description>
+
+&lt;p&gt;As a software engineer I have a vested interest in disproving this statement. Bjarne Stroustroup says C++ is designed to create efficient abstractions. A software engineer’s  job is to create simple &lt;a href=&#34;http://www.codestrokes.com/2012/09/abstraction-in-plain-english/&#34;&gt;abstractions &lt;/a&gt;to complex systems. State machines form a large part of many systems. The other day, a co-worker came to me, and asked, “Is it better to make straight line code for each case statement, even if it repeats, or is it better to abstraction into functions and make the code ‘cleaner’.”  Is “cleaner” code faster?
+&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;the-experiment:ad7f9b3b0ebd08ad653cabf663c403bf&#34;&gt;The Experiment&lt;/h2&gt;
+
+&lt;p&gt;The experiment I propose is to make a peanut butter and jelly sandwich, using a finite state machine.&lt;/p&gt;
+
+&lt;p&gt;[caption id=&amp;ldquo;attachment_1089&amp;rdquo; align=&amp;ldquo;alignleft&amp;rdquo; width=&amp;ldquo;97&amp;rdquo;]&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2013/07/sm1.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2013/07/sm1-97x300.png&#34; alt=&#34;sm&#34; /&gt;
+&lt;/a&gt; State Machine expressed in 4 separate methods.[/caption]&lt;/p&gt;
+
+&lt;p&gt;The state machine has a series of steps, each of which take a number of ticks. The tick simply counts the  amount of time in each state. The ticks simulate work being done in that state. For this experiment we are defining monolithic code to mean a switch() statement with no function calls. For modular code we offer 3 solutions:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;a switch statement with the state code abstracted into functions. Each function then returns the state transition.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;States abstracted into C++ objects&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Lastly, a high level state machine using Boost MSM.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;code-overview:ad7f9b3b0ebd08ad653cabf663c403bf&#34;&gt;Code Overview&lt;/h3&gt;
+
+&lt;p&gt;For each state machine type, lets look at the an example state to compare their structure. Firstly, the &amp;ldquo;monolithic&amp;rdquo; state:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;case EAT_SANDWICH:
+if(step_tick &amp;lt;= 0 &amp;amp;&amp;amp; sandwiches_to_eat &amp;lt;= 0) //We&#39;ve eaten all sandwiches
+{
+    step_tick = 20;
+    s = GO_TO_WORK;
+}
+else if(step_tick &amp;lt;= 0) //We&#39;ve eaten 1 more sandwich
+{
+    --sandwiches_to_eat;
+    step_tick = 10;
+    s = REMOVE_BREAD;
+}
+// else Continue eating current sandwich
+break;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here s is the state. At the top of the machine is a switch(s). When the ticks are up, the state transitions to the next state. In this case Go To Work or Remove Bread to make another sandwich.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SandwichState_t eat_sandwich_process()
+{
+    static int sandwiches_to_eat = 3;
+    static int tick = 10;
+    --tick;
+    if(tick &amp;lt;= 0 &amp;amp;&amp;amp; sandwiches_to_eat &amp;lt;= 0)
+    {
+        sandwiches_to_eat = 3;
+        tick = 10;
+        return REMOVE_BREAD;
+    }
+    else if(tick &amp;lt;= 0)
+    {
+        --sandwiches_to_eat;
+        tick = 10;
+        return GO_TO_WORK;
+    }
+    return EAT_SANDWICH;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This state is the identical to the monolithic, except the state is moved into a function, and the state is returned instead of mutating a variable.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;int eat_sandwich()
+{
+    static int sandwiches_to_eat = 3;
+    static int tick = 10;
+    --tick;
+    if(tick &amp;lt;= 0 &amp;amp;&amp;amp; sandwiches_to_eat &amp;lt;= 0)
+    {
+        sandwiches_to_eat = 3;
+        tick = 10;
+        s.f = remove_bread;
+    }
+    else if(tick &amp;lt;= 0)
+    {
+        --sandwiches_to_eat;
+        tick = 10;
+        s.f = go_to_work;
+    }
+    else
+        s.f = eat_sandwich;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This third method is a uses a function pointer s.f. State transitions are performed by mutating the function pointer, and jumping to it e.g. sf();&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Row &amp;lt; EatSandwich       , none  , GoToWork          , ResetTick, user_is_full   &amp;gt;,
+Row &amp;lt; EatSandwich       , none  , RemoveBread       , ResetTick, user_is_hungry &amp;gt;,
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is Boost&amp;rsquo;s MSM. essentially, MSM is a domain specific language described completely within a C++ template.&lt;/p&gt;
+
+&lt;h2 id=&#34;results:ad7f9b3b0ebd08ad653cabf663c403bf&#34;&gt;Results&lt;/h2&gt;
+
+&lt;p&gt;[caption id=&amp;ldquo;attachment_1097&amp;rdquo; align=&amp;ldquo;alignleft&amp;rdquo; width=&amp;ldquo;300&amp;rdquo;]&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2013/07/O2Speedups.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2013/07/O2Speedups-300x225.png&#34; alt=&#34;O2Speedups&#34; /&gt;
+&lt;/a&gt; Speedup normalized against the monolithic case. (Compiled with O2 optimization)[/caption]&lt;/p&gt;
+
+&lt;p&gt;I started this project with the full intention of cheating to assure monolithic code is slower than &amp;ldquo;proper&amp;rdquo; code. However, the evidence shows, properly abstracted code can be faster, but there is a limit. As MSM shows one can take abstraction too far or too general such that performance becomes difficult. So How does this happen? One of the most impacting tool for code performance, caching, and compilers have a fancy trick to optimize cache performance. Inlining.&lt;/p&gt;
+
+&lt;h2 id=&#34;inlining:ad7f9b3b0ebd08ad653cabf663c403bf&#34;&gt;Inlining&lt;/h2&gt;
+
+&lt;p&gt;Function inlining is simply a copy-paste operation by the compiler to remove the overhead of a function call. In gcc, and Visual Studio, the compiler is free to inline any function it wills. Conversely, the inline keyword simply provides a suggestion or a hint to the compiler to inline a function. The compiler is free to ignore the suggestion. Once the compiler chooses to inline a function, it simply copies the source from the function and replaces the function call itself.&lt;/p&gt;
+
+&lt;p&gt;However, additional performance is offered beyond simply eliminating the CALL instruction. Optimization is performed in multiple passes. As such removing function calls, can simplify optimization techniques such as global-flow analysis, and register allocation. Therefore, once a function is inlined, additional performance tweaks may be made specific to the environment of the original call. This means the while a function may be optimized on it&amp;rsquo;s own. It will be done so only once. However an inlined function, since the source of the function is laid directly into flow of the program, the compiler can optimize the function specific to that region.&lt;/p&gt;
+
+&lt;p&gt;Many language support function inlining. Java, C++ have an inline keyword. During compilation inlining seems straight forward, however what about dynamic languages? I was surprised to learn that Python inlines.  PyPy uses a Just-In-Time compiler to make inline decisions at runtime. The benefit of inline decisions deferred to runtime, is the JIT is able to see the full program at once, as opposed to only a single file at a time as a batch compiler does.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion:ad7f9b3b0ebd08ad653cabf663c403bf&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Cleanly abstracted code can be faster than monolithic code. Even without cheating the benchmark :-).  Compilers make advanced optimizations, as such it&amp;rsquo;s of little benefit to immediately make a blanket statement to try to beat the performance of an optimizing compiler. For dynamic languages, JIT systems make even more comprehensive enhancements offering staggering performance.&lt;/p&gt;
+
+&lt;p&gt;Reference:
+&lt;a href=&#34;http://en.wikipedia.org/wiki/Inline_expansion&#34;&gt;http://en.wikipedia.org/wiki/Inline_expansion&lt;/a&gt;
+&lt;a href=&#34;http://en.wikipedia.org/wiki/Inline_caching&#34;&gt;http://en.wikipedia.org/wiki/Inline_caching&lt;/a&gt;
+&lt;a href=&#34;http://www.iecc.com/linker/linker11.html&#34;&gt;http://www.iecc.com/linker/linker11.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://morepypy.blogspot.com/2011/02/pypy-faster-than-c-on-carefully-crafted.html&#34;&gt;http://morepypy.blogspot.com/2011/02/pypy-faster-than-c-on-carefully-crafted.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Compile-Time Polymorphism</title>
+      <link>http://localhost:1313/2012/02/compile-time-polymorphism/</link>
+      <pubDate>Sun, 05 Feb 2012 21:14:29 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2012/02/compile-time-polymorphism/</guid>
+      <description>
+
+&lt;p&gt;Polymorphism is a tool in object orientation, which allows us to model behavior, while simultaneously leverage existing code. Polymorphism allows is behavior reuse.  In C++ polymorphism, comes in 2 flavors, the standard runtime variant, and a curious compile time variant.  Runtime polymorphism, like Java, leverages virtual functions to dynamically bind[1. With virtual functions the compiler doesn&amp;rsquo;t know which method to call until runtime. In C++ this is implemented with the &lt;a href=&#34;http://en.wikipedia.org/wiki/Virtual_method_table&#34;&gt;virtual method table&lt;/a&gt;] a method at the call site. Compile Time polymorphism uses templates, to bind at compile time, thus negating the performance affect of virtual functions.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;Polymorphism is a powerful concept. Polymorphism is a powerful tool in object-orientation, allowing one to realistically model the behavior or structure of some entity in software. This is key to any software design. Regardless, of idioms, language, paradigm, a realistic model is essential to a good design. If follow every best practice in software design, but your system doesn&amp;rsquo;t accurately reflect the real-world model, your software will be difficult to work with, and it will be impossible to bring new people on your project.  An accurate portrayal is required.&lt;/p&gt;
+
+&lt;p&gt;C++ affords us 2 forms of g: compile-time [2. Compile-Time polymorphism is also known as static polymorphism. I, however find this nomenclature confusing.  &amp;rdquo;static dynamicism&amp;rdquo;&amp;hellip;. Um, what?], and runtime.  Runtime is the most straightforward, and uses virtual functions.  However, as we&amp;rsquo;ll see later, virtual function have their own performance costs.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2012/02/SuperSimplePolymorphism.png.jpg.jpeg&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2012/02/SuperSimplePolymorphism.png.jpg.jpeg&#34; alt=&#34;&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We&amp;rsquo;re going to implement this very simple hierarchy, to demonstrate polymorphism is its most basic form.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;struct Base {
+    Base (){}
+    virtual ~Base (){}
+    virtual void DoSomething(){
+        cout &amp;lt;&amp;lt; &amp;quot;Hello From Base.&amp;quot; &amp;lt;&amp;lt; endl;
+    }
+};
+
+struct Child : public Base {
+    Child (){}
+    virtual ~Child (){}
+    virtual void DoSomething() {
+        cout &amp;lt;&amp;lt; &amp;quot;Hello from Child.&amp;quot; &amp;lt;&amp;lt; endl;
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Using the following driver code.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;int main(int argc, char const *argv[]){   
+    Base* b = new Child();
+    b-&amp;gt;DoSomething();
+    delete b;
+}
+
+
+
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Produces the following output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;bash $ ./a.out
+Hello from Child
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This works, and its a familiar idiom. However virtual functions have a some performance issues. Since the call isn&amp;rsquo;t bound until until runtime, the methods cannot be inlined, and will probably incur a cache miss [1. &lt;a href=&#34;http://coldattic.info/shvedsky/pro/blogs/a-foo-walks-into-a-bar/posts/3&#34;&gt;A foo walks into a bar&lt;/a&gt;] , which on modern processors with the very deep caches is a very costly effect.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2012/02/Untitled-1.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2012/02/Untitled-1.png&#34; alt=&#34;&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Secondly, even with cacheing aside virtual functions are about 2.5 times slower than direct function calls; where as inlining, i.e. zero-function overhead is about 20 times faster [1. &lt;a href=&#34;http://assemblyrequired.crashworks.org/2009/01/19/how-slow-are-virtual-functions-really/&#34;&gt;How Slow Are Virtual Functions Really&lt;/a&gt;]. So this is a major issue is performance critical code, such as games. The EA directly states that virtual functions forbidden in their code [1. &lt;a href=&#34;http://assemblyrequired.crashworks.org/2008/12/22/ea-stl-prevents-memory-leaks/#more-92&#34;&gt;How the EA prevents Memory Leaks&lt;/a&gt;].  However, polymorphism is a powerful tool. Are we relegated to a &amp;ldquo;lower&amp;rdquo; form of Object-Orientation with writing performance critical code? No. In fact the opposite is true.  C++&amp;rsquo;s template system is powerful and allows us to add dnasicm at compile time.&lt;/p&gt;
+
+&lt;p&gt;We can implement the same behavior as the UML figure above using templates. This improves the performance of our code in two ways. Firstly, by omitting virtual function we pickup a ~2.5x boost. Secondly, by using composition instead of inheritance we also get a small bump, and the compiler is more likely to inline the &amp;ldquo;inner&amp;rdquo; function.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;template &amp;lt;typename ChildType&amp;gt;
+struct Base {
+    Base (){}
+    virtual ~Base2 (){}
+    void DoSomething() {
+        myChild.DoSomething(); // This is the &amp;quot;inner&amp;quot; function.
+    }
+private:
+    ChildType myChild;
+};
+
+struct Child /* Notice the lack of inheritance here */{
+    Child () {}
+    virtual ~Child(){}
+    void DoSomething(){
+        cout &amp;lt;&amp;lt; &amp;quot;Hello from Child.&amp;quot; &amp;lt;&amp;lt; endl;
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Our driver is similar to before, except for the instantiation. Instead of inheriting behavior from a base class and overriding it, the Child, or implementing type, is passed in as an instantiation argument. This creates a new type, which is the dynamic behavior we want. Using the following driver code, we achieve the same output as before.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;int main(int argc, char const *argv[]){   
+    Base&amp;lt;Child&amp;gt;* b = new Base&amp;lt;Child2&amp;gt;();
+    b-&amp;gt;DoSomething();
+    delete b;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;C++11 (-std=c++0x in gcc4.6) allows one 1 more improvement in the driver code to prevent memory leaks.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;int main(int argc, char const *argv[]){   
+auto b2 = make_shared&amp;lt;Base2&amp;lt;Child2&amp;gt; &amp;gt;();
+b2-&amp;gt;DoSomething();
+//Notice we don&#39;t have to call delete. Woot, exception safety!
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So polymorphism is a powerful tool for creating dynamicism in programs, however with the inherent [1. Pun intended] performance issues the standard form of polymorphism is not the tool for every job. C++ templates allow use a manageable way to achieve similar behavior at compile time!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&#34;references:e250069d864db99c70bebd39675460a8&#34;&gt;References&lt;/h4&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

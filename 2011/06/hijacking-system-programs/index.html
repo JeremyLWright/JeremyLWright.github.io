@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>My New Hugo Site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="/css/hugo-bootswatch.css">
+  </head>
+  <body>
+
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="/" class="navbar-brand">My New Hugo Site</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav navbar-right">
+           <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="sections">Sections<span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="download">
+              
+                <li><a href="/"></a></li>
+              
+                <li><a href="/posts">posts</a></li>
+              
+              </ul>
+            </li> 
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+        <h1><a href="http://localhost:1313/2011/06/hijacking-system-programs/">Hijacking System Programs</a></h1>
+        <span class="lead">Thu, Jun 23, 2011</span>
+        <div class="post">
+            <p>Let&rsquo;s say for a moment that you are a graduate student, with shell access to your schools server. The server maintains a number of tools you need for classes, and research.  All is well, except the stock editor on the server is wicked old.  Like an eternity old.  Well that happened to me. I am fully addicted to <a href="https://bitbucket.org/jwright/vim-configuration">my custom vim configuration</a>, but it requires vim7.3.  My school&rsquo;s server only has 7.0.  So, how does one install their own application with root privledges?  You create a private root.</p>
+
+<p>The goal is to install a custom application which either is not available on they system, or the version available is tool old.  Essentially, you just need to install the program to your home folder, and add the new binary to your path.  Here is how I did just that:
+<ol>
+<ol>
+    <li>Download your program of choice (vim in my case):
+<pre lang="bash" escaped="true">-bash-3.2$ wget <a href="ftp://ftp.vim.org/pub/vim/unix/vim-7.3.tar.bz2">ftp://ftp.vim.org/pub/vim/unix/vim-7.3.tar.bz2</a></pre>
+</li>
+    <li>untar the application to build it:
+<pre lang="bash" escaped="true">-bash-3.2$ tar -jxf vim-7.3.tar.bz2</pre>
+</li>
+    <li>Make a folder to hold your new custom applications:
+<pre lang="bash" escaped="true">-bash-3.2$ mkdir ~/prvt-root</pre>
+</li>
+    <li>Configure the application with a custom prefix: (Notice the backtick.  &ndash;prefix requires an absolute directory. The backtick requests the shell to expand your home directory prior to calling configure.)
+<pre lang="bash" escaped="true">-bash-3.2$ cd vim73
+-bash-3.2$ ./configure &ndash;prefix=<code>~/prvt-root/</code> &ndash;with-features=huge</pre>
+</li>
+    <li>Make and install the app to your Private Root:
+<pre lang="bash" escaped="true">-bash-3.2$ make &amp;&amp; make install</pre>
+</li>
+    <li>Modify your path to include your new root:
+<pre lang="bash" escaped="true">-bash-3.2$ nano ~/.bash_profile
+#Add the following lines to .bash_profile
+PATH=~/prvt-root/bin:$PATH #Notice that your bin directory is BEFORE the system&rsquo;s default. This will allow your bin to be search first!
+export PATH</pre>
+</li>
+    <li>Exit and log back in to use your new application!</li>
+</ol>
+</ol>
+<div><a href="http://www.codestrokes.com/wp-content/uploads/2011/08/CustomVim7.3.png"><img class="aligncenter size-full wp-image-271" title="CustomVim7.3" src="http://www.codestrokes.com/wp-content/uploads/2011/08/CustomVim7.3.png" alt="" width="690" height="559" /></a></div></p>
+
+        </div>
+
+              <footer>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="http://gohugo.io">Hugo</a></li>
+                <li><a href="http://bootswatch.com">Bootswatch</a></li>
+                <li><a href="http://getbootstrap.com">Bootstrap</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="pull-right"><a href="#top">Back to top</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </footer>
+
+ 
+     </div>
+     
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/bootswatch.js"></script>
+    <script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
+
+

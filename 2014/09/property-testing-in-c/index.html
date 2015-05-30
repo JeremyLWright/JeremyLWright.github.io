@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+    <title>Code Strokes</title>
+
+<link href="" rel="alternate" type="application/rss+xml" title="Code Strokes" />
+<link href="" rel="feed" type="application/rss+xml" title="Code Strokes" />
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" media="all" rel="stylesheet">
+
+
+<link rel="stylesheet" type="text/css" href="/css/default.css" />
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css">
+<link href='//fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+
+
+
+<link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/images/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+<link rel="manifest" href="/images/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/images/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" type="text/css" href="/css/styles/default.css" />
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body id="page-top" class="index">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-23129291-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+	<div class="container">
+		
+		<div class="navbar-header page-scroll">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+    <a class="navbar-brand page-scroll" href="/">Code Strokes</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="hidden">
+                <a href="/"></a>
+                </li>
+                <li><a href="/about/">About</a></li>
+                
+                <li><a href="/"></a></li>
+                
+                <li><a href="/posts">posts</a></li>
+                
+			
+			</ul>
+		</div>
+		
+	</div>
+	
+</nav>
+
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1><a href="http://localhost:1313/2014/09/property-testing-in-c/">Property Testing in C&#43;&#43;</a></h1>
+            </div>
+            <span class="section-subheading text-muted">Wed, Sep 3, 2014</span>
+            <div class="post">
+                <p>
+Currently, I'm on a testing kick. One might say tests are shiny. I don't
+know if they are really shiny as much as I found another cool use for
+uniform_int_distribution<>. A use which, as a side effect, might make me
+appear to be a better software developer. (This assumes a negative bug rate is
+proportional to better software). I've started playing with Property Testing.
+Property Testing is a form of unit testing where the programmers defines
+properties, or invariants about the code. A <del>framework</del> library (ok,
+seriously its a framework because it calls your code) generates random
+constrained inputs and calls your test functions. It's pretty cool, and while
+I was playing around with the framework, I found a real bug, related to my
+ignorance of C++'s auto type deduction.</p><p>Let's steal a simple
+example from my CSE 565 Software Verification class: a payroll function. Here
+is the specification:</p> <blockquote> <p>Design a function that calculates
+payroll for an employee.</p> <h3>Inputs</h3> <p>Employee Id number<br>Number
+of Hours</p> <h3>Outputs</h3> <p>Amount to pay employee as a floating point
+value.</p> <h3>Constraints</h3> <p>Pay is calculated at $10 for standard time,
+$15 for overtime over 40 hours.<br>Overtime starts over 40 hours<br>Maximum
+number of hours is 100.</p></blockquote> <p>For this demonstration, I’m using
+a C++ port of Haskell’s QuickCheck, CppQuickCheck (<a
+title="https://github.com/grogers0/CppQuickCheck"
+href="https://github.com/grogers0/CppQuickCheck">https://github.com/grogers0/CppQuickCheck</a>,
+my fork and the examples in this post are available here: <a
+title="https://github.com/jwright85/CppQuickCheck"
+href="https://github.com/jwright85/CppQuickCheck">https://github.com/jwright85/CppQuickCheck</a>).
+QuickCheck was designed by John Hughes who has gone on to support a commercial
+version of the library for verifying (and validating) automotive requirements
+for Volvo (<a title="http://vimeo.com/68331689"
+href="http://vimeo.com/68331689">http://vimeo.com/68331689</a>).&nbsp; His
+presentations have motivated me to try this testing strategy for my own
+programs. Lets start with a quick implementation for our payroll function.
+We'll then apply properties against the function until we are satisfied with
+the implementation. Although property testing can provide more confidence in
+an implementation Dijkstra's famous quote still stands, "Testing shows the
+presence, not the absence of bugs."</p>
+
+<pre><code class="language-cpp">float payroll(std::array&lt;size_t, 5&gt; person_id, size_t hours) { 
+    if(hours &gt; 100) 
+        throw std::out_of_range(&quot;Hours cannot be greater than 100&quot;); 
+    auto overtime = hours - 40; 
+    return hours * 10 + overtime * 15; 
+}
+</code></pre>
+
+<p>This is obviously wrong, but let&rsquo;s suspend that for a moment and think about
+properties i.e. invariants we can verify.</p>
+
+<p>The first property verifies that we do not write a negative paycheck. The
+return type of the function is float, which supports negative values even
+though the output domain of our specification forbids it. Lets write
+a property over the valid input range of hours that we don&rsquo;t generate negative
+pay.</p>
+
+<pre><code class="language-cpp">struct PropTestPositivePay : cppqc::Property
+{ 
+    PropTestPositivePay() : Property(cppqc::choose(0, 100)) {} 
+    
+    bool check(const int &amp;  hours) const { 
+        std::array&lt;size_t, 5&gt; id{1,2,3,4,5}; 
+        return uut::payroll(id, hours) &gt;= 0; 
+    }
+
+    std::string name() const
+    {
+        return &quot;Pay should be positive&quot;;
+    }
+
+    std::string classify(const int &amp; v) const
+    {
+        std::ostringstream sstr;
+        sstr &lt;&lt; &quot;Hours &quot; &lt;&lt; v;
+        return sstr.str();
+    }
+
+    bool trivial(const int &amp;  v) const
+    {
+        return v &lt; 40;
+    }
+};
+</code></pre>
+
+<p>Now the input range of this function is small (101 values) so we could run an exhaustive test, but for larger input domains the random generators can really shine. </p>
+
+<pre><code class="language-bash">jwright@phaseshift-linux:~/art/CppQuickCheck/b$ ./examples/testPayroll
+* Checking property &quot;Pay should be positive&quot; ...
+* *** Failed! Falsifiable after 32 tests for input:
+*   0: 24
+*
+</code></pre>
+
+<p>Cool it found that an input of 0 will falsify the test. Lets add some more tests.</p>
+
+<p>Let&rsquo;s add a property that verifies for the input range of overtime that the
+function doesn’t pay all hours at the $10 rate nor all the hours at the $15
+rate. The correct implementation is some mixture of these two.&nbsp; This
+brings me to a subtle point when I first heard of property-testing when
+studying Haskell. In my naiveté I thought to myself, &ldquo;If I have a model that
+verifies the unit under test, aren&rsquo;t I duplicating the implementation?&rdquo;
+Furthermore, if I duplicate the implementation, how can I be sure I&rsquo;m not
+making the same bugs twice. One response I found online, “we test our C code
+in Erlang. It&rsquo;s unlikely to make the same mistake in two separate languages.”
+I was wrong however, you don&rsquo;t have to duplicate the functionality. You can
+steer the generator to generate data within a range over which a simple
+property will be true. Multiple properties together then test the fuller input
+domain without requiring 1 single verifier to duplicate behavior. This
+property doesn’t exactly know what the correct payroll is. It isn’t
+calculating the correct value, it’s just excluding values that it cannot be.
+</p></p>
+
+<pre><code class="language-cpp">struct PropTestOvertimeRateHigher : cppqc::Property 
+{ 
+    PropTestOvertimeRateHigher()
+    :
+    Property(cppqc::choose(41, 100)) {} 
+    
+    bool check(const int &amp;  hours) const { 
+    
+        std::array&lt;size_t, 5&gt; id{1,2,3,4,5}; 
+        auto pay = uut::payroll(id, hours); 
+        return pay &gt; hours * 10 &amp;&amp;  pay &lt; hours * 15; //You cannot get paid all overtime or all standard pay
+    }
+
+    std::string name() const
+    {
+        return &quot;You cannot get paid all overtime, or all std time&quot;;
+    }
+
+    std::string classify(const int &amp; v) const
+    {
+        std::ostringstream sstr;
+        sstr &lt;&lt; &quot;Hours &quot; &lt;&lt; v;
+        return sstr.str();
+    }
+
+    bool trivial(const int &amp;  v) const
+    {
+        return v == 40;
+    }
+
+};
+</code></pre>
+
+<p>Following this thought of excluding a range and testing a simpler property,
+lets test the payroll without considering overtime. In this case the
+calculation is simple so we can provide a full implementation.</p>
+
+<pre><code class="language-cpp">struct PropTestIgnoreOvertime : cppqc::Property
+{
+    PropTestIgnoreOvertime() : Property(cppqc::choose(0, 40)) {}
+    bool check(const int &amp;  hours) const
+    {
+        std::array&lt;size_t, 5&gt; id{1,2,3,4,5};
+        auto pay = uut::payroll(id, hours);
+        return pay == hours * 10;
+    }
+
+    std::string name() const
+    {
+        return &quot;Not working overtime makes the math easy.&quot;;
+    }
+    std::string classify(const int &amp; v) const
+    {
+        std::ostringstream sstr;
+        sstr &lt;&lt; &quot;Hours &quot; &lt;&lt; v;
+        return sstr.str();
+    }
+    bool trivial(const int &amp;  v) const
+    {
+        return v == 40;
+    }
+};
+</code></pre>
+
+<p>We run the tests a few times and see the failing test cases. These data are random. Running the test multiple times fails differently, but minimization results in the same or similar values each time to help the programmer debug. So let&rsquo;s fix this code and watch the tests pass to avoid the <a href="http://www.codestrokes.com/2014/08/what-is-a-unit-test/">mockery and scandal of code review</a></p>
+
+<pre><code class="language-cpp">float payroll(std::array&lt;size_t, 5&gt; person_id, size_t hours)
+{
+    if(hours &gt; 100)
+        throw std::out_of_range(&quot;Hours cannot be greater than 100&quot;);
+    auto overtime = hours - 40;
+    if(overtime &gt; 0)
+        return hours * 10 + overtime * 15;
+    else
+        return hours * 10;
+}
+</code></pre>
+
+<pre><code class="language-bash">* Checking property &quot;Not working overtime makes the math easy.&quot; ...
+*** Failed! Falsifiable after 1 test and 1 shrink for input:
+0: 0
+</code></pre>
+
+<p>To be honest, while setting up the tests for this post I fully expected the
+tests to start passing and this article would end here. Instead I learned some
+real value on using these properties as a debugging and design tool. Let&rsquo;s add
+a printf to the code to get a sense what&rsquo;s happening</p>
+
+<pre><code class="language-bash">* Checking property &quot;Not working overtime makes the math easy.&quot; ...
+Overtime: 18446744073709551576 &lt;--- Whoa what happened there?
+*** Failed! Falsifiable after 1 test and 1 shrink for input:
+0: 0
+</code></pre>
+
+<p>Overtime seems to be an unsigned value, and passing in 0 causes the value to wrap around. The rule (<a href="http://scottmeyers.blogspot.com/2013/07/when-decltype-meets-auto.html">http://scottmeyers.blogspot.com/2013/07/when-decltype-meets-auto.html</a>) assures that overtime becomes a size_t since hours is size_t. We can force floating conversion by stating that 40 is a floating point number.</p></p>
+
+<pre><code class="language-cpp">float payroll(std::array&lt;size_t, 5&gt; person_id, size_t hours)
+{
+    if(hours &gt; 100)
+        throw std::out_of_range(&quot;Hours cannot be greater than 100&quot;);
+    auto overtime = hours - 40.0; //&lt;-- Force implicit floating point cast
+    if(overtime &gt; 0)
+        return hours * 10 + overtime * 15;
+    else
+        return hours * 10;
+}
+</code></pre>
+
+<pre><code class="language-bash">* Checking property &quot;Pay should be positive&quot; ...
++++ OK, passed 100 tests (40% trivial).
+* Checking property &quot;You cannot get paid all overtime, or all std time&quot; ...
+*** Failed! Falsifiable after 1 test and 1 shrink for input:
+  0: 60
+* Checking property &quot;Not working overtime makes the math easy.&quot; ...
++++ OK, passed 100 tests.
+</code></pre>
+
+<p>Argh! Still wrong? The property must be wrong. Notice that the properties are quite simple. No single test verifies the full range, but the properties provide useful documentation and make it easy to reason about the code. The properties are probably correct then. &hellip;yeah, it wasn&rsquo;t the property…</p>
+
+<pre><code class="language-cpp">float payroll(std::array&lt;size_t  5 ,&gt; person_id, size_t hours)
+{
+    if(hours &gt; 100)
+        throw std::out_of_range(&quot;Hours cannot be greater than 100&quot;);
+    auto overtime = hours - 40.0;
+    if(overtime &gt; 0)
+        return (hours - overtime) * 10 + overtime * 15;
+    else
+        return hours * 10;
+}
+</code></pre>
+
+<pre><code class="language-bash">* Checking property &quot;Pay should be positive&quot; ...
++++ OK, passed 100 tests (40% trivial).
+* Checking property &quot;You cannot get paid all overtime, or all std time&quot; ...
++++ OK, passed 100 tests.
+* Checking property &quot;Not working overtime makes the math easy.&quot; ...
++++ OK, passed 100 tests.
+</code></pre>
+
+<p>I started this article wanting to post a simple tutorial on Property testing,
+instead I learned to be a bit more careful using auto, and even when the
+function is simple, programmers can make mistakes. For the final logic error,
+the failing input was 60. Thinking about my directed test method, I would
+divide the input into equivalence domains and test the boundary values. For
+this input, I would divide standard time to the beginning of overtime. For
+directed tests I would have written tests for: 0, 39, 40 41, 99, 100, and 101.
+I would have missed the 60 hours bug, and there is the possibility that
+I missed typed the numbers on my calculator and type in a wrong expected
+value. This example is quite simple but still an interesting demonstration of
+property testing. I&rsquo;m looking forward to applying property testing to my next
+project.</p>
+
+            </div>
+        </div>
+
+ 
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'codestrokes2'; 
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+     </div>
+</section> 
+     
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+
+<script data-no-instant>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
+

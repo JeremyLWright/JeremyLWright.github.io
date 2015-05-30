@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Code Strokes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="/css/hugo-bootswatch.css">
+
+
+    <link rel="stylesheet" href="/css/styles/default.css">
+    <script src="/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="/" class="navbar-brand">Code Strokes</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav navbar-right">
+           <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="sections">Sections<span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="download">
+              
+                <li><a href="/"></a></li>
+              
+                <li><a href="/posts">posts</a></li>
+              
+              </ul>
+            </li> 
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+        <h1><a href="http://localhost:1313/2011/06/being-truly-productive/">Being Truely Productive</a></h1>
+        <span class="lead">Thu, Jun 23, 2011</span>
+        <div class="post">
+            <p>Productivity is an elusive mistress.  I approach productivity much like any design problem. I lay out my requirements, and I iterate until I am happy with the outcome. Over the last few years I have spent a lot time laying out my design process.  Along the way I found a number of tools that were helpful.  This is my personal process and while I think it&rsquo;s a great process.  It&rsquo;s important to refactor for yourself. The key to my productivity is consistency. I work well with a defined workflow. Lastly, interruptions are a certainty, so one must find a way to make context switches less disruptive.
+<blockquote class="pullquote">Try to setup natural stopping points in your process. You will be interrupted so make context switches cheap.</blockquote>
+Consistency <em>is</em> my process, and tools help me deal with strict and dynamic constraints.  I use a number of tools help me be productive, yet consistency is the most powerful function for me.</p>
+
+<p>Firstly, everyone needs a personal database. This is critical. A software engineer&rsquo;s job isn&rsquo;t really about writing code.  Its about organizing information, namely requirements, and teaching them to the computer. One needs a tool that can help organize this data.  I&rsquo;ve used a number of tools, TomBoy is a close second, however I found that <a href="http://www.amazon.com/gp/product/B0039L2XMA/ref=as_li_ss_tl?ie=UTF8&amp;tag=codestro-20&amp;linkCode=as2&amp;camp=217145&amp;creative=399369&amp;creativeASIN=B0039L2XMA">OneNote</a> cannot be beat. Especially, with the new WebApp versions on live.com, I can use <a href="http://www.amazon.com/gp/product/B0039L2XMA/ref=as_li_ss_tl?ie=UTF8&amp;tag=codestro-20&amp;linkCode=as2&amp;camp=217145&amp;creative=399369&amp;creativeASIN=B0039L2XMA">OneNote</a> on any platform, even when I am not home.  <a href="http://www.amazon.com/gp/product/B0039L2XMA/ref=as_li_ss_tl?ie=UTF8&amp;tag=codestro-20&amp;linkCode=as2&amp;camp=217145&amp;creative=399369&amp;creativeASIN=B0039L2XMA">OneNote</a> is a table of contents for my brain.</p>
+
+<p><a href="http://www.codestrokes.com/wp-content/uploads/2011/06/OneNoteOnline.png"><img class="alignright size-medium wp-image-230" title="OneNoteOnline" src="http://www.codestrokes.com/wp-content/uploads/2011/06/OneNoteOnline-300x161.png" alt="Screenshot of OneNote on Live.com" width="300" height="161" /></a>This brings me to a struggle I had to overcome. When I was in college, I enjoyed hating Microsoft. It was more of a social thing than an actual reason. Later I found that, there is balance, I don&rsquo;t have to be a Microsoft Fan-Boy to use their products. Use what works for you. Just because it isn&rsquo;t FSF, or GNU software doesn&rsquo;t mean its crap.  In fact it may be exactly what you need.
+<blockquote class="pullquote">Don&rsquo;t undermine your productivity just to make a statement.</blockquote>
+It is crucial that I maintain a homogeneous workflow regardless of my environment: Windows/Linux, Home/School/Office etc.  When choosing tools, I tend to not look for the most powerful, yet instead I search for  the simplest, lowest common denominator.  I use Vim, as an editor, and IDE. The Visual Studio IDE is  fantastic, but can I write Verilog in it? No. Eclipse is nice and  cross-platform, but can I edit .sdc files? No.  Vim is powerful, and  ubiquitous. I can do all of my work, anything I am tasked  with, in Vim. FPGA, C++, Java, C# .NET, PIC C, write a love letter to my  wife (<a name="loveletter"></a>probably most the important task), Vim does it all.   Regardless of the language, platform, or toolchain my editor is consistent. Constantly changing tools, helps you learn, but will not help you be more productive. Regardless of which tools you use, use them consistently.  The only downside I&rsquo;ve found in learning Vim, has been if for some reason I am in any other editor I litter the page with little <em>:w</em>. Here is my <a title="Mercurial Repo for Vim config" href="https://bitbucket.org/jwright/vim-configuration" target="_blank">Vim Configuration.</a> I am working on a dedicated article on my vim configuration. Lookout for it here.</p>
+
+<p>Save everything.  Tool configurations, one-off scripts, capricious prototypes.  Keep it all.  It&rsquo;s important to realize that everything you create has value, and the value changes over time.  Keep it. I use mercurial.  It seems the DVCS movement is really taking over in cutting edge development companies.  Companies like <a title="Why Atlassian's JIRA moved to mercurial." href="http://blogs.atlassian.com/developer/2011/02/moving_to_mercurial_-_why_we_did_it.html">Atlassian</a>. DVCSs such as git, and mercurial do a number of things different that make the process more productive, but the single reason I switched to mercurial from subversion: <strong>Local Commits</strong>.  I cannot state enough how local commits have made me a better programmer.  Local commits do two things for me. They make context switches (i.e. interruptions) cheap, and local commits let me make more mistakes.</p>
+
+<p>More mistakes? How does more mistakes make one <em>more productive</em>.  Simple, I keep a history of all my mistakes so I am not destined to repeat them.  Very often when I am working on a project I want to experiment with some new idiom or pattern.  I use the local commit like a video game save-point.  The commit message is usually something to the effect of:
+<pre lang="text" escaped="true">Mercurial Commit:
+Probably a bad idea. :-/ Save point for PIMPL experiment.</pre>
+I freely continue with my idea. If it works out well, then excellent I can always look back and see how I added a given idiom to some existing code. Yet, more typically, my experiment is an utter failure.  I just hg revert, and done. However all is not lost, all that history is saved. I can always look back and see how I applied or rather misapplied my experiment. Reviewing my mistakes helps me to improve. Vim has nearly infinite undo, <a href="https://groups.google.com/group/vim_announce/browse_thread/thread/66c02efd1523554b?pli=1" target="_blank">persistent undo</a>, and <a href="http://vimdoc.sourceforge.net/htmldoc/undo.html" target="_blank">branching undo</a>, all in an effort to provide similar functionality.  This however is not sufficient. Mercurial lets you save your mistakes! <blockquote class="pullquote pqRight">Saving your mistakes may even be more important than the final solution.</blockquote></p>
+
+<p>Prototyping is an important way to gauge investment of your time. Before you start a project work out a bit of a prototype.  Sometimes I get an idea in my head and I just start hacking, usually once I get the idea flushed out I&rsquo;m done.  I just wanted to see, &ldquo;Will that work?&rdquo; Prototyping makes this easy without being too costly, time wise.  I use 3 tools for my prototypes: Python, Octave, and Excel.  Between these three there isn&rsquo;t much one cannot do. Excel is great for just pounding out some number. I frequently use excel to mock out data sets to see where I need to instrument my code to capture some concept.</p>
+
+<p>Lastly, you need a coding standard.  All the time. When writing personal code, maintainable typically isn&rsquo;t a concern. It&rsquo;s your code, you understand it. It&rsquo;s probably not a long lived project. A coding standard however doesn&rsquo;t slow you down, it makes you more effective.  If you write software consistently, you can lever <a title="Snippets from my vim configuration." href="https://bitbucket.org/jwright/vim-configuration/src/1da9bad9fe53/snippets/">snippet tools</a>, and code formatting tools to generate boiler plate for you. If you always use the same class layout its easy to go back and find what you need. Yet most important for me, consistency makes <a title="Joel Spolsky: Wrong Code" href="http://www.joelonsoftware.com/articles/Wrong.html" target="_blank">wrong code look wrong</a>.</p>
+
+<p>Tools are important. As you can see, I use a number of tools regularly, however the best weapon against time is consistency.  Be consistent in your process, and you will reap rewards.  Please leave your comments. I am curious what tools and processes you, my readers, implement.</p>
+
+        </div>
+
+              <footer>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="http://gohugo.io">Hugo</a></li>
+                <li><a href="http://bootswatch.com">Bootswatch</a></li>
+                <li><a href="http://getbootstrap.com">Bootstrap</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="pull-right"><a href="#top">Back to top</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </footer>
+
+ 
+     </div>
+     
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/bootswatch.js"></script>
+    <script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
+
+

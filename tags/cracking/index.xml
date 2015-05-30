@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cracking on Code Strokes</title>
+    <link>http://localhost:1313/tags/cracking/</link>
+    <description>Recent content in Cracking on Code Strokes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 08 Sep 2013 21:58:06 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/cracking/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Linux User&#39;s Group CTF 2013</title>
+      <link>http://localhost:1313/2013/09/linux-users-group-ctf-2013/</link>
+      <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2013/09/linux-users-group-ctf-2013/</guid>
+      <description>&lt;p&gt;This past weekend we held another capture the flag event at the Arizona State University&amp;rsquo;s Linux User&amp;rsquo;s Group. It had more of a system admin focus than security cracking exploits, but it was fun an nontheless a diverse learning experience for all those involved. However, almost immediately, I realized the number one rule in CTF, nothing is off limits!
+&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
+The game was organized into two parts, a game server which collected the the scores and displayed the point totals of all teams in real-time, and the virtual servers (hosted on Amazon EC2) which contained the actual games. Players were encouraged to break into teams, and register themselves on the game server. The game server would assign the team a virtual machine, and the team could log in via SSH to behind hacking. Five minutes into the registration process, one team attempted a SQL injection attack against the game server.&lt;/p&gt;
+
+&lt;p&gt;[caption id=&amp;ldquo;attachment_1189&amp;rdquo; align=&amp;ldquo;aligncenter&amp;rdquo; width=&amp;ldquo;700&amp;rdquo;]&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2013/09/Final-Score.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2013/09/Final-Score-1024x429.png&#34; alt=&#34;Notice the SQL Injection attempt&#34; /&gt;
+&lt;/a&gt; Notice the SQL Injection attempt[/caption]&lt;/p&gt;
+
+&lt;p&gt;I wrote the game server as a django webapp, to collect points, and serve as a dashboard for the players. We logged in at the front of the room and displayed the graph on the front projector. It was a very motivating aspect of the game, however I never planned on it being part of the game itself.  First lesson learned in capture the flag, nothing is off limits. Luckily, django does the right thing, and sanitizes form data automatically. The server was unscathed, the failed injection attempt was displayed for all the teams to see. I&amp;rsquo;m currently compiling additional aspects of what worked and what didn&amp;rsquo;t so check back soon. The CTF was a fantastic event this year, and really motivated newbies, and elites a like.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Capture the Flag - Running a Hacking Competition</title>
+      <link>http://localhost:1313/2012/04/capture-the-flag-running-a-hacking-competition/</link>
+      <pubDate>Mon, 30 Apr 2012 02:38:44 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2012/04/capture-the-flag-running-a-hacking-competition/</guid>
+      <description>&lt;p&gt;Black-Hat hacking in an controlled environment, like this, is an important skill for software developers. The &lt;a href=&#34;http://en.wikipedia.org/wiki/The_Art_of_War&#34;&gt;Art of War&lt;/a&gt; describes knowing one&amp;rsquo;s enemy, and with the prevalence of internet-enabled applications today, it has never been more critical to know how the &amp;ldquo;enemy&amp;rdquo; can take down a system. While capture-the-flag is a fun, and exciting intellectual game, it is serious training for software engineers of all types, and skill levels. I recently setup a small capture the flag event for the &lt;a href=&#34;http://asulug.org/&#34;&gt;Arizona Linux User&amp;rsquo;s Group&lt;/a&gt;, and it was very fun.&lt;/p&gt;
+
+&lt;p&gt;To setup a catpure the flag event, here are a few guidelines I found useful:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Brute-force attacks are no fun. There is no intellect involved, and while one brute forces the box, no one else can have a try.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Setup a box to provide services to the rest of the network. Clearly define this box as off limits.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Use virtual machines for target systems. This allows one to restore the system from an image if someone goes too far.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Physically separate the game from any other networks.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Provide ISOs of &lt;a href=&#34;http://www.backtrack-linux.org/&#34;&gt;Backtrack&lt;/a&gt; Linux&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;Organizing a hacking event takes time, and planning.&lt;/p&gt;
+
+&lt;p&gt;For this event I setup 3 systems:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;A host system which provided DNS, and hosted the virtual machines.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A Windows 2000 virtual machine.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A Ubuntu 12.04 virtual machine.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The windows 2000 box has a pile of vulnerabilities. These vulnerabilities have been scripted into hacking applications, which allow automatic take down of the system. This is not necessarily a bad thing however, since it does provide a level of accomplishment, and is conducive to hiding clues. One clue I thought of after this event, was to set the &lt;a href=&#34;http://en.wikipedia.org/wiki/Steganography&#34;&gt;background&lt;/a&gt; to something with &lt;a href=&#34;http://en.wikipedia.org/wiki/Steganography&#34;&gt;hidden&lt;/a&gt; data in it. Tools exist to analyse the entropy of an image to determine if it contains data. One could encode the hash of some password into the image, then use a rainbow table to decrypt the hash.&lt;/p&gt;
+
+&lt;p&gt;Essentially, break down the event into a series of quests. All quests lead to the same end i.e. network domination and a free round at the happy hour, but some paths are different than others. One quest may have more intellectual clues stenography, SQL injection, riddles which yield a password a la King&amp;rsquo;s Quest. Another path may be fraught with vulnerabilities. The latter requires a encyclopedic knowledge of known vulnerabilities to crack this quest. I recommend making this path longer, since Google skills can shorten it immensely.&lt;/p&gt;
+
+&lt;p&gt;Next, determine how the game will be scored and clearly post this information. For the latest event I hosted, I posted all the objectives at the front of the room, and wrote someones name as each objective was acquired. This worked well, but a more interactive system would be far more exciting. Something that showed the dominance and protection of different network factions. Honestly, this is more work, but certainly provides more excitement to the game.&lt;/p&gt;
+
+&lt;p&gt;Lastly, make the event fun, and provide other activities for those who don&amp;rsquo;t want to hack. This can be a very fun event, yet still important to learning how to build secure software. Ping me if you have other ideas for a hacking event, or post in the comments :-).&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

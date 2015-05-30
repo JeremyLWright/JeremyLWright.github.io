@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Talk on Code Strokes</title>
+    <link>http://localhost:1313/categories/talk/</link>
+    <description>Recent content in Talk on Code Strokes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Sep 2012 15:36:10 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/talk/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ASULUG Talk: Django Web Framework</title>
+      <link>http://localhost:1313/2012/09/asulug-talk-django-web-framework/</link>
+      <pubDate>Sat, 22 Sep 2012 15:36:10 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2012/09/asulug-talk-django-web-framework/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;ASU Linux User’s Group (ASULUG) — LUG Talks&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sat 6 Oct 1:30pm — BYENG 210&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt; &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Django Web Framework&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Jeremy Wright&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Abstract&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Django: Awesome Jazz Musician, Awesome Web Framework.&lt;/p&gt;
+
+&lt;p&gt;Django is a web framework similar to the popular Ruby on RAILS, but leveraging the Python programming language. Born out of the newspaper industry, Django is touted as the “web framework for perfectionists with deadlines.” Django is a powerful tool for any size web project: Web Services, Storefronts, CMS’s—Django conquers all. Additionally, Django’s built-in webserver and automated back-end generator make for easy and fast development.&lt;/p&gt;
+
+&lt;p&gt;Please join the ASU Linux User’s Group on October 6th at 1:30pm to learn how to apply this amazing technology to your own projects.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Jeremy Wright is an embedded software engineer working on machine automation equipment at a local engineering firm. He completed a Bachelors of Science in Electrical Engineering from the Univer­sity of Arizona in 2008 before starting his career with Avionic Systems before moving into Agriculture. Currently, Jeremy is working on his Master’s of Computer Science with a Concentration in Information Assurance. Jeremy is also the current instructor for CSE 394 C++ Practicum. He specializes in C++ and deeply embedded real-time software.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

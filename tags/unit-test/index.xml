@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unit Test on Code Strokes</title>
+    <link>http://localhost:1313/tags/unit-test/</link>
+    <description>Recent content in Unit Test on Code Strokes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 03 Sep 2014 23:00:00 -0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/unit-test/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Property Testing in C&#43;&#43;</title>
+      <link>http://localhost:1313/2014/09/property-testing-in-c/</link>
+      <pubDate>Wed, 03 Sep 2014 23:00:00 -0700</pubDate>
+      
+      <guid>http://localhost:1313/2014/09/property-testing-in-c/</guid>
+      <description>&lt;p&gt;
+Currently, I&#39;m on a testing kick. One might say tests are shiny. I don&#39;t
+know if they are really shiny as much as I found another cool use for
+uniform_int_distribution&lt;&gt;. A use which, as a side effect, might make me
+appear to be a better software developer. (This assumes a negative bug rate is
+proportional to better software). I&#39;ve started playing with Property Testing.
+Property Testing is a form of unit testing where the programmers defines
+properties, or invariants about the code. A &lt;del&gt;framework&lt;/del&gt; library (ok,
+seriously its a framework because it calls your code) generates random
+constrained inputs and calls your test functions. It&#39;s pretty cool, and while
+I was playing around with the framework, I found a real bug, related to my
+ignorance of C++&#39;s auto type deduction.&lt;/p&gt;&lt;p&gt;Let&#39;s steal a simple
+example from my CSE 565 Software Verification class: a payroll function. Here
+is the specification:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Design a function that calculates
+payroll for an employee.&lt;/p&gt; &lt;h3&gt;Inputs&lt;/h3&gt; &lt;p&gt;Employee Id number&lt;br&gt;Number
+of Hours&lt;/p&gt; &lt;h3&gt;Outputs&lt;/h3&gt; &lt;p&gt;Amount to pay employee as a floating point
+value.&lt;/p&gt; &lt;h3&gt;Constraints&lt;/h3&gt; &lt;p&gt;Pay is calculated at $10 for standard time,
+$15 for overtime over 40 hours.&lt;br&gt;Overtime starts over 40 hours&lt;br&gt;Maximum
+number of hours is 100.&lt;/p&gt;&lt;/blockquote&gt; &lt;p&gt;For this demonstration, I’m using
+a C++ port of Haskell’s QuickCheck, CppQuickCheck (&lt;a
+title=&#34;https://github.com/grogers0/CppQuickCheck&#34;
+href=&#34;https://github.com/grogers0/CppQuickCheck&#34;&gt;https://github.com/grogers0/CppQuickCheck&lt;/a&gt;,
+my fork and the examples in this post are available here: &lt;a
+title=&#34;https://github.com/jwright85/CppQuickCheck&#34;
+href=&#34;https://github.com/jwright85/CppQuickCheck&#34;&gt;https://github.com/jwright85/CppQuickCheck&lt;/a&gt;).
+QuickCheck was designed by John Hughes who has gone on to support a commercial
+version of the library for verifying (and validating) automotive requirements
+for Volvo (&lt;a title=&#34;http://vimeo.com/68331689&#34;
+href=&#34;http://vimeo.com/68331689&#34;&gt;http://vimeo.com/68331689&lt;/a&gt;).&amp;nbsp; His
+presentations have motivated me to try this testing strategy for my own
+programs. Lets start with a quick implementation for our payroll function.
+We&#39;ll then apply properties against the function until we are satisfied with
+the implementation. Although property testing can provide more confidence in
+an implementation Dijkstra&#39;s famous quote still stands, &#34;Testing shows the
+presence, not the absence of bugs.&#34;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;float payroll(std::array&amp;lt;size_t, 5&amp;gt; person_id, size_t hours) { 
+    if(hours &amp;gt; 100) 
+        throw std::out_of_range(&amp;quot;Hours cannot be greater than 100&amp;quot;); 
+    auto overtime = hours - 40; 
+    return hours * 10 + overtime * 15; 
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is obviously wrong, but let&amp;rsquo;s suspend that for a moment and think about
+properties i.e. invariants we can verify.&lt;/p&gt;
+
+&lt;p&gt;The first property verifies that we do not write a negative paycheck. The
+return type of the function is float, which supports negative values even
+though the output domain of our specification forbids it. Lets write
+a property over the valid input range of hours that we don&amp;rsquo;t generate negative
+pay.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;struct PropTestPositivePay : cppqc::Property
+{ 
+    PropTestPositivePay() : Property(cppqc::choose(0, 100)) {} 
+    
+    bool check(const int &amp;amp;  hours) const { 
+        std::array&amp;lt;size_t, 5&amp;gt; id{1,2,3,4,5}; 
+        return uut::payroll(id, hours) &amp;gt;= 0; 
+    }
+
+    std::string name() const
+    {
+        return &amp;quot;Pay should be positive&amp;quot;;
+    }
+
+    std::string classify(const int &amp;amp; v) const
+    {
+        std::ostringstream sstr;
+        sstr &amp;lt;&amp;lt; &amp;quot;Hours &amp;quot; &amp;lt;&amp;lt; v;
+        return sstr.str();
+    }
+
+    bool trivial(const int &amp;amp;  v) const
+    {
+        return v &amp;lt; 40;
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now the input range of this function is small (101 values) so we could run an exhaustive test, but for larger input domains the random generators can really shine. &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;jwright@phaseshift-linux:~/art/CppQuickCheck/b$ ./examples/testPayroll
+* Checking property &amp;quot;Pay should be positive&amp;quot; ...
+* *** Failed! Falsifiable after 32 tests for input:
+*   0: 24
+*
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Cool it found that an input of 0 will falsify the test. Lets add some more tests.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s add a property that verifies for the input range of overtime that the
+function doesn’t pay all hours at the $10 rate nor all the hours at the $15
+rate. The correct implementation is some mixture of these two.&amp;nbsp; This
+brings me to a subtle point when I first heard of property-testing when
+studying Haskell. In my naiveté I thought to myself, &amp;ldquo;If I have a model that
+verifies the unit under test, aren&amp;rsquo;t I duplicating the implementation?&amp;rdquo;
+Furthermore, if I duplicate the implementation, how can I be sure I&amp;rsquo;m not
+making the same bugs twice. One response I found online, “we test our C code
+in Erlang. It&amp;rsquo;s unlikely to make the same mistake in two separate languages.”
+I was wrong however, you don&amp;rsquo;t have to duplicate the functionality. You can
+steer the generator to generate data within a range over which a simple
+property will be true. Multiple properties together then test the fuller input
+domain without requiring 1 single verifier to duplicate behavior. This
+property doesn’t exactly know what the correct payroll is. It isn’t
+calculating the correct value, it’s just excluding values that it cannot be.
+&lt;/p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;struct PropTestOvertimeRateHigher : cppqc::Property 
+{ 
+    PropTestOvertimeRateHigher()
+    :
+    Property(cppqc::choose(41, 100)) {} 
+    
+    bool check(const int &amp;amp;  hours) const { 
+    
+        std::array&amp;lt;size_t, 5&amp;gt; id{1,2,3,4,5}; 
+        auto pay = uut::payroll(id, hours); 
+        return pay &amp;gt; hours * 10 &amp;amp;&amp;amp;  pay &amp;lt; hours * 15; //You cannot get paid all overtime or all standard pay
+    }
+
+    std::string name() const
+    {
+        return &amp;quot;You cannot get paid all overtime, or all std time&amp;quot;;
+    }
+
+    std::string classify(const int &amp;amp; v) const
+    {
+        std::ostringstream sstr;
+        sstr &amp;lt;&amp;lt; &amp;quot;Hours &amp;quot; &amp;lt;&amp;lt; v;
+        return sstr.str();
+    }
+
+    bool trivial(const int &amp;amp;  v) const
+    {
+        return v == 40;
+    }
+
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Following this thought of excluding a range and testing a simpler property,
+lets test the payroll without considering overtime. In this case the
+calculation is simple so we can provide a full implementation.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;struct PropTestIgnoreOvertime : cppqc::Property
+{
+    PropTestIgnoreOvertime() : Property(cppqc::choose(0, 40)) {}
+    bool check(const int &amp;amp;  hours) const
+    {
+        std::array&amp;lt;size_t, 5&amp;gt; id{1,2,3,4,5};
+        auto pay = uut::payroll(id, hours);
+        return pay == hours * 10;
+    }
+
+    std::string name() const
+    {
+        return &amp;quot;Not working overtime makes the math easy.&amp;quot;;
+    }
+    std::string classify(const int &amp;amp; v) const
+    {
+        std::ostringstream sstr;
+        sstr &amp;lt;&amp;lt; &amp;quot;Hours &amp;quot; &amp;lt;&amp;lt; v;
+        return sstr.str();
+    }
+    bool trivial(const int &amp;amp;  v) const
+    {
+        return v == 40;
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We run the tests a few times and see the failing test cases. These data are random. Running the test multiple times fails differently, but minimization results in the same or similar values each time to help the programmer debug. So let&amp;rsquo;s fix this code and watch the tests pass to avoid the &lt;a href=&#34;http://www.codestrokes.com/2014/08/what-is-a-unit-test/&#34;&gt;mockery and scandal of code review&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;float payroll(std::array&amp;lt;size_t, 5&amp;gt; person_id, size_t hours)
+{
+    if(hours &amp;gt; 100)
+        throw std::out_of_range(&amp;quot;Hours cannot be greater than 100&amp;quot;);
+    auto overtime = hours - 40;
+    if(overtime &amp;gt; 0)
+        return hours * 10 + overtime * 15;
+    else
+        return hours * 10;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;* Checking property &amp;quot;Not working overtime makes the math easy.&amp;quot; ...
+*** Failed! Falsifiable after 1 test and 1 shrink for input:
+0: 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To be honest, while setting up the tests for this post I fully expected the
+tests to start passing and this article would end here. Instead I learned some
+real value on using these properties as a debugging and design tool. Let&amp;rsquo;s add
+a printf to the code to get a sense what&amp;rsquo;s happening&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;* Checking property &amp;quot;Not working overtime makes the math easy.&amp;quot; ...
+Overtime: 18446744073709551576 &amp;lt;--- Whoa what happened there?
+*** Failed! Falsifiable after 1 test and 1 shrink for input:
+0: 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Overtime seems to be an unsigned value, and passing in 0 causes the value to wrap around. The rule (&lt;a href=&#34;http://scottmeyers.blogspot.com/2013/07/when-decltype-meets-auto.html&#34;&gt;http://scottmeyers.blogspot.com/2013/07/when-decltype-meets-auto.html&lt;/a&gt;) assures that overtime becomes a size_t since hours is size_t. We can force floating conversion by stating that 40 is a floating point number.&lt;/p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;float payroll(std::array&amp;lt;size_t, 5&amp;gt; person_id, size_t hours)
+{
+    if(hours &amp;gt; 100)
+        throw std::out_of_range(&amp;quot;Hours cannot be greater than 100&amp;quot;);
+    auto overtime = hours - 40.0; //&amp;lt;-- Force implicit floating point cast
+    if(overtime &amp;gt; 0)
+        return hours * 10 + overtime * 15;
+    else
+        return hours * 10;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;* Checking property &amp;quot;Pay should be positive&amp;quot; ...
++++ OK, passed 100 tests (40% trivial).
+* Checking property &amp;quot;You cannot get paid all overtime, or all std time&amp;quot; ...
+*** Failed! Falsifiable after 1 test and 1 shrink for input:
+  0: 60
+* Checking property &amp;quot;Not working overtime makes the math easy.&amp;quot; ...
++++ OK, passed 100 tests.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Argh! Still wrong? The property must be wrong. Notice that the properties are quite simple. No single test verifies the full range, but the properties provide useful documentation and make it easy to reason about the code. The properties are probably correct then. &amp;hellip;yeah, it wasn&amp;rsquo;t the property…&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;float payroll(std::array&amp;lt;size_t  5 ,&amp;gt; person_id, size_t hours)
+{
+    if(hours &amp;gt; 100)
+        throw std::out_of_range(&amp;quot;Hours cannot be greater than 100&amp;quot;);
+    auto overtime = hours - 40.0;
+    if(overtime &amp;gt; 0)
+        return (hours - overtime) * 10 + overtime * 15;
+    else
+        return hours * 10;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;* Checking property &amp;quot;Pay should be positive&amp;quot; ...
++++ OK, passed 100 tests (40% trivial).
+* Checking property &amp;quot;You cannot get paid all overtime, or all std time&amp;quot; ...
++++ OK, passed 100 tests.
+* Checking property &amp;quot;Not working overtime makes the math easy.&amp;quot; ...
++++ OK, passed 100 tests.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I started this article wanting to post a simple tutorial on Property testing,
+instead I learned to be a bit more careful using auto, and even when the
+function is simple, programmers can make mistakes. For the final logic error,
+the failing input was 60. Thinking about my directed test method, I would
+divide the input into equivalence domains and test the boundary values. For
+this input, I would divide standard time to the beginning of overtime. For
+directed tests I would have written tests for: 0, 39, 40 41, 99, 100, and 101.
+I would have missed the 60 hours bug, and there is the possibility that
+I missed typed the numbers on my calculator and type in a wrong expected
+value. This example is quite simple but still an interesting demonstration of
+property testing. I&amp;rsquo;m looking forward to applying property testing to my next
+project.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+    <title>Code Strokes</title>
+
+<link href="" rel="alternate" type="application/rss+xml" title="Code Strokes" />
+<link href="" rel="feed" type="application/rss+xml" title="Code Strokes" />
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" media="all" rel="stylesheet">
+
+
+<link rel="stylesheet" type="text/css" href="/css/default.css" />
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css">
+<link href='//fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+
+
+
+<link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/images/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+<link rel="manifest" href="/images/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/images/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" type="text/css" href="/css/styles/default.css" />
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body id="page-top" class="index">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-23129291-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+	<div class="container">
+		
+		<div class="navbar-header page-scroll">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+    <a class="navbar-brand page-scroll" href="/">Code Strokes</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="hidden">
+                <a href="/"></a>
+                </li>
+                <li><a href="/about/">About</a></li>
+                
+                <li><a href="/"></a></li>
+                
+                <li><a href="/posts">posts</a></li>
+                
+			
+			</ul>
+		</div>
+		
+	</div>
+	
+</nav>
+
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1><a href="http://localhost:1313/2011/05/parallelism-in-d-bucket-sort-part-2/">Parallelism in D</a></h1>
+            </div>
+            <span class="section-subheading text-muted">Sun, May 29, 2011</span>
+            <div class="post">
+                <p>Parallelism, it sounds like a religion, and in some sense it is. Like many facets of software engineering, writing good parallel code is more of an art than a science.  I come from a FPGA background where parallelism is part of the language; part of the culture! The tools are designed to find deadlocks, analyze timing and the language itself is fully aware of parallelism.  The hardware world understands parallelism, yet writing parallel software is still difficult.  D is making some pioneering steps in the right direction for <a href="http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html">parallelism</a>.  I use a parallel implementation of bucket sort to show how D makes writing parallel code, correct.</p>
+
+<!-- more -->
+
+<p>Parallelism is ingrained in the hardware engineer’s mind. The motivating purpose of parallelism is **performance. **There is simply no other justification for the pains of parallelism except the high performance potential it offers. The FPGA engineer’s tool-chain evolves around this fact.  The tools are designed to find deadlocks, analyze timing; however the most valuable feature is that the language itself is fully aware of parallelism. Take this simple Verilog example:</p>
+
+<pre><code>always @ (posedge clock or negedge reset_n)
+begin
+    if (reset_n == 1'b0) begin
+        counter_out &lt;=#1  4'b0000;
+    end
+    else if (enable == 1'b1) begin
+        counter_out &lt;=#1  counter_out + 1;
+        counter_in &lt;=#1 counter_in - 1;
+        led_out &lt;=#1 led_out ^ 1;
+    end
+end
+</code></pre>
+
+<p>The &lt;= operator is called the non-blocking assignment.  In the example above, all three lines in the else condition execute simultaneously.  This is important; just by reading the code you can see that it is parallel.  Our software languages, C, C++, Java, do not make parallel code obvious.  In these languages parallelism tends to feel like a bolt-on, aftermarket feature that never really flows with the rest of the language, or design idioms.  While researching the background on this article, I found a fantastic write up on <a href="http://www.futurechips.org/tips-for-power-coders/parallel-programming.html">What Makes Parallel Programs Hard</a>.  The author contends that parallel programs are hard because of inter-task dependencies.  This is true, but I would further the point that if the language supported parallelism at its core, as Hardware Description Languages do, writing parallel software wouldn’t be so difficult. Furthermore, if a language offered parallel idioms, duplicating robust parallel code would also be easier.</p>
+
+<p>HDLs make it obvious that the code is parallel, until D I haven’t seen a language do it quite so well.  <a href="http://www.codestrokes.com/?p=101">Bucket Sort Part 1</a> was a quick introduction to Bucket Sort as an algorithm, but the real power of bucket sort is how easily it can be parallelized. Once the list is segmented or “bucketized” each bucket may be sorted simultaneously.  I wrote a D implementation of this, and parallelism really offers incredible performance here.  Take a look.<a href="http://www.codestrokes.com/wp-content/uploads/2011/05/threading_compared.png"><img src="http://www.codestrokes.com/wp-content/uploads/2011/05/threading_compared_thumb.png" alt="threading_compared" />
+</a></p>
+
+<p>This compares the runtimes of sorting 10 million numbers using various configurations of bucket sort.  Consistently, the multithreaded version is faster.  So how does D makes this easy?</p>
+
+<pre><code>uint[] bucket_sort(uint[] unsorted_data, immutable uint num_buckets)
+{
+    immutable auto interval = (minPos!(&quot;a &gt; b&quot;)(unsorted_data)[0]/num_buckets)+1;
+    auto buckets = new uint[][num_buckets];
+
+    foreach(uint datum; unsorted_data)
+    {
+        scope(failure) { writefln(&quot;%d %d %d&quot;, datum, interval, num_buckets);}
+        buckets[datum/(interval)] ~= datum;
+    }
+
+    uint[] s;
+    version(MultiThreaded)
+    {
+        foreach(ref bucket; taskPool.parallel(buckets))
+        {
+            bucket.sort;
+        }
+
+    }
+    else
+    {
+        foreach(uint[] bucket; buckets)
+        {
+            bucket.sort;
+        }
+    }
+
+    foreach(uint[] bucket; buckets)
+    {
+        s ~= bucket;
+    }
+    return s;
+}
+</code></pre>
+
+<p>This code has the obviousness we are looking for.  taskPool.parallel comes from the <a href="http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html">std.parallelism</a> module starting in <a href="http://www.digitalmars.com/d/download.html">D 2.053</a>.  Simply, by reading the source code, one can see that this code is parallel.  That’s it. The taskPool.parallel routine automatically divvies out units of work between new threads; more importantly, taskPool.parallel automatically joins all threads them at the end of the foreach scope.</p>
+
+<p>Using this, we can find the optimal configuration of bucket size for both single-threaded and multi-threaded versions of the code.</p>
+
+<p><a href="http://www.codestrokes.com/wp-content/uploads/2011/05/single_threaded.png"><img src="http://www.codestrokes.com/wp-content/uploads/2011/05/single_threaded_thumb.png" alt="single_threaded" />
+</a></p>
+
+<p><a href="http://www.codestrokes.com/wp-content/uploads/2011/05/multi_threaded.png"><img src="http://www.codestrokes.com/wp-content/uploads/2011/05/multi_threaded_thumb.png" alt="multi_threaded" />
+</a></p>
+
+<p>Interestingly, the optimal setting was different between the multithreaded and single threaded versions with multithreaded at 800 buckets and single threaded at 45,800 buckets.  However we can see from the standard deviation plots a sizable variation within a single configuration’s bucket size, while the average runtimes remains fairly flat.  Ergo, bucket size is not the performance bottle neck, it’s the actual sorting, and parallelism drastically illustrates this in the “Threading Compared” plot.</p>
+
+<p>D provides two primary multithreading techniques, <a href="http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html">std.parallelism</a>, discussed here, and <a href="http://www.digitalmars.com/d/2.0/phobos/std_concurrency.html">std.concurrency</a> with a powerful message passing framework for effective inter-thread communication.  D makes robust, readable, parallel code, easy and correct.  In our case of bucket sort, with only a single line of code.</p>
+
+            </div>
+        </div>
+
+ 
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'codestrokes2'; 
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+     </div>
+</section> 
+     
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+
+<script data-no-instant>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
+

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Club on Code Strokes</title>
+    <link>http://localhost:1313/categories/club/</link>
+    <description>Recent content in Club on Code Strokes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 04 Mar 2013 19:09:31 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/club/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Beagle Board Cluster Demo&#39;d at ASU</title>
+      <link>http://localhost:1313/2013/03/beagle-board-cluster-demod-at-asu/</link>
+      <pubDate>Mon, 04 Mar 2013 19:09:31 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2013/03/beagle-board-cluster-demod-at-asu/</guid>
+      <description>&lt;p&gt;We presented our Beagle Board Cluster at the Engineering Career Fair. Look out for a design writeup soon!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://asulug.org/2013/03/engineering-open-house/&#34;&gt;http://asulug.org/2013/03/engineering-open-house/&lt;/a&gt;
+&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
+[suffusion-adsense client=&amp;lsquo;ca-pub-6284398857369558&amp;rsquo; slot=&amp;lsquo;1495369305&amp;rsquo; width=&amp;lsquo;728&amp;rsquo; height=&amp;lsquo;90&amp;rsquo;]&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

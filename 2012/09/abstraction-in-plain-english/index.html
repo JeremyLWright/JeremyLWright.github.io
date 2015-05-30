@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+    <title>Code Strokes</title>
+
+<link href="" rel="alternate" type="application/rss+xml" title="Code Strokes" />
+<link href="" rel="feed" type="application/rss+xml" title="Code Strokes" />
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" media="all" rel="stylesheet">
+
+
+<link rel="stylesheet" type="text/css" href="/css/default.css" />
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css">
+<link href='//fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+
+
+
+<link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/images/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+<link rel="manifest" href="/images/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/images/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" type="text/css" href="/css/styles/default.css" />
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body id="page-top" class="index">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-23129291-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+	<div class="container">
+		
+		<div class="navbar-header page-scroll">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+    <a class="navbar-brand page-scroll" href="/">Code Strokes</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="hidden">
+                <a href="/"></a>
+                </li>
+                <li><a href="/about/">About</a></li>
+                
+                <li><a href="/"></a></li>
+                
+                <li><a href="/posts">posts</a></li>
+                
+			
+			</ul>
+		</div>
+		
+	</div>
+	
+</nav>
+
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1><a href="http://localhost:1313/2012/09/abstraction-in-plain-english/">Abstraction in Plain English</a></h1>
+            </div>
+            <span class="section-subheading text-muted">Tue, Sep 18, 2012</span>
+            <div class="post">
+                <p>Abstraction is an interesting concept. For me personally, abstraction was never clearly explained. I left school and entered my first job knowing I should abstract things, but I realize now my understanding of abstraction amounted to obscurity.</p>
+
+<!-- more -->
+
+<p>Abstraction to me meant, “Don’t use that thing directly, <em>abstract it</em> and use some interface instead.&rdquo; &ldquo;That’s what <em>good</em> programmers do,&rdquo; I told myself. I taught myself a lot about function pointers, and advanced OO techniques using pure virtual classes all to avoid using something directly. This is wrong. My entire prespective on abstraction was wrong. A few days ago I was watching a <a href="http://channel9.msdn.com/Events/GoingNative/GoingNative-2012/Keynote-Bjarne-Stroustrup-Cpp11-Style">lecture from Bjarne Stroustrup</a>, comically, one I’ve watch before and it finally clicked.</p>
+
+<blockquote>Express notions as the expert in the field understands them. — Bjarne Stroustroup.</blockquote>
+
+<p>Wow, that is simple. Abstraction is not about creating layers or separating the programmer from anything, in fact abstraction has nothing to do with the programmer at all. Abstraction is about creating entities, may they be objects, functions or simply variables which describe the system as an expert would describe the system.</p>
+
+<p>For example think of building a blackjack game. In blackjack the dealer is our expert, so we need to describe the objects in our system in a vernacular which makes sense to her. First, let us describe a bad example of abstraction with respect to the deck used for dealing cards to the players. This bad example starts with the programmer’s perspective. To a programmer, a deck looks like an array. We’ve been taught that it is not good to allocate a bunch of memory into an array so we hold an array of pointers to cards which are allocated in the heap. Okay so now we have a container to hold the cards std::vector<Card*>. For this article lets ignore the ownership issues, and continue.</p>
+
+<p>What does dealing look like? Oh that’s simple, just index over the vector to give a pointer of each card to the Player.  Your code might look like this:</p>
+
+<pre><code>void DealCardsToPlayer(size_t cards_to_deal, Player* p)
+{
+    for(int i = 0; i &lt; cards_to_deal; ++i)
+    {
+        p-&gt;AcceptCard(deck.back()); //deal from back, because dealing from front will invalidate pointers...
+        deck.pop_back();
+    }
+}
+</code></pre>
+
+<p>Now try to explain to an actual dealer what this code is doing. Firstly, you&rsquo;ll never be able to justify dealing from the back of the deck, <a href="http://en.wikipedia.org/wiki/Cheating_(casino">its cheating</a>). The problem here isn&rsquo;t functional. The code will probably work. the problem is perspective. Lets reevaluate this from a dealer&rsquo;s perspective. A dealer has a box, called the Shoe. In the shoe are all the decks. The dealer draws from the Shoe, and give the card to the player. With the dealer’s perspective in mind the code might look like this:</p>
+
+<pre><code>void DealInitialHand(Player* p)
+{
+    //The rules of blackjack are defined there is no reason to make this code
+    //more complex than this. The Initial hand consists of 2 cards. period.
+    p-&gt;AcceptCard(Shoe-&gt;DrawCard());
+    p-&gt;AcceptCard(Shoe-&gt;DrawCard());
+}
+</code></pre>
+
+<p>Notice we didn&rsquo;t use a loop. There&rsquo;s no reason to abstract the number of cards being dealt. The runs of blackjack are known. Is is actually an conscience decision. In Software Product Lines, this opportunity is called a variation point. It is a single point in the software where one could offer differing behavior. However, offering differing behavior is a game with defined rules is cheating. Thus unless there are other requirements to implement a variation point, keep it simple.</p>
+
+<p>Functionally the code does the same thing. After either function call, the Player has 2 cards in their hand and dealer’s deck has 2 fewer cards. The difference is the perspective. The program should always follow the perspective of the “expert in the field”. There is a reason experts, in any field, have a specialized language, and specialized methods. For the most part, the principles and practices are worked out over a great deal of time to define the most efficient and accurate way to convey information.</p>
+
+<p>As a programmer, steal that knowledge. Leverage all the work someone else did already, and just use the vernacular that field leverages. Doing so will make your code more readable, your programs more accurate. Furthermore, the maintenance on a system is easier. If you ever have to call an expert in to consult for the project, you’ll have objects and call flows which model the expert’s thought process. You’ll get a better response from your expert.</p>
+
+<p>References:</p>
+
+<ul>
+<li><p><a href="http://www.artima.com/intv/abstreffi.html">http://www.artima.com/intv/abstreffi.html</a></p></li>
+
+<li><p><a href="http://www.artima.com/intv/modern.html">http://www.artima.com/intv/modern.html</a></p></li>
+
+<li><p><a href="http://www.artima.com/intv/goldilocks.html">http://www.artima.com/intv/goldilocks.html</a></p></li>
+</ul>
+
+            </div>
+        </div>
+
+ 
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'codestrokes2'; 
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+     </div>
+</section> 
+     
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+
+<script data-no-instant>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
+

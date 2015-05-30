@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Itanium on Code Strokes</title>
+    <link>http://localhost:1313/tags/itanium/</link>
+    <description>Recent content in Itanium on Code Strokes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 07 Oct 2013 01:23:13 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/itanium/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>The Itanium Flop</title>
+      <link>http://localhost:1313/2013/10/the-itanium-flop/</link>
+      <pubDate>Mon, 07 Oct 2013 01:23:13 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2013/10/the-itanium-flop/</guid>
+      <description>&lt;p&gt;I wake up in the morning with ideas that please me, and some of those ideas actually please me also later in the day when I&amp;rsquo;ve entered them into my computer. - Donald Knuth&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m on a bit of a Knuth kick right now, and I&amp;rsquo;ve been procrastinating studying, and homework to find interviews, and papers by the master himself. I currently have a list of microfiche references to check out as soon as I get to the basement of my university&amp;rsquo;s library: Woot, &lt;a href=&#34;http://www.chrisfenton.com/homebrew-cray-1a/&#34;&gt;computational necromancy&lt;/a&gt;! Through this, I came across a quote in an &lt;a href=&#34;http://www.informit.com/articles/article.aspx?p=1193856&#34;&gt;interview&lt;/a&gt;, &amp;ldquo;&amp;hellip;worse than the &amp;ldquo;&lt;a href=&#34;http://en.wikipedia.org/wiki/Itanium&#34;&gt;Itanium&lt;/a&gt;&amp;rdquo; approach that was supposed to be so terrific—until it turned out that the wished-for compilers were basically impossible to write.&amp;rdquo; What? I thought it was simply market forces that drive the x86-64 ahead of Itanium: nope!&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.usenix.org/legacy/event/usenix05/tech/general/gray/gray.pdf&#34;&gt;This&lt;/a&gt; paper discusses some of the advanced features of the Itanium platform as well as Intel&amp;rsquo;s intention for those features. Essentially, the Itanium platform is about empowering software developers. The CPU even provides a &amp;ldquo;software TLB&amp;rdquo;. In a typical software application performance is dependent on the CPU&amp;rsquo;s ability to pipeline, and reorder instructions. This is typically done in hardware. While this approach has proven workable, Intel notes the limitations of &amp;ldquo;speculation&amp;rdquo; by the hardware. The thought then arises, why not turn the advanced speculation functions over to the compiler writer. Itanium is born. Gray discusses how these functions while advanced leaves a huge responsibility on the already loaded optimized running in the compiler. The paper, is a great read, and as Knuth alludes, a similar situation is happening with multi-core today.&lt;/p&gt;
+
+&lt;p&gt;Hardware designers have hit physical limits with clock speeds, just as they hit speculation limits almost a decade before. The hardware engineers are pushing the onus of performance to software once again. Are we ready to carry the torch this time?&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

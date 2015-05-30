@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Publications on Code Strokes</title>
+    <link>http://localhost:1313/tags/publications/</link>
+    <description>Recent content in Publications on Code Strokes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 11 Nov 2012 20:40:00 -0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/publications/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Short Valgrind Video Tutorial</title>
+      <link>http://localhost:1313/2012/11/short-valgrind-video-tutorial/</link>
+      <pubDate>Sun, 11 Nov 2012 20:40:00 -0700</pubDate>
+      
+      <guid>http://localhost:1313/2012/11/short-valgrind-video-tutorial/</guid>
+      <description>&lt;p&gt;I made a short video tutorial on valgrind. Enjoy&lt;/p&gt;
+
+&lt;iframe src=&#34;http://player.vimeo.com/video/53291347?badge=0&#34; frameborder=&#34;0&#34; width=&#34;500&#34; height=&#34;281&#34;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://vimeo.com/53291347&#34;&gt;Valgrind Demonstration&lt;/a&gt; from &lt;a href=&#34;http://vimeo.com/user14085157&#34;&gt;Jeremy Wright&lt;/a&gt; on &lt;a href=&#34;http://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Open Source CTF Game Server</title>
+      <link>http://localhost:1313/1/01/open-source-ctf-game-server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/1/01/open-source-ctf-game-server/</guid>
+      <description>&lt;p&gt;I am releasing under &lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/deed.en_US&#34; rel=&#34;license&#34;&gt;Creative Commons Attribution-ShareAlike 3.0 Unported License&lt;/a&gt;. my django game server for running Capture the Flag events.&lt;/p&gt;
+
+&lt;p&gt;This server does have some known bugs which I enumerated in the issue tracker. I developed this first version for the Fall 2012 ASULUG hacking competition. I hope people can get involved and make this a fantastic game server! Please feel free to contact me, or simply fork the repository. I look forward to seeing everyone&amp;rsquo;s interesting pull requests! Thank you.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://bitbucket.org/jwright/capturetheflag/overview&#34;&gt;https://bitbucket.org/jwright/capturetheflag/overview&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/deed.en_US&#34; rel=&#34;license&#34;&gt;&lt;img style=&#34;border-width: 0;&#34; src=&#34;http://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34; alt=&#34;Creative Commons License&#34; /&gt;&lt;/a&gt;
+&lt;span&gt;Capture the Flag Game Server&lt;/span&gt; by &lt;a href=&#34;http://www.codestrokes.com/category/security/ctf/&#34; rel=&#34;cc:attributionURL&#34;&gt;Jeremy Wright&lt;/a&gt; is licensed under a &lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/deed.en_US&#34; rel=&#34;license&#34;&gt;Creative Commons Attribution-ShareAlike 3.0 Unported License&lt;/a&gt;.
+Based on a work at &lt;a href=&#34;https://bitbucket.org/jwright/capturetheflag/overview&#34; rel=&#34;dct:source&#34;&gt;&lt;a href=&#34;https://bitbucket.org/jwright/capturetheflag/overview&#34;&gt;https://bitbucket.org/jwright/capturetheflag/overview&lt;/a&gt;&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+    <title>Code Strokes</title>
+
+<link href="" rel="alternate" type="application/rss+xml" title="Code Strokes" />
+<link href="" rel="feed" type="application/rss+xml" title="Code Strokes" />
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" media="all" rel="stylesheet">
+
+
+<link rel="stylesheet" type="text/css" href="/css/default.css" />
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css">
+<link href='//fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+
+
+
+<link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/images/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+<link rel="manifest" href="/images/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/images/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" type="text/css" href="/css/styles/default.css" />
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body id="page-top" class="index">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-23129291-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+	<div class="container">
+		
+		<div class="navbar-header page-scroll">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+    <a class="navbar-brand page-scroll" href="/">Code Strokes</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="hidden">
+                <a href="/"></a>
+                </li>
+                <li><a href="/about/">About</a></li>
+                
+                <li><a href="/"></a></li>
+                
+                <li><a href="/posts">posts</a></li>
+                
+			
+			</ul>
+		</div>
+		
+	</div>
+	
+</nav>
+
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1><a href="http://localhost:1313/2011/05/class-invariants-red-black-tree-part-2/">Class Invariants</a></h1>
+            </div>
+            <span class="section-subheading text-muted">Fri, May 13, 2011</span>
+            <div class="post">
+                <p>This week, I started porting my <a href="http://www.codestrokes.com/archives/59">C++ implementation</a> of the Red-Black tree to D.  I am trying to pay special attention to the features of D, intended to make writing correct code easier. While on that vane,  I was reading an excellent <a href="http://reprog.wordpress.com/2010/04/25/writing-correct-code-part-1-invariants-binary-search-part-4a/">article</a>, discussing invariants, and I was pleased to find such a useful implementation of the <a href="http://www.digitalmars.com/d/2.0/class.html#Invariant">class invariant</a> in the D language.</p>
+
+<!-- more -->
+
+<p>Invariants come from the same “<a href="http://en.wikipedia.org/wiki/Design_by_contract">design-by-contract</a>” idiom, famous for pre- and post- conditions. Essentially, invariants describe a state, or behavior which must remain true for a class.  If the invariant fails, during the classes life-cycle something is wrong; either the assumptions underlying the class’s behavior (the invariant is wrong), or a bug in the class itself.  In either case, the invariant help the you, the developer find a problem.  While discussing this feature a colleague asked,</p>
+
+<blockquote>Why would I want to maintain a ‘fixed’ state in my class. How does this not interfere with the classes behavior?  I don’t see how I would use this in a nontrivial application.</blockquote>
+
+<p>“How do I use this in a real application?” its quite a loaded question, however valuable. For my small red-black tree, I’m using invariants to check that the “<a href="http://en.wikipedia.org/wiki/Red-black_tree#Properties">black-height</a>” is maintained.  This is essential to the performance of the class, both in terms of correctness, and run-time complexity.  The Delete operation, for instance, will not function correctly if the black height is incorrect. This “black-height” is a property of the entire class as a whole, it must be maintained at all time for the class to be correct.  This is the very definition of the <a href="http://en.wikipedia.org/wiki/Class_invariant">class invariant</a>. Excellent! However this still doesn’t satisfy our question; in a more general context, how does the class invariant help us?</p>
+
+<p>The intent of the class invariant is to maintain a <strong>consistent state</strong>, not a fixed one.  Consistency is an important concept we work hard to maintain in our programs. Instead of a class, with its mutable state, lets look at a simpler construct in programming, a loop.</p>
+
+<p>The loop conditional can be thought of as an invariant for that scope. When the invariant is no longer true, the work of our loop is done.  For example:</p>
+
+<pre><code>for (size_t i=0; i &lt; string.length(); ++i)
+{
+    //do something...
+}
+</code></pre>
+
+<p>The, _i &lt; string.length(), _is a simple invariant in that it must remain true through the life of the loop.  We cannot allow our index _i _to grow unbounded, or risk causing a segfault. Invariants, therefore, are an intimate part of controlling program consistency. Especially consistency through multiple states. We extend this concept to the class to keep a consistent view of data, or some more dynamic property.</p>
+
+<p>So invariants are good, they help one question their design assumptions, and maintain class consistency. What does D provide to help us use this? The <a href="http://www.digitalmars.com/d/2.0/class.html#Invariant">class invariant</a>.</p>
+
+<pre><code>class RedBlackTree {
+    public:
+        this()
+        {
+            nil = new RedBlackNode(0);
+            nil.Left = nil;
+            nil.Right = nil;
+            nil.Parent = nil;
+            nil.Color = RedBlackNode.Colors.BLACK;
+            root = nil;
+        }
+        ~this(){ }
+
+        unittest
+        {
+        ///TODO fill out the unit tests.
+        }
+
+        invariant()
+        {
+            //Check the black height is equal across all simple paths
+            assert(verify_black_height() == true);
+        }
+</code></pre>
+
+<p>D provides a custom function that will automatically be called before and after any public method is called.  This functionality is compiled out in release versions. So when the class is <a href="http://en.wikipedia.org/wiki/Open/closed_principle">closed</a>, we can compile for release and automatically remove the runtime overhead. This makes for an extremely useful, yet low-cost vector toward writing <strong>correct code</strong>.</p>
+
+<p>D’s support for class invariants helps one achieve correct code simply, and concisely.  The language support permits the asserts to be checked automatically with minimal affect to the programmer’s flow. The class invariant contracts do not affect final performance in release builds. Consequently, invariants are a powerful tool in the quest for correct code and D leverages that perfectly!</p>
+
+            </div>
+        </div>
+
+ 
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'codestrokes2'; 
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+     </div>
+</section> 
+     
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+
+<script data-no-instant>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
+

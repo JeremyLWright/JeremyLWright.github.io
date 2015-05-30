@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Compilation on Code Strokes</title>
+    <link>http://localhost:1313/categories/compilation/</link>
+    <description>Recent content in Compilation on Code Strokes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 14 Jul 2013 23:00:11 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/compilation/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Is Monolithic Code Faster?</title>
+      <link>http://localhost:1313/2013/07/is-monolithic-code-faster/</link>
+      <pubDate>Sun, 14 Jul 2013 23:00:11 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2013/07/is-monolithic-code-faster/</guid>
+      <description>
+
+&lt;p&gt;As a software engineer I have a vested interest in disproving this statement. Bjarne Stroustroup says C++ is designed to create efficient abstractions. A software engineer’s  job is to create simple &lt;a href=&#34;http://www.codestrokes.com/2012/09/abstraction-in-plain-english/&#34;&gt;abstractions &lt;/a&gt;to complex systems. State machines form a large part of many systems. The other day, a co-worker came to me, and asked, “Is it better to make straight line code for each case statement, even if it repeats, or is it better to abstraction into functions and make the code ‘cleaner’.”  Is “cleaner” code faster?
+&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;the-experiment:ad7f9b3b0ebd08ad653cabf663c403bf&#34;&gt;The Experiment&lt;/h2&gt;
+
+&lt;p&gt;The experiment I propose is to make a peanut butter and jelly sandwich, using a finite state machine.&lt;/p&gt;
+
+&lt;p&gt;[caption id=&amp;ldquo;attachment_1089&amp;rdquo; align=&amp;ldquo;alignleft&amp;rdquo; width=&amp;ldquo;97&amp;rdquo;]&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2013/07/sm1.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2013/07/sm1-97x300.png&#34; alt=&#34;sm&#34; /&gt;
+&lt;/a&gt; State Machine expressed in 4 separate methods.[/caption]&lt;/p&gt;
+
+&lt;p&gt;The state machine has a series of steps, each of which take a number of ticks. The tick simply counts the  amount of time in each state. The ticks simulate work being done in that state. For this experiment we are defining monolithic code to mean a switch() statement with no function calls. For modular code we offer 3 solutions:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;a switch statement with the state code abstracted into functions. Each function then returns the state transition.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;States abstracted into C++ objects&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Lastly, a high level state machine using Boost MSM.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;code-overview:ad7f9b3b0ebd08ad653cabf663c403bf&#34;&gt;Code Overview&lt;/h3&gt;
+
+&lt;p&gt;For each state machine type, lets look at the an example state to compare their structure. Firstly, the &amp;ldquo;monolithic&amp;rdquo; state:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;case EAT_SANDWICH:
+if(step_tick &amp;lt;= 0 &amp;amp;&amp;amp; sandwiches_to_eat &amp;lt;= 0) //We&#39;ve eaten all sandwiches
+{
+    step_tick = 20;
+    s = GO_TO_WORK;
+}
+else if(step_tick &amp;lt;= 0) //We&#39;ve eaten 1 more sandwich
+{
+    --sandwiches_to_eat;
+    step_tick = 10;
+    s = REMOVE_BREAD;
+}
+// else Continue eating current sandwich
+break;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here s is the state. At the top of the machine is a switch(s). When the ticks are up, the state transitions to the next state. In this case Go To Work or Remove Bread to make another sandwich.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SandwichState_t eat_sandwich_process()
+{
+    static int sandwiches_to_eat = 3;
+    static int tick = 10;
+    --tick;
+    if(tick &amp;lt;= 0 &amp;amp;&amp;amp; sandwiches_to_eat &amp;lt;= 0)
+    {
+        sandwiches_to_eat = 3;
+        tick = 10;
+        return REMOVE_BREAD;
+    }
+    else if(tick &amp;lt;= 0)
+    {
+        --sandwiches_to_eat;
+        tick = 10;
+        return GO_TO_WORK;
+    }
+    return EAT_SANDWICH;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This state is the identical to the monolithic, except the state is moved into a function, and the state is returned instead of mutating a variable.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;int eat_sandwich()
+{
+    static int sandwiches_to_eat = 3;
+    static int tick = 10;
+    --tick;
+    if(tick &amp;lt;= 0 &amp;amp;&amp;amp; sandwiches_to_eat &amp;lt;= 0)
+    {
+        sandwiches_to_eat = 3;
+        tick = 10;
+        s.f = remove_bread;
+    }
+    else if(tick &amp;lt;= 0)
+    {
+        --sandwiches_to_eat;
+        tick = 10;
+        s.f = go_to_work;
+    }
+    else
+        s.f = eat_sandwich;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This third method is a uses a function pointer s.f. State transitions are performed by mutating the function pointer, and jumping to it e.g. sf();&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Row &amp;lt; EatSandwich       , none  , GoToWork          , ResetTick, user_is_full   &amp;gt;,
+Row &amp;lt; EatSandwich       , none  , RemoveBread       , ResetTick, user_is_hungry &amp;gt;,
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is Boost&amp;rsquo;s MSM. essentially, MSM is a domain specific language described completely within a C++ template.&lt;/p&gt;
+
+&lt;h2 id=&#34;results:ad7f9b3b0ebd08ad653cabf663c403bf&#34;&gt;Results&lt;/h2&gt;
+
+&lt;p&gt;[caption id=&amp;ldquo;attachment_1097&amp;rdquo; align=&amp;ldquo;alignleft&amp;rdquo; width=&amp;ldquo;300&amp;rdquo;]&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2013/07/O2Speedups.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2013/07/O2Speedups-300x225.png&#34; alt=&#34;O2Speedups&#34; /&gt;
+&lt;/a&gt; Speedup normalized against the monolithic case. (Compiled with O2 optimization)[/caption]&lt;/p&gt;
+
+&lt;p&gt;I started this project with the full intention of cheating to assure monolithic code is slower than &amp;ldquo;proper&amp;rdquo; code. However, the evidence shows, properly abstracted code can be faster, but there is a limit. As MSM shows one can take abstraction too far or too general such that performance becomes difficult. So How does this happen? One of the most impacting tool for code performance, caching, and compilers have a fancy trick to optimize cache performance. Inlining.&lt;/p&gt;
+
+&lt;h2 id=&#34;inlining:ad7f9b3b0ebd08ad653cabf663c403bf&#34;&gt;Inlining&lt;/h2&gt;
+
+&lt;p&gt;Function inlining is simply a copy-paste operation by the compiler to remove the overhead of a function call. In gcc, and Visual Studio, the compiler is free to inline any function it wills. Conversely, the inline keyword simply provides a suggestion or a hint to the compiler to inline a function. The compiler is free to ignore the suggestion. Once the compiler chooses to inline a function, it simply copies the source from the function and replaces the function call itself.&lt;/p&gt;
+
+&lt;p&gt;However, additional performance is offered beyond simply eliminating the CALL instruction. Optimization is performed in multiple passes. As such removing function calls, can simplify optimization techniques such as global-flow analysis, and register allocation. Therefore, once a function is inlined, additional performance tweaks may be made specific to the environment of the original call. This means the while a function may be optimized on it&amp;rsquo;s own. It will be done so only once. However an inlined function, since the source of the function is laid directly into flow of the program, the compiler can optimize the function specific to that region.&lt;/p&gt;
+
+&lt;p&gt;Many language support function inlining. Java, C++ have an inline keyword. During compilation inlining seems straight forward, however what about dynamic languages? I was surprised to learn that Python inlines.  PyPy uses a Just-In-Time compiler to make inline decisions at runtime. The benefit of inline decisions deferred to runtime, is the JIT is able to see the full program at once, as opposed to only a single file at a time as a batch compiler does.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion:ad7f9b3b0ebd08ad653cabf663c403bf&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Cleanly abstracted code can be faster than monolithic code. Even without cheating the benchmark :-).  Compilers make advanced optimizations, as such it&amp;rsquo;s of little benefit to immediately make a blanket statement to try to beat the performance of an optimizing compiler. For dynamic languages, JIT systems make even more comprehensive enhancements offering staggering performance.&lt;/p&gt;
+
+&lt;p&gt;Reference:
+&lt;a href=&#34;http://en.wikipedia.org/wiki/Inline_expansion&#34;&gt;http://en.wikipedia.org/wiki/Inline_expansion&lt;/a&gt;
+&lt;a href=&#34;http://en.wikipedia.org/wiki/Inline_caching&#34;&gt;http://en.wikipedia.org/wiki/Inline_caching&lt;/a&gt;
+&lt;a href=&#34;http://www.iecc.com/linker/linker11.html&#34;&gt;http://www.iecc.com/linker/linker11.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://morepypy.blogspot.com/2011/02/pypy-faster-than-c-on-carefully-crafted.html&#34;&gt;http://morepypy.blogspot.com/2011/02/pypy-faster-than-c-on-carefully-crafted.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Building an Interpreter</title>
+      <link>http://localhost:1313/2012/05/building-an-interpreter/</link>
+      <pubDate>Mon, 28 May 2012 17:03:55 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2012/05/building-an-interpreter/</guid>
+      <description>
+
+&lt;p&gt;When I started programming, I thought that compilers where these magic behemoths; Oracles which consumed your source code, and prophesied  the resulting program.  I thought that the compiler was an integral part of the &amp;ldquo;system&amp;rdquo;. I was excited to realize that the compiler is simply another program. A program you can write yourself. You can write a compiler, for your very own language.  Go ahead, make up a language, I&amp;rsquo;ll wait&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2012/05/hourglass.gif&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2012/05/hourglass.gif&#34; alt=&#34;&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Seriously though, making your own language is a very difficult task, and implementing a language useful enough for non-trivial problems is even more difficult. There is however, a very approachable goal here: Domain Specific Languages (DSLs).  DSLs are focused languages useful to a limited group of people for a limited purpose.&lt;/p&gt;
+
+&lt;p&gt;I like to think of DSLs as tools. For example, sometimes one needs to automate a task, its might be easier to write a small program that helps with that task. But it might be even more useful to write a language that allows you to describe the problem better, then one can write a program using the new language to finish the task in an efficient and repeatable way.  The program has limited usefulness beyond its initial application, but for the application at hand, its perfect. SQL is the canonical example. In this post we&amp;rsquo;ll start with a basic grammar in EBNF. We&amp;rsquo;ll translate that to a flex lexer, and connect that to a bison parser. We&amp;rsquo;ll end up with a syntax tree which we&amp;rsquo;ll execute to calculate a result.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;The first step in writing a language is creating the grammar. This is horrifically difficult, however for this example we&amp;rsquo;ll assume we already have a grammar.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Program → Block
+Block → {Declaration} {Statement}
+Declaration → VariableDeclaration | ConstantDeclaration
+VariableDeclaration → var Id {‘,’ Id}
+ConstantDeclaration → const Id ‘=’ Number
+Statement → Assignment | PrintStmt | IfStmt | DoStmt
+Assignment → Id ‘:=’ Expression
+PrintStmt → print Expression
+IfStmt → if {do Expression ‘-&amp;gt;’ Block end} end
+DoStmt → loop {do Expression ‘-&amp;gt;’ Block end} end
+Expression → Simple [ Relop Simple ]
+Simple → UniTerm {Ampop UniTerm}
+UniTerm → Perop UniTerm | Term
+Term → Factor [Atop Term]
+Factor → ‘(’ Expression ‘)’ | Number | Id
+Relop → ‘=’ | ’&amp;lt;’ | ’&amp;gt;’ | ‘/=’ | ‘&amp;lt;=’ | ‘&amp;gt;=’
+Ampop → ‘&amp;amp;’
+Perop → ‘%’
+Atop → ‘@’
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we have a grammar, and we can think up some simple test cases. These will be used to evaluate the compiler we&amp;rsquo;re building. This is infinitely important. Compilers are built on the principles of Context-Free-Languages, which by definition are infinite, ergo testing is critically important. Since you cannot possible think of every test case, directed test maybe insufficient, but this discussion is beyond the scope of the post.&lt;/p&gt;
+
+&lt;p&gt;To use Bison to parse this, we need make sure that the grammar is LL(k). Bison is not capable of parsing the entire CFL space, furthermore, &lt;a href=&#34;http://dinosaur.compilertools.net/bison/bison_6.html#SEC42&#34;&gt;bison prefers left-recursion&lt;/a&gt;. Many compiler books encourage right-recursion since&lt;a href=&#34;http://stackoverflow.com/questions/847439/why-cant-a-recursive-descent-parser-handle-left-recursion&#34;&gt; recursive-decent prefers it&lt;/a&gt;. LL(k) is a different animal.  To prove that this grammar is LL(k) compatible, is beyond the scope of this post, but it entails calculating the _First_ and _Follow _sets for each grammar rule.&lt;/p&gt;
+
+&lt;h2 id=&#34;converting-to-bnf:f9baca8760dad209256732958d7afef1&#34;&gt;Converting to BNF&lt;/h2&gt;
+
+&lt;p&gt;Our grammar is in EBNF right now. I&amp;rsquo;ve found it easier to write the bison grammar from the BNF form. I found &lt;a href=&#34;http://lampwww.epfl.ch/teaching/archive/compilation-ssc/2000/part4/parsing/node3.html&#34;&gt;a few tricks&lt;/a&gt; to help. Following these tricks blindly will result in a grammar which is a bit bigger than necessary e.g. the grammar will not be minimum. For our simple grammar this is not a big issue. However, for a production compiler, a minimum grammar is very important.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; Program → Block
+ Block → ε | Block Declaration | Block Statement
+ Declaration → VariableDeclaration | ConstantDeclaration
+ VariableDeclaration → &#39;var&#39; TIDENTIFIER | &#39;,&#39; TIDENTIFIER
+ ConstantDeclaration → &#39;const&#39; TIDENTIFIER &#39;=&#39; TNUMBER
+ Statement → Assignment | PrintStmt | IfStmt | DoStmt
+ Assignment → TIDENTIFIER TASSIGN Expression
+ PrintStmt → &#39;print&#39; Expression
+ IfStmt → &#39;if&#39; Condition &#39;end&#39;
+ DoStmt → &#39;loop&#39; Condition &#39;end&#39;
+ Condition → ε | Condition do Expression &#39;-&amp;gt;&#39; Block &#39;end&#39;
+ Expression → Simple | Simple RELOP Simple | Simple TEQ Simple
+ Simple → UniTerm | Simple TAMPOP UniTerm
+ UniTerm → TPEROP UniTerm | Term
+ Term → Factor | Factor TATOP Term
+ Factor → LPAREN Expression RPAREN | TNUMBER | TIDENTIFIER
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that a few rules appear missing. Actually during translation we noted which items can be recognized by the lexer. These tokens are captured by flex/lex, and simplify how much work Bison needs to do. As a general rule the sooner you can translate something the better. This allows your deeper layer to be more abstract e.g. replacing strings in favor of tokens.  (Get &lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2012/05/Bison-Flex.7z&#34;&gt;Bison-Flex&lt;/a&gt; Files). Now that we have the lexer, and syntax analyzer, we can work on &lt;strong&gt;semantic&lt;/strong&gt; analysis. This is an important point that took me a while to understand: syntax is orthogonal to semantics. Said another way, &lt;em&gt;how something is said is separate to what is said&lt;/em&gt;.  Bison will parse the syntax and give use the terminal tokens in the correct order, but it is our responsibility to translate that to actual code.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax-directed-translation:f9baca8760dad209256732958d7afef1&#34;&gt;Syntax-Directed Translation&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Syntax-directed_translation&#34;&gt;Syntax-Directed Transalation&lt;/a&gt;, is one method for attaching semantic actions to the rules of a grammar. I image that the grammar rule is  the line to the constructor of a C++ class. For example, take the _Assignment _rule:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Assignment → TIDENTIFIER TASSIGN Expression
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This rule has 2 important parts, TIDENTIFIER and the Expression. The TASSIGN token is implied by the rule itself. This allows us to write a class as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;struct Assignment {
+
+    Assignment(string id, Expression* rhs):
+    _rhs(rhs),
+    _identifier(id)
+    {
+    }
+
+    virtual string ToString()
+    {
+        return &amp;quot;Assignment:: &amp;quot;;
+    }
+
+    virtual void Execute()
+    {
+        int value = _rhs-&amp;gt;Execute();
+        programSymbolTable-&amp;gt;GetSymbol(_identifier)-&amp;gt;SetValue(_rhs-&amp;gt;Execute());
+    }
+
+  Expression* _rhs;
+  string const _identifier;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Following in this way we can complete semantic actions for each rule. To finish our interpreter we simply need to leverage the Bison PDA to link all the objects together.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-abstract-syntax-tree:f9baca8760dad209256732958d7afef1&#34;&gt;The Abstract Syntax Tree&lt;/h2&gt;
+
+&lt;p&gt;Behind the scenes, Bison uses a very efficient table driven parser. For this project, I&amp;rsquo;ve found its easier to treat Bison parser as a black-box, and independent of how is actually implemented, imagine Bison uses a theoretical Push-down Automata.&lt;/p&gt;
+
+&lt;p&gt;[caption id=&amp;ldquo;&amp;rdquo; align=&amp;ldquo;aligncenter&amp;rdquo; width=&amp;ldquo;340&amp;rdquo; caption=&amp;ldquo;PDA from Wikipedia.org&amp;rdquo;]&lt;a href=&#34;http://en.wikipedia.org/wiki/Pushdown_automaton&#34;&gt;&lt;img src=&#34;http://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Pushdown-overview.svg/340px-Pushdown-overview.svg.png&#34; alt=&#34;PDA from wikipedia&#34; /&gt;
+&lt;/a&gt;[/caption]&lt;/p&gt;
+
+&lt;p&gt;From this picture Bison&amp;rsquo;s &lt;em&gt;$$_ token represents the A. The input tape is preprocessed by flex. Ergo, at this point the input tape, is a&lt;/em&gt; string of tokens_, not a string of characters. We mentioned earlier that Bison prefers left-recursion, this is directly attributed to the PDA architecture it uses. Bison&amp;rsquo;s method of matching the stack allows right-recursion to use bounded stack space. We&amp;rsquo;ve discussed before how &lt;a href=&#34;http://www.codestrokes.com/2011/11/parallel-binary-buddy-the-friendly-memory-manager/&#34;&gt;memory allocation&lt;/a&gt; is one of the slowest operations a program can perform, therefore limiting the memory usage is always a meaningful performance enhancement.&lt;/p&gt;
+
+&lt;p&gt;Bison&amp;rsquo;s will now parse the input tokens for use, and as it matches each rule, automatically recurse through the rules until it reaches a terminal. This in turn will call your semantic actions in the reverse order to compose your tree. By returning each new node of the tree into the $$, Bison will pass the chain of objects back up the parse tree. Let&amp;rsquo;s see an example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;N := i &amp;amp; 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is an assignment. the bison follows our rules in the following order:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Assignment : TIDENTIFIER TASSIGN Expression
+TIDENTIFIER = &#39;N&#39;, matched by flex
+TASSIGN = &#39;:=&#39; matched by flex
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Expression is a non-terminal so keep parsing
+Our stack at this point has the following items in it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;TIDENTIFIER:&#39;N&#39;
+TASSIGN:&#39;:=&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now Bison has to resolve the Expression rule into terminals, so bison jumps to the Expression Rule:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Expression : Simple
+           | Simple RELOP Simple
+           | Simple TEQ Simple
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Simple matches, so keep parsing.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Simple: UniTerm
+           | Simple TAMPOP UniTerm
+TAMPOP = &#39;&amp;amp;&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;UniTerm matches so keep parsing. Following in this way, we eventually reach the Factor rule:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Factor : LPAREN Expression RPAREN { $$ = $2; }
+        | TNUMBER { $$ = new Factor($1); } &amp;lt;-- Runs this one for the &#39;1&#39;
+        | TIDENTIFIER { $$ = new Factor(*$1); } &amp;lt;-- Runs this for the &#39;i&#39;
+TNUMBER = &#39;1&#39;
+TIDENTIFIER = &#39;i&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we return up the parse tree, at each semantic action we pass the newly created object into the $$ token. The power of Bison, is how it calls the rules in the correct order allowing you to compose your tree correctly, or recognize a syntax error if rules don&amp;rsquo;t match.&lt;/p&gt;
+
+&lt;p&gt;At this point there a fork in the road. We can either execute our tree directly, which makes our interpreter complete, or we can move on to code-generation. Code generation will translate the AST we built into some other language. This target language is frequently C for DSLs. C allows for massive flexibility, while retaining platform portability. Every platform has a C compiler, there by targeting C, your language also runs on every platform. This difference between interpreter and compiler is subtle, since some interpreters include virtual machines, and translate the source code to an intermediate form which the internal virtual machine executes. Python is one such example of this.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion:f9baca8760dad209256732958d7afef1&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Bison is a powerful tool, combined with Syntax-Directed translation, we have a powerful tool for matching languages. Bison can parse streaming data as well, by combining these techniques, one can recognize a stream of commands sent over a network, or other dynamic source. For the embedded spaces this offers a very powerful way of interfacing with downstream sensors and ECUs. Bison is also extremely efficient and uses a bounded memory stack, allowing use in the smallest of microcontrollers.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

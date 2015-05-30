@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Memory on Code Strokes</title>
+    <link>http://localhost:1313/tags/memory/</link>
+    <description>Recent content in Memory on Code Strokes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 Oct 2011 19:00:21 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/memory/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Making C&#43;&#43; like Python: The Anderson Smart Pointer Pattern</title>
+      <link>http://localhost:1313/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</link>
+      <pubDate>Sun, 23 Oct 2011 19:00:21 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</guid>
+      <description>&lt;p&gt;Choosing to use C++ brings the additional complexity of memory management.  Dennis Ritchie once stated: The C Programming Language — A language which combines the flexibility of assembly language with the power of assembly language. C++ inherits much of that _flexibility, _however, this &lt;a href=&#34;http://www.infoq.com/presentations/Are-We-There-Yet-Rich-Hickey&#34;&gt;incidental complexity&lt;/a&gt;, can be relegated to a single class, leaving you with the high-level elegance of Python. RAII help with this additional complexity, however without a pattern for guidance implementing RAII consistently can be difficult, defeating the safety it provides.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;Resource Acquisition Is Initialization (&lt;a href=&#34;http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization&#34;&gt;RAII&lt;/a&gt;) is a powerful tool for managing resources.  RAII &lt;a href=&#34;http://www.research.att.com/~bs/bs_faq2.html#finally&#34;&gt;justifies&lt;/a&gt; the apparent missing finally clause. Stroustrup claims that with proper RAII,  &lt;a href=&#34;http://www.research.att.com/~bs/bs_faq2.html#finally&#34;&gt;finally&lt;/a&gt; is not required. D also &lt;a href=&#34;http://www.d-programming-language.org/exception-safe.html&#34;&gt;implements&lt;/a&gt; RAII with scope operators. Ok, so RAII is powerful, but what is it?&lt;/p&gt;
+
+&lt;p&gt;In C++, destructors are the only entity guaranteed to execute after an exception.  So resources which need to be automatically reclaimed need  to acquire at initialization, and release at destruction.  Such resources must be declared on the stack, to permit this idiom.&lt;/p&gt;
+
+&lt;p&gt;Writing exception-safe code, e.g. managing resources throughout exceptions is difficult, and while RAII makes it easier, managing RAII correctly is difficult without a pattern. A colleague of mine, &lt;a href=&#34;http://www.chrisanderman.com/&#34;&gt;Anderson&lt;/a&gt;, developed a fantastic pattern/&lt;a href=&#34;http://erdani.com/publications/cuj-2005-12.pdf&#34;&gt;policy&lt;/a&gt; using smart pointers which makes RAII automatic.&lt;/p&gt;
+
+&lt;p&gt;Two patterns compose the Anderson Smart Pointer Pattern: Factory Constructor, and PIMPL.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#ifdef _WIN
+#include &amp;lt;memory&amp;gt;
+#else
+#include &amp;lt;tr1/memory&amp;gt;
+#endif
+
+class Name
+{
+public:
+#ifdef _WIN
+    typedef std::shared_ptr Ptr; //This uses the class as a namespace.
+    typedef std::weak_ptr WeakPtr;
+#else
+    typedef std::tr1::shared_ptr Ptr;
+    typedef std::tr1::weak_ptr WeakPtr;
+#endif
+    static name::Ptr construct(); //Factory Constructor
+    virtual ~name();
+private:
+    Name(); //Notice the constructor is private
+    name::WeakPtr self; //self (from python), replaces this
+};
+
+Name::Ptr Name::construct()
+{
+    Name::Ptr c(new Name());
+    //Self completes the PIMPL idiom,
+    //thereby hiding all behavior behind a safe, reference counted wall
+    c-&amp;gt;self = c;
+    return c;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This pattern is used as an RAII &lt;a href=&#34;http://erdani.com/publications/cuj-2005-12.pdf&#34;&gt;policy&lt;/a&gt;. Using the pattern liberally can eliminate new and delete from your program, and you will not leak memory. Even with multiple exceptions, you&amp;rsquo;re &lt;a href=&#34;https://bitbucket.org/jwright/cse310-red-black-tree/overview&#34;&gt;program will not leak&lt;/a&gt;.  Creating an instance of an RAII class is easy now:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Name::Ptr myInstance = Name::construct();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This Pattern will make one extra virtual call as it performs the reference counting, but the performance hit is typically nominal compared to the safety it provides to the system. The Anderson Smart-Pointer Pattern increases robustness of your programs, but interestingly it also provides a new elegance. Since one is not managing memory, and resources constantly, it makes C++ perform more like a high level language. For example, I implemented a &lt;a href=&#34;https://bitbucket.org/jwright/cse310-red-black-tree/src/d787e75b724a/BaseCode/RedBlackTree.cpp#cl-137&#34;&gt;red black tree&lt;/a&gt; using this pattern.  I didn&amp;rsquo;t need to worry about deleting nodes, just the requirements of my program. With the incidental complexity relegated to a single class, I am left with the elegant, expressiveness of Python, yet retain the raw performance of C++.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

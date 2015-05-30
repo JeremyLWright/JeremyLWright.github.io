@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Practicum on Code Strokes</title>
+    <link>http://localhost:1313/tags/practicum/</link>
+    <description>Recent content in Practicum on Code Strokes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 21 Sep 2011 23:00:00 -0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/practicum/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Multiple Inheritance: Dangerous Elegance</title>
+      <link>http://localhost:1313/2011/09/multiple-inheritance-dangerous-elegance/</link>
+      <pubDate>Wed, 21 Sep 2011 23:00:00 -0700</pubDate>
+      
+      <guid>http://localhost:1313/2011/09/multiple-inheritance-dangerous-elegance/</guid>
+      <description>&lt;p&gt;Object-Orientation permits one to model software components in a very natural way.  By decomposing properties of some model into objects one may compose very complex entities in a simple, usable fashion. C++ expands these powerful object composition techniques with multiple inheritance.  Yet multiple inheritance introduces a new subtle problem, called the diamond problem which very easily finds its way into real-world programs.  When composing inheritance trees of any depth, one must be cognizant of this problem.&lt;/p&gt;
+
+&lt;p&gt;The Diamond Problem is a subtle manifestation from using inheritance in C++. Typically, languages such as Java avoid this issue by only allowing one to inherit from multiple interfaces, not multiple classes.  Yet C++ is lax in its definition of abstract/interfaces classes. Since C++ doesn&amp;rsquo;t explicitly define abstract classes, allow me to define a common vocabulary.&lt;/p&gt;
+
+&lt;p&gt;Abstract Class: Any class in C++ is any class which contains at least 1 pure-virtual function.&lt;/p&gt;
+
+&lt;p&gt;Interface Class: Any class in C++ which defines &lt;strong&gt;only &lt;/strong&gt;pure-virtual functions.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Virtual_function#Abstract_classes_and_pure_virtual_functions&#34;&gt;Pure-Virtual Function&lt;/a&gt;: A member function who provides no implementation and thereby requires a subclass to override it&amp;rsquo;s behavior.&lt;/p&gt;
+
+&lt;p&gt;Consider the following diagram:
+&lt;p style=&#34;text-align: center;&#34;&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Diamond_problem&#34;&gt;&lt;img class=&#34;aligncenter&#34; title=&#34;Diamond Problem&#34; src=&#34;http://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Diamond_inheritance.svg/220px-Diamond_inheritance.svg.png&#34; alt=&#34;Diamond Problem diagram from wikipedia&#34; width=&#34;220&#34; height=&#34;330&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+If class A implements some function myMethod() and class C overrides myMethod(), providing different behavior.  From who does class D inherit myMethod()?  This example seems quite contrived, but this happens suprisingly easily when modeling real behavior.&lt;/p&gt;
+
+&lt;p&gt;While working on problem 2 for the C++ Practicum I inadvertently created such a situation. I was writing a parser to recognize a simple grammar.  I needed to recognize simple verb phrases such as: look north, and walk east.  At the top level I defined an Expression Interface to generalize all sub expressions. Underneath I defined a Direction object, and a verb&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Good Tools, Excellent Results</title>
+      <link>http://localhost:1313/2011/08/good-tools-excellent-results/</link>
+      <pubDate>Sun, 21 Aug 2011 23:00:00 -0700</pubDate>
+      
+      <guid>http://localhost:1313/2011/08/good-tools-excellent-results/</guid>
+      <description>&lt;p&gt;This semester for the C++ practicum we are building a clone of Zork.  Like many games of the genre, Zork is driven by a database.  Our implementation is a JSON database.  I chose JSON for a few reasons, but most importantly because its a human readable format that&amp;rsquo;s simple to understand.  I started by editing JSON files by hand in a text editor, however I found very quickly that investigating in a quick tool greatly improved my quality.&lt;/p&gt;
+
+&lt;p&gt;I chose JSON as a format. Next, I needed a schema.  Currently the schema design is as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;Clearing&amp;quot;: {
+    &amp;quot;Description&amp;quot;: &amp;quot;You are in a clearing. There is a berry bramble to your right.&amp;quot;,
+    &amp;quot;Exits&amp;quot;: {
+        &amp;quot;East&amp;quot;: &amp;quot;Up a Tree&amp;quot;,
+        &amp;quot;North&amp;quot;: &amp;quot;Grating Room&amp;quot;,
+        &amp;quot;South&amp;quot;: &amp;quot;Clearing&amp;quot;,
+        &amp;quot;West&amp;quot;: &amp;quot;&amp;quot;
+    },
+    &amp;quot;Items&amp;quot;: [&amp;quot;Berries&amp;quot;, &amp;quot;Sword&amp;quot;]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If nothing else its simple. So I started to layout the map, editing the JSON database directly in my text editor.  I found that even with such a simple schema, in a simple format such as JSON, it is incredible difficult to manage more than a few rooms.  I needed a better tool, a Map Editor.&lt;/p&gt;
+
+&lt;p&gt;Python to the rescue.  Using PyQt and Qt Designer I was able to whip up a dirty little map editor in an evening (totally about 3 hours).&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2011/08/Screenshot-Practicum-Game-Editor.png&#34;&gt;&lt;img class=&#34;aligncenter size-large wp-image-314&#34; title=&#34;Screenshot-Practicum Game Editor&#34; src=&#34;http://www.codestrokes.com/wp-content/uploads/2011/08/Screenshot-Practicum-Game-Editor-1024x786.png&#34; alt=&#34;&#34; width=&#34;584&#34; height=&#34;448&#34; /&gt;&lt;/a&gt;With this I can not manage a much larger database, giving my players a much more immersive environment.  Secondly, my students can use and even extend the tool to make even better game play.&lt;/p&gt;
+
+&lt;p&gt;I wasted quite a bit of time hand editing JSON files, when such a simple tool could be built in less than half the time.  I took it as just another example of, &amp;ldquo;Sometimes you have to slow down to speed up.&amp;rdquo;  Take time to make your tools work.  Take time to make the right tools, and it will always pay dividends.&lt;/p&gt;
+
+&lt;p&gt;Source Code is available here: &lt;a href=&#34;https://bitbucket.org/jwright/gamecomponents&#34;&gt;https://bitbucket.org/jwright/gamecomponents&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

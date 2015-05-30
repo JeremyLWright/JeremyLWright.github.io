@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unix on Code Strokes</title>
+    <link>http://localhost:1313/tags/unix/</link>
+    <description>Recent content in Unix on Code Strokes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 17 Feb 2013 19:53:11 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/unix/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Text Processing for Programmers</title>
+      <link>http://localhost:1313/2013/02/text-processing-for-programmers/</link>
+      <pubDate>Sun, 17 Feb 2013 19:53:11 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2013/02/text-processing-for-programmers/</guid>
+      <description>&lt;p&gt;I was reading a &lt;a href=&#34;https://sites.google.com/site/steveyegge2/five-essential-phone-screen-questions&#34;&gt;blog &lt;/a&gt;about coding interviews, and one comment made near the bottom struck me, &amp;ldquo;&amp;hellip;&amp;ldquo;Um&amp;hellip; grep?&amp;rdquo; then they&amp;rsquo;re probably OK&amp;hellip;&amp;rdquo;  As I read that comment, I realized I&amp;rsquo;d never answer that way, and I agreed with the author that was a problem. That began my dabble in grep, awk and sed, and these tools will change your workflow and even how you think about profiling code.  Grep has even become a verb in my daily life, &amp;ldquo;Is this &lt;em&gt;greppable?&lt;/em&gt;&amp;rdquo; is my mantra.  Flash forward a few months and once again I had a task for these powerful text processing tools, convert a mysql database to sqlite. Sounds easy, but with file sizes of &amp;gt;700MB, you have to be efficient.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;As part of a machine learning project for a graduate class I&amp;rsquo;m using the enron email &lt;a href=&#34;http://aws.amazon.com/publicdatasets/&#34;&gt;public dataset&lt;/a&gt;. This dataset has been further processed and cleaned at &lt;a href=&#34;http://www.cs.cmu.edu/~enron/&#34;&gt;Carnagie Mellon&lt;/a&gt;. This dataset is so valuable because it is real world email from a functioning orginazation. This dataset is used in human factors research, machine learning, and as in my usecase, data security. I downloaded the mysql version and since I intended to use Python to do my processing I wanted to convert it to sqlite.
+[suffusion-adsense client=&amp;lsquo;ca-pub-6284398857369558&amp;rsquo; slot=&amp;lsquo;8519108503&amp;rsquo; width=&amp;lsquo;300&amp;rsquo; height=&amp;lsquo;250&amp;rsquo;]&lt;/p&gt;
+
+&lt;p&gt;My basic process is:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Import the dataset into a mysql database&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Use this &lt;a href=&#34;https://gist.github.com/esperlu/943776&#34;&gt;gist&lt;/a&gt; to dump the database into sqlite.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Cool. So Step 1.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;jwright@ubuntu:~$ mysql -u root -p -h localhost enron &amp;lt; enron-mysqldump.sql 
+Enter password: 
+ERROR 1064 (42000) at line 10: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#39;TYPE=MyISAM&#39; at line 8
+jwright@ubuntu:~$ grep enron-mysqldump.sql &#39;TYPE-MyISAM&#39;
+grep: TYPE-MyISAM: No such file or directory
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Damn. Well, lets see what the problem is&amp;hellip; Remember this file is &amp;gt;700 MB so I don&amp;rsquo;t want to just open it in notepad.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;jwright@ubuntu:~$ grep &#39;TYPE=MyISAM&#39; enron-mysqldump.sql
+ ) TYPE=MyISAM;
+ ) TYPE=MyISAM;
+ ) TYPE=MyISAM;
+ ) TYPE=MyISAM;
+ jwright@ubuntu:~$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Oh. That&amp;rsquo;s &lt;em&gt;greppable&lt;/em&gt;, awesome.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sed &#39;s/TYPE=MyISAM/engine=myisam/g&#39; enron-mysqldump.sql &amp;gt; enron-mysqldump_filtered.sql
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we have a clean file for import.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mysql -u root -p -h localhost enron &amp;lt; enron-mysqldump_filtered.sql
+./mysql2sqlite.sh -u root -p enron | sqlite3 enron.db
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;732MB database converted in just a few minutes. Mostly just I/O time. I believe all good programmers show know these tools. I know personally, when I have to export data for profiling or metrics, I do it in a way that I can easily filter with awk, or sed to a format octave can process. Automating measurements will dreastically decrease your cycle time and reduce mistakes.&lt;/p&gt;
+
+&lt;p&gt;So &amp;ldquo;Um&amp;hellip; grep?&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Hell yes grep!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
