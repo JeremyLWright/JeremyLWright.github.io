@@ -16,11 +16,12 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="hidden">
-				<a href="/"></a>
-				</li>
-              {{ range .Site.Pages.GroupBy "Section" }}
+                <a href="/"></a>
+                </li>
+                <li><a href="/about/">About</a></li>
+                {{ range .Site.Pages.GroupBy "Section" }}
                 <li><a href="/{{ .Key }}">{{ .Key }}</a></li>
-              {{ end }}
+                {{ end }}
 			<!--	<li>
 				<a class="page-scroll" href="/about.html">About</a>
 				</li>

@@ -1,5 +1,5 @@
 ---
-author: admin
+author: Jeremy
 comments: true
 date: 2015-02-17 03:46:55+00:00
 layout: post
@@ -9,5 +9,9 @@ wordpress_id: 1354
 categories:
 - C++ Beginner
 ---
+
+Please see my introduction to pointers at https://www.youtube.com/watch?v=mkYBz5Db-Ok.
+
+
 
 
