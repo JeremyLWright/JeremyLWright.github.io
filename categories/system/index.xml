@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>System on Code Strokes</title>
-    <link>https://codestrokes.com/categories/system/</link>
+    <link>http://codestrokes.com/categories/system/</link>
     <description>Recent content in System on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 18 Sep 2012 23:11:51 +0000</lastBuildDate>
-    <atom:link href="https://codestrokes.com/categories/system/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://codestrokes.com/categories/system/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Abstraction in Plain English</title>
-      <link>https://codestrokes.com/2012/09/abstraction-in-plain-english/</link>
+      <link>http://codestrokes.com/2012/09/abstraction-in-plain-english/</link>
       <pubDate>Tue, 18 Sep 2012 23:11:51 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2012/09/abstraction-in-plain-english/</guid>
+      <guid>http://codestrokes.com/2012/09/abstraction-in-plain-english/</guid>
       <description>&lt;p&gt;Abstraction is an interesting concept. For me personally, abstraction was never clearly explained. I left school and entered my first job knowing I should abstract things, but I realize now my understanding of abstraction amounted to obscurity.&lt;/p&gt;
 
 &lt;!-- more --&gt;
@@ -70,10 +70,10 @@
     
     <item>
       <title>The Importance of System Design</title>
-      <link>https://codestrokes.com/2012/07/the-importance-of-system-design/</link>
+      <link>http://codestrokes.com/2012/07/the-importance-of-system-design/</link>
       <pubDate>Sun, 15 Jul 2012 17:00:44 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2012/07/the-importance-of-system-design/</guid>
+      <guid>http://codestrokes.com/2012/07/the-importance-of-system-design/</guid>
       <description>&lt;p&gt;For the small programs we tend to implement as part of a semester project, or the simple &amp;ldquo;one-off/get-it-done&amp;rdquo; programs at work, system design rarely plays a part. However, even in the smallest problems a top-level system design is critical for consistency and ease of use. Class components, regardless of how precise and accurate they are in their own internal design, if they aren&amp;rsquo;t externally consistent with other objects, the system will be brittle, and difficult to use.&lt;/p&gt;
 
 &lt;!-- more --&gt;

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mercurial on Code Strokes</title>
-    <link>https://codestrokes.com/tags/mercurial/</link>
+    <link>http://codestrokes.com/tags/mercurial/</link>
     <description>Recent content in Mercurial on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 06 Jul 2011 05:18:48 +0000</lastBuildDate>
-    <atom:link href="https://codestrokes.com/tags/mercurial/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://codestrokes.com/tags/mercurial/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Version Control More Than Collaboration</title>
-      <link>https://codestrokes.com/2011/07/version-control-more-than-collaboration/</link>
+      <link>http://codestrokes.com/2011/07/version-control-more-than-collaboration/</link>
       <pubDate>Wed, 06 Jul 2011 05:18:48 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2011/07/version-control-more-than-collaboration/</guid>
+      <guid>http://codestrokes.com/2011/07/version-control-more-than-collaboration/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve used version control in some form or another since I was a freshman in college, however I&amp;rsquo;m quite the anomaly.  I will use a tool fully knowing that its more than I need, just to learn something new.  Initially, this is how I approached version control. Except for a few unique situations version control of my homework, seemed like more work than it was worth.  I used to think version control was merely a collaboration tool for teams of people.  I couldn&amp;rsquo;t have been more wrong.&lt;/p&gt;
 
 &lt;!-- more --&gt;

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Customize on Code Strokes</title>
-    <link>https://codestrokes.com/tags/customize/</link>
+    <link>http://codestrokes.com/tags/customize/</link>
     <description>Recent content in Customize on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 12 Aug 2011 06:00:18 +0000</lastBuildDate>
-    <atom:link href="https://codestrokes.com/tags/customize/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://codestrokes.com/tags/customize/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Hijacking System Programs</title>
-      <link>https://codestrokes.com/2011/08/hijacking-system-programs/</link>
+      <link>http://codestrokes.com/2011/08/hijacking-system-programs/</link>
       <pubDate>Fri, 12 Aug 2011 06:00:18 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2011/08/hijacking-system-programs/</guid>
+      <guid>http://codestrokes.com/2011/08/hijacking-system-programs/</guid>
       <description>&lt;p&gt;Let&amp;rsquo;s say for a moment that you are a graduate student, with shell access to your schools server. The server maintains a number of tools you need for classes, and research.  All is well, except the stock editor on the server is wicked old.  Like an eternity old.  Well that happened to me. I am fully addicted to &lt;a href=&#34;https://bitbucket.org/jwright/vim-configuration&#34;&gt;my custom vim configuration&lt;/a&gt;, but it requires vim7.3.  My school&amp;rsquo;s server only has 7.0.  So, how does one install their own application with root privledges?  You create a private root.&lt;/p&gt;
 
 &lt;p&gt;&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;The goal is to install a custom application which either is not available on they system, or the version available is tool old.  Essentially, you just need to install the program to your home folder, and add the new binary to your path.  Here is how I did just that:&lt;/p&gt;

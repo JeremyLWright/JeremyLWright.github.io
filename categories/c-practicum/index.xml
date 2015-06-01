@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C Practicum on Code Strokes</title>
-    <link>https://codestrokes.com/categories/c-practicum/</link>
+    <link>http://codestrokes.com/categories/c-practicum/</link>
     <description>Recent content in C Practicum on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 21 Aug 2011 07:23:25 +0000</lastBuildDate>
-    <atom:link href="https://codestrokes.com/categories/c-practicum/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://codestrokes.com/categories/c-practicum/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Good Tools, Excellent Results</title>
-      <link>https://codestrokes.com/2011/08/good-tools-excellent-results/</link>
+      <link>http://codestrokes.com/2011/08/good-tools-excellent-results/</link>
       <pubDate>Sun, 21 Aug 2011 07:23:25 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2011/08/good-tools-excellent-results/</guid>
+      <guid>http://codestrokes.com/2011/08/good-tools-excellent-results/</guid>
       <description>&lt;p&gt;This semester for the C++ practicum we are building a clone of Zork.  Like many games of the genre, Zork is driven by a database.  Our implementation is a JSON database.  I chose JSON for a few reasons, but most importantly because its a human readable format that&amp;rsquo;s simple to understand.  I started by editing JSON files by hand in a text editor, however I found very quickly that investigating in a quick tool greatly improved my quality.&lt;/p&gt;
 
 &lt;p&gt;&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;I chose JSON as a format. Next, I needed a schema.  Currently the schema design is as follows:&lt;/p&gt;
@@ -46,10 +46,10 @@
     
     <item>
       <title>Game Framework for C&#43;&#43; Practicum</title>
-      <link>https://codestrokes.com/2011/06/game-framework-for-c-practicum/</link>
+      <link>http://codestrokes.com/2011/06/game-framework-for-c-practicum/</link>
       <pubDate>Sat, 25 Jun 2011 22:37:51 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2011/06/game-framework-for-c-practicum/</guid>
+      <guid>http://codestrokes.com/2011/06/game-framework-for-c-practicum/</guid>
       <description>&lt;p&gt;For this year&amp;rsquo;s C++ practicum, we are going to build a small game engine.  I&amp;rsquo;m keeping the code on bitbucket: &lt;a href=&#34;http://bitbucket.org/jwright/gamecomponents&#34;&gt;http://bitbucket.org/jwright/gamecomponents&lt;/a&gt; Join us, or fork the code and make your own design. I look forward to seeing how this progresses.&lt;/p&gt;
 </description>
     </item>

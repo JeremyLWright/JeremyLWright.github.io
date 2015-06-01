@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ai on Code Strokes</title>
-    <link>https://codestrokes.com/categories/ai/</link>
+    <link>http://codestrokes.com/categories/ai/</link>
     <description>Recent content in Ai on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 01 Sep 2013 22:35:41 +0000</lastBuildDate>
-    <atom:link href="https://codestrokes.com/categories/ai/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://codestrokes.com/categories/ai/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>My First Logic Program</title>
-      <link>https://codestrokes.com/2013/09/my-first-logic-program/</link>
+      <link>http://codestrokes.com/2013/09/my-first-logic-program/</link>
       <pubDate>Sun, 01 Sep 2013 22:35:41 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2013/09/my-first-logic-program/</guid>
+      <guid>http://codestrokes.com/2013/09/my-first-logic-program/</guid>
       <description>&lt;p&gt;This semester, I&amp;rsquo;m taking an introduction to artificial intelligence, and despite this being the second week, I&amp;rsquo;ve learned a great deal. Our second assignment was to implement a program in clingo (clasp on gringo) which is a derivative of Prologue. This is my first experience with a logical programming language, and I am intrigued to the possibilities.
 &amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
 Immediately I was intrigued by the freeform expressiveness of the language. The example we did in class for example was to determine which muppet went to which amusement park. The first step was to name the &lt;em&gt;atoms&lt;/em&gt; of our program. As far as I can tell, an atom is a value.&lt;/p&gt;

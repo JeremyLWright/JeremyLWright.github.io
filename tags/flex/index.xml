@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Flex on Code Strokes</title>
-    <link>https://codestrokes.com/tags/flex/</link>
+    <link>http://codestrokes.com/tags/flex/</link>
     <description>Recent content in Flex on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 28 May 2012 17:03:55 +0000</lastBuildDate>
-    <atom:link href="https://codestrokes.com/tags/flex/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://codestrokes.com/tags/flex/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Building an Interpreter</title>
-      <link>https://codestrokes.com/2012/05/building-an-interpreter/</link>
+      <link>http://codestrokes.com/2012/05/building-an-interpreter/</link>
       <pubDate>Mon, 28 May 2012 17:03:55 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2012/05/building-an-interpreter/</guid>
+      <guid>http://codestrokes.com/2012/05/building-an-interpreter/</guid>
       <description>
 
 &lt;p&gt;When I started programming, I thought that compilers where these magic behemoths; Oracles which consumed your source code, and prophesied  the resulting program.  I thought that the compiler was an integral part of the &amp;ldquo;system&amp;rdquo;. I was excited to realize that the compiler is simply another program. A program you can write yourself. You can write a compiler, for your very own language.  Go ahead, make up a language, I&amp;rsquo;ll wait&amp;hellip;&lt;/p&gt;
@@ -177,10 +177,10 @@ TIDENTIFIER = &#39;i&#39;
     
     <item>
       <title>Talk at SoDA</title>
-      <link>https://codestrokes.com/2012/03/talk-at-soda/</link>
+      <link>http://codestrokes.com/2012/03/talk-at-soda/</link>
       <pubDate>Sat, 31 Mar 2012 18:48:55 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2012/03/talk-at-soda/</guid>
+      <guid>http://codestrokes.com/2012/03/talk-at-soda/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://vimeo.com/39505796&#34;&gt;SoDA Meeting: Embedded Scripting for Games&lt;/a&gt; from &lt;a href=&#34;http://vimeo.com/asusoda&#34;&gt;SoDA @ ASU&lt;/a&gt; on &lt;a href=&#34;http://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>

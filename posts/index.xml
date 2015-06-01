@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Code Strokes</title>
-    <link>https://codestrokes.com/posts/</link>
+    <link>http://codestrokes.com/posts/</link>
     <description>Recent content in Posts on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 17 Feb 2015 03:46:55 +0000</lastBuildDate>
-    <atom:link href="https://codestrokes.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://codestrokes.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Introduction to Pointers</title>
-      <link>https://codestrokes.com/2015/02/introduction-to-pointers/</link>
+      <link>http://codestrokes.com/2015/02/introduction-to-pointers/</link>
       <pubDate>Tue, 17 Feb 2015 03:46:55 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2015/02/introduction-to-pointers/</guid>
+      <guid>http://codestrokes.com/2015/02/introduction-to-pointers/</guid>
       <description>&lt;p&gt;Please see my introduction to pointers at &lt;a href=&#34;https://www.youtube.com/watch?v=mkYBz5Db-Ok&#34;&gt;https://www.youtube.com/watch?v=mkYBz5Db-Ok&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Property Testing in C&#43;&#43;</title>
-      <link>https://codestrokes.com/2014/09/property-testing-in-c/</link>
+      <link>http://codestrokes.com/2014/09/property-testing-in-c/</link>
       <pubDate>Wed, 03 Sep 2014 23:00:00 -0700</pubDate>
       
-      <guid>https://codestrokes.com/2014/09/property-testing-in-c/</guid>
+      <guid>http://codestrokes.com/2014/09/property-testing-in-c/</guid>
       <description>&lt;p&gt;
 Currently, I&#39;m on a testing kick. One might say tests are shiny. I don&#39;t
 know if they are really shiny as much as I found another cool use for
@@ -290,10 +290,10 @@ project.&lt;/p&gt;
     
     <item>
       <title>What is a Unit Test?</title>
-      <link>https://codestrokes.com/2014/08/what-is-a-unit-test/</link>
+      <link>http://codestrokes.com/2014/08/what-is-a-unit-test/</link>
       <pubDate>Thu, 28 Aug 2014 05:58:26 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2014/08/what-is-a-unit-test/</guid>
+      <guid>http://codestrokes.com/2014/08/what-is-a-unit-test/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m taking a Software Testing and Verification course as part of my Master&amp;rsquo;s work. Our first assignment was to write a short paper describing a unit test, then implement selection sort and test it under that philosophy. Sarcastically, I commented to my colleagues the triviality of this question. The first response was, &amp;ldquo;Wow, I don&amp;rsquo;t think that is such an easy question.&amp;rdquo; A technical discussion ensued. This is that log.
 &amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;&lt;/p&gt;
 
@@ -425,20 +425,20 @@ target_link_libraries(test gtest gtest_main pthread rt)
     
     <item>
       <title>Hello Project Euler, Sorry I doubted you</title>
-      <link>https://codestrokes.com/2014/08/hello-project-euler-sorry-i-doubted-you/</link>
+      <link>http://codestrokes.com/2014/08/hello-project-euler-sorry-i-doubted-you/</link>
       <pubDate>Thu, 28 Aug 2014 05:04:52 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2014/08/hello-project-euler-sorry-i-doubted-you/</guid>
+      <guid>http://codestrokes.com/2014/08/hello-project-euler-sorry-i-doubted-you/</guid>
       <description>&lt;p&gt;Project Euler returns with full functionality including new problems! Thank you Project Euler for not giving up on this awesome project. &lt;a href=&#34;http://projecteuler.net/news&#34;&gt;http://projecteuler.net/news&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Goodbye Project Euler</title>
-      <link>https://codestrokes.com/2014/06/goodbye-project-euler/</link>
+      <link>http://codestrokes.com/2014/06/goodbye-project-euler/</link>
       <pubDate>Wed, 18 Jun 2014 15:42:22 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2014/06/goodbye-project-euler/</guid>
+      <guid>http://codestrokes.com/2014/06/goodbye-project-euler/</guid>
       <description>&lt;p&gt;A group of friends and I have been working on project euler for about a year now. I learned a great deal from this fantastic project, and it was the first time I was able to get a real handle on Haskell. Project Euler taught me make. It taught me better performance reporting techniques, honed my octave, and got me over that initial mind bending hump of Haskell. Thank you Project Euler, you will be missed.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2014/06/euler.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2014/06/euler-1024x902.png&#34; alt=&#34;Project Euler&#34; /&gt;
@@ -448,10 +448,10 @@ target_link_libraries(test gtest gtest_main pthread rt)
     
     <item>
       <title>Design for Testability via Security </title>
-      <link>https://codestrokes.com/2014/05/design-for-testability-via-security/</link>
+      <link>http://codestrokes.com/2014/05/design-for-testability-via-security/</link>
       <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2014/05/design-for-testability-via-security/</guid>
+      <guid>http://codestrokes.com/2014/05/design-for-testability-via-security/</guid>
       <description>
 
 &lt;p&gt;I was discussing bootloader design with a colleague of mine the other day. We were attempting to load new a third-party hardware component. The device has a poor protocol, and a useless verification step. This discussion got me thinking however how the concepts used to build a strong self-enforcing security protocol, also apply to building a testable, and reliable communication protocol. Thus, security helps us build better products not because they are secure, but because they are verifiable.
@@ -559,10 +559,10 @@ alice_public_key(nonce_bob:sha256(nonce_bob):nonce_alice:sha256(nonce_alice))&lt
     
     <item>
       <title>Massively Intelligent Non-Deterministic Luminating Effortless Super Solver</title>
-      <link>https://codestrokes.com/2014/02/cracking-subciphercpp/</link>
+      <link>http://codestrokes.com/2014/02/cracking-subciphercpp/</link>
       <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
       
-      <guid>https://codestrokes.com/2014/02/cracking-subciphercpp/</guid>
+      <guid>http://codestrokes.com/2014/02/cracking-subciphercpp/</guid>
       <description>&lt;p&gt;I worked the title of this article several times before I finally settled on the subtly epic heading you see above. Hopefully this title will funnel people off google into my blog (delicious SEO). I wanted to push the A.I. component of my solution because A.I. is awesome and mysterious, and cool (and can like solve jeopardy). I was quickly disillusioned however. Really, A.I. isn&amp;rsquo;t magic, rather it&amp;rsquo;s just the same thing computers have been doing for a long time: computing. Sadly this realization took several months in an A.I. class before I was sufficiently crestfallen. A.I. patterns including the hill climbing algorithm used here are indeed &amp;ldquo;intelligent&amp;rdquo; but really it a reflecting of the algorithm designer, not the entity executing the algorithm. So I built a substitution cipher solver in C++. It&amp;rsquo;s fast it uses random numbers i.e. non-deterministic, it uses an A.I. algorithm i.e. Intelligent, it uses threads i.e. Massively, it deciphers i.e. luminates the text and it solves super stuff therefore the title is completely justified. I give you my Massively Intelligent Non-Deterministic Luminating Effortless Super Solver (MINDLESS). If none of that interests you then please stick around and follow the side quest of looking for &lt;a href=&#34;http://justenoughcraig.blogspot.com/2014/01/just-say-no-to-passive-aggressive.html&#34;&gt;emotionally charged parenthesis&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Cracking substitution ciphers were a fun puzzle I pursued as a child. Substitution ciphers are monoalphabetic ciphers. Meaning a single letter maps to a single letter and that mapping is static. This is opposed to polyalphabetic ciphers where the mapping of letters changes throughout the message. Vigenère Cipher is an example. Given a substitution cipher what are tools are available to the &amp;ldquo;cryptanalyst&amp;rdquo; (the person to breaks ciphers). Firstly, frequency analysis. Frequency analysis supposes the the distribution of letters within the message is essentially the same as the distribution of letters in the English language (&lt;a href=&#34;http://en.wikipedia.org/wiki/Frequency_analysis&#34;&gt;http://en.wikipedia.org/wiki/Frequency_analysis&lt;/a&gt;). However if the message is short, or if the message is intentionally written to skew the letter distribution this technique is difficult. This post looks at a different approach, an artificial intelligence technique called hill climbing.&lt;/p&gt;
@@ -719,10 +719,10 @@ return p;
     
     <item>
       <title>Sean Parent: No Raw Loops</title>
-      <link>https://codestrokes.com/2013/11/sean-parent-no-raw-loops/</link>
+      <link>http://codestrokes.com/2013/11/sean-parent-no-raw-loops/</link>
       <pubDate>Sun, 24 Nov 2013 22:14:50 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2013/11/sean-parent-no-raw-loops/</guid>
+      <guid>http://codestrokes.com/2013/11/sean-parent-no-raw-loops/</guid>
       <description>&lt;p&gt;A group of colleagues and I watched Sean Parent&amp;rsquo;s Going Native Talk on &amp;ldquo;&lt;a href=&#34;http://channel9.msdn.com/Events/GoingNative/2013/Cpp-Seasoning&#34;&gt;C++ Seasoning&lt;/a&gt;&amp;rdquo;. Parent takes some extreme views on how to use C++, but his examples for using the STL to simplify code are phenomenal. For a recent AI project I decided to apply Parent&amp;rsquo;s &lt;em&gt;goal&lt;/em&gt; of &amp;ldquo;no raw loops&amp;rdquo;, I was blown away by the transformation&amp;hellip; err std::transformation this had on my code. In this post I indented to demonstrate several complex code blocks, or overly specific code blocks what were replaced by some STL magic. Alexander Stepanov says, &amp;ldquo;&lt;a href=&#34;http://www.youtube.com/watch?v=COuHLky7E2Q&#34;&gt;&amp;hellip;code is a liability.&lt;/a&gt;&amp;rdquo; The more code a program has the more likely it contains bugs. The fewer lines of code, the lesser the opportunity for a bug. I haven&amp;rsquo;t quiet decided if I agree with this point, but it does induce thought either way. Sean Parent&amp;rsquo;s methodology seems to agree, for the purposes of this post we&amp;rsquo;ll agree as well.&lt;/p&gt;
 
 &lt;!-- more --&gt;
@@ -932,30 +932,30 @@ cout &amp;lt;&amp;lt; prob;
     
     <item>
       <title>rand() Considered Harmful</title>
-      <link>https://codestrokes.com/2013/11/rand-considered-harmful/</link>
+      <link>http://codestrokes.com/2013/11/rand-considered-harmful/</link>
       <pubDate>Sun, 17 Nov 2013 16:54:19 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2013/11/rand-considered-harmful/</guid>
+      <guid>http://codestrokes.com/2013/11/rand-considered-harmful/</guid>
       <description>&lt;p&gt;Stephan T Lavavej (STL) is a tactical speaker. In a short amount of time he convey&amp;rsquo;s essential accurate information which is immediately applicable. In this talk at Going Native 2013, STL takes 20 minutes to teach us how to properly use random numbers in our programs: &lt;a href=&#34;http://channel9.msdn.com/Events/GoingNative/2013/rand-Considered-Harmful&#34;&gt;http://channel9.msdn.com/Events/GoingNative/2013/rand-Considered-Harmful&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Simplicity Does Matter!</title>
-      <link>https://codestrokes.com/2013/11/simplicity-does-matter/</link>
+      <link>http://codestrokes.com/2013/11/simplicity-does-matter/</link>
       <pubDate>Tue, 12 Nov 2013 05:56:28 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2013/11/simplicity-does-matter/</guid>
+      <guid>http://codestrokes.com/2013/11/simplicity-does-matter/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m been sitting this draft for too long, but before I started my research experiment with Haskell I was looking for a language. I was approaching an AI class for my graduate work, and thought I&amp;rsquo;d learn Lisp, or at least &lt;em&gt;a&lt;/em&gt; lisp.  &lt;a href=&#34;http://clojure.org/&#34;&gt;Clojure &lt;/a&gt;was hot, and new (read shiny), so I dove into learning about it&amp;rsquo;s virtues. It&amp;rsquo;s virtues are embodied in its creator, Rich Hickey, who while being a great programmer is a fantastic speaker. The first talk I watched from him, &amp;ldquo;&lt;a href=&#34;http://www.infoq.com/presentations/Are-We-There-Yet-Rich-Hickey&#34;&gt;Are We There Yet?&lt;/a&gt;&amp;rdquo; which is a deep philosophical approach to parallelism.  I in 2012, Rich Hickey was invited to speak at RubyCon, and he gave a fantastic talk titles, &amp;ldquo;&lt;a href=&#34;http://www.youtube.com/watch?v=rI8tNMsozo0&#34;&gt;Simplicity Matters&lt;/a&gt;&amp;rdquo;. Absolutely fantastic! Eventually, I made my way into Haskell, largely by a comment from Andrei Alexandresku, &amp;ldquo;&lt;a href=&#34;http://channel9.msdn.com/Shows/Going+Deep/C-and-Beyond-2012-Andrei-Alexandrescu-Systematic-Error-Handling-in-C&#34;&gt;Haskell, the language everyone wishes they know.&lt;/a&gt;&amp;rdquo; Rich Hickey&amp;rsquo;s words however remain in each line of code I write, Do not complect, simplicity matters.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>A Thunk on Laziness</title>
-      <link>https://codestrokes.com/2013/10/a-thunk-on-laziness/</link>
+      <link>http://codestrokes.com/2013/10/a-thunk-on-laziness/</link>
       <pubDate>Sun, 27 Oct 2013 23:00:17 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2013/10/a-thunk-on-laziness/</guid>
+      <guid>http://codestrokes.com/2013/10/a-thunk-on-laziness/</guid>
       <description>&lt;p&gt;I originally approached Haskell excited, and wide-eyed mystified by the type theory. Type became my golden hammer. In my C programs I typedef&amp;rsquo;d everything so it&amp;rsquo;d have a &amp;ldquo;unique&amp;rdquo; type. I was cautious with my casting. I was hooked. I had an intuitive understanding of laziness, as implemented by Haskell, that would allow one to write&amp;rdquo;streaming&amp;rdquo; algorithms. That is programs that deal with data in an online way to process data as it streams through. While that maybe true, you know what else can do that? C.
 &amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
 I recently has a problem to extract logs from a product at work. The existing solution e.g. the solution I wrote the week before, was exponential in time. We had a problem. We had to extract the logs, and separate them by an sentinel in the file, encrypt the files, compress them, then copy the output to a thumbdrive. The only problem we didn&amp;rsquo;t have enough RAM to store the entire file in memory, and we didn&amp;rsquo;t have enough flash to create temporary files.  I needed a streaming algorithm.&lt;/p&gt;
@@ -968,10 +968,10 @@ I recently has a problem to extract logs from a product at work. The existing so
     
     <item>
       <title>Idiomatic Learning</title>
-      <link>https://codestrokes.com/2013/10/idiomatic-learning/</link>
+      <link>http://codestrokes.com/2013/10/idiomatic-learning/</link>
       <pubDate>Sun, 20 Oct 2013 23:00:00 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2013/10/idiomatic-learning/</guid>
+      <guid>http://codestrokes.com/2013/10/idiomatic-learning/</guid>
       <description>&lt;p&gt;When learning a new language I find it helpful to study a languages idioms. Idioms exist in a language for a specific reason. Sometimes that reason is to further the principles of the language, other times it’s to mask, or otherwise deal with some underlying design decision of the language. Currently, I am studying Haskell, and currently I am struggle to clarify the idioms of the language. The syntax is still very new and awkward, currently with a total authoring in Haskell of 713 lines.&lt;/p&gt;
 
 &lt;!-- more --&gt;
@@ -987,10 +987,10 @@ I recently has a problem to extract logs from a product at work. The existing so
     
     <item>
       <title>&#34;Smaller&#34; Reviews are More Effective</title>
-      <link>https://codestrokes.com/2013/10/smaller-reviews-are-more-effective/</link>
+      <link>http://codestrokes.com/2013/10/smaller-reviews-are-more-effective/</link>
       <pubDate>Sun, 13 Oct 2013 23:00:23 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2013/10/smaller-reviews-are-more-effective/</guid>
+      <guid>http://codestrokes.com/2013/10/smaller-reviews-are-more-effective/</guid>
       <description>&lt;p&gt;I was reviewing a new software module for work today, and discovered that when the class fit on a single screen my comments were more meaningful, than when the class was larger.  My comments for spatially larger classes were mostly focused on syntactic, and idiomatic details. It was an interesting self-observation, but this certainly isn&amp;rsquo;t new information.&lt;/p&gt;
 
 &lt;!-- more --&gt;
@@ -1011,10 +1011,10 @@ I recently has a problem to extract logs from a product at work. The existing so
     
     <item>
       <title>The Itanium Flop</title>
-      <link>https://codestrokes.com/2013/10/the-itanium-flop/</link>
+      <link>http://codestrokes.com/2013/10/the-itanium-flop/</link>
       <pubDate>Mon, 07 Oct 2013 01:23:13 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2013/10/the-itanium-flop/</guid>
+      <guid>http://codestrokes.com/2013/10/the-itanium-flop/</guid>
       <description>&lt;p&gt;I wake up in the morning with ideas that please me, and some of those ideas actually please me also later in the day when I&amp;rsquo;ve entered them into my computer. - Donald Knuth&lt;/p&gt;
 
 &lt;p&gt;I&amp;rsquo;m on a bit of a Knuth kick right now, and I&amp;rsquo;ve been procrastinating studying, and homework to find interviews, and papers by the master himself. I currently have a list of microfiche references to check out as soon as I get to the basement of my university&amp;rsquo;s library: Woot, &lt;a href=&#34;http://www.chrisfenton.com/homebrew-cray-1a/&#34;&gt;computational necromancy&lt;/a&gt;! Through this, I came across a quote in an &lt;a href=&#34;http://www.informit.com/articles/article.aspx?p=1193856&#34;&gt;interview&lt;/a&gt;, &amp;ldquo;&amp;hellip;worse than the &amp;ldquo;&lt;a href=&#34;http://en.wikipedia.org/wiki/Itanium&#34;&gt;Itanium&lt;/a&gt;&amp;rdquo; approach that was supposed to be so terrific—until it turned out that the wished-for compilers were basically impossible to write.&amp;rdquo; What? I thought it was simply market forces that drive the x86-64 ahead of Itanium: nope!&lt;/p&gt;
@@ -1029,10 +1029,10 @@ I recently has a problem to extract logs from a product at work. The existing so
     
     <item>
       <title>Linux User&#39;s Group CTF 2013</title>
-      <link>https://codestrokes.com/2013/09/linux-users-group-ctf-2013/</link>
+      <link>http://codestrokes.com/2013/09/linux-users-group-ctf-2013/</link>
       <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2013/09/linux-users-group-ctf-2013/</guid>
+      <guid>http://codestrokes.com/2013/09/linux-users-group-ctf-2013/</guid>
       <description>&lt;p&gt;This past weekend we held another capture the flag event at the Arizona State University&amp;rsquo;s Linux User&amp;rsquo;s Group. It had more of a system admin focus than security cracking exploits, but it was fun an nontheless a diverse learning experience for all those involved. However, almost immediately, I realized the number one rule in CTF, nothing is off limits!
 &amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
 The game was organized into two parts, a game server which collected the the scores and displayed the point totals of all teams in real-time, and the virtual servers (hosted on Amazon EC2) which contained the actual games. Players were encouraged to break into teams, and register themselves on the game server. The game server would assign the team a virtual machine, and the team could log in via SSH to behind hacking. Five minutes into the registration process, one team attempted a SQL injection attack against the game server.&lt;/p&gt;

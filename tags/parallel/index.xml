@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Parallel on Code Strokes</title>
-    <link>https://codestrokes.com/tags/parallel/</link>
+    <link>http://codestrokes.com/tags/parallel/</link>
     <description>Recent content in Parallel on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 23 Oct 2011 17:55:47 +0000</lastBuildDate>
-    <atom:link href="https://codestrokes.com/tags/parallel/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://codestrokes.com/tags/parallel/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Parallel Game-of-Life</title>
-      <link>https://codestrokes.com/2011/10/parallel-game-of-life/</link>
+      <link>http://codestrokes.com/2011/10/parallel-game-of-life/</link>
       <pubDate>Sun, 23 Oct 2011 17:55:47 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2011/10/parallel-game-of-life/</guid>
+      <guid>http://codestrokes.com/2011/10/parallel-game-of-life/</guid>
       <description>
 
 &lt;p&gt;Conway&amp;rsquo;s &lt;a href=&#34;http://www.bitstorm.org/gameoflife/&#34;&gt;Game of Life&lt;/a&gt; is a dramatic illustration of emmergent behavior; that a seemingly complex system, such as cell mitosis can be governed by a set of simple rules. OpenMP is a fantastic set of language extensions which allows one to add dramatic parallelism without complex thread management.  As a demonstration of &lt;a href=&#34;http://openmp.org/wp/&#34;&gt;OpenMP&lt;/a&gt;&amp;rsquo;s simplicity I implemented the Game of Life. The code and all analysis is available on &lt;a href=&#34;https://bitbucket.org/jwright/parallel-game-of-life&#34;&gt;bitbucket.org&lt;/a&gt;.&lt;/p&gt;
@@ -155,10 +155,10 @@
     
     <item>
       <title>Parallelism in D</title>
-      <link>https://codestrokes.com/2011/05/parallelism-in-d-bucket-sort-part-2/</link>
+      <link>http://codestrokes.com/2011/05/parallelism-in-d-bucket-sort-part-2/</link>
       <pubDate>Sun, 29 May 2011 18:02:24 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2011/05/parallelism-in-d-bucket-sort-part-2/</guid>
+      <guid>http://codestrokes.com/2011/05/parallelism-in-d-bucket-sort-part-2/</guid>
       <description>&lt;p&gt;Parallelism, it sounds like a religion, and in some sense it is. Like many facets of software engineering, writing good parallel code is more of an art than a science.  I come from a FPGA background where parallelism is part of the language; part of the culture! The tools are designed to find deadlocks, analyze timing and the language itself is fully aware of parallelism.  The hardware world understands parallelism, yet writing parallel software is still difficult.  D is making some pioneering steps in the right direction for &lt;a href=&#34;http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html&#34;&gt;parallelism&lt;/a&gt;.  I use a parallel implementation of bucket sort to show how D makes writing parallel code, correct.&lt;/p&gt;
 
 &lt;!-- more --&gt;

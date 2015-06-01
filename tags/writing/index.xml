@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Writing on Code Strokes</title>
-    <link>https://codestrokes.com/tags/writing/</link>
+    <link>http://codestrokes.com/tags/writing/</link>
     <description>Recent content in Writing on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Mar 2013 18:25:50 +0000</lastBuildDate>
-    <atom:link href="https://codestrokes.com/tags/writing/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://codestrokes.com/tags/writing/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Latex Walkthrough</title>
-      <link>https://codestrokes.com/2013/03/latex-walkthrough/</link>
+      <link>http://codestrokes.com/2013/03/latex-walkthrough/</link>
       <pubDate>Sun, 24 Mar 2013 18:25:50 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2013/03/latex-walkthrough/</guid>
+      <guid>http://codestrokes.com/2013/03/latex-walkthrough/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://vimeo.com/62553880&#34;&gt;Latex Walkthrough&lt;/a&gt; from &lt;a href=&#34;http://vimeo.com/user14085157&#34;&gt;Jeremy Wright&lt;/a&gt; on &lt;a href=&#34;http://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>

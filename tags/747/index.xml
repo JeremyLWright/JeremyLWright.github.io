@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>747 on Code Strokes</title>
-    <link>https://codestrokes.com/tags/747/</link>
+    <link>http://codestrokes.com/tags/747/</link>
     <description>Recent content in 747 on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 03 May 2014 20:56:49 +0000</lastBuildDate>
-    <atom:link href="https://codestrokes.com/tags/747/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://codestrokes.com/tags/747/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Design for Testability via Security </title>
-      <link>https://codestrokes.com/2014/05/design-for-testability-via-security/</link>
+      <link>http://codestrokes.com/2014/05/design-for-testability-via-security/</link>
       <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
       
-      <guid>https://codestrokes.com/2014/05/design-for-testability-via-security/</guid>
+      <guid>http://codestrokes.com/2014/05/design-for-testability-via-security/</guid>
       <description>
 
 &lt;p&gt;I was discussing bootloader design with a colleague of mine the other day. We were attempting to load new a third-party hardware component. The device has a poor protocol, and a useless verification step. This discussion got me thinking however how the concepts used to build a strong self-enforcing security protocol, also apply to building a testable, and reliable communication protocol. Thus, security helps us build better products not because they are secure, but because they are verifiable.
