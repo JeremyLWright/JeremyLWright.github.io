@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>D on Code Strokes</title>
-    <link>http://localhost:1313/tags/d/</link>
+    <link>https://codestrokes.com/tags/d/</link>
     <description>Recent content in D on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 23 Oct 2011 19:00:21 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/d/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://codestrokes.com/tags/d/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Making C&#43;&#43; like Python: The Anderson Smart Pointer Pattern</title>
-      <link>http://localhost:1313/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</link>
+      <link>https://codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</link>
       <pubDate>Sun, 23 Oct 2011 19:00:21 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</guid>
+      <guid>https://codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</guid>
       <description>&lt;p&gt;Choosing to use C++ brings the additional complexity of memory management.  Dennis Ritchie once stated: The C Programming Language — A language which combines the flexibility of assembly language with the power of assembly language. C++ inherits much of that _flexibility, _however, this &lt;a href=&#34;http://www.infoq.com/presentations/Are-We-There-Yet-Rich-Hickey&#34;&gt;incidental complexity&lt;/a&gt;, can be relegated to a single class, leaving you with the high-level elegance of Python. RAII help with this additional complexity, however without a pattern for guidance implementing RAII consistently can be difficult, defeating the safety it provides.&lt;/p&gt;
 
 &lt;!-- more --&gt;
@@ -71,10 +71,10 @@ Name::Ptr Name::construct()
     
     <item>
       <title>Type-Safe Variable Argument Lists</title>
-      <link>http://localhost:1313/2011/06/type-safe-variable-argument-lists/</link>
+      <link>https://codestrokes.com/2011/06/type-safe-variable-argument-lists/</link>
       <pubDate>Mon, 06 Jun 2011 06:59:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/06/type-safe-variable-argument-lists/</guid>
+      <guid>https://codestrokes.com/2011/06/type-safe-variable-argument-lists/</guid>
       <description>&lt;p&gt;Type-safety is a popular topic. Perceived as a panacea for bad software, the Department of Defense implemented Ada.  The original thought was restriction synonymous with robustness. From this, opponents claim type safe languages place the programmer’s hands in handcuffs, thereby thwarting generic code. Modern languages, such as D, and Java leverage a statically checked type system with a focus on consistency, not restriction.  Modern type systems abet generic code, without sacrificing robustness.  Today, there seems to be a general trend toward strong typing.  Personally, I try to leverage the type system as a tool to ensure correct code.&lt;/p&gt;
 
 &lt;blockquote&gt;D is a powerful  language, that statically checks code correctness via a strong type system, yet still offers flexible constructs.&lt;/blockquote&gt;
@@ -168,10 +168,10 @@ int main(...)
     
     <item>
       <title>Parallelism in D</title>
-      <link>http://localhost:1313/2011/05/parallelism-in-d-bucket-sort-part-2/</link>
+      <link>https://codestrokes.com/2011/05/parallelism-in-d-bucket-sort-part-2/</link>
       <pubDate>Sun, 29 May 2011 18:02:24 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/05/parallelism-in-d-bucket-sort-part-2/</guid>
+      <guid>https://codestrokes.com/2011/05/parallelism-in-d-bucket-sort-part-2/</guid>
       <description>&lt;p&gt;Parallelism, it sounds like a religion, and in some sense it is. Like many facets of software engineering, writing good parallel code is more of an art than a science.  I come from a FPGA background where parallelism is part of the language; part of the culture! The tools are designed to find deadlocks, analyze timing and the language itself is fully aware of parallelism.  The hardware world understands parallelism, yet writing parallel software is still difficult.  D is making some pioneering steps in the right direction for &lt;a href=&#34;http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html&#34;&gt;parallelism&lt;/a&gt;.  I use a parallel implementation of bucket sort to show how D makes writing parallel code, correct.&lt;/p&gt;
 
 &lt;!-- more --&gt;
@@ -252,10 +252,10 @@ end
     
     <item>
       <title>Bucket Sort</title>
-      <link>http://localhost:1313/2011/05/bucket-sort/</link>
+      <link>https://codestrokes.com/2011/05/bucket-sort/</link>
       <pubDate>Tue, 24 May 2011 04:59:59 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/05/bucket-sort/</guid>
+      <guid>https://codestrokes.com/2011/05/bucket-sort/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://bitbucket.org/jwright/bucket-sort/overview&#34;&gt;D Source Code&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Sorting is a very important operation in computer programs. Knuth devotes an entire chapter to sorting and search. Sorting algorithms, like most algorithms, use the &lt;a href=&#34;http://en.wikipedia.org/wiki/Big_Oh_notation&#34;&gt;Big O notation&lt;/a&gt; to compare &lt;a href=&#34;http://en.wikipedia.org/wiki/Computational_complexity_theory&#34;&gt;computational complexity&lt;/a&gt;.  &lt;a href=&#34;http://en.wikipedia.org/wiki/Bucket_sort&#34;&gt;Bucket sort&lt;/a&gt; is one such sorting algorithm.  however bucket sort typically doesn’t actually sort the array.  In the normal case, bucket sort is used to partition the data set into groups, or buckets.  Each bucket is then sorted using a separate algorithm such as quicksort, or insertion sort.&lt;/p&gt;
@@ -298,10 +298,10 @@ immutable uint threads)
     
     <item>
       <title>D for the C&#43;&#43; Programmer</title>
-      <link>http://localhost:1313/2011/05/d-for-the-c-programmer-red-black-tree-part-3/</link>
+      <link>https://codestrokes.com/2011/05/d-for-the-c-programmer-red-black-tree-part-3/</link>
       <pubDate>Wed, 18 May 2011 03:06:36 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/05/d-for-the-c-programmer-red-black-tree-part-3/</guid>
+      <guid>https://codestrokes.com/2011/05/d-for-the-c-programmer-red-black-tree-part-3/</guid>
       <description>
 
 &lt;p&gt;As a comparative study, I am porting a Red-Black Tree from C++ to the &lt;a href=&#34;http://www.digitalmars.com/d/2.0/dmd-linux.html&#34;&gt;D programming language&lt;/a&gt; (&lt;a href=&#34;http://www.codestrokes.com/archives/59&#34;&gt;Part 1&lt;/a&gt;, &lt;a href=&#34;http://www.codestrokes.com/archives/83&#34;&gt;Part 2&lt;/a&gt;). Overall D is an easy, practical transition for the C++ programmer. D provides a number of features for implementing correct code, however it is D’s simplicity that makes it truly enticing as a replacement. While D retains _C Style Syntax, _it is considerably simpler than C++, especially in the presence of exceptions.&lt;/p&gt;
@@ -403,10 +403,10 @@ t = !t; // One&#39;s complement t;
     
     <item>
       <title>Class Invariants</title>
-      <link>http://localhost:1313/2011/05/class-invariants-red-black-tree-part-2/</link>
+      <link>https://codestrokes.com/2011/05/class-invariants-red-black-tree-part-2/</link>
       <pubDate>Fri, 13 May 2011 02:40:48 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/05/class-invariants-red-black-tree-part-2/</guid>
+      <guid>https://codestrokes.com/2011/05/class-invariants-red-black-tree-part-2/</guid>
       <description>&lt;p&gt;This week, I started porting my &lt;a href=&#34;http://www.codestrokes.com/archives/59&#34;&gt;C++ implementation&lt;/a&gt; of the Red-Black tree to D.  I am trying to pay special attention to the features of D, intended to make writing correct code easier. While on that vane,  I was reading an excellent &lt;a href=&#34;http://reprog.wordpress.com/2010/04/25/writing-correct-code-part-1-invariants-binary-search-part-4a/&#34;&gt;article&lt;/a&gt;, discussing invariants, and I was pleased to find such a useful implementation of the &lt;a href=&#34;http://www.digitalmars.com/d/2.0/class.html#Invariant&#34;&gt;class invariant&lt;/a&gt; in the D language.&lt;/p&gt;
 
 &lt;!-- more --&gt;
@@ -464,10 +464,10 @@ t = !t; // One&#39;s complement t;
     
     <item>
       <title>The Red-Black Tree</title>
-      <link>http://localhost:1313/2011/05/the-red-black-tree-part-1/</link>
+      <link>https://codestrokes.com/2011/05/the-red-black-tree-part-1/</link>
       <pubDate>Mon, 09 May 2011 06:59:01 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/05/the-red-black-tree-part-1/</guid>
+      <guid>https://codestrokes.com/2011/05/the-red-black-tree-part-1/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;https://bitbucket.org/jwright/cse310-red-black-tree/overview&#34;&gt;C++ Source Code&lt;/a&gt;

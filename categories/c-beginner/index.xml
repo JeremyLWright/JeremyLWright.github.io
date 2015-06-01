@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C Beginner on Code Strokes</title>
-    <link>http://localhost:1313/categories/c-beginner/</link>
+    <link>https://codestrokes.com/categories/c-beginner/</link>
     <description>Recent content in C Beginner on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 17 Feb 2015 03:46:55 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/c-beginner/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://codestrokes.com/categories/c-beginner/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Introduction to Pointers</title>
-      <link>http://localhost:1313/2015/02/introduction-to-pointers/</link>
+      <link>https://codestrokes.com/2015/02/introduction-to-pointers/</link>
       <pubDate>Tue, 17 Feb 2015 03:46:55 +0000</pubDate>
       
-      <guid>http://localhost:1313/2015/02/introduction-to-pointers/</guid>
+      <guid>https://codestrokes.com/2015/02/introduction-to-pointers/</guid>
       <description>&lt;p&gt;Please see my introduction to pointers at &lt;a href=&#34;https://www.youtube.com/watch?v=mkYBz5Db-Ok&#34;&gt;https://www.youtube.com/watch?v=mkYBz5Db-Ok&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Why do some tutorials use std::cout and others use just cout?</title>
-      <link>http://localhost:1313/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</link>
+      <link>https://codestrokes.com/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</link>
       <pubDate>Fri, 19 Aug 2011 16:55:56 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</guid>
+      <guid>https://codestrokes.com/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</guid>
       <description>&lt;p&gt;&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;Many tutorials start &amp;ldquo;Hello World&amp;rdquo; like so:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;

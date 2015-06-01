@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Unix on Code Strokes</title>
-    <link>http://localhost:1313/tags/unix/</link>
+    <link>https://codestrokes.com/tags/unix/</link>
     <description>Recent content in Unix on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 17 Feb 2013 19:53:11 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/unix/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://codestrokes.com/tags/unix/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Text Processing for Programmers</title>
-      <link>http://localhost:1313/2013/02/text-processing-for-programmers/</link>
+      <link>https://codestrokes.com/2013/02/text-processing-for-programmers/</link>
       <pubDate>Sun, 17 Feb 2013 19:53:11 +0000</pubDate>
       
-      <guid>http://localhost:1313/2013/02/text-processing-for-programmers/</guid>
+      <guid>https://codestrokes.com/2013/02/text-processing-for-programmers/</guid>
       <description>&lt;p&gt;I was reading a &lt;a href=&#34;https://sites.google.com/site/steveyegge2/five-essential-phone-screen-questions&#34;&gt;blog &lt;/a&gt;about coding interviews, and one comment made near the bottom struck me, &amp;ldquo;&amp;hellip;&amp;ldquo;Um&amp;hellip; grep?&amp;rdquo; then they&amp;rsquo;re probably OK&amp;hellip;&amp;rdquo;  As I read that comment, I realized I&amp;rsquo;d never answer that way, and I agreed with the author that was a problem. That began my dabble in grep, awk and sed, and these tools will change your workflow and even how you think about profiling code.  Grep has even become a verb in my daily life, &amp;ldquo;Is this &lt;em&gt;greppable?&lt;/em&gt;&amp;rdquo; is my mantra.  Flash forward a few months and once again I had a task for these powerful text processing tools, convert a mysql database to sqlite. Sounds easy, but with file sizes of &amp;gt;700MB, you have to be efficient.&lt;/p&gt;
 
 &lt;!-- more --&gt;

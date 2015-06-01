@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tutorial on Code Strokes</title>
-    <link>http://localhost:1313/tags/tutorial/</link>
+    <link>https://codestrokes.com/tags/tutorial/</link>
     <description>Recent content in Tutorial on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 19 Aug 2011 16:55:56 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://codestrokes.com/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Why do some tutorials use std::cout and others use just cout?</title>
-      <link>http://localhost:1313/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</link>
+      <link>https://codestrokes.com/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</link>
       <pubDate>Fri, 19 Aug 2011 16:55:56 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</guid>
+      <guid>https://codestrokes.com/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</guid>
       <description>&lt;p&gt;&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;Many tutorials start &amp;ldquo;Hello World&amp;rdquo; like so:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Structure on Code Strokes</title>
-    <link>http://localhost:1313/tags/data-structure/</link>
+    <link>https://codestrokes.com/tags/data-structure/</link>
     <description>Recent content in Data Structure on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 09 May 2011 06:59:01 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/data-structure/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://codestrokes.com/tags/data-structure/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>The Red-Black Tree</title>
-      <link>http://localhost:1313/2011/05/the-red-black-tree-part-1/</link>
+      <link>https://codestrokes.com/2011/05/the-red-black-tree-part-1/</link>
       <pubDate>Mon, 09 May 2011 06:59:01 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/05/the-red-black-tree-part-1/</guid>
+      <guid>https://codestrokes.com/2011/05/the-red-black-tree-part-1/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;https://bitbucket.org/jwright/cse310-red-black-tree/overview&#34;&gt;C++ Source Code&lt;/a&gt;

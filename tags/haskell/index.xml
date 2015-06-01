@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Haskell on Code Strokes</title>
-    <link>http://localhost:1313/tags/haskell/</link>
+    <link>https://codestrokes.com/tags/haskell/</link>
     <description>Recent content in Haskell on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 20 Oct 2013 23:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/haskell/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://codestrokes.com/tags/haskell/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Idiomatic Learning</title>
-      <link>http://localhost:1313/2013/10/idiomatic-learning/</link>
+      <link>https://codestrokes.com/2013/10/idiomatic-learning/</link>
       <pubDate>Sun, 20 Oct 2013 23:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/2013/10/idiomatic-learning/</guid>
+      <guid>https://codestrokes.com/2013/10/idiomatic-learning/</guid>
       <description>&lt;p&gt;When learning a new language I find it helpful to study a languages idioms. Idioms exist in a language for a specific reason. Sometimes that reason is to further the principles of the language, other times it’s to mask, or otherwise deal with some underlying design decision of the language. Currently, I am studying Haskell, and currently I am struggle to clarify the idioms of the language. The syntax is still very new and awkward, currently with a total authoring in Haskell of 713 lines.&lt;/p&gt;
 
 &lt;!-- more --&gt;
@@ -30,20 +30,20 @@
     
     <item>
       <title>Interesting article about Monads</title>
-      <link>http://localhost:1313/2013/08/interesting-article-about-monads/</link>
+      <link>https://codestrokes.com/2013/08/interesting-article-about-monads/</link>
       <pubDate>Fri, 02 Aug 2013 22:49:01 +0000</pubDate>
       
-      <guid>http://localhost:1313/2013/08/interesting-article-about-monads/</guid>
+      <guid>https://codestrokes.com/2013/08/interesting-article-about-monads/</guid>
       <description>&lt;p&gt;I found an interesting blog today with some clear and interesting discussion on Haskell, and Monads: &lt;a href=&#34;http://intoverflow.wordpress.com/2010/07/20/i-come-from-java-and-want-to-know-what-monads-are-in-haskell/&#34;&gt;http://intoverflow.wordpress.com/2010/07/20/i-come-from-java-and-want-to-know-what-monads-are-in-haskell/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>My Haskell Environment for Project Euler</title>
-      <link>http://localhost:1313/2013/08/my-haskell-environment-for-project-euler/</link>
+      <link>https://codestrokes.com/2013/08/my-haskell-environment-for-project-euler/</link>
       <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
       
-      <guid>http://localhost:1313/2013/08/my-haskell-environment-for-project-euler/</guid>
+      <guid>https://codestrokes.com/2013/08/my-haskell-environment-for-project-euler/</guid>
       <description>&lt;p&gt;For the last several months I&amp;rsquo;ve been working on Project Euler in Haskell. My intent has been to learn Haskell, and grasp the functional concepts. While working on several problems it&amp;rsquo;s important to have a workflow that allows for a fast cycle time. I spent some time with Cabal, attempting to build a scheme that works efficiently, but was unable to do so. Instead I setup a mix of cabal-dev, and make to build a fast workflow that allow for compiling, testing, common code libraries, and benchmarks. This post is a walk though of that workflow. &amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
 My most important requirements is cycle time. I a minimum edit-compile-test/execute cycle. This helps me to clearly and quickly work on problems. Especially in compiled languages with libraries, and common code, it is important that a single code change is a single file recompiles a minimum of effort (&lt;a href=&#34;http://www.joelonsoftware.com/articles/fog0000000043.html&#34;&gt;Joel Spoksky&lt;/a&gt;). Therefore my Makefile must describe the dependencies, which themselves are dynamic as the code base grows and changes. Cabal supposedly does this, but Project Euler is uniquely outside the framework offered by cabal. In Project Euler, each solution is a single executable. The project itself is many executables. Maintaining a cabal files for that many executables does not meet my desire for dynamically managed dependencies. Instead I favor make; simple &lt;em&gt;make&lt;/em&gt;. Therefore the requirements of my project euler environemnt are:&lt;/p&gt;
 
@@ -260,10 +260,10 @@ depend: $(SRCS) $(DEP_LIBS)
     
     <item>
       <title>Haskell a Few Problems Later</title>
-      <link>http://localhost:1313/2013/05/haskell-a-few-problems-later/</link>
+      <link>https://codestrokes.com/2013/05/haskell-a-few-problems-later/</link>
       <pubDate>Tue, 14 May 2013 04:28:58 +0000</pubDate>
       
-      <guid>http://localhost:1313/2013/05/haskell-a-few-problems-later/</guid>
+      <guid>https://codestrokes.com/2013/05/haskell-a-few-problems-later/</guid>
       <description>&lt;p&gt;Well, the Haskell honeymoon is over for me. I spent some time working on a few Project Euler problems this weekend, and my initial assumptions formed from toy problems were dashed. While I was able to solve 3 problems fairly quickly, I faced a number of non trivial bugs, and memory issues. On the other side of my naïve passion, I’m finding a functional thought process, and it’s exciting.&lt;/p&gt;
 
 &lt;!-- more --&gt;
@@ -283,10 +283,10 @@ depend: $(SRCS) $(DEP_LIBS)
     
     <item>
       <title>Haskell Day 1 (Again)</title>
-      <link>http://localhost:1313/2013/04/haskell-day-1-again/</link>
+      <link>https://codestrokes.com/2013/04/haskell-day-1-again/</link>
       <pubDate>Mon, 22 Apr 2013 05:29:11 +0000</pubDate>
       
-      <guid>http://localhost:1313/2013/04/haskell-day-1-again/</guid>
+      <guid>https://codestrokes.com/2013/04/haskell-day-1-again/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve restarted my haskell programming education. Here is my implementation of &lt;a href=&#34;http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/&#34;&gt;FizzBuzz&lt;/a&gt;
 &amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;&lt;/p&gt;
 
@@ -304,10 +304,10 @@ main = print (map fizzbuzz [1..100])
     
     <item>
       <title>Know Its Name</title>
-      <link>http://localhost:1313/2012/07/know-its-name/</link>
+      <link>https://codestrokes.com/2012/07/know-its-name/</link>
       <pubDate>Sat, 21 Jul 2012 19:24:19 +0000</pubDate>
       
-      <guid>http://localhost:1313/2012/07/know-its-name/</guid>
+      <guid>https://codestrokes.com/2012/07/know-its-name/</guid>
       <description>&lt;p&gt;Programming is at it&amp;rsquo;s heart an struggle in communication. Source code is the communication medium with the processor; Comment the medium to other coders, and UML the medium to higher-level communication. Computer Scientists have the stereotype of being poor communicators, but in our own mediums, we&amp;rsquo;re phenomenal. This fact is no where more apparent, than trying to explain source code to someone else. How does one read source code? I&amp;rsquo;m currently, learning Haskell, and my first goal is to understand this question. How can I read (out loud):&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;[ x * x | x &amp;lt;- nums, x &amp;lt; 7]

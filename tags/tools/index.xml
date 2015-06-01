@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tools on Code Strokes</title>
-    <link>http://localhost:1313/tags/tools/</link>
+    <link>https://codestrokes.com/tags/tools/</link>
     <description>Recent content in Tools on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Mar 2013 18:25:50 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://codestrokes.com/tags/tools/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Latex Walkthrough</title>
-      <link>http://localhost:1313/2013/03/latex-walkthrough/</link>
+      <link>https://codestrokes.com/2013/03/latex-walkthrough/</link>
       <pubDate>Sun, 24 Mar 2013 18:25:50 +0000</pubDate>
       
-      <guid>http://localhost:1313/2013/03/latex-walkthrough/</guid>
+      <guid>https://codestrokes.com/2013/03/latex-walkthrough/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://vimeo.com/62553880&#34;&gt;Latex Walkthrough&lt;/a&gt; from &lt;a href=&#34;http://vimeo.com/user14085157&#34;&gt;Jeremy Wright&lt;/a&gt; on &lt;a href=&#34;http://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Good Tools, Excellent Results</title>
-      <link>http://localhost:1313/2011/08/good-tools-excellent-results/</link>
+      <link>https://codestrokes.com/2011/08/good-tools-excellent-results/</link>
       <pubDate>Sun, 21 Aug 2011 07:23:25 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/08/good-tools-excellent-results/</guid>
+      <guid>https://codestrokes.com/2011/08/good-tools-excellent-results/</guid>
       <description>&lt;p&gt;This semester for the C++ practicum we are building a clone of Zork.  Like many games of the genre, Zork is driven by a database.  Our implementation is a JSON database.  I chose JSON for a few reasons, but most importantly because its a human readable format that&amp;rsquo;s simple to understand.  I started by editing JSON files by hand in a text editor, however I found very quickly that investigating in a quick tool greatly improved my quality.&lt;/p&gt;
 
 &lt;p&gt;&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;I chose JSON as a format. Next, I needed a schema.  Currently the schema design is as follows:&lt;/p&gt;

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Left Field on Code Strokes</title>
-    <link>http://localhost:1313/categories/left-field/</link>
+    <link>https://codestrokes.com/categories/left-field/</link>
     <description>Recent content in Left Field on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 22 Sep 2011 22:40:42 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/left-field/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://codestrokes.com/categories/left-field/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>The $1,000,000 Compile</title>
-      <link>http://localhost:1313/2011/09/the-1000000-compile/</link>
+      <link>https://codestrokes.com/2011/09/the-1000000-compile/</link>
       <pubDate>Thu, 22 Sep 2011 22:40:42 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/09/the-1000000-compile/</guid>
+      <guid>https://codestrokes.com/2011/09/the-1000000-compile/</guid>
       <description>&lt;p&gt;Hitting the compile and run button costs $1,000,000. How would such a cost affect your test strategy? As extreme as that sounds, its a harsh reality for ASIC designers. The start-up costs for an ASIC design are extreme, as a result ASIC verification is very important. Especially since you can&amp;rsquo;t just update a buggy ASIC.  In software engineering, we design increasingly complex systems requiring more and more elegant test strategies.  I propose ASIC verification is in a more mature state, and software engineers could learn a lot from the translation of these techniques.&lt;/p&gt;
 
 &lt;p&gt;&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;SystemVerilog, the premier language in the ASIC verification space has an incredible feature I feel has a place in software verification: Random Constraints. Constrains allow the compiler to generate a set of test vectors that match some simple set of rules.  The verification bench may then use these test vectors to test the unit under test.  Conceptually, the random bench will test the device in ways the developer never thought of, either with a new test case, or a series of test cases totally unimaginable by the engineer. Find the bug before you&lt;a href=&#34;http://en.wikipedia.org/wiki/Tape-out&#34;&gt; tape-out &lt;/a&gt;=&amp;gt; keep your job.&lt;/p&gt;
@@ -28,10 +28,10 @@
     
     <item>
       <title>We Need a -1 Button</title>
-      <link>http://localhost:1313/2011/06/we-need-a-1-button/</link>
+      <link>https://codestrokes.com/2011/06/we-need-a-1-button/</link>
       <pubDate>Wed, 22 Jun 2011 19:58:29 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/06/we-need-a-1-button/</guid>
+      <guid>https://codestrokes.com/2011/06/we-need-a-1-button/</guid>
       <description>&lt;p&gt;I really like all the little social media button on blogs. I hit the +1 and I feel like I contribute in some way.  When I post here to my personal blog, wordpress automatically posts to my Facebook. Its entirely unoriginal, but I like it. However I think we need a -1 button for some articles.  I read this: &lt;a href=&#34;http://mashable.com/2011/06/22/arizona-social-media-day/&#34;&gt;http://mashable.com/2011/06/22/arizona-social-media-day/&lt;/a&gt; and thought to myself, &amp;ldquo;Wow, that&amp;rsquo;s dumb. I am embarrassed for my state.&amp;ldquo;  I wanted to hit a -1 button. I want to publicly declare my negative opinion.  Oh well, such a widget is probably outside of Google&amp;rsquo;s &amp;ldquo;Do no Evil&amp;rdquo; mantra.  It&amp;rsquo;d be cool anyway.&lt;/p&gt;
 </description>
     </item>
