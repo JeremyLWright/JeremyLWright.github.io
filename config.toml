@@ -1,4 +1,4 @@
-baseurl = "https://codestrokes.com/"
+baseurl = "http://codestrokes.com/"
 languageCode = "en-us"
 title = "Code Strokes"
 pygmentsuseclasses = true
