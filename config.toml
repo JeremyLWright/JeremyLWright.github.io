@@ -1,6 +1,20 @@
 baseurl = "http://codestrokes.com/"
 languageCode = "en-us"
 title = "Code Strokes"
+disqusShortname = "codestrokes2"
 pygmentsuseclasses = true
 [permalinks]
     posts = "/:year/:month/:slug/"
+
+[params]
+	sidebartitle="CodeStrokes"
+	sidebartagline="Software Artistry"
+
+[[menu.main]]
+	name = "Blog"
+	url = "/posts"
+
+[[menu.social]]
+    pre = "<i class='fa fa-twitter'></i>"
+    url = "https://www.twitter.com/jeremy_l_wright"
+    identifier = "twitter"
