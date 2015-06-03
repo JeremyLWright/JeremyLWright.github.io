@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Compilation on Code Strokes</title>
-    <link>http://localhost:1313/categories/compilation/</link>
+    <link>http://codestrokes.com/categories/compilation/</link>
     <description>Recent content in Compilation on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 14 Jul 2013 23:00:11 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/compilation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://codestrokes.com/categories/compilation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Is Monolithic Code Faster?</title>
-      <link>http://localhost:1313/2013/07/is-monolithic-code-faster/</link>
+      <link>http://codestrokes.com/2013/07/is-monolithic-code-faster/</link>
       <pubDate>Sun, 14 Jul 2013 23:00:11 +0000</pubDate>
       
-      <guid>http://localhost:1313/2013/07/is-monolithic-code-faster/</guid>
+      <guid>http://codestrokes.com/2013/07/is-monolithic-code-faster/</guid>
       <description>
 
 &lt;p&gt;As a software engineer I have a vested interest in disproving this statement. Bjarne Stroustroup says C++ is designed to create efficient abstractions. A software engineer’s  job is to create simple &lt;a href=&#34;http://www.codestrokes.com/2012/09/abstraction-in-plain-english/&#34;&gt;abstractions &lt;/a&gt;to complex systems. State machines form a large part of many systems. The other day, a co-worker came to me, and asked, “Is it better to make straight line code for each case statement, even if it repeats, or is it better to abstraction into functions and make the code ‘cleaner’.”  Is “cleaner” code faster?
@@ -143,10 +143,10 @@ Row &amp;lt; EatSandwich       , none  , RemoveBread       , ResetTick, user_is_
     
     <item>
       <title>Building an Interpreter</title>
-      <link>http://localhost:1313/2012/05/building-an-interpreter/</link>
+      <link>http://codestrokes.com/2012/05/building-an-interpreter/</link>
       <pubDate>Mon, 28 May 2012 17:03:55 +0000</pubDate>
       
-      <guid>http://localhost:1313/2012/05/building-an-interpreter/</guid>
+      <guid>http://codestrokes.com/2012/05/building-an-interpreter/</guid>
       <description>
 
 &lt;p&gt;When I started programming, I thought that compilers where these magic behemoths; Oracles which consumed your source code, and prophesied  the resulting program.  I thought that the compiler was an integral part of the &amp;ldquo;system&amp;rdquo;. I was excited to realize that the compiler is simply another program. A program you can write yourself. You can write a compiler, for your very own language.  Go ahead, make up a language, I&amp;rsquo;ll wait&amp;hellip;&lt;/p&gt;

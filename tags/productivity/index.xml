@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Productivity on Code Strokes</title>
-    <link>http://localhost:1313/tags/productivity/</link>
+    <link>http://codestrokes.com/tags/productivity/</link>
     <description>Recent content in Productivity on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 22 Jan 2012 17:53:43 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://codestrokes.com/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Abusing RAM</title>
-      <link>http://localhost:1313/2012/01/abusing-ram/</link>
+      <link>http://codestrokes.com/2012/01/abusing-ram/</link>
       <pubDate>Sun, 22 Jan 2012 17:53:43 +0000</pubDate>
       
-      <guid>http://localhost:1313/2012/01/abusing-ram/</guid>
+      <guid>http://codestrokes.com/2012/01/abusing-ram/</guid>
       <description>
 
 &lt;p&gt;My system has 16GB of RAM, but since I run Linux I rarely use more than about 3GB.  So how do I justify such a extreme amounts of memory? Ramdisks.&lt;/p&gt;
@@ -76,10 +76,10 @@ fi
     
     <item>
       <title>Good Tools, Excellent Results</title>
-      <link>http://localhost:1313/2011/08/good-tools-excellent-results/</link>
+      <link>http://codestrokes.com/2011/08/good-tools-excellent-results/</link>
       <pubDate>Sun, 21 Aug 2011 07:23:25 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/08/good-tools-excellent-results/</guid>
+      <guid>http://codestrokes.com/2011/08/good-tools-excellent-results/</guid>
       <description>&lt;p&gt;This semester for the C++ practicum we are building a clone of Zork.  Like many games of the genre, Zork is driven by a database.  Our implementation is a JSON database.  I chose JSON for a few reasons, but most importantly because its a human readable format that&amp;rsquo;s simple to understand.  I started by editing JSON files by hand in a text editor, however I found very quickly that investigating in a quick tool greatly improved my quality.&lt;/p&gt;
 
 &lt;p&gt;&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;I chose JSON as a format. Next, I needed a schema.  Currently the schema design is as follows:&lt;/p&gt;

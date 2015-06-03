@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Writing on Code Strokes</title>
-    <link>http://localhost:1313/categories/writing/</link>
+    <link>http://codestrokes.com/categories/writing/</link>
     <description>Recent content in Writing on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 28 Aug 2013 20:16:38 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/writing/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://codestrokes.com/categories/writing/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Artifical Intelligence Impact on Medicine</title>
-      <link>http://localhost:1313/2013/08/artifical-intelligence-impact-on-medicine/</link>
+      <link>http://codestrokes.com/2013/08/artifical-intelligence-impact-on-medicine/</link>
       <pubDate>Wed, 28 Aug 2013 20:16:38 +0000</pubDate>
       
-      <guid>http://localhost:1313/2013/08/artifical-intelligence-impact-on-medicine/</guid>
+      <guid>http://codestrokes.com/2013/08/artifical-intelligence-impact-on-medicine/</guid>
       <description>
 
 &lt;p&gt;Dr. Andrew Weil of the Arizona Center for Integrative Medicine states, “If we can make the correct diagnosis, the healing can begin. If we can’t, both our personal health and our economy are doomed. [1]” Accurate, traceable, and informed diagnosis are paramount to the health of patients. Medicine, within the United States, is an enormous $2.5 Trillion opportunity and with the proliferation of research over many decades new medical findings are being published than could ever be grokked, unassisted, by a doctor [2]. Current advances in data mining have moved to alleviate the shear volume of information available to doctors. Medical data mining offers doctors the tools to distinguish anomalies from trending epidemics; the tools to make evidence based decisions, ultimately leading to more personalized medicine [2].
@@ -39,10 +39,10 @@ Predictive Analysis is a branch of data-mining to make predictions about some fu
     
     <item>
       <title>Latex Walkthrough</title>
-      <link>http://localhost:1313/2013/03/latex-walkthrough/</link>
+      <link>http://codestrokes.com/2013/03/latex-walkthrough/</link>
       <pubDate>Sun, 24 Mar 2013 18:25:50 +0000</pubDate>
       
-      <guid>http://localhost:1313/2013/03/latex-walkthrough/</guid>
+      <guid>http://codestrokes.com/2013/03/latex-walkthrough/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://vimeo.com/62553880&#34;&gt;Latex Walkthrough&lt;/a&gt; from &lt;a href=&#34;http://vimeo.com/user14085157&#34;&gt;Jeremy Wright&lt;/a&gt; on &lt;a href=&#34;http://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
