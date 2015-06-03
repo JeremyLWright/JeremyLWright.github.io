@@ -6,6 +6,7 @@ layout: post
 slug: class-invariants-red-black-tree-part-2
 title: Class Invariants
 wordpress_id: 83
+series: "the red black Tree"
 categories:
 - Algorithm
 tags:

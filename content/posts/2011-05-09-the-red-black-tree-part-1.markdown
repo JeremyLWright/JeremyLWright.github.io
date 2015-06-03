@@ -6,6 +6,7 @@ layout: post
 slug: the-red-black-tree-part-1
 title: The Red-Black Tree
 wordpress_id: 59
+series: "the red black Tree"
 categories:
 - Algorithm
 tags:

@@ -11,9 +11,20 @@ pygmentsuseclasses = true
 	sidebartagline="Software Artistry"
     highlightStyle = "docco"
 
+[taxonomies]
+	tag = "tags"
+	category = "categories"
+	series = "series"
+
+
+
 [[menu.main]]
 	name = "Blog"
 	url = "/posts"
+
+[[menu.main]]
+	name = "Series"
+	url = "/series"
 
 [[menu.footer]]
     name = "Blog"
