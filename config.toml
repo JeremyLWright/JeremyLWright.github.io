@@ -9,14 +9,13 @@ pygmentsuseclasses = true
 [params]
 	sidebartitle="CodeStrokes"
 	sidebartagline="Software Artistry"
+    GoogleAnalytics="UA-23129291-1"
     highlightStyle = "docco"
 
 [taxonomies]
 	tag = "tags"
 	category = "categories"
 	series = "series"
-
-
 
 [[menu.main]]
 	name = "Blog"
@@ -26,11 +25,29 @@ pygmentsuseclasses = true
 	name = "Series"
 	url = "/series"
 
+[[menu.main]]
+	name = "About"
+	url = "/about"
+
 [[menu.footer]]
     name = "Blog"
     url = "/posts"
+	
+[[menu.footer]]
+    name = "Series"
+	url = "/series"
+
+[[menu.social]]
+    pre = "<i class='fa fa-github'></i>"
+    url = "https://github.com/JeremyLWright"
+    identifier = "github"
 
 [[menu.social]]
     pre = "<i class='fa fa-twitter'></i>"
     url = "https://www.twitter.com/jeremy_l_wright"
     identifier = "twitter"
+
+[[menu.social]]
+    pre = "<i class='fa fa-linkedin'></i>"
+    url = "https://www.linkedin.com/pub/jeremy-wright/5b/8/844"
+    identifier = "linkedin"

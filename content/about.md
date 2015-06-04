@@ -1,23 +1,18 @@
 ---
-title: Jeremy L. Wright
+title: About Me
 author: Jeremy
-comments: true
-<!-- date: 2015-05-30 16:09:11+00:00-->
-layout: post
+nocomment: true
+date: 2015-06-03 16:09:11+00:00
 slug: about
 ---
 
-<div class="col-lg-12 text-center">
-    <h3>Software Engineer interested in clouds, data, and type systems.</h3>
-
-<a href="http://www.ratemyprofessors.com/ShowRatings.jsp?tid=1764457">ASU</a> &mdash; <a href="https://www.linkedin.com/pub/jeremy-wright/5b/8/844">LinkedIn</a> &mdash; <a href="/posts/">Blog</a> &mdash; <a href="https://twitter.com/jeremy_l_wright">Twitter</a> &mdash; <a href="https://github.com/JeremyLWright">GitHub</a></div>
+Software Engineer interested in clouds, data, and type systems.
 
 I love software, and the impact we make on the individuals in our world. My
 perspective on quality is ever evolving and this blog is intended as
 breadcrumbs describing that change.
 
-If you would like to know more about my opinions try some of my articles, I’d
-love to hear your comments and discussions.
+If you would like to know more about my opinions try some of my articles, I'd love to hear your comments and discussions.
 
 Talks
 -----
