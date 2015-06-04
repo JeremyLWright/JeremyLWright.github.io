@@ -6,8 +6,57 @@
     <description>Recent content on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Feb 2015 03:46:55 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jun 2015 16:09:11 +0000</lastBuildDate>
     <atom:link href="http://codestrokes.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>About Me</title>
+      <link>http://codestrokes.com/about/</link>
+      <pubDate>Wed, 03 Jun 2015 16:09:11 +0000</pubDate>
+      
+      <guid>http://codestrokes.com/about/</guid>
+      <description>
+
+&lt;p&gt;Software Engineer interested in clouds, data, and type systems.&lt;/p&gt;
+
+&lt;p&gt;I love software, and the impact we make on the individuals in our world. My
+perspective on quality is ever evolving and this blog is intended as
+breadcrumbs describing that change.&lt;/p&gt;
+
+&lt;p&gt;If you would like to know more about my opinions try some of my articles, I&amp;rsquo;d love to hear your comments and discussions.&lt;/p&gt;
+
+&lt;h2 id=&#34;talks:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Talks&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://sodaasu.com/2012/03/30/video-and-source-code-from-embedded-scripting-for-games-talk/&#34;&gt;Hosted Script for Games&lt;/a&gt; (&lt;a href=&#34;https://vimeo.com/39505796&#34;&gt;Link2&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;code:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Code&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/hillclimbing-decryptor&#34;&gt;Hill Cracker - A hill climbing system for cracking monoalphabetic
+ciphers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/CloudAssure&#34;&gt;Cloud Assure - A cloud based POMDP data leakage system&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/thesis&#34;&gt;Whispers - A cloud based risk assessment&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/WebDocumentSystem&#34;&gt;WebDoc - Multi-user document sharing system&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/cse548-RoboTractor&#34;&gt;RoboTractor - a Machine automatic system over XMPP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;papers:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Papers&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://codestrokes.com/publications/WRIGHT_JEREMY_1000738685.pdf&#34;&gt;Master&amp;rsquo;s Thesis&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;my-free-time:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;My Free Time&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.meetup.com/Young-Musicians-in-Phoenix-20s-30s/&#34;&gt;Guitar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/dotfiles&#34;&gt;dotfiles&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;http://projecteuler.net/profile/jwright85.png&#34; alt=&#34;Project Euler&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Introduction to Pointers</title>
@@ -1024,23 +1073,6 @@ I recently has a problem to extract logs from a product at work. The existing so
 &lt;p&gt;&lt;a href=&#34;https://www.usenix.org/legacy/event/usenix05/tech/general/gray/gray.pdf&#34;&gt;This&lt;/a&gt; paper discusses some of the advanced features of the Itanium platform as well as Intel&amp;rsquo;s intention for those features. Essentially, the Itanium platform is about empowering software developers. The CPU even provides a &amp;ldquo;software TLB&amp;rdquo;. In a typical software application performance is dependent on the CPU&amp;rsquo;s ability to pipeline, and reorder instructions. This is typically done in hardware. While this approach has proven workable, Intel notes the limitations of &amp;ldquo;speculation&amp;rdquo; by the hardware. The thought then arises, why not turn the advanced speculation functions over to the compiler writer. Itanium is born. Gray discusses how these functions while advanced leaves a huge responsibility on the already loaded optimized running in the compiler. The paper, is a great read, and as Knuth alludes, a similar situation is happening with multi-core today.&lt;/p&gt;
 
 &lt;p&gt;Hardware designers have hit physical limits with clock speeds, just as they hit speculation limits almost a decade before. The hardware engineers are pushing the onus of performance to software once again. Are we ready to carry the torch this time?&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Linux User&#39;s Group CTF 2013</title>
-      <link>http://codestrokes.com/2013/09/linux-users-group-ctf-2013/</link>
-      <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
-      
-      <guid>http://codestrokes.com/2013/09/linux-users-group-ctf-2013/</guid>
-      <description>&lt;p&gt;This past weekend we held another capture the flag event at the Arizona State University&amp;rsquo;s Linux User&amp;rsquo;s Group. It had more of a system admin focus than security cracking exploits, but it was fun an nontheless a diverse learning experience for all those involved. However, almost immediately, I realized the number one rule in CTF, nothing is off limits!
-&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
-The game was organized into two parts, a game server which collected the the scores and displayed the point totals of all teams in real-time, and the virtual servers (hosted on Amazon EC2) which contained the actual games. Players were encouraged to break into teams, and register themselves on the game server. The game server would assign the team a virtual machine, and the team could log in via SSH to behind hacking. Five minutes into the registration process, one team attempted a SQL injection attack against the game server.&lt;/p&gt;
-
-&lt;p&gt;[caption id=&amp;ldquo;attachment_1189&amp;rdquo; align=&amp;ldquo;aligncenter&amp;rdquo; width=&amp;ldquo;700&amp;rdquo;]&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2013/09/Final-Score.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2013/09/Final-Score-1024x429.png&#34; alt=&#34;Notice the SQL Injection attempt&#34; /&gt;
-&lt;/a&gt; Notice the SQL Injection attempt[/caption]&lt;/p&gt;
-
-&lt;p&gt;I wrote the game server as a django webapp, to collect points, and serve as a dashboard for the players. We logged in at the front of the room and displayed the graph on the front projector. It was a very motivating aspect of the game, however I never planned on it being part of the game itself.  First lesson learned in capture the flag, nothing is off limits. Luckily, django does the right thing, and sanitizes form data automatically. The server was unscathed, the failed injection attempt was displayed for all the teams to see. I&amp;rsquo;m currently compiling additional aspects of what worked and what didn&amp;rsquo;t so check back soon. The CTF was a fantastic event this year, and really motivated newbies, and elites a like.&lt;/p&gt;
 </description>
     </item>
     

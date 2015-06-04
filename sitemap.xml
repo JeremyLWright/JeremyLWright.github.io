@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://codestrokes.com/</loc>
-    <lastmod>2015-02-17T03:46:55+00:00</lastmod>
+    <lastmod>2015-06-03T16:09:11+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://codestrokes.com/about/</loc>
+    <lastmod>2015-06-03T16:09:11+00:00</lastmod>
   </url>
   
   <url>
@@ -340,18 +345,6 @@
   <url>
     <loc>http://codestrokes.com/2011/02/hello-world/</loc>
     <lastmod>2011-02-11T02:37:45+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://codestrokes.com/contact/</loc>
-  </url>
-  
-  <url>
-    <loc>http://codestrokes.com/about/</loc>
-  </url>
-  
-  <url>
-    <loc>http://codestrokes.com/publications/</loc>
   </url>
   
 </urlset>
