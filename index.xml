@@ -6,8 +6,144 @@
     <description>Recent content on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 03 Jun 2015 16:09:11 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jun 2015 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://codestrokes.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Recasting how I blog</title>
+      <link>http://codestrokes.com/2015/06/converting-to-static-blog/</link>
+      <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://codestrokes.com/2015/06/converting-to-static-blog/</guid>
+      <description>
+
+&lt;p&gt;I wrote my first article for codestrokes in February 2011 - right as I was
+accepted to graduate school. My goal was to improve my writing in preparation
+for writing a thesis. While through grad school I started with more
+traditional writing tool. I started to learn to write, and I found my writing
+style: Simplicity.  I started writing with a big fancy word processor.
+I blogged with a massive database backed blogging engine. By the time
+I finished my thesis, I was writing in vim. I used a makefile to check
+spelling and check for simple grammatical rules. The process was much simpler
+to manage. This motivated me to convert my blog to a static site. This post
+describes my process on simplifying my writing process.&lt;/p&gt;
+
+&lt;h1 id=&#34;my-toolchain:f190086b9bc9fe46a11c16626346622b&#34;&gt;My toolchain&lt;/h1&gt;
+
+&lt;p&gt;The primary goal was leverage the writing tool chain I honed during my thesis
+for maintaining my blog. I didn&amp;rsquo;t want to complexity of a database backed
+blogging site. I wanted to drop my hosting service. I wanted to write in
+a markup language. I wrote my thesis in Latex, and I love the separation of
+presentation from content. This site you are reading today is composed of:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Markdown written in Vim.&lt;/li&gt;
+&lt;li&gt;Changes tracked in git.&lt;/li&gt;
+&lt;li&gt;Markdown converted HTML via Hugo.&lt;/li&gt;
+&lt;li&gt;Static pages hosted by Github Pages.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;choosing-a-static-site-generator:f190086b9bc9fe46a11c16626346622b&#34;&gt;Choosing a static site generator&lt;/h1&gt;
+
+&lt;p&gt;I actually didn&amp;rsquo;t spend too much time working on this, since someone already
+did a great deal of the work at &lt;a href=&#34;https://www.staticgen.com/&#34;&gt;https://www.staticgen.com/&lt;/a&gt;.  If you are
+planning to use Github to host your blog, Jekyll will be the easiest to use.
+The Github pages even include documentation on how to use Jekyll with Github
+pages. I however have an aversion to Ruby (though an order of magnitude
+weaker than my aversion to Java).  Near the top was &lt;a href=&#34;gohugo.io&#34;&gt;Hugo&lt;/a&gt;.
+A &lt;del&gt;colleague&lt;/del&gt; friend of mine is quite a convincing evangelist of Go,
+and I decided to give it a try. &amp;ndash; Boy, was I impressed &amp;ndash; The quality of the
+documentation if fantastic. However my favorite feature of Hugo, it is
+a single download. One executable. One. No dependencies&amp;hellip; Its hard to express
+how incredibly relieving this is.&lt;/p&gt;
+
+&lt;p&gt;As an illustration, let me share with you a little lie. I didn&amp;rsquo;t directly just
+to staticgen.com, and find Hugo. I have an affinity for Haskell, and tried to
+use a static site generator called &lt;a href=&#34;https://www.staticgen.com/hakyll&#34;&gt;Hakyll&lt;/a&gt;.&lt;br /&gt;
+I closed the project from github. The repository included a cabal file, which
+I promptly compiled. It took 25 minutes to build all the dependencies. Hakyll
+seems awesome, but I wanted something simple. Simple that I can just write,
+and the publication process becomes ancillary. Pieter Hintjens states that
+a project should continuously seek to reduce barriers for participation.
+Comment on this site are a perfect example. &lt;a href=&#34;https://disqus.com/&#34;&gt;Disqus&lt;/a&gt;
+strikes a fantastic balance between reducing spam, without requiring everyone
+to login to my site. I have no presumptions concerning this site, and
+I completely understand that people do not need yet another account to manage.
+I want people to comment, hence I use a service that reduces the barrier to
+participate.&lt;/p&gt;
+
+&lt;p&gt;A cabal file is a barrier to participate. I want to consume a project, I don&amp;rsquo;t
+want to contribute to it (yet). Hugo had the lowest barrier to entry of the
+site generators I tried. One executable, no dependencies, and fantastic
+documentation.&lt;/p&gt;
+
+&lt;h1 id=&#34;exporting-content:f190086b9bc9fe46a11c16626346622b&#34;&gt;Exporting Content&lt;/h1&gt;
+
+&lt;p&gt;I had a significant number of posts in Wordpress. I wanted to be a good
+content creator, and preserve my URIs.  Really, I&amp;rsquo;m &lt;em&gt;wicked&lt;/em&gt; lazy, and
+preserving my permalinks meant I would not have to migrate my comments. Disqus
+would pick them up on the new site. Thus I wanted an automated way of
+exporting my posts from Wordpress. &lt;a href=&#34;https://github.com/thomasf/exitwp&#34;&gt;Exitwp&lt;/a&gt;
+worked like a charm.&lt;/p&gt;
+
+&lt;h1 id=&#34;choosing-a-theme:f190086b9bc9fe46a11c16626346622b&#34;&gt;Choosing a theme&lt;/h1&gt;
+
+&lt;p&gt;Hugo has a &lt;a href=&#34;https://github.com/spf13/hugoThemes/&#34;&gt;theme gallery&lt;/a&gt; for all the known themes associated with the
+generator.  I picked &lt;a href=&#34;https://github.com/tmaiaroto/hugo-redlounge&#34;&gt;redlounge&lt;/a&gt;.
+My only customization was to add Google Analytics so I can track my meager
+pages views.&lt;/p&gt;
+
+&lt;h1 id=&#34;writing-articles-in-a-series:f190086b9bc9fe46a11c16626346622b&#34;&gt;Writing articles in a series&lt;/h1&gt;
+
+&lt;p&gt;I tend to write articles broken over many pieces. In fact, this article is
+part of my blog transition series. My series support was somewhat lacking in
+Wordpress. For this reincarnation of codestrokes.com, I wanted series to be
+nice and effective. Hugo&amp;rsquo;s taxonomy makes this possible, but it was a great
+series by another author, &lt;a href=&#34;http://npf.io/series/hugo-101/&#34;&gt;Nate Finch&lt;/a&gt; that
+made it easy. Ironically, the series starts with an article about how to
+design series into Hugo. Brilliant.&lt;/p&gt;
+
+&lt;h1 id=&#34;hosting:f190086b9bc9fe46a11c16626346622b&#34;&gt;Hosting&lt;/h1&gt;
+
+&lt;p&gt;I have a few requirements:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Custom domain must work (so I don&amp;rsquo;t have to migrate comments :-)&lt;/li&gt;
+&lt;li&gt;Publishing from git would be sweet, but I can configure Travis-CI or
+a deployment something to deal with that.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://pages.github.com/&#34;&gt;Github pages!&lt;/a&gt;. I just followed the documentation.&lt;/p&gt;
+
+&lt;h1 id=&#34;my-publishing-process:f190086b9bc9fe46a11c16626346622b&#34;&gt;My Publishing Process&lt;/h1&gt;
+
+&lt;p&gt;Here&amp;rsquo;s how I write now:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Clone JeremyLWright@github.com&lt;/li&gt;
+&lt;li&gt;git checkout content
+
+&lt;ol&gt;
+&lt;li&gt;The content branch holds the source, and theme files.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Clone the repository again into the public folder.&lt;/li&gt;
+&lt;li&gt;The public folder should be on the master branch.&lt;/li&gt;
+&lt;li&gt;Write.&lt;/li&gt;
+&lt;li&gt;Revise.&lt;/li&gt;
+&lt;li&gt;Write&amp;hellip;&lt;/li&gt;
+&lt;li&gt;Run Hugo.&lt;/li&gt;
+&lt;li&gt;Commit the content branch.&lt;/li&gt;
+&lt;li&gt;Commit the public branch.&lt;/li&gt;
+&lt;li&gt;Push!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I&amp;rsquo;m happy with my new process. I&amp;rsquo;m still working out some kinks with my pages
+vs posts (hence you see the About Me page in the middle of my posts). I am
+prone to shiny things so we&amp;rsquo;ll see how long I keep it. This process is simple.
+It removes the barriers of posting, and just lets me write in the tool I am
+most comfortable, and but its hard to argue with simple.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>About Me</title>
@@ -1055,24 +1191,6 @@ I recently has a problem to extract logs from a product at work. The existing so
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;This snippet has an inter-dependency size of 2. The function call brings in the inputs, to the computation performed on those inputs. This is much easier to catch in practice than a very large function with lots of mutation. When I setup a review for my own code, I relish, even dare my co-workers to find errors. It saves me a lot of trouble to find the bug now, instead of the night of my daughter&amp;rsquo;s ballet recital. I define revies as a process to maximize the probability my team will find mistakes. I then posit to design my reviews with as much care as I design the code itself, and minimize the inter-dependency size for my functions.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>The Itanium Flop</title>
-      <link>http://codestrokes.com/2013/10/the-itanium-flop/</link>
-      <pubDate>Mon, 07 Oct 2013 01:23:13 +0000</pubDate>
-      
-      <guid>http://codestrokes.com/2013/10/the-itanium-flop/</guid>
-      <description>&lt;p&gt;I wake up in the morning with ideas that please me, and some of those ideas actually please me also later in the day when I&amp;rsquo;ve entered them into my computer. - Donald Knuth&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;m on a bit of a Knuth kick right now, and I&amp;rsquo;ve been procrastinating studying, and homework to find interviews, and papers by the master himself. I currently have a list of microfiche references to check out as soon as I get to the basement of my university&amp;rsquo;s library: Woot, &lt;a href=&#34;http://www.chrisfenton.com/homebrew-cray-1a/&#34;&gt;computational necromancy&lt;/a&gt;! Through this, I came across a quote in an &lt;a href=&#34;http://www.informit.com/articles/article.aspx?p=1193856&#34;&gt;interview&lt;/a&gt;, &amp;ldquo;&amp;hellip;worse than the &amp;ldquo;&lt;a href=&#34;http://en.wikipedia.org/wiki/Itanium&#34;&gt;Itanium&lt;/a&gt;&amp;rdquo; approach that was supposed to be so terrific—until it turned out that the wished-for compilers were basically impossible to write.&amp;rdquo; What? I thought it was simply market forces that drive the x86-64 ahead of Itanium: nope!&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.usenix.org/legacy/event/usenix05/tech/general/gray/gray.pdf&#34;&gt;This&lt;/a&gt; paper discusses some of the advanced features of the Itanium platform as well as Intel&amp;rsquo;s intention for those features. Essentially, the Itanium platform is about empowering software developers. The CPU even provides a &amp;ldquo;software TLB&amp;rdquo;. In a typical software application performance is dependent on the CPU&amp;rsquo;s ability to pipeline, and reorder instructions. This is typically done in hardware. While this approach has proven workable, Intel notes the limitations of &amp;ldquo;speculation&amp;rdquo; by the hardware. The thought then arises, why not turn the advanced speculation functions over to the compiler writer. Itanium is born. Gray discusses how these functions while advanced leaves a huge responsibility on the already loaded optimized running in the compiler. The paper, is a great read, and as Knuth alludes, a similar situation is happening with multi-core today.&lt;/p&gt;
-
-&lt;p&gt;Hardware designers have hit physical limits with clock speeds, just as they hit speculation limits almost a decade before. The hardware engineers are pushing the onus of performance to software once again. Are we ready to carry the torch this time?&lt;/p&gt;
 </description>
     </item>
     

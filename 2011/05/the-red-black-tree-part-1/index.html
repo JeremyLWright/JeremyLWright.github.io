@@ -192,120 +192,139 @@ ga('create', 'UA-23129291-1', 'auto');
 
 <p>There are a few idioms in C++ to help; Resource Acquisition Is Initialization, or RAII for short, states that “…the only code that can be guaranteed to be executed after an <a href="http://en.wikipedia.org/wiki/Exception_handling">exception</a> is thrown are the <a href="http://en.wikipedia.org/wiki/Destructor_%28computer_science%29">destructors</a> of objects residing on the <a href="http://en.wikipedia.org/wiki/Stack_%28data_structure%29">stack</a> (<a href="http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization">Wikipedia</a>)”. Smart Pointers help achieve this.  The Smart pointer offloads much of this responsibility, hiding the complexity, thereby allowing the programmer to focus solely on the task at hand. I use an idiom I learned from my friend <a href="http://www.chrisanderman.com/">Chris</a>, to hide all raw pointers.</p>
 
-<pre><code>#include 
-
-//Smart Class Idiom for RAII in C++
-class SmartClass
-{
-public:
-    typedef std::tr1::shared_ptr Ptr;
-    typedef std::tr1::weak_ptr WeakPtr;
-    static SmartClass::Ptr construct(arguments)
+<pre><code class="language-cpp">
+    
+    #include 
+    
+    //Smart Class Idiom for RAII in C++
+    class SmartClass
     {
-    SmartClass::Ptr c(new SmartClass());
-    c-&gt;self = c;
-    return c;
-    }
-
-    virtual ~SmartClass();
-private:
-    SmartClass();
-    SmartClass::WeakPtr self;
-
-};
+    public:
+        typedef std::tr1::shared_ptr Ptr;
+        typedef std::tr1::weak_ptr WeakPtr;
+        static SmartClass::Ptr construct(arguments)
+        {
+    	SmartClass::Ptr c(new SmartClass());
+    	c-&gt;self = c;
+    	return c;
+        }
+    
+        virtual ~SmartClass();
+    private:
+        SmartClass();
+        SmartClass::WeakPtr self;
+    
+    };
 </code></pre>
 
-<p>This is a very useful pattern for managing memory. The developer is not required to call delete, the smart pointer will do it automatically. Memory management is still not automatic, however. The programmer needs to resolve the smart vs. weak pointer relationship.  While this strong vs. weak is a much simpler question than determining the full _object lifecycle, _<strong>considerable effort</strong> is still placed into managing memory. This detracts from our goal, while simultaneously, unnecessarily increasing our software’s complexity.</p>
+<p>This is a very useful pattern for managing memory. The developer is not
+required to call delete, the smart pointer will do it automatically. Memory
+management is still not automatic, however. The programmer needs to resolve
+the smart vs. weak pointer relationship.  While this strong vs. weak is a much
+simpler question than determining the full _object lifecycle, _<strong>considerable
+effort</strong> is still placed into managing memory. This detracts from our goal,
+while simultaneously, unnecessarily increasing our software’s complexity.</p>
 
-<p>Firstly, what is a red-black tree? The <a href="http://en.wikipedia.org/wiki/Red-black_tree">Red-Black tree</a> is an interesting data structure because it provides a <em>balanced</em> binary tree.  There are several types of self-balancing binary trees available, AVL trees being one. The Red-Black tree, however, uses a less strict balancing mechanism than the AVL tree; this makes insertions to a Red-Black tree faster. Deletions are slower than an AVL tree. The Red-Black tree uses graph coloring to determining overall balance of the tree.</p>
+<p>Firstly, what is a red-black tree? The <a href="http://en.wikipedia.org/wiki/Red-black_tree">Red-Black tree</a> is an interesting data
+structure because it provides a <em>balanced</em> binary tree.  There are several
+types of self-balancing binary trees available, AVL trees being one. The
+Red-Black tree, however, uses a less strict balancing mechanism than the AVL
+tree; this makes insertions to a Red-Black tree faster. Deletions are slower
+than an AVL tree. The Red-Black tree uses graph coloring to determining
+overall balance of the tree.</p>
 
-<p>Balance is an important property of a binary tree to maintain algorithmic complexity. If there is not a rebalancing scheme in place, a BST can, depending on what order <em>keys</em> are inserted, fill out as a linked list. Searching a linked list is O(n) or “linear” time, not the preferable O(log n).</p>
+<p>Balance is an important property of a binary tree to maintain algorithmic
+complexity. If there is not a rebalancing scheme in place, a BST can,
+depending on what order <em>keys</em> are inserted, fill out as a linked list.
+Searching a linked list is O(n) or “linear” time, not the preferable O(log n).</p>
 
-<p><em><a href="http://scienceblogs.com/goodmath/2009/11/advanced_haskell_data_structur.php"><img src="http://scienceblogs.com/goodmath/upload/2007/01/unbalanced-trees.jpg" alt="" />
-</a></em></p>
+<p><a href="http://scienceblogs.com/goodmath/2009/11/advanced_haskell_data_structur.php"><img src="http://scienceblogs.com/goodmath/upload/2007/01/unbalanced-trees.jpg" alt="" />
+</a></p>
 
 <p>The Red-Black tree uses graph coloring to maintain balance. Balance guarantee’s O(log n) search performance.</p>
 
 <h3 id="c-insert:5c9c8d9305c23e5a528460c65c1eaa2f">C++ Insert</h3>
 
-<pre><code>void RedBlackTree::Insert(uint32_t key)
-{
-    RedBlackNode::Ptr z = RedBlackNode::construct(key);
-    RedBlackNode::Ptr x = root;
-    RedBlackNode::Ptr y = nil;
-
-    while(x != nil)
+<pre><code class="language-cpp">
+    
+    void RedBlackTree::Insert(uint32_t key)
     {
-        y = x;
-        if(z-&gt;Key() &lt; x-&gt;Key())
-            x = x-&gt;Left();
+        RedBlackNode::Ptr z = RedBlackNode::construct(key);
+        RedBlackNode::Ptr x = root;
+        RedBlackNode::Ptr y = nil;
+    
+        while(x != nil)
+        {
+            y = x;
+            if(z-&gt;Key() &lt; x-&gt;Key())
+                x = x-&gt;Left();
+            else
+                x = x-&gt;Right();
+        }
+    
+        z-&gt;Parent(y);
+        if(y == nil)
+            root = z;
+        else if(z-&gt;Key() &lt; y-&gt;Key())
+            y-&gt;Left(z);
         else
-            x = x-&gt;Right();
+            y-&gt;Right(z);
+        z-&gt;Left(nil);
+        z-&gt;Right(nil);
+        z-&gt;Color(RedBlackNode::RED);
+        Insert_Fixup(z);
     }
-
-    z-&gt;Parent(y);
-    if(y == nil)
-        root = z;
-    else if(z-&gt;Key() &lt; y-&gt;Key())
-        y-&gt;Left(z);
-    else
-        y-&gt;Right(z);
-    z-&gt;Left(nil);
-    z-&gt;Right(nil);
-    z-&gt;Color(RedBlackNode::RED);
-    Insert_Fixup(z);
-}
 </code></pre>
 
 <p>There are a few issues with this implementation.  If an exception occurs while inserting a node, the Insert_Fixup() doesn’t get run.  An exception in this code, will not cause a memory, leak, however it will leave the tree in an indeterminate state. Any subsequent insertion into the tree will cause Insert_Fixup() to fail. This is <strong>NOT</strong> correct code.</p>
 
 <h3 id="c-delete:5c9c8d9305c23e5a528460c65c1eaa2f">C++ Delete</h3>
 
-<pre><code>void RedBlackTree::Delete(uint32_t key)
-{
-
-    RedBlackNode::Ptr z = Search(key);
-    RedBlackNode::Ptr x;
-    if(z == nil)
-        return;
-
-    RedBlackNode::Ptr y = z;
-    RedBlackNode::color_t original_color = y-&gt;Color();
-    if(z-&gt;Left() == nil)
+<pre><code class="language-cpp">    void RedBlackTree::Delete(uint32_t key)
     {
-        x = z-&gt;Right();
-        Transplant(z,z-&gt;Right());
-    }
-    else if(z-&gt;Right() == nil)
-    {
-        x = z-&gt;Left();
-        Transplant(z,z-&gt;Left());
-    }
-    else
-    {
-        y = Minimum(z-&gt;Right());
-        original_color = y-&gt;Color();
-        x = y-&gt;Right();
-        if(y-&gt;Parent() == z)
+    
+        RedBlackNode::Ptr z = Search(key);
+        RedBlackNode::Ptr x;
+        if(z == nil)
+            return;
+    
+        RedBlackNode::Ptr y = z;
+        RedBlackNode::color_t original_color = y-&gt;Color();
+        if(z-&gt;Left() == nil)
         {
-            x-&gt;Parent(y);
+            x = z-&gt;Right();
+            Transplant(z,z-&gt;Right());
+        }
+        else if(z-&gt;Right() == nil)
+        {
+            x = z-&gt;Left();
+            Transplant(z,z-&gt;Left());
         }
         else
         {
-            Transplant(y,y-&gt;Right());
-            y-&gt;Right(z-&gt;Right());
-            y-&gt;Right()-&gt;Parent(y);
+            y = Minimum(z-&gt;Right());
+            original_color = y-&gt;Color();
+            x = y-&gt;Right();
+            if(y-&gt;Parent() == z)
+            {
+                x-&gt;Parent(y);
+            }
+            else
+            {
+                Transplant(y,y-&gt;Right());
+                y-&gt;Right(z-&gt;Right());
+                y-&gt;Right()-&gt;Parent(y);
+            }
+            Transplant(z,y);
+            y-&gt;Left(z-&gt;Left());
+            y-&gt;Left()-&gt;Parent(y);
+            y-&gt;Color(z-&gt;Color());
         }
-        Transplant(z,y);
-        y-&gt;Left(z-&gt;Left());
-        y-&gt;Left()-&gt;Parent(y);
-        y-&gt;Color(z-&gt;Color());
+        if(original_color == RedBlackNode::BLACK)
+        {
+            Delete_Fixup(x);
+        }
     }
-    if(original_color == RedBlackNode::BLACK)
-    {
-        Delete_Fixup(x);
-    }
-}
 </code></pre>
 
 <p>The Smart Pointer pointer idiom really flexes its power here. The most difficult part about the Red-Black Tree implementation is deleting nodes. One needs to be careful not to delete nodes too soon and cause a <a href="http://en.wikipedia.org/wiki/Dangling_pointer"><em>dangling-pointer</em></a>_ _yet, its important that one does delete the nodes to prevent a leak memory, however as you can see there are no delete calls above. The Smart Pointers handle delete when the node falls out of scope.  This implementation does not leak memory! (See the valgrind scripts for evidence).  That is a powerful statement in C++, and difficult to achieve with manual memory management.</p>
