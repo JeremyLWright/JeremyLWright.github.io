@@ -3,6 +3,7 @@ languageCode = "en-us"
 title = "Code Strokes"
 disqusShortname = "codestrokes2"
 pygmentsuseclasses = true
+theme="redlounge"
 [permalinks]
     posts = "/:year/:month/:slug/"
 
