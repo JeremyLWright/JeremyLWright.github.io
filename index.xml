@@ -27,7 +27,7 @@ talk reinvigorated my passion in generated testing. Kerr presented the idea
 Properties simply must reduce the size of the incorrect space. This may seem like
 semantics, but sometimes it&amp;rsquo;s much easier to verify something is not
 a wild-ass-guess that if it is correct.
-&lt;img src=&#34;http://codestrokes.com/img/properties_solution_space.png&#34; alt=&#34;sometimes_code_gives_you_a_wtf&#34; /&gt;
+&lt;img src=&#34;http://codestrokes.com/img/Properties_solution_space.png&#34; alt=&#34;sometimes_code_gives_you_a_wtf&#34; /&gt;
 
 Following Kerr&amp;rsquo;s
 references, I found a set of projects for a predicate-logic class
