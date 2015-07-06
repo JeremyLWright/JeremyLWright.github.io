@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://codestrokes.com/</loc>
-    <lastmod>2015-06-07T00:00:00+00:00</lastmod>
+    <lastmod>2015-07-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://codestrokes.com/2015/07/property_driven_design_minmax/</loc>
+    <lastmod>2015-07-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>

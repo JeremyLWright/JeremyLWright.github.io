@@ -123,6 +123,63 @@ ga('create', 'UA-23129291-1', 'auto');
             <header class="post-header">
             
             <h1 class="post-title">
+              <a href="/2015/07/property_driven_design_minmax/">Property Driven Design: MinMax</a>
+            </h1>
+            </header>
+            <p class="post-meta">
+            	
+		          <span class="post-date">
+		            <span class="post-date-day"><sup>5</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jul</span> <span class="post-date-year">2015</span>
+		          </span>
+      				
+      				
+      					By <a class="post-author" >Jeremy</a>
+      				
+              
+                <span class="post-reading-time"><i class="fa fa-clock-o"></i> <em>13 min. read</em></span>
+              
+      				
+      					<div class="post-categories">
+				        
+      					
+					        <a class="post-category post-category-c" href="http://codestrokes.com//categories/c">C&#43;&#43;</a>
+      					
+					        <a class="post-category post-category-property-driven-design" href="http://codestrokes.com//categories/property-driven-design">Property Driven Design</a>
+      					
+      					</div>
+      				
+            </p>
+            <article class="post-summary">
+            	<p>I wrote an article on Property Driven Design about a year ago
+(<a href="http://www.codestrokes.com/2014/09/property-testing-in-c/">http://www.codestrokes.com/2014/09/property-testing-in-c/</a>). Isocpp.org even
+linked to it at one time (<a href="https://isocpp.org/blog/2014/12/property-testing">https://isocpp.org/blog/2014/12/property-testing</a>)
+which was pretty cool. Recently, I uncovered a fantastic talk by Jessica Kerr
+about property testing (<a href="https://www.youtube.com/watch?v=shngiiBfD80">https://www.youtube.com/watch?v=shngiiBfD80</a>). Kerr&rsquo;s
+talk reinvigorated my passion in generated testing. Kerr presented the idea
+(novel to me) that properties don&rsquo;t have to verify that an answer is correct.
+Properties simply must reduce the size of the incorrect space. This may seem like
+semantics, but sometimes it&rsquo;s much easier to verify something is not
+a wild-ass-guess that if it is correct.
+<img src="/img/properties_solution_space.png" alt="sometimes_code_gives_you_a_wtf" />
+
+Following Kerr&rsquo;s
+references, I found a set of projects for a predicate-logic class
+(<a href="http://www.cs.ou.edu/~rlpage/SEcollab/20projects/">http://www.cs.ou.edu/~rlpage/SEcollab/20projects/</a>). The class provides 20
+projects. Each project breaks down the requirements and predicates the
+functions should provide. This step-by-step example clarified many points
+I misunderstood about property testing. This post will step through the design
+of the first project minmax (<a href="http://www.cs.ou.edu/~rlpage/SEcollab/20projects/minmax.htm">http://www.cs.ou.edu/~rlpage/SEcollab/20projects/minmax.htm</a>) using C++. My primary goal for this article is to address a concern raised by a colleague, &ldquo;Does pulling in more complexity in terms of a fancy test generator actually increase quality?&rdquo; I believe it does when exercised properly.  All the code is available at <a href="https://github.com/JeremyLWright/property_driven_design/tree/master/01_minmax">github</a>, if you would like to follow along.</p>
+
+            </article>
+			<div class="read-more-link">
+				<a href="/2015/07/property_driven_design_minmax/"><span class="read-more-slashes">//</span>Read More...</a>
+			</div>
+          </section>
+        
+          <section  class="post">
+            <header class="post-header">
+            
+            <h1 class="post-title">
               <a href="/2015/06/converting-to-static-blog/">Recasting how I blog</a>
             </h1>
             </header>

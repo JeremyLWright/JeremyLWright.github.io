@@ -26,62 +26,64 @@
 
 &lt;p&gt;C++ makes memory management difficult in practice. Memory management, an incidental complexity of C++, is especially difficult in the presence of exceptions. Our goal is to make a fast, correct data structure, not manage memory.  C++ obfuscates this goal.&lt;/p&gt;
 
-&lt;p&gt;There are a few idioms in C++ to help; Resource Acquisition Is Initialization, or RAII for short, states that “…the only code that can be guaranteed to be executed after an &lt;a href=&#34;http://en.wikipedia.org/wiki/Exception_handling&#34;&gt;exception&lt;/a&gt; is thrown are the &lt;a href=&#34;http://en.wikipedia.org/wiki/Destructor_%28computer_science%29&#34;&gt;destructors&lt;/a&gt; of objects residing on the &lt;a href=&#34;http://en.wikipedia.org/wiki/Stack_%28data_structure%29&#34;&gt;stack&lt;/a&gt; (&lt;a href=&#34;http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization&#34;&gt;Wikipedia&lt;/a&gt;)”. Smart Pointers help achieve this.  The Smart pointer offloads much of this responsibility, hiding the complexity, thereby allowing the programmer to focus solely on the task at hand. I use an idiom I learned from my friend &lt;a href=&#34;http://www.chrisanderman.com/&#34;&gt;Chris&lt;/a&gt;, to hide all raw pointers.&lt;/p&gt;
+&lt;p&gt;There are a few idioms in C++ to help; Resource Acquisition Is Initialization, or RAII for short, states that “…the only code that can be guaranteed to be executed after an &lt;a href=&#34;http://en.wikipedia.org/wiki/Exception_handling&#34;&gt;exception&lt;/a&gt; is thrown are the &lt;a href=&#34;http://en.wikipedia.org/wiki/Destructor_%28computer_science%29&#34;&gt;destructors&lt;/a&gt; of objects residing on the &lt;a href=&#34;http://en.wikipedia.org/wiki/Stack_%28data_structure%29&#34;&gt;stack&lt;/a&gt; (&lt;a href=&#34;http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization&#34;&gt;Wikipedia&lt;/a&gt;)”. Smart Pointers help achieve this.  The Smart pointer offloads much of this responsibility, hiding the complexity, thereby allowing the programmer to focus solely on the task at hand. I use an idiom I learned from my friend &lt;a href=&#34;http://www.chrisanderman.com/&#34;&gt;Chris&lt;/a&gt;, to hide all raw pointers.
+```cpp&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;
-    
-    #include 
-    
-    //Smart Class Idiom for RAII in C++
-    class SmartClass
+&lt;pre&gt;&lt;code&gt;#include 
+
+//Smart Class Idiom for RAII in C++
+class SmartClass
+{
+public:
+    typedef std::tr1::shared_ptr Ptr;
+    typedef std::tr1::weak_ptr WeakPtr;
+    static SmartClass::Ptr construct(arguments)
     {
-    public:
-        typedef std::tr1::shared_ptr Ptr;
-        typedef std::tr1::weak_ptr WeakPtr;
-        static SmartClass::Ptr construct(arguments)
-        {
-    	SmartClass::Ptr c(new SmartClass());
-    	c-&amp;gt;self = c;
-    	return c;
-        }
-    
-        virtual ~SmartClass();
-    private:
-        SmartClass();
-        SmartClass::WeakPtr self;
-    
-    };
+    SmartClass::Ptr c(new SmartClass());
+    c-&amp;gt;self = c;
+    return c;
+    }
+
+    virtual ~SmartClass();
+private:
+    SmartClass();
+    SmartClass::WeakPtr self;
+
+};
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;This is a very useful pattern for managing memory. The developer is not
+&lt;pre&gt;&lt;code&gt;
+
+This is a very useful pattern for managing memory. The developer is not
 required to call delete, the smart pointer will do it automatically. Memory
 management is still not automatic, however. The programmer needs to resolve
 the smart vs. weak pointer relationship.  While this strong vs. weak is a much
-simpler question than determining the full _object lifecycle, _&lt;strong&gt;considerable
-effort&lt;/strong&gt; is still placed into managing memory. This detracts from our goal,
-while simultaneously, unnecessarily increasing our software’s complexity.&lt;/p&gt;
+simpler question than determining the full _object lifecycle, _**considerable
+effort** is still placed into managing memory. This detracts from our goal,
+while simultaneously, unnecessarily increasing our software’s complexity.
 
-&lt;p&gt;Firstly, what is a red-black tree? The &lt;a href=&#34;http://en.wikipedia.org/wiki/Red-black_tree&#34;&gt;Red-Black tree&lt;/a&gt; is an interesting data
-structure because it provides a &lt;em&gt;balanced&lt;/em&gt; binary tree.  There are several
+Firstly, what is a red-black tree? The [Red-Black tree](http://en.wikipedia.org/wiki/Red-black_tree) is an interesting data
+structure because it provides a _balanced_ binary tree.  There are several
 types of self-balancing binary trees available, AVL trees being one. The
 Red-Black tree, however, uses a less strict balancing mechanism than the AVL
 tree; this makes insertions to a Red-Black tree faster. Deletions are slower
 than an AVL tree. The Red-Black tree uses graph coloring to determining
-overall balance of the tree.&lt;/p&gt;
+overall balance of the tree.
 
-&lt;p&gt;Balance is an important property of a binary tree to maintain algorithmic
+Balance is an important property of a binary tree to maintain algorithmic
 complexity. If there is not a rebalancing scheme in place, a BST can,
-depending on what order &lt;em&gt;keys&lt;/em&gt; are inserted, fill out as a linked list.
-Searching a linked list is O(n) or “linear” time, not the preferable O(log n).&lt;/p&gt;
+depending on what order _keys_ are inserted, fill out as a linked list.
+Searching a linked list is O(n) or “linear” time, not the preferable O(log n).
 
-&lt;p&gt;&lt;a href=&#34;http://scienceblogs.com/goodmath/2009/11/advanced_haskell_data_structur.php&#34;&gt;&lt;img src=&#34;http://scienceblogs.com/goodmath/upload/2007/01/unbalanced-trees.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
+[![](http://scienceblogs.com/goodmath/upload/2007/01/unbalanced-trees.jpg)](http://scienceblogs.com/goodmath/2009/11/advanced_haskell_data_structur.php)
 
-&lt;p&gt;The Red-Black tree uses graph coloring to maintain balance. Balance guarantee’s O(log n) search performance.&lt;/p&gt;
+The Red-Black tree uses graph coloring to maintain balance. Balance guarantee’s O(log n) search performance.
 
-&lt;h3 id=&#34;c-insert:5c9c8d9305c23e5a528460c65c1eaa2f&#34;&gt;C++ Insert&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;
+### C++ Insert
+
+```cpp
+
     
     void RedBlackTree::Insert(uint32_t key)
     {

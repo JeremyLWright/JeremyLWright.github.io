@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tutorial on Code Strokes</title>
-    <link>http://codestrokes.com/tags/tutorial/</link>
-    <description>Recent content in Tutorial on Code Strokes</description>
+    <title>Property Driven Design on Code Strokes</title>
+    <link>http://codestrokes.com/categories/property-driven-design/</link>
+    <description>Recent content in Property Driven Design on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 05 Jul 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://codestrokes.com/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://codestrokes.com/categories/property-driven-design/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Property Driven Design: MinMax</title>
@@ -539,71 +539,6 @@ numerical problem. In intended to show something more interesting that the
 &lt;em&gt;reverse(reverse(list)) == list&lt;/em&gt; example, and something less contrived than my
 previous post on property testing. I look forward to any feedback on this
 post.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Why do some tutorials use std::cout and others use just cout?</title>
-      <link>http://codestrokes.com/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</link>
-      <pubDate>Fri, 19 Aug 2011 16:55:56 +0000</pubDate>
-      
-      <guid>http://codestrokes.com/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</guid>
-      <description>&lt;p&gt;&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;Many tutorials start &amp;ldquo;Hello World&amp;rdquo; like so:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;
-using namespace std;
-int main()
-{
-    cout &amp;lt;&amp;lt; &amp;quot;Hello World&amp;quot; &amp;lt;&amp;lt; endl;
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;However sometimes, and in my opinion the more correct version is written:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;
-int main()
-{
-    std::cout &amp;lt;&amp;lt; &amp;quot;Hello World&amp;quot; &amp;lt;&amp;lt; std::endl;
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The difference between the 2 programs is the double colon (::).  This is called the &lt;strong&gt;namespace resolution operator&lt;/strong&gt;.  C++ has a wonderful concept called namespaces.  Namespaces allow you to group or organize sets of objects into named collections.  That collection is called a namespace.  Namespaces are similar to URLs. Take www.codestrokes.com for example.  Read right-to-left, the URL breaks down the enormous internet into successively more specific collections. First the_ .com_ &amp;ldquo;namespace&amp;rdquo;; Then more specific the: &lt;em&gt;codestrokes&lt;/em&gt;. Then a single server, the most specific: &lt;em&gt;www&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;C++ allows you to make a similar grouping structure, but instead of period (.) denoting the individual collections we use ::.  Ergo to create a similar structure in C++:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;namespace com {
-    namespace codestrokes {
-        class www {
-            //This is the actual class, the &amp;quot;thing&amp;quot; we wanted.
-        };
-    } // End of the code strokes namespace.
-} //End of the com namespace
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now if we want to access the www object in our namespace we do:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int main()
-{
-    com::codestrokes::www myBlogInstance;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Equivalently:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;using namespace com::codestrokes; //This is the key difference.
-int main()
-{
-    www myBlogInstance;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Namespaces allow you to define functions and classes without fear of clashing names with another class. Its is extremely useful, and a huge benefit over C.  So in the hello world example &lt;code&gt;cout&lt;/code&gt; is an object that lives inside the &lt;code&gt;std&lt;/code&gt; namespace.  If you want to access that function you need to resolve the namespace with the :: operator. So in effect the &lt;code&gt;using&lt;/code&gt; statement is a shortcut.&lt;/p&gt;
-
-&lt;p&gt;In programming practice however, it is considered bad form to use a &lt;code&gt;using&lt;/code&gt; statement for anything except the &lt;code&gt;std&lt;/code&gt; namespace. It doesn&amp;rsquo;t affect the size of your executable, its just a style issue.&lt;/p&gt;
-
-&lt;p&gt;So why do I claim &lt;code&gt;std::cout&lt;/code&gt; is more correct than just &lt;code&gt;cout&lt;/code&gt;? Namespace are a pervasive component of the language. If you gloss over them at the beginning then you could code for years without truly understand how simple, and fantastic namespaces are. So use namespaces. For personal projects, group your classes under your last name, just for practice. Namespaces are a good thing and can greatly simplify your software.&lt;/p&gt;
 </description>
     </item>
     
