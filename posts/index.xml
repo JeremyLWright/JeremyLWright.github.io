@@ -17,52 +17,81 @@
       <guid>http://codestrokes.com/2015/07/property_driven_design_minmax/</guid>
       <description>
 
-&lt;p&gt;I wrote an article on Property Driven Design about a year ago
-(&lt;a href=&#34;http://www.codestrokes.com/2014/09/property-testing-in-c/&#34;&gt;http://www.codestrokes.com/2014/09/property-testing-in-c/&lt;/a&gt;). Isocpp.org even
-linked to it at one time (&lt;a href=&#34;https://isocpp.org/blog/2014/12/property-testing&#34;&gt;https://isocpp.org/blog/2014/12/property-testing&lt;/a&gt;)
-which was pretty cool. Recently, I uncovered a fantastic talk by Jessica Kerr
-about property testing (&lt;a href=&#34;https://www.youtube.com/watch?v=shngiiBfD80&#34;&gt;https://www.youtube.com/watch?v=shngiiBfD80&lt;/a&gt;). Kerr&amp;rsquo;s
-talk reinvigorated my passion in generated testing. Kerr presented the idea
-(novel to me) that properties don&amp;rsquo;t have to verify that an answer is correct.
-Properties simply must reduce the size of the incorrect space. This may seem like
-semantics, but sometimes it&amp;rsquo;s much easier to verify something is not
-a wild-ass-guess that if it is correct.
-&lt;img src=&#34;http://codestrokes.com/img/Properties_solution_space.png&#34; alt=&#34;sometimes_code_gives_you_a_wtf&#34; /&gt;
+&lt;p&gt;I wrote an article on &lt;a href=&#34;http://www.codestrokes.com/2014/09/property-testing-in-c/&#34;&gt;Property Testing&lt;/a&gt;
+about a year ago. Isocpp.org even &lt;a href=&#34;https://isocpp.org/blog/2014/12/property-testing&#34;&gt;linked to
+it&lt;/a&gt; which was pretty cool.
+Recently, I uncovered a fantastic talk by &lt;a href=&#34;https://www.youtube.com/watch?v=shngiiBfD80&#34;&gt;Jessica Kerr about property
+testing&lt;/a&gt;. Kerr&amp;rsquo;s talk
+reinvigorated my languid research effort toward generated testing. Kerr
+presented the idea (novel to me) that properties aren&amp;rsquo;t rigid. Properties
+don&amp;rsquo;t need to exclude all possible incorrect results for a given function.
+Properties simply must &lt;em&gt;reduce the size&lt;/em&gt; of the incorrect space. This may seem
+like semantics, but it is easier to exclude a wild-ass-guess that verify it is correct.
+Additionally, some domains may not have a solidly defined answer,a nd the
+result my be probabilistic in nature. This post will focus on deterministic
+problems for the moment, but realize that property testing is vastly more
+general than mundane example testing. How properties reduce the size of the
+problem space makes me imagine this Figure.&lt;/p&gt;
 
-Following Kerr&amp;rsquo;s
-references, I found a set of projects for a predicate-logic class
-(&lt;a href=&#34;http://www.cs.ou.edu/~rlpage/SEcollab/20projects/&#34;&gt;http://www.cs.ou.edu/~rlpage/SEcollab/20projects/&lt;/a&gt;). The class provides 20
-projects. Each project breaks down the requirements and predicates the
-functions should provide. This step-by-step example clarified many points
-I misunderstood about property testing. This post will step through the design
-of the first project minmax (&lt;a href=&#34;http://www.cs.ou.edu/~rlpage/SEcollab/20projects/minmax.htm&#34;&gt;http://www.cs.ou.edu/~rlpage/SEcollab/20projects/minmax.htm&lt;/a&gt;) using C++. My primary goal for this article is to address a concern raised by a colleague, &amp;ldquo;Does pulling in more complexity in terms of a fancy test generator actually increase quality?&amp;rdquo; I believe it does when exercised properly.  All the code is available at &lt;a href=&#34;https://github.com/JeremyLWright/property_driven_design/tree/master/01_minmax&#34;&gt;github&lt;/a&gt;, if you would like to follow along.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://codestrokes.com/img/Properties_solution_space.png&#34; alt=&#34;sometimes_code_gives_you_a_wtf&#34; /&gt;
+&lt;/p&gt;
 
-&lt;p&gt;In her presentation, Kerr stated, &amp;ldquo;..what is this answer? I don&amp;rsquo;t know but
-I can put a box around it!&amp;rdquo; While this statement was made in jest it is quite
+&lt;p&gt;Following Kerr&amp;rsquo;s references, I found a set of projects from a &lt;a href=&#34;http://www.cs.ou.edu/~rlpage/SEcollab/20projects/&#34;&gt;predicate-logic
+course&lt;/a&gt;. This course
+provides 20 separate projects excellently cast for a property-driven-design
+tutorial. These projects are unique since besides the typical requirements
+they enumerate the predicate functions each requirement typifies. Predicate
+functions are to a predicate-logician as properties are to a computer
+scientist. These enumerated properties (predicates) clarified
+many points I misunderstood about property testing.&lt;/p&gt;
+
+&lt;p&gt;This post will step through the design of the first project
+&lt;a href=&#34;http://www.cs.ou.edu/~rlpage/SEcollab/20projects/minmax.htm&#34;&gt;minmax&lt;/a&gt; using
+C++. My primary goal for this article is to address a concern raised by
+a colleague, &amp;ldquo;Does pulling in more complexity &amp;mdash; a fancy test
+generator &amp;mdash; actually increase quality?&amp;rdquo;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/property_driven_design/tree/master/01_minmax&#34;&gt;Code for this article&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/JeremyLWright.github.io/commits/content/content/posts/2015-07-05-property_driven_design_minmax.markdown&#34;&gt;Revision Log for this article&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In her presentation, Kerr stated, &amp;ldquo;&amp;hellip;what is this answer? I don&amp;rsquo;t know but
+I can put a box around it!&amp;rdquo; This jestful statement is quite
 inspired. Example tests &amp;mdash; the test typically used in unit tests (the FPGA/ASIC
 guys call these Directed Tests) &amp;mdash; draw individual points within the
-correct region of the solution space. There are excellent structures for
-drawing points in intelligent places, such as structured testing using McCabe
-complexity, but in the end you are still drawing points. Properties on the
-other hand draw boxes around the solution space. Notice that the properties do
-not exclude all incorrect solutions. While this may seem as a defect to
-property driven design, it is a simplification that makes properties resilient
-to refactoring and maintenance cycles. Structured testing, for example, is
-a whitebox method that looks as what test data will induce 100% block
-coverage. As the code grows and changes over time, the predicates and
-conditionals that influence the code coverage change. In a sense the points in
-the correct solution place are always moving around. Properties however
-operate at a higher level of abstraction. Properties allow one to say
-&amp;ldquo;solutions of &lt;em&gt;approximately this form&lt;/em&gt; are likely correct.&amp;rdquo; Properties then
-can be made closer and closer to describe the overall shape of the correct
-solution space. Its a powerful technique that I am increasingly enjoying in my
-design work.&lt;/p&gt;
+correct region of the solution space.&lt;/p&gt;
+
+&lt;p&gt;There are paradigms, e.g., structured testing using McCabe
+complexity, for selecting effective points within this solution space,
+ but in the end you are still drawing points. Properties on the
+other hand draw boxes around the solution space. Notice that the properties
+may include incorrect solutions. While this may seem as a defect to
+property driven design, it is precisely this simplification that makes
+properties resilient to refactoring and maintenance cycles. While still
+providing value by excluding out of bounds results. This resilience is draws
+from PDD&amp;rsquo;s lineage as a black-box testing method. Conversely, structured
+testing is a whitebox method that looks as what test data will
+induce 100% block coverage. As the code changes over time, the
+predicates and conditionals change which intern influence the code coverage. In
+a sense the points in the correct solution place are always moving around. The
+Example based tests are tightly coupled to the implementation they are
+attempting to verify. Properties however operate at a higher level of
+abstraction. Properties allow one to say &amp;ldquo;solutions of &lt;em&gt;approximately this
+form&lt;/em&gt; are likely correct.&amp;rdquo; Properties then may make successively tighter bounds
+around the solution space to constraint the design. Its a powerful
+technique that I increasingly enjoy in my design work.&lt;/p&gt;
 
 &lt;h1 id=&#34;implementing-minmax-with-properties:50cf44a3d7a8ca6a3d0b114540b5d3c2&#34;&gt;Implementing MinMax with Properties&lt;/h1&gt;
 
-&lt;p&gt;Before we get started the term measure used in this problem statement means as
-the ancient Greeks meant it, a segment which describes an integer number of
-divisions of another number. Today we might use the word common-multiple.&lt;/p&gt;
+&lt;h2 id=&#34;prerequisites:50cf44a3d7a8ca6a3d0b114540b5d3c2&#34;&gt;Prerequisites&lt;/h2&gt;
+
+&lt;p&gt;The term &lt;em&gt;measure&lt;/em&gt; used in this problem statement means as
+the &lt;a href=&#34;http://www.stepanovpapers.com/gcd.pdf&#34;&gt;ancient Greeks meant it&lt;/a&gt;: a line segment which
+describes an integer number of divisions of another line segment. Today we might use
+the word greatest common divisor.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-maximum-function:50cf44a3d7a8ca6a3d0b114540b5d3c2&#34;&gt;The maximum function&lt;/h2&gt;
 
 &lt;p&gt;Inspired by test-driven-design we&amp;rsquo;ll start with defining a property for our
 maximum function.&lt;/p&gt;
@@ -174,6 +203,8 @@ a new bug.&lt;/p&gt;
 &lt;p&gt;Also there is something viscerally satisfying about writing a single property
 and seeing 100 tests passing.&lt;/p&gt;
 
+&lt;h2 id=&#34;a-compile-time-property:50cf44a3d7a8ca6a3d0b114540b5d3c2&#34;&gt;A compile-time property&lt;/h2&gt;
+
 &lt;p&gt;Next we can verify the property given to us in the &lt;a href=&#34;http://www.cs.ou.edu/~rlpage/SEcollab/20projects/minmax.htm&#34;&gt;problem statement&lt;/a&gt;&lt;/p&gt;
 
 &lt;ol&gt;
@@ -252,6 +283,8 @@ measure_pair_t minimum_pair(const SinglePassRange&amp;amp; xs)
 &lt;p&gt;To property test this function we&amp;rsquo;ll need to teach autocheck how to generate
 a &lt;em&gt;measure_pair_t&lt;/em&gt;. We do this by specializing the generator function in the
 autocheck namespace.&lt;/p&gt;
+
+&lt;h2 id=&#34;generating-a-custom-data-type:50cf44a3d7a8ca6a3d0b114540b5d3c2&#34;&gt;Generating a custom data type&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;namespace autocheck
 {
