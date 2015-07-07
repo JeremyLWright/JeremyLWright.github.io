@@ -14,53 +14,80 @@ tags:
 series: "Property Driven Design"
 ---
 
-I wrote an article on Property Driven Design about a year ago
-(http://www.codestrokes.com/2014/09/property-testing-in-c/). Isocpp.org even
-linked to it at one time (https://isocpp.org/blog/2014/12/property-testing)
-which was pretty cool. Recently, I uncovered a fantastic talk by Jessica Kerr
-about property testing (https://www.youtube.com/watch?v=shngiiBfD80). Kerr's
-talk reinvigorated my passion in generated testing. Kerr presented the idea
-(novel to me) that properties don't have to verify that an answer is correct.
-Properties simply must reduce the size of the incorrect space. This may seem like
-semantics, but sometimes it's much easier to verify something is not
-a wild-ass-guess that if it is correct. 
+
+I wrote an article on [Property Testing](http://www.codestrokes.com/2014/09/property-testing-in-c/)
+about a year ago. Isocpp.org even [linked to
+it](https://isocpp.org/blog/2014/12/property-testing) which was pretty cool.
+Recently, I uncovered a fantastic talk by [Jessica Kerr about property
+testing](https://www.youtube.com/watch?v=shngiiBfD80). Kerr's talk
+reinvigorated my languid research effort toward generated testing. Kerr
+presented the idea (novel to me) that properties aren't rigid. Properties
+don't need to exclude all possible incorrect results for a given function.
+Properties simply must _reduce the size_ of the incorrect space. This may seem
+like semantics, but it is easier to exclude a wild-ass-guess that verify it is correct.
+Additionally, some domains may not have a solidly defined answer,a nd the
+result my be probabilistic in nature. This post will focus on deterministic
+problems for the moment, but realize that property testing is vastly more
+general than mundane example testing. How properties reduce the size of the
+problem space makes me imagine this Figure.
+
 ![sometimes_code_gives_you_a_wtf](/img/Properties_solution_space.png)
-Following Kerr's
-references, I found a set of projects for a predicate-logic class
-(http://www.cs.ou.edu/~rlpage/SEcollab/20projects/). The class provides 20
-projects. Each project breaks down the requirements and predicates the
-functions should provide. This step-by-step example clarified many points
-I misunderstood about property testing. This post will step through the design
-of the first project minmax (http://www.cs.ou.edu/~rlpage/SEcollab/20projects/minmax.htm) using C++. My primary goal for this article is to address a concern raised by a colleague, "Does pulling in more complexity in terms of a fancy test generator actually increase quality?" I believe it does when exercised properly.  All the code is available at [github](https://github.com/JeremyLWright/property_driven_design/tree/master/01_minmax), if you would like to follow along. 
+
+Following Kerr's references, I found a set of projects from a [predicate-logic
+course](http://www.cs.ou.edu/~rlpage/SEcollab/20projects/). This course
+provides 20 separate projects excellently cast for a property-driven-design
+tutorial. These projects are unique since besides the typical requirements
+they enumerate the predicate functions each requirement typifies. Predicate
+functions are to a predicate-logician as properties are to a computer
+scientist. These enumerated properties (predicates) clarified
+many points I misunderstood about property testing. 
+
+This post will step through the design of the first project
+[minmax](http://www.cs.ou.edu/~rlpage/SEcollab/20projects/minmax.htm) using
+C++. My primary goal for this article is to address a concern raised by
+a colleague, "Does pulling in more complexity &mdash; a fancy test
+generator &mdash; actually increase quality?"
+
+- [Code for this article](https://github.com/JeremyLWright/property_driven_design/tree/master/01_minmax).
+- [Revision Log for this article](https://github.com/JeremyLWright/JeremyLWright.github.io/commits/content/content/posts/2015-07-05-property_driven_design_minmax.markdown)
 
 <!--more-->
 
-In her presentation, Kerr stated, "..what is this answer? I don't know but
-I can put a box around it!" While this statement was made in jest it is quite
+In her presentation, Kerr stated, "...what is this answer? I don't know but
+I can put a box around it!" This jestful statement is quite
 inspired. Example tests &mdash; the test typically used in unit tests (the FPGA/ASIC
 guys call these Directed Tests) &mdash; draw individual points within the
-correct region of the solution space. There are excellent structures for
-drawing points in intelligent places, such as structured testing using McCabe
-complexity, but in the end you are still drawing points. Properties on the
-other hand draw boxes around the solution space. Notice that the properties do
-not exclude all incorrect solutions. While this may seem as a defect to
-property driven design, it is a simplification that makes properties resilient
-to refactoring and maintenance cycles. Structured testing, for example, is
-a whitebox method that looks as what test data will induce 100% block
-coverage. As the code grows and changes over time, the predicates and
-conditionals that influence the code coverage change. In a sense the points in
-the correct solution place are always moving around. Properties however
-operate at a higher level of abstraction. Properties allow one to say
-"solutions of _approximately this form_ are likely correct." Properties then
-can be made closer and closer to describe the overall shape of the correct
-solution space. Its a powerful technique that I am increasingly enjoying in my
-design work. 
+correct region of the solution space. 
+
+There are paradigms, e.g., structured testing using McCabe
+complexity, for selecting effective points within this solution space,
+ but in the end you are still drawing points. Properties on the
+other hand draw boxes around the solution space. Notice that the properties
+may include incorrect solutions. While this may seem as a defect to
+property driven design, it is precisely this simplification that makes
+properties resilient to refactoring and maintenance cycles. While still
+providing value by excluding out of bounds results. This resilience is draws
+from PDD's lineage as a black-box testing method. Conversely, structured
+testing is a whitebox method that looks as what test data will
+induce 100% block coverage. As the code changes over time, the
+predicates and conditionals change which intern influence the code coverage. In
+a sense the points in the correct solution place are always moving around. The
+Example based tests are tightly coupled to the implementation they are
+attempting to verify. Properties however operate at a higher level of
+abstraction. Properties allow one to say "solutions of _approximately this
+form_ are likely correct." Properties then may make successively tighter bounds
+around the solution space to constraint the design. Its a powerful
+technique that I increasingly enjoy in my design work. 
 
 # Implementing MinMax with Properties
 
-Before we get started the term measure used in this problem statement means as
-the ancient Greeks meant it, a segment which describes an integer number of
-divisions of another number. Today we might use the word common-multiple.
+## Prerequisites
+The term _measure_ used in this problem statement means as
+the [ancient Greeks meant it](http://www.stepanovpapers.com/gcd.pdf): a line segment which
+describes an integer number of divisions of another line segment. Today we might use
+the word greatest common divisor.
+
+## The maximum function
 
 Inspired by test-driven-design we'll start with defining a property for our
 maximum function.
@@ -175,6 +202,8 @@ a new bug.
 Also there is something viscerally satisfying about writing a single property
 and seeing 100 tests passing. 
 
+## A compile-time property 
+
 Next we can verify the property given to us in the [problem statement](http://www.cs.ou.edu/~rlpage/SEcollab/20projects/minmax.htm)
 
 1. If xs is a non-empty true-list of rational numbers, then (maximum xs) is a rational number.
@@ -253,6 +282,8 @@ measure_pair_t minimum_pair(const SinglePassRange& xs)
 To property test this function we'll need to teach autocheck how to generate
 a _measure\_pair\_t_. We do this by specializing the generator function in the
 autocheck namespace.
+
+## Generating a custom data type
 
 ```cpp
 namespace autocheck
