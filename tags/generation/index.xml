@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Generation on Code Strokes</title>
-    <link>http://codestrokes.com/tags/generation/</link>
+    <link>http://localhost:1313/tags/generation/</link>
     <description>Recent content in Generation on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 02 Aug 2013 16:51:40 +0000</lastBuildDate>
-    <atom:link href="http://codestrokes.com/tags/generation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/generation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>My Haskell Environment for Project Euler</title>
-      <link>http://codestrokes.com/2013/08/my-haskell-environment-for-project-euler/</link>
+      <link>http://localhost:1313/2013/08/my-haskell-environment-for-project-euler/</link>
       <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
       
-      <guid>http://codestrokes.com/2013/08/my-haskell-environment-for-project-euler/</guid>
+      <guid>http://localhost:1313/2013/08/my-haskell-environment-for-project-euler/</guid>
       <description>&lt;p&gt;For the last several months I&amp;rsquo;ve been working on Project Euler in Haskell. My intent has been to learn Haskell, and grasp the functional concepts. While working on several problems it&amp;rsquo;s important to have a workflow that allows for a fast cycle time. I spent some time with Cabal, attempting to build a scheme that works efficiently, but was unable to do so. Instead I setup a mix of cabal-dev, and make to build a fast workflow that allow for compiling, testing, common code libraries, and benchmarks. This post is a walk though of that workflow. &amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
 My most important requirements is cycle time. I a minimum edit-compile-test/execute cycle. This helps me to clearly and quickly work on problems. Especially in compiled languages with libraries, and common code, it is important that a single code change is a single file recompiles a minimum of effort (&lt;a href=&#34;http://www.joelonsoftware.com/articles/fog0000000043.html&#34;&gt;Joel Spoksky&lt;/a&gt;). Therefore my Makefile must describe the dependencies, which themselves are dynamic as the code base grows and changes. Cabal supposedly does this, but Project Euler is uniquely outside the framework offered by cabal. In Project Euler, each solution is a single executable. The project itself is many executables. Maintaining a cabal files for that many executables does not meet my desire for dynamically managed dependencies. Instead I favor make; simple &lt;em&gt;make&lt;/em&gt;. Therefore the requirements of my project euler environemnt are:&lt;/p&gt;
 

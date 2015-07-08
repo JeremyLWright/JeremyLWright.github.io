@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Parallelism on Code Strokes</title>
-    <link>http://codestrokes.com/categories/parallelism/</link>
+    <link>http://localhost:1313/categories/parallelism/</link>
     <description>Recent content in Parallelism on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 23 Oct 2011 17:55:47 +0000</lastBuildDate>
-    <atom:link href="http://codestrokes.com/categories/parallelism/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/parallelism/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Parallel Game-of-Life</title>
-      <link>http://codestrokes.com/2011/10/parallel-game-of-life/</link>
+      <link>http://localhost:1313/2011/10/parallel-game-of-life/</link>
       <pubDate>Sun, 23 Oct 2011 17:55:47 +0000</pubDate>
       
-      <guid>http://codestrokes.com/2011/10/parallel-game-of-life/</guid>
+      <guid>http://localhost:1313/2011/10/parallel-game-of-life/</guid>
       <description>
 
 &lt;p&gt;Conway&amp;rsquo;s &lt;a href=&#34;http://www.bitstorm.org/gameoflife/&#34;&gt;Game of Life&lt;/a&gt; is a dramatic illustration of emmergent behavior; that a seemingly complex system, such as cell mitosis can be governed by a set of simple rules. OpenMP is a fantastic set of language extensions which allows one to add dramatic parallelism without complex thread management.  As a demonstration of &lt;a href=&#34;http://openmp.org/wp/&#34;&gt;OpenMP&lt;/a&gt;&amp;rsquo;s simplicity I implemented the Game of Life. The code and all analysis is available on &lt;a href=&#34;https://bitbucket.org/jwright/parallel-game-of-life&#34;&gt;bitbucket.org&lt;/a&gt;.&lt;/p&gt;

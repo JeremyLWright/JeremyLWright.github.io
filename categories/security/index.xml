@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Security on Code Strokes</title>
-    <link>http://codestrokes.com/categories/security/</link>
+    <link>http://localhost:1313/categories/security/</link>
     <description>Recent content in Security on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 03 May 2014 20:56:49 +0000</lastBuildDate>
-    <atom:link href="http://codestrokes.com/categories/security/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/security/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Design for Testability via Security </title>
-      <link>http://codestrokes.com/2014/05/design-for-testability-via-security/</link>
+      <link>http://localhost:1313/2014/05/design-for-testability-via-security/</link>
       <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
       
-      <guid>http://codestrokes.com/2014/05/design-for-testability-via-security/</guid>
+      <guid>http://localhost:1313/2014/05/design-for-testability-via-security/</guid>
       <description>
 
 &lt;p&gt;I was discussing bootloader design with a colleague of mine the other day. We were attempting to load new a third-party hardware component. The device has a poor protocol, and a useless verification step. This discussion got me thinking however how the concepts used to build a strong self-enforcing security protocol, also apply to building a testable, and reliable communication protocol. Thus, security helps us build better products not because they are secure, but because they are verifiable.
@@ -122,10 +122,10 @@ alice_public_key(nonce_bob:sha256(nonce_bob):nonce_alice:sha256(nonce_alice))&lt
     
     <item>
       <title>A Thunk on Laziness</title>
-      <link>http://codestrokes.com/2013/10/a-thunk-on-laziness/</link>
+      <link>http://localhost:1313/2013/10/a-thunk-on-laziness/</link>
       <pubDate>Sun, 27 Oct 2013 23:00:17 +0000</pubDate>
       
-      <guid>http://codestrokes.com/2013/10/a-thunk-on-laziness/</guid>
+      <guid>http://localhost:1313/2013/10/a-thunk-on-laziness/</guid>
       <description>&lt;p&gt;I originally approached Haskell excited, and wide-eyed mystified by the type theory. Type became my golden hammer. In my C programs I typedef&amp;rsquo;d everything so it&amp;rsquo;d have a &amp;ldquo;unique&amp;rdquo; type. I was cautious with my casting. I was hooked. I had an intuitive understanding of laziness, as implemented by Haskell, that would allow one to write&amp;rdquo;streaming&amp;rdquo; algorithms. That is programs that deal with data in an online way to process data as it streams through. While that maybe true, you know what else can do that? C.
 &amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
 I recently has a problem to extract logs from a product at work. The existing solution e.g. the solution I wrote the week before, was exponential in time. We had a problem. We had to extract the logs, and separate them by an sentinel in the file, encrypt the files, compress them, then copy the output to a thumbdrive. The only problem we didn&amp;rsquo;t have enough RAM to store the entire file in memory, and we didn&amp;rsquo;t have enough flash to create temporary files.  I needed a streaming algorithm.&lt;/p&gt;
@@ -138,10 +138,10 @@ I recently has a problem to extract logs from a product at work. The existing so
     
     <item>
       <title>Linux User&#39;s Group CTF 2013</title>
-      <link>http://codestrokes.com/2013/09/linux-users-group-ctf-2013/</link>
+      <link>http://localhost:1313/2013/09/linux-users-group-ctf-2013/</link>
       <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
       
-      <guid>http://codestrokes.com/2013/09/linux-users-group-ctf-2013/</guid>
+      <guid>http://localhost:1313/2013/09/linux-users-group-ctf-2013/</guid>
       <description>&lt;p&gt;This past weekend we held another capture the flag event at the Arizona State University&amp;rsquo;s Linux User&amp;rsquo;s Group. It had more of a system admin focus than security cracking exploits, but it was fun an nontheless a diverse learning experience for all those involved. However, almost immediately, I realized the number one rule in CTF, nothing is off limits!
 &amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
 The game was organized into two parts, a game server which collected the the scores and displayed the point totals of all teams in real-time, and the virtual servers (hosted on Amazon EC2) which contained the actual games. Players were encouraged to break into teams, and register themselves on the game server. The game server would assign the team a virtual machine, and the team could log in via SSH to behind hacking. Five minutes into the registration process, one team attempted a SQL injection attack against the game server.&lt;/p&gt;
@@ -155,10 +155,10 @@ The game was organized into two parts, a game server which collected the the sco
     
     <item>
       <title>Capture the Flag - Running a Hacking Competition</title>
-      <link>http://codestrokes.com/2012/04/capture-the-flag-running-a-hacking-competition/</link>
+      <link>http://localhost:1313/2012/04/capture-the-flag-running-a-hacking-competition/</link>
       <pubDate>Mon, 30 Apr 2012 02:38:44 +0000</pubDate>
       
-      <guid>http://codestrokes.com/2012/04/capture-the-flag-running-a-hacking-competition/</guid>
+      <guid>http://localhost:1313/2012/04/capture-the-flag-running-a-hacking-competition/</guid>
       <description>&lt;p&gt;Black-Hat hacking in an controlled environment, like this, is an important skill for software developers. The &lt;a href=&#34;http://en.wikipedia.org/wiki/The_Art_of_War&#34;&gt;Art of War&lt;/a&gt; describes knowing one&amp;rsquo;s enemy, and with the prevalence of internet-enabled applications today, it has never been more critical to know how the &amp;ldquo;enemy&amp;rdquo; can take down a system. While capture-the-flag is a fun, and exciting intellectual game, it is serious training for software engineers of all types, and skill levels. I recently setup a small capture the flag event for the &lt;a href=&#34;http://asulug.org/&#34;&gt;Arizona Linux User&amp;rsquo;s Group&lt;/a&gt;, and it was very fun.&lt;/p&gt;
 
 &lt;p&gt;To setup a catpure the flag event, here are a few guidelines I found useful:&lt;/p&gt;

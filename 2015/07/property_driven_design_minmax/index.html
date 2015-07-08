@@ -19,7 +19,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="en_US" />
-<meta property="og:url" content="http://codestrokes.com/2015/07/property_driven_design_minmax/" />
+<meta property="og:url" content="http://localhost:1313/2015/07/property_driven_design_minmax/" />
 
 
   
@@ -31,7 +31,7 @@
   
   
 
-  <link rel="stylesheet" href="http://codestrokes.com//css/redlounge.css">
+  <link rel="stylesheet" href="http://localhost:1313//css/redlounge.css">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
   <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
@@ -81,7 +81,7 @@ ga('create', 'UA-23129291-1', 'auto');
 
     <nav class="nav">
       <ul class="nav-list">
-        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://codestrokes.com/">Home</a></li>
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://localhost:1313/">Home</a></li>
         
           <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about/">About</a></li>
         
@@ -133,6 +133,8 @@ ga('create', 'UA-23129291-1', 'auto');
 <li><a href="#the-maximum-function:50cf44a3d7a8ca6a3d0b114540b5d3c2">The maximum function</a></li>
 <li><a href="#a-compile-time-property:50cf44a3d7a8ca6a3d0b114540b5d3c2">A compile-time property</a></li>
 <li><a href="#generating-a-custom-data-type:50cf44a3d7a8ca6a3d0b114540b5d3c2">Generating a custom data type</a></li>
+<li><a href="#broken-test-code:50cf44a3d7a8ca6a3d0b114540b5d3c2">Broken Test Code</a></li>
+<li><a href="#fixing-our-property:50cf44a3d7a8ca6a3d0b114540b5d3c2">Fixing our property</a></li>
 </ul></li>
 <li><a href="#conclusion:50cf44a3d7a8ca6a3d0b114540b5d3c2">Conclusion</a></li>
 </ul>
@@ -167,9 +169,9 @@ ga('create', 'UA-23129291-1', 'auto');
 			
 				<div class="post-categories">
 				
-					<a class="post-category post-category-c" href="http://codestrokes.com//categories/c">C&#43;&#43;</a>
+					<a class="post-category post-category-c" href="http://localhost:1313//categories/c">C&#43;&#43;</a>
 				
-					<a class="post-category post-category-property-driven-design" href="http://codestrokes.com//categories/property-driven-design">Property Driven Design</a>
+					<a class="post-category post-category-property-driven-design" href="http://localhost:1313//categories/property-driven-design">Property Driven Design</a>
 				
 				</div>
 			
@@ -256,49 +258,49 @@ the word greatest common divisor.</p>
 
 <h2 id="the-maximum-function:50cf44a3d7a8ca6a3d0b114540b5d3c2">The maximum function</h2>
 
-<p>Inspired by test-driven-design we&rsquo;ll start with defining a property for our
+<p>Inspired by test-driven-design we&rsquo;ll start by defining a property for our
 maximum function.</p>
 
 <ol>
 <li>Define a function, <em>maximum</em>, that delivers the largest value in a non-empty list of rational numbers.</li>
 </ol>
 
-<p>Using the autocheck library we can express this requirement as follows:</p>
+<p>Using the <a href="https://github.com/thejohnfreeman/autocheck">autocheck library</a> we can express this requirement as follows:</p>
 
 <pre><code class="language-cpp">struct prop_max_element_t
 {
-    template&lt;
-        typename SinglePassRange&gt;
-    bool operator()(const SinglePassRange&amp; xs)
-    {
-        auto ref_max = std::max_element(std::cbegin(xs), std::cend(xs));
-        const auto test_max = minmax::maximum(xs);
-        return *ref_max == test_max;
-    }
-    
+	template&lt;
+		typename SinglePassRange&gt;
+	bool operator()(const SinglePassRange&amp; xs)
+	{
+		auto ref_max = std::max_element(std::cbegin(xs), std::cend(xs));
+		const auto test_max = minmax::maximum(xs);
+		return *ref_max == test_max;
+	}
+	
 };
 
 TEST(minmax, maximum_prop)
 {
-    autocheck::gtest_reporter rep;
+	autocheck::gtest_reporter rep;
 
-    auto arbitrary = 
-        autocheck::discard_if([](const std::vector&lt;size_t&gt;&amp; xs) -&gt; bool { return xs.size() == 0; },
-        autocheck::make_arbitrary&lt;std::vector&lt;size_t&gt;&gt;());
-        
-    autocheck::check&lt;std::vector&lt;size_t&gt;&gt;(
-            prop_max_element_t(),
-            100,
-            arbitrary,
-            rep);
+	auto arbitrary = 
+		autocheck::discard_if([](const std::vector&lt;size_t&gt;&amp; xs) -&gt; bool { return xs.size() == 0; },
+		autocheck::make_arbitrary&lt;std::vector&lt;size_t&gt;&gt;());
+		
+	autocheck::check&lt;std::vector&lt;size_t&gt;&gt;(
+			prop_max_element_t(),
+			100,
+			arbitrary,
+			rep);
 }
 </code></pre>
 
-<p>Lets start with the definition of the arbitrary generator:</p>
+<p>Lets breakdown the definition of the arbitrary generator:</p>
 
-<pre><code class="language-cpp">    auto arbitrary = 
-        autocheck::discard_if([](const std::vector&lt;size_t&gt;&amp; xs) -&gt; bool { return xs.size() == 0; },
-        autocheck::make_arbitrary&lt;std::vector&lt;size_t&gt;&gt;());
+<pre><code class="language-cpp">	auto arbitrary = 
+		autocheck::discard_if([](const std::vector&lt;size_t&gt;&amp; xs) -&gt; bool { return xs.size() == 0; },
+		autocheck::make_arbitrary&lt;std::vector&lt;size_t&gt;&gt;());
 </code></pre>
 
 <p>The signature of an arbitrary generator is best read bottom to top.  The first
@@ -315,7 +317,7 @@ data rather than try to generate only valid data.</p>
 template &lt;typename SinglePassRange&gt;
 typename SinglePassRange::value_type maximum(const SinglePassRange&amp; range)
 {
-    return 0; 
+	return 0; //Stubbed method
 }
 }
 </code></pre>
@@ -332,25 +334,22 @@ Falsifiable, after 3 tests:
 [  FAILED  ] minmax.maximum_prop (3 ms)
 </code></pre>
 
-<p>From this we can implement our method</p>
+<p>Now that we are confident the test machinery is working, we can remove our
+stub implementation and provide a (hopefully correct) definition.</p>
 
 <pre><code class="language-cpp">namespace minmax
 {
-
 template &lt;typename SinglePassRange&gt;
 typename SinglePassRange::value_type maximum(const SinglePassRange&amp; range)
 {
-    //First Implementation
-    //return 0; 
-    return *std::max_element(
-            std::begin(range),
-            std::end(range));
+	return *std::max_element(
+			std::begin(range),
+			std::end(range));
 }
-
 }
 </code></pre>
 
-<p>and rerun our property</p>
+<p>We will no re-run our test to verify the implementation.</p>
 
 <pre><code class="language-bash">[ RUN      ] minmax.maximum_prop
 OK, passed 100 tests.
@@ -358,9 +357,8 @@ OK, passed 100 tests.
 </code></pre>
 
 <p>This demonstrates another useful property of properties :-). The data passing
-through our property test is randomly generated. Each time the test runs we
-get different tests. Typing <em>make test</em> multiple times is actually a useful
-thing, not just something you do to procrastinate at 4:45pm when you&rsquo;ve found
+through our property is randomly generated, ergo each time the test runs we
+execute different tests. Typing <em>make test</em> multiple times is actually useful, not just something you do to procrastinate at 4:45pm when you&rsquo;ve found
 a new bug.</p>
 
 <p>Also there is something viscerally satisfying about writing a single property
@@ -384,12 +382,12 @@ maintenance programmer will fail to compile without modifying the test.</p>
 
 <pre><code class="language-cpp">struct prop_maximum_should_give_rational_number_t
 {
-    template&lt;typename SinglePassRange&gt;
-    bool operator()(const SinglePassRange&amp; xs)
-    {
-        static_assert(std::is_integral&lt;decltype(minmax::maximum(xs))&gt;::value, &quot;Maximum only works on rational numbers.&quot;);
-        return std::is_integral&lt;decltype(minmax::maximum(xs))&gt;::value;
-    }
+	template&lt;typename SinglePassRange&gt;
+	bool operator()(const SinglePassRange&amp; xs)
+	{
+		static_assert(std::is_integral&lt;decltype(minmax::maximum(xs))&gt;::value, &quot;Maximum only works on rational numbers.&quot;);
+		return std::is_integral&lt;decltype(minmax::maximum(xs))&gt;::value;
+	}
 };
 </code></pre>
 
@@ -414,16 +412,16 @@ any list where 0 was not a member.</p>
 
 <pre><code class="language-cpp">struct prop_maximum_should_return_a_value_from_the_list_t
 {
-    template &lt;typename SinglePassRange&gt;
-    bool operator()(const SinglePassRange&amp; xs)
-    {
-        const auto m = minmax::maximum(xs);
-        const auto is_present = std::find(
-                std::begin(xs),
-                std::end(xs),
-                m);
-        return is_present != std::end(xs);
-    }
+	template &lt;typename SinglePassRange&gt;
+	bool operator()(const SinglePassRange&amp; xs)
+	{
+		const auto m = minmax::maximum(xs);
+		const auto is_present = std::find(
+				std::begin(xs),
+				std::end(xs),
+				m);
+		return is_present != std::end(xs);
+	}
 };
 </code></pre>
 
@@ -439,7 +437,7 @@ implement with a stub to always return the first element:</p>
 <pre><code class="language-cpp">template &lt;typename SinglePassRange&gt;
 measure_pair_t minimum_pair(const SinglePassRange&amp; xs)
 {
-    return *std::begin(xs);
+	return *std::begin(xs);
 }
 </code></pre>
 
@@ -456,29 +454,31 @@ autocheck namespace.</p>
 template &lt;&gt;
 class generator&lt;minmax::measure_pair_t&gt;
 {
-    public:
-    using result_type = minmax::measure_pair_t;
+	public:
+	using result_type = minmax::measure_pair_t;
 
-    result_type operator()()
-    {
-        return this-&gt;operator()(0);
-    }
+	result_type operator()()
+	{
+		return this-&gt;operator()(0);
+	}
 
-    result_type operator()(size_t size)
-    {
-        auto rational_gen = generator&lt;std::size_t&gt;();
-        return std::make_pair(rational_gen(size), rational_gen(size));
-    }
+	result_type operator()(size_t size)
+	{
+		auto rational_gen = generator&lt;std::size_t&gt;();
+		return std::make_pair(rational_gen(size), rational_gen(size));
+	}
 };
 
 //Tell autocheck how to display a measure_pair_t
 std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, const minmax::measure_pair_t&amp; p)
 {
-    os &lt;&lt; &quot;{&quot; &lt;&lt; p.first &lt;&lt; &quot;, &quot; &lt;&lt; p.second &lt;&lt; &quot;}&quot;;
-    return os;
+	os &lt;&lt; &quot;{&quot; &lt;&lt; p.first &lt;&lt; &quot;, &quot; &lt;&lt; p.second &lt;&lt; &quot;}&quot;;
+	return os;
 }
 }
 </code></pre>
+
+<h2 id="broken-test-code:50cf44a3d7a8ca6a3d0b114540b5d3c2">Broken Test Code</h2>
 
 <p>Now autocheck can generate and display our specific type. Setup a property to
 check.</p>
@@ -494,17 +494,17 @@ sus that out quite quickly):</p>
 ///Provided definition: measure pair: a two-element list whose first element, a rational number, is the measure of its other element
 bool is_measure_pair(const measure_pair_t&amp; x)
 {
-    //A measure pair is a two element list, who's first element (a rational
-    //number), is the measure of its other element
-    const auto first_element_is_rational = std::is_integral&lt;decltype(x.first)&gt;::value;
+	//A measure pair is a two element list, who's first element (a rational
+	//number), is the measure of its other element
+	const auto first_element_is_rational = std::is_integral&lt;decltype(x.first)&gt;::value;
 
-    const auto other_element_is_measure_of_first = 
-        //To be a measure the first value must be less-than the second.
-        (x.first &lt; x.second)
-        //And the second element must evenly divide the first element.
-        &amp;&amp; (x.second % x.first == 0);
-    return first_element_is_rational
-        &amp;&amp; other_element_is_measure_of_first;
+	const auto other_element_is_measure_of_first = 
+		//To be a measure the first value must be less-than the second.
+		(x.first &lt; x.second)
+		//And the second element must evenly divide the first element.
+		&amp;&amp; (x.second % x.first == 0);
+	return first_element_is_rational
+		&amp;&amp; other_element_is_measure_of_first;
 }
 </code></pre>
 
@@ -513,12 +513,12 @@ the definition of a measure pair.</p>
 
 <pre><code class="language-cpp">struct prop_minimum_pair_should_return_a_measure_pair_t
 {
-    bool operator()(const std::vector&lt;minmax::measure_pair_t&gt;&amp; xs) const
-    {
-        using namespace minmax;
-        const auto test_pair = minimum_pair(xs);
-        return is_measure_pair(test_pair);
-    }
+	bool operator()(const std::vector&lt;minmax::measure_pair_t&gt;&amp; xs) const
+	{
+		using namespace minmax;
+		const auto test_pair = minimum_pair(xs);
+		return is_measure_pair(test_pair);
+	}
 };
 </code></pre>
 
@@ -541,28 +541,28 @@ non-zero so we will update the generator to exclude zero values.</p>
 template &lt;&gt;
 class generator&lt;minmax::measure_pair_t&gt;
 {
-    public:
-    using result_type = minmax::measure_pair_t;
+	public:
+	using result_type = minmax::measure_pair_t;
 
-    result_type operator()()
-    {
-        return this-&gt;operator()(0);
-    }
+	result_type operator()()
+	{
+		return this-&gt;operator()(0);
+	}
 
-    result_type operator()(const size_t size)
-    {
-        const auto non_zero_gen = [size]()
-        {
-            auto rational_gen = generator&lt;std::size_t&gt;();
-            auto temp = rational_gen(size);
-            if(temp == 0) //Skip over zero!
-                return temp + 1;
-            return temp;
-        };
-        const auto measure = non_zero_gen();
-        const auto factor = non_zero_gen();
-        return std::make_pair(measure*factor, measure);
-    }
+	result_type operator()(const size_t size)
+	{
+		const auto non_zero_gen = [size]()
+		{
+			auto rational_gen = generator&lt;std::size_t&gt;();
+			auto temp = rational_gen(size);
+			if(temp == 0) //Skip over zero!
+				return temp + 1;
+			return temp;
+		};
+		const auto measure = non_zero_gen();
+		const auto factor = non_zero_gen();
+		return std::make_pair(measure*factor, measure);
+	}
 };
 }
 </code></pre>
@@ -582,17 +582,34 @@ Falsifiable, after 1 tests:
 <p>This test case demonstrates that our understand of the word measure wasn&rsquo;t
 quite right when we implemented the <em>is_measure_pair</em> predicate. A value can
 always be a measure of itself, i.e., a number always measures itself one time.
-Notice that we still have a stub for our function. One school of thought is
+Since our function is still a stub we are still excercising the test
+machinery, not the production code yet. One school of thought is
 that we are wasting time writing, and rewriting, test code before we&rsquo;ve even
-worked on the code we&rsquo;re getting paid to write. But this failing test case is
-evidence for a different perspective. The test code is working out our concept
-of what the code needs to do. We the author would have written the function
-incorrection the first time, considering we didn&rsquo;t implement the definition
-correctly, e.g., we could translate a definition into C++ correctly, we
-probably wouldn&rsquo;t have written some that that manipulates that definition
-correctly. Nor, in our limited understanding of the problem, defined any</p>
+worked on the code we&rsquo;re getting paid to write however, this failing test case is
+evidence for a different perspective. The test code is letting us explore the
+problem space.</p>
 
-<p>useful test data for our directed tests. John Hughes <a href="https://www.youtube.com/watch?v=FnjutUoNSmg">put it
+<p>Imagine a traditional directed test scenerio. We unknowingly have a limited
+understanding of the problem space. We implement some tests. Those tests
+reflect our understanding of the problem. We then implement the functions. The
+tests pass, all the while we unknowingly provided weak tests for the given
+problem domain. Lastly, we inspect the implementation and add some additional
+tests to assure 100% code coverage.</p>
+
+<p>In this scenerio, we did TDD correctly by writing the tests first. We did our
+red/green refactor. We implemented the function. Our tests pass, and we
+achieved 100% code coverage. We did all the things we are supposed to do, and
+we still delivered a defective function. The problem is that all these steps
+happen at the same conceptual level of abstraction. It&rsquo;s a linear prorgession
+from our understanding, to writing tests, to writing implementation, to
+inspecting coverage. At no point was there some outside force that can
+excercise the code beyond our understanding. This is the benefit of
+property-driven-design. Randomness will generate test cases you the programmer
+didn&rsquo;t think of. You the programmer then need to classify that generated test
+case as valid input or invalid input. That is a useful! It expands your own
+understanding.</p>
+
+<p>John Hughes <a href="https://www.youtube.com/watch?v=FnjutUoNSmg">put it
 best</a> when he state that property
 testing is about comparing the specification to the code. The properties
 encode the specification. The code does what it does. When the checker finds
@@ -602,26 +619,27 @@ our functions what will make it blow up. We simply describe concepts
 (properties) of what we believe the specification is telling us to do. Then we
 implement the code. If the two match then we the code probably matches the
 specification. Its raises our level of thinking out of individual numbers, and
-code paths to more abstract thinking, which is something humans do best. (I
-liken this raising of thought similar to using ranges intead of indexes).</p>
+code paths to more abstract thinking, which is something humans do best.</p>
+
+<h2 id="fixing-our-property:50cf44a3d7a8ca6a3d0b114540b5d3c2">Fixing our property</h2>
 
 <p>The problem is is that our definition doesn&rsquo;t include self-measures. We can
 adjust it easily.</p>
 
 <pre><code class="language-cpp">bool is_measure_pair(const measure_pair_t&amp; x)
 {
-    //A measure pair is a two element list, who's first element (a rational
-    //number), is the measure of its other element
-    const auto first_element_is_rational = std::is_integral&lt;decltype(x.first)&gt;::value;
+	//A measure pair is a two element list, who's first element (a rational
+	//number), is the measure of its other element
+	const auto first_element_is_rational = std::is_integral&lt;decltype(x.first)&gt;::value;
 
-    const auto other_element_is_measure_of_first = 
-        //To be a measure the first value must be equal-to or less-than the second.
-        (x.first == x.second) ||
-        ((x.first &lt; x.second )
-        //And the second element must evenly divide the first element.
-        &amp;&amp; (x.second % x.first == 0));
-    return first_element_is_rational
-        &amp;&amp; other_element_is_measure_of_first;
+	const auto other_element_is_measure_of_first = 
+		//To be a measure the first value must be equal-to or less-than the second.
+		(x.first == x.second) ||
+		((x.first &lt; x.second )
+		//And the second element must evenly divide the first element.
+		&amp;&amp; (x.second % x.first == 0));
+	return first_element_is_rational
+		&amp;&amp; other_element_is_measure_of_first;
 }
 </code></pre>
 
@@ -656,10 +674,10 @@ Hughes, &ldquo;<a href="https://www.youtube.com/watch?v=zi0rHwfiX1Q">This is pro
 <pre><code class="language-cpp">template &lt;typename SinglePassRange&gt;
 measure_pair_t minimum_pair(const SinglePassRange&amp; xs)
 {
-    return *std::min_element(
-            std::begin(xs),
-            std::end(xs),
-            ::minmax::operator&lt;);
+	return *std::min_element(
+			std::begin(xs),
+			std::end(xs),
+			::minmax::operator&lt;);
 }
 </code></pre>
 
@@ -716,7 +734,7 @@ OK, passed 100 tests.
 
 <h1 id="conclusion:50cf44a3d7a8ca6a3d0b114540b5d3c2">Conclusion</h1>
 
-<p>So a few real-world metrics. I wrote this code and properties in 3 hours. The
+<p>So a few real-world metrics. I wrote this code in 3 hours. The
 requirements were relatively simple, but I suspect that using example tests
 would have resulted in a similar completion time. Additionally, I suspect, my
 directed tests would have found more defects near the end of my development
@@ -743,11 +761,11 @@ post.</p>
 				<div class="tags-list">
 					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
 					
-	                <a class="post-tag post-tag-property-testing" href="http://codestrokes.com//tags/property-testing">property-testing</a>,
+	                <a class="post-tag post-tag-property-testing" href="http://localhost:1313//tags/property-testing">property-testing</a>,
 	                
-	                <a class="post-tag post-tag-example" href="http://codestrokes.com//tags/example">example</a>,
+	                <a class="post-tag post-tag-example" href="http://localhost:1313//tags/example">example</a>,
 	                
-	                <a class="post-tag post-tag-tutorial" href="http://codestrokes.com//tags/tutorial">tutorial</a>,
+	                <a class="post-tag post-tag-tutorial" href="http://localhost:1313//tags/tutorial">tutorial</a>,
 	                
 				</div>
 			
@@ -770,9 +788,9 @@ post.</p>
           	<div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'codestrokes2';
-    var disqus_identifier = 'http:\/\/codestrokes.com\/2015\/07\/property_driven_design_minmax\/';
+    var disqus_identifier = 'http:\/\/localhost:1313\/2015\/07\/property_driven_design_minmax\/';
     var disqus_title = 'Property Driven Design: MinMax';
-    var disqus_url = 'http:\/\/codestrokes.com\/2015\/07\/property_driven_design_minmax\/';
+    var disqus_url = 'http:\/\/localhost:1313\/2015\/07\/property_driven_design_minmax\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

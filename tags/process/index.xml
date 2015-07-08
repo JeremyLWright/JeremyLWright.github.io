@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Process on Code Strokes</title>
-    <link>http://codestrokes.com/tags/process/</link>
+    <link>http://localhost:1313/tags/process/</link>
     <description>Recent content in Process on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 19 Jun 2011 18:59:47 +0000</lastBuildDate>
-    <atom:link href="http://codestrokes.com/tags/process/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/process/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Being Truely Productive</title>
-      <link>http://codestrokes.com/2011/06/being-truely-productive/</link>
+      <link>http://localhost:1313/2011/06/being-truely-productive/</link>
       <pubDate>Sun, 19 Jun 2011 18:59:47 +0000</pubDate>
       
-      <guid>http://codestrokes.com/2011/06/being-truely-productive/</guid>
+      <guid>http://localhost:1313/2011/06/being-truely-productive/</guid>
       <description>&lt;p&gt;Productivity is an elusive mistress.  I approach productivity much like any design problem. I lay out my requirements, and I iterate until I am happy with the outcome. Over the last few years I have spent a lot time laying out my design process.  Along the way I found a number of tools that were helpful.  This is my personal process and while I think it&amp;rsquo;s a great process.  It&amp;rsquo;s important to refactor for yourself. The key to my productivity is consistency. I work well with a defined workflow. Lastly, interruptions are a certainty, so one must find a way to make context switches less disruptive.&lt;/p&gt;
 
 &lt;blockquote&gt;Try to setup natural stopping points in your process. You will be interrupted so make context switches cheap.&lt;/blockquote&gt;
