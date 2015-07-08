@@ -89,12 +89,12 @@ the word greatest common divisor.
 
 ## The maximum function
 
-Inspired by test-driven-design we'll start with defining a property for our
+Inspired by test-driven-design we'll start by defining a property for our
 maximum function.
 
 1. Define a function, _maximum_, that delivers the largest value in a non-empty list of rational numbers.
 
-Using the autocheck library we can express this requirement as follows:
+Using the [autocheck library](https://github.com/thejohnfreeman/autocheck) we can express this requirement as follows:
 
 ```cpp
 struct prop_max_element_t
@@ -125,8 +125,7 @@ TEST(minmax, maximum_prop)
 			rep);
 }
 ```
-
-Lets start with the definition of the arbitrary generator:
+Lets breakdown the definition of the arbitrary generator:
 
 ```cpp
 	auto arbitrary = 
@@ -149,7 +148,7 @@ namespace minmax
 template <typename SinglePassRange>
 typename SinglePassRange::value_type maximum(const SinglePassRange& range)
 {
-	return 0; 
+	return 0; //Stubbed method
 }
 }
 ```
@@ -166,26 +165,22 @@ Falsifiable, after 3 tests:
 [  FAILED  ] minmax.maximum_prop (3 ms)
 ```
 
-From this we can implement our method 
+Now that we are confident the test machinery is working, we can remove our
+stub implementation and provide a (hopefully correct) definition.
 
 ```cpp
 namespace minmax
 {
-
 template <typename SinglePassRange>
 typename SinglePassRange::value_type maximum(const SinglePassRange& range)
 {
-	//First Implementation
-	//return 0; 
 	return *std::max_element(
 			std::begin(range),
 			std::end(range));
 }
-
 }
 ```
-
-and rerun our property
+We will no re-run our test to verify the implementation.
 
 ```bash
 [ RUN      ] minmax.maximum_prop
@@ -194,9 +189,8 @@ OK, passed 100 tests.
 ```
 
 This demonstrates another useful property of properties :-). The data passing
-through our property test is randomly generated. Each time the test runs we
-get different tests. Typing _make test_ multiple times is actually a useful
-thing, not just something you do to procrastinate at 4:45pm when you've found
+through our property is randomly generated, ergo each time the test runs we
+execute different tests. Typing _make test_ multiple times is actually useful, not just something you do to procrastinate at 4:45pm when you've found
 a new bug. 
 
 Also there is something viscerally satisfying about writing a single property
@@ -316,6 +310,7 @@ std::ostream& operator<<(std::ostream& os, const minmax::measure_pair_t& p)
 }
 }
 ```
+## Broken Test Code
 
 Now autocheck can generate and display our specific type. Setup a property to
 check. 
@@ -419,21 +414,37 @@ Falsifiable, after 1 tests:
 
 [  FAILED  ] MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair (1 ms)
 ```
-
 This test case demonstrates that our understand of the word measure wasn't
 quite right when we implemented the _is\_measure\_pair_ predicate. A value can
 always be a measure of itself, i.e., a number always measures itself one time.
-Notice that we still have a stub for our function. One school of thought is
+Since our function is still a stub we are still excercising the test
+machinery, not the production code yet. One school of thought is
 that we are wasting time writing, and rewriting, test code before we've even
-worked on the code we're getting paid to write. But this failing test case is
-evidence for a different perspective. The test code is working out our concept
-of what the code needs to do. We the author would have written the function
-incorrection the first time, considering we didn't implement the definition
-correctly, e.g., we could translate a definition into C++ correctly, we
-probably wouldn't have written some that that manipulates that definition
-correctly. Nor, in our limited understanding of the problem, defined any
+worked on the code we're getting paid to write however, this failing test case is
+evidence for a different perspective. The test code is letting us explore the
+problem space. 
 
-useful test data for our directed tests. John Hughes [put it
+Imagine a traditional directed test scenerio. We unknowingly have a limited
+understanding of the problem space. We implement some tests. Those tests
+reflect our understanding of the problem. We then implement the functions. The
+tests pass, all the while we unknowingly provided weak tests for the given
+problem domain. Lastly, we inspect the implementation and add some additional
+tests to assure 100% code coverage. 
+
+In this scenerio, we did TDD correctly by writing the tests first. We did our
+red/green refactor. We implemented the function. Our tests pass, and we
+achieved 100% code coverage. We did all the things we are supposed to do, and
+we still delivered a defective function. The problem is that all these steps
+happen at the same conceptual level of abstraction. It's a linear prorgession
+from our understanding, to writing tests, to writing implementation, to
+inspecting coverage. At no point was there some outside force that can
+excercise the code beyond our understanding. This is the benefit of
+property-driven-design. Randomness will generate test cases you the programmer
+didn't think of. You the programmer then need to classify that generated test
+case as valid input or invalid input. That is a useful! It expands your own
+understanding. 
+
+John Hughes [put it
 best](https://www.youtube.com/watch?v=FnjutUoNSmg) when he state that property
 testing is about comparing the specification to the code. The properties
 encode the specification. The code does what it does. When the checker finds
@@ -443,9 +454,9 @@ our functions what will make it blow up. We simply describe concepts
 (properties) of what we believe the specification is telling us to do. Then we
 implement the code. If the two match then we the code probably matches the
 specification. Its raises our level of thinking out of individual numbers, and
-code paths to more abstract thinking, which is something humans do best. (I
-liken this raising of thought similar to using ranges intead of indexes).
+code paths to more abstract thinking, which is something humans do best.
 
+## Fixing our property 
 The problem is is that our definition doesn't include self-measures. We can
 adjust it easily.
 
@@ -562,7 +573,7 @@ Running this multiple times generates no failing test cases.
 
 # Conclusion
 
-So a few real-world metrics. I wrote this code and properties in 3 hours. The
+So a few real-world metrics. I wrote this code in 3 hours. The
 requirements were relatively simple, but I suspect that using example tests
 would have resulted in a similar completion time. Additionally, I suspect, my
 directed tests would have found more defects near the end of my development
