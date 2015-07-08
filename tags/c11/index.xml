@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C11 on Code Strokes</title>
-    <link>http://localhost:1313/tags/c11/</link>
+    <link>http://codestrokes.com/tags/c11/</link>
     <description>Recent content in C11 on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 12 Feb 2014 08:50:00 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/c11/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://codestrokes.com/tags/c11/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Massively Intelligent Non-Deterministic Luminating Effortless Super Solver</title>
-      <link>http://localhost:1313/2014/02/cracking-subciphercpp/</link>
+      <link>http://codestrokes.com/2014/02/cracking-subciphercpp/</link>
       <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
       
-      <guid>http://localhost:1313/2014/02/cracking-subciphercpp/</guid>
+      <guid>http://codestrokes.com/2014/02/cracking-subciphercpp/</guid>
       <description>&lt;p&gt;I worked the title of this article several times before I finally settled on the subtly epic heading you see above. Hopefully this title will funnel people off google into my blog (delicious SEO). I wanted to push the A.I. component of my solution because A.I. is awesome and mysterious, and cool (and can like solve jeopardy). I was quickly disillusioned however. Really, A.I. isn&amp;rsquo;t magic, rather it&amp;rsquo;s just the same thing computers have been doing for a long time: computing. Sadly this realization took several months in an A.I. class before I was sufficiently crestfallen. A.I. patterns including the hill climbing algorithm used here are indeed &amp;ldquo;intelligent&amp;rdquo; but really it a reflecting of the algorithm designer, not the entity executing the algorithm. So I built a substitution cipher solver in C++. It&amp;rsquo;s fast it uses random numbers i.e. non-deterministic, it uses an A.I. algorithm i.e. Intelligent, it uses threads i.e. Massively, it deciphers i.e. luminates the text and it solves super stuff therefore the title is completely justified. I give you my Massively Intelligent Non-Deterministic Luminating Effortless Super Solver (MINDLESS). If none of that interests you then please stick around and follow the side quest of looking for &lt;a href=&#34;http://justenoughcraig.blogspot.com/2014/01/just-say-no-to-passive-aggressive.html&#34;&gt;emotionally charged parenthesis&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Cracking substitution ciphers were a fun puzzle I pursued as a child. Substitution ciphers are monoalphabetic ciphers. Meaning a single letter maps to a single letter and that mapping is static. This is opposed to polyalphabetic ciphers where the mapping of letters changes throughout the message. Vigenère Cipher is an example. Given a substitution cipher what are tools are available to the &amp;ldquo;cryptanalyst&amp;rdquo; (the person to breaks ciphers). Firstly, frequency analysis. Frequency analysis supposes the the distribution of letters within the message is essentially the same as the distribution of letters in the English language (&lt;a href=&#34;http://en.wikipedia.org/wiki/Frequency_analysis&#34;&gt;http://en.wikipedia.org/wiki/Frequency_analysis&lt;/a&gt;). However if the message is short, or if the message is intentionally written to skew the letter distribution this technique is difficult. This post looks at a different approach, an artificial intelligence technique called hill climbing.&lt;/p&gt;
@@ -171,10 +171,10 @@ return p;
     
     <item>
       <title>Sean Parent: No Raw Loops</title>
-      <link>http://localhost:1313/2013/11/sean-parent-no-raw-loops/</link>
+      <link>http://codestrokes.com/2013/11/sean-parent-no-raw-loops/</link>
       <pubDate>Sun, 24 Nov 2013 22:14:50 +0000</pubDate>
       
-      <guid>http://localhost:1313/2013/11/sean-parent-no-raw-loops/</guid>
+      <guid>http://codestrokes.com/2013/11/sean-parent-no-raw-loops/</guid>
       <description>&lt;p&gt;A group of colleagues and I watched Sean Parent&amp;rsquo;s Going Native Talk on &amp;ldquo;&lt;a href=&#34;http://channel9.msdn.com/Events/GoingNative/2013/Cpp-Seasoning&#34;&gt;C++ Seasoning&lt;/a&gt;&amp;rdquo;. Parent takes some extreme views on how to use C++, but his examples for using the STL to simplify code are phenomenal. For a recent AI project I decided to apply Parent&amp;rsquo;s &lt;em&gt;goal&lt;/em&gt; of &amp;ldquo;no raw loops&amp;rdquo;, I was blown away by the transformation&amp;hellip; err std::transformation this had on my code. In this post I indented to demonstrate several complex code blocks, or overly specific code blocks what were replaced by some STL magic. Alexander Stepanov says, &amp;ldquo;&lt;a href=&#34;http://www.youtube.com/watch?v=COuHLky7E2Q&#34;&gt;&amp;hellip;code is a liability.&lt;/a&gt;&amp;rdquo; The more code a program has the more likely it contains bugs. The fewer lines of code, the lesser the opportunity for a bug. I haven&amp;rsquo;t quiet decided if I agree with this point, but it does induce thought either way. Sean Parent&amp;rsquo;s methodology seems to agree, for the purposes of this post we&amp;rsquo;ll agree as well.&lt;/p&gt;
 
 &lt;!-- more --&gt;
@@ -384,10 +384,10 @@ cout &amp;lt;&amp;lt; prob;
     
     <item>
       <title>Anderson Smart-Pointer Idiom Updated!</title>
-      <link>http://localhost:1313/2012/05/anderson-smart-pointer-idiom-updated/</link>
+      <link>http://codestrokes.com/2012/05/anderson-smart-pointer-idiom-updated/</link>
       <pubDate>Sun, 06 May 2012 07:00:10 +0000</pubDate>
       
-      <guid>http://localhost:1313/2012/05/anderson-smart-pointer-idiom-updated/</guid>
+      <guid>http://codestrokes.com/2012/05/anderson-smart-pointer-idiom-updated/</guid>
       <description>&lt;p&gt;C++11 provides us with a ton of new tools for expressing complex ideas in an efficient way. C++11 is unique among modern languages in that it provides a productive syntax, while also generating exceptionally fast code. For the first time ever, software engineers are responsible for increasing the performance of software systems. For decades we&amp;rsquo;ve been standing on the shoulders of hardware engineers. Hardware engineers have been increasing the clock speeds of our processors, but we&amp;rsquo;ve hit a physical limit. It&amp;rsquo;s our turn to pick up the baton in this relay race and get to the finish line. C++11 provides a number of tools to help us get there, and smart pointers are one such tool.
 &amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
 The &lt;a href=&#34;http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/&#34;&gt;Anderson Smart-Pointer idiom&lt;/a&gt; is a pattern developed by a &lt;a href=&#34;http://www.chrisanderman.com/&#34;&gt;colleague of mine&lt;/a&gt;. It supplants the constructor of a class with a factory method, to eliminate all raw pointers in a software system. Secondly, it provides typedefs for the smart pointers so one may use a terse type to express a more verbose concept. C++11 provides three tools which allow us to make this pattern more generic, while also increasing its performance.&lt;/p&gt;
@@ -446,20 +446,20 @@ return 0;
     
     <item>
       <title>Talk at SoDA</title>
-      <link>http://localhost:1313/2012/03/talk-at-soda/</link>
+      <link>http://codestrokes.com/2012/03/talk-at-soda/</link>
       <pubDate>Sat, 31 Mar 2012 18:48:55 +0000</pubDate>
       
-      <guid>http://localhost:1313/2012/03/talk-at-soda/</guid>
+      <guid>http://codestrokes.com/2012/03/talk-at-soda/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://vimeo.com/39505796&#34;&gt;SoDA Meeting: Embedded Scripting for Games&lt;/a&gt; from &lt;a href=&#34;http://vimeo.com/asusoda&#34;&gt;SoDA @ ASU&lt;/a&gt; on &lt;a href=&#34;http://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Multicast Delegates in C&#43;&#43;11</title>
-      <link>http://localhost:1313/2012/03/multicast-delegates-in-c11/</link>
+      <link>http://codestrokes.com/2012/03/multicast-delegates-in-c11/</link>
       <pubDate>Sun, 25 Mar 2012 05:32:43 +0000</pubDate>
       
-      <guid>http://localhost:1313/2012/03/multicast-delegates-in-c11/</guid>
+      <guid>http://codestrokes.com/2012/03/multicast-delegates-in-c11/</guid>
       <description>&lt;p&gt;C# has a wonderfully flexible delegate system capable of multicast events.  This simple tool makes event driven software easier to write, and reduces coupling between objects. In 2003 Herb Sutter implemented a general form of the Observer pattern [1].  He called this the multi_function. It uses a mixture of TR1 and boost components to build a multi-cast delegate similar to C#&amp;rsquo;s.  Fast-forward 9 years, and we now have variadic-templates thanks to C++11.  Variadic-Templates allow us to patch a missing component in Sutter&amp;rsquo;s multi_function.
 &amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;&lt;/p&gt;
 

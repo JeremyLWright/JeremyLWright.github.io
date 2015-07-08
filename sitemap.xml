@@ -2,363 +2,363 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>http://codestrokes.com/</loc>
     <lastmod>2015-07-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2015/07/property_driven_design_minmax/</loc>
+    <loc>http://codestrokes.com/2015/07/property_driven_design_minmax/</loc>
     <lastmod>2015-07-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2015/06/converting-to-static-blog/</loc>
+    <loc>http://codestrokes.com/2015/06/converting-to-static-blog/</loc>
     <lastmod>2015-06-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>http://codestrokes.com/about/</loc>
     <lastmod>2015-06-03T16:09:11+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2015/02/introduction-to-pointers/</loc>
+    <loc>http://codestrokes.com/2015/02/introduction-to-pointers/</loc>
     <lastmod>2015-02-17T03:46:55+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2014/09/property-testing-in-c/</loc>
+    <loc>http://codestrokes.com/2014/09/property-testing-in-c/</loc>
     <lastmod>2014-09-03T23:00:00-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2014/08/what-is-a-unit-test/</loc>
+    <loc>http://codestrokes.com/2014/08/what-is-a-unit-test/</loc>
     <lastmod>2014-08-28T05:58:26+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2014/08/hello-project-euler-sorry-i-doubted-you/</loc>
+    <loc>http://codestrokes.com/2014/08/hello-project-euler-sorry-i-doubted-you/</loc>
     <lastmod>2014-08-28T05:04:52+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2014/06/goodbye-project-euler/</loc>
+    <loc>http://codestrokes.com/2014/06/goodbye-project-euler/</loc>
     <lastmod>2014-06-18T15:42:22+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2014/05/design-for-testability-via-security/</loc>
+    <loc>http://codestrokes.com/2014/05/design-for-testability-via-security/</loc>
     <lastmod>2014-05-03T20:56:49+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2014/02/cracking-subciphercpp/</loc>
+    <loc>http://codestrokes.com/2014/02/cracking-subciphercpp/</loc>
     <lastmod>2014-02-12T08:50:00-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/11/sean-parent-no-raw-loops/</loc>
+    <loc>http://codestrokes.com/2013/11/sean-parent-no-raw-loops/</loc>
     <lastmod>2013-11-24T22:14:50+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/11/rand-considered-harmful/</loc>
+    <loc>http://codestrokes.com/2013/11/rand-considered-harmful/</loc>
     <lastmod>2013-11-17T16:54:19+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/11/simplicity-does-matter/</loc>
+    <loc>http://codestrokes.com/2013/11/simplicity-does-matter/</loc>
     <lastmod>2013-11-12T05:56:28+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/10/a-thunk-on-laziness/</loc>
+    <loc>http://codestrokes.com/2013/10/a-thunk-on-laziness/</loc>
     <lastmod>2013-10-27T23:00:17+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/10/idiomatic-learning/</loc>
+    <loc>http://codestrokes.com/2013/10/idiomatic-learning/</loc>
     <lastmod>2013-10-20T23:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/10/smaller-reviews-are-more-effective/</loc>
+    <loc>http://codestrokes.com/2013/10/smaller-reviews-are-more-effective/</loc>
     <lastmod>2013-10-13T23:00:23+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/10/the-itanium-flop/</loc>
+    <loc>http://codestrokes.com/2013/10/the-itanium-flop/</loc>
     <lastmod>2013-10-07T01:23:13+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/09/linux-users-group-ctf-2013/</loc>
+    <loc>http://codestrokes.com/2013/09/linux-users-group-ctf-2013/</loc>
     <lastmod>2013-09-08T21:58:06+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/09/my-first-logic-program/</loc>
+    <loc>http://codestrokes.com/2013/09/my-first-logic-program/</loc>
     <lastmod>2013-09-01T22:35:41+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/08/artifical-intelligence-impact-on-medicine/</loc>
+    <loc>http://codestrokes.com/2013/08/artifical-intelligence-impact-on-medicine/</loc>
     <lastmod>2013-08-28T20:16:38+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/08/interesting-article-about-monads/</loc>
+    <loc>http://codestrokes.com/2013/08/interesting-article-about-monads/</loc>
     <lastmod>2013-08-02T22:49:01+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/08/my-haskell-environment-for-project-euler/</loc>
+    <loc>http://codestrokes.com/2013/08/my-haskell-environment-for-project-euler/</loc>
     <lastmod>2013-08-02T16:51:40+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/07/review-how-to-write-a-thesis-2/</loc>
+    <loc>http://codestrokes.com/2013/07/review-how-to-write-a-thesis-2/</loc>
     <lastmod>2013-07-24T04:48:01+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/07/is-monolithic-code-faster/</loc>
+    <loc>http://codestrokes.com/2013/07/is-monolithic-code-faster/</loc>
     <lastmod>2013-07-14T23:00:11+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/07/patterns-are-evidence-of-a-languages-lacking/</loc>
+    <loc>http://codestrokes.com/2013/07/patterns-are-evidence-of-a-languages-lacking/</loc>
     <lastmod>2013-07-07T23:00:30+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/05/haskell-a-few-problems-later/</loc>
+    <loc>http://codestrokes.com/2013/05/haskell-a-few-problems-later/</loc>
     <lastmod>2013-05-14T04:28:58+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/04/haskell-day-1-again/</loc>
+    <loc>http://codestrokes.com/2013/04/haskell-day-1-again/</loc>
     <lastmod>2013-04-22T05:29:11+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/03/latex-walkthrough/</loc>
+    <loc>http://codestrokes.com/2013/03/latex-walkthrough/</loc>
     <lastmod>2013-03-24T18:25:50+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/03/beagle-board-cluster-demod-at-asu/</loc>
+    <loc>http://codestrokes.com/2013/03/beagle-board-cluster-demod-at-asu/</loc>
     <lastmod>2013-03-04T19:09:31+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/02/duplicating-sd-cards-for-beagleboard/</loc>
+    <loc>http://codestrokes.com/2013/02/duplicating-sd-cards-for-beagleboard/</loc>
     <lastmod>2013-02-24T16:38:11+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2013/02/text-processing-for-programmers/</loc>
+    <loc>http://codestrokes.com/2013/02/text-processing-for-programmers/</loc>
     <lastmod>2013-02-17T19:53:11+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2012/11/short-valgrind-video-tutorial/</loc>
+    <loc>http://codestrokes.com/2012/11/short-valgrind-video-tutorial/</loc>
     <lastmod>2012-11-12T03:40:11+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2012/09/asulug-talk-django-web-framework/</loc>
+    <loc>http://codestrokes.com/2012/09/asulug-talk-django-web-framework/</loc>
     <lastmod>2012-09-22T15:36:10+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2012/09/abstraction-in-plain-english/</loc>
+    <loc>http://codestrokes.com/2012/09/abstraction-in-plain-english/</loc>
     <lastmod>2012-09-18T23:11:51+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2012/09/open-source-ctf-game-server/</loc>
+    <loc>http://codestrokes.com/2012/09/open-source-ctf-game-server/</loc>
     <lastmod>2012-09-09T17:30:50+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2012/08/the-turbulent-history-of-managed-code/</loc>
+    <loc>http://codestrokes.com/2012/08/the-turbulent-history-of-managed-code/</loc>
     <lastmod>2012-08-28T05:31:04+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2012/07/know-its-name/</loc>
+    <loc>http://codestrokes.com/2012/07/know-its-name/</loc>
     <lastmod>2012-07-21T19:24:19+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2012/07/the-importance-of-system-design/</loc>
+    <loc>http://codestrokes.com/2012/07/the-importance-of-system-design/</loc>
     <lastmod>2012-07-15T17:00:44+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2012/05/building-an-interpreter/</loc>
+    <loc>http://codestrokes.com/2012/05/building-an-interpreter/</loc>
     <lastmod>2012-05-28T17:03:55+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2012/05/anderson-smart-pointer-idiom-updated/</loc>
+    <loc>http://codestrokes.com/2012/05/anderson-smart-pointer-idiom-updated/</loc>
     <lastmod>2012-05-06T07:00:10+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2012/04/capture-the-flag-running-a-hacking-competition/</loc>
+    <loc>http://codestrokes.com/2012/04/capture-the-flag-running-a-hacking-competition/</loc>
     <lastmod>2012-04-30T02:38:44+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2012/04/copyright-the-anti-innovator/</loc>
+    <loc>http://codestrokes.com/2012/04/copyright-the-anti-innovator/</loc>
     <lastmod>2012-04-14T17:53:21+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2012/03/talk-at-soda/</loc>
+    <loc>http://codestrokes.com/2012/03/talk-at-soda/</loc>
     <lastmod>2012-03-31T18:48:55+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2012/03/multicast-delegates-in-c11/</loc>
+    <loc>http://codestrokes.com/2012/03/multicast-delegates-in-c11/</loc>
     <lastmod>2012-03-25T05:32:43+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2012/03/abstract-syntax-trees-introduction-to-flex/</loc>
+    <loc>http://codestrokes.com/2012/03/abstract-syntax-trees-introduction-to-flex/</loc>
     <lastmod>2012-03-18T05:36:51+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2012/02/branching-with-mercurial/</loc>
+    <loc>http://codestrokes.com/2012/02/branching-with-mercurial/</loc>
     <lastmod>2012-02-20T02:18:15+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2012/02/compile-time-polymorphism/</loc>
+    <loc>http://codestrokes.com/2012/02/compile-time-polymorphism/</loc>
     <lastmod>2012-02-05T21:14:29+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2012/01/modern-c/</loc>
+    <loc>http://codestrokes.com/2012/01/modern-c/</loc>
     <lastmod>2012-01-22T18:10:30+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2012/01/abusing-ram/</loc>
+    <loc>http://codestrokes.com/2012/01/abusing-ram/</loc>
     <lastmod>2012-01-22T17:53:43+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/11/parallel-binary-buddy-the-friendly-memory-manager/</loc>
+    <loc>http://codestrokes.com/2011/11/parallel-binary-buddy-the-friendly-memory-manager/</loc>
     <lastmod>2011-11-23T18:50:20+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</loc>
+    <loc>http://codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</loc>
     <lastmod>2011-10-23T19:00:21+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/10/parallel-game-of-life/</loc>
+    <loc>http://codestrokes.com/2011/10/parallel-game-of-life/</loc>
     <lastmod>2011-10-23T17:55:47+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/09/the-1000000-compile/</loc>
+    <loc>http://codestrokes.com/2011/09/the-1000000-compile/</loc>
     <lastmod>2011-09-22T22:40:42+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/08/good-tools-excellent-results/</loc>
+    <loc>http://codestrokes.com/2011/08/good-tools-excellent-results/</loc>
     <lastmod>2011-08-21T07:23:25+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</loc>
+    <loc>http://codestrokes.com/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</loc>
     <lastmod>2011-08-19T16:55:56+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/08/hijacking-system-programs/</loc>
+    <loc>http://codestrokes.com/2011/08/hijacking-system-programs/</loc>
     <lastmod>2011-08-12T06:00:18+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/07/version-control-more-than-collaboration/</loc>
+    <loc>http://codestrokes.com/2011/07/version-control-more-than-collaboration/</loc>
     <lastmod>2011-07-06T05:18:48+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/06/game-framework-for-c-practicum/</loc>
+    <loc>http://codestrokes.com/2011/06/game-framework-for-c-practicum/</loc>
     <lastmod>2011-06-25T22:37:51+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/06/we-need-a-1-button/</loc>
+    <loc>http://codestrokes.com/2011/06/we-need-a-1-button/</loc>
     <lastmod>2011-06-22T19:58:29+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/06/being-truely-productive/</loc>
+    <loc>http://codestrokes.com/2011/06/being-truely-productive/</loc>
     <lastmod>2011-06-19T18:59:47+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/06/overview-of-upcoming-articles/</loc>
+    <loc>http://codestrokes.com/2011/06/overview-of-upcoming-articles/</loc>
     <lastmod>2011-06-16T19:51:14+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/06/type-safe-variable-argument-lists/</loc>
+    <loc>http://codestrokes.com/2011/06/type-safe-variable-argument-lists/</loc>
     <lastmod>2011-06-06T06:59:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/05/parallelism-in-d-bucket-sort-part-2/</loc>
+    <loc>http://codestrokes.com/2011/05/parallelism-in-d-bucket-sort-part-2/</loc>
     <lastmod>2011-05-29T18:02:24+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/05/bucket-sort/</loc>
+    <loc>http://codestrokes.com/2011/05/bucket-sort/</loc>
     <lastmod>2011-05-24T04:59:59+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/05/d-for-the-c-programmer-red-black-tree-part-3/</loc>
+    <loc>http://codestrokes.com/2011/05/d-for-the-c-programmer-red-black-tree-part-3/</loc>
     <lastmod>2011-05-18T03:06:36+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/05/class-invariants-red-black-tree-part-2/</loc>
+    <loc>http://codestrokes.com/2011/05/class-invariants-red-black-tree-part-2/</loc>
     <lastmod>2011-05-13T02:40:48+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/05/the-red-black-tree-part-1/</loc>
+    <loc>http://codestrokes.com/2011/05/the-red-black-tree-part-1/</loc>
     <lastmod>2011-05-09T06:59:01+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/05/java-4k-contest/</loc>
+    <loc>http://codestrokes.com/2011/05/java-4k-contest/</loc>
     <lastmod>2011-05-07T22:10:54+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/05/thing-a-week-algorithm-edition/</loc>
+    <loc>http://codestrokes.com/2011/05/thing-a-week-algorithm-edition/</loc>
     <lastmod>2011-05-03T23:37:37+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/2011/02/hello-world/</loc>
+    <loc>http://codestrokes.com/2011/02/hello-world/</loc>
     <lastmod>2011-02-11T02:37:45+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/desc/the-red-black-tree-desc/</loc>
+    <loc>http://codestrokes.com/desc/the-red-black-tree-desc/</loc>
   </url>
   
 </urlset>

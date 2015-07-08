@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Functional on Code Strokes</title>
-    <link>http://localhost:1313/categories/functional/</link>
+    <link>http://codestrokes.com/categories/functional/</link>
     <description>Recent content in Functional on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 28 Aug 2014 05:04:52 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/functional/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://codestrokes.com/categories/functional/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Hello Project Euler, Sorry I doubted you</title>
-      <link>http://localhost:1313/2014/08/hello-project-euler-sorry-i-doubted-you/</link>
+      <link>http://codestrokes.com/2014/08/hello-project-euler-sorry-i-doubted-you/</link>
       <pubDate>Thu, 28 Aug 2014 05:04:52 +0000</pubDate>
       
-      <guid>http://localhost:1313/2014/08/hello-project-euler-sorry-i-doubted-you/</guid>
+      <guid>http://codestrokes.com/2014/08/hello-project-euler-sorry-i-doubted-you/</guid>
       <description>&lt;p&gt;Project Euler returns with full functionality including new problems! Thank you Project Euler for not giving up on this awesome project. &lt;a href=&#34;http://projecteuler.net/news&#34;&gt;http://projecteuler.net/news&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Goodbye Project Euler</title>
-      <link>http://localhost:1313/2014/06/goodbye-project-euler/</link>
+      <link>http://codestrokes.com/2014/06/goodbye-project-euler/</link>
       <pubDate>Wed, 18 Jun 2014 15:42:22 +0000</pubDate>
       
-      <guid>http://localhost:1313/2014/06/goodbye-project-euler/</guid>
+      <guid>http://codestrokes.com/2014/06/goodbye-project-euler/</guid>
       <description>&lt;p&gt;A group of friends and I have been working on project euler for about a year now. I learned a great deal from this fantastic project, and it was the first time I was able to get a real handle on Haskell. Project Euler taught me make. It taught me better performance reporting techniques, honed my octave, and got me over that initial mind bending hump of Haskell. Thank you Project Euler, you will be missed.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2014/06/euler.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2014/06/euler-1024x902.png&#34; alt=&#34;Project Euler&#34; /&gt;
@@ -34,10 +34,10 @@
     
     <item>
       <title>My Haskell Environment for Project Euler</title>
-      <link>http://localhost:1313/2013/08/my-haskell-environment-for-project-euler/</link>
+      <link>http://codestrokes.com/2013/08/my-haskell-environment-for-project-euler/</link>
       <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
       
-      <guid>http://localhost:1313/2013/08/my-haskell-environment-for-project-euler/</guid>
+      <guid>http://codestrokes.com/2013/08/my-haskell-environment-for-project-euler/</guid>
       <description>&lt;p&gt;For the last several months I&amp;rsquo;ve been working on Project Euler in Haskell. My intent has been to learn Haskell, and grasp the functional concepts. While working on several problems it&amp;rsquo;s important to have a workflow that allows for a fast cycle time. I spent some time with Cabal, attempting to build a scheme that works efficiently, but was unable to do so. Instead I setup a mix of cabal-dev, and make to build a fast workflow that allow for compiling, testing, common code libraries, and benchmarks. This post is a walk though of that workflow. &amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
 My most important requirements is cycle time. I a minimum edit-compile-test/execute cycle. This helps me to clearly and quickly work on problems. Especially in compiled languages with libraries, and common code, it is important that a single code change is a single file recompiles a minimum of effort (&lt;a href=&#34;http://www.joelonsoftware.com/articles/fog0000000043.html&#34;&gt;Joel Spoksky&lt;/a&gt;). Therefore my Makefile must describe the dependencies, which themselves are dynamic as the code base grows and changes. Cabal supposedly does this, but Project Euler is uniquely outside the framework offered by cabal. In Project Euler, each solution is a single executable. The project itself is many executables. Maintaining a cabal files for that many executables does not meet my desire for dynamically managed dependencies. Instead I favor make; simple &lt;em&gt;make&lt;/em&gt;. Therefore the requirements of my project euler environemnt are:&lt;/p&gt;
 
@@ -254,10 +254,10 @@ depend: $(SRCS) $(DEP_LIBS)
     
     <item>
       <title>Haskell Day 1 (Again)</title>
-      <link>http://localhost:1313/2013/04/haskell-day-1-again/</link>
+      <link>http://codestrokes.com/2013/04/haskell-day-1-again/</link>
       <pubDate>Mon, 22 Apr 2013 05:29:11 +0000</pubDate>
       
-      <guid>http://localhost:1313/2013/04/haskell-day-1-again/</guid>
+      <guid>http://codestrokes.com/2013/04/haskell-day-1-again/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve restarted my haskell programming education. Here is my implementation of &lt;a href=&#34;http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/&#34;&gt;FizzBuzz&lt;/a&gt;
 &amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;&lt;/p&gt;
 
