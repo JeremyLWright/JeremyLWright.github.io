@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Open Source on Code Strokes</title>
+    <link>http://codestrokes.com/tags/open-source/</link>
+    <description>Recent content in Open Source on Code Strokes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Jul 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://codestrokes.com/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Your C&#43;&#43; Project should support Visual Studio</title>
+      <link>http://codestrokes.com/2015/07/your_cpp_project_should_support_visual_studio/</link>
+      <pubDate>Sun, 05 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://codestrokes.com/2015/07/your_cpp_project_should_support_visual_studio/</guid>
+      <description>
+
+&lt;p&gt;Coming from a Linux background, and knowing that my four readers are Linux
+guys, I write this article with great trepidation. This article is likely to
+induce &lt;em&gt;unsubscribe&lt;/em&gt; urges in 75% of my reader-base. I hear you. This is not
+some fan boy with the common, &amp;ldquo;Linux is too hard.&amp;rdquo; Or &amp;ldquo;I need a good IDE&amp;rdquo;.
+I&amp;rsquo;ve seen the visual C++ compiler (in debug mode) catch some fantastic
+defects.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Running your unit tests compiled with Visual C++&amp;rsquo;s &lt;tt&gt;/MTd&lt;/tt&gt; will
+increase your code quality.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&#34;all-compilers-are-great:bf4b22cbf639ccfd89449328d4b55f71&#34;&gt;All compilers are great!&lt;/h1&gt;
+
+&lt;p&gt;This article could easily be titled, &amp;ldquo;Your C++ project should support
+valgrind&amp;rdquo; which is entirely true. Equally true that your C++ project should
+support clang. I love writing in the clang compiler environment. The debug
+errors are ascii-art! How great is that? &amp;mdash; Great!&lt;/p&gt;
+
+&lt;p&gt;Similarity, Valgrind is a beautiful tool for
+tweaking performance, and finding difficult, non-deterministic memory bugs.
+The Visual C++ compiler has something that these two platforms lack: iterator
+debugging.&lt;/p&gt;
+
+&lt;h1 id=&#34;iterator-debugging:bf4b22cbf639ccfd89449328d4b55f71&#34;&gt;Iterator Debugging&lt;/h1&gt;
+
+&lt;p&gt;Iterator debugging is a feature of the debug version of Visual C++&amp;rsquo;s standard
+library. It enforces iterator validity with debug asserts. The asserts are
+triggered by standard rules, ensuring that you code uses iterators correctly
+even if the code may work otherwise. Ensuring correctness is an improvement
+over &amp;ldquo;it works&amp;rdquo; since one day it won&amp;rsquo;t work. For example, take this simple
+snippet of code.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;vector&amp;gt;
+#include &amp;lt;utility&amp;gt;
+
+int main()
+{
+    std::vector&amp;lt;int&amp;gt; v{1,2,3,4,5};
+    auto i = std::begin(v);
+    v.push_back(6);
+    std::cout &amp;lt;&amp;lt; *i &amp;lt;&amp;lt; &#39;\n&#39;;   
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Do you see the defect? Compiling this on g++ results in no errors, and
+compiling on Visual C++ results in no errors as well. However compiling with
+the debug standard library offers a wonderful insight to the correctness of
+your program.&lt;/p&gt;
+
+&lt;h1 id=&#34;omg-i-hate-visual-studio-s-solution-files:bf4b22cbf639ccfd89449328d4b55f71&#34;&gt;OMG I hate Visual Studio&amp;rsquo;s solution files&lt;/h1&gt;
+
+&lt;p&gt;The Visual C++ compiler has a reputation for poor standards support, and
+lacking modern C++ features. Yeah, me too. Its a whole other world to learn
+the property pages for Visual Studio. However I use Visual C++ just as I use
+gcc for small projects.  I compile from the command line.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;C:\&amp;gt; cl /Ehsc /MTd program.cpp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Its quick, easy.&lt;/p&gt;
+
+&lt;h1 id=&#34;get-paid-help-for-free:bf4b22cbf639ccfd89449328d4b55f71&#34;&gt;Get Paid help, for free&lt;/h1&gt;
+
+&lt;p&gt;Most users of Visual C++ are professional programmers working on commercial
+software packages.  If your open source project uses a permissive license, and
+already supports building with Visual Studio its likely inclusion in a large
+projects will increase the test coverage of your project. I know for myself,
+when I include an open source project on my work, I push all enhancements
+upstream to express our gratitude.&lt;/p&gt;
+
+&lt;h1 id=&#34;conclusion:bf4b22cbf639ccfd89449328d4b55f71&#34;&gt;Conclusion&lt;/h1&gt;
+
+&lt;p&gt;It is interesting that we have so many differing competing compilers
+available. Rust on the other hand doesn&amp;rsquo;t have a standard but instead there is
+a single compiler that forms the defacto standard of the language. Luckily we
+as C++ developers have multiple compilers available each with different
+strengths. By compiling our programs with multiple compilers we will increase
+the quality of our programs by leveraging each platform&amp;rsquo;s individual
+strengths.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

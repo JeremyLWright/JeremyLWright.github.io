@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Stl on Code Strokes</title>
-    <link>http://codestrokes.com/tags/stl/</link>
+    <link>http://localhost:1313/tags/stl/</link>
     <description>Recent content in Stl on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Nov 2013 22:14:50 +0000</lastBuildDate>
-    <atom:link href="http://codestrokes.com/tags/stl/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/stl/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Sean Parent: No Raw Loops</title>
-      <link>http://codestrokes.com/2013/11/sean-parent-no-raw-loops/</link>
+      <link>http://localhost:1313/2013/11/sean-parent-no-raw-loops/</link>
       <pubDate>Sun, 24 Nov 2013 22:14:50 +0000</pubDate>
       
-      <guid>http://codestrokes.com/2013/11/sean-parent-no-raw-loops/</guid>
+      <guid>http://localhost:1313/2013/11/sean-parent-no-raw-loops/</guid>
       <description>&lt;p&gt;A group of colleagues and I watched Sean Parent&amp;rsquo;s Going Native Talk on &amp;ldquo;&lt;a href=&#34;http://channel9.msdn.com/Events/GoingNative/2013/Cpp-Seasoning&#34;&gt;C++ Seasoning&lt;/a&gt;&amp;rdquo;. Parent takes some extreme views on how to use C++, but his examples for using the STL to simplify code are phenomenal. For a recent AI project I decided to apply Parent&amp;rsquo;s &lt;em&gt;goal&lt;/em&gt; of &amp;ldquo;no raw loops&amp;rdquo;, I was blown away by the transformation&amp;hellip; err std::transformation this had on my code. In this post I indented to demonstrate several complex code blocks, or overly specific code blocks what were replaced by some STL magic. Alexander Stepanov says, &amp;ldquo;&lt;a href=&#34;http://www.youtube.com/watch?v=COuHLky7E2Q&#34;&gt;&amp;hellip;code is a liability.&lt;/a&gt;&amp;rdquo; The more code a program has the more likely it contains bugs. The fewer lines of code, the lesser the opportunity for a bug. I haven&amp;rsquo;t quiet decided if I agree with this point, but it does induce thought either way. Sean Parent&amp;rsquo;s methodology seems to agree, for the purposes of this post we&amp;rsquo;ll agree as well.&lt;/p&gt;
 
 &lt;!-- more --&gt;

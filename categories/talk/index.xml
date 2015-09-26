@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Talk on Code Strokes</title>
-    <link>http://codestrokes.com/categories/talk/</link>
+    <link>http://localhost:1313/categories/talk/</link>
     <description>Recent content in Talk on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 22 Sep 2012 15:36:10 +0000</lastBuildDate>
-    <atom:link href="http://codestrokes.com/categories/talk/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/talk/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>ASULUG Talk: Django Web Framework</title>
-      <link>http://codestrokes.com/2012/09/asulug-talk-django-web-framework/</link>
+      <link>http://localhost:1313/2012/09/asulug-talk-django-web-framework/</link>
       <pubDate>Sat, 22 Sep 2012 15:36:10 +0000</pubDate>
       
-      <guid>http://codestrokes.com/2012/09/asulug-talk-django-web-framework/</guid>
+      <guid>http://localhost:1313/2012/09/asulug-talk-django-web-framework/</guid>
       <description>&lt;p&gt;&lt;strong&gt;ASU Linux User’s Group (ASULUG) — LUG Talks&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Sat 6 Oct 1:30pm — BYENG 210&lt;/strong&gt;&lt;/p&gt;

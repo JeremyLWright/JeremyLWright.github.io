@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>D on Code Strokes</title>
+    <link>http://localhost:1313/categories/d/</link>
+    <description>Recent content in D on Code Strokes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 25 Sep 2015 20:10:00 +0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/d/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>4 Simple Steps to Run D Language in Azure Websites</title>
+      <link>http://localhost:1313/2015/09/deploying-d-to-azure-webapp/</link>
+      <pubDate>Fri, 25 Sep 2015 20:10:00 +0700</pubDate>
+      
+      <guid>http://localhost:1313/2015/09/deploying-d-to-azure-webapp/</guid>
+      <description>
+
+&lt;p&gt;&lt;em&gt;I shameless stole these steps from &lt;a href=&#34;http://www.wadewegner.com/2014/12/4-simple-steps-to-run-go-language-in-azure-websites/&#34;&gt;4 Simple Steps to Run Go Language in Azure Websites&lt;/a&gt;. This post is simply a transliteration to D. Thank you very much to Wade Wegner for the original post.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;4-simple-steps:ff7857238f7b86c03a3bbb6b92fdfcb5&#34;&gt;4 Simple Steps&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create your Azure Website in Azure Portal.
+
+&lt;ol&gt;
+&lt;li&gt;Configure FTP deployment&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/Azure-FTP-Config.png&#34; alt=&#34;FTP Configuration&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;2&amp;#46; Run &lt;code&gt;dub init vibed_hello_world --type=vibe.d&lt;/code&gt; and change the default app.d to read the port from an environment variable. &lt;a href=&#34;https://vibed.org/docs&#34;&gt;Docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-d&#34;&gt;import vibe.d;
+
+shared static this()
+{
+	import std.process;
+	import std.conv;
+
+	immutable port = environment[&amp;quot;HTTP_PLATFORM_PORT&amp;quot;]; //Use the port IIS tells us to.
+
+	auto settings = new HTTPServerSettings;
+	settings.port = to!ushort(port);
+	settings.bindAddresses = [&amp;quot;::1&amp;quot;, &amp;quot;127.0.0.1&amp;quot;];
+	listenHTTP(settings, &amp;amp;hello);
+
+	logInfo(&amp;quot;Please open http://127.0.0.1:&amp;quot; ~ port ~ &amp;quot;/ in your browser.&amp;quot;);
+}
+
+void hello(HTTPServerRequest req, HTTPServerResponse res)
+{
+	res.writeBody(&amp;quot;Hello, World!&amp;quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3&amp;#46; Create Web.Config&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;configuration&amp;gt;
+	&amp;lt;system.webServer&amp;gt;
+		&amp;lt;handlers&amp;gt;
+			&amp;lt;add name=&amp;quot;httpplatformhandler&amp;quot; path=&amp;quot;*&amp;quot; verb=&amp;quot;*&amp;quot; modules=&amp;quot;httpPlatformHandler&amp;quot; resourceType=&amp;quot;Unspecified&amp;quot; /&amp;gt;
+		&amp;lt;/handlers&amp;gt;
+		&amp;lt;httpPlatform processPath=&amp;quot;d:\home\site\wwwroot\vibed_hello_world.exe&amp;quot; 
+					arguments=&amp;quot;&amp;quot; 
+					startupTimeLimit=&amp;quot;60&amp;quot;&amp;gt;
+			&amp;lt;environmentVariables&amp;gt;
+			&amp;lt;/environmentVariables&amp;gt;
+		&amp;lt;/httpPlatform&amp;gt;
+	&amp;lt;/system.webServer&amp;gt;
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;4&amp;#46; Upload binaries and DLLs to Azure!
+&lt;img src=&#34;http://localhost:1313/img/upload-to-ftp.png&#34; alt=&#34;Upload to FTP Server&#34; /&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

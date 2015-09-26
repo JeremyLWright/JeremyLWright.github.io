@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Copyright on Code Strokes</title>
-    <link>http://codestrokes.com/tags/copyright/</link>
+    <link>http://localhost:1313/tags/copyright/</link>
     <description>Recent content in Copyright on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 14 Apr 2012 17:53:21 +0000</lastBuildDate>
-    <atom:link href="http://codestrokes.com/tags/copyright/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/copyright/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Copyright - The Anti-Innovator</title>
-      <link>http://codestrokes.com/2012/04/copyright-the-anti-innovator/</link>
+      <link>http://localhost:1313/2012/04/copyright-the-anti-innovator/</link>
       <pubDate>Sat, 14 Apr 2012 17:53:21 +0000</pubDate>
       
-      <guid>http://codestrokes.com/2012/04/copyright-the-anti-innovator/</guid>
+      <guid>http://localhost:1313/2012/04/copyright-the-anti-innovator/</guid>
       <description>&lt;p&gt;The French government dismantled and destroyed the &lt;em&gt;Mona Lisa&lt;/em&gt;, along with a number of other masterpiece paintings today after courts decided that paintbrushes are copyrighted. Furthermore their derivative works, i.e. items creating using paintbrushes, are subject to copyright infringement. This of course is a fabrication, but this is exactly the point Oracle is trying to make when trying to &lt;a href=&#34;http://www.wired.com/wiredenterprise/2012/04/google-oracle/&#34;&gt;copyright programming languages&lt;/a&gt;. Programming languages are tools for programmers to create the world we live in. Everything we do in modern society is influenced by software. Software&amp;rsquo;s ubiquity is directly correlated to the continued innovation in compilers, and software technology. If we allow the tools to be copyrighted, we relegate ourselves to a world further fraught with lawyers, licensing and stagnated innovation.&lt;/p&gt;
 
 &lt;p&gt;&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;In an &lt;a href=&#34;http://channel9.msdn.com/Shows/Going+Deep/Expert-to-Expert-Rich-Hickey-and-Brian-Beckman-Inside-Clojure&#34;&gt;interview with Channel 9&lt;/a&gt;, Rich Hickey was commenting on why he chose Lisp as the basis for his fantastic Clojure Project.  Imagine for a moment that Lisp was copyrighted. Rich Hickey would be held up in courts defending his language, rather than offering a new and fresh tool to modern programmers.&lt;/p&gt;

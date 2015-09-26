@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Passingthought on Code Strokes</title>
-    <link>http://codestrokes.com/categories/passingthought/</link>
+    <link>http://localhost:1313/categories/passingthought/</link>
     <description>Recent content in Passingthought on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 07 May 2011 22:10:54 +0000</lastBuildDate>
-    <atom:link href="http://codestrokes.com/categories/passingthought/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/passingthought/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Java 4K Contest</title>
-      <link>http://codestrokes.com/2011/05/java-4k-contest/</link>
+      <link>http://localhost:1313/2011/05/java-4k-contest/</link>
       <pubDate>Sat, 07 May 2011 22:10:54 +0000</pubDate>
       
-      <guid>http://codestrokes.com/2011/05/java-4k-contest/</guid>
+      <guid>http://localhost:1313/2011/05/java-4k-contest/</guid>
       <description>&lt;p&gt;Crazy challenging game contest: &lt;a href=&#34;http://javaunlimited.net/contests/java4k.php&#34;&gt;http://javaunlimited.net/contests/java4k.php&lt;/a&gt;
 Reminds me of the winners of a 96KB contest: &lt;a href=&#34;http://en.wikipedia.org/wiki/.kkrieger&#34;&gt;http://en.wikipedia.org/wiki/.kkrieger&lt;/a&gt;&lt;/p&gt;
 </description>

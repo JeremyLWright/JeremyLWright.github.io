@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Book on Code Strokes</title>
-    <link>http://codestrokes.com/tags/book/</link>
+    <link>http://localhost:1313/tags/book/</link>
     <description>Recent content in Book on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 24 Jul 2013 04:48:01 +0000</lastBuildDate>
-    <atom:link href="http://codestrokes.com/tags/book/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/book/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>How to Write a Thesis</title>
-      <link>http://codestrokes.com/2013/07/review-how-to-write-a-thesis-2/</link>
+      <link>http://localhost:1313/2013/07/review-how-to-write-a-thesis-2/</link>
       <pubDate>Wed, 24 Jul 2013 04:48:01 +0000</pubDate>
       
-      <guid>http://codestrokes.com/2013/07/review-how-to-write-a-thesis-2/</guid>
+      <guid>http://localhost:1313/2013/07/review-how-to-write-a-thesis-2/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.amazon.com/gp/product/0335244289/ref=as_li_ss_il?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=390957&amp;amp;creativeASIN=0335244289&amp;amp;linkCode=as2&amp;amp;tag=codestro-20&#34;&gt;&lt;img src=&#34;http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;amp;ASIN=0335244289&amp;amp;Format=_SL160_&amp;amp;ID=AsinImage&amp;amp;MarketPlace=US&amp;amp;ServiceVersion=20070822&amp;amp;WS=1&amp;amp;tag=codestro-20&#34; alt=&#34;&#34; /&gt;
 &lt;/a&gt;&lt;img src=&#34;http://ir-na.amazon-adsystem.com/e/ir?t=codestro-20&amp;amp;l=as2&amp;amp;o=1&amp;amp;a=0335244289&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
