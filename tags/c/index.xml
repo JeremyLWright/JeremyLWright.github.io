@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C on Code Strokes</title>
-    <link>http://localhost:1313/tags/c/</link>
+    <link>http://www.codestrokes.com/tags/c/</link>
     <description>Recent content in C on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 03 Sep 2014 23:00:00 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.codestrokes.com/tags/c/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Property Testing in C&#43;&#43;</title>
-      <link>http://localhost:1313/2014/09/property-testing-in-c/</link>
+      <link>http://www.codestrokes.com/2014/09/property-testing-in-c/</link>
       <pubDate>Wed, 03 Sep 2014 23:00:00 -0700</pubDate>
       
-      <guid>http://localhost:1313/2014/09/property-testing-in-c/</guid>
+      <guid>http://www.codestrokes.com/2014/09/property-testing-in-c/</guid>
       <description>&lt;p&gt;
 Currently, I&#39;m on a testing kick. One might say tests are shiny. I don&#39;t
 know if they are really shiny as much as I found another cool use for
@@ -280,10 +280,10 @@ project.&lt;/p&gt;
     
     <item>
       <title>Massively Intelligent Non-Deterministic Luminating Effortless Super Solver</title>
-      <link>http://localhost:1313/2014/02/cracking-subciphercpp/</link>
+      <link>http://www.codestrokes.com/2014/02/cracking-subciphercpp/</link>
       <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
       
-      <guid>http://localhost:1313/2014/02/cracking-subciphercpp/</guid>
+      <guid>http://www.codestrokes.com/2014/02/cracking-subciphercpp/</guid>
       <description>&lt;p&gt;I worked the title of this article several times before I finally settled on the subtly epic heading you see above. Hopefully this title will funnel people off google into my blog (delicious SEO). I wanted to push the A.I. component of my solution because A.I. is awesome and mysterious, and cool (and can like solve jeopardy). I was quickly disillusioned however. Really, A.I. isn&amp;rsquo;t magic, rather it&amp;rsquo;s just the same thing computers have been doing for a long time: computing. Sadly this realization took several months in an A.I. class before I was sufficiently crestfallen. A.I. patterns including the hill climbing algorithm used here are indeed &amp;ldquo;intelligent&amp;rdquo; but really it a reflecting of the algorithm designer, not the entity executing the algorithm. So I built a substitution cipher solver in C++. It&amp;rsquo;s fast it uses random numbers i.e. non-deterministic, it uses an A.I. algorithm i.e. Intelligent, it uses threads i.e. Massively, it deciphers i.e. luminates the text and it solves super stuff therefore the title is completely justified. I give you my Massively Intelligent Non-Deterministic Luminating Effortless Super Solver (MINDLESS). If none of that interests you then please stick around and follow the side quest of looking for &lt;a href=&#34;http://justenoughcraig.blogspot.com/2014/01/just-say-no-to-passive-aggressive.html&#34;&gt;emotionally charged parenthesis&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Cracking substitution ciphers were a fun puzzle I pursued as a child. Substitution ciphers are monoalphabetic ciphers. Meaning a single letter maps to a single letter and that mapping is static. This is opposed to polyalphabetic ciphers where the mapping of letters changes throughout the message. Vigenère Cipher is an example. Given a substitution cipher what are tools are available to the &amp;ldquo;cryptanalyst&amp;rdquo; (the person to breaks ciphers). Firstly, frequency analysis. Frequency analysis supposes the the distribution of letters within the message is essentially the same as the distribution of letters in the English language (&lt;a href=&#34;http://en.wikipedia.org/wiki/Frequency_analysis&#34;&gt;http://en.wikipedia.org/wiki/Frequency_analysis&lt;/a&gt;). However if the message is short, or if the message is intentionally written to skew the letter distribution this technique is difficult. This post looks at a different approach, an artificial intelligence technique called hill climbing.&lt;/p&gt;
@@ -440,10 +440,10 @@ return p;
     
     <item>
       <title>Sean Parent: No Raw Loops</title>
-      <link>http://localhost:1313/2013/11/sean-parent-no-raw-loops/</link>
+      <link>http://www.codestrokes.com/2013/11/sean-parent-no-raw-loops/</link>
       <pubDate>Sun, 24 Nov 2013 22:14:50 +0000</pubDate>
       
-      <guid>http://localhost:1313/2013/11/sean-parent-no-raw-loops/</guid>
+      <guid>http://www.codestrokes.com/2013/11/sean-parent-no-raw-loops/</guid>
       <description>&lt;p&gt;A group of colleagues and I watched Sean Parent&amp;rsquo;s Going Native Talk on &amp;ldquo;&lt;a href=&#34;http://channel9.msdn.com/Events/GoingNative/2013/Cpp-Seasoning&#34;&gt;C++ Seasoning&lt;/a&gt;&amp;rdquo;. Parent takes some extreme views on how to use C++, but his examples for using the STL to simplify code are phenomenal. For a recent AI project I decided to apply Parent&amp;rsquo;s &lt;em&gt;goal&lt;/em&gt; of &amp;ldquo;no raw loops&amp;rdquo;, I was blown away by the transformation&amp;hellip; err std::transformation this had on my code. In this post I indented to demonstrate several complex code blocks, or overly specific code blocks what were replaced by some STL magic. Alexander Stepanov says, &amp;ldquo;&lt;a href=&#34;http://www.youtube.com/watch?v=COuHLky7E2Q&#34;&gt;&amp;hellip;code is a liability.&lt;/a&gt;&amp;rdquo; The more code a program has the more likely it contains bugs. The fewer lines of code, the lesser the opportunity for a bug. I haven&amp;rsquo;t quiet decided if I agree with this point, but it does induce thought either way. Sean Parent&amp;rsquo;s methodology seems to agree, for the purposes of this post we&amp;rsquo;ll agree as well.&lt;/p&gt;
 
 &lt;!-- more --&gt;
@@ -653,10 +653,10 @@ cout &amp;lt;&amp;lt; prob;
     
     <item>
       <title>Idiomatic Learning</title>
-      <link>http://localhost:1313/2013/10/idiomatic-learning/</link>
+      <link>http://www.codestrokes.com/2013/10/idiomatic-learning/</link>
       <pubDate>Sun, 20 Oct 2013 23:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/2013/10/idiomatic-learning/</guid>
+      <guid>http://www.codestrokes.com/2013/10/idiomatic-learning/</guid>
       <description>&lt;p&gt;When learning a new language I find it helpful to study a languages idioms. Idioms exist in a language for a specific reason. Sometimes that reason is to further the principles of the language, other times it’s to mask, or otherwise deal with some underlying design decision of the language. Currently, I am studying Haskell, and currently I am struggle to clarify the idioms of the language. The syntax is still very new and awkward, currently with a total authoring in Haskell of 713 lines.&lt;/p&gt;
 
 &lt;!-- more --&gt;
@@ -672,10 +672,10 @@ cout &amp;lt;&amp;lt; prob;
     
     <item>
       <title>Is Monolithic Code Faster?</title>
-      <link>http://localhost:1313/2013/07/is-monolithic-code-faster/</link>
+      <link>http://www.codestrokes.com/2013/07/is-monolithic-code-faster/</link>
       <pubDate>Sun, 14 Jul 2013 23:00:11 +0000</pubDate>
       
-      <guid>http://localhost:1313/2013/07/is-monolithic-code-faster/</guid>
+      <guid>http://www.codestrokes.com/2013/07/is-monolithic-code-faster/</guid>
       <description>
 
 &lt;p&gt;As a software engineer I have a vested interest in disproving this statement. Bjarne Stroustroup says C++ is designed to create efficient abstractions. A software engineer’s  job is to create simple &lt;a href=&#34;http://www.codestrokes.com/2012/09/abstraction-in-plain-english/&#34;&gt;abstractions &lt;/a&gt;to complex systems. State machines form a large part of many systems. The other day, a co-worker came to me, and asked, “Is it better to make straight line code for each case statement, even if it repeats, or is it better to abstraction into functions and make the code ‘cleaner’.”  Is “cleaner” code faster?
@@ -804,10 +804,10 @@ Row &amp;lt; EatSandwich       , none  , RemoveBread       , ResetTick, user_is_
     
     <item>
       <title>Know Its Name</title>
-      <link>http://localhost:1313/2012/07/know-its-name/</link>
+      <link>http://www.codestrokes.com/2012/07/know-its-name/</link>
       <pubDate>Sat, 21 Jul 2012 19:24:19 +0000</pubDate>
       
-      <guid>http://localhost:1313/2012/07/know-its-name/</guid>
+      <guid>http://www.codestrokes.com/2012/07/know-its-name/</guid>
       <description>&lt;p&gt;Programming is at it&amp;rsquo;s heart an struggle in communication. Source code is the communication medium with the processor; Comment the medium to other coders, and UML the medium to higher-level communication. Computer Scientists have the stereotype of being poor communicators, but in our own mediums, we&amp;rsquo;re phenomenal. This fact is no where more apparent, than trying to explain source code to someone else. How does one read source code? I&amp;rsquo;m currently, learning Haskell, and my first goal is to understand this question. How can I read (out loud):&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;[ x * x | x &amp;lt;- nums, x &amp;lt; 7]
@@ -825,10 +825,10 @@ Row &amp;lt; EatSandwich       , none  , RemoveBread       , ResetTick, user_is_
     
     <item>
       <title>Building an Interpreter</title>
-      <link>http://localhost:1313/2012/05/building-an-interpreter/</link>
+      <link>http://www.codestrokes.com/2012/05/building-an-interpreter/</link>
       <pubDate>Mon, 28 May 2012 17:03:55 +0000</pubDate>
       
-      <guid>http://localhost:1313/2012/05/building-an-interpreter/</guid>
+      <guid>http://www.codestrokes.com/2012/05/building-an-interpreter/</guid>
       <description>
 
 &lt;p&gt;When I started programming, I thought that compilers where these magic behemoths; Oracles which consumed your source code, and prophesied  the resulting program.  I thought that the compiler was an integral part of the &amp;ldquo;system&amp;rdquo;. I was excited to realize that the compiler is simply another program. A program you can write yourself. You can write a compiler, for your very own language.  Go ahead, make up a language, I&amp;rsquo;ll wait&amp;hellip;&lt;/p&gt;
@@ -991,10 +991,10 @@ TIDENTIFIER = &#39;i&#39;
     
     <item>
       <title>Anderson Smart-Pointer Idiom Updated!</title>
-      <link>http://localhost:1313/2012/05/anderson-smart-pointer-idiom-updated/</link>
+      <link>http://www.codestrokes.com/2012/05/anderson-smart-pointer-idiom-updated/</link>
       <pubDate>Sun, 06 May 2012 07:00:10 +0000</pubDate>
       
-      <guid>http://localhost:1313/2012/05/anderson-smart-pointer-idiom-updated/</guid>
+      <guid>http://www.codestrokes.com/2012/05/anderson-smart-pointer-idiom-updated/</guid>
       <description>&lt;p&gt;C++11 provides us with a ton of new tools for expressing complex ideas in an efficient way. C++11 is unique among modern languages in that it provides a productive syntax, while also generating exceptionally fast code. For the first time ever, software engineers are responsible for increasing the performance of software systems. For decades we&amp;rsquo;ve been standing on the shoulders of hardware engineers. Hardware engineers have been increasing the clock speeds of our processors, but we&amp;rsquo;ve hit a physical limit. It&amp;rsquo;s our turn to pick up the baton in this relay race and get to the finish line. C++11 provides a number of tools to help us get there, and smart pointers are one such tool.
 &amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
 The &lt;a href=&#34;http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/&#34;&gt;Anderson Smart-Pointer idiom&lt;/a&gt; is a pattern developed by a &lt;a href=&#34;http://www.chrisanderman.com/&#34;&gt;colleague of mine&lt;/a&gt;. It supplants the constructor of a class with a factory method, to eliminate all raw pointers in a software system. Secondly, it provides typedefs for the smart pointers so one may use a terse type to express a more verbose concept. C++11 provides three tools which allow us to make this pattern more generic, while also increasing its performance.&lt;/p&gt;
@@ -1053,10 +1053,10 @@ return 0;
     
     <item>
       <title>Multicast Delegates in C&#43;&#43;11</title>
-      <link>http://localhost:1313/2012/03/multicast-delegates-in-c11/</link>
+      <link>http://www.codestrokes.com/2012/03/multicast-delegates-in-c11/</link>
       <pubDate>Sun, 25 Mar 2012 05:32:43 +0000</pubDate>
       
-      <guid>http://localhost:1313/2012/03/multicast-delegates-in-c11/</guid>
+      <guid>http://www.codestrokes.com/2012/03/multicast-delegates-in-c11/</guid>
       <description>&lt;p&gt;C# has a wonderfully flexible delegate system capable of multicast events.  This simple tool makes event driven software easier to write, and reduces coupling between objects. In 2003 Herb Sutter implemented a general form of the Observer pattern [1].  He called this the multi_function. It uses a mixture of TR1 and boost components to build a multi-cast delegate similar to C#&amp;rsquo;s.  Fast-forward 9 years, and we now have variadic-templates thanks to C++11.  Variadic-Templates allow us to patch a missing component in Sutter&amp;rsquo;s multi_function.
 &amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;&lt;/p&gt;
 
@@ -1130,10 +1130,10 @@ void operator()(Ts... vs) const {
     
     <item>
       <title>Compile-Time Polymorphism</title>
-      <link>http://localhost:1313/2012/02/compile-time-polymorphism/</link>
+      <link>http://www.codestrokes.com/2012/02/compile-time-polymorphism/</link>
       <pubDate>Sun, 05 Feb 2012 21:14:29 +0000</pubDate>
       
-      <guid>http://localhost:1313/2012/02/compile-time-polymorphism/</guid>
+      <guid>http://www.codestrokes.com/2012/02/compile-time-polymorphism/</guid>
       <description>
 
 &lt;p&gt;Polymorphism is a tool in object orientation, which allows us to model behavior, while simultaneously leverage existing code. Polymorphism allows is behavior reuse.  In C++ polymorphism, comes in 2 flavors, the standard runtime variant, and a curious compile time variant.  Runtime polymorphism, like Java, leverages virtual functions to dynamically bind[1. With virtual functions the compiler doesn&amp;rsquo;t know which method to call until runtime. In C++ this is implemented with the &lt;a href=&#34;http://en.wikipedia.org/wiki/Virtual_method_table&#34;&gt;virtual method table&lt;/a&gt;] a method at the call site. Compile Time polymorphism uses templates, to bind at compile time, thus negating the performance affect of virtual functions.&lt;/p&gt;
@@ -1243,10 +1243,10 @@ b2-&amp;gt;DoSomething();
     
     <item>
       <title>Modern C&#43;&#43;</title>
-      <link>http://localhost:1313/2012/01/modern-c/</link>
+      <link>http://www.codestrokes.com/2012/01/modern-c/</link>
       <pubDate>Sun, 22 Jan 2012 18:10:30 +0000</pubDate>
       
-      <guid>http://localhost:1313/2012/01/modern-c/</guid>
+      <guid>http://www.codestrokes.com/2012/01/modern-c/</guid>
       <description>&lt;p&gt;I found an awesome talk on how the new changes of C++11 are modernizing, an already fantastically powerful language. &lt;a href=&#34;http://channel9.msdn.com/Events/BUILD/BUILD2011/TOOL-835T&#34;&gt;http://channel9.msdn.com/Events/BUILD/BUILD2011/TOOL-835T&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;In this talk, Herb Sutter does two things I feel are quite admirable. Firstly, despite this being a Microsoft conference, he talks only about standard, portable C++ until the final minutes.&lt;/p&gt;
@@ -1257,10 +1257,10 @@ b2-&amp;gt;DoSomething();
     
     <item>
       <title>Parallel Binary Buddy: The Friendly Memory Manager</title>
-      <link>http://localhost:1313/2011/11/parallel-binary-buddy-the-friendly-memory-manager/</link>
+      <link>http://www.codestrokes.com/2011/11/parallel-binary-buddy-the-friendly-memory-manager/</link>
       <pubDate>Wed, 23 Nov 2011 18:50:20 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/11/parallel-binary-buddy-the-friendly-memory-manager/</guid>
+      <guid>http://www.codestrokes.com/2011/11/parallel-binary-buddy-the-friendly-memory-manager/</guid>
       <description>
 
 &lt;p&gt;Fragmentation, the
@@ -1402,10 +1402,10 @@ Computing and Information (ICCI&amp;rsquo;92)&lt;/em&gt;, 1992.&lt;/p&gt;&lt;/li
     
     <item>
       <title>Making C&#43;&#43; like Python: The Anderson Smart Pointer Pattern</title>
-      <link>http://localhost:1313/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</link>
+      <link>http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</link>
       <pubDate>Sun, 23 Oct 2011 19:00:21 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</guid>
+      <guid>http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</guid>
       <description>&lt;p&gt;Choosing to use C++ brings the additional complexity of memory management.  Dennis Ritchie once stated: The C Programming Language — A language which combines the flexibility of assembly language with the power of assembly language. C++ inherits much of that _flexibility, _however, this &lt;a href=&#34;http://www.infoq.com/presentations/Are-We-There-Yet-Rich-Hickey&#34;&gt;incidental complexity&lt;/a&gt;, can be relegated to a single class, leaving you with the high-level elegance of Python. RAII help with this additional complexity, however without a pattern for guidance implementing RAII consistently can be difficult, defeating the safety it provides.&lt;/p&gt;
 
 &lt;!-- more --&gt;
@@ -1462,10 +1462,10 @@ Name::Ptr Name::construct()
     
     <item>
       <title>Parallel Game-of-Life</title>
-      <link>http://localhost:1313/2011/10/parallel-game-of-life/</link>
+      <link>http://www.codestrokes.com/2011/10/parallel-game-of-life/</link>
       <pubDate>Sun, 23 Oct 2011 17:55:47 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/10/parallel-game-of-life/</guid>
+      <guid>http://www.codestrokes.com/2011/10/parallel-game-of-life/</guid>
       <description>
 
 &lt;p&gt;Conway&amp;rsquo;s &lt;a href=&#34;http://www.bitstorm.org/gameoflife/&#34;&gt;Game of Life&lt;/a&gt; is a dramatic illustration of emmergent behavior; that a seemingly complex system, such as cell mitosis can be governed by a set of simple rules. OpenMP is a fantastic set of language extensions which allows one to add dramatic parallelism without complex thread management.  As a demonstration of &lt;a href=&#34;http://openmp.org/wp/&#34;&gt;OpenMP&lt;/a&gt;&amp;rsquo;s simplicity I implemented the Game of Life. The code and all analysis is available on &lt;a href=&#34;https://bitbucket.org/jwright/parallel-game-of-life&#34;&gt;bitbucket.org&lt;/a&gt;.&lt;/p&gt;
@@ -1606,10 +1606,10 @@ Name::Ptr Name::construct()
     
     <item>
       <title>Good Tools, Excellent Results</title>
-      <link>http://localhost:1313/2011/08/good-tools-excellent-results/</link>
+      <link>http://www.codestrokes.com/2011/08/good-tools-excellent-results/</link>
       <pubDate>Sun, 21 Aug 2011 07:23:25 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/08/good-tools-excellent-results/</guid>
+      <guid>http://www.codestrokes.com/2011/08/good-tools-excellent-results/</guid>
       <description>&lt;p&gt;This semester for the C++ practicum we are building a clone of Zork.  Like many games of the genre, Zork is driven by a database.  Our implementation is a JSON database.  I chose JSON for a few reasons, but most importantly because its a human readable format that&amp;rsquo;s simple to understand.  I started by editing JSON files by hand in a text editor, however I found very quickly that investigating in a quick tool greatly improved my quality.&lt;/p&gt;
 
 &lt;p&gt;&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;I chose JSON as a format. Next, I needed a schema.  Currently the schema design is as follows:&lt;/p&gt;

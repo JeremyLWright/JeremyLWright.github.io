@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Java on Code Strokes</title>
-    <link>http://localhost:1313/tags/java/</link>
+    <link>http://www.codestrokes.com/tags/java/</link>
     <description>Recent content in Java on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 28 Aug 2012 05:31:04 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.codestrokes.com/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>The Turbulent History of Managed Code</title>
-      <link>http://localhost:1313/2012/08/the-turbulent-history-of-managed-code/</link>
+      <link>http://www.codestrokes.com/2012/08/the-turbulent-history-of-managed-code/</link>
       <pubDate>Tue, 28 Aug 2012 05:31:04 +0000</pubDate>
       
-      <guid>http://localhost:1313/2012/08/the-turbulent-history-of-managed-code/</guid>
+      <guid>http://www.codestrokes.com/2012/08/the-turbulent-history-of-managed-code/</guid>
       <description>
 
 &lt;p&gt;Managed Code is a fascinating technology; Just-In-Time compilation provides advanced run-time optimization and strong type safety can &lt;a href=&#34;http://channel9.msdn.com/Shows/Going+Deep/Singularity-III-Revenge-of-the-SIP&#34;&gt;render the hardware MMU obsolete&lt;/a&gt;. However the managed code renaissance is again in decline, and interestingly more than technology, business is changing the managed/native landscape. More than any other other metric, managed code is about maximizing programmer productivity.&lt;/p&gt;
@@ -65,10 +65,10 @@
     
     <item>
       <title>Java 4K Contest</title>
-      <link>http://localhost:1313/2011/05/java-4k-contest/</link>
+      <link>http://www.codestrokes.com/2011/05/java-4k-contest/</link>
       <pubDate>Sat, 07 May 2011 22:10:54 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/05/java-4k-contest/</guid>
+      <guid>http://www.codestrokes.com/2011/05/java-4k-contest/</guid>
       <description>&lt;p&gt;Crazy challenging game contest: &lt;a href=&#34;http://javaunlimited.net/contests/java4k.php&#34;&gt;http://javaunlimited.net/contests/java4k.php&lt;/a&gt;
 Reminds me of the winners of a 96KB contest: &lt;a href=&#34;http://en.wikipedia.org/wiki/.kkrieger&#34;&gt;http://en.wikipedia.org/wiki/.kkrieger&lt;/a&gt;&lt;/p&gt;
 </description>

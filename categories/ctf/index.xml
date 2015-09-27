@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ctf on Code Strokes</title>
-    <link>http://localhost:1313/categories/ctf/</link>
+    <link>http://www.codestrokes.com/categories/ctf/</link>
     <description>Recent content in Ctf on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 08 Sep 2013 21:58:06 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.codestrokes.com/categories/ctf/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Linux User&#39;s Group CTF 2013</title>
-      <link>http://localhost:1313/2013/09/linux-users-group-ctf-2013/</link>
+      <link>http://www.codestrokes.com/2013/09/linux-users-group-ctf-2013/</link>
       <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
       
-      <guid>http://localhost:1313/2013/09/linux-users-group-ctf-2013/</guid>
+      <guid>http://www.codestrokes.com/2013/09/linux-users-group-ctf-2013/</guid>
       <description>&lt;p&gt;This past weekend we held another capture the flag event at the Arizona State University&amp;rsquo;s Linux User&amp;rsquo;s Group. It had more of a system admin focus than security cracking exploits, but it was fun an nontheless a diverse learning experience for all those involved. However, almost immediately, I realized the number one rule in CTF, nothing is off limits!
 &amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
 The game was organized into two parts, a game server which collected the the scores and displayed the point totals of all teams in real-time, and the virtual servers (hosted on Amazon EC2) which contained the actual games. Players were encouraged to break into teams, and register themselves on the game server. The game server would assign the team a virtual machine, and the team could log in via SSH to behind hacking. Five minutes into the registration process, one team attempted a SQL injection attack against the game server.&lt;/p&gt;
@@ -28,10 +28,10 @@ The game was organized into two parts, a game server which collected the the sco
     
     <item>
       <title>Open Source CTF Game Server</title>
-      <link>http://localhost:1313/2012/09/open-source-ctf-game-server/</link>
+      <link>http://www.codestrokes.com/2012/09/open-source-ctf-game-server/</link>
       <pubDate>Sun, 09 Sep 2012 17:30:50 +0000</pubDate>
       
-      <guid>http://localhost:1313/2012/09/open-source-ctf-game-server/</guid>
+      <guid>http://www.codestrokes.com/2012/09/open-source-ctf-game-server/</guid>
       <description>&lt;p&gt;I am releasing under &lt;a href=&#34;http://creativecommons.org/licenses/by-sa/3.0/deed.en_US&#34;&gt;Creative Commons Attribution-ShareAlike 3.0 Unported License&lt;/a&gt;. my django game server for running Capture the Flag events.&lt;/p&gt;
 
 &lt;p&gt;This server does have some known bugs which I enumerated in the issue tracker. I developed this first version for the Fall 2012 ASULUG hacking competition. I hope people can get involved and make this a fantastic game server! Please feel free to contact me, or simply fork the repository. I look forward to seeing everyone&amp;rsquo;s interesting pull requests! Thank you.&lt;/p&gt;
@@ -47,10 +47,10 @@ Based on a work at &lt;a href=&#34;https://bitbucket.org/jwright/capturetheflag/
     
     <item>
       <title>Capture the Flag - Running a Hacking Competition</title>
-      <link>http://localhost:1313/2012/04/capture-the-flag-running-a-hacking-competition/</link>
+      <link>http://www.codestrokes.com/2012/04/capture-the-flag-running-a-hacking-competition/</link>
       <pubDate>Mon, 30 Apr 2012 02:38:44 +0000</pubDate>
       
-      <guid>http://localhost:1313/2012/04/capture-the-flag-running-a-hacking-competition/</guid>
+      <guid>http://www.codestrokes.com/2012/04/capture-the-flag-running-a-hacking-competition/</guid>
       <description>&lt;p&gt;Black-Hat hacking in an controlled environment, like this, is an important skill for software developers. The &lt;a href=&#34;http://en.wikipedia.org/wiki/The_Art_of_War&#34;&gt;Art of War&lt;/a&gt; describes knowing one&amp;rsquo;s enemy, and with the prevalence of internet-enabled applications today, it has never been more critical to know how the &amp;ldquo;enemy&amp;rdquo; can take down a system. While capture-the-flag is a fun, and exciting intellectual game, it is serious training for software engineers of all types, and skill levels. I recently setup a small capture the flag event for the &lt;a href=&#34;http://asulug.org/&#34;&gt;Arizona Linux User&amp;rsquo;s Group&lt;/a&gt;, and it was very fun.&lt;/p&gt;
 
 &lt;p&gt;To setup a catpure the flag event, here are a few guidelines I found useful:&lt;/p&gt;

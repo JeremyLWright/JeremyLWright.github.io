@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Unit Test on Code Strokes</title>
-    <link>http://localhost:1313/tags/unit-test/</link>
+    <link>http://www.codestrokes.com/tags/unit-test/</link>
     <description>Recent content in Unit Test on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 03 Sep 2014 23:00:00 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/unit-test/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.codestrokes.com/tags/unit-test/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Property Testing in C&#43;&#43;</title>
-      <link>http://localhost:1313/2014/09/property-testing-in-c/</link>
+      <link>http://www.codestrokes.com/2014/09/property-testing-in-c/</link>
       <pubDate>Wed, 03 Sep 2014 23:00:00 -0700</pubDate>
       
-      <guid>http://localhost:1313/2014/09/property-testing-in-c/</guid>
+      <guid>http://www.codestrokes.com/2014/09/property-testing-in-c/</guid>
       <description>&lt;p&gt;
 Currently, I&#39;m on a testing kick. One might say tests are shiny. I don&#39;t
 know if they are really shiny as much as I found another cool use for

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Memory on Code Strokes</title>
-    <link>http://localhost:1313/tags/memory/</link>
+    <link>http://www.codestrokes.com/tags/memory/</link>
     <description>Recent content in Memory on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 23 Oct 2011 19:00:21 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/memory/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.codestrokes.com/tags/memory/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Making C&#43;&#43; like Python: The Anderson Smart Pointer Pattern</title>
-      <link>http://localhost:1313/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</link>
+      <link>http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</link>
       <pubDate>Sun, 23 Oct 2011 19:00:21 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</guid>
+      <guid>http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</guid>
       <description>&lt;p&gt;Choosing to use C++ brings the additional complexity of memory management.  Dennis Ritchie once stated: The C Programming Language — A language which combines the flexibility of assembly language with the power of assembly language. C++ inherits much of that _flexibility, _however, this &lt;a href=&#34;http://www.infoq.com/presentations/Are-We-There-Yet-Rich-Hickey&#34;&gt;incidental complexity&lt;/a&gt;, can be relegated to a single class, leaving you with the high-level elegance of Python. RAII help with this additional complexity, however without a pattern for guidance implementing RAII consistently can be difficult, defeating the safety it provides.&lt;/p&gt;
 
 &lt;!-- more --&gt;

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Template on Code Strokes</title>
-    <link>http://localhost:1313/tags/template/</link>
+    <link>http://www.codestrokes.com/tags/template/</link>
     <description>Recent content in Template on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 05 Feb 2012 21:14:29 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/template/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.codestrokes.com/tags/template/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Compile-Time Polymorphism</title>
-      <link>http://localhost:1313/2012/02/compile-time-polymorphism/</link>
+      <link>http://www.codestrokes.com/2012/02/compile-time-polymorphism/</link>
       <pubDate>Sun, 05 Feb 2012 21:14:29 +0000</pubDate>
       
-      <guid>http://localhost:1313/2012/02/compile-time-polymorphism/</guid>
+      <guid>http://www.codestrokes.com/2012/02/compile-time-polymorphism/</guid>
       <description>
 
 &lt;p&gt;Polymorphism is a tool in object orientation, which allows us to model behavior, while simultaneously leverage existing code. Polymorphism allows is behavior reuse.  In C++ polymorphism, comes in 2 flavors, the standard runtime variant, and a curious compile time variant.  Runtime polymorphism, like Java, leverages virtual functions to dynamically bind[1. With virtual functions the compiler doesn&amp;rsquo;t know which method to call until runtime. In C++ this is implemented with the &lt;a href=&#34;http://en.wikipedia.org/wiki/Virtual_method_table&#34;&gt;virtual method table&lt;/a&gt;] a method at the call site. Compile Time polymorphism uses templates, to bind at compile time, thus negating the performance affect of virtual functions.&lt;/p&gt;

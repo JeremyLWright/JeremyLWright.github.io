@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Raii on Code Strokes</title>
-    <link>http://localhost:1313/tags/raii/</link>
+    <link>http://www.codestrokes.com/tags/raii/</link>
     <description>Recent content in Raii on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 06 May 2012 07:00:10 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/raii/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.codestrokes.com/tags/raii/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Anderson Smart-Pointer Idiom Updated!</title>
-      <link>http://localhost:1313/2012/05/anderson-smart-pointer-idiom-updated/</link>
+      <link>http://www.codestrokes.com/2012/05/anderson-smart-pointer-idiom-updated/</link>
       <pubDate>Sun, 06 May 2012 07:00:10 +0000</pubDate>
       
-      <guid>http://localhost:1313/2012/05/anderson-smart-pointer-idiom-updated/</guid>
+      <guid>http://www.codestrokes.com/2012/05/anderson-smart-pointer-idiom-updated/</guid>
       <description>&lt;p&gt;C++11 provides us with a ton of new tools for expressing complex ideas in an efficient way. C++11 is unique among modern languages in that it provides a productive syntax, while also generating exceptionally fast code. For the first time ever, software engineers are responsible for increasing the performance of software systems. For decades we&amp;rsquo;ve been standing on the shoulders of hardware engineers. Hardware engineers have been increasing the clock speeds of our processors, but we&amp;rsquo;ve hit a physical limit. It&amp;rsquo;s our turn to pick up the baton in this relay race and get to the finish line. C++11 provides a number of tools to help us get there, and smart pointers are one such tool.
 &amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
 The &lt;a href=&#34;http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/&#34;&gt;Anderson Smart-Pointer idiom&lt;/a&gt; is a pattern developed by a &lt;a href=&#34;http://www.chrisanderman.com/&#34;&gt;colleague of mine&lt;/a&gt;. It supplants the constructor of a class with a factory method, to eliminate all raw pointers in a software system. Secondly, it provides typedefs for the smart pointers so one may use a terse type to express a more verbose concept. C++11 provides three tools which allow us to make this pattern more generic, while also increasing its performance.&lt;/p&gt;
@@ -73,10 +73,10 @@ return 0;
     
     <item>
       <title>Making C&#43;&#43; like Python: The Anderson Smart Pointer Pattern</title>
-      <link>http://localhost:1313/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</link>
+      <link>http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</link>
       <pubDate>Sun, 23 Oct 2011 19:00:21 +0000</pubDate>
       
-      <guid>http://localhost:1313/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</guid>
+      <guid>http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</guid>
       <description>&lt;p&gt;Choosing to use C++ brings the additional complexity of memory management.  Dennis Ritchie once stated: The C Programming Language — A language which combines the flexibility of assembly language with the power of assembly language. C++ inherits much of that _flexibility, _however, this &lt;a href=&#34;http://www.infoq.com/presentations/Are-We-There-Yet-Rich-Hickey&#34;&gt;incidental complexity&lt;/a&gt;, can be relegated to a single class, leaving you with the high-level elegance of Python. RAII help with this additional complexity, however without a pattern for guidance implementing RAII consistently can be difficult, defeating the safety it provides.&lt;/p&gt;
 
 &lt;!-- more --&gt;
