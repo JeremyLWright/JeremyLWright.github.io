@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rust on Code Strokes</title>
+    <link>http://www.codestrokes.com/tags/rust/</link>
+    <description>Recent content in Rust on Code Strokes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 03 Oct 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://www.codestrokes.com/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>System languages should include Webapps</title>
+      <link>http://www.codestrokes.com/2015/10/system-languages-include-web/</link>
+      <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2015/10/system-languages-include-web/</guid>
+      <description>&lt;p&gt;I was reading an &lt;a href=&#34;https://isocpp.org/wiki/faq/strange-inheritance&#34;&gt;FAQ&lt;/a&gt; today about some subtle C++ point and I came across
+a comment that explicitly excludes the beginning language-learner.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;By the way, it confuses most novice C++ programmers that private virtuals
+can be overridden&amp;hellip; However the private virtual approach is now common
+enough that confusion of novices is less of a concern.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This left me frustrated that a language that has been core to my personal
+success so flippantly brushed aside its future user. The C++ community is
+certainly undergoing a transformation. There is active effort to modernize,
+and refresh C++.  However, lending a hand to beginners is not C++&amp;rsquo;s forte.
+There are more &lt;a href=&#34;codereview.stackexchange.com&#34;&gt;resources&lt;/a&gt; to learn programming
+today than when I started, however the struggles of a beginner are largely
+unchanged. This comment left me thinking not that this C++ idiom is easier
+to understand, its that there aren&amp;rsquo;t any novices left in the C++ community.&lt;/p&gt;
+
+&lt;p&gt;I am currently reintroducing myself to D. There are two things that
+I admire about the community. First, D is frank about the inconsistencies in
+their language, and actively try to make it easier to understand. Second,
+D embraces web application.&lt;/p&gt;
+
+&lt;p&gt;During the &lt;a href=&#34;http://dconf.org/2015/index.html&#34;&gt;DConf videos&lt;/a&gt; speakers voice pain points, and
+inconsistencies in the language. The point isn&amp;rsquo;t to complain, but to
+acknowledge that language experts are not the only users.  With each point Walter
+Bright (the language&amp;rsquo;s author) carefully considers each point.&lt;/p&gt;
+
+&lt;p&gt;For example, one individual suggested that D&amp;rsquo;s mixins are &amp;ldquo;unprincipled&amp;rdquo;.
+Unprincipled meaning mixins are strings rather than expression trees as in C#&amp;rsquo;s
+LINQ, or Abstract Syntax Trees as in Rust&amp;rsquo;s macros. Bright however
+&lt;a href=&#34;https://www.youtube.com/watch?v=s83u5iw67TY&#34;&gt;responded&lt;/a&gt; that he agrees mixins are unprincipled, but
+&amp;ldquo;&amp;hellip;[that] they are easy to understand.&amp;rdquo;  Making mixins as straightforward as string
+manipulation makes an otherwise advanced technique something a novice can use.&lt;/p&gt;
+
+&lt;p&gt;I can certainly attest to the complexity of C#&amp;rsquo;s LINQ. I&amp;rsquo;ve
+&lt;strike&gt;worked&lt;/strike&gt; struggled on a LINQ provider for a in-house database
+engine. LINQ Expression Trees are certainly in the upper echelons of advanced
+techniques. Implementing mixins as string manipulation is a beautiful
+concession to making a language easier to use.&lt;/p&gt;
+
+&lt;p&gt;The second principle I loved about the D community, and the thesis of
+this post, is a single statement on &lt;a href=&#34;http://wiki.dlang.org/Vision/2015H1&#34;&gt;D&amp;rsquo;s roadmap&lt;/a&gt;
+&amp;ldquo;Emphasize &lt;a href=&#34;http://vibed.org/&#34;&gt;vibe.d&lt;/a&gt;&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://vibed.org/&#34;&gt;Vibe.d&lt;/a&gt; is an asynchronous I/O and web framework library for D.
+I find the combination of I/O library and web framework similar to &lt;a href=&#34;https://playframework.com/&#34;&gt;Play
+Framework&amp;rsquo;s&lt;/a&gt; approach from Scala.  D is classified as a system
+language. The same class as C++. However the D community considers (as does the &lt;a href=&#34;https://www.reddit.com/r/rust/comments/3n3b2d/trying_rust_for_web_services/cvl1lx1&#34;&gt;Rust
+community&lt;/a&gt;, &lt;a href=&#34;https://blog.wearewizards.io/trying-rust-for-web-services&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://arewewebyet.com/&#34;&gt;2&lt;/a&gt;) web
+services a key enabler.&lt;/p&gt;
+
+&lt;p&gt;C++ is entrenched in enterprise applications.  However languages like D, and
+Rust are among the few that can compete with C++&amp;rsquo;s performance. This is,
+I believe, C++&amp;rsquo;s last life-preserving feature, entrenchment.  C++ is hard to
+learn, hard to use, tends to define language experts (also see Haskell).  But
+it is everywhere, and I can get a good paying job by knowing it.&lt;/p&gt;
+
+&lt;p&gt;HTTP/REST has established itself as the lingua-franca of Service Oriented
+Architectures.  &lt;a href=&#34;http://engineering.linkedin.com/play/play-framework-linkedin&#34;&gt;LinkedIn&lt;/a&gt; maintains a beautiful and informative
+blog about engineering a massively-online-multiplayer-role-playing-game, also
+known as a social network. At it&amp;rsquo;s heart are a number of services, written in
+various languages, all linked together via HTTP.&lt;/p&gt;
+
+&lt;p&gt;As I work on my own personal project, I like to use compiled languages. I have
+quite a bit of experience with Django, but I don&amp;rsquo;t feel confident to build
+a large, long-term project in a duck-typed language. At risk of sounding like
+a Haskeller, a strong type system really does help enforce a consistent
+application. Even if one just considers refactoring, the compiler looks at
+every line of code, and every function call, every time. I like to believe I&amp;rsquo;m
+professional enough an engineer to say my unit-test exercise 100% coverage,
+but I know I&amp;rsquo;ve never been successful in doing so. I would like to leverage my
+expertise in C++ to build my personal web service experiments, but there
+simply isn&amp;rsquo;t a reasonable way to do that. Go is certainly a contender for this
+space, but I prefer languages that give me more of a hand in generic
+(parametric polymorphic) techniques. For me, now, that language is D.&lt;/p&gt;
+
+&lt;p&gt;HTTP is the key that binds them all. D is on-board with HTTP, and embracing
+the Web. Rust appears to be as well. This is certainly a massive opportunity
+to compete with C++ at the heart of its entrenchment, enterprise services.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,8 +6,97 @@
     <description>Recent content in Posts on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 25 Sep 2015 20:10:00 +0700</lastBuildDate>
+    <lastBuildDate>Sat, 03 Oct 2015 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://www.codestrokes.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>System languages should include Webapps</title>
+      <link>http://www.codestrokes.com/2015/10/system-languages-include-web/</link>
+      <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2015/10/system-languages-include-web/</guid>
+      <description>&lt;p&gt;I was reading an &lt;a href=&#34;https://isocpp.org/wiki/faq/strange-inheritance&#34;&gt;FAQ&lt;/a&gt; today about some subtle C++ point and I came across
+a comment that explicitly excludes the beginning language-learner.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;By the way, it confuses most novice C++ programmers that private virtuals
+can be overridden&amp;hellip; However the private virtual approach is now common
+enough that confusion of novices is less of a concern.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This left me frustrated that a language that has been core to my personal
+success so flippantly brushed aside its future user. The C++ community is
+certainly undergoing a transformation. There is active effort to modernize,
+and refresh C++.  However, lending a hand to beginners is not C++&amp;rsquo;s forte.
+There are more &lt;a href=&#34;codereview.stackexchange.com&#34;&gt;resources&lt;/a&gt; to learn programming
+today than when I started, however the struggles of a beginner are largely
+unchanged. This comment left me thinking not that this C++ idiom is easier
+to understand, its that there aren&amp;rsquo;t any novices left in the C++ community.&lt;/p&gt;
+
+&lt;p&gt;I am currently reintroducing myself to D. There are two things that
+I admire about the community. First, D is frank about the inconsistencies in
+their language, and actively try to make it easier to understand. Second,
+D embraces web application.&lt;/p&gt;
+
+&lt;p&gt;During the &lt;a href=&#34;http://dconf.org/2015/index.html&#34;&gt;DConf videos&lt;/a&gt; speakers voice pain points, and
+inconsistencies in the language. The point isn&amp;rsquo;t to complain, but to
+acknowledge that language experts are not the only users.  With each point Walter
+Bright (the language&amp;rsquo;s author) carefully considers each point.&lt;/p&gt;
+
+&lt;p&gt;For example, one individual suggested that D&amp;rsquo;s mixins are &amp;ldquo;unprincipled&amp;rdquo;.
+Unprincipled meaning mixins are strings rather than expression trees as in C#&amp;rsquo;s
+LINQ, or Abstract Syntax Trees as in Rust&amp;rsquo;s macros. Bright however
+&lt;a href=&#34;https://www.youtube.com/watch?v=s83u5iw67TY&#34;&gt;responded&lt;/a&gt; that he agrees mixins are unprincipled, but
+&amp;ldquo;&amp;hellip;[that] they are easy to understand.&amp;rdquo;  Making mixins as straightforward as string
+manipulation makes an otherwise advanced technique something a novice can use.&lt;/p&gt;
+
+&lt;p&gt;I can certainly attest to the complexity of C#&amp;rsquo;s LINQ. I&amp;rsquo;ve
+&lt;strike&gt;worked&lt;/strike&gt; struggled on a LINQ provider for a in-house database
+engine. LINQ Expression Trees are certainly in the upper echelons of advanced
+techniques. Implementing mixins as string manipulation is a beautiful
+concession to making a language easier to use.&lt;/p&gt;
+
+&lt;p&gt;The second principle I loved about the D community, and the thesis of
+this post, is a single statement on &lt;a href=&#34;http://wiki.dlang.org/Vision/2015H1&#34;&gt;D&amp;rsquo;s roadmap&lt;/a&gt;
+&amp;ldquo;Emphasize &lt;a href=&#34;http://vibed.org/&#34;&gt;vibe.d&lt;/a&gt;&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://vibed.org/&#34;&gt;Vibe.d&lt;/a&gt; is an asynchronous I/O and web framework library for D.
+I find the combination of I/O library and web framework similar to &lt;a href=&#34;https://playframework.com/&#34;&gt;Play
+Framework&amp;rsquo;s&lt;/a&gt; approach from Scala.  D is classified as a system
+language. The same class as C++. However the D community considers (as does the &lt;a href=&#34;https://www.reddit.com/r/rust/comments/3n3b2d/trying_rust_for_web_services/cvl1lx1&#34;&gt;Rust
+community&lt;/a&gt;, &lt;a href=&#34;https://blog.wearewizards.io/trying-rust-for-web-services&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://arewewebyet.com/&#34;&gt;2&lt;/a&gt;) web
+services a key enabler.&lt;/p&gt;
+
+&lt;p&gt;C++ is entrenched in enterprise applications.  However languages like D, and
+Rust are among the few that can compete with C++&amp;rsquo;s performance. This is,
+I believe, C++&amp;rsquo;s last life-preserving feature, entrenchment.  C++ is hard to
+learn, hard to use, tends to define language experts (also see Haskell).  But
+it is everywhere, and I can get a good paying job by knowing it.&lt;/p&gt;
+
+&lt;p&gt;HTTP/REST has established itself as the lingua-franca of Service Oriented
+Architectures.  &lt;a href=&#34;http://engineering.linkedin.com/play/play-framework-linkedin&#34;&gt;LinkedIn&lt;/a&gt; maintains a beautiful and informative
+blog about engineering a massively-online-multiplayer-role-playing-game, also
+known as a social network. At it&amp;rsquo;s heart are a number of services, written in
+various languages, all linked together via HTTP.&lt;/p&gt;
+
+&lt;p&gt;As I work on my own personal project, I like to use compiled languages. I have
+quite a bit of experience with Django, but I don&amp;rsquo;t feel confident to build
+a large, long-term project in a duck-typed language. At risk of sounding like
+a Haskeller, a strong type system really does help enforce a consistent
+application. Even if one just considers refactoring, the compiler looks at
+every line of code, and every function call, every time. I like to believe I&amp;rsquo;m
+professional enough an engineer to say my unit-test exercise 100% coverage,
+but I know I&amp;rsquo;ve never been successful in doing so. I would like to leverage my
+expertise in C++ to build my personal web service experiments, but there
+simply isn&amp;rsquo;t a reasonable way to do that. Go is certainly a contender for this
+space, but I prefer languages that give me more of a hand in generic
+(parametric polymorphic) techniques. For me, now, that language is D.&lt;/p&gt;
+
+&lt;p&gt;HTTP is the key that binds them all. D is on-board with HTTP, and embracing
+the Web. Rust appears to be as well. This is certainly a massive opportunity
+to compete with C++ at the heart of its entrenchment, enterprise services.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>4 Simple Steps to Run D Language in Azure Websites</title>
@@ -1753,25 +1842,6 @@ I recently has a problem to extract logs from a product at work. The existing so
 &lt;p&gt;My first approach was to use UNIX pipes and filter data through sed | gzip | openssl. This worked, but required multiple workarounds to generate the sed expressions, eventually resulting in exponential time.  The second time, I was discussing with my co-worker, the virtues of compiled code versus shell scripts. In that vain I started looking into openssl as a library rather than an executable. You know who has streaming algorithms? OpenSSL. OpenSSL, has a fantastic abstraction called BIO_, Basic Input/Output. Which are simply functions you connect together in a chain to process data. The BIO interface is designed to allow one to work with SSL encrypted sockets in an intuitive way. For our use case we simply connected an zlib BIO -&amp;gt; AES BIO -&amp;gt; file sink. Write to the zlib, and watch the data compress, and write to the thumbdrive in one swoop, no laziness, thunking, or fancy data structure fusion required. The result: linear time.&lt;/p&gt;
 
 &lt;p&gt;So the lesson here isn&amp;rsquo;t a technological one, but a personal one about myself. Don&amp;rsquo;t reach for a new technology to solve something. Look deeper into the root of the problem, and even a language as &amp;ldquo;dumb&amp;rdquo; and &amp;ldquo;simple&amp;rdquo;, and &amp;ldquo;old&amp;rdquo; as C, can provide the fastest, optimal solution.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Idiomatic Learning</title>
-      <link>http://www.codestrokes.com/2013/10/idiomatic-learning/</link>
-      <pubDate>Sun, 20 Oct 2013 23:00:00 +0000</pubDate>
-      
-      <guid>http://www.codestrokes.com/2013/10/idiomatic-learning/</guid>
-      <description>&lt;p&gt;When learning a new language I find it helpful to study a languages idioms. Idioms exist in a language for a specific reason. Sometimes that reason is to further the principles of the language, other times it’s to mask, or otherwise deal with some underlying design decision of the language. Currently, I am studying Haskell, and currently I am struggle to clarify the idioms of the language. The syntax is still very new and awkward, currently with a total authoring in Haskell of 713 lines.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;Python has some interesting idioms, but the one that really helped me when learning was “..tuples should have trailing commas…” At that time, the only other language I knew was C, and PIC Assembly. I was very much a hardware engineer, and Python, for me, was a step out of that hardware-centric mindset. So with such a staunch, inflexible background as this, such an idiom felt, dirty and wrong? My first reaction to this was, “What? Really? Why, are python programmers too lazy?” At first I refused to do this, claiming that my source code was more elegant, and clean. However some time later I learned the second part of this idiom, “…tuples should have trailing commas, BECAUSE syntactically the comma creates the tuple, not the parenthesizes.” Whoa! What an epiphany. From this simple clause, I can now create a tuple with 1 element! The because clause of an idiom, really opens doors in your mind. It really clarifies some subtle point, or characteristic of the language.&lt;/p&gt;
-
-&lt;p&gt;C++ on the other hand has a number of idioms that have become quite ingrained that it&amp;rsquo;s hard to separate, &amp;ldquo;yeah that&amp;rsquo;s just C++ syntax&amp;rdquo;, from, &amp;ldquo;That&amp;rsquo;s just how I do it,&amp;rdquo; to, &amp;ldquo;Oh yeah, I guess template &lt;typename T&gt; class &amp;hellip; isn&amp;rsquo;t very intuitive is it.&amp;rdquo; C++ is a complex multi-paradigm language with one sweeping design decision: You pay for what you use. For instance, take class methods. In C++ class methods are not polymorphic by default. I remember as a fledgling C++ programmer asking my computer science friend, Brian, &amp;ldquo;&amp;hellip;classes are useless without polymorphism. That&amp;rsquo;s just stupid.&amp;rdquo; He tried to explain it to me, but I was probably to frustrated to understand. What I didn&amp;rsquo;t know was the because, and I continued my ignorant use of virtual until I read &lt;a href=&#34;http://www.amazon.com/gp/product/0201543303/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=0201543303&amp;amp;linkCode=as2&amp;amp;tag=codestro-20&#34;&gt;The Design and Evolution of C++&lt;/a&gt;&lt;img src=&#34;http://ir-na.amazon-adsystem.com/e/ir?t=codestro-20&amp;amp;l=as2&amp;amp;o=1&amp;amp;a=0201543303&#34; alt=&#34;&#34; /&gt;
- that I learned the reason. Polymorphism requires a level of indirection to implement. Doing so affects performance. C++ doesn&amp;rsquo;t push this on you unless you want it, just non-polymorphic by default, virtual if you want. Beautiful. Now as an embedded system designer I love this aspect of C++. I am free to use the features I need without paying for the ones I don&amp;rsquo;t.&lt;/p&gt;
-
-&lt;p&gt;So now as I approach Haskell, I read blogs, and statements with a temporary suspension of judgement until I learn the because.&lt;/p&gt;
 </description>
     </item>
     
