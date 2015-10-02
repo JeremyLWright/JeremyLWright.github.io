@@ -72,9 +72,12 @@ HTTP/REST has established itself as the lingua-franca of Service Oriented
 Architectures.  [LinkedIn][linkedin] maintains a beautiful and informative
 blog about engineering a massively-online-multiplayer-role-playing-game, also
 known as a social network. At it's heart are a number of services, written in
-various languages, all linked together via HTTP.
+various languages, all linked together via HTTP. HTTP is the key that binds
+them all. D is on-board with HTTP, and embracing the Web. Rust appears to be
+as well. This is certainly a massive opportunity to compete with C++ at the
+heart of its entrenchment, enterprise services.
 
-As I work on my own personal project, I like to use compiled languages. I have
+As I work on my own personal projects, I like to use compiled languages. I have
 quite a bit of experience with Django, but I don't feel confident to build
 a large, long-term project in a duck-typed language. At risk of sounding like
 a Haskeller, a strong type system really does help enforce a consistent
@@ -86,10 +89,6 @@ expertise in C++ to build my personal web service experiments, but there
 simply isn't a reasonable way to do that. Go is certainly a contender for this
 space, but I prefer languages that give me more of a hand in generic
 (parametric polymorphic) techniques. For me, now, that language is D. 
-
-HTTP is the key that binds them all. D is on-board with HTTP, and embracing
-the Web. Rust appears to be as well. This is certainly a massive opportunity
-to compete with C++ at the heart of its entrenchment, enterprise services.
 
 [craig-rust-reddit]: https://www.reddit.com/r/rust/comments/3n3b2d/trying_rust_for_web_services/cvl1lx1
 [rust-web]: https://blog.wearewizards.io/trying-rust-for-web-services
