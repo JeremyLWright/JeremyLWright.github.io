@@ -77,9 +77,12 @@ it is everywhere, and I can get a good paying job by knowing it.&lt;/p&gt;
 Architectures.  &lt;a href=&#34;http://engineering.linkedin.com/play/play-framework-linkedin&#34;&gt;LinkedIn&lt;/a&gt; maintains a beautiful and informative
 blog about engineering a massively-online-multiplayer-role-playing-game, also
 known as a social network. At it&amp;rsquo;s heart are a number of services, written in
-various languages, all linked together via HTTP.&lt;/p&gt;
+various languages, all linked together via HTTP. HTTP is the key that binds
+them all. D is on-board with HTTP, and embracing the Web. Rust appears to be
+as well. This is certainly a massive opportunity to compete with C++ at the
+heart of its entrenchment, enterprise services.&lt;/p&gt;
 
-&lt;p&gt;As I work on my own personal project, I like to use compiled languages. I have
+&lt;p&gt;As I work on my own personal projects, I like to use compiled languages. I have
 quite a bit of experience with Django, but I don&amp;rsquo;t feel confident to build
 a large, long-term project in a duck-typed language. At risk of sounding like
 a Haskeller, a strong type system really does help enforce a consistent
@@ -91,10 +94,6 @@ expertise in C++ to build my personal web service experiments, but there
 simply isn&amp;rsquo;t a reasonable way to do that. Go is certainly a contender for this
 space, but I prefer languages that give me more of a hand in generic
 (parametric polymorphic) techniques. For me, now, that language is D.&lt;/p&gt;
-
-&lt;p&gt;HTTP is the key that binds them all. D is on-board with HTTP, and embracing
-the Web. Rust appears to be as well. This is certainly a massive opportunity
-to compete with C++ at the heart of its entrenchment, enterprise services.&lt;/p&gt;
 </description>
     </item>
     
