@@ -1,5 +1,5 @@
 ---
-author: admin
+author: Jeremy
 comments: true
 date: 2012-05-06 07:00:10+00:00
 layout: post
