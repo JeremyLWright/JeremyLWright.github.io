@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Code Strokes</title>
+    <title>Jeremy&#39;s CodeStrokes</title>
     <link>http://www.codestrokes.com/</link>
-    <description>Recent content on Code Strokes</description>
+    <description>Recent content on Jeremy&#39;s CodeStrokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 03 Oct 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://www.codestrokes.com/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <copyright>Creative Commons Share Alike</copyright>
+    <lastBuildDate>Wed, 01 Nov 2017 16:09:11 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.codestrokes.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Projects</title>
+      <link>http://www.codestrokes.com/project/</link>
+      <pubDate>Wed, 01 Nov 2017 16:09:11 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/project/</guid>
+      <description>Here is a bit of stuff I&amp;rsquo;ve worked on. I have varied interests, so I included a smattering of projects.
+data Maybe = Just &amp;quot;Something for everyone&amp;quot; | Nothing -- :-)  Bitbucket: https://bitbucket.org/jwright/
+Master&amp;rsquo;s Thesis Video showing output of algorithm: https://www.youtube.com/watch?v=LI62R7dW7kE
+Haskell Project Euler (Haskell, F#, Kotlin, Octave/Matlab) Solutions and research around projecteuler.net
+ Source: https://github.com/JeremyLWright/euler  C++ War Card Game (C# and Native C++) I was trying to understand how VM based languages (C#, Java, etc) are able to call across the Managed/Unmanaged ABI Boundary.</description>
+    </item>
     
     <item>
       <title>System languages should include Webapps</title>
@@ -15,86 +31,9 @@
       <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2015/10/system-languages-include-web/</guid>
-      <description>&lt;p&gt;I was reading an &lt;a href=&#34;https://isocpp.org/wiki/faq/strange-inheritance&#34;&gt;FAQ&lt;/a&gt; today about some subtle C++ point and I came across
-a comment that explicitly excludes the beginning language-learner.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;By the way, it confuses most novice C++ programmers that private virtuals
-can be overridden&amp;hellip; However the private virtual approach is now common
-enough that confusion of novices is less of a concern.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;This left me frustrated that a language that has been core to my personal
-success so flippantly brushed aside its future user. The C++ community is
-certainly undergoing a transformation. There is active effort to modernize,
-and refresh C++.  However, lending a hand to beginners is not C++&amp;rsquo;s forte.
-There are more &lt;a href=&#34;codereview.stackexchange.com&#34;&gt;resources&lt;/a&gt; to learn programming
-today than when I started, however the struggles of a beginner are largely
-unchanged. This comment left me thinking not that this C++ idiom is easier
-to understand, its that there aren&amp;rsquo;t any novices left in the C++ community.&lt;/p&gt;
-
-&lt;p&gt;I am currently reintroducing myself to D. There are two things that
-I admire about the community. First, D is frank about the inconsistencies in
-their language, and actively try to make it easier to understand. Second,
-D embraces web application.&lt;/p&gt;
-
-&lt;p&gt;During the &lt;a href=&#34;http://dconf.org/2015/index.html&#34;&gt;DConf videos&lt;/a&gt; speakers voice pain points, and
-inconsistencies in the language. The point isn&amp;rsquo;t to complain, but to
-acknowledge that language experts are not the only users.  With each point Walter
-Bright (the language&amp;rsquo;s author) carefully considers each point.&lt;/p&gt;
-
-&lt;p&gt;For example, one individual suggested that D&amp;rsquo;s mixins are &amp;ldquo;unprincipled&amp;rdquo;.
-Unprincipled meaning mixins are strings rather than expression trees as in C#&amp;rsquo;s
-LINQ, or Abstract Syntax Trees as in Rust&amp;rsquo;s macros. Bright however
-&lt;a href=&#34;https://www.youtube.com/watch?v=s83u5iw67TY&#34;&gt;responded&lt;/a&gt; that he agrees mixins are unprincipled, but
-&amp;ldquo;&amp;hellip;[that] they are easy to understand.&amp;rdquo;  Making mixins as straightforward as string
-manipulation makes an otherwise advanced technique something a novice can use.&lt;/p&gt;
-
-&lt;p&gt;I can certainly attest to the complexity of C#&amp;rsquo;s LINQ. I&amp;rsquo;ve
-&lt;strike&gt;worked&lt;/strike&gt; struggled on a LINQ provider for a in-house database
-engine. LINQ Expression Trees are certainly in the upper echelons of advanced
-techniques. Implementing mixins as string manipulation is a beautiful
-concession to making a language easier to use.&lt;/p&gt;
-
-&lt;p&gt;The second principle I loved about the D community, and the thesis of
-this post, is a single statement on &lt;a href=&#34;http://wiki.dlang.org/Vision/2015H1&#34;&gt;D&amp;rsquo;s roadmap&lt;/a&gt;
-&amp;ldquo;Emphasize &lt;a href=&#34;http://vibed.org/&#34;&gt;vibe.d&lt;/a&gt;&amp;rdquo;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://vibed.org/&#34;&gt;Vibe.d&lt;/a&gt; is an asynchronous I/O and web framework library for D.
-I find the combination of I/O library and web framework similar to &lt;a href=&#34;https://playframework.com/&#34;&gt;Play
-Framework&amp;rsquo;s&lt;/a&gt; approach from Scala.  D is classified as a system
-language. The same class as C++. However the D community considers (as does the &lt;a href=&#34;https://www.reddit.com/r/rust/comments/3n3b2d/trying_rust_for_web_services/cvl1lx1&#34;&gt;Rust
-community&lt;/a&gt;, &lt;a href=&#34;https://blog.wearewizards.io/trying-rust-for-web-services&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://arewewebyet.com/&#34;&gt;2&lt;/a&gt;) web
-services a key enabler.&lt;/p&gt;
-
-&lt;p&gt;C++ is entrenched in enterprise applications.  However languages like D, and
-Rust are among the few that can compete with C++&amp;rsquo;s performance. This is,
-I believe, C++&amp;rsquo;s last life-preserving feature, entrenchment.  C++ is hard to
-learn, hard to use, tends to define language experts (also see Haskell).  But
-it is everywhere, and I can get a good paying job by knowing it.&lt;/p&gt;
-
-&lt;p&gt;HTTP/REST has established itself as the lingua-franca of Service Oriented
-Architectures.  &lt;a href=&#34;http://engineering.linkedin.com/play/play-framework-linkedin&#34;&gt;LinkedIn&lt;/a&gt; maintains a beautiful and informative
-blog about engineering a massively-online-multiplayer-role-playing-game, also
-known as a social network. At it&amp;rsquo;s heart are a number of services, written in
-various languages, all linked together via HTTP. HTTP is the key that binds
-them all. D is on-board with HTTP, and embracing the Web. Rust appears to be
-as well. This is certainly a massive opportunity to compete with C++ at the
-heart of its entrenchment, enterprise services.&lt;/p&gt;
-
-&lt;p&gt;As I work on my own personal projects, I like to use compiled languages. I have
-quite a bit of experience with Django, but I don&amp;rsquo;t feel confident to build
-a large, long-term project in a duck-typed language. At risk of sounding like
-a Haskeller, a strong type system really does help enforce a consistent
-application. Even if one just considers refactoring, the compiler looks at
-every line of code, and every function call, every time. I like to believe I&amp;rsquo;m
-professional enough an engineer to say my unit-test exercise 100% coverage,
-but I know I&amp;rsquo;ve never been successful in doing so. I would like to leverage my
-expertise in C++ to build my personal web service experiments, but there
-simply isn&amp;rsquo;t a reasonable way to do that. Go is certainly a contender for this
-space, but I prefer languages that give me more of a hand in generic
-(parametric polymorphic) techniques. For me, now, that language is D.&lt;/p&gt;
-</description>
+      <description>I was reading an FAQ today about some subtle C++ point and I came across a comment that explicitly excludes the beginning language-learner.
+ By the way, it confuses most novice C++ programmers that private virtuals can be overridden&amp;hellip; However the private virtual approach is now common enough that confusion of novices is less of a concern.
+ This left me frustrated that a language that has been core to my personal success so flippantly brushed aside its future user.</description>
     </item>
     
     <item>
@@ -103,70 +42,8 @@ space, but I prefer languages that give me more of a hand in generic
       <pubDate>Fri, 25 Sep 2015 20:10:00 +0700</pubDate>
       
       <guid>http://www.codestrokes.com/2015/09/deploying-d-to-azure-webapp/</guid>
-      <description>
-
-&lt;p&gt;&lt;em&gt;I shameless stole these steps from &lt;a href=&#34;http://www.wadewegner.com/2014/12/4-simple-steps-to-run-go-language-in-azure-websites/&#34;&gt;4 Simple Steps to Run Go Language in Azure Websites&lt;/a&gt;. This post is simply a transliteration to D. Thank you very much to Wade Wegner for the original post.&lt;/em&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;4-simple-steps:ff7857238f7b86c03a3bbb6b92fdfcb5&#34;&gt;4 Simple Steps&lt;/h1&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Create your Azure Website in Azure Portal.
-
-&lt;ol&gt;
-&lt;li&gt;Configure FTP deployment&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://www.codestrokes.com/img/Azure-FTP-Config.png&#34; alt=&#34;FTP Configuration&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;2&amp;#46; Run &lt;code&gt;dub init vibed_hello_world --type=vibe.d&lt;/code&gt; and change the default app.d to read the port from an environment variable. &lt;a href=&#34;https://vibed.org/docs&#34;&gt;Docs&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-d&#34;&gt;import vibe.d;
-
-shared static this()
-{
-	import std.process;
-	import std.conv;
-
-	immutable port = environment[&amp;quot;HTTP_PLATFORM_PORT&amp;quot;]; //Use the port IIS tells us to.
-
-	auto settings = new HTTPServerSettings;
-	settings.port = to!ushort(port);
-	settings.bindAddresses = [&amp;quot;::1&amp;quot;, &amp;quot;127.0.0.1&amp;quot;];
-	listenHTTP(settings, &amp;amp;hello);
-
-	logInfo(&amp;quot;Please open http://127.0.0.1:&amp;quot; ~ port ~ &amp;quot;/ in your browser.&amp;quot;);
-}
-
-void hello(HTTPServerRequest req, HTTPServerResponse res)
-{
-	res.writeBody(&amp;quot;Hello, World!&amp;quot;);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;3&amp;#46; Create Web.Config&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
-&amp;lt;configuration&amp;gt;
-	&amp;lt;system.webServer&amp;gt;
-		&amp;lt;handlers&amp;gt;
-			&amp;lt;add name=&amp;quot;httpplatformhandler&amp;quot; path=&amp;quot;*&amp;quot; verb=&amp;quot;*&amp;quot; modules=&amp;quot;httpPlatformHandler&amp;quot; resourceType=&amp;quot;Unspecified&amp;quot; /&amp;gt;
-		&amp;lt;/handlers&amp;gt;
-		&amp;lt;httpPlatform processPath=&amp;quot;d:\home\site\wwwroot\vibed_hello_world.exe&amp;quot; 
-					arguments=&amp;quot;&amp;quot; 
-					startupTimeLimit=&amp;quot;60&amp;quot;&amp;gt;
-			&amp;lt;environmentVariables&amp;gt;
-			&amp;lt;/environmentVariables&amp;gt;
-		&amp;lt;/httpPlatform&amp;gt;
-	&amp;lt;/system.webServer&amp;gt;
-&amp;lt;/configuration&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;4&amp;#46; Upload binaries and DLLs to Azure!
-&lt;img src=&#34;http://www.codestrokes.com/img/upload-to-ftp.png&#34; alt=&#34;Upload to FTP Server&#34; /&gt;
-&lt;/p&gt;
-</description>
+      <description>I shameless stole these steps from 4 Simple Steps to Run Go Language in Azure Websites. This post is simply a transliteration to D. Thank you very much to Wade Wegner for the original post.
+4 Simple Steps  Create your Azure Website in Azure Portal.  Configure FTP deployment   2&amp;#46; Run dub init vibed_hello_world --type=vibe.d and change the default app.d to read the port from an environment variable.</description>
     </item>
     
     <item>
@@ -175,9 +52,7 @@ void hello(HTTPServerRequest req, HTTPServerResponse res)
       <pubDate>Sun, 05 Jul 2015 00:00:00 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2015/07/property_driven_design_minmax/</guid>
-      <description>
-
-&lt;p&gt;I wrote an article on &lt;a href=&#34;http://www.codestrokes.com/2014/09/property-testing-in-c/&#34;&gt;Property Testing&lt;/a&gt;
+      <description>&lt;p&gt;I wrote an article on &lt;a href=&#34;http://www.codestrokes.com/2014/09/property-testing-in-c/&#34;&gt;Property Testing&lt;/a&gt;
 about a year ago. Isocpp.org even &lt;a href=&#34;https://isocpp.org/blog/2014/12/property-testing&#34;&gt;linked to
 it&lt;/a&gt; which was pretty cool.
 Recently, I uncovered a fantastic talk by &lt;a href=&#34;https://www.youtube.com/watch?v=shngiiBfD80&#34;&gt;Jessica Kerr about property
@@ -193,8 +68,7 @@ problems for the moment, but realize that property testing is vastly more
 general than mundane example testing. How properties reduce the size of the
 problem space makes me imagine this Figure.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://www.codestrokes.com/img/Properties_solution_space.png&#34; alt=&#34;sometimes_code_gives_you_a_wtf&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.codestrokes.com/img/Properties_solution_space.png&#34; alt=&#34;sometimes_code_gives_you_a_wtf&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Following Kerr&amp;rsquo;s references, I found a set of projects from a &lt;a href=&#34;http://www.cs.ou.edu/~rlpage/SEcollab/20projects/&#34;&gt;predicate-logic
 course&lt;/a&gt;. This course
@@ -216,539 +90,7 @@ generator &amp;mdash; actually increase quality?&amp;rdquo;&lt;/p&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/JeremyLWright.github.io/commits/content/content/posts/2015-07-05-property_driven_design_minmax.markdown&#34;&gt;Revision Log for this article&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;In her presentation, Kerr stated, &amp;ldquo;&amp;hellip;what is this answer? I don&amp;rsquo;t know but
-I can put a box around it!&amp;rdquo; This jestful statement is quite
-inspired. Example tests &amp;mdash; the test typically used in unit tests (the FPGA/ASIC
-guys call these Directed Tests) &amp;mdash; draw individual points within the
-correct region of the solution space.&lt;/p&gt;
-
-&lt;p&gt;There are paradigms, e.g., structured testing using McCabe
-complexity, for selecting effective points within this solution space,
- but in the end you are still drawing points. Properties on the
-other hand draw boxes around the solution space. Notice that the properties
-may include incorrect solutions. While this may seem as a defect to
-property driven design, it is precisely this simplification that makes
-properties resilient to refactoring and maintenance cycles. While still
-providing value by excluding out of bounds results. This resilience is draws
-from PDD&amp;rsquo;s lineage as a black-box testing method. Conversely, structured
-testing is a whitebox method that looks as what test data will
-induce 100% block coverage. As the code changes over time, the
-predicates and conditionals change which intern influence the code coverage. In
-a sense the points in the correct solution place are always moving around. The
-Example based tests are tightly coupled to the implementation they are
-attempting to verify. Properties however operate at a higher level of
-abstraction. Properties allow one to say &amp;ldquo;solutions of &lt;em&gt;approximately this
-form&lt;/em&gt; are likely correct.&amp;rdquo; Properties then may make successively tighter bounds
-around the solution space to constraint the design. Its a powerful
-technique that I increasingly enjoy in my design work.&lt;/p&gt;
-
-&lt;h1 id=&#34;implementing-minmax-with-properties:50cf44a3d7a8ca6a3d0b114540b5d3c2&#34;&gt;Implementing MinMax with Properties&lt;/h1&gt;
-
-&lt;h2 id=&#34;prerequisites:50cf44a3d7a8ca6a3d0b114540b5d3c2&#34;&gt;Prerequisites&lt;/h2&gt;
-
-&lt;p&gt;The term &lt;em&gt;measure&lt;/em&gt; used in this problem statement means as
-the &lt;a href=&#34;http://www.stepanovpapers.com/gcd.pdf&#34;&gt;ancient Greeks meant it&lt;/a&gt;: a line segment which
-describes an integer number of divisions of another line segment. Today we might use
-the word greatest common divisor.&lt;/p&gt;
-
-&lt;h2 id=&#34;the-maximum-function:50cf44a3d7a8ca6a3d0b114540b5d3c2&#34;&gt;The maximum function&lt;/h2&gt;
-
-&lt;p&gt;Inspired by test-driven-design we&amp;rsquo;ll start by defining a property for our
-maximum function.&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Define a function, &lt;em&gt;maximum&lt;/em&gt;, that delivers the largest value in a non-empty list of rational numbers.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Using the &lt;a href=&#34;https://github.com/thejohnfreeman/autocheck&#34;&gt;autocheck library&lt;/a&gt; we can express this requirement as follows:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;struct prop_max_element_t
-{
-	template&amp;lt;
-		typename SinglePassRange&amp;gt;
-	bool operator()(const SinglePassRange&amp;amp; xs)
-	{
-		auto ref_max = std::max_element(std::cbegin(xs), std::cend(xs));
-		const auto test_max = minmax::maximum(xs);
-		return *ref_max == test_max;
-	}
-	
-};
-
-TEST(minmax, maximum_prop)
-{
-	autocheck::gtest_reporter rep;
-
-	auto arbitrary = 
-		autocheck::discard_if([](const std::vector&amp;lt;size_t&amp;gt;&amp;amp; xs) -&amp;gt; bool { return xs.size() == 0; },
-		autocheck::make_arbitrary&amp;lt;std::vector&amp;lt;size_t&amp;gt;&amp;gt;());
-		
-	autocheck::check&amp;lt;std::vector&amp;lt;size_t&amp;gt;&amp;gt;(
-			prop_max_element_t(),
-			100,
-			arbitrary,
-			rep);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Lets breakdown the definition of the arbitrary generator:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;	auto arbitrary = 
-		autocheck::discard_if([](const std::vector&amp;lt;size_t&amp;gt;&amp;amp; xs) -&amp;gt; bool { return xs.size() == 0; },
-		autocheck::make_arbitrary&amp;lt;std::vector&amp;lt;size_t&amp;gt;&amp;gt;());
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The signature of an arbitrary generator is best read bottom to top.  The first
-step generates a random vector of random length. The line above it throws away
-vectors who&amp;rsquo;s size is equal to zero. We will see later how to generate data
-that meets our requirements, but sometimes its easier to just throw away some
-data rather than try to generate only valid data.&lt;/p&gt;
-
-&lt;p&gt;With this property we can test our stub function:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;namespace minmax
-{
-
-template &amp;lt;typename SinglePassRange&amp;gt;
-typename SinglePassRange::value_type maximum(const SinglePassRange&amp;amp; range)
-{
-	return 0; //Stubbed method
-}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This generates a failed output as we expected&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;[ RUN      ] minmax.maximum_prop
-d:\property_driven_design\build\thirdparty\src\autocheck\include\autocheck\reporter.hpp(91): error: Value of: AUTOCHECK_SUCCESS
-  Actual: false
-Expected: true
-Falsifiable, after 3 tests:
-([2, 0])
-
-[  FAILED  ] minmax.maximum_prop (3 ms)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now that we are confident the test machinery is working, we can remove our
-stub implementation and provide a (hopefully correct) definition.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;namespace minmax
-{
-template &amp;lt;typename SinglePassRange&amp;gt;
-typename SinglePassRange::value_type maximum(const SinglePassRange&amp;amp; range)
-{
-	return *std::max_element(
-			std::begin(range),
-			std::end(range));
-}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We will no re-run our test to verify the implementation.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;[ RUN      ] minmax.maximum_prop
-OK, passed 100 tests.
-[       OK ] minmax.maximum_prop (14 ms)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This demonstrates another useful property of properties :-). The data passing
-through our property is randomly generated, ergo each time the test runs we
-execute different tests. Typing &lt;em&gt;make test&lt;/em&gt; multiple times is actually useful, not just something you do to procrastinate at 4:45pm when you&amp;rsquo;ve found
-a new bug.&lt;/p&gt;
-
-&lt;p&gt;Also there is something viscerally satisfying about writing a single property
-and seeing 100 tests passing.&lt;/p&gt;
-
-&lt;h2 id=&#34;a-compile-time-property:50cf44a3d7a8ca6a3d0b114540b5d3c2&#34;&gt;A compile-time property&lt;/h2&gt;
-
-&lt;p&gt;Next we can verify the property given to us in the &lt;a href=&#34;http://www.cs.ou.edu/~rlpage/SEcollab/20projects/minmax.htm&#34;&gt;problem statement&lt;/a&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;If xs is a non-empty true-list of rational numbers, then (maximum xs) is a rational number.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Since C++ is a statically typed language this property may appear to be self
-evident. However this demonstrates another benefit of property driven design.
-We can document that we intend to only work with rational numbers. Then since
-C++ is statically type we can validate the property statically, and any
-maintenance programmer will fail to compile without modifying the test.&lt;/p&gt;
-
-&lt;p&gt;We can express this property as so&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;struct prop_maximum_should_give_rational_number_t
-{
-	template&amp;lt;typename SinglePassRange&amp;gt;
-	bool operator()(const SinglePassRange&amp;amp; xs)
-	{
-		static_assert(std::is_integral&amp;lt;decltype(minmax::maximum(xs))&amp;gt;::value, &amp;quot;Maximum only works on rational numbers.&amp;quot;);
-		return std::is_integral&amp;lt;decltype(minmax::maximum(xs))&amp;gt;::value;
-	}
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This shows another pattern of testing I picked up from &lt;a href=&#34;https://www.youtube.com/watch?v=sDMngNP7pOw&#34;&gt;Bruce Tate&lt;/a&gt;, tests should be named as a should-statement. This property here says: My property for maximum &lt;em&gt;should&lt;/em&gt; give rational numbers. If this is ever falsified our test the static_assert() will fail compilation.&lt;/p&gt;
-
-&lt;p&gt;We can add another property that demonstrates the blackbox nature of property
-testing.&lt;/p&gt;
-
-&lt;p&gt;&amp;#50;. The value (maximum xs) occurs in the list xs&lt;/p&gt;
-
-&lt;p&gt;Properties as basic as this seem silly at first, but they serve a very useful
-purpose. Recall the poorly drawn graphic from above. We are searching for bugs
-in our program by defining bounds around the solution space. This property
-states something very profound about our function. The output of our function
-is dependent on the input. This trends the function toward referential
-transparency. At a more basic level though, this might be a property one
-starts with. Notice that if we implemented this property first, with our stub
-function in place, our random generator would have falsified it easily with
-any list where 0 was not a member.&lt;/p&gt;
-
-&lt;p&gt;We can express this property with autocheck as:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;struct prop_maximum_should_return_a_value_from_the_list_t
-{
-	template &amp;lt;typename SinglePassRange&amp;gt;
-	bool operator()(const SinglePassRange&amp;amp; xs)
-	{
-		const auto m = minmax::maximum(xs);
-		const auto is_present = std::find(
-				std::begin(xs),
-				std::end(xs),
-				m);
-		return is_present != std::end(xs);
-	}
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Simply put, if minmax::maximum returns some value m, that value must be
-present in the list.  Notice again that m may be the minimum value in the
-list. This property isn&amp;rsquo;t checking for the complete correctness of the
-function. It is testing one small aspect of the function&amp;rsquo;s possible solution
-space.&lt;/p&gt;
-
-&lt;p&gt;Next we can move on to our next function, &lt;em&gt;minimum_pair&lt;/em&gt;, which we can
-implement with a stub to always return the first element:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;template &amp;lt;typename SinglePassRange&amp;gt;
-measure_pair_t minimum_pair(const SinglePassRange&amp;amp; xs)
-{
-	return *std::begin(xs);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To property test this function we&amp;rsquo;ll need to teach autocheck how to generate
-a &lt;em&gt;measure_pair_t&lt;/em&gt;. We do this by specializing the generator function in the
-autocheck namespace.&lt;/p&gt;
-
-&lt;h2 id=&#34;generating-a-custom-data-type:50cf44a3d7a8ca6a3d0b114540b5d3c2&#34;&gt;Generating a custom data type&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;namespace autocheck
-{
-
-//Tell autocheck how to generate a measure_pair_t
-template &amp;lt;&amp;gt;
-class generator&amp;lt;minmax::measure_pair_t&amp;gt;
-{
-	public:
-	using result_type = minmax::measure_pair_t;
-
-	result_type operator()()
-	{
-		return this-&amp;gt;operator()(0);
-	}
-
-	result_type operator()(size_t size)
-	{
-		auto rational_gen = generator&amp;lt;std::size_t&amp;gt;();
-		return std::make_pair(rational_gen(size), rational_gen(size));
-	}
-};
-
-//Tell autocheck how to display a measure_pair_t
-std::ostream&amp;amp; operator&amp;lt;&amp;lt;(std::ostream&amp;amp; os, const minmax::measure_pair_t&amp;amp; p)
-{
-	os &amp;lt;&amp;lt; &amp;quot;{&amp;quot; &amp;lt;&amp;lt; p.first &amp;lt;&amp;lt; &amp;quot;, &amp;quot; &amp;lt;&amp;lt; p.second &amp;lt;&amp;lt; &amp;quot;}&amp;quot;;
-	return os;
-}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;broken-test-code:50cf44a3d7a8ca6a3d0b114540b5d3c2&#34;&gt;Broken Test Code&lt;/h2&gt;
-
-&lt;p&gt;Now autocheck can generate and display our specific type. Setup a property to
-check.&lt;/p&gt;
-
-&lt;p&gt;&amp;#52;. If xs is a non-empty true-list of measure pairs, then (minimum-pair xs) is a measure-pair.&lt;/p&gt;
-
-&lt;p&gt;To express this property we must first have a definition of a measure pair
-(We&amp;rsquo;ll see how this definition is not quite correct, but our properties will
-sus that out quite quickly):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;using measure_pair_t = std::pair&amp;lt;std::size_t, std::size_t&amp;gt;;
-
-///Provided definition: measure pair: a two-element list whose first element, a rational number, is the measure of its other element
-bool is_measure_pair(const measure_pair_t&amp;amp; x)
-{
-	//A measure pair is a two element list, who&#39;s first element (a rational
-	//number), is the measure of its other element
-	const auto first_element_is_rational = std::is_integral&amp;lt;decltype(x.first)&amp;gt;::value;
-
-	const auto other_element_is_measure_of_first = 
-		//To be a measure the first value must be less-than the second.
-		(x.first &amp;lt; x.second)
-		//And the second element must evenly divide the first element.
-		&amp;amp;&amp;amp; (x.second % x.first == 0);
-	return first_element_is_rational
-		&amp;amp;&amp;amp; other_element_is_measure_of_first;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And our property to check that the return value from minimum pair should meet
-the definition of a measure pair.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;struct prop_minimum_pair_should_return_a_measure_pair_t
-{
-	bool operator()(const std::vector&amp;lt;minmax::measure_pair_t&amp;gt;&amp;amp; xs) const
-	{
-		using namespace minmax;
-		const auto test_pair = minimum_pair(xs);
-		return is_measure_pair(test_pair);
-	}
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Executing this gives us, as expected due to our stub, a falsifiable case.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;[ RUN      ] MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
-unknown file: error: SEH exception with code 0xc0000094 thrown in the test body.
-
-[  FAILED  ] MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair (1 ms)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Error 0xc0000094 is a divide by zero. Ah! Good catch autocheck. I know
-I personally would not have exercised this using a directed test. This is
-another strength of random testing. The random generators are not biased with
-programmer intuition. Our requirements state that a measure-pair is always
-non-zero so we will update the generator to exclude zero values.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;namespace autocheck
-{
-template &amp;lt;&amp;gt;
-class generator&amp;lt;minmax::measure_pair_t&amp;gt;
-{
-	public:
-	using result_type = minmax::measure_pair_t;
-
-	result_type operator()()
-	{
-		return this-&amp;gt;operator()(0);
-	}
-
-	result_type operator()(const size_t size)
-	{
-		const auto non_zero_gen = [size]()
-		{
-			auto rational_gen = generator&amp;lt;std::size_t&amp;gt;();
-			auto temp = rational_gen(size);
-			if(temp == 0) //Skip over zero!
-				return temp + 1;
-			return temp;
-		};
-		const auto measure = non_zero_gen();
-		const auto factor = non_zero_gen();
-		return std::make_pair(measure*factor, measure);
-	}
-};
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now with zero values excluded we&amp;rsquo;ll get a falsifiable test case:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;[ RUN      ] MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
-d:\property_driven_design\build\thirdparty\src\autocheck\include\autocheck\reporter.hpp(91): error: Value of: AUTOCHECK_SUCCESS
-  Actual: false
-Expected: true
-Falsifiable, after 1 tests:
-([{1, 1}])
-
-[  FAILED  ] MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair (1 ms)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This test case demonstrates that our understand of the word measure wasn&amp;rsquo;t
-quite right when we implemented the &lt;em&gt;is_measure_pair&lt;/em&gt; predicate. A value can
-always be a measure of itself, i.e., a number always measures itself one time.
-Since our function is still a stub we are still excercising the test
-machinery, not the production code yet. One school of thought is
-that we are wasting time writing, and rewriting, test code before we&amp;rsquo;ve even
-worked on the code we&amp;rsquo;re getting paid to write however, this failing test case is
-evidence for a different perspective. The test code is letting us explore the
-problem space.&lt;/p&gt;
-
-&lt;p&gt;Imagine a traditional directed test scenerio. We unknowingly have a limited
-understanding of the problem space. We implement some tests. Those tests
-reflect our understanding of the problem. We then implement the functions. The
-tests pass, all the while we unknowingly provided weak tests for the given
-problem domain. Lastly, we inspect the implementation and add some additional
-tests to assure 100% code coverage.&lt;/p&gt;
-
-&lt;p&gt;In this scenerio, we did TDD correctly by writing the tests first. We did our
-red/green refactor. We implemented the function. Our tests pass, and we
-achieved 100% code coverage. We did all the things we are supposed to do, and
-we still delivered a defective function. The problem is that all these steps
-happen at the same conceptual level of abstraction. It&amp;rsquo;s a linear prorgession
-from our understanding, to writing tests, to writing implementation, to
-inspecting coverage. At no point was there some outside force that can
-excercise the code beyond our understanding. This is the benefit of
-property-driven-design. Randomness will generate test cases you the programmer
-didn&amp;rsquo;t think of. You the programmer then need to classify that generated test
-case as valid input or invalid input. That is a useful! It expands your own
-understanding.&lt;/p&gt;
-
-&lt;p&gt;John Hughes &lt;a href=&#34;https://www.youtube.com/watch?v=FnjutUoNSmg&#34;&gt;put it
-best&lt;/a&gt; when he state that property
-testing is about comparing the specification to the code. The properties
-encode the specification. The code does what it does. When the checker finds
-a discrepancy it is the engineer&amp;rsquo;s job to find where the defect lies. This is
-very powerful. We, the engineer, aren&amp;rsquo;t relegated to imagining test data for
-our functions what will make it blow up. We simply describe concepts
-(properties) of what we believe the specification is telling us to do. Then we
-implement the code. If the two match then we the code probably matches the
-specification. Its raises our level of thinking out of individual numbers, and
-code paths to more abstract thinking, which is something humans do best.&lt;/p&gt;
-
-&lt;h2 id=&#34;fixing-our-property:50cf44a3d7a8ca6a3d0b114540b5d3c2&#34;&gt;Fixing our property&lt;/h2&gt;
-
-&lt;p&gt;The problem is is that our definition doesn&amp;rsquo;t include self-measures. We can
-adjust it easily.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;bool is_measure_pair(const measure_pair_t&amp;amp; x)
-{
-	//A measure pair is a two element list, who&#39;s first element (a rational
-	//number), is the measure of its other element
-	const auto first_element_is_rational = std::is_integral&amp;lt;decltype(x.first)&amp;gt;::value;
-
-	const auto other_element_is_measure_of_first = 
-		//To be a measure the first value must be equal-to or less-than the second.
-		(x.first == x.second) ||
-		((x.first &amp;lt; x.second )
-		//And the second element must evenly divide the first element.
-		&amp;amp;&amp;amp; (x.second % x.first == 0));
-	return first_element_is_rational
-		&amp;amp;&amp;amp; other_element_is_measure_of_first;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Executing this generates a new failing case:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;[ RUN      ] MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
-d:\property_driven_design\build\thirdparty\src\autocheck\include\autocheck\repor
-ter.hpp(91): error: Value of: AUTOCHECK_SUCCESS
-  Actual: false
-Expected: true
-Falsifiable, after 3 tests:
-([{2, 1}, {2, 2}])
-
-[  FAILED  ] MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair (1 ms)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We can run it again to see if we get a different case:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;[ RUN      ] MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
-d:\property_driven_design\build\thirdparty\src\autocheck\include\autocheck\reporter.hpp(91): error: Value of: AUTOCHECK_SUCCESS
-  Actual: false
-Expected: true
-Falsifiable, after 7 tests:
-([{4, 1}, {4, 2}, {2, 2}, {1, 1}])
-
-[  FAILED  ] MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair (1 ms)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This is awesome! Our failing test case is bigger now. Again to quote John
-Hughes, &amp;ldquo;&lt;a href=&#34;https://www.youtube.com/watch?v=zi0rHwfiX1Q&#34;&gt;This is progress! We are now passing for lists of size 1!&lt;/a&gt;&amp;rdquo; Our function is still implemented as a stub, so we can have some confidence that our test code is behaving properly. Let&amp;rsquo;s implement our minimum_pair function:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;template &amp;lt;typename SinglePassRange&amp;gt;
-measure_pair_t minimum_pair(const SinglePassRange&amp;amp; xs)
-{
-	return *std::min_element(
-			std::begin(xs),
-			std::end(xs),
-			::minmax::operator&amp;lt;);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Executing our test code:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;D:\property_driven_design\build&amp;gt;01_minmax
-Running main() from gtest_main.cc
-[==========] Running 7 tests from 3 test cases.
-[----------] Global test environment set-up.
-[----------] 1 test from minmax
-[ RUN      ] minmax.maximum_directed
-[       OK ] minmax.maximum_directed (0 ms)
-[----------] 1 test from minmax (1 ms total)
-
-[----------] 5 tests from MinMaxFixture
-[ RUN      ] MinMaxFixture.prop_maximum_should_give_greatest_value
-OK, passed 100 tests.
-[       OK ] MinMaxFixture.prop_maximum_should_give_greatest_value (13 ms)
-[ RUN      ] MinMaxFixture.prop_maximum_should_give_rational_number
-OK, passed 100 tests.
-[       OK ] MinMaxFixture.prop_maximum_should_give_rational_number (11 ms)
-[ RUN      ] MinMaxFixture.prop_maximum_should_return_a_value_from_the_list
-OK, passed 100 tests (2% trivial).
-10% 10, odd-length.
-10% 20, even-length.
-10% 30, odd-length.
-10% 40, even-length.
-10% 50, odd-length.
-10% 60, even-length.
-10% 70, odd-length.
-10% 80, even-length.
-10% 90, odd-length.
-9% 0, even-length.
-[       OK ] MinMaxFixture.prop_maximum_should_return_a_value_from_the_list (24 ms)
-[ RUN      ] MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
-OK, passed 100 tests.
-[       OK ] MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair (20 ms)
-[ RUN      ] MinMaxFixture.prop_minimum_pair_should_return_the_smallest_pair
-OK, passed 100 tests.
-[       OK ] MinMaxFixture.prop_minimum_pair_should_return_the_smallest_pair (23 ms)
-[----------] 5 tests from MinMaxFixture (92 ms total)
-
-[----------] 1 test from MinMaxDirected
-[ RUN      ] MinMaxDirected.directed_minimum_pair_shouls_return_a_measure_pair
-[       OK ] MinMaxDirected.directed_minimum_pair_shouls_return_a_measure_pair (0 ms)
-[----------] 1 test from MinMaxDirected (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 7 tests from 3 test cases ran. (96 ms total)
-[  PASSED  ] 7 tests.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Running this multiple times generates no failing test cases.&lt;/p&gt;
-
-&lt;h1 id=&#34;conclusion:50cf44a3d7a8ca6a3d0b114540b5d3c2&#34;&gt;Conclusion&lt;/h1&gt;
-
-&lt;p&gt;So a few real-world metrics. I wrote this code in 3 hours. The
-requirements were relatively simple, but I suspect that using example tests
-would have resulted in a similar completion time. Additionally, I suspect, my
-directed tests would have found more defects near the end of my development
-rather than the beginning. I felt this affect as an acceleration. I found feel
-as I closed each property that I had fewer defects in the code I previously
-thought was done. This is a big confidence booster in my opinion.
-Additionally, another pattern I learned from John Hughes, that I didn&amp;rsquo;t
-explicitly describe here but you can see in the code, save failed tests.
-A failing test is gold! When the random generator uncovers something
-interesting save it as a directed test. Then fix the failure and leave the
-directed test behind. It will be a reminder of a corner case you missed. Plus
-some developers like to see examples tests, even random ones.&lt;/p&gt;
-
-&lt;p&gt;In this post I walked through a property-driven-design approach to a simple
-numerical problem. In intended to show something more interesting that the
-&lt;em&gt;reverse(reverse(list)) == list&lt;/em&gt; example, and something less contrived than my
-previous post on property testing. I look forward to any feedback on this
-post.&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -757,9 +99,7 @@ post.&lt;/p&gt;
       <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2015/06/converting-to-static-blog/</guid>
-      <description>
-
-&lt;p&gt;I wrote my first article for codestrokes in February 2011 - right as I was
+      <description>&lt;p&gt;I wrote my first article for codestrokes in February 2011 - right as I was
 accepted to graduate school. My goal was to improve my writing in preparation
 for writing a thesis. While through grad school I started with more
 traditional writing tool. I started to learn to write, and I found my writing
@@ -770,121 +110,7 @@ spelling and check for simple grammatical rules. The process was much simpler
 to manage. This motivated me to convert my blog to a static site. This post
 describes my process on simplifying my writing process.&lt;/p&gt;
 
-&lt;h1 id=&#34;my-toolchain:f190086b9bc9fe46a11c16626346622b&#34;&gt;My toolchain&lt;/h1&gt;
-
-&lt;p&gt;The primary goal was leverage the writing tool chain I honed during my thesis
-for maintaining my blog. I didn&amp;rsquo;t want to complexity of a database backed
-blogging site. I wanted to drop my hosting service. I wanted to write in
-a markup language. I wrote my thesis in Latex, and I love the separation of
-presentation from content. This site you are reading today is composed of:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Markdown written in Vim.&lt;/li&gt;
-&lt;li&gt;Changes tracked in git.&lt;/li&gt;
-&lt;li&gt;Markdown converted HTML via Hugo.&lt;/li&gt;
-&lt;li&gt;Static pages hosted by Github Pages.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h1 id=&#34;choosing-a-static-site-generator:f190086b9bc9fe46a11c16626346622b&#34;&gt;Choosing a static site generator&lt;/h1&gt;
-
-&lt;p&gt;I actually didn&amp;rsquo;t spend too much time working on this, since someone already
-did a great deal of the work at &lt;a href=&#34;https://www.staticgen.com/&#34;&gt;https://www.staticgen.com/&lt;/a&gt;.  If you are
-planning to use Github to host your blog, Jekyll will be the easiest to use.
-The Github pages even include documentation on how to use Jekyll with Github
-pages. I however have an aversion to Ruby (though an order of magnitude
-weaker than my aversion to Java).  Near the top was &lt;a href=&#34;gohugo.io&#34;&gt;Hugo&lt;/a&gt;.
-A &lt;del&gt;colleague&lt;/del&gt; friend of mine is quite a convincing evangelist of Go,
-and I decided to give it a try. &amp;ndash; Boy, was I impressed &amp;ndash; The quality of the
-documentation if fantastic. However my favorite feature of Hugo, it is
-a single download. One executable. One. No dependencies&amp;hellip; Its hard to express
-how incredibly relieving this is.&lt;/p&gt;
-
-&lt;p&gt;As an illustration, let me share with you a little lie. I didn&amp;rsquo;t directly just
-to staticgen.com, and find Hugo. I have an affinity for Haskell, and tried to
-use a static site generator called &lt;a href=&#34;https://www.staticgen.com/hakyll&#34;&gt;Hakyll&lt;/a&gt;.&lt;br /&gt;
-I closed the project from github. The repository included a cabal file, which
-I promptly compiled. It took 25 minutes to build all the dependencies. Hakyll
-seems awesome, but I wanted something simple. Simple that I can just write,
-and the publication process becomes ancillary. Pieter Hintjens states that
-a project should continuously seek to reduce barriers for participation.
-Comment on this site are a perfect example. &lt;a href=&#34;https://disqus.com/&#34;&gt;Disqus&lt;/a&gt;
-strikes a fantastic balance between reducing spam, without requiring everyone
-to login to my site. I have no presumptions concerning this site, and
-I completely understand that people do not need yet another account to manage.
-I want people to comment, hence I use a service that reduces the barrier to
-participate.&lt;/p&gt;
-
-&lt;p&gt;A cabal file is a barrier to participate. I want to consume a project, I don&amp;rsquo;t
-want to contribute to it (yet). Hugo had the lowest barrier to entry of the
-site generators I tried. One executable, no dependencies, and fantastic
-documentation.&lt;/p&gt;
-
-&lt;h1 id=&#34;exporting-content:f190086b9bc9fe46a11c16626346622b&#34;&gt;Exporting Content&lt;/h1&gt;
-
-&lt;p&gt;I had a significant number of posts in Wordpress. I wanted to be a good
-content creator, and preserve my URIs.  Really, I&amp;rsquo;m &lt;em&gt;wicked&lt;/em&gt; lazy, and
-preserving my permalinks meant I would not have to migrate my comments. Disqus
-would pick them up on the new site. Thus I wanted an automated way of
-exporting my posts from Wordpress. &lt;a href=&#34;https://github.com/thomasf/exitwp&#34;&gt;Exitwp&lt;/a&gt;
-worked like a charm.&lt;/p&gt;
-
-&lt;h1 id=&#34;choosing-a-theme:f190086b9bc9fe46a11c16626346622b&#34;&gt;Choosing a theme&lt;/h1&gt;
-
-&lt;p&gt;Hugo has a &lt;a href=&#34;https://github.com/spf13/hugoThemes/&#34;&gt;theme gallery&lt;/a&gt; for all the known themes associated with the
-generator.  I picked &lt;a href=&#34;https://github.com/tmaiaroto/hugo-redlounge&#34;&gt;redlounge&lt;/a&gt;.
-My only customization was to add Google Analytics so I can track my meager
-pages views.&lt;/p&gt;
-
-&lt;h1 id=&#34;writing-articles-in-a-series:f190086b9bc9fe46a11c16626346622b&#34;&gt;Writing articles in a series&lt;/h1&gt;
-
-&lt;p&gt;I tend to write articles broken over many pieces. In fact, this article is
-part of my blog transition series. My series support was somewhat lacking in
-Wordpress. For this reincarnation of codestrokes.com, I wanted series to be
-nice and effective. Hugo&amp;rsquo;s taxonomy makes this possible, but it was a great
-series by another author, &lt;a href=&#34;http://npf.io/series/hugo-101/&#34;&gt;Nate Finch&lt;/a&gt; that
-made it easy. Ironically, the series starts with an article about how to
-design series into Hugo. Brilliant.&lt;/p&gt;
-
-&lt;h1 id=&#34;hosting:f190086b9bc9fe46a11c16626346622b&#34;&gt;Hosting&lt;/h1&gt;
-
-&lt;p&gt;I have a few requirements:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Custom domain must work (so I don&amp;rsquo;t have to migrate comments :-)&lt;/li&gt;
-&lt;li&gt;Publishing from git would be sweet, but I can configure Travis-CI or
-a deployment something to deal with that.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://pages.github.com/&#34;&gt;Github pages!&lt;/a&gt;. I just followed the documentation.&lt;/p&gt;
-
-&lt;h1 id=&#34;my-publishing-process:f190086b9bc9fe46a11c16626346622b&#34;&gt;My Publishing Process&lt;/h1&gt;
-
-&lt;p&gt;Here&amp;rsquo;s how I write now:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Clone JeremyLWright@github.com&lt;/li&gt;
-&lt;li&gt;git checkout content
-
-&lt;ol&gt;
-&lt;li&gt;The content branch holds the source, and theme files.&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;Clone the repository again into the public folder.&lt;/li&gt;
-&lt;li&gt;The public folder should be on the master branch.&lt;/li&gt;
-&lt;li&gt;Write.&lt;/li&gt;
-&lt;li&gt;Revise.&lt;/li&gt;
-&lt;li&gt;Write&amp;hellip;&lt;/li&gt;
-&lt;li&gt;Run Hugo.&lt;/li&gt;
-&lt;li&gt;Commit the content branch.&lt;/li&gt;
-&lt;li&gt;Commit the public branch.&lt;/li&gt;
-&lt;li&gt;Push!&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;I&amp;rsquo;m happy with my new process. I&amp;rsquo;m still working out some kinks with my pages
-vs posts (hence you see the About Me page in the middle of my posts). I am
-prone to shiny things so we&amp;rsquo;ll see how long I keep it. This process is simple.
-It removes the barriers of posting, and just lets me write in the tool I am
-most comfortable, and but its hard to argue with simple.&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -893,47 +119,10 @@ most comfortable, and but its hard to argue with simple.&lt;/p&gt;
       <pubDate>Wed, 03 Jun 2015 16:09:11 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/about/</guid>
-      <description>
-
-&lt;p&gt;Software Engineer interested in clouds, data, and type systems.&lt;/p&gt;
-
-&lt;p&gt;I love software, and the impact we make on the individuals in our world. My
-perspective on quality is ever evolving and this blog is intended as
-breadcrumbs describing that change.&lt;/p&gt;
-
-&lt;p&gt;If you would like to know more about my opinions try some of my articles, I&amp;rsquo;d love to hear your comments and discussions.&lt;/p&gt;
-
-&lt;h2 id=&#34;talks:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Talks&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://sodaasu.com/2012/03/30/video-and-source-code-from-embedded-scripting-for-games-talk/&#34;&gt;Hosted Script for Games&lt;/a&gt; (&lt;a href=&#34;https://vimeo.com/39505796&#34;&gt;Link2&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;code:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Code&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/hillclimbing-decryptor&#34;&gt;Hill Cracker - A hill climbing system for cracking monoalphabetic
-ciphers&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/CloudAssure&#34;&gt;Cloud Assure - A cloud based POMDP data leakage system&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/thesis&#34;&gt;Whispers - A cloud based risk assessment&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/WebDocumentSystem&#34;&gt;WebDoc - Multi-user document sharing system&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/cse548-RoboTractor&#34;&gt;RoboTractor - a Machine automatic system over XMPP&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;papers:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Papers&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.codestrokes.com/publications/WRIGHT_JEREMY_1000738685.pdf&#34;&gt;Master&amp;rsquo;s Thesis&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;my-free-time:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;My Free Time&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.meetup.com/Young-Musicians-in-Phoenix-20s-30s/&#34;&gt;Guitar&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/dotfiles&#34;&gt;dotfiles&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;img src=&#34;http://projecteuler.net/profile/jwright85.png&#34; alt=&#34;Project Euler&#34; /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description> Software Engineer interested in clouds, data, and type systems.
+I love software, and the impact we make on the individuals in our world. My perspective on quality is ever evolving and this blog is intended as breadcrumbs describing that change.
+If you would like to know more about my opinions try some of my articles, I&amp;rsquo;d love to hear your comments and discussions.
+Talks  Hosted Script for Games (Link2)  Code  Hill Cracker - A hill climbing system for cracking monoalphabetic ciphers Cloud Assure - A cloud based POMDP data leakage system Whispers - A cloud based risk assessment WebDoc - Multi-user document sharing system RoboTractor - a Machine automatic system over XMPP  Papers  Master&amp;rsquo;s Thesis  My Free Time  Guitar dotfiles   </description>
     </item>
     
     <item>
@@ -942,8 +131,7 @@ ciphers&lt;/a&gt;&lt;/li&gt;
       <pubDate>Tue, 17 Feb 2015 03:46:55 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2015/02/introduction-to-pointers/</guid>
-      <description>&lt;p&gt;Please see my introduction to pointers at &lt;a href=&#34;https://www.youtube.com/watch?v=mkYBz5Db-Ok&#34;&gt;https://www.youtube.com/watch?v=mkYBz5Db-Ok&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <description>Please see my introduction to pointers at https://www.youtube.com/watch?v=mkYBz5Db-Ok.</description>
     </item>
     
     <item>
@@ -965,254 +153,7 @@ constrained inputs and calls your test functions. It&#39;s pretty cool, and whil
 I was playing around with the framework, I found a real bug, related to my
 ignorance of C++&#39;s auto type deduction.&lt;/p&gt;&lt;p&gt;Let&#39;s steal a simple
 example from my CSE 565 Software Verification class: a payroll function. Here
-is the specification:&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Design a function that calculates
-payroll for an employee.&lt;/p&gt; &lt;h3&gt;Inputs&lt;/h3&gt; &lt;p&gt;Employee Id number&lt;br&gt;Number
-of Hours&lt;/p&gt; &lt;h3&gt;Outputs&lt;/h3&gt; &lt;p&gt;Amount to pay employee as a floating point
-value.&lt;/p&gt; &lt;h3&gt;Constraints&lt;/h3&gt; &lt;p&gt;Pay is calculated at $10 for standard time,
-$15 for overtime over 40 hours.&lt;br&gt;Overtime starts over 40 hours&lt;br&gt;Maximum
-number of hours is 100.&lt;/p&gt;&lt;/blockquote&gt; &lt;p&gt;For this demonstration, I’m using
-a C++ port of Haskell’s QuickCheck, CppQuickCheck (&lt;a
-title=&#34;https://github.com/grogers0/CppQuickCheck&#34;
-href=&#34;https://github.com/grogers0/CppQuickCheck&#34;&gt;https://github.com/grogers0/CppQuickCheck&lt;/a&gt;,
-my fork and the examples in this post are available here: &lt;a
-title=&#34;https://github.com/jwright85/CppQuickCheck&#34;
-href=&#34;https://github.com/jwright85/CppQuickCheck&#34;&gt;https://github.com/jwright85/CppQuickCheck&lt;/a&gt;).
-QuickCheck was designed by John Hughes who has gone on to support a commercial
-version of the library for verifying (and validating) automotive requirements
-for Volvo (&lt;a title=&#34;http://vimeo.com/68331689&#34;
-href=&#34;http://vimeo.com/68331689&#34;&gt;http://vimeo.com/68331689&lt;/a&gt;).&amp;nbsp; His
-presentations have motivated me to try this testing strategy for my own
-programs. Lets start with a quick implementation for our payroll function.
-We&#39;ll then apply properties against the function until we are satisfied with
-the implementation. Although property testing can provide more confidence in
-an implementation Dijkstra&#39;s famous quote still stands, &#34;Testing shows the
-presence, not the absence of bugs.&#34;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;float payroll(std::array&amp;lt;size_t, 5&amp;gt; person_id, size_t hours) { 
-    if(hours &amp;gt; 100) 
-        throw std::out_of_range(&amp;quot;Hours cannot be greater than 100&amp;quot;); 
-    auto overtime = hours - 40; 
-    return hours * 10 + overtime * 15; 
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This is obviously wrong, but let&amp;rsquo;s suspend that for a moment and think about
-properties i.e. invariants we can verify.&lt;/p&gt;
-
-&lt;p&gt;The first property verifies that we do not write a negative paycheck. The
-return type of the function is float, which supports negative values even
-though the output domain of our specification forbids it. Lets write
-a property over the valid input range of hours that we don&amp;rsquo;t generate negative
-pay.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;struct PropTestPositivePay : cppqc::Property
-{ 
-    PropTestPositivePay() : Property(cppqc::choose(0, 100)) {} 
-    
-    bool check(const int &amp;amp;  hours) const { 
-        std::array&amp;lt;size_t, 5&amp;gt; id{1,2,3,4,5}; 
-        return uut::payroll(id, hours) &amp;gt;= 0; 
-    }
-
-    std::string name() const
-    {
-        return &amp;quot;Pay should be positive&amp;quot;;
-    }
-
-    std::string classify(const int &amp;amp; v) const
-    {
-        std::ostringstream sstr;
-        sstr &amp;lt;&amp;lt; &amp;quot;Hours &amp;quot; &amp;lt;&amp;lt; v;
-        return sstr.str();
-    }
-
-    bool trivial(const int &amp;amp;  v) const
-    {
-        return v &amp;lt; 40;
-    }
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now the input range of this function is small (101 values) so we could run an exhaustive test, but for larger input domains the random generators can really shine. &lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;jwright@phaseshift-linux:~/art/CppQuickCheck/b$ ./examples/testPayroll
-* Checking property &amp;quot;Pay should be positive&amp;quot; ...
-* *** Failed! Falsifiable after 32 tests for input:
-*   0: 24
-*
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Cool it found that an input of 0 will falsify the test. Lets add some more tests.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s add a property that verifies for the input range of overtime that the
-function doesn’t pay all hours at the $10 rate nor all the hours at the $15
-rate. The correct implementation is some mixture of these two.&amp;nbsp; This
-brings me to a subtle point when I first heard of property-testing when
-studying Haskell. In my naiveté I thought to myself, &amp;ldquo;If I have a model that
-verifies the unit under test, aren&amp;rsquo;t I duplicating the implementation?&amp;rdquo;
-Furthermore, if I duplicate the implementation, how can I be sure I&amp;rsquo;m not
-making the same bugs twice. One response I found online, “we test our C code
-in Erlang. It&amp;rsquo;s unlikely to make the same mistake in two separate languages.”
-I was wrong however, you don&amp;rsquo;t have to duplicate the functionality. You can
-steer the generator to generate data within a range over which a simple
-property will be true. Multiple properties together then test the fuller input
-domain without requiring 1 single verifier to duplicate behavior. This
-property doesn’t exactly know what the correct payroll is. It isn’t
-calculating the correct value, it’s just excluding values that it cannot be.
-&lt;/p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;struct PropTestOvertimeRateHigher : cppqc::Property 
-{ 
-    PropTestOvertimeRateHigher()
-    :
-    Property(cppqc::choose(41, 100)) {} 
-    
-    bool check(const int &amp;amp;  hours) const { 
-    
-        std::array&amp;lt;size_t, 5&amp;gt; id{1,2,3,4,5}; 
-        auto pay = uut::payroll(id, hours); 
-        return pay &amp;gt; hours * 10 &amp;amp;&amp;amp;  pay &amp;lt; hours * 15; //You cannot get paid all overtime or all standard pay
-    }
-
-    std::string name() const
-    {
-        return &amp;quot;You cannot get paid all overtime, or all std time&amp;quot;;
-    }
-
-    std::string classify(const int &amp;amp; v) const
-    {
-        std::ostringstream sstr;
-        sstr &amp;lt;&amp;lt; &amp;quot;Hours &amp;quot; &amp;lt;&amp;lt; v;
-        return sstr.str();
-    }
-
-    bool trivial(const int &amp;amp;  v) const
-    {
-        return v == 40;
-    }
-
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Following this thought of excluding a range and testing a simpler property,
-lets test the payroll without considering overtime. In this case the
-calculation is simple so we can provide a full implementation.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;struct PropTestIgnoreOvertime : cppqc::Property
-{
-    PropTestIgnoreOvertime() : Property(cppqc::choose(0, 40)) {}
-    bool check(const int &amp;amp;  hours) const
-    {
-        std::array&amp;lt;size_t, 5&amp;gt; id{1,2,3,4,5};
-        auto pay = uut::payroll(id, hours);
-        return pay == hours * 10;
-    }
-
-    std::string name() const
-    {
-        return &amp;quot;Not working overtime makes the math easy.&amp;quot;;
-    }
-    std::string classify(const int &amp;amp; v) const
-    {
-        std::ostringstream sstr;
-        sstr &amp;lt;&amp;lt; &amp;quot;Hours &amp;quot; &amp;lt;&amp;lt; v;
-        return sstr.str();
-    }
-    bool trivial(const int &amp;amp;  v) const
-    {
-        return v == 40;
-    }
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We run the tests a few times and see the failing test cases. These data are random. Running the test multiple times fails differently, but minimization results in the same or similar values each time to help the programmer debug. So let&amp;rsquo;s fix this code and watch the tests pass to avoid the &lt;a href=&#34;http://www.codestrokes.com/2014/08/what-is-a-unit-test/&#34;&gt;mockery and scandal of code review&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;float payroll(std::array&amp;lt;size_t, 5&amp;gt; person_id, size_t hours)
-{
-    if(hours &amp;gt; 100)
-        throw std::out_of_range(&amp;quot;Hours cannot be greater than 100&amp;quot;);
-    auto overtime = hours - 40;
-    if(overtime &amp;gt; 0)
-        return hours * 10 + overtime * 15;
-    else
-        return hours * 10;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;* Checking property &amp;quot;Not working overtime makes the math easy.&amp;quot; ...
-*** Failed! Falsifiable after 1 test and 1 shrink for input:
-0: 0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To be honest, while setting up the tests for this post I fully expected the
-tests to start passing and this article would end here. Instead I learned some
-real value on using these properties as a debugging and design tool. Let&amp;rsquo;s add
-a printf to the code to get a sense what&amp;rsquo;s happening&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;* Checking property &amp;quot;Not working overtime makes the math easy.&amp;quot; ...
-Overtime: 18446744073709551576 &amp;lt;--- Whoa what happened there?
-*** Failed! Falsifiable after 1 test and 1 shrink for input:
-0: 0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Overtime seems to be an unsigned value, and passing in 0 causes the value to wrap around. The rule (&lt;a href=&#34;http://scottmeyers.blogspot.com/2013/07/when-decltype-meets-auto.html&#34;&gt;http://scottmeyers.blogspot.com/2013/07/when-decltype-meets-auto.html&lt;/a&gt;) assures that overtime becomes a size_t since hours is size_t. We can force floating conversion by stating that 40 is a floating point number.&lt;/p&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;float payroll(std::array&amp;lt;size_t, 5&amp;gt; person_id, size_t hours)
-{
-    if(hours &amp;gt; 100)
-        throw std::out_of_range(&amp;quot;Hours cannot be greater than 100&amp;quot;);
-    auto overtime = hours - 40.0; //&amp;lt;-- Force implicit floating point cast
-    if(overtime &amp;gt; 0)
-        return hours * 10 + overtime * 15;
-    else
-        return hours * 10;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;* Checking property &amp;quot;Pay should be positive&amp;quot; ...
-+++ OK, passed 100 tests (40% trivial).
-* Checking property &amp;quot;You cannot get paid all overtime, or all std time&amp;quot; ...
-*** Failed! Falsifiable after 1 test and 1 shrink for input:
-  0: 60
-* Checking property &amp;quot;Not working overtime makes the math easy.&amp;quot; ...
-+++ OK, passed 100 tests.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Argh! Still wrong? The property must be wrong. Notice that the properties are quite simple. No single test verifies the full range, but the properties provide useful documentation and make it easy to reason about the code. The properties are probably correct then. &amp;hellip;yeah, it wasn&amp;rsquo;t the property…&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;float payroll(std::array&amp;lt;size_t  5 ,&amp;gt; person_id, size_t hours)
-{
-    if(hours &amp;gt; 100)
-        throw std::out_of_range(&amp;quot;Hours cannot be greater than 100&amp;quot;);
-    auto overtime = hours - 40.0;
-    if(overtime &amp;gt; 0)
-        return (hours - overtime) * 10 + overtime * 15;
-    else
-        return hours * 10;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;* Checking property &amp;quot;Pay should be positive&amp;quot; ...
-+++ OK, passed 100 tests (40% trivial).
-* Checking property &amp;quot;You cannot get paid all overtime, or all std time&amp;quot; ...
-+++ OK, passed 100 tests.
-* Checking property &amp;quot;Not working overtime makes the math easy.&amp;quot; ...
-+++ OK, passed 100 tests.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;I started this article wanting to post a simple tutorial on Property testing,
-instead I learned to be a bit more careful using auto, and even when the
-function is simple, programmers can make mistakes. For the final logic error,
-the failing input was 60. Thinking about my directed test method, I would
-divide the input into equivalence domains and test the boundary values. For
-this input, I would divide standard time to the beginning of overtime. For
-directed tests I would have written tests for: 0, 39, 40 41, 99, 100, and 101.
-I would have missed the 60 hours bug, and there is the possibility that
-I missed typed the numbers on my calculator and type in a wrong expected
-value. This example is quite simple but still an interesting demonstration of
-property testing. I&amp;rsquo;m looking forward to applying property testing to my next
-project.&lt;/p&gt;
-</description>
+is the specification:&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1221,133 +162,7 @@ project.&lt;/p&gt;
       <pubDate>Thu, 28 Aug 2014 05:58:26 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2014/08/what-is-a-unit-test/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;m taking a Software Testing and Verification course as part of my Master&amp;rsquo;s work. Our first assignment was to write a short paper describing a unit test, then implement selection sort and test it under that philosophy. Sarcastically, I commented to my colleagues the triviality of this question. The first response was, &amp;ldquo;Wow, I don&amp;rsquo;t think that is such an easy question.&amp;rdquo; A technical discussion ensued. This is that log.
-&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;&lt;/p&gt;
-
-&lt;blockquote&gt;Definition 1:
-Given a function in the mathematical sense, i.e. no side-effect, a unit test treats the function as a black box and passes it input and expects a given output. Conversely, an integration test tests entites which are not pure functions using a mock to control state.&lt;/blockquote&gt;
-
-&lt;blockquote&gt;Definition 2:
-A unit test de-tangles dependencies so one can test a submodules prior to merging ([complecting](http://www.infoq.com/presentations/Simple-Made-Easy)) it&#39;s functionality with another module.&lt;/blockquote&gt;
-
-&lt;blockquote&gt;[Wikipedia](http://en.wikipedia.org/wiki/Unit_testing):
-In computer programming, unit testing is a software testing method by which individual units of source code, sets of one or more computer program modules together with associated control data, usage procedures, and operating procedures are tested to determine if they are fit for use&lt;/blockquote&gt;
-
-&lt;p&gt;I proposed the first definition above, which is mostly influence from my Haskell QuickCheck experience.  During lecture today the professor presented levels of testing.&lt;/p&gt;
-
-&lt;p&gt;Unit Testing
-Integration Testing
-System Testing
-Alpha Testing
-Beta Testing&lt;/p&gt;
-
-&lt;p&gt;The theme here? Each successive layer of testing include more modules and more functionality. Unit testing is the most basic. It doesn&amp;rsquo;t  have to provide a pure interface, it can be dirty, it can have side effects, but before I promote some software module to the next stage, I want some confidence its working. The professor went on to ask, &amp;ldquo;What if we had a test team, a separately paid person to write the unit tests? Would that work? Would that be a good idea?&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;My initial response was, &amp;ldquo;No! those tests are mine!&amp;rdquo; This is my definition of a unit test, private tests.&lt;/p&gt;
-
-&lt;p&gt;Definition I hold now:
-A unit test is a test to provide the developer some confidence a region of code works as intended before other people see the code and the developer is open to mockery and scandal.&lt;/p&gt;
-
-&lt;p&gt;This definition supposed unit tests are more emotional, or egocentric than technical, but when I think about how, and where I choose to unit test heavily, and where I choose to test more lightly it centers around areas of code I would be embarrassed to get wrong. To get back to the homework assignment, the first goal was to implement selection sort:&lt;/p&gt;
-
-&lt;p&gt;Unit under test&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#include &amp;lt;iterator&amp;gt;
-#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;algorithm&amp;gt;
-
-template &amp;lt;typename InputIterator&amp;gt;
-void selection_sort(InputIterator b, InputIterator e)
-{
-    for(InputIterator c = b; c != e ; ++c){
-        auto m = std::min_element(c, e);
-        std::swap(*m, *c);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Selection sort is pretty naive (O(n^2)) but its straight-forward to implement, and std::algorithms make it even easier to understand. As a side note, this is the real strength of the STL algorithms: clarity. This code has very few opportunities for bugs because of the reliance on STL algorithms. Additionally, it&amp;rsquo;s readable! Additionally, it&amp;rsquo;s templated so everyone will think you are a badass (unless there is a bug in it, in which case they judge you every time you whip out the &lt;em&gt;typename&lt;/em&gt;). To prevent this horrific alternate future we can unit test.  Furthermore, we can take a page from the FPGA/ASIC guys and use randomized tests. (As opposed to direct tests).&lt;/p&gt;
-
-&lt;p&gt;Randomized tests construct random input and feed it through the unit under test.  A secondary implementation of the function verifies the result. In this case we are luck that the invariant of a &amp;ldquo;sorted list&amp;rdquo; is easy to check.  In fact there is a standard algorithm for it: std::is_sorted().&lt;/p&gt;
-
-&lt;p&gt;Using GTest we construct a parameterized test. We then construct a list of random vectors and instantiate the test with the 10000 separate vectors. GTest provides a lot of value here.  If a single test fails, GTest will print out the parameter value when that particular test failed the build. Since we are using random data, this is critical so we can setup regression tests.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#include &amp;quot;sort.hpp&amp;quot;
-#include &amp;quot;gtest/gtest.h&amp;quot;
-#include &amp;lt;vector&amp;gt;
-#include &amp;lt;random&amp;gt;
-#include &amp;lt;limits&amp;gt;
-#include &amp;lt;cassert&amp;gt;
-#include &amp;lt;iostream&amp;gt;
-
-using TestInput = std::vector&amp;lt;int&amp;gt;;
-
-class RandomizedTest : public testing::TestWithParam&amp;lt;TestInput&amp;gt; {};
-TEST_P(RandomizedTest, Sorting)
-{
-   auto vs = GetParam();
-   selection_sort(std::begin(vs), std::end(vs));
-   ASSERT_TRUE(std::is_sorted(std::begin(vs), std::end(vs)));
-}
-
-std::vector&amp;lt;std::vector&amp;lt;int&amp;gt;&amp;gt; GenerateTestCases()
-{
- std::vector&amp;lt;TestInput&amp;gt; test_cases;
- std::numeric_limits&amp;lt;int&amp;gt; limits;
-
- std::mt19937 engine(time(0)); // Fixed seed of 0
- std::uniform_int_distribution&amp;lt;int&amp;gt; range_dist(0,1500);
- std::uniform_int_distribution&amp;lt;int&amp;gt; element_dist(0, limits.max());
-
- size_t n = 10000;
- auto f = [&amp;amp;](){return element_dist(engine);};
- std::generate_n(std::back_inserter(test_cases), n, 
-     [&amp;amp;](){ 
-         TestInput vs;
-         std::generate_n(std::back_inserter(vs), range_dist(engine), f);
-         return vs;
-     });
- return test_cases;
-}
-
-INSTANTIATE_TEST_CASE_P(
- GeneralAndSpecial,
- RandomizedTest,
- testing::ValuesIn(GenerateTestCases()));
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Build Script&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;project(hw1)
-
-include(ExternalProject)
-ExternalProject_Add(
-    GTest 
-    URL http://googletest.googlecode.com/files/gtest-1.7.0.zip
-    INSTALL_COMMAND &amp;quot;&amp;quot;
-    )
-
-ExternalProject_Get_Property(GTest source_dir)
-include_directories(${source_dir}/include)
-
-
-ExternalProject_Get_Property(GTest binary_dir)
-link_directories(${binary_dir})
-
-
-set(CMAKE_CXX_FLAGS &amp;quot;-O3 -std=gnu++11&amp;quot;)
-add_executable(hw1 main.cpp)
-add_executable(test test.cpp)
-add_dependencies(test GTest)
-target_link_libraries(test gtest gtest_main pthread rt)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;These tests take nearly 5 seconds to run, but randomization gives us another cool feature. Typically with directed tests, once the tests pass the probability of that test failing int he future is pretty low. Randomized tests are different every time you run them. While the invariant of the input are constant the input itself changes greatly, and exercises code in ways a human may not imagine.&lt;/p&gt;
-
-&lt;p&gt;tldr;
-- Unit tests help you save face.
-- Random tests kick directed tests&amp;rsquo; teeth in.&lt;/p&gt;
-</description>
+      <description>I&amp;rsquo;m taking a Software Testing and Verification course as part of my Master&amp;rsquo;s work. Our first assignment was to write a short paper describing a unit test, then implement selection sort and test it under that philosophy. Sarcastically, I commented to my colleagues the triviality of this question. The first response was, &amp;ldquo;Wow, I don&amp;rsquo;t think that is such an easy question.&amp;rdquo; A technical discussion ensued. This is that log. Definition 1: Given a function in the mathematical sense, i.</description>
     </item>
     
     <item>
@@ -1356,8 +171,7 @@ target_link_libraries(test gtest gtest_main pthread rt)
       <pubDate>Thu, 28 Aug 2014 05:04:52 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2014/08/hello-project-euler-sorry-i-doubted-you/</guid>
-      <description>&lt;p&gt;Project Euler returns with full functionality including new problems! Thank you Project Euler for not giving up on this awesome project. &lt;a href=&#34;http://projecteuler.net/news&#34;&gt;http://projecteuler.net/news&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Project Euler returns with full functionality including new problems! Thank you Project Euler for not giving up on this awesome project. http://projecteuler.net/news</description>
     </item>
     
     <item>
@@ -1366,11 +180,7 @@ target_link_libraries(test gtest gtest_main pthread rt)
       <pubDate>Wed, 18 Jun 2014 15:42:22 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2014/06/goodbye-project-euler/</guid>
-      <description>&lt;p&gt;A group of friends and I have been working on project euler for about a year now. I learned a great deal from this fantastic project, and it was the first time I was able to get a real handle on Haskell. Project Euler taught me make. It taught me better performance reporting techniques, honed my octave, and got me over that initial mind bending hump of Haskell. Thank you Project Euler, you will be missed.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2014/06/euler.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2014/06/euler-1024x902.png&#34; alt=&#34;Project Euler&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>A group of friends and I have been working on project euler for about a year now. I learned a great deal from this fantastic project, and it was the first time I was able to get a real handle on Haskell. Project Euler taught me make. It taught me better performance reporting techniques, honed my octave, and got me over that initial mind bending hump of Haskell. Thank you Project Euler, you will be missed.</description>
     </item>
     
     <item>
@@ -1379,109 +189,7 @@ target_link_libraries(test gtest gtest_main pthread rt)
       <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2014/05/design-for-testability-via-security/</guid>
-      <description>
-
-&lt;p&gt;I was discussing bootloader design with a colleague of mine the other day. We were attempting to load new a third-party hardware component. The device has a poor protocol, and a useless verification step. This discussion got me thinking however how the concepts used to build a strong self-enforcing security protocol, also apply to building a testable, and reliable communication protocol. Thus, security helps us build better products not because they are secure, but because they are verifiable.
-&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
-This idea initially struck me as strange, since many of the secure software interfaces I&amp;rsquo;ve used in the past, are quite obtuse. This is not a fundamental aspect of security, by rather an artifact of poor design (think OpenSSL). This is sad, since security is already a difficult concept, and requires a great deal of study to maintain throughout the life cycle of a product. Secure interfaces should make security easier, not more difficult. This is however a separate rant. So back to the bootloader.&lt;/p&gt;
-
-&lt;p&gt;This specific device is connected by a CAN bus. This is not critical to my argument except the fact that CAN is a reliable, but slow and message order is not guaranteed. In fact, within a window of 4 packets, order is essentially random. Think about this for a moment: load firmware with random message order. The goal is to design a protocol to work with this. Firmware loading fits into a three step process: Prepare, Load, Verify. This process works independent of underlying storage techniques. For example, NAND must be erased on a full page boundary, that can be done in the prepare step. Loading to a file system, Prepare might be a simple NOP.&lt;/p&gt;
-
-&lt;p&gt;Firstly, know that the final, verification step is essential. Some environments, the bootloader runs out of RAM, if the load process fails, and the hardware reboots without verification, the bootloader may no longer function, and you just build a sweet digital brick. So verification must check that the firmware the user attempted to load, matches the firmware written to the flash. There are several mechanisms to verify this. The hardware my colleague and I are working with, simply reads the flash back to you. At a high level this sounds fine.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Loader ---&amp;gt; Send Data     ---&amp;gt; Bootloader
-Loader ---&amp;gt; Data Complete ---&amp;gt; Bootloader
-Loader ---&amp;gt; Verify        ---&amp;gt; Bootloader
-Loader &amp;lt;--- Send Data     &amp;lt;--- Bootloader
-Loader Loader Verifies data matches.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Remember, message order is random. If the bootloader dumps its flash back on the CAN bus, without a sequence number or flash addresses, the data that comes back is completely useless. Each data packet is intact, but is position within the overall data block is unknown. The best one can do is probabilisticly reorder the packets to attempt to get a confidence the bootloader has the same data we attempted to send. Okay, so what would be better? Lets model this as a security problem and design a secure document sending protocol.&lt;/p&gt;
-
-&lt;h3 id=&#34;prepare:9d165bcce3b5cd91e19ccd1b43634f44&#34;&gt;Prepare&lt;/h3&gt;
-
-&lt;p&gt;Alice and Bob want to exchange a document. (Any protocol can be made more &amp;ldquo;secure&amp;rdquo; by describing it with &lt;a href=&#34;https://xkcd.com/1323/&#34;&gt;Alice and Bob.&lt;/a&gt;) The communication channel is UDP, untrusted, and public. How should Alice and Bob communicate? Every security protocol starts with authentication. Bob wants to verify the sender is Alice. Alice wants to verify it&amp;rsquo;s sending the document to Bob, and not someone else. So lets negotiate a key based on a preshared secret. This will form the prepare step of our high-level bootloader model.
-&lt;table &gt;
-&lt;tr &gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;td &gt;Alice generates a nonce.
-&lt;/td&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;td &gt;
-&lt;/td&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;td &gt;Bob waiting for message.
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr &gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;td &gt;Alice encrypts bob_public_key(nonce_alice:sha256(nonce_alice))
-&lt;/td&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;td &gt;-&amp;gt;
-&lt;/td&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;td &gt;Bob
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr &gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;td &gt;Alice
-&lt;/td&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;td &gt;&amp;lt;-
-&lt;/td&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;td &gt;Bob decrypts the message.
-Bob generates a new nonce. Bob encrypts
-alice_public_key(nonce_bob:sha256(nonce_bob):nonce_alice:sha256(nonce_alice))&lt;/p&gt;
-
-&lt;p&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;&lt;/p&gt;
-
-&lt;p&gt;Alice now has Bob&amp;rsquo;s nonce. Bob has Alice&amp;rsquo;s nonce. Any listening attacker only has 2 messages of cipher text. Bob know&amp;rsquo;s the message was sent from Alice because only Alice has Alice&amp;rsquo;s private key,thus only Alice could have made the nonce message. Bob knows the nonce was intentional because Alice included the secure hash of the nonce.&lt;/p&gt;
-
-&lt;p&gt;This protocol is protected against replay attack since Bob decrypts the nonce and hash, and reencrypts with Alice&amp;rsquo;s public key. This allows Alice to verify Bob received her original message. Furthermore the messages are protected against manipulation because all messages include hashes. Bob, and Alice are authenticated. Additionally, they share a new, secret session key.&lt;/p&gt;
-
-&lt;p&gt;Alice builds the session key, &amp;ldquo;sha256(nonce_bob:nonce_alice)&amp;ldquo;.&lt;/p&gt;
-
-&lt;p&gt;Bob builds the session key, &amp;ldquo;sha256(nonce_bob:nonce_alice)&amp;ldquo;.&lt;/p&gt;
-
-&lt;p&gt;Now only Bob and Alice at this time instance can have this new shared secret. Alice and Bob can now communicate securely. &lt;del&gt;Let&amp;rsquo;s load some firmware to Bob now.&lt;/del&gt; Let&amp;rsquo;s transfer a document to Bob now.&lt;/p&gt;
-
-&lt;h3 id=&#34;transfer:9d165bcce3b5cd91e19ccd1b43634f44&#34;&gt;Transfer&lt;/h3&gt;
-
-&lt;p&gt;Alice creates a document and signs it e.g. document:alice_private_key(sha256(document)).  Notice that Alice&amp;rsquo;s private key is used to encrypt here. This is correct. We want Bob to receive the document, create a hash of the document. Bob then uses Alice&amp;rsquo;s public key to &amp;ldquo;encrypt&amp;rdquo; the signature sent by Alice. He will get the plain text hash, and compare. The signature does not protect the hash i.e. it does not provide confidentiality since anyone can decrypt with the public key. Instead the signature provides integrity. The hash protects that the document was unchanged. The signature of the hash protects that the hash was computed only by Alice.&lt;/p&gt;
-
-&lt;p&gt;Alice breaks up the document into packets to send over UDP. Each packet includes a sequence number and a hash of that message.&lt;/p&gt;
-
-&lt;p&gt;packet = aes(session_key, i:document[i]:sha256(i:document[i]))&lt;/p&gt;
-
-&lt;p&gt;The session key encrypts the entire message to provide confidentiality. This also strengthens the Man in the middle attack, since this session_key is ephemeral. Since it exists for only this authenticated session, an attacker cannot resend this data later to Bob. The sha256 hash provides integrity i.e. &lt;del&gt;transmission errors&lt;/del&gt; malicious corruption. Bob verifies each individual packet by calculating the has of the received document[i], and comparing it. If the packets arrive out of order, which in &lt;del&gt;CAN&lt;/del&gt; UDP they will, Bob can sort them.&lt;/p&gt;
-
-&lt;p&gt;Once Bob has the entire message he can verify the signature.  Bob now has the document, all listeners only have cipher version of the document. Furthermore, Bob can verify the entire document is valid. Bob will &lt;del&gt;erase his flash, and load the new firmware into memory&lt;/del&gt; PROFIT!&lt;/p&gt;
-
-&lt;h3 id=&#34;verify:9d165bcce3b5cd91e19ccd1b43634f44&#34;&gt;Verify&lt;/h3&gt;
-
-&lt;p&gt;The device my colleague and I are trying to fix simply dumped the document back to Alice.  Essentially:&lt;/p&gt;
-
-&lt;p&gt;packet = document[i]&lt;/p&gt;
-
-&lt;p&gt;Each packet isn&amp;rsquo;t protected from corruption. The order of the document is unverifiable. The best Alice can do is attempt to verify multiple times hoping the document messages randomly converge on the document Alice originally sent. This is the same as using &lt;a href=&#34;http://en.wikipedia.org/wiki/Bogosort&#34;&gt;Bogosort&lt;/a&gt; as a verification step. Not awesome. Instead we&amp;rsquo;ve built up some very secure machinery to &lt;del&gt;load software reliably&lt;/del&gt; transfer a document securely.&lt;/p&gt;
-
-&lt;p&gt;One method, although rather naive would be for Bob to send back the document to Alice in the same manner, encrypting each packet and the final signature. This however is very wasteful. Instead Alice only needs to confirm that Bob has the document in its entirely, that it is in the flash, and that all packets were loaded in the correct order. Bob simply needs to send a signature. Bob then reads his flash, and calculates a sha256. Bob then sends 1 message:&lt;/p&gt;
-
-&lt;p&gt;packet = aes(session_key, bob_private_key(sha256(flash_read)))&lt;/p&gt;
-
-&lt;p&gt;The packet is confidential because it is encrypted by aes. The message is protected from integrity because Alice already has the hash, she simple needs to verify that it matches the know value. Note that if Alice didn&amp;rsquo;t have the hash already we would include a hash of the hash to provide further integrity. Alice knows that it was Bob who verified the flash because the hash is signed with Bob&amp;rsquo;s key. Lastly, Alice knows the message is part of this load session and not a previous one replayed by an attacker because the whole message is encrypted by a session key.&lt;/p&gt;
-
-&lt;h3 id=&#34;conclusion:9d165bcce3b5cd91e19ccd1b43634f44&#34;&gt;Conclusion&lt;/h3&gt;
-
-&lt;p&gt;Alice and Bob now have a protocol secure against a number of attacks, but how is this useful for a bootloader? Each attack can be modeled as random noise, transmission errors, or other external effects would impede the flow of traffic. Security simply provides a more common vernacular for discussing transmission issues. It&amp;rsquo;s also easier to reason about adversarial attackers rather than electrical interference. By translating the problem into a security one, we can model all these affects as &amp;ldquo;bad people&amp;rdquo; and it is a lot more fun to slay dragons, than it is to protect against some amorphous something.&lt;/p&gt;
-
-&lt;p&gt;Okay, but what does this have to do with testability? Ah. It&amp;rsquo;s subtle, but the same process we took to make our protocol secure also made each step verifiable. For instance, the final verification step could have been as simple as Bob sending an ACK that he verified the document&amp;rsquo;s signature. This however isn&amp;rsquo;t secure. An ACK can be faked, or replayed. Instead Bob build a cryptographically secure signature for Alice to verify. From a tester&amp;rsquo;s perspective Alice is the &amp;ldquo;verifier&amp;rdquo;, and Bob generates test data. Bob cannot be trusted to verify something himself, the test must generate auditable output. Thus the same process which drove us to make a secure response, also generated a auditable one for the tester to report. Thus security is more useful than simply protecting our data, it helps us design better products.&lt;/p&gt;
-</description>
+      <description>I was discussing bootloader design with a colleague of mine the other day. We were attempting to load new a third-party hardware component. The device has a poor protocol, and a useless verification step. This discussion got me thinking however how the concepts used to build a strong self-enforcing security protocol, also apply to building a testable, and reliable communication protocol. Thus, security helps us build better products not because they are secure, but because they are verifiable.</description>
     </item>
     
     <item>
@@ -1492,156 +200,7 @@ alice_public_key(nonce_bob:sha256(nonce_bob):nonce_alice:sha256(nonce_alice))&lt
       <guid>http://www.codestrokes.com/2014/02/cracking-subciphercpp/</guid>
       <description>&lt;p&gt;I worked the title of this article several times before I finally settled on the subtly epic heading you see above. Hopefully this title will funnel people off google into my blog (delicious SEO). I wanted to push the A.I. component of my solution because A.I. is awesome and mysterious, and cool (and can like solve jeopardy). I was quickly disillusioned however. Really, A.I. isn&amp;rsquo;t magic, rather it&amp;rsquo;s just the same thing computers have been doing for a long time: computing. Sadly this realization took several months in an A.I. class before I was sufficiently crestfallen. A.I. patterns including the hill climbing algorithm used here are indeed &amp;ldquo;intelligent&amp;rdquo; but really it a reflecting of the algorithm designer, not the entity executing the algorithm. So I built a substitution cipher solver in C++. It&amp;rsquo;s fast it uses random numbers i.e. non-deterministic, it uses an A.I. algorithm i.e. Intelligent, it uses threads i.e. Massively, it deciphers i.e. luminates the text and it solves super stuff therefore the title is completely justified. I give you my Massively Intelligent Non-Deterministic Luminating Effortless Super Solver (MINDLESS). If none of that interests you then please stick around and follow the side quest of looking for &lt;a href=&#34;http://justenoughcraig.blogspot.com/2014/01/just-say-no-to-passive-aggressive.html&#34;&gt;emotionally charged parenthesis&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Cracking substitution ciphers were a fun puzzle I pursued as a child. Substitution ciphers are monoalphabetic ciphers. Meaning a single letter maps to a single letter and that mapping is static. This is opposed to polyalphabetic ciphers where the mapping of letters changes throughout the message. Vigenère Cipher is an example. Given a substitution cipher what are tools are available to the &amp;ldquo;cryptanalyst&amp;rdquo; (the person to breaks ciphers). Firstly, frequency analysis. Frequency analysis supposes the the distribution of letters within the message is essentially the same as the distribution of letters in the English language (&lt;a href=&#34;http://en.wikipedia.org/wiki/Frequency_analysis&#34;&gt;http://en.wikipedia.org/wiki/Frequency_analysis&lt;/a&gt;). However if the message is short, or if the message is intentionally written to skew the letter distribution this technique is difficult. This post looks at a different approach, an artificial intelligence technique called hill climbing.&lt;/p&gt;
-
-&lt;p&gt;Hill Climbing is simply a search technique that uses a &amp;ldquo;fitness&amp;rdquo; measurement (fancy word for number or quality) to determine if the current search path is a useful one.&lt;/p&gt;
-
-&lt;p&gt;First step in building the substitution solver is to assemble some functions that will perform the substitution. I love the string functions in Python to I ported str.translate() to a form useful for my needs
-&lt;pre lang=&#34;cpp&#34; escaped=&#34;true&#34;&gt;std::string translate( cost std::string &amp;amp; str, const std::string &amp;amp; table)
-{
-    std::string s(str);
-    std::string::size_type len = str.size();&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;if ( table.size() != 256 )
-{
-    throw std::runtime_error(&amp;quot;Improper table size. Size must be 256 chars&amp;quot;);
-}
-
-for ( std::string::size_type i = 0; i &amp;amp;lt; len; ++i )
-{
-    s[i] = table[ s[i] ];
-}
-return s;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;}&lt;/p&gt;
-
-&lt;p&gt;std::string maketrans(std::string key)
-{
-    char t1data[256];
-    std::iota(std::begin(t1data), std::end(t1data), 0);
-    size_t i = &amp;lsquo;A&amp;rsquo;;
-    size_t d = &amp;lsquo;a&amp;rsquo; - &amp;lsquo;A&amp;rsquo;;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;for(auto k = std::begin(key); k != std::end(key); ++i, ++k)
-{
-    t1data[i] = *k;
-    t1data[i+d] = std::tolower(*k);
-}
-return std::string(t1data, 256);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;}&lt;/pre&gt;
-This leverages the fact that in C/C++, characters are simply numbers in ascii. Given a key, we can translate any text:
-&lt;pre lang=&#34;cpp&#34; escaped=&#34;true&#34;&gt;std::string substitute(std::string text, std::string key)
-{
-    auto t1 = pystring::maketrans(key);
-    return pystring::translate(text, t1);
-}&lt;/pre&gt;
-Now we need a fitness measurement. Ngrams are a useful tool here. Ngrams are partial words, and since we are more likely to find partial words in our search than full words, we need to give the program a mechanism for measuring this. This &lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2014/02/quadgrams.7z&#34;&gt;ngram&lt;/a&gt; database is a list of quadgrams and their relative frequency in the English language.&lt;/p&gt;
-
-&lt;pre lang=&#34;cpp&#34; escaped=&#34;false&#34;&gt;#include &lt;map&gt;
-#include &lt;istream&gt;
-#include &lt;string&gt;
-#include &lt;ctgmath&gt;
-#include &lt;iostream&gt;
-struct ngram_score 
-{
-    struct ngram_datum {
-        int freq;
-        double weight;
-    };
-    std::map&lt;std::string, ngram_datum&gt; ngrams;
-    double floor;
-    size_t l;
-    size_t n{0};
-    ngram_score(std::istream&amp; in)
-    {
-        std::string line;
-        while(in)
-        {
-            std::string ngram;
-            int freq;
-            in &gt;&gt; ngram;
-            in &gt;&gt; freq;
-            ngrams[ngram].freq = freq;
-            n += freq;
-        }
-
-        for(auto&amp; i : ngrams)
-        {
-            i.second.weight = std::log10((double)(i.second.freq)/n);
-        }
-        floor = std::log10(0.01/n);
-        l = 4; //for quadgrams.
-    }
-
-    double score(std::string text)
-    {
-        double score{0};
-        auto c = std::begin(text);
-        auto e = std::end(text);
-        for(; c+l-1 != e; ++c)
-        {
-            //Get a string of correct length
-            std::string ngram(c, c+l);
-            auto it=ngrams.find(ngram);
-            if(it != ngrams.end())
-                score += it-&gt;second.weight;
-            else
-                score += floor;
-        }
-        return score;
-    }
-};&lt;/pre&gt;
-
-&lt;p&gt;We can use this as a scorer for a length of text.
-&lt;pre lang=&#34;cpp&#34; escaped=&#34;false&#34;&gt;std::ifstream fin(&amp;ldquo;../quadgrams.txt&amp;rdquo;);
-ngram_score fitness(fin);
-auto score = fitness.score(plaintext);&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;We now have a substitution tool to make substitutions, and we have a numerical way of measuring the resultant quality. Next is to implement the search, this is the mystical artificial intelligence in the program.
-&lt;pre lang=&#34;cpp&#34; escaped=&#34;false&#34;&gt;
-struct cipher {
-    std::string key;
-    double score;
-    std::string plaintext;
-    friend std::ostream&amp;amp; operator&amp;lt;&amp;lt;(std::ostream&amp;amp; os, cipher const &amp;amp; c);
-};&lt;/p&gt;
-
-&lt;p&gt;cipher break_substitution(std::string cipher_text, std::string skey)
-{
-    std::transform(std::begin(cipher_text), std::end(cipher_text), std::begin(cipher_text), ::toupper);
-    std::uniform_int_distribution&lt;int&gt; distribution(0,25);&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cipher p;
-p.key = skey;
-p.plaintext = substitute(cipher_text, p.key);
-p.score = fitness.score(p.plaintext); 
-for(size_t i = 0; i &amp;lt; 1000; ++i) //Look at that intelligent for loop
-{
-    cipher c(p);
-    auto a = distribution(g);
-    auto b = distribution(g);
-    std::iter_swap(std::begin(c.key)+a, std::begin(c.key)+b); //randomly tweak our key
-    c.plaintext = substitute(cipher_text, c.key);
-    c.score = fitness.score(c.plaintext);  //Measure the quality of the new key.
-    if(c.score &amp;gt; p.score)
-    {
-        p = c; //update the parent
-        i = 0; //We&#39;ve made an improvement
-    }
-}
-return p;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;}
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;So artificial intelligence, it&amp;rsquo;s just computation.  The trick is that we are a little more intelligent that brute force.  Our algorithm is to generate a random key, substitute the cipher text with that key and measure the quality of the result, i.e., how many partial words are in the result.  Now swap 2 characters, and measure it again. If the result is better continue swapping with that key, if the result is worse throw away that key (branch of the search tree), and return to the previous key (p in this example).&lt;/p&gt;
-
-&lt;p&gt;In this post we looked at how MINDLESS can break substitution ciphers using hill climbing.  If you were following the side-quest, I hope you enjoyed yourself (or rather are overwhelming cross (because of the parenthesis), but be thankful they are balanced).&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1650,211 +209,7 @@ return p;
       <pubDate>Sun, 24 Nov 2013 22:14:50 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2013/11/sean-parent-no-raw-loops/</guid>
-      <description>&lt;p&gt;A group of colleagues and I watched Sean Parent&amp;rsquo;s Going Native Talk on &amp;ldquo;&lt;a href=&#34;http://channel9.msdn.com/Events/GoingNative/2013/Cpp-Seasoning&#34;&gt;C++ Seasoning&lt;/a&gt;&amp;rdquo;. Parent takes some extreme views on how to use C++, but his examples for using the STL to simplify code are phenomenal. For a recent AI project I decided to apply Parent&amp;rsquo;s &lt;em&gt;goal&lt;/em&gt; of &amp;ldquo;no raw loops&amp;rdquo;, I was blown away by the transformation&amp;hellip; err std::transformation this had on my code. In this post I indented to demonstrate several complex code blocks, or overly specific code blocks what were replaced by some STL magic. Alexander Stepanov says, &amp;ldquo;&lt;a href=&#34;http://www.youtube.com/watch?v=COuHLky7E2Q&#34;&gt;&amp;hellip;code is a liability.&lt;/a&gt;&amp;rdquo; The more code a program has the more likely it contains bugs. The fewer lines of code, the lesser the opportunity for a bug. I haven&amp;rsquo;t quiet decided if I agree with this point, but it does induce thought either way. Sean Parent&amp;rsquo;s methodology seems to agree, for the purposes of this post we&amp;rsquo;ll agree as well.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;So the assignment statement:&lt;/p&gt;
-
-&lt;blockquote&gt;Suppose that you have purchased a bag of candy which has two flavor: cherry (c) and lime (l). We do not know exactly what kind of bag we bought, but we know that it is one of the following types:
-
-&gt; 
-&gt; 
-    
-&gt;   1. 100% cherry (10% likely)
-&gt; 
-    
-&gt;   2. 75% cherry (20% likely)
-&gt; 
-    
-&gt;   3. 50% cherry (40% likely)
-&gt; 
-    
-&gt;   4. 25% cherry (20% likely)
-&gt; 
-    
-&gt;   5. 0% cherry (10% likely)
-&gt; 
-
-You take 11 pieces of candy, all happen to be lime. What bag do you most likely have, and what is the probability the next candy will be a lime?&lt;/blockquote&gt;
-
-&lt;p&gt;So lets start with encoding our data.  First we have 2 types of candy: cherry and lime.  Lets represent that:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;class lime_type{};
-class cherry_type{};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We might expand this later, but for now we just need a way to overload functions on lime candies or cherry candies. This will work just fine.&lt;/p&gt;
-
-&lt;p&gt;Next we have some bags, and associated probabilities&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;enum Bag {
-Bag1 =1,
-Bag2,
-Bag3,
-Bag4,
-Bag5};
-
-std::vector&amp;lt;Bag&amp;gt; const bags{Bag1, Bag2, Bag3, Bag4, Bag5};
-
-map&amp;lt;Bag, double&amp;gt; apriori{
-{Bag1, 0.1},
-{Bag2, 0.2},
-{Bag3, 0.4},
-{Bag4, 0.2},
-{Bag5, 0.1}
-};
-
-map&amp;lt;Bag, std::pair&amp;lt;double, double&amp;gt;&amp;gt; candy_dist{
-{Bag1, {1.00, 0.00}},
-{Bag2, {0.75, 0.25}},
-{Bag3, {0.50, 0.50}},
-{Bag4, {0.25, 0.75}},
-{Bag5, {0.00, 1.00}}
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Again, pretty straight forward, but the magic is about to happen&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;Next we have to consume data from a file. Each data set is represented by a series of l or c on a single line. We need to print a graph for each line.  Our example data file looks like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;jwright@jwright-LinuxAwesome:~/workspaces/school/cse471/hw15$ cat data1.txt
-l l
-l l l l l l l l l l l l
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;So for our first STL use case. (Actually Boost here, since gcc 4.7.1 doesn&amp;rsquo;t support regex yet, but this functionality will work in gcc 4.9.1).&lt;/p&gt;
-
-&lt;p&gt;The before:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;std::ifstream fin(filename);
-    string line;
-    while(fin &amp;gt;&amp;gt; line)
-    {
-        if(line == &amp;quot;l&amp;quot;)
-            cout &amp;lt;&amp;lt; &amp;quot;Lime&amp;quot; &amp;lt;&amp;lt; endl;
-        if(line == &amp;quot;c&amp;quot;)
-            cout &amp;lt;&amp;lt; &amp;quot;cherry&amp;quot; &amp;lt;&amp;lt; endl;
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;What&amp;rsquo;s wrong with this code block? Consider if our ls and cs aren&amp;rsquo;t white space delimited. Sensor data is noisy/messy all the time. It would be prudent to deal with this case. This code doesn&amp;rsquo;t block on newlines, and streams all the newlines together. We could wrap this code block with a std::getline() loop, but that&amp;rsquo;s going the wrong direction. No raw loops&amp;hellip; What does the STL provide to deal with this? Essentially we want to tokenize each line with _c_s or _l_s as tokens.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;boost::regex reg(&amp;quot;c|l&amp;quot;); //Construct the regular expression here, since it&#39;s expensive
-while(std::getline(fin,line))
-{ 
-    boost::sregex_token_iterator pos(begin(line), end(line), reg);
-    boost::sregex_token_iterator end;
-    std::for_each(pos, end, [](boost::sregex_token_iterator tok)
-    {
-        process(tok-&amp;gt;str());
-    });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This code isn&amp;rsquo;t directly shorter, but it is certainly more robust. We can deal with extra noise in our data file, and the regex will skip over it gracefully calling our process function once for each l and c it finds on each line.&lt;/p&gt;
-
-&lt;p&gt;Now that we&amp;rsquo;re warmed up, lets check out some better examples. Conditional probabilities have lots of summations, and product chains in them. My initial hack unrolled all these summations. This is both verbose, which can hide errors, but if we can reduce the number of lines we will increase our reliability. First up.&lt;/p&gt;
-
-&lt;p&gt;$$ P( Candy = Lime | Data) = \Sigma_{Bags}(P(lime, Bag_i | Data) $$&lt;/p&gt;
-
-&lt;p&gt;My first hack, looks like something that congealed in a gutter:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;double p(cherry_type, data_type)
-{
-//
-// \sigma_bags(p(lime, Bag_i | data))
-//
-double a =
-p(lime_type(), Bag1)*p(Bag1, data_type()) +
-p(lime_type(), Bag2)*p(Bag2, data_type()) +
-p(lime_type(), Bag3)*p(Bag3, data_type()) +
-p(lime_type(), Bag3)*p(Bag4, data_type()) +
-p(lime_type(), Bag5)*p(Bag5, data_type());
-
-return a;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This version is has the sad property that a C programmer might say, &amp;ldquo;Awesome, he unrolled the loops. That code will be fast.&amp;rdquo; Stephan T. Lavavej says , &amp;ldquo;&lt;a href=&#34;http://channel9.msdn.com/Events/GoingNative/2013/Don-t-Help-the-Compiler&#34;&gt;Don&amp;rsquo;t help the compiler&lt;/a&gt;&amp;rdquo;. I agree. -funroll-loops will unroll the loops much better than I can.In fact this code as a bug in it. See it?&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;double p(cherry_type, data_type)
-{
-//
-// \sigma_bags(p(lime, Bag_i | data))
-//
-double a =
-p(lime_type(), Bag1)*p(Bag1, data_type()) +
-p(lime_type(), Bag2)*p(Bag2, data_type()) +
-p(lime_type(), Bag3)*p(Bag3, data_type()) +
-p(lime_type(), Bag3)*p(Bag4, data_type()) + //Boom, check out that hot copy-paste error.
-p(lime_type(), Bag5)*p(Bag5, data_type());
-
-return a;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Corrected, but still not &amp;ldquo;correct&amp;rdquo;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;double p(lime_type, data_type)
-{
-//
-// \sigma_bags(p(lime, Bag_i | data))
-//
-double a =
-p(lime_type(), Bag1)*p(Bag1, data_type()) +
-p(lime_type(), Bag2)*p(Bag2, data_type()) +
-p(lime_type(), Bag3)*p(Bag3, data_type()) +
-p(lime_type(), Bag4)*p(Bag4, data_type()) + //Boom, check out that hot copy-paste error.
-p(lime_type(), Bag5)*p(Bag5, data_type());
-
-return a;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Beside being verbose, and prone to error. It isn&amp;rsquo;t generate. If we grow our dataset, the loop is not wrong. Can we be sure that we&amp;rsquo;ll find every unrolled loop, and fix it? We can do better.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;double p(lime_type, data_type)
-{
-    //
-    // \sigma_bags(p(lime, Bag_i | data))
-    //   
-    std::vector&amp;lt;double&amp;gt; partials(bags.size());
-    std::transform(begin(bags), end(bags), begin(partials), [](Bag b){ return p(lime_type(), b)*p(b, data_type()); });
-    double a = std::accumulate(begin(partials), end(partials), 0.0 ); //Gotcha 0.0 instead of 0. 0 will cast the result to an int
-    return a;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This version is shorter. The compiler is free to optimize the STL algorithms as needed even unrolling the loops if the compiler deems it will improve the code. This code is readable, but futhermore we can explain this code to a mathematician. Stroustroup says, &amp;ldquo;Express abstracts as the expert in the field does.&amp;rdquo; This function does exactly that. The first step is to compute partial products of $$ P( Lime, Bag_i) * P(Bag_i | Data) $$. Then add the products together. We are agnostic to the number of bags.&lt;/p&gt;
-
-&lt;p&gt;Next what about debugging. I&amp;rsquo;m searching for a bug, and sometimes print statements are the best way to work it out. Lets print out a vector.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;vector prob;
-//...
-cout &amp;lt;&amp;lt; &amp;quot;{&amp;quot;;
-for(auto&amp;amp; p : prob)
-    cout &amp;lt;&amp;lt; p &amp;lt;&amp;lt; &amp;quot;, &amp;quot;;
-cout &amp;lt;&amp;lt; &amp;quot;}&amp;quot;;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This cannot be bad right? We used the new, shiny range-based for. What can one complain about.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;vector prob;
-//...
-cout &amp;lt;&amp;lt; &amp;quot;{&amp;quot;;
-std::copy(std::begin(prob), std::end(prob), std::ostream_iterator&amp;lt;double&amp;gt;(cout, &amp;quot;, &amp;quot;));
-cout &amp;lt;&amp;lt; &amp;quot;}&amp;quot;;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;However we can do &lt;a href=&#34;https://github.com/louisdx/cxx-prettyprint&#34;&gt;even better&lt;/a&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#include 
-cout &amp;lt;&amp;lt; prob;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Even though this program was small, the opportunity to improve quality, and robustness, is ever present. C++ is a growing language, and it&amp;rsquo;s new capabilities are really improving the corner cases in software. One key tool in doing so is learning the STL.  I encourage you to study the STL.&lt;/p&gt;
-</description>
+      <description>A group of colleagues and I watched Sean Parent&amp;rsquo;s Going Native Talk on &amp;ldquo;C++ Seasoning&amp;rdquo;. Parent takes some extreme views on how to use C++, but his examples for using the STL to simplify code are phenomenal. For a recent AI project I decided to apply Parent&amp;rsquo;s goal of &amp;ldquo;no raw loops&amp;rdquo;, I was blown away by the transformation&amp;hellip; err std::transformation this had on my code. In this post I indented to demonstrate several complex code blocks, or overly specific code blocks what were replaced by some STL magic.</description>
     </item>
     
     <item>
@@ -1863,8 +218,7 @@ cout &amp;lt;&amp;lt; prob;
       <pubDate>Sun, 17 Nov 2013 16:54:19 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2013/11/rand-considered-harmful/</guid>
-      <description>&lt;p&gt;Stephan T Lavavej (STL) is a tactical speaker. In a short amount of time he convey&amp;rsquo;s essential accurate information which is immediately applicable. In this talk at Going Native 2013, STL takes 20 minutes to teach us how to properly use random numbers in our programs: &lt;a href=&#34;http://channel9.msdn.com/Events/GoingNative/2013/rand-Considered-Harmful&#34;&gt;http://channel9.msdn.com/Events/GoingNative/2013/rand-Considered-Harmful&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Stephan T Lavavej (STL) is a tactical speaker. In a short amount of time he convey&amp;rsquo;s essential accurate information which is immediately applicable. In this talk at Going Native 2013, STL takes 20 minutes to teach us how to properly use random numbers in our programs: http://channel9.msdn.com/Events/GoingNative/2013/rand-Considered-Harmful</description>
     </item>
     
     <item>
@@ -1873,8 +227,558 @@ cout &amp;lt;&amp;lt; prob;
       <pubDate>Tue, 12 Nov 2013 05:56:28 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2013/11/simplicity-does-matter/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;m been sitting this draft for too long, but before I started my research experiment with Haskell I was looking for a language. I was approaching an AI class for my graduate work, and thought I&amp;rsquo;d learn Lisp, or at least &lt;em&gt;a&lt;/em&gt; lisp.  &lt;a href=&#34;http://clojure.org/&#34;&gt;Clojure &lt;/a&gt;was hot, and new (read shiny), so I dove into learning about it&amp;rsquo;s virtues. It&amp;rsquo;s virtues are embodied in its creator, Rich Hickey, who while being a great programmer is a fantastic speaker. The first talk I watched from him, &amp;ldquo;&lt;a href=&#34;http://www.infoq.com/presentations/Are-We-There-Yet-Rich-Hickey&#34;&gt;Are We There Yet?&lt;/a&gt;&amp;rdquo; which is a deep philosophical approach to parallelism.  I in 2012, Rich Hickey was invited to speak at RubyCon, and he gave a fantastic talk titles, &amp;ldquo;&lt;a href=&#34;http://www.youtube.com/watch?v=rI8tNMsozo0&#34;&gt;Simplicity Matters&lt;/a&gt;&amp;rdquo;. Absolutely fantastic! Eventually, I made my way into Haskell, largely by a comment from Andrei Alexandresku, &amp;ldquo;&lt;a href=&#34;http://channel9.msdn.com/Shows/Going+Deep/C-and-Beyond-2012-Andrei-Alexandrescu-Systematic-Error-Handling-in-C&#34;&gt;Haskell, the language everyone wishes they know.&lt;/a&gt;&amp;rdquo; Rich Hickey&amp;rsquo;s words however remain in each line of code I write, Do not complect, simplicity matters.&lt;/p&gt;
-</description>
+      <description>I&amp;rsquo;m been sitting this draft for too long, but before I started my research experiment with Haskell I was looking for a language. I was approaching an AI class for my graduate work, and thought I&amp;rsquo;d learn Lisp, or at least a lisp. Clojure was hot, and new (read shiny), so I dove into learning about it&amp;rsquo;s virtues. It&amp;rsquo;s virtues are embodied in its creator, Rich Hickey, who while being a great programmer is a fantastic speaker.</description>
+    </item>
+    
+    <item>
+      <title>A Thunk on Laziness</title>
+      <link>http://www.codestrokes.com/2013/10/a-thunk-on-laziness/</link>
+      <pubDate>Sun, 27 Oct 2013 23:00:17 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2013/10/a-thunk-on-laziness/</guid>
+      <description>I originally approached Haskell excited, and wide-eyed mystified by the type theory. Type became my golden hammer. In my C programs I typedef&amp;rsquo;d everything so it&amp;rsquo;d have a &amp;ldquo;unique&amp;rdquo; type. I was cautious with my casting. I was hooked. I had an intuitive understanding of laziness, as implemented by Haskell, that would allow one to write&amp;rdquo;streaming&amp;rdquo; algorithms. That is programs that deal with data in an online way to process data as it streams through.</description>
+    </item>
+    
+    <item>
+      <title>Idiomatic Learning</title>
+      <link>http://www.codestrokes.com/2013/10/idiomatic-learning/</link>
+      <pubDate>Sun, 20 Oct 2013 23:00:00 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2013/10/idiomatic-learning/</guid>
+      <description>When learning a new language I find it helpful to study a languages idioms. Idioms exist in a language for a specific reason. Sometimes that reason is to further the principles of the language, other times it’s to mask, or otherwise deal with some underlying design decision of the language. Currently, I am studying Haskell, and currently I am struggle to clarify the idioms of the language. The syntax is still very new and awkward, currently with a total authoring in Haskell of 713 lines.</description>
+    </item>
+    
+    <item>
+      <title>&#34;Smaller&#34; Reviews are More Effective</title>
+      <link>http://www.codestrokes.com/2013/10/smaller-reviews-are-more-effective/</link>
+      <pubDate>Sun, 13 Oct 2013 23:00:23 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2013/10/smaller-reviews-are-more-effective/</guid>
+      <description>I was reviewing a new software module for work today, and discovered that when the class fit on a single screen my comments were more meaningful, than when the class was larger. My comments for spatially larger classes were mostly focused on syntactic, and idiomatic details. It was an interesting self-observation, but this certainly isn&amp;rsquo;t new information.
+I&amp;rsquo;ve heard the adage that smaller reviews are more effective than larger ones. At a conference I attended hosted by Atlassian: The JIRA team noted several instances where the time per file decreased with the number of files in the review.</description>
+    </item>
+    
+    <item>
+      <title>The Itanium Flop</title>
+      <link>http://www.codestrokes.com/2013/10/the-itanium-flop/</link>
+      <pubDate>Mon, 07 Oct 2013 01:23:13 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2013/10/the-itanium-flop/</guid>
+      <description>I wake up in the morning with ideas that please me, and some of those ideas actually please me also later in the day when I&amp;rsquo;ve entered them into my computer. - Donald Knuth
+I&amp;rsquo;m on a bit of a Knuth kick right now, and I&amp;rsquo;ve been procrastinating studying, and homework to find interviews, and papers by the master himself. I currently have a list of microfiche references to check out as soon as I get to the basement of my university&amp;rsquo;s library: Woot, computational necromancy!</description>
+    </item>
+    
+    <item>
+      <title>Linux User&#39;s Group CTF 2013</title>
+      <link>http://www.codestrokes.com/2013/09/linux-users-group-ctf-2013/</link>
+      <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2013/09/linux-users-group-ctf-2013/</guid>
+      <description>This past weekend we held another capture the flag event at the Arizona State University&amp;rsquo;s Linux User&amp;rsquo;s Group. It had more of a system admin focus than security cracking exploits, but it was fun an nontheless a diverse learning experience for all those involved. However, almost immediately, I realized the number one rule in CTF, nothing is off limits! The game was organized into two parts, a game server which collected the the scores and displayed the point totals of all teams in real-time, and the virtual servers (hosted on Amazon EC2) which contained the actual games.</description>
+    </item>
+    
+    <item>
+      <title>My First Logic Program</title>
+      <link>http://www.codestrokes.com/2013/09/my-first-logic-program/</link>
+      <pubDate>Sun, 01 Sep 2013 22:35:41 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2013/09/my-first-logic-program/</guid>
+      <description>This semester, I&amp;rsquo;m taking an introduction to artificial intelligence, and despite this being the second week, I&amp;rsquo;ve learned a great deal. Our second assignment was to implement a program in clingo (clasp on gringo) which is a derivative of Prologue. This is my first experience with a logical programming language, and I am intrigued to the possibilities. Immediately I was intrigued by the freeform expressiveness of the language. The example we did in class for example was to determine which muppet went to which amusement park.</description>
+    </item>
+    
+    <item>
+      <title>Artifical Intelligence Impact on Medicine</title>
+      <link>http://www.codestrokes.com/2013/08/artifical-intelligence-impact-on-medicine/</link>
+      <pubDate>Wed, 28 Aug 2013 20:16:38 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2013/08/artifical-intelligence-impact-on-medicine/</guid>
+      <description>Dr. Andrew Weil of the Arizona Center for Integrative Medicine states, “If we can make the correct diagnosis, the healing can begin. If we can’t, both our personal health and our economy are doomed. [1]” Accurate, traceable, and informed diagnosis are paramount to the health of patients. Medicine, within the United States, is an enormous $2.5 Trillion opportunity and with the proliferation of research over many decades new medical findings are being published than could ever be grokked, unassisted, by a doctor [2].</description>
+    </item>
+    
+    <item>
+      <title>Interesting article about Monads</title>
+      <link>http://www.codestrokes.com/2013/08/interesting-article-about-monads/</link>
+      <pubDate>Fri, 02 Aug 2013 22:49:01 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2013/08/interesting-article-about-monads/</guid>
+      <description>I found an interesting blog today with some clear and interesting discussion on Haskell, and Monads: http://intoverflow.wordpress.com/2010/07/20/i-come-from-java-and-want-to-know-what-monads-are-in-haskell/</description>
+    </item>
+    
+    <item>
+      <title>My Haskell Environment for Project Euler</title>
+      <link>http://www.codestrokes.com/2013/08/my-haskell-environment-for-project-euler/</link>
+      <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2013/08/my-haskell-environment-for-project-euler/</guid>
+      <description>For the last several months I&amp;rsquo;ve been working on Project Euler in Haskell. My intent has been to learn Haskell, and grasp the functional concepts. While working on several problems it&amp;rsquo;s important to have a workflow that allows for a fast cycle time. I spent some time with Cabal, attempting to build a scheme that works efficiently, but was unable to do so. Instead I setup a mix of cabal-dev, and make to build a fast workflow that allow for compiling, testing, common code libraries, and benchmarks.</description>
+    </item>
+    
+    <item>
+      <title>How to Write a Thesis</title>
+      <link>http://www.codestrokes.com/2013/07/review-how-to-write-a-thesis-2/</link>
+      <pubDate>Wed, 24 Jul 2013 04:48:01 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2013/07/review-how-to-write-a-thesis-2/</guid>
+      <description>My family purchased this book for me, as a motivator to start thinking about the thesis component of my master&amp;rsquo;s degree. &amp;ldquo;It must be substantial&amp;hellip;&amp;rdquo; said a colleague of mine. &amp;ldquo;It must be original work&amp;hellip;&amp;rdquo; Original, substantial, all words that left me with uneasiness about how to start. This book however was an easy read, and gave some very pragmatic advice on how to start, yet the most important quote I drew from the book was, &amp;ldquo;What are the questions in your field?</description>
+    </item>
+    
+    <item>
+      <title>Is Monolithic Code Faster?</title>
+      <link>http://www.codestrokes.com/2013/07/is-monolithic-code-faster/</link>
+      <pubDate>Sun, 14 Jul 2013 23:00:11 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2013/07/is-monolithic-code-faster/</guid>
+      <description>As a software engineer I have a vested interest in disproving this statement. Bjarne Stroustroup says C++ is designed to create efficient abstractions. A software engineer’s job is to create simple abstractions to complex systems. State machines form a large part of many systems. The other day, a co-worker came to me, and asked, “Is it better to make straight line code for each case statement, even if it repeats, or is it better to abstraction into functions and make the code ‘cleaner’.</description>
+    </item>
+    
+    <item>
+      <title>Patterns are evidence of a language&#39;s lacking</title>
+      <link>http://www.codestrokes.com/2013/07/patterns-are-evidence-of-a-languages-lacking/</link>
+      <pubDate>Sun, 07 Jul 2013 23:00:30 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2013/07/patterns-are-evidence-of-a-languages-lacking/</guid>
+      <description>A coworker of mine stated something interesting, &amp;ldquo;&amp;hellip;a pattern is evidence of missing feature in the language&amp;hellip;&amp;rdquo;. At first I struggled with this statement. How can you design a language general enough to be widely used, and simultaneously cover all the desirable idioms such that patterns are built in? At first this seemed silly to me, until I heard Erik Meijer state in a Haskell lecture, &amp;ldquo;..this is why we implemented LINQ as a pattern instead of a language feature&amp;hellip;&amp;rdquo;</description>
+    </item>
+    
+    <item>
+      <title>Haskell a Few Problems Later</title>
+      <link>http://www.codestrokes.com/2013/05/haskell-a-few-problems-later/</link>
+      <pubDate>Tue, 14 May 2013 04:28:58 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2013/05/haskell-a-few-problems-later/</guid>
+      <description>Well, the Haskell honeymoon is over for me. I spent some time working on a few Project Euler problems this weekend, and my initial assumptions formed from toy problems were dashed. While I was able to solve 3 problems fairly quickly, I faced a number of non trivial bugs, and memory issues. On the other side of my naïve passion, I’m finding a functional thought process, and it’s exciting.
+My problems were really centered around a naïve belief that Haskell could convert my inefficient algorithms to some &amp;ldquo;mathematically pure&amp;rdquo; representation.</description>
+    </item>
+    
+    <item>
+      <title>Haskell Day 1 (Again)</title>
+      <link>http://www.codestrokes.com/2013/04/haskell-day-1-again/</link>
+      <pubDate>Mon, 22 Apr 2013 05:29:11 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2013/04/haskell-day-1-again/</guid>
+      <description>I&amp;rsquo;ve restarted my haskell programming education. Here is my implementation of FizzBuzz fizzbuzz x | x `mod` 15 == 0 = &amp;quot;FIZZBUZZ&amp;quot; | x `mod` 3 == 0 = &amp;quot;FIZZ&amp;quot; | x `mod` 5 == 0 = &amp;quot;BUZZ&amp;quot; | otherwise = show x main = print (map fizzbuzz [1..100])  [suffusion-adsense client=&amp;lsquo;ca-pub-6284398857369558&amp;rsquo; slot=&amp;lsquo;1495369305&amp;rsquo; width=&amp;lsquo;728&amp;rsquo; height=&amp;lsquo;90&amp;rsquo;]</description>
+    </item>
+    
+    <item>
+      <title>Latex Walkthrough</title>
+      <link>http://www.codestrokes.com/2013/03/latex-walkthrough/</link>
+      <pubDate>Sun, 24 Mar 2013 18:25:50 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2013/03/latex-walkthrough/</guid>
+      <description>Latex Walkthrough from Jeremy Wright on Vimeo.</description>
+    </item>
+    
+    <item>
+      <title>Beagle Board Cluster Demo&#39;d at ASU</title>
+      <link>http://www.codestrokes.com/2013/03/beagle-board-cluster-demod-at-asu/</link>
+      <pubDate>Mon, 04 Mar 2013 19:09:31 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2013/03/beagle-board-cluster-demod-at-asu/</guid>
+      <description>We presented our Beagle Board Cluster at the Engineering Career Fair. Look out for a design writeup soon!
+http://asulug.org/2013/03/engineering-open-house/ [suffusion-adsense client=&amp;lsquo;ca-pub-6284398857369558&amp;rsquo; slot=&amp;lsquo;1495369305&amp;rsquo; width=&amp;lsquo;728&amp;rsquo; height=&amp;lsquo;90&amp;rsquo;]</description>
+    </item>
+    
+    <item>
+      <title>Duplicating SD Cards for Beagleboard</title>
+      <link>http://www.codestrokes.com/2013/02/duplicating-sd-cards-for-beagleboard/</link>
+      <pubDate>Sun, 24 Feb 2013 16:38:11 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2013/02/duplicating-sd-cards-for-beagleboard/</guid>
+      <description>The ASU Linux User&amp;rsquo;s group is building a Beagleboard cluster. This requires each compute node to have an identical system image, with the exception of the hostname and ipaddress. The easiest way, I found to do this, is to configure one compute node, then duplicate the SD cards across the other nodes. Here is how I did that.
+Save the partitions to an image file using part image
+partimage save /dev/sdb1 beagle-cluster-boot.</description>
+    </item>
+    
+    <item>
+      <title>Text Processing for Programmers</title>
+      <link>http://www.codestrokes.com/2013/02/text-processing-for-programmers/</link>
+      <pubDate>Sun, 17 Feb 2013 19:53:11 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2013/02/text-processing-for-programmers/</guid>
+      <description>I was reading a blog about coding interviews, and one comment made near the bottom struck me, &amp;ldquo;&amp;hellip;&amp;ldquo;Um&amp;hellip; grep?&amp;rdquo; then they&amp;rsquo;re probably OK&amp;hellip;&amp;rdquo; As I read that comment, I realized I&amp;rsquo;d never answer that way, and I agreed with the author that was a problem. That began my dabble in grep, awk and sed, and these tools will change your workflow and even how you think about profiling code. Grep has even become a verb in my daily life, &amp;ldquo;Is this greppable?</description>
+    </item>
+    
+    <item>
+      <title>Short Valgrind Video Tutorial</title>
+      <link>http://www.codestrokes.com/2012/11/short-valgrind-video-tutorial/</link>
+      <pubDate>Mon, 12 Nov 2012 03:40:11 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2012/11/short-valgrind-video-tutorial/</guid>
+      <description>I made a short video tutorial on valgrind. Enjoy
+Valgrind Demonstration from Jeremy Wright on Vimeo.</description>
+    </item>
+    
+    <item>
+      <title>ASULUG Talk: Django Web Framework</title>
+      <link>http://www.codestrokes.com/2012/09/asulug-talk-django-web-framework/</link>
+      <pubDate>Sat, 22 Sep 2012 15:36:10 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2012/09/asulug-talk-django-web-framework/</guid>
+      <description>ASU Linux User’s Group (ASULUG) — LUG Talks
+Sat 6 Oct 1:30pm — BYENG 210
+ 
+The Django Web Framework
+Jeremy Wright
+Abstract
+Django: Awesome Jazz Musician, Awesome Web Framework.
+Django is a web framework similar to the popular Ruby on RAILS, but leveraging the Python programming language. Born out of the newspaper industry, Django is touted as the “web framework for perfectionists with deadlines.” Django is a powerful tool for any size web project: Web Services, Storefronts, CMS’s—Django conquers all.</description>
+    </item>
+    
+    <item>
+      <title>Abstraction in Plain English</title>
+      <link>http://www.codestrokes.com/2012/09/abstraction-in-plain-english/</link>
+      <pubDate>Tue, 18 Sep 2012 23:11:51 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2012/09/abstraction-in-plain-english/</guid>
+      <description>Abstraction is an interesting concept. For me personally, abstraction was never clearly explained. I left school and entered my first job knowing I should abstract things, but I realize now my understanding of abstraction amounted to obscurity.
+Abstraction to me meant, “Don’t use that thing directly, abstract it and use some interface instead.&amp;rdquo; &amp;ldquo;That’s what good programmers do,&amp;rdquo; I told myself. I taught myself a lot about function pointers, and advanced OO techniques using pure virtual classes all to avoid using something directly.</description>
+    </item>
+    
+    <item>
+      <title>Open Source CTF Game Server</title>
+      <link>http://www.codestrokes.com/2012/09/open-source-ctf-game-server/</link>
+      <pubDate>Sun, 09 Sep 2012 17:30:50 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2012/09/open-source-ctf-game-server/</guid>
+      <description>I am releasing under Creative Commons Attribution-ShareAlike 3.0 Unported License. my django game server for running Capture the Flag events.
+This server does have some known bugs which I enumerated in the issue tracker. I developed this first version for the Fall 2012 ASULUG hacking competition. I hope people can get involved and make this a fantastic game server! Please feel free to contact me, or simply fork the repository. I look forward to seeing everyone&amp;rsquo;s interesting pull requests!</description>
+    </item>
+    
+    <item>
+      <title>The Turbulent History of Managed Code</title>
+      <link>http://www.codestrokes.com/2012/08/the-turbulent-history-of-managed-code/</link>
+      <pubDate>Tue, 28 Aug 2012 05:31:04 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2012/08/the-turbulent-history-of-managed-code/</guid>
+      <description>Managed Code is a fascinating technology; Just-In-Time compilation provides advanced run-time optimization and strong type safety can render the hardware MMU obsolete. However the managed code renaissance is again in decline, and interestingly more than technology, business is changing the managed/native landscape. More than any other other metric, managed code is about maximizing programmer productivity.
+In 1977, Infocom released Zork. Zork was an innovative game. Its sophisticated linguistics made for an immersive experience for its adventurers.</description>
+    </item>
+    
+    <item>
+      <title>Know Its Name</title>
+      <link>http://www.codestrokes.com/2012/07/know-its-name/</link>
+      <pubDate>Sat, 21 Jul 2012 19:24:19 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2012/07/know-its-name/</guid>
+      <description>Programming is at it&amp;rsquo;s heart an struggle in communication. Source code is the communication medium with the processor; Comment the medium to other coders, and UML the medium to higher-level communication. Computer Scientists have the stereotype of being poor communicators, but in our own mediums, we&amp;rsquo;re phenomenal. This fact is no where more apparent, than trying to explain source code to someone else. How does one read source code? I&amp;rsquo;m currently, learning Haskell, and my first goal is to understand this question.</description>
+    </item>
+    
+    <item>
+      <title>The Importance of System Design</title>
+      <link>http://www.codestrokes.com/2012/07/the-importance-of-system-design/</link>
+      <pubDate>Sun, 15 Jul 2012 17:00:44 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2012/07/the-importance-of-system-design/</guid>
+      <description>For the small programs we tend to implement as part of a semester project, or the simple &amp;ldquo;one-off/get-it-done&amp;rdquo; programs at work, system design rarely plays a part. However, even in the smallest problems a top-level system design is critical for consistency and ease of use. Class components, regardless of how precise and accurate they are in their own internal design, if they aren&amp;rsquo;t externally consistent with other objects, the system will be brittle, and difficult to use.</description>
+    </item>
+    
+    <item>
+      <title>Building an Interpreter</title>
+      <link>http://www.codestrokes.com/2012/05/building-an-interpreter/</link>
+      <pubDate>Mon, 28 May 2012 17:03:55 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2012/05/building-an-interpreter/</guid>
+      <description>When I started programming, I thought that compilers where these magic behemoths; Oracles which consumed your source code, and prophesied the resulting program. I thought that the compiler was an integral part of the &amp;ldquo;system&amp;rdquo;. I was excited to realize that the compiler is simply another program. A program you can write yourself. You can write a compiler, for your very own language. Go ahead, make up a language, I&amp;rsquo;ll wait&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Anderson Smart-Pointer Idiom Updated!</title>
+      <link>http://www.codestrokes.com/2012/05/anderson-smart-pointer-idiom-updated/</link>
+      <pubDate>Sun, 06 May 2012 07:00:10 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2012/05/anderson-smart-pointer-idiom-updated/</guid>
+      <description>C++11 provides us with a ton of new tools for expressing complex ideas in an efficient way. C++11 is unique among modern languages in that it provides a productive syntax, while also generating exceptionally fast code. For the first time ever, software engineers are responsible for increasing the performance of software systems. For decades we&amp;rsquo;ve been standing on the shoulders of hardware engineers. Hardware engineers have been increasing the clock speeds of our processors, but we&amp;rsquo;ve hit a physical limit.</description>
+    </item>
+    
+    <item>
+      <title>Capture the Flag - Running a Hacking Competition</title>
+      <link>http://www.codestrokes.com/2012/04/capture-the-flag-running-a-hacking-competition/</link>
+      <pubDate>Mon, 30 Apr 2012 02:38:44 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2012/04/capture-the-flag-running-a-hacking-competition/</guid>
+      <description>Black-Hat hacking in an controlled environment, like this, is an important skill for software developers. The Art of War describes knowing one&amp;rsquo;s enemy, and with the prevalence of internet-enabled applications today, it has never been more critical to know how the &amp;ldquo;enemy&amp;rdquo; can take down a system. While capture-the-flag is a fun, and exciting intellectual game, it is serious training for software engineers of all types, and skill levels. I recently setup a small capture the flag event for the Arizona Linux User&amp;rsquo;s Group, and it was very fun.</description>
+    </item>
+    
+    <item>
+      <title>Copyright - The Anti-Innovator</title>
+      <link>http://www.codestrokes.com/2012/04/copyright-the-anti-innovator/</link>
+      <pubDate>Sat, 14 Apr 2012 17:53:21 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2012/04/copyright-the-anti-innovator/</guid>
+      <description>The French government dismantled and destroyed the Mona Lisa, along with a number of other masterpiece paintings today after courts decided that paintbrushes are copyrighted. Furthermore their derivative works, i.e. items creating using paintbrushes, are subject to copyright infringement. This of course is a fabrication, but this is exactly the point Oracle is trying to make when trying to copyright programming languages. Programming languages are tools for programmers to create the world we live in.</description>
+    </item>
+    
+    <item>
+      <title>Talk at SoDA</title>
+      <link>http://www.codestrokes.com/2012/03/talk-at-soda/</link>
+      <pubDate>Sat, 31 Mar 2012 18:48:55 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2012/03/talk-at-soda/</guid>
+      <description>SoDA Meeting: Embedded Scripting for Games from SoDA @ ASU on Vimeo.</description>
+    </item>
+    
+    <item>
+      <title>Multicast Delegates in C&#43;&#43;11</title>
+      <link>http://www.codestrokes.com/2012/03/multicast-delegates-in-c11/</link>
+      <pubDate>Sun, 25 Mar 2012 05:32:43 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2012/03/multicast-delegates-in-c11/</guid>
+      <description>C# has a wonderfully flexible delegate system capable of multicast events. This simple tool makes event driven software easier to write, and reduces coupling between objects. In 2003 Herb Sutter implemented a general form of the Observer pattern [1]. He called this the multi_function. It uses a mixture of TR1 and boost components to build a multi-cast delegate similar to C#&amp;rsquo;s. Fast-forward 9 years, and we now have variadic-templates thanks to C++11.</description>
+    </item>
+    
+    <item>
+      <title>Abstract Syntax Trees: Introduction to Flex</title>
+      <link>http://www.codestrokes.com/2012/03/abstract-syntax-trees-introduction-to-flex/</link>
+      <pubDate>Sun, 18 Mar 2012 05:36:51 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2012/03/abstract-syntax-trees-introduction-to-flex/</guid>
+      <description>Bison is an incredibly powerful parser generator tool. However most of the examples, and tutorials demonstrate Bison&amp;rsquo;s parsing ability, using on-the-fly computation instead of building a Syntax Tree. Bison is fully capable to generate the front-end of a simple compiler, but to do so, we have to build a syntax tree. Come to find out, building a syntax tree with Bison isn&amp;rsquo;t that difficult, and the key is how one leverages the semantic actions.</description>
+    </item>
+    
+    <item>
+      <title>Branching with Mercurial</title>
+      <link>http://www.codestrokes.com/2012/02/branching-with-mercurial/</link>
+      <pubDate>Mon, 20 Feb 2012 02:18:15 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2012/02/branching-with-mercurial/</guid>
+      <description>Mercurial supports two separate methods for branching. The first is built into how distributed version control functions, in that every clone is a branch itself. This is the branching method Joel Sposky recommends on hginit.com. The second method is called local branches. Initially I liked the local branch method; I liked it for the fact that I felt smart for using it. It did not improve productivity. There is a simple reason for this, with local branches it is difficult to diff the branch to the main branch of development e.</description>
+    </item>
+    
+    <item>
+      <title>Compile-Time Polymorphism</title>
+      <link>http://www.codestrokes.com/2012/02/compile-time-polymorphism/</link>
+      <pubDate>Sun, 05 Feb 2012 21:14:29 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2012/02/compile-time-polymorphism/</guid>
+      <description>Polymorphism is a tool in object orientation, which allows us to model behavior, while simultaneously leverage existing code. Polymorphism allows is behavior reuse. In C++ polymorphism, comes in 2 flavors, the standard runtime variant, and a curious compile time variant. Runtime polymorphism, like Java, leverages virtual functions to dynamically bind[1. With virtual functions the compiler doesn&amp;rsquo;t know which method to call until runtime. In C++ this is implemented with the virtual method table] a method at the call site.</description>
+    </item>
+    
+    <item>
+      <title>Modern C&#43;&#43;</title>
+      <link>http://www.codestrokes.com/2012/01/modern-c/</link>
+      <pubDate>Sun, 22 Jan 2012 18:10:30 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2012/01/modern-c/</guid>
+      <description>I found an awesome talk on how the new changes of C++11 are modernizing, an already fantastically powerful language. http://channel9.msdn.com/Events/BUILD/BUILD2011/TOOL-835T.
+In this talk, Herb Sutter does two things I feel are quite admirable. Firstly, despite this being a Microsoft conference, he talks only about standard, portable C++ until the final minutes.
+Secondly, he very clearly, compares idioms we currently use, to the new C++11 idioms. This made it very easy for me to see the value of what C++11 provides.</description>
+    </item>
+    
+    <item>
+      <title>Abusing RAM</title>
+      <link>http://www.codestrokes.com/2012/01/abusing-ram/</link>
+      <pubDate>Sun, 22 Jan 2012 17:53:43 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2012/01/abusing-ram/</guid>
+      <description>My system has 16GB of RAM, but since I run Linux I rarely use more than about 3GB. So how do I justify such a extreme amounts of memory? Ramdisks.
+I run Lubuntu1, but hopefully this works for you too. Basically, I create a ramdisk and mount it in /mnt/ramdisk, then I setup the login/logout scripts to transfer to and from the ramdisk.
+Step 1: Create a ramdisk Add this line to your fstab:</description>
+    </item>
+    
+    <item>
+      <title>Parallel Binary Buddy: The Friendly Memory Manager</title>
+      <link>http://www.codestrokes.com/2011/11/parallel-binary-buddy-the-friendly-memory-manager/</link>
+      <pubDate>Wed, 23 Nov 2011 18:50:20 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/11/parallel-binary-buddy-the-friendly-memory-manager/</guid>
+      <description>Fragmentation, the allocator&amp;rsquo;s sin. Each byte A buddy, A friend
+Introduction
+Memory management is pervasive in all forms of software, not just operating systems. Embedded Systems, when dynamic memory is acceptable, tend to use memory pools to the heap. Standard desktop applications use the platform&amp;rsquo;s std::new or malloc. However, when a system is more complex, a memory manager may be used. Memory managers allow the programmer to strictly control application memory, in a way that flows with the rest of the system&amp;rsquo;s design.</description>
+    </item>
+    
+    <item>
+      <title>Making C&#43;&#43; like Python: The Anderson Smart Pointer Pattern</title>
+      <link>http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</link>
+      <pubDate>Sun, 23 Oct 2011 19:00:21 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</guid>
+      <description>Choosing to use C++ brings the additional complexity of memory management. Dennis Ritchie once stated: The C Programming Language — A language which combines the flexibility of assembly language with the power of assembly language. C++ inherits much of that _flexibility, _however, this incidental complexity, can be relegated to a single class, leaving you with the high-level elegance of Python. RAII help with this additional complexity, however without a pattern for guidance implementing RAII consistently can be difficult, defeating the safety it provides.</description>
+    </item>
+    
+    <item>
+      <title>Parallel Game-of-Life</title>
+      <link>http://www.codestrokes.com/2011/10/parallel-game-of-life/</link>
+      <pubDate>Sun, 23 Oct 2011 17:55:47 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/10/parallel-game-of-life/</guid>
+      <description>Conway&amp;rsquo;s Game of Life is a dramatic illustration of emmergent behavior; that a seemingly complex system, such as cell mitosis can be governed by a set of simple rules. OpenMP is a fantastic set of language extensions which allows one to add dramatic parallelism without complex thread management. As a demonstration of OpenMP&amp;rsquo;s simplicity I implemented the Game of Life. The code and all analysis is available on bitbucket.org.</description>
+    </item>
+    
+    <item>
+      <title>The $1,000,000 Compile</title>
+      <link>http://www.codestrokes.com/2011/09/the-1000000-compile/</link>
+      <pubDate>Thu, 22 Sep 2011 22:40:42 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/09/the-1000000-compile/</guid>
+      <description>Hitting the compile and run button costs $1,000,000. How would such a cost affect your test strategy? As extreme as that sounds, its a harsh reality for ASIC designers. The start-up costs for an ASIC design are extreme, as a result ASIC verification is very important. Especially since you can&amp;rsquo;t just update a buggy ASIC. In software engineering, we design increasingly complex systems requiring more and more elegant test strategies. I propose ASIC verification is in a more mature state, and software engineers could learn a lot from the translation of these techniques.</description>
+    </item>
+    
+    <item>
+      <title>Good Tools, Excellent Results</title>
+      <link>http://www.codestrokes.com/2011/08/good-tools-excellent-results/</link>
+      <pubDate>Sun, 21 Aug 2011 07:23:25 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/08/good-tools-excellent-results/</guid>
+      <description>This semester for the C++ practicum we are building a clone of Zork. Like many games of the genre, Zork is driven by a database. Our implementation is a JSON database. I chose JSON for a few reasons, but most importantly because its a human readable format that&amp;rsquo;s simple to understand. I started by editing JSON files by hand in a text editor, however I found very quickly that investigating in a quick tool greatly improved my quality.</description>
+    </item>
+    
+    <item>
+      <title>Why do some tutorials use std::cout and others use just cout?</title>
+      <link>http://www.codestrokes.com/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</link>
+      <pubDate>Fri, 19 Aug 2011 16:55:56 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</guid>
+      <description>Many tutorials start &amp;ldquo;Hello World&amp;rdquo; like so:
+#include &amp;lt;iostream&amp;gt; using namespace std; int main() { cout &amp;lt;&amp;lt; &amp;quot;Hello World&amp;quot; &amp;lt;&amp;lt; endl; return 0; }  However sometimes, and in my opinion the more correct version is written:
+#include &amp;lt;iostream&amp;gt; int main() { std::cout &amp;lt;&amp;lt; &amp;quot;Hello World&amp;quot; &amp;lt;&amp;lt; std::endl; return 0; }  The difference between the 2 programs is the double colon (::). This is called the namespace resolution operator. C++ has a wonderful concept called namespaces.</description>
+    </item>
+    
+    <item>
+      <title>Hijacking System Programs</title>
+      <link>http://www.codestrokes.com/2011/08/hijacking-system-programs/</link>
+      <pubDate>Fri, 12 Aug 2011 06:00:18 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/08/hijacking-system-programs/</guid>
+      <description>Let&amp;rsquo;s say for a moment that you are a graduate student, with shell access to your schools server. The server maintains a number of tools you need for classes, and research. All is well, except the stock editor on the server is wicked old. Like an eternity old. Well that happened to me. I am fully addicted to my custom vim configuration, but it requires vim7.3. My school&amp;rsquo;s server only has 7.</description>
+    </item>
+    
+    <item>
+      <title>Version Control More Than Collaboration</title>
+      <link>http://www.codestrokes.com/2011/07/version-control-more-than-collaboration/</link>
+      <pubDate>Wed, 06 Jul 2011 05:18:48 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/07/version-control-more-than-collaboration/</guid>
+      <description>I&amp;rsquo;ve used version control in some form or another since I was a freshman in college, however I&amp;rsquo;m quite the anomaly. I will use a tool fully knowing that its more than I need, just to learn something new. Initially, this is how I approached version control. Except for a few unique situations version control of my homework, seemed like more work than it was worth. I used to think version control was merely a collaboration tool for teams of people.</description>
+    </item>
+    
+    <item>
+      <title>Game Framework for C&#43;&#43; Practicum</title>
+      <link>http://www.codestrokes.com/2011/06/game-framework-for-c-practicum/</link>
+      <pubDate>Sat, 25 Jun 2011 22:37:51 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/06/game-framework-for-c-practicum/</guid>
+      <description>For this year&amp;rsquo;s C++ practicum, we are going to build a small game engine. I&amp;rsquo;m keeping the code on bitbucket: http://bitbucket.org/jwright/gamecomponents Join us, or fork the code and make your own design. I look forward to seeing how this progresses.</description>
+    </item>
+    
+    <item>
+      <title>We Need a -1 Button</title>
+      <link>http://www.codestrokes.com/2011/06/we-need-a-1-button/</link>
+      <pubDate>Wed, 22 Jun 2011 19:58:29 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/06/we-need-a-1-button/</guid>
+      <description>I really like all the little social media button on blogs. I hit the +1 and I feel like I contribute in some way. When I post here to my personal blog, wordpress automatically posts to my Facebook. Its entirely unoriginal, but I like it. However I think we need a -1 button for some articles. I read this: http://mashable.com/2011/06/22/arizona-social-media-day/ and thought to myself, &amp;ldquo;Wow, that&amp;rsquo;s dumb. I am embarrassed for my state.</description>
+    </item>
+    
+    <item>
+      <title>Being Truely Productive</title>
+      <link>http://www.codestrokes.com/2011/06/being-truely-productive/</link>
+      <pubDate>Sun, 19 Jun 2011 18:59:47 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/06/being-truely-productive/</guid>
+      <description>Productivity is an elusive mistress. I approach productivity much like any design problem. I lay out my requirements, and I iterate until I am happy with the outcome. Over the last few years I have spent a lot time laying out my design process. Along the way I found a number of tools that were helpful. This is my personal process and while I think it&amp;rsquo;s a great process. It&amp;rsquo;s important to refactor for yourself.</description>
+    </item>
+    
+    <item>
+      <title>Overview of Upcoming Articles</title>
+      <link>http://www.codestrokes.com/2011/06/overview-of-upcoming-articles/</link>
+      <pubDate>Thu, 16 Jun 2011 19:51:14 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/06/overview-of-upcoming-articles/</guid>
+      <description>I&amp;rsquo;ve been putting quite a bit of time into this semester&amp;rsquo;s upcoming C++ Practicum at ASU. I&amp;rsquo;m currently working on an article on Skip-Lists in D, and a few other C++ orientated articles. Expect a new post Sunday night. &amp;lsquo;til then, thank you for your patience, cheers.</description>
+    </item>
+    
+    <item>
+      <title>Type-Safe Variable Argument Lists</title>
+      <link>http://www.codestrokes.com/2011/06/type-safe-variable-argument-lists/</link>
+      <pubDate>Mon, 06 Jun 2011 06:59:00 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/06/type-safe-variable-argument-lists/</guid>
+      <description>Type-safety is a popular topic. Perceived as a panacea for bad software, the Department of Defense implemented Ada. The original thought was restriction synonymous with robustness. From this, opponents claim type safe languages place the programmer’s hands in handcuffs, thereby thwarting generic code. Modern languages, such as D, and Java leverage a statically checked type system with a focus on consistency, not restriction. Modern type systems abet generic code, without sacrificing robustness.</description>
+    </item>
+    
+    <item>
+      <title>Parallelism in D</title>
+      <link>http://www.codestrokes.com/2011/05/parallelism-in-d-bucket-sort-part-2/</link>
+      <pubDate>Sun, 29 May 2011 18:02:24 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/05/parallelism-in-d-bucket-sort-part-2/</guid>
+      <description>Parallelism, it sounds like a religion, and in some sense it is. Like many facets of software engineering, writing good parallel code is more of an art than a science. I come from a FPGA background where parallelism is part of the language; part of the culture! The tools are designed to find deadlocks, analyze timing and the language itself is fully aware of parallelism. The hardware world understands parallelism, yet writing parallel software is still difficult.</description>
+    </item>
+    
+    <item>
+      <title>Bucket Sort</title>
+      <link>http://www.codestrokes.com/2011/05/bucket-sort/</link>
+      <pubDate>Tue, 24 May 2011 04:59:59 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/05/bucket-sort/</guid>
+      <description>D Source Code
+Sorting is a very important operation in computer programs. Knuth devotes an entire chapter to sorting and search. Sorting algorithms, like most algorithms, use the Big O notation to compare computational complexity. Bucket sort is one such sorting algorithm. however bucket sort typically doesn’t actually sort the array. In the normal case, bucket sort is used to partition the data set into groups, or buckets. Each bucket is then sorted using a separate algorithm such as quicksort, or insertion sort.</description>
+    </item>
+    
+    <item>
+      <title>D for the C&#43;&#43; Programmer</title>
+      <link>http://www.codestrokes.com/2011/05/d-for-the-c-programmer-red-black-tree-part-3/</link>
+      <pubDate>Wed, 18 May 2011 03:06:36 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/05/d-for-the-c-programmer-red-black-tree-part-3/</guid>
+      <description>As a comparative study, I am porting a Red-Black Tree from C++ to the D programming language (Part 1, Part 2). Overall D is an easy, practical transition for the C++ programmer. D provides a number of features for implementing correct code, however it is D’s simplicity that makes it truly enticing as a replacement. While D retains _C Style Syntax, _it is considerably simpler than C++, especially in the presence of exceptions.</description>
+    </item>
+    
+    <item>
+      <title>Class Invariants</title>
+      <link>http://www.codestrokes.com/2011/05/class-invariants-red-black-tree-part-2/</link>
+      <pubDate>Fri, 13 May 2011 02:40:48 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/05/class-invariants-red-black-tree-part-2/</guid>
+      <description>This week, I started porting my C++ implementation of the Red-Black tree to D. I am trying to pay special attention to the features of D, intended to make writing correct code easier. While on that vane, I was reading an excellent article, discussing invariants, and I was pleased to find such a useful implementation of the class invariant in the D language.
+Invariants come from the same “design-by-contract” idiom, famous for pre- and post- conditions.</description>
+    </item>
+    
+    <item>
+      <title>The Red-Black Tree</title>
+      <link>http://www.codestrokes.com/2011/05/the-red-black-tree-part-1/</link>
+      <pubDate>Mon, 09 May 2011 06:59:01 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/05/the-red-black-tree-part-1/</guid>
+      <description>C++ Source Code D Source Code
+D provides a number of features that simplify designing software, especially in the embedded environment. I will show in this 2 part comparison, between C++ and D, that D helps one write correct code. Correct code is something Andrei Alexandrescu, stresses heavily as a prominent feature of D. I use the Red-Black Tree for such a comparison since its complicated enough to make memory management difficult, while retaining real-world application.</description>
+    </item>
+    
+    <item>
+      <title>Java 4K Contest</title>
+      <link>http://www.codestrokes.com/2011/05/java-4k-contest/</link>
+      <pubDate>Sat, 07 May 2011 22:10:54 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/05/java-4k-contest/</guid>
+      <description>Crazy challenging game contest: http://javaunlimited.net/contests/java4k.php Reminds me of the winners of a 96KB contest: http://en.wikipedia.org/wiki/.kkrieger</description>
+    </item>
+    
+    <item>
+      <title>Thing a Week: Algorithm Edition</title>
+      <link>http://www.codestrokes.com/2011/05/thing-a-week-algorithm-edition/</link>
+      <pubDate>Tue, 03 May 2011 23:37:37 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/05/thing-a-week-algorithm-edition/</guid>
+      <description>In homage to Jonathan Coulton, this summer I intend to explore a series of algorithms in an effort to both learn the D programming language, as well as deepen my computer science background. First up, the Red-Black Tree.</description>
+    </item>
+    
+    <item>
+      <title>Welcome to Code Strokes</title>
+      <link>http://www.codestrokes.com/2011/02/hello-world/</link>
+      <pubDate>Fri, 11 Feb 2011 02:37:45 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/02/hello-world/</guid>
+      <description>Welcome to Code Strokes. Our focus here is about elegant software design. We attempt to meld the worlds of deeply embedded real-time software, with modern software design principles. Take a look at our features. If you have any feedback leave a comment. Thank you, and welcome.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://www.codestrokes.com/desc/the-red-black-tree-desc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/desc/the-red-black-tree-desc/</guid>
+      <description>++++ Description = &amp;ldquo;&amp;rdquo; +date = 2014-08-12T11:09:35Z +title = &amp;ldquo;series the-red-black-tree&amp;rdquo; +series-desc = [&amp;ldquo;The Red-Black Tree&amp;rdquo;] ++++
+This is a Test Description</description>
     </item>
     
   </channel>

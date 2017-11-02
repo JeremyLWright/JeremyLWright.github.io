@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Correct Code on Code Strokes</title>
+    <title>Correct Code on Jeremy&#39;s CodeStrokes</title>
     <link>http://www.codestrokes.com/tags/correct-code/</link>
-    <description>Recent content in Correct Code on Code Strokes</description>
+    <description>Recent content in Correct Code on Jeremy&#39;s CodeStrokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
+    <copyright>Creative Commons Share Alike</copyright>
     <lastBuildDate>Wed, 18 May 2011 03:06:36 +0000</lastBuildDate>
-    <atom:link href="http://www.codestrokes.com/tags/correct-code/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.codestrokes.com/tags/correct-code/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>D for the C&#43;&#43; Programmer</title>
@@ -15,103 +18,7 @@
       <pubDate>Wed, 18 May 2011 03:06:36 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2011/05/d-for-the-c-programmer-red-black-tree-part-3/</guid>
-      <description>
-
-&lt;p&gt;As a comparative study, I am porting a Red-Black Tree from C++ to the &lt;a href=&#34;http://www.digitalmars.com/d/2.0/dmd-linux.html&#34;&gt;D programming language&lt;/a&gt; (&lt;a href=&#34;http://www.codestrokes.com/archives/59&#34;&gt;Part 1&lt;/a&gt;, &lt;a href=&#34;http://www.codestrokes.com/archives/83&#34;&gt;Part 2&lt;/a&gt;). Overall D is an easy, practical transition for the C++ programmer. D provides a number of features for implementing correct code, however it is D’s simplicity that makes it truly enticing as a replacement. While D retains _C Style Syntax, _it is considerably simpler than C++, especially in the presence of exceptions.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;h3 id=&#34;simple-and-familiar:26e84b0ada89f819fa8930fe4a08f10c&#34;&gt;Simple and Familiar&lt;/h3&gt;
-
-&lt;p&gt;Readable code makes maintaining programs simpler, ergo cheaper.  D’s syntax stems from the same tree as C, allowing programmers to leverage their considerable experience; yet D comes with a number of useful changes to make code more readable, creating a simple, familiar environment.  This project was intended to expose the differences between D and C++.  Properties are an excellent example of a small change made in D, which reaps great benefit for readability.  Wait, what’s the problem? One can declare getters and setters in C++, isn’t that enough? I say no.  Take the following example in C++:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;void RedBlackTree::Transplant(RedBlackNode::Ptr u, RedBlackNode::Ptr v)
-{
-    if(u-&amp;gt;Parent() == nil)
-        root = v;
-    else if(u == u-&amp;gt;Parent()-&amp;gt;Left())
-        u-&amp;gt;Parent()-&amp;gt;Left(v);
-    else
-        u-&amp;gt;Parent()-&amp;gt;Right(v);
-    v-&amp;gt;Parent(u-&amp;gt;Parent());
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Line 6 actually modified u’s right sibling (u-&amp;gt;Parent()-&amp;gt;Right()).  Where is the equal sign? There isn’t one. Experienced C++ programmers are used to looking at this deficiency as status quo.  However, its much easier in D to see the statement’s intent.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;void Transplant(RedBlackNode u, RedBlackNode v)
-{
-    if(u.Parent == nil)
-        root = v;
-    else if(u == v.Parent.Left)
-        u.Parent.Left = v;
-    else
-                u.Parent.Right = v;
-    v.Parent = u.Parent;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;D uses the property idiom to clearly show that an assignment is taking place.  This simple example is powerful.  Notice that the &lt;em&gt;syntax is nearly identical&lt;/em&gt; between the 2 languages. This similarity makes it very easy for one to use their current C++ skills almost immediately.&lt;/p&gt;
-
-&lt;h3 id=&#34;c-is-whitespace-sensitive:26e84b0ada89f819fa8930fe4a08f10c&#34;&gt;C++ is Whitespace Sensitive&lt;/h3&gt;
-
-&lt;p&gt;One of the biggest complaints I hear from new &lt;a href=&#34;http://www.python.org&#34;&gt;python&lt;/a&gt; programmers is whitespace sensitivity.  Python uses whitespace as a method to control scope, something most editors do automatically anyway using indention.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;def fn1(x):
-    if(x is int):
-        return 1+1;
-    else:
-        x = str(int(x) + 1)
-        return x;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;By forcing whitespace in the syntax braces (“{“ and “}”) are unnecessary, and all python programs look the same making it easier to share code.  It works well, and Python if very consistent in it’s implementation. C style languages are not whitespace sensitive, &lt;strong&gt;except&lt;/strong&gt; special cases in C++.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;void fn1()
-{
-    vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; stl_2d_vector; //Doesn&#39;t compile
-    vector&amp;lt;vector&amp;lt;int&amp;gt; &amp;gt; stl_2d_vector; //Does compile
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;C++ uses the angle-brackets “&amp;lt;” and “&amp;gt;” for a number of functions:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Templates&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Less-Than, Greater-Than comparison&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Bit-Wise Shifting&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Stream-Insertion Operator&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Stream-Extraction Operator&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;This isn’t so bad except that there are two separate, semantic classes here.  Sometimes the &amp;lt; and &amp;gt; characters are used to &lt;strong&gt;enclose text&lt;/strong&gt; as in the &lt;int&gt; example above.  Otherwise, the &amp;lt; and &amp;gt; characters do &lt;strong&gt;not enclose text&lt;/strong&gt; and form an independent operator.  Said another way, angle brackets can form a digraph operator, and can form a semantic grouping…depending on the context.  Context makes C++ difficult to read.&lt;/p&gt;
-
-&lt;p&gt;This is just one example of how the obtuse syntax of C++ makes writing a compiler as well as readable code, difficult.  In this example, the compiler is trying to treat the “&amp;gt;&amp;gt;” digraph as an operator, instead of grouping the template arguments.  The space between the 2 “&amp;gt;” symbol allows the compiler to pair the angle brackets, enclose the template and compile the expression.&lt;/p&gt;
-
-&lt;p&gt;D provides a &lt;a href=&#34;http://www.digitalmars.com/d/2.0/templates-revisited.html&#34;&gt;consistent alternative&lt;/a&gt;. Which leverage an existing operator for enclosing symbols, the parentheses.  D makes instantiating templates easy:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;void fn1()
-{
-    vector!(vector!(int)) stl_2d_vector; //Does compile
-    vector!(vector!(int) ) stl_2d_vector; //Still compiles
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The “!” operator is always used as a unary operator. Sometimes it can be used as not or one’s complement (bit-twiddle) as in:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;if( t != 1) //If T is not equal to 1
-    //Do Something
-t = !t; // One&#39;s complement t;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;However, ! always means “I stand alone, and I modify the token to my right”.  When we create a template, the ! modifies the enclosing parenthetical statement to transform it to a template expression.  D does not overload operators, or tokens. D does not use context sensitive syntax.  D, like python, allows one to write very readable software.&lt;/p&gt;
-
-&lt;p&gt;D gives us tools to write &lt;a href=&#34;http://www.codestrokes.com/archives/83&#34;&gt;correct code&lt;/a&gt;, and offers a simplified syntax that leverages our existing C++ experience.  Starting new projects in a new language is a daunting task, yet D offers a lower-risk path in upgrading to a modern language.  D isn’t perfect but it provides a number of features for C++ developers to start solving real problems, today.&lt;/p&gt;
-</description>
+      <description>As a comparative study, I am porting a Red-Black Tree from C++ to the D programming language (Part 1, Part 2). Overall D is an easy, practical transition for the C++ programmer. D provides a number of features for implementing correct code, however it is D’s simplicity that makes it truly enticing as a replacement. While D retains _C Style Syntax, _it is considerably simpler than C++, especially in the presence of exceptions.</description>
     </item>
     
     <item>
@@ -120,59 +27,8 @@ t = !t; // One&#39;s complement t;
       <pubDate>Fri, 13 May 2011 02:40:48 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2011/05/class-invariants-red-black-tree-part-2/</guid>
-      <description>&lt;p&gt;This week, I started porting my &lt;a href=&#34;http://www.codestrokes.com/archives/59&#34;&gt;C++ implementation&lt;/a&gt; of the Red-Black tree to D.  I am trying to pay special attention to the features of D, intended to make writing correct code easier. While on that vane,  I was reading an excellent &lt;a href=&#34;http://reprog.wordpress.com/2010/04/25/writing-correct-code-part-1-invariants-binary-search-part-4a/&#34;&gt;article&lt;/a&gt;, discussing invariants, and I was pleased to find such a useful implementation of the &lt;a href=&#34;http://www.digitalmars.com/d/2.0/class.html#Invariant&#34;&gt;class invariant&lt;/a&gt; in the D language.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;Invariants come from the same “&lt;a href=&#34;http://en.wikipedia.org/wiki/Design_by_contract&#34;&gt;design-by-contract&lt;/a&gt;” idiom, famous for pre- and post- conditions. Essentially, invariants describe a state, or behavior which must remain true for a class.  If the invariant fails, during the classes life-cycle something is wrong; either the assumptions underlying the class’s behavior (the invariant is wrong), or a bug in the class itself.  In either case, the invariant help the you, the developer find a problem.  While discussing this feature a colleague asked,&lt;/p&gt;
-
-&lt;blockquote&gt;Why would I want to maintain a ‘fixed’ state in my class. How does this not interfere with the classes behavior?  I don’t see how I would use this in a nontrivial application.&lt;/blockquote&gt;
-
-&lt;p&gt;“How do I use this in a real application?” its quite a loaded question, however valuable. For my small red-black tree, I’m using invariants to check that the “&lt;a href=&#34;http://en.wikipedia.org/wiki/Red-black_tree#Properties&#34;&gt;black-height&lt;/a&gt;” is maintained.  This is essential to the performance of the class, both in terms of correctness, and run-time complexity.  The Delete operation, for instance, will not function correctly if the black height is incorrect. This “black-height” is a property of the entire class as a whole, it must be maintained at all time for the class to be correct.  This is the very definition of the &lt;a href=&#34;http://en.wikipedia.org/wiki/Class_invariant&#34;&gt;class invariant&lt;/a&gt;. Excellent! However this still doesn’t satisfy our question; in a more general context, how does the class invariant help us?&lt;/p&gt;
-
-&lt;p&gt;The intent of the class invariant is to maintain a &lt;strong&gt;consistent state&lt;/strong&gt;, not a fixed one.  Consistency is an important concept we work hard to maintain in our programs. Instead of a class, with its mutable state, lets look at a simpler construct in programming, a loop.&lt;/p&gt;
-
-&lt;p&gt;The loop conditional can be thought of as an invariant for that scope. When the invariant is no longer true, the work of our loop is done.  For example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;for (size_t i=0; i &amp;lt; string.length(); ++i)
-{
-    //do something...
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The, _i &amp;lt; string.length(), _is a simple invariant in that it must remain true through the life of the loop.  We cannot allow our index _i _to grow unbounded, or risk causing a segfault. Invariants, therefore, are an intimate part of controlling program consistency. Especially consistency through multiple states. We extend this concept to the class to keep a consistent view of data, or some more dynamic property.&lt;/p&gt;
-
-&lt;p&gt;So invariants are good, they help one question their design assumptions, and maintain class consistency. What does D provide to help us use this? The &lt;a href=&#34;http://www.digitalmars.com/d/2.0/class.html#Invariant&#34;&gt;class invariant&lt;/a&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;class RedBlackTree {
-    public:
-        this()
-        {
-            nil = new RedBlackNode(0);
-            nil.Left = nil;
-            nil.Right = nil;
-            nil.Parent = nil;
-            nil.Color = RedBlackNode.Colors.BLACK;
-            root = nil;
-        }
-        ~this(){ }
-
-        unittest
-        {
-        ///TODO fill out the unit tests.
-        }
-
-        invariant()
-        {
-            //Check the black height is equal across all simple paths
-            assert(verify_black_height() == true);
-        }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;D provides a custom function that will automatically be called before and after any public method is called.  This functionality is compiled out in release versions. So when the class is &lt;a href=&#34;http://en.wikipedia.org/wiki/Open/closed_principle&#34;&gt;closed&lt;/a&gt;, we can compile for release and automatically remove the runtime overhead. This makes for an extremely useful, yet low-cost vector toward writing &lt;strong&gt;correct code&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;D’s support for class invariants helps one achieve correct code simply, and concisely.  The language support permits the asserts to be checked automatically with minimal affect to the programmer’s flow. The class invariant contracts do not affect final performance in release builds. Consequently, invariants are a powerful tool in the quest for correct code and D leverages that perfectly!&lt;/p&gt;
-</description>
+      <description>This week, I started porting my C++ implementation of the Red-Black tree to D. I am trying to pay special attention to the features of D, intended to make writing correct code easier. While on that vane, I was reading an excellent article, discussing invariants, and I was pleased to find such a useful implementation of the class invariant in the D language.
+Invariants come from the same “design-by-contract” idiom, famous for pre- and post- conditions.</description>
     </item>
     
   </channel>

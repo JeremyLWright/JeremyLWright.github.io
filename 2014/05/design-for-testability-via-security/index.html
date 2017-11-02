@@ -1,187 +1,159 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<html lang="en">
 <head>
-  <title>
-    Design for Testability via Security  // Code Strokes
-  </title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Design for Testability via Security  - Jeremy&#39;s CodeStrokes</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="admin">
-
-  <meta property="og:title" content="Design for Testability via Security " />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:locale" content="en_US" />
-<meta property="og:url" content="http://www.codestrokes.com/2014/05/design-for-testability-via-security/" />
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
-  
-  
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
-  
-  
+<meta name="author" content="admin" />
+  <meta name="description" content="I was discussing bootloader design with a colleague of mine the other day. We were attempting to load new a third-party hardware component. The device has a poor protocol, and a useless verification step. This discussion got me thinking however how the concepts used to build a strong self-enforcing security protocol, also apply to building a testable, and reliable communication protocol. Thus, security helps us build better products not because they are secure, but because they are verifiable." />
 
-  <link rel="stylesheet" href="http://www.codestrokes.com//css/redlounge.css">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
-  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="Code Strokes" />
-
-    
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/docco.min.css">
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
+  <meta name="keywords" content="software, design, testing" />
 
 
-  
 
-  
 
-  
+
+
+<meta name="generator" content="Hugo 0.30.2" />
+
+
+<link rel="canonical" href="http://www.codestrokes.com/2014/05/design-for-testability-via-security/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
 </head>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-23129291-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
 <body>
-	
-
-	<div id="layout" class="pure-g">
-    <div class="sidebar pure-u-1 pure-u-md-1-4">
-  <div class="header">
-    
-
-    <h1 class="brand-title">CodeStrokes</h1>
-    <h2 class="brand-tagline">Software Artistry</h2>
-
-    <nav class="nav">
-      <ul class="nav-list">
-        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://www.codestrokes.com/">Home</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about/">About</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/posts/">Blog</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/series/">Series</a></li>
-        
-      </ul>
-    </nav>
-
-    
-    <div class="social-buttons">
-      
-        
-        <a href="https://github.com/JeremyLWright" target="_blank"><i class='fa fa-github'></i></a>
-        
-      
-        
-        <a href="https://www.twitter.com/jeremy_l_wright" target="_blank"><i class='fa fa-twitter'></i></a>
-        
-      
-        
-        <a href="https://www.linkedin.com/pub/jeremy-wright/5b/8/844" target="_blank"><i class='fa fa-linkedin'></i></a>
-        
-      
-      
-    </div>
-    
-
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Jeremy Wright</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 </div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a><a href="/project/">
+        <li class="mobile-menu-item">Projects</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Jeremy Wright</a>
+</div>
 
-	
-	
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/project/">Projects</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
 
-    <div class="content pure-u-1 pure-u-md-3-4">
-		<a name="top"></a>
-		
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Design for Testability via Security </h1>
 
-		
-			
-		    <div id="toc" class="pure-u-1 pure-u-md-1-4">
-				<small class="toc-label">Contents</small>
-		   	 	<nav id="TableOfContents">
+      <div class="post-meta">
+        <span class="post-time"> 2014-05-03 </span>
+        <div class="post-category">
+            <a href="/categories/security/">Security</a>
+          </div>
+        <span class="more-meta"> 1542 word </span>
+        <span class="more-meta"> 8 min read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+      <nav id="TableOfContents">
 <ul>
 <li>
 <ul>
 <li>
 <ul>
-<li><a href="#prepare:9d165bcce3b5cd91e19ccd1b43634f44">Prepare</a></li>
-<li><a href="#transfer:9d165bcce3b5cd91e19ccd1b43634f44">Transfer</a></li>
-<li><a href="#verify:9d165bcce3b5cd91e19ccd1b43634f44">Verify</a></li>
-<li><a href="#conclusion:9d165bcce3b5cd91e19ccd1b43634f44">Conclusion</a></li>
+<li><a href="#prepare">Prepare</a></li>
+<li><a href="#transfer">Transfer</a></li>
+<li><a href="#verify">Verify</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
 </ul></li>
 </ul></li>
 </ul>
 </nav>
-		    </div>
-		    
-	    
-  		<section class="post">
-            <h1 class="post-title">
-              <a href="/2014/05/design-for-testability-via-security/">Design for Testability via Security </a>
-            </h1>
-            <h3 class="post-subtitle">
-            	
-            </h3>
-            
-            	<span class="post-date">
-                	<span class="post-date-day"><sup>3</sup></span><span class="post-date-separator">/</span><span class="post-date-month">May</span> <span class="post-date-year">2014</span>
-            	</span>
-            	
-            
-            	
-            		<span class="post-author-single">By <a class="post-author"  target="">admin</a></span>
-            		
+  </div>
+</div>
 
-
-
-
-            	
-            
-
-			
-			
-				<div class="post-categories">
-				
-					<a class="post-category post-category-security" href="http://www.codestrokes.com//categories/security">Security</a>
-				
-				</div>
-			
-
-			
-
-			
-
-            
+    
+    <div class="post-content">
+      
 
 <p>I was discussing bootloader design with a colleague of mine the other day. We were attempting to load new a third-party hardware component. The device has a poor protocol, and a useless verification step. This discussion got me thinking however how the concepts used to build a strong self-enforcing security protocol, also apply to building a testable, and reliable communication protocol. Thus, security helps us build better products not because they are secure, but because they are verifiable.
-&lt;!&ndash; more &ndash;&gt;
+<!-- more -->
 This idea initially struck me as strange, since many of the secure software interfaces I&rsquo;ve used in the past, are quite obtuse. This is not a fundamental aspect of security, by rather an artifact of poor design (think OpenSSL). This is sad, since security is already a difficult concept, and requires a great deal of study to maintain throughout the life cycle of a product. Secure interfaces should make security easier, not more difficult. This is however a separate rant. So back to the bootloader.</p>
 
 <p>This specific device is connected by a CAN bus. This is not critical to my argument except the fact that CAN is a reliable, but slow and message order is not guaranteed. In fact, within a window of 4 packets, order is essentially random. Think about this for a moment: load firmware with random message order. The goal is to design a protocol to work with this. Firmware loading fits into a three step process: Prepare, Load, Verify. This process works independent of underlying storage techniques. For example, NAND must be erased on a full page boundary, that can be done in the prepare step. Loading to a file system, Prepare might be a simple NOP.</p>
@@ -197,7 +169,7 @@ Loader Loader Verifies data matches.
 
 <p>Remember, message order is random. If the bootloader dumps its flash back on the CAN bus, without a sequence number or flash addresses, the data that comes back is completely useless. Each data packet is intact, but is position within the overall data block is unknown. The best one can do is probabilisticly reorder the packets to attempt to get a confidence the bootloader has the same data we attempted to send. Okay, so what would be better? Lets model this as a security problem and design a secure document sending protocol.</p>
 
-<h3 id="prepare:9d165bcce3b5cd91e19ccd1b43634f44">Prepare</h3>
+<h3 id="prepare">Prepare</h3>
 
 <p>Alice and Bob want to exchange a document. (Any protocol can be made more &ldquo;secure&rdquo; by describing it with <a href="https://xkcd.com/1323/">Alice and Bob.</a>) The communication channel is UDP, untrusted, and public. How should Alice and Bob communicate? Every security protocol starts with authentication. Bob wants to verify the sender is Alice. Alice wants to verify it&rsquo;s sending the document to Bob, and not someone else. So lets negotiate a key based on a preshared secret. This will form the prepare step of our high-level bootloader model.
 <table >
@@ -249,7 +221,7 @@ alice_public_key(nonce_bob:sha256(nonce_bob):nonce_alice:sha256(nonce_alice))</p
 
 <p>Now only Bob and Alice at this time instance can have this new shared secret. Alice and Bob can now communicate securely. <del>Let&rsquo;s load some firmware to Bob now.</del> Let&rsquo;s transfer a document to Bob now.</p>
 
-<h3 id="transfer:9d165bcce3b5cd91e19ccd1b43634f44">Transfer</h3>
+<h3 id="transfer">Transfer</h3>
 
 <p>Alice creates a document and signs it e.g. document:alice_private_key(sha256(document)).  Notice that Alice&rsquo;s private key is used to encrypt here. This is correct. We want Bob to receive the document, create a hash of the document. Bob then uses Alice&rsquo;s public key to &ldquo;encrypt&rdquo; the signature sent by Alice. He will get the plain text hash, and compare. The signature does not protect the hash i.e. it does not provide confidentiality since anyone can decrypt with the public key. Instead the signature provides integrity. The hash protects that the document was unchanged. The signature of the hash protects that the hash was computed only by Alice.</p>
 
@@ -261,7 +233,7 @@ alice_public_key(nonce_bob:sha256(nonce_bob):nonce_alice:sha256(nonce_alice))</p
 
 <p>Once Bob has the entire message he can verify the signature.  Bob now has the document, all listeners only have cipher version of the document. Furthermore, Bob can verify the entire document is valid. Bob will <del>erase his flash, and load the new firmware into memory</del> PROFIT!</p>
 
-<h3 id="verify:9d165bcce3b5cd91e19ccd1b43634f44">Verify</h3>
+<h3 id="verify">Verify</h3>
 
 <p>The device my colleague and I are trying to fix simply dumped the document back to Alice.  Essentially:</p>
 
@@ -275,93 +247,151 @@ alice_public_key(nonce_bob:sha256(nonce_bob):nonce_alice:sha256(nonce_alice))</p
 
 <p>The packet is confidential because it is encrypted by aes. The message is protected from integrity because Alice already has the hash, she simple needs to verify that it matches the know value. Note that if Alice didn&rsquo;t have the hash already we would include a hash of the hash to provide further integrity. Alice knows that it was Bob who verified the flash because the hash is signed with Bob&rsquo;s key. Lastly, Alice knows the message is part of this load session and not a previous one replayed by an attacker because the whole message is encrypted by a session key.</p>
 
-<h3 id="conclusion:9d165bcce3b5cd91e19ccd1b43634f44">Conclusion</h3>
+<h3 id="conclusion">Conclusion</h3>
 
 <p>Alice and Bob now have a protocol secure against a number of attacks, but how is this useful for a bootloader? Each attack can be modeled as random noise, transmission errors, or other external effects would impede the flow of traffic. Security simply provides a more common vernacular for discussing transmission issues. It&rsquo;s also easier to reason about adversarial attackers rather than electrical interference. By translating the problem into a security one, we can model all these affects as &ldquo;bad people&rdquo; and it is a lot more fun to slay dragons, than it is to protect against some amorphous something.</p>
 
 <p>Okay, but what does this have to do with testability? Ah. It&rsquo;s subtle, but the same process we took to make our protocol secure also made each step verifiable. For instance, the final verification step could have been as simple as Bob sending an ACK that he verified the document&rsquo;s signature. This however isn&rsquo;t secure. An ACK can be faked, or replayed. Instead Bob build a cryptographically secure signature for Alice to verify. From a tester&rsquo;s perspective Alice is the &ldquo;verifier&rdquo;, and Bob generates test data. Bob cannot be trusted to verify something himself, the test must generate auditable output. Thus the same process which drove us to make a secure response, also generated a auditable one for the tester to report. Thus security is more useful than simply protecting our data, it helps us design better products.</p>
 
-	
-			
+    </div>
 
-			
-				<div class="tags-list">
-					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
-					
-	                <a class="post-tag post-tag-747" href="http://www.codestrokes.com//tags/747">747</a>,
-	                
-	                <a class="post-tag post-tag-bootloader" href="http://www.codestrokes.com//tags/bootloader">bootloader</a>,
-	                
-	                <a class="post-tag post-tag-firmware" href="http://www.codestrokes.com//tags/firmware">firmware</a>,
-	                
-	                <a class="post-tag post-tag-hash" href="http://www.codestrokes.com//tags/hash">hash</a>,
-	                
-	                <a class="post-tag post-tag-security" href="http://www.codestrokes.com//tags/security">Security</a>,
-	                
-	                <a class="post-tag post-tag-test" href="http://www.codestrokes.com//tags/test">test</a>,
-	                
-	                <a class="post-tag post-tag-verify" href="http://www.codestrokes.com//tags/verify">verify</a>,
-	                
-				</div>
-			
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">admin</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2014-05-03</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
 
-			
-				<div class="paging">
-					<span class="paging-label">More Reading</span>
-					
-					<div class="paging-newer">
-						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
-						<a class="paging-link" href="/2014/06/goodbye-project-euler/">Goodbye Project Euler</a>
-		            </div>
-		            
+    
+    
 
-					
-					<div class="paging-older">
-						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
-			            <a class="paging-link" href="/2014/02/cracking-subciphercpp/">Massively Intelligent Non-Deterministic Luminating Effortless Super Solver</a>
-		            </div>
-		            
-	            </div>
-            
-          </section>
+    <footer class="post-footer">
+      <div class="post-tags">
           
-          	<div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'codestrokes2';
-    var disqus_identifier = 'http:\/\/www.codestrokes.com\/2014\/05\/design-for-testability-via-security\/';
-    var disqus_title = 'Design for Testability via Security ';
-    var disqus_url = 'http:\/\/www.codestrokes.com\/2014\/05\/design-for-testability-via-security\/';
+          <a href="/tags/747/">747</a>
+          
+          <a href="/tags/bootloader/">bootloader</a>
+          
+          <a href="/tags/firmware/">firmware</a>
+          
+          <a href="/tags/hash/">hash</a>
+          
+          <a href="/tags/security/">Security</a>
+          
+          <a href="/tags/test/">test</a>
+          
+          <a href="/tags/verify/">verify</a>
+          
+        </div>
 
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2014/06/goodbye-project-euler/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Goodbye Project Euler</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2014/02/cracking-subciphercpp/">
+            <span class="next-text nav-default">Massively Intelligent Non-Deterministic Luminating Effortless Super Solver</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
     (function() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'codestrokes2';
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-          
-        
-      <div class="footer">
-	<hr class="thin" />
-	<div class="pure-menu pure-menu-horizontal pure-menu-open">
-		<ul class="footer-menu">
-		
-			<li><a href="/posts/">Blog</a></li>
-		
-			<li><a href="/series/">Series</a></li>
-		
-		</ul>
-	</div>
-
-	<p>&copy; 2015. All rights reserved. </p>
-</div>
-    </div>
-  </div>
-	
-
-	
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com/" class="dsq-brlink" target="_blank">comments powered by <span class="logo-disqus">Disqus</span></a>
 
   
+      </div>  
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://stackoverflow.com/users/1612667/jeremy-wright" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://www.linkedin.com/in/jeremylwright/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/JeremyLWright" class="iconfont icon-github" title="github"></a>
+  <a href="http://www.codestrokes.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2013 - 
+    2017
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Creative Commons Share Alike</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-23129291-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
 </body>
 </html>

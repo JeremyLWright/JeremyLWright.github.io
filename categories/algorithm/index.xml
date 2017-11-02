@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Algorithm on Code Strokes</title>
+    <title>Algorithm on Jeremy&#39;s CodeStrokes</title>
     <link>http://www.codestrokes.com/categories/algorithm/</link>
-    <description>Recent content in Algorithm on Code Strokes</description>
+    <description>Recent content in Algorithm on Jeremy&#39;s CodeStrokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
+    <copyright>Creative Commons Share Alike</copyright>
     <lastBuildDate>Sun, 07 Jul 2013 23:00:30 +0000</lastBuildDate>
-    <atom:link href="http://www.codestrokes.com/categories/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.codestrokes.com/categories/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Patterns are evidence of a language&#39;s lacking</title>
@@ -15,32 +18,7 @@
       <pubDate>Sun, 07 Jul 2013 23:00:30 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2013/07/patterns-are-evidence-of-a-languages-lacking/</guid>
-      <description>&lt;p&gt;A coworker of mine stated something interesting, &amp;ldquo;&amp;hellip;a pattern is evidence of missing feature in the language&amp;hellip;&amp;rdquo;. At first I struggled with this statement. How can you design a language general enough to be widely used, and simultaneously cover all the desirable idioms such that patterns are built in? At first this seemed silly to me, until I heard Erik Meijer state in a Haskell lecture, &amp;ldquo;..this is why we implemented LINQ as a pattern instead of a language feature&amp;hellip;&amp;rdquo;&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;It&amp;rsquo;s an interesting concept that a language is responsible for reducing patterns into the language itself. My coworker cited that subroutines were once a pattern for managing groups of functionality. Wikipedia defines a design pattern as a solution to a common problem in software engineering. In this respect, subroutines indeed were a pattern to assembly programmers.  Complex Instruction Sets allowed for a very different programming model than today’s assembly languages who are intended primarily for compilers, but humans. In this environment parameter passing was defined by convention, and even a companies coding standard. Adding a standard method for parameter passing, i.e. stack organization would massive improve productivity. C solved this and did so extremely efficiently. C’s parameter passing syntax makes it easy for programmers to describe small abstractions of functionality into individual blocks, or subroutines. Thus the language incorporated a prevalent pattern from industry.&lt;/p&gt;
-
-&lt;p&gt;Additionally, by incorporating this pattern into the syntax, the compiler writer is free to change the underlying implementation for each architecture. The PIC for instance has a hardware stack, thus the default pattern offered for some assemblers wouldn’t work directly. Ostensibly, one could adjust the pattern to work, and this is the recommended practice of patterns, to adjust their structure to fit the existing architecture however this incurs technical debt. Both in the original design to develop the correct adjustments to the pattern, as well as maintenance since the maintenance programmer is most likely left to rediscover the pattern’s structure. Thus while the subroutine pattern originally intended to reduce the complexity, once modified it incurs a new technical debt, translating the complexity to another part of the system. Luckily, Microchip offers a C compiler for the PIC thus, the syntax of C abstracts out the different methods the PIC manages a stack from different architectures. This is a massive productivity booster, and since the mechanical structure of a subroutine is abstracted away by the compiler, systems don’t incur the technical debt caused by modifying the pattern for this specific hardware.&lt;/p&gt;
-
-&lt;p&gt;So what is a language without patterns? I suspect such a language would by necessity be domain specific. Take the subroutine pattern again. C abstracted the subroutine into it’s syntax, much has Haskell has a function syntax. Haskell’s lazy semantics however have a more elaborate functional call hierarchy, as such ghc allocates all “stacks” as heap objects. In a talk Simon Peyton-Jones mentions that this made the LLVM port of Haskell more difficult. LLVM has a specific construct for stack allocated objects outside Haskell’s semantics. Currently, the LLVM backend is fantastic, and offers fantastic performance, especially for SIMD type programs, so the problem is obviously resolved. However it offers evidence to the point that any specific implementation forgoes some use cases.&lt;/p&gt;
-
-&lt;p&gt;I personally, like patterns, especially since they give programmers a common vocabulary for communicating complex structures, and behaviors. Domain specific languages are becoming a very popular topic. My latest studies of Haskell, show many such languages. Each program designing a domain specific language for the given requirements. Perhaps this is the future patterns, and programming in general. Future idioms may in fact encourage the implementation of domain specific languages, in which the required software is written.&lt;/p&gt;
-
-&lt;p&gt;Reference:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://blog.plover.com/prog/design-patterns.html&#34;&gt;http://blog.plover.com/prog/design-patterns.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Complex_instruction_set_computing&#34;&gt;http://en.wikipedia.org/wiki/Complex_instruction_set_computing&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/IBM_Basic_assembly_language&#34;&gt;http://en.wikipedia.org/wiki/IBM_Basic_assembly_language&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://channel9.msdn.com/Series/C9-Lectures-Erik-Meijer-Functional-Programming-Fundamentals/Lecture-Series-Erik-Meijer-Functional-Programming-Fundamentals-Chapter-1&#34;&gt;http://channel9.msdn.com/Series/C9-Lectures-Erik-Meijer-Functional-Programming-Fundamentals/Lecture-Series-Erik-Meijer-Functional-Programming-Fundamentals-Chapter-1&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.haskell.org/pipermail/glasgow-haskell-users/2007-January/011838.html&#34;&gt;http://www.haskell.org/pipermail/glasgow-haskell-users/2007-January/011838.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>A coworker of mine stated something interesting, &amp;ldquo;&amp;hellip;a pattern is evidence of missing feature in the language&amp;hellip;&amp;rdquo;. At first I struggled with this statement. How can you design a language general enough to be widely used, and simultaneously cover all the desirable idioms such that patterns are built in? At first this seemed silly to me, until I heard Erik Meijer state in a Haskell lecture, &amp;ldquo;..this is why we implemented LINQ as a pattern instead of a language feature&amp;hellip;&amp;rdquo;</description>
     </item>
     
     <item>
@@ -49,95 +27,7 @@
       <pubDate>Mon, 06 Jun 2011 06:59:00 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2011/06/type-safe-variable-argument-lists/</guid>
-      <description>&lt;p&gt;Type-safety is a popular topic. Perceived as a panacea for bad software, the Department of Defense implemented Ada.  The original thought was restriction synonymous with robustness. From this, opponents claim type safe languages place the programmer’s hands in handcuffs, thereby thwarting generic code. Modern languages, such as D, and Java leverage a statically checked type system with a focus on consistency, not restriction.  Modern type systems abet generic code, without sacrificing robustness.  Today, there seems to be a general trend toward strong typing.  Personally, I try to leverage the type system as a tool to ensure correct code.&lt;/p&gt;
-
-&lt;blockquote&gt;D is a powerful  language, that statically checks code correctness via a strong type system, yet still offers flexible constructs.&lt;/blockquote&gt;
-
-&lt;p&gt;D’s focus of code correctness, provides a strong type system, in a manner conducive to generic code.  D’s type-safe variable argument list is an example of this.&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://research.microsoft.com/en-us/projects/singularity/&#34;&gt;Singularity&lt;/a&gt;, &lt;a href=&#34;http://www.d-programming-language.org&#34;&gt;D&lt;/a&gt;, &lt;a href=&#34;http://channel9.msdn.com/Shows/Going+Deep/Verve-A-Type-Safe-Operating-System&#34;&gt;Verve&lt;/a&gt;, all make use of static typing as a tool to check program correctness.  Singularity is not a language, but rather an operating system written in a derivative of C# called &lt;a href=&#34;http://en.wikipedia.org/wiki/Sing_Sharp&#34;&gt;Sing#&lt;/a&gt;.  Sing# exposes a statically check message passing system called channels for inter-process communication.  The Sing# compiler, &lt;a href=&#34;http://en.wikipedia.org/wiki/Bartok_%28compiler%29&#34;&gt;Bartok&lt;/a&gt;, can statically verify space partitioning. Singularity calls this verification a software isolated process.&lt;/p&gt;
-
-&lt;blockquote&gt;The SIP (Software Isolated Process) defined by the Singularity project demonstrate the incredible power of strong, static type checking.&lt;/blockquote&gt;
-
-&lt;p&gt;The type guarantee within a SIP is so strong that Singularity doesn’t require a hardware MMU. Turning off the &lt;a href=&#34;http://en.wikipedia.org/wiki/Memory_management_unit&#34;&gt;MMU&lt;/a&gt; dramatically improves performance by essentially eliminating the cost of calling kernel code from application space.  Performance. That’s a pretty strong motivation for static type-checking.  Not to be left behind, D uses the &lt;a href=&#34;http://www.d-programming-language.org/safed.html&#34;&gt;Safe-D&lt;/a&gt; standard to make similar guarantees.  Furthermore, with a stricter environment leveraged by strong typing, the compiler may make extra optimizations to further improve performance.&lt;/p&gt;
-
-&lt;p&gt;Strong typing can increase performance, but its original intent was to improve robustness.  Ada typifies this.  Ada was developed by the Department of Defense for missiles and avionic equipment.  VHDL, a hardware description language based on Ada, attempts to make the same guarantees to improve dependability of custom hardware in FPGAs and ASICs. Yet, one possible example against strong typing is restriction prevents generic, flexible code, the proverbial “handcuffs”. This, however is a &lt;a href=&#34;http://www.urbandictionary.com/define.php?term=moo+point&#34;&gt;moo point&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;I worked on a logging mechanism for an avionic platform a few years ago.  This platform was written in C++ and the logging interface used a variable argument list.  Our coding standard strictly forbade variable argument lists. Despite this the developer wanted a _printf like _interface.  The code looked similar to the following.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;class BadIdea {
-public:
-    BadIdea (){}
-    virtual ~BadIdea (){}
-    int datum;
-private:
-};
-
-void logging_function(int g, ...)
-{
-    return;
-}
-
-int main(int argc, const char *argv[])
-{
-    BadIdea y;
-    logging_function(5, y);
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Luckily, gcc 4.5 notices that one cannot pass a class object (Non-POD type) to a variable argument list.  The compiler issues the following error.  This is correct behavior and an excellent use of static type checking.
-&lt;code&gt;badidea.cpp: In function ‘int main(int, const char**)’:
-badidea.cpp:18:22: error: cannot pass objects of non-trivially-copyable type
-‘class BadIdea’ through ‘...’&lt;/code&gt;
-Sadly, however C++ has not always done this.  Instead the error was similar to the following.
-&lt;code&gt;badidea.cpp: In function ‘int main(int, const char**)’:
-badidea.cpp:18:22: warning: cannot pass non POD type through ‘...’
-call will abort at runtime&lt;/code&gt;
-Call will &lt;em&gt;abort&lt;/em&gt; at runtime! This is only a warning? Seriously? Yes, this bug took our team several weeks to find.  The build system didn’t turn on warnings, so we never saw this.  As an aside this is an excellent argument for treating all warnings as errors.  The intention was a generic interface, yet C++’s type system wouldn’t support this. We turned on warnings, but left the offending code. The offending code flies to this day.&lt;/p&gt;
-
-&lt;p&gt;This week I implemented a bloom filter in D. A bloom filter is a statistical data structure similar to a hash table; however, unlike a hash table, a bloom filter stores “if” the data exists, instead of the data itself. Common in large data environments, such as BigTable, bloom filters use a number of hash functions when inserting and querying the data structure. The number of hash functions used is called k, where k’s value determines the false positive rate. Increasing k lowers the false positive rate, but the tradeoff is that it also increases the time to insert an element.&lt;/p&gt;
-
-&lt;blockquote&gt;D is great at providing a simple way to implement exactly what one needs.&lt;/blockquote&gt;
-
-&lt;p&gt;Implementing the hash functions as part of the bloom filter is a violation of the single-responsibility theorem.  Since the number of hash functions control the false positive rate, _and _the overall performance of the structure, the user should be able to control the hash functions.  The bloom filter’s sole purpose is store a value’s availability, nothing more.  Therefore, I needed to allow the user to pass in some arbitrary number of hash functions into the bloom filter.  D provides variable argument lists, but better still, it provides a type-safe version. The bloom filter’s constructor looks like the following.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;/**
- * Create a Bloom filter of a specified size.
- * Params:
- *  size = The number of bits for the bloom filter.
- *  hash_fns =  accept an arbitrary number of hash functions as a
- *     strongly typed array of function pointers.
- */
-this(size_t size, uint function(string)[] hash_fns ...)
-{
-    this.hash_functions = hash_fns;
-    a.length = size;
-}
-
-/* ... */
-int main(...)
-{
-      /* Pass 2 function pointers to the variable argument list */
-      Bloom b1 = new Bloom(5, &amp;amp;sax_hash, &amp;amp;sdbm_hash);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The bloom filter has no idea how big the hash list is, it just uses the hash functions generically.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;void add(string s)
-{
-    foreach(fn; hash_functions)
-    {
-        a[fn(s)%a.length] = 1; //a is a BitArray from std.bitmanip
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Excellent, no warnings. Statically typed interface, yet generic and flexible.  D truly is a fantastic language.&lt;/p&gt;
-
-&lt;p&gt;D provides a strongly typed variable argument list, to make code generic while maintaining correctness.  In fact D’s type system is very strong, and even provides a “safe” subset of the language to further increase the strictness.  Modules may be categorized into 1 of 3 classes: @safe, @trusted, @system.  The categories restrict which modules may be linked together, ensuring that code who claims to be safe, continues to be. D is a powerful  language, that statically checks code correctness via a strong type system, yet still offers flexible constructs.&lt;/p&gt;
-</description>
+      <description>Type-safety is a popular topic. Perceived as a panacea for bad software, the Department of Defense implemented Ada. The original thought was restriction synonymous with robustness. From this, opponents claim type safe languages place the programmer’s hands in handcuffs, thereby thwarting generic code. Modern languages, such as D, and Java leverage a statically checked type system with a focus on consistency, not restriction. Modern type systems abet generic code, without sacrificing robustness.</description>
     </item>
     
     <item>
@@ -146,82 +36,7 @@ int main(...)
       <pubDate>Sun, 29 May 2011 18:02:24 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2011/05/parallelism-in-d-bucket-sort-part-2/</guid>
-      <description>&lt;p&gt;Parallelism, it sounds like a religion, and in some sense it is. Like many facets of software engineering, writing good parallel code is more of an art than a science.  I come from a FPGA background where parallelism is part of the language; part of the culture! The tools are designed to find deadlocks, analyze timing and the language itself is fully aware of parallelism.  The hardware world understands parallelism, yet writing parallel software is still difficult.  D is making some pioneering steps in the right direction for &lt;a href=&#34;http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html&#34;&gt;parallelism&lt;/a&gt;.  I use a parallel implementation of bucket sort to show how D makes writing parallel code, correct.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;Parallelism is ingrained in the hardware engineer’s mind. The motivating purpose of parallelism is **performance. **There is simply no other justification for the pains of parallelism except the high performance potential it offers. The FPGA engineer’s tool-chain evolves around this fact.  The tools are designed to find deadlocks, analyze timing; however the most valuable feature is that the language itself is fully aware of parallelism. Take this simple Verilog example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;always @ (posedge clock or negedge reset_n)
-begin
-    if (reset_n == 1&#39;b0) begin
-        counter_out &amp;lt;=#1  4&#39;b0000;
-    end
-    else if (enable == 1&#39;b1) begin
-        counter_out &amp;lt;=#1  counter_out + 1;
-        counter_in &amp;lt;=#1 counter_in - 1;
-        led_out &amp;lt;=#1 led_out ^ 1;
-    end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The &amp;lt;= operator is called the non-blocking assignment.  In the example above, all three lines in the else condition execute simultaneously.  This is important; just by reading the code you can see that it is parallel.  Our software languages, C, C++, Java, do not make parallel code obvious.  In these languages parallelism tends to feel like a bolt-on, aftermarket feature that never really flows with the rest of the language, or design idioms.  While researching the background on this article, I found a fantastic write up on &lt;a href=&#34;http://www.futurechips.org/tips-for-power-coders/parallel-programming.html&#34;&gt;What Makes Parallel Programs Hard&lt;/a&gt;.  The author contends that parallel programs are hard because of inter-task dependencies.  This is true, but I would further the point that if the language supported parallelism at its core, as Hardware Description Languages do, writing parallel software wouldn’t be so difficult. Furthermore, if a language offered parallel idioms, duplicating robust parallel code would also be easier.&lt;/p&gt;
-
-&lt;p&gt;HDLs make it obvious that the code is parallel, until D I haven’t seen a language do it quite so well.  &lt;a href=&#34;http://www.codestrokes.com/?p=101&#34;&gt;Bucket Sort Part 1&lt;/a&gt; was a quick introduction to Bucket Sort as an algorithm, but the real power of bucket sort is how easily it can be parallelized. Once the list is segmented or “bucketized” each bucket may be sorted simultaneously.  I wrote a D implementation of this, and parallelism really offers incredible performance here.  Take a look.&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2011/05/threading_compared.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2011/05/threading_compared_thumb.png&#34; alt=&#34;threading_compared&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;This compares the runtimes of sorting 10 million numbers using various configurations of bucket sort.  Consistently, the multithreaded version is faster.  So how does D makes this easy?&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;uint[] bucket_sort(uint[] unsorted_data, immutable uint num_buckets)
-{
-    immutable auto interval = (minPos!(&amp;quot;a &amp;gt; b&amp;quot;)(unsorted_data)[0]/num_buckets)+1;
-    auto buckets = new uint[][num_buckets];
-
-    foreach(uint datum; unsorted_data)
-    {
-        scope(failure) { writefln(&amp;quot;%d %d %d&amp;quot;, datum, interval, num_buckets);}
-        buckets[datum/(interval)] ~= datum;
-    }
-
-    uint[] s;
-    version(MultiThreaded)
-    {
-        foreach(ref bucket; taskPool.parallel(buckets))
-        {
-            bucket.sort;
-        }
-
-    }
-    else
-    {
-        foreach(uint[] bucket; buckets)
-        {
-            bucket.sort;
-        }
-    }
-
-    foreach(uint[] bucket; buckets)
-    {
-        s ~= bucket;
-    }
-    return s;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This code has the obviousness we are looking for.  taskPool.parallel comes from the &lt;a href=&#34;http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html&#34;&gt;std.parallelism&lt;/a&gt; module starting in &lt;a href=&#34;http://www.digitalmars.com/d/download.html&#34;&gt;D 2.053&lt;/a&gt;.  Simply, by reading the source code, one can see that this code is parallel.  That’s it. The taskPool.parallel routine automatically divvies out units of work between new threads; more importantly, taskPool.parallel automatically joins all threads them at the end of the foreach scope.&lt;/p&gt;
-
-&lt;p&gt;Using this, we can find the optimal configuration of bucket size for both single-threaded and multi-threaded versions of the code.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2011/05/single_threaded.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2011/05/single_threaded_thumb.png&#34; alt=&#34;single_threaded&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2011/05/multi_threaded.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2011/05/multi_threaded_thumb.png&#34; alt=&#34;multi_threaded&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Interestingly, the optimal setting was different between the multithreaded and single threaded versions with multithreaded at 800 buckets and single threaded at 45,800 buckets.  However we can see from the standard deviation plots a sizable variation within a single configuration’s bucket size, while the average runtimes remains fairly flat.  Ergo, bucket size is not the performance bottle neck, it’s the actual sorting, and parallelism drastically illustrates this in the “Threading Compared” plot.&lt;/p&gt;
-
-&lt;p&gt;D provides two primary multithreading techniques, &lt;a href=&#34;http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html&#34;&gt;std.parallelism&lt;/a&gt;, discussed here, and &lt;a href=&#34;http://www.digitalmars.com/d/2.0/phobos/std_concurrency.html&#34;&gt;std.concurrency&lt;/a&gt; with a powerful message passing framework for effective inter-thread communication.  D makes robust, readable, parallel code, easy and correct.  In our case of bucket sort, with only a single line of code.&lt;/p&gt;
-</description>
+      <description>Parallelism, it sounds like a religion, and in some sense it is. Like many facets of software engineering, writing good parallel code is more of an art than a science. I come from a FPGA background where parallelism is part of the language; part of the culture! The tools are designed to find deadlocks, analyze timing and the language itself is fully aware of parallelism. The hardware world understands parallelism, yet writing parallel software is still difficult.</description>
     </item>
     
     <item>
@@ -230,44 +45,8 @@ end
       <pubDate>Tue, 24 May 2011 04:59:59 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2011/05/bucket-sort/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://bitbucket.org/jwright/bucket-sort/overview&#34;&gt;D Source Code&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Sorting is a very important operation in computer programs. Knuth devotes an entire chapter to sorting and search. Sorting algorithms, like most algorithms, use the &lt;a href=&#34;http://en.wikipedia.org/wiki/Big_Oh_notation&#34;&gt;Big O notation&lt;/a&gt; to compare &lt;a href=&#34;http://en.wikipedia.org/wiki/Computational_complexity_theory&#34;&gt;computational complexity&lt;/a&gt;.  &lt;a href=&#34;http://en.wikipedia.org/wiki/Bucket_sort&#34;&gt;Bucket sort&lt;/a&gt; is one such sorting algorithm.  however bucket sort typically doesn’t actually sort the array.  In the normal case, bucket sort is used to partition the data set into groups, or buckets.  Each bucket is then sorted using a separate algorithm such as quicksort, or insertion sort.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;Bucket sort leverages the fact that some algorithms are more efficient on smaller lists.  &lt;a href=&#34;http://en.wikipedia.org/wiki/Insertion_sort&#34;&gt;Insertion Sort&lt;/a&gt; is one such algorithm.  While insertion sort has an upper bound of O(n2), on small lists its performance is typically much better.  In insertion sort, performance is limited by the delta between current position and its correct position.  For small lists, this delta is typically small.  Insertion sort, is also stable, in-place, and unlike merge sort, easy to write an efficient implementation.&lt;/p&gt;
-
-&lt;p&gt;D provides a number  of features that make bucket sort easier to implement, especially its fantastic array support.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;uint[] bucket_sort(uint[] unsorted_data, immutable uint num_buckets,
-immutable uint threads)
-{
-    immutable auto interval =
-                  (minPos!(&amp;quot;a &amp;gt; b&amp;quot;)(unsorted_data)[0]/num_buckets)+1;
-
-    //Unique to D, arrays dimensions are &amp;quot;backwards&amp;quot; from C
-    auto buckets = new uint[][num_buckets]; 
-
-    foreach(uint datum; unsorted_data)
-    {
-        scope(failure) { writefln(&amp;quot;%d %d %d&amp;quot;, datum, interval, num_buckets);}
-        buckets[datum/(interval)] ~= datum;
-    }
-
-    uint[] s;
-    foreach(uint[] bucket; buckets)
-    {
-        s ~= bucket.sort;
-    }
-    return s;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Line 5 illustrates an extremely powerful feature of D: Template Mixins.  Line 5 uses the “a &amp;gt; b” string as compiled code within the function minPos.  minPos() returns a range slice with the minimum key as the first element.  Passing the “a &amp;gt; b” reverses this function, ergo the maximum key is the first position.  This is an extremely powerful technique influenced from functional languages.  D also allows one to concatenate arrays easily, using the “~=” operator.  This, as you can see, makes rejoining the buckets easy.&lt;/p&gt;
-
-&lt;p&gt;D is a powerful language, and the lambda functions offer a whole new design perspective.  Look for my next article where I leverage D’s &lt;a href=&#34;http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html#TaskPool&#34;&gt;TaskPool&lt;/a&gt; to parallelize bucket sort.&lt;/p&gt;
-</description>
+      <description>D Source Code
+Sorting is a very important operation in computer programs. Knuth devotes an entire chapter to sorting and search. Sorting algorithms, like most algorithms, use the Big O notation to compare computational complexity. Bucket sort is one such sorting algorithm. however bucket sort typically doesn’t actually sort the array. In the normal case, bucket sort is used to partition the data set into groups, or buckets. Each bucket is then sorted using a separate algorithm such as quicksort, or insertion sort.</description>
     </item>
     
     <item>
@@ -276,103 +55,7 @@ immutable uint threads)
       <pubDate>Wed, 18 May 2011 03:06:36 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2011/05/d-for-the-c-programmer-red-black-tree-part-3/</guid>
-      <description>
-
-&lt;p&gt;As a comparative study, I am porting a Red-Black Tree from C++ to the &lt;a href=&#34;http://www.digitalmars.com/d/2.0/dmd-linux.html&#34;&gt;D programming language&lt;/a&gt; (&lt;a href=&#34;http://www.codestrokes.com/archives/59&#34;&gt;Part 1&lt;/a&gt;, &lt;a href=&#34;http://www.codestrokes.com/archives/83&#34;&gt;Part 2&lt;/a&gt;). Overall D is an easy, practical transition for the C++ programmer. D provides a number of features for implementing correct code, however it is D’s simplicity that makes it truly enticing as a replacement. While D retains _C Style Syntax, _it is considerably simpler than C++, especially in the presence of exceptions.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;h3 id=&#34;simple-and-familiar:26e84b0ada89f819fa8930fe4a08f10c&#34;&gt;Simple and Familiar&lt;/h3&gt;
-
-&lt;p&gt;Readable code makes maintaining programs simpler, ergo cheaper.  D’s syntax stems from the same tree as C, allowing programmers to leverage their considerable experience; yet D comes with a number of useful changes to make code more readable, creating a simple, familiar environment.  This project was intended to expose the differences between D and C++.  Properties are an excellent example of a small change made in D, which reaps great benefit for readability.  Wait, what’s the problem? One can declare getters and setters in C++, isn’t that enough? I say no.  Take the following example in C++:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;void RedBlackTree::Transplant(RedBlackNode::Ptr u, RedBlackNode::Ptr v)
-{
-    if(u-&amp;gt;Parent() == nil)
-        root = v;
-    else if(u == u-&amp;gt;Parent()-&amp;gt;Left())
-        u-&amp;gt;Parent()-&amp;gt;Left(v);
-    else
-        u-&amp;gt;Parent()-&amp;gt;Right(v);
-    v-&amp;gt;Parent(u-&amp;gt;Parent());
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Line 6 actually modified u’s right sibling (u-&amp;gt;Parent()-&amp;gt;Right()).  Where is the equal sign? There isn’t one. Experienced C++ programmers are used to looking at this deficiency as status quo.  However, its much easier in D to see the statement’s intent.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;void Transplant(RedBlackNode u, RedBlackNode v)
-{
-    if(u.Parent == nil)
-        root = v;
-    else if(u == v.Parent.Left)
-        u.Parent.Left = v;
-    else
-                u.Parent.Right = v;
-    v.Parent = u.Parent;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;D uses the property idiom to clearly show that an assignment is taking place.  This simple example is powerful.  Notice that the &lt;em&gt;syntax is nearly identical&lt;/em&gt; between the 2 languages. This similarity makes it very easy for one to use their current C++ skills almost immediately.&lt;/p&gt;
-
-&lt;h3 id=&#34;c-is-whitespace-sensitive:26e84b0ada89f819fa8930fe4a08f10c&#34;&gt;C++ is Whitespace Sensitive&lt;/h3&gt;
-
-&lt;p&gt;One of the biggest complaints I hear from new &lt;a href=&#34;http://www.python.org&#34;&gt;python&lt;/a&gt; programmers is whitespace sensitivity.  Python uses whitespace as a method to control scope, something most editors do automatically anyway using indention.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;def fn1(x):
-    if(x is int):
-        return 1+1;
-    else:
-        x = str(int(x) + 1)
-        return x;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;By forcing whitespace in the syntax braces (“{“ and “}”) are unnecessary, and all python programs look the same making it easier to share code.  It works well, and Python if very consistent in it’s implementation. C style languages are not whitespace sensitive, &lt;strong&gt;except&lt;/strong&gt; special cases in C++.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;void fn1()
-{
-    vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; stl_2d_vector; //Doesn&#39;t compile
-    vector&amp;lt;vector&amp;lt;int&amp;gt; &amp;gt; stl_2d_vector; //Does compile
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;C++ uses the angle-brackets “&amp;lt;” and “&amp;gt;” for a number of functions:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Templates&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Less-Than, Greater-Than comparison&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Bit-Wise Shifting&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Stream-Insertion Operator&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Stream-Extraction Operator&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;This isn’t so bad except that there are two separate, semantic classes here.  Sometimes the &amp;lt; and &amp;gt; characters are used to &lt;strong&gt;enclose text&lt;/strong&gt; as in the &lt;int&gt; example above.  Otherwise, the &amp;lt; and &amp;gt; characters do &lt;strong&gt;not enclose text&lt;/strong&gt; and form an independent operator.  Said another way, angle brackets can form a digraph operator, and can form a semantic grouping…depending on the context.  Context makes C++ difficult to read.&lt;/p&gt;
-
-&lt;p&gt;This is just one example of how the obtuse syntax of C++ makes writing a compiler as well as readable code, difficult.  In this example, the compiler is trying to treat the “&amp;gt;&amp;gt;” digraph as an operator, instead of grouping the template arguments.  The space between the 2 “&amp;gt;” symbol allows the compiler to pair the angle brackets, enclose the template and compile the expression.&lt;/p&gt;
-
-&lt;p&gt;D provides a &lt;a href=&#34;http://www.digitalmars.com/d/2.0/templates-revisited.html&#34;&gt;consistent alternative&lt;/a&gt;. Which leverage an existing operator for enclosing symbols, the parentheses.  D makes instantiating templates easy:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;void fn1()
-{
-    vector!(vector!(int)) stl_2d_vector; //Does compile
-    vector!(vector!(int) ) stl_2d_vector; //Still compiles
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The “!” operator is always used as a unary operator. Sometimes it can be used as not or one’s complement (bit-twiddle) as in:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;if( t != 1) //If T is not equal to 1
-    //Do Something
-t = !t; // One&#39;s complement t;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;However, ! always means “I stand alone, and I modify the token to my right”.  When we create a template, the ! modifies the enclosing parenthetical statement to transform it to a template expression.  D does not overload operators, or tokens. D does not use context sensitive syntax.  D, like python, allows one to write very readable software.&lt;/p&gt;
-
-&lt;p&gt;D gives us tools to write &lt;a href=&#34;http://www.codestrokes.com/archives/83&#34;&gt;correct code&lt;/a&gt;, and offers a simplified syntax that leverages our existing C++ experience.  Starting new projects in a new language is a daunting task, yet D offers a lower-risk path in upgrading to a modern language.  D isn’t perfect but it provides a number of features for C++ developers to start solving real problems, today.&lt;/p&gt;
-</description>
+      <description>As a comparative study, I am porting a Red-Black Tree from C++ to the D programming language (Part 1, Part 2). Overall D is an easy, practical transition for the C++ programmer. D provides a number of features for implementing correct code, however it is D’s simplicity that makes it truly enticing as a replacement. While D retains _C Style Syntax, _it is considerably simpler than C++, especially in the presence of exceptions.</description>
     </item>
     
     <item>
@@ -381,59 +64,8 @@ t = !t; // One&#39;s complement t;
       <pubDate>Fri, 13 May 2011 02:40:48 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2011/05/class-invariants-red-black-tree-part-2/</guid>
-      <description>&lt;p&gt;This week, I started porting my &lt;a href=&#34;http://www.codestrokes.com/archives/59&#34;&gt;C++ implementation&lt;/a&gt; of the Red-Black tree to D.  I am trying to pay special attention to the features of D, intended to make writing correct code easier. While on that vane,  I was reading an excellent &lt;a href=&#34;http://reprog.wordpress.com/2010/04/25/writing-correct-code-part-1-invariants-binary-search-part-4a/&#34;&gt;article&lt;/a&gt;, discussing invariants, and I was pleased to find such a useful implementation of the &lt;a href=&#34;http://www.digitalmars.com/d/2.0/class.html#Invariant&#34;&gt;class invariant&lt;/a&gt; in the D language.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;Invariants come from the same “&lt;a href=&#34;http://en.wikipedia.org/wiki/Design_by_contract&#34;&gt;design-by-contract&lt;/a&gt;” idiom, famous for pre- and post- conditions. Essentially, invariants describe a state, or behavior which must remain true for a class.  If the invariant fails, during the classes life-cycle something is wrong; either the assumptions underlying the class’s behavior (the invariant is wrong), or a bug in the class itself.  In either case, the invariant help the you, the developer find a problem.  While discussing this feature a colleague asked,&lt;/p&gt;
-
-&lt;blockquote&gt;Why would I want to maintain a ‘fixed’ state in my class. How does this not interfere with the classes behavior?  I don’t see how I would use this in a nontrivial application.&lt;/blockquote&gt;
-
-&lt;p&gt;“How do I use this in a real application?” its quite a loaded question, however valuable. For my small red-black tree, I’m using invariants to check that the “&lt;a href=&#34;http://en.wikipedia.org/wiki/Red-black_tree#Properties&#34;&gt;black-height&lt;/a&gt;” is maintained.  This is essential to the performance of the class, both in terms of correctness, and run-time complexity.  The Delete operation, for instance, will not function correctly if the black height is incorrect. This “black-height” is a property of the entire class as a whole, it must be maintained at all time for the class to be correct.  This is the very definition of the &lt;a href=&#34;http://en.wikipedia.org/wiki/Class_invariant&#34;&gt;class invariant&lt;/a&gt;. Excellent! However this still doesn’t satisfy our question; in a more general context, how does the class invariant help us?&lt;/p&gt;
-
-&lt;p&gt;The intent of the class invariant is to maintain a &lt;strong&gt;consistent state&lt;/strong&gt;, not a fixed one.  Consistency is an important concept we work hard to maintain in our programs. Instead of a class, with its mutable state, lets look at a simpler construct in programming, a loop.&lt;/p&gt;
-
-&lt;p&gt;The loop conditional can be thought of as an invariant for that scope. When the invariant is no longer true, the work of our loop is done.  For example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;for (size_t i=0; i &amp;lt; string.length(); ++i)
-{
-    //do something...
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The, _i &amp;lt; string.length(), _is a simple invariant in that it must remain true through the life of the loop.  We cannot allow our index _i _to grow unbounded, or risk causing a segfault. Invariants, therefore, are an intimate part of controlling program consistency. Especially consistency through multiple states. We extend this concept to the class to keep a consistent view of data, or some more dynamic property.&lt;/p&gt;
-
-&lt;p&gt;So invariants are good, they help one question their design assumptions, and maintain class consistency. What does D provide to help us use this? The &lt;a href=&#34;http://www.digitalmars.com/d/2.0/class.html#Invariant&#34;&gt;class invariant&lt;/a&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;class RedBlackTree {
-    public:
-        this()
-        {
-            nil = new RedBlackNode(0);
-            nil.Left = nil;
-            nil.Right = nil;
-            nil.Parent = nil;
-            nil.Color = RedBlackNode.Colors.BLACK;
-            root = nil;
-        }
-        ~this(){ }
-
-        unittest
-        {
-        ///TODO fill out the unit tests.
-        }
-
-        invariant()
-        {
-            //Check the black height is equal across all simple paths
-            assert(verify_black_height() == true);
-        }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;D provides a custom function that will automatically be called before and after any public method is called.  This functionality is compiled out in release versions. So when the class is &lt;a href=&#34;http://en.wikipedia.org/wiki/Open/closed_principle&#34;&gt;closed&lt;/a&gt;, we can compile for release and automatically remove the runtime overhead. This makes for an extremely useful, yet low-cost vector toward writing &lt;strong&gt;correct code&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;D’s support for class invariants helps one achieve correct code simply, and concisely.  The language support permits the asserts to be checked automatically with minimal affect to the programmer’s flow. The class invariant contracts do not affect final performance in release builds. Consequently, invariants are a powerful tool in the quest for correct code and D leverages that perfectly!&lt;/p&gt;
-</description>
+      <description>This week, I started porting my C++ implementation of the Red-Black tree to D. I am trying to pay special attention to the features of D, intended to make writing correct code easier. While on that vane, I was reading an excellent article, discussing invariants, and I was pleased to find such a useful implementation of the class invariant in the D language.
+Invariants come from the same “design-by-contract” idiom, famous for pre- and post- conditions.</description>
     </item>
     
     <item>
@@ -442,168 +74,8 @@ t = !t; // One&#39;s complement t;
       <pubDate>Mon, 09 May 2011 06:59:01 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2011/05/the-red-black-tree-part-1/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;https://bitbucket.org/jwright/cse310-red-black-tree/overview&#34;&gt;C++ Source Code&lt;/a&gt;
-&lt;a href=&#34;https://bitbucket.org/jwright/red-black-tree-d&#34;&gt;D Source Code&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;D provides a number of features that simplify designing software, especially in the embedded environment.  I will show in this 2 part comparison, between C++ and D, that D helps one write &lt;strong&gt;correct code&lt;/strong&gt;.  Correct code is something &lt;a href=&#34;http://erdani.com/&#34;&gt;Andrei Alexandrescu&lt;/a&gt;, stresses heavily as a prominent feature of D.   I use the Red-Black Tree for such a comparison since its complicated enough to make memory management difficult, while retaining real-world application.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;C++ makes memory management difficult in practice. Memory management, an incidental complexity of C++, is especially difficult in the presence of exceptions. Our goal is to make a fast, correct data structure, not manage memory.  C++ obfuscates this goal.&lt;/p&gt;
-
-&lt;p&gt;There are a few idioms in C++ to help; Resource Acquisition Is Initialization, or RAII for short, states that “…the only code that can be guaranteed to be executed after an &lt;a href=&#34;http://en.wikipedia.org/wiki/Exception_handling&#34;&gt;exception&lt;/a&gt; is thrown are the &lt;a href=&#34;http://en.wikipedia.org/wiki/Destructor_%28computer_science%29&#34;&gt;destructors&lt;/a&gt; of objects residing on the &lt;a href=&#34;http://en.wikipedia.org/wiki/Stack_%28data_structure%29&#34;&gt;stack&lt;/a&gt; (&lt;a href=&#34;http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization&#34;&gt;Wikipedia&lt;/a&gt;)”. Smart Pointers help achieve this.  The Smart pointer offloads much of this responsibility, hiding the complexity, thereby allowing the programmer to focus solely on the task at hand. I use an idiom I learned from my friend &lt;a href=&#34;http://www.chrisanderman.com/&#34;&gt;Chris&lt;/a&gt;, to hide all raw pointers.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;
-    
-    #include 
-    
-    //Smart Class Idiom for RAII in C++
-    class SmartClass
-    {
-    public:
-        typedef std::tr1::shared_ptr Ptr;
-        typedef std::tr1::weak_ptr WeakPtr;
-        static SmartClass::Ptr construct(arguments)
-        {
-    	SmartClass::Ptr c(new SmartClass());
-    	c-&amp;gt;self = c;
-    	return c;
-        }
-    
-        virtual ~SmartClass();
-    private:
-        SmartClass();
-        SmartClass::WeakPtr self;
-    
-    };
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This is a very useful pattern for managing memory. The developer is not
-required to call delete, the smart pointer will do it automatically. Memory
-management is still not automatic, however. The programmer needs to resolve
-the smart vs. weak pointer relationship.  While this strong vs. weak is a much
-simpler question than determining the full _object lifecycle, _&lt;strong&gt;considerable
-effort&lt;/strong&gt; is still placed into managing memory. This detracts from our goal,
-while simultaneously, unnecessarily increasing our software’s complexity.&lt;/p&gt;
-
-&lt;p&gt;Firstly, what is a red-black tree? The &lt;a href=&#34;http://en.wikipedia.org/wiki/Red-black_tree&#34;&gt;Red-Black tree&lt;/a&gt; is an interesting data
-structure because it provides a &lt;em&gt;balanced&lt;/em&gt; binary tree.  There are several
-types of self-balancing binary trees available, AVL trees being one. The
-Red-Black tree, however, uses a less strict balancing mechanism than the AVL
-tree; this makes insertions to a Red-Black tree faster. Deletions are slower
-than an AVL tree. The Red-Black tree uses graph coloring to determining
-overall balance of the tree.&lt;/p&gt;
-
-&lt;p&gt;Balance is an important property of a binary tree to maintain algorithmic
-complexity. If there is not a rebalancing scheme in place, a BST can,
-depending on what order &lt;em&gt;keys&lt;/em&gt; are inserted, fill out as a linked list.
-Searching a linked list is O(n) or “linear” time, not the preferable O(log n).&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://scienceblogs.com/goodmath/2009/11/advanced_haskell_data_structur.php&#34;&gt;&lt;img src=&#34;http://scienceblogs.com/goodmath/upload/2007/01/unbalanced-trees.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The Red-Black tree uses graph coloring to maintain balance. Balance guarantee’s O(log n) search performance.&lt;/p&gt;
-
-&lt;h3 id=&#34;c-insert:5c9c8d9305c23e5a528460c65c1eaa2f&#34;&gt;C++ Insert&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;
-    
-    void RedBlackTree::Insert(uint32_t key)
-    {
-        RedBlackNode::Ptr z = RedBlackNode::construct(key);
-        RedBlackNode::Ptr x = root;
-        RedBlackNode::Ptr y = nil;
-    
-        while(x != nil)
-        {
-            y = x;
-            if(z-&amp;gt;Key() &amp;lt; x-&amp;gt;Key())
-                x = x-&amp;gt;Left();
-            else
-                x = x-&amp;gt;Right();
-        }
-    
-        z-&amp;gt;Parent(y);
-        if(y == nil)
-            root = z;
-        else if(z-&amp;gt;Key() &amp;lt; y-&amp;gt;Key())
-            y-&amp;gt;Left(z);
-        else
-            y-&amp;gt;Right(z);
-        z-&amp;gt;Left(nil);
-        z-&amp;gt;Right(nil);
-        z-&amp;gt;Color(RedBlackNode::RED);
-        Insert_Fixup(z);
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;There are a few issues with this implementation.  If an exception occurs while inserting a node, the Insert_Fixup() doesn’t get run.  An exception in this code, will not cause a memory, leak, however it will leave the tree in an indeterminate state. Any subsequent insertion into the tree will cause Insert_Fixup() to fail. This is &lt;strong&gt;NOT&lt;/strong&gt; correct code.&lt;/p&gt;
-
-&lt;h3 id=&#34;c-delete:5c9c8d9305c23e5a528460c65c1eaa2f&#34;&gt;C++ Delete&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;    void RedBlackTree::Delete(uint32_t key)
-    {
-    
-        RedBlackNode::Ptr z = Search(key);
-        RedBlackNode::Ptr x;
-        if(z == nil)
-            return;
-    
-        RedBlackNode::Ptr y = z;
-        RedBlackNode::color_t original_color = y-&amp;gt;Color();
-        if(z-&amp;gt;Left() == nil)
-        {
-            x = z-&amp;gt;Right();
-            Transplant(z,z-&amp;gt;Right());
-        }
-        else if(z-&amp;gt;Right() == nil)
-        {
-            x = z-&amp;gt;Left();
-            Transplant(z,z-&amp;gt;Left());
-        }
-        else
-        {
-            y = Minimum(z-&amp;gt;Right());
-            original_color = y-&amp;gt;Color();
-            x = y-&amp;gt;Right();
-            if(y-&amp;gt;Parent() == z)
-            {
-                x-&amp;gt;Parent(y);
-            }
-            else
-            {
-                Transplant(y,y-&amp;gt;Right());
-                y-&amp;gt;Right(z-&amp;gt;Right());
-                y-&amp;gt;Right()-&amp;gt;Parent(y);
-            }
-            Transplant(z,y);
-            y-&amp;gt;Left(z-&amp;gt;Left());
-            y-&amp;gt;Left()-&amp;gt;Parent(y);
-            y-&amp;gt;Color(z-&amp;gt;Color());
-        }
-        if(original_color == RedBlackNode::BLACK)
-        {
-            Delete_Fixup(x);
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The Smart Pointer pointer idiom really flexes its power here. The most difficult part about the Red-Black Tree implementation is deleting nodes. One needs to be careful not to delete nodes too soon and cause a &lt;a href=&#34;http://en.wikipedia.org/wiki/Dangling_pointer&#34;&gt;&lt;em&gt;dangling-pointer&lt;/em&gt;&lt;/a&gt;_ _yet, its important that one does delete the nodes to prevent a leak memory, however as you can see there are no delete calls above. The Smart Pointers handle delete when the node falls out of scope.  This implementation does not leak memory! (See the valgrind scripts for evidence).  That is a powerful statement in C++, and difficult to achieve with manual memory management.&lt;/p&gt;
-
-&lt;p&gt;Additionally, smart pointers indirectly offer a very powerful tool: Division of responsibility. The Smart pointers are responsible for managing memory. In the spirit of the &lt;em&gt;Single-Responsibility-Theorem&lt;/em&gt;, they only manage memory, and they do it well. So well, that the developer can focus on the algorithm alone, instead of disrupting the flow with extra memory management code.&lt;/p&gt;
-
-&lt;h4 id=&#34;conclusion:5c9c8d9305c23e5a528460c65c1eaa2f&#34;&gt;Conclusion&lt;/h4&gt;
-
-&lt;p&gt;Excellent! We have a self-balancing BST, that doesn’t leak memory, however is this code correct? No. It is possible, that an exception will leave the tree in a bad state, thereby invalidating the entire structure.  We need a mechanism that provides transactional semantics.  This is difficult in C++, especially due to the &lt;a href=&#34;http://en.wikipedia.org/wiki/Exception_handling_syntax#C.2B.2B&#34;&gt;lack of a finally statement&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;It’s important to understand that smart pointer’s are not a panacea. They do not solve all memory management issue in C++. There are still artifacts of memory management without our algorithm, detracting from the simplicity of our design.  Without a comprehensive memory solution, we will never lose this incidental complexity.&lt;/p&gt;
-
-&lt;p&gt;D provides a number of features that helps one write transactional, &lt;strong&gt;correct&lt;/strong&gt; code. One issue, is in C++, exceptions are much of a “bolt-on” feature.  Much as exceptions are pervasive in our daily lives so in D, exceptions are pervasive in the language.  Its naïve to believe that code will not fail, yet this is how exception management in C++ feels. As evidence of this, one may throw an exception from anywhere in D, even in a destructor; C++ cannot do &lt;a href=&#34;http://www.parashift.com/c++-faq-lite/exceptions.html#faq-17.9&#34;&gt;this&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;In Part 2, we’ll look at how D’s exception management, garbage collection, and the &lt;a href=&#34;http://www.d-programming-language.org/exception-safe.html&#34;&gt;scope() statement&lt;/a&gt; help us write clear, correct code, while lowering incidental complexity.&lt;/p&gt;
-</description>
+      <description>C++ Source Code D Source Code
+D provides a number of features that simplify designing software, especially in the embedded environment. I will show in this 2 part comparison, between C++ and D, that D helps one write correct code. Correct code is something Andrei Alexandrescu, stresses heavily as a prominent feature of D. I use the Red-Black Tree for such a comparison since its complicated enough to make memory management difficult, while retaining real-world application.</description>
     </item>
     
     <item>
@@ -612,8 +84,7 @@ Searching a linked list is O(n) or “linear” time, not the preferable O(log n
       <pubDate>Tue, 03 May 2011 23:37:37 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2011/05/thing-a-week-algorithm-edition/</guid>
-      <description>&lt;p&gt;In homage to &lt;a href=&#34;http://www.jonathancoulton.com/primer/thing-a-week/&#34;&gt;Jonathan Coulton&lt;/a&gt;, this summer I intend to explore a series of algorithms in an effort to both learn the &lt;a href=&#34;http://d-programming-language.org/&#34;&gt;D programming language&lt;/a&gt;, as well as deepen my computer science background. First up, the Red-Black Tree.&lt;/p&gt;
-</description>
+      <description>In homage to Jonathan Coulton, this summer I intend to explore a series of algorithms in an effort to both learn the D programming language, as well as deepen my computer science background. First up, the Red-Black Tree.</description>
     </item>
     
   </channel>

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Parallelism on Code Strokes</title>
+    <title>Parallelism on Jeremy&#39;s CodeStrokes</title>
     <link>http://www.codestrokes.com/categories/parallelism/</link>
-    <description>Recent content in Parallelism on Code Strokes</description>
+    <description>Recent content in Parallelism on Jeremy&#39;s CodeStrokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
+    <copyright>Creative Commons Share Alike</copyright>
     <lastBuildDate>Sun, 23 Oct 2011 17:55:47 +0000</lastBuildDate>
-    <atom:link href="http://www.codestrokes.com/categories/parallelism/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.codestrokes.com/categories/parallelism/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Parallel Game-of-Life</title>
@@ -15,142 +18,7 @@
       <pubDate>Sun, 23 Oct 2011 17:55:47 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2011/10/parallel-game-of-life/</guid>
-      <description>
-
-&lt;p&gt;Conway&amp;rsquo;s &lt;a href=&#34;http://www.bitstorm.org/gameoflife/&#34;&gt;Game of Life&lt;/a&gt; is a dramatic illustration of emmergent behavior; that a seemingly complex system, such as cell mitosis can be governed by a set of simple rules. OpenMP is a fantastic set of language extensions which allows one to add dramatic parallelism without complex thread management.  As a demonstration of &lt;a href=&#34;http://openmp.org/wp/&#34;&gt;OpenMP&lt;/a&gt;&amp;rsquo;s simplicity I implemented the Game of Life. The code and all analysis is available on &lt;a href=&#34;https://bitbucket.org/jwright/parallel-game-of-life&#34;&gt;bitbucket.org&lt;/a&gt;.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;In a real program, it common to have swathes of code which cannot be made parallel. OpenMP&amp;rsquo;s limited perspective on data limits one further.  As such, OpenMP is most effective when the data is decomposed into independently manageable chunks. To evaluate the performance affect of OpenMP on my implementation I used a single Base Class to implement the serial portion of the code. Each child class makes small modifications to the generation calculation, decomposing the data in different ways.  I made three decompositions:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Decomposition by Rows&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Decomposition by Columns&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Random Decomposition by Cell&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Interestingly, the relative performance of each mechanism was quite volatile. The serial version of the code is quite simple. Basically, calculate each live/die action for every cell then, after all calculations are made, commit the updates in one atomic action.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;void GameGrid::CalculateGeneration()
-{
-    list delayedUpdates;
-
-    for(size_t col = 0; col &amp;lt; GetGridSize(); ++col)
-    {
-        for(size_t row = 0; row &amp;lt; GetGridSize(); ++row)
-        {
-            uint32_t livingNeighbors = CountLivingNeighbors(col, row);
-#ifdef DEBUG
-            cout &amp;lt;&amp;lt; &amp;quot;Row: &amp;quot; &amp;lt;&amp;lt; row
-                &amp;lt;&amp;lt; &amp;quot;Col: &amp;quot; &amp;lt;&amp;lt; col
-                &amp;lt;&amp;lt; &amp;quot;: &amp;quot; &amp;lt;&amp;lt; livingNeighbors &amp;lt;&amp;lt; endl;
-#endif
-            Update u;
-            u.threadId = omp_get_thread_num();
-            u.position = &amp;amp;(Grid[col][row]);
-            u.threadPosition = &amp;amp;(GridThreads[col][row]);
-            if(Grid[col][row]) //If Cell is alive
-            {
-                if(livingNeighbors = 4)
-                {
-                    //Kill Cell
-                    u.updateValue = false;
-                    delayedUpdates.push_back(u);
-                }
-                /* else remain alive */
-            }
-            else
-            {
-                if(livingNeighbors == 3)
-                {
-                    //ConceiveCell
-                    u.updateValue = true;
-                    delayedUpdates.push_back(u);
-                }
-            }
-
-        }
-    }
-    commitUpdates(delayedUpdates);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Even this simple routine can generate incredible emergent behavior.&lt;/p&gt;
-
-&lt;p&gt;Your browser does not support the video tag.&lt;/p&gt;
-
-&lt;p&gt;Now, we have a serial platform to extend into a parallel one. First we extend the base class with simple inheritance.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;class GameGridParallelCol : public GameGrid
-{
-    public:
-        typedef std::tr1::shared_ptr Ptr; ///@note The Anderson Smart Pointer Idiom
-        typedef std::tr1::weak_ptr WeakPtr;
-        static GameGridParallelCol::Ptr construct(string filename, size_t size);
-        virtual ~GameGridParallelCol();
-        virtual void CalculateGeneration();
-    protected:
-    private:
-
-        GameGridParallelCol(string filename, size_t size);
-        GameGridParallelCol::WeakPtr self;
-
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The using OpenMP Directives add col decomposition:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;void GameGridParallelCol::CalculateGeneration()
-{
-    vector delayedUpdates[omp_get_max_threads()]; //Create duplicate update lists, to avoid critical sections.
-   for(size_t row = 0; row &amp;lt; GetGridSize(); ++row)
-    {
-#pragma omp parallel for
-        for(size_t col = 0; col &amp;lt; GetGridSize(); ++col)
-        {
-            uint32_t livingNeighbors = CountLivingNeighbors(col, row);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here is the power of OpenMP, its simplicity.  OpenMP exposes a set of #pragma functions which apply parallelism to the beginning of a scope block, and a barrier at the end of the scope block. Automatic parallelism, it doesn&amp;rsquo;t get easier than this. However OpenMP&amp;rsquo;s simplicity does hamper it in a few ways. OpenMP directives for instance, cannot batch C++ iterators. Now we have a thread pool which will run segments of the game of life in parallel.&lt;/p&gt;
-
-&lt;p&gt;[caption id=&amp;ldquo;attachment_420&amp;rdquo; align=&amp;ldquo;aligncenter&amp;rdquo; width=&amp;ldquo;792&amp;rdquo; caption=&amp;ldquo;Column Order Decomposition&amp;rdquo;]&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2011/10/Screenshot-at-2011-10-22-215034.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2011/10/Screenshot-at-2011-10-22-215034.png&#34; alt=&#34;&#34; /&gt;
-&lt;/a&gt;[/caption]&lt;/p&gt;
-
-&lt;p&gt;The right half of the image illustrates each thread, one for each color, as it updates a section of the game grid.  (Decomposition into rows is left as an exercise). Extending this we can make a fully parallel version.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#pragma omp parallel for collapse(2) schedule(dynamic)
-   for(size_t row = 0; row &amp;lt; GetGridSize(); ++row)
-    {
-        for(size_t col = 0; col &amp;lt; GetGridSize(); ++col)
-        {
-            uint32_t livingNeighbors = CountLivingNeighbors(col, row);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Rendering the following:&lt;/p&gt;
-
-&lt;p&gt;[caption id=&amp;ldquo;attachment_422&amp;rdquo; align=&amp;ldquo;aligncenter&amp;rdquo; width=&amp;ldquo;792&amp;rdquo; caption=&amp;ldquo;Full data decomposition with dynamic thread balancing&amp;rdquo;]&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2011/10/CorrectedFullThreadRender.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2011/10/CorrectedFullThreadRender.png&#34; alt=&#34;&#34; /&gt;
-&lt;/a&gt;[/caption]&lt;/p&gt;
-
-&lt;p&gt;Now we have a fully parallel version where threads calculate cells at random, as the thread is available. Strangely, this isn&amp;rsquo;t always the fastest algorithm.&lt;/p&gt;
-
-&lt;h2 id=&#34;analysis:d59e23fa831b00ad3ec19e2fe0a18821&#34;&gt;Analysis&lt;/h2&gt;
-
-&lt;p&gt;No single decomposition wins out. As such there is no generalization such that one threading mechanism is faster than another in all cases. The Full threading model was mst consistant, but the Row and Column decompositions actually got slower as more cores were added.&lt;/p&gt;
-
-&lt;p&gt;[caption id=&amp;ldquo;attachment_423&amp;rdquo; align=&amp;ldquo;aligncenter&amp;rdquo; width=&amp;ldquo;695&amp;rdquo; caption=&amp;ldquo;6-core Speedup&amp;rdquo;]&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2011/10/fitted-speedup.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2011/10/fitted-speedup-1024x768.png&#34; alt=&#34;&#34; /&gt;
-&lt;/a&gt;[/caption]&lt;/p&gt;
-
-&lt;p&gt;[caption id=&amp;ldquo;attachment_424&amp;rdquo; align=&amp;ldquo;aligncenter&amp;rdquo; width=&amp;ldquo;695&amp;rdquo; caption=&amp;ldquo;12-core Speedup&amp;rdquo;]&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2011/10/fitted-speedup1.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2011/10/fitted-speedup1-1024x768.png&#34; alt=&#34;&#34; /&gt;
-&lt;/a&gt;[/caption]&lt;/p&gt;
-
-&lt;p&gt;Most interestingly, the row and column performance goes down with more cores, while the full decomposition stays pretty constant. I do not have a reason why this is happening.&lt;/p&gt;
-
-&lt;h2 id=&#34;conclusion:d59e23fa831b00ad3ec19e2fe0a18821&#34;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;OpenMP makes adding parallelism to a serial program easy. The constructs allow one to sprinkle parallel code throughout the program, and the measure the performance boost. Sometimes it may be prudent to dive in deeper and manually thread some section of code, especially when using complex C++ constructs such as iterators, but if OpenMP meets the need, then its a low-cost, cross-platform mechanism.  Furthermore, OpenMP is exposed as a set of #pragma functions. Since #pragmas are by definition an extension to the language, if the compiler doesn&amp;rsquo;t understand the directives, they are simply ignored. This allows one to liberally use OpenMP, and if the compiler of choice doesn&amp;rsquo;t support the OpenMP directives, OpenMP will not break the build. OpenMP is a fantastic tool.&lt;/p&gt;
-</description>
+      <description>Conway&amp;rsquo;s Game of Life is a dramatic illustration of emmergent behavior; that a seemingly complex system, such as cell mitosis can be governed by a set of simple rules. OpenMP is a fantastic set of language extensions which allows one to add dramatic parallelism without complex thread management. As a demonstration of OpenMP&amp;rsquo;s simplicity I implemented the Game of Life. The code and all analysis is available on bitbucket.org.</description>
     </item>
     
   </channel>

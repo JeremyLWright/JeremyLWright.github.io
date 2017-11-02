@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sorting on Code Strokes</title>
+    <title>Sorting on Jeremy&#39;s CodeStrokes</title>
     <link>http://www.codestrokes.com/tags/sorting/</link>
-    <description>Recent content in Sorting on Code Strokes</description>
+    <description>Recent content in Sorting on Jeremy&#39;s CodeStrokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
+    <copyright>Creative Commons Share Alike</copyright>
     <lastBuildDate>Sun, 29 May 2011 18:02:24 +0000</lastBuildDate>
-    <atom:link href="http://www.codestrokes.com/tags/sorting/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.codestrokes.com/tags/sorting/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Parallelism in D</title>
@@ -15,82 +18,7 @@
       <pubDate>Sun, 29 May 2011 18:02:24 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2011/05/parallelism-in-d-bucket-sort-part-2/</guid>
-      <description>&lt;p&gt;Parallelism, it sounds like a religion, and in some sense it is. Like many facets of software engineering, writing good parallel code is more of an art than a science.  I come from a FPGA background where parallelism is part of the language; part of the culture! The tools are designed to find deadlocks, analyze timing and the language itself is fully aware of parallelism.  The hardware world understands parallelism, yet writing parallel software is still difficult.  D is making some pioneering steps in the right direction for &lt;a href=&#34;http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html&#34;&gt;parallelism&lt;/a&gt;.  I use a parallel implementation of bucket sort to show how D makes writing parallel code, correct.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;Parallelism is ingrained in the hardware engineer’s mind. The motivating purpose of parallelism is **performance. **There is simply no other justification for the pains of parallelism except the high performance potential it offers. The FPGA engineer’s tool-chain evolves around this fact.  The tools are designed to find deadlocks, analyze timing; however the most valuable feature is that the language itself is fully aware of parallelism. Take this simple Verilog example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;always @ (posedge clock or negedge reset_n)
-begin
-    if (reset_n == 1&#39;b0) begin
-        counter_out &amp;lt;=#1  4&#39;b0000;
-    end
-    else if (enable == 1&#39;b1) begin
-        counter_out &amp;lt;=#1  counter_out + 1;
-        counter_in &amp;lt;=#1 counter_in - 1;
-        led_out &amp;lt;=#1 led_out ^ 1;
-    end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The &amp;lt;= operator is called the non-blocking assignment.  In the example above, all three lines in the else condition execute simultaneously.  This is important; just by reading the code you can see that it is parallel.  Our software languages, C, C++, Java, do not make parallel code obvious.  In these languages parallelism tends to feel like a bolt-on, aftermarket feature that never really flows with the rest of the language, or design idioms.  While researching the background on this article, I found a fantastic write up on &lt;a href=&#34;http://www.futurechips.org/tips-for-power-coders/parallel-programming.html&#34;&gt;What Makes Parallel Programs Hard&lt;/a&gt;.  The author contends that parallel programs are hard because of inter-task dependencies.  This is true, but I would further the point that if the language supported parallelism at its core, as Hardware Description Languages do, writing parallel software wouldn’t be so difficult. Furthermore, if a language offered parallel idioms, duplicating robust parallel code would also be easier.&lt;/p&gt;
-
-&lt;p&gt;HDLs make it obvious that the code is parallel, until D I haven’t seen a language do it quite so well.  &lt;a href=&#34;http://www.codestrokes.com/?p=101&#34;&gt;Bucket Sort Part 1&lt;/a&gt; was a quick introduction to Bucket Sort as an algorithm, but the real power of bucket sort is how easily it can be parallelized. Once the list is segmented or “bucketized” each bucket may be sorted simultaneously.  I wrote a D implementation of this, and parallelism really offers incredible performance here.  Take a look.&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2011/05/threading_compared.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2011/05/threading_compared_thumb.png&#34; alt=&#34;threading_compared&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;This compares the runtimes of sorting 10 million numbers using various configurations of bucket sort.  Consistently, the multithreaded version is faster.  So how does D makes this easy?&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;uint[] bucket_sort(uint[] unsorted_data, immutable uint num_buckets)
-{
-    immutable auto interval = (minPos!(&amp;quot;a &amp;gt; b&amp;quot;)(unsorted_data)[0]/num_buckets)+1;
-    auto buckets = new uint[][num_buckets];
-
-    foreach(uint datum; unsorted_data)
-    {
-        scope(failure) { writefln(&amp;quot;%d %d %d&amp;quot;, datum, interval, num_buckets);}
-        buckets[datum/(interval)] ~= datum;
-    }
-
-    uint[] s;
-    version(MultiThreaded)
-    {
-        foreach(ref bucket; taskPool.parallel(buckets))
-        {
-            bucket.sort;
-        }
-
-    }
-    else
-    {
-        foreach(uint[] bucket; buckets)
-        {
-            bucket.sort;
-        }
-    }
-
-    foreach(uint[] bucket; buckets)
-    {
-        s ~= bucket;
-    }
-    return s;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This code has the obviousness we are looking for.  taskPool.parallel comes from the &lt;a href=&#34;http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html&#34;&gt;std.parallelism&lt;/a&gt; module starting in &lt;a href=&#34;http://www.digitalmars.com/d/download.html&#34;&gt;D 2.053&lt;/a&gt;.  Simply, by reading the source code, one can see that this code is parallel.  That’s it. The taskPool.parallel routine automatically divvies out units of work between new threads; more importantly, taskPool.parallel automatically joins all threads them at the end of the foreach scope.&lt;/p&gt;
-
-&lt;p&gt;Using this, we can find the optimal configuration of bucket size for both single-threaded and multi-threaded versions of the code.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2011/05/single_threaded.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2011/05/single_threaded_thumb.png&#34; alt=&#34;single_threaded&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2011/05/multi_threaded.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2011/05/multi_threaded_thumb.png&#34; alt=&#34;multi_threaded&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Interestingly, the optimal setting was different between the multithreaded and single threaded versions with multithreaded at 800 buckets and single threaded at 45,800 buckets.  However we can see from the standard deviation plots a sizable variation within a single configuration’s bucket size, while the average runtimes remains fairly flat.  Ergo, bucket size is not the performance bottle neck, it’s the actual sorting, and parallelism drastically illustrates this in the “Threading Compared” plot.&lt;/p&gt;
-
-&lt;p&gt;D provides two primary multithreading techniques, &lt;a href=&#34;http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html&#34;&gt;std.parallelism&lt;/a&gt;, discussed here, and &lt;a href=&#34;http://www.digitalmars.com/d/2.0/phobos/std_concurrency.html&#34;&gt;std.concurrency&lt;/a&gt; with a powerful message passing framework for effective inter-thread communication.  D makes robust, readable, parallel code, easy and correct.  In our case of bucket sort, with only a single line of code.&lt;/p&gt;
-</description>
+      <description>Parallelism, it sounds like a religion, and in some sense it is. Like many facets of software engineering, writing good parallel code is more of an art than a science. I come from a FPGA background where parallelism is part of the language; part of the culture! The tools are designed to find deadlocks, analyze timing and the language itself is fully aware of parallelism. The hardware world understands parallelism, yet writing parallel software is still difficult.</description>
     </item>
     
     <item>
@@ -99,44 +27,8 @@ end
       <pubDate>Tue, 24 May 2011 04:59:59 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2011/05/bucket-sort/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://bitbucket.org/jwright/bucket-sort/overview&#34;&gt;D Source Code&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Sorting is a very important operation in computer programs. Knuth devotes an entire chapter to sorting and search. Sorting algorithms, like most algorithms, use the &lt;a href=&#34;http://en.wikipedia.org/wiki/Big_Oh_notation&#34;&gt;Big O notation&lt;/a&gt; to compare &lt;a href=&#34;http://en.wikipedia.org/wiki/Computational_complexity_theory&#34;&gt;computational complexity&lt;/a&gt;.  &lt;a href=&#34;http://en.wikipedia.org/wiki/Bucket_sort&#34;&gt;Bucket sort&lt;/a&gt; is one such sorting algorithm.  however bucket sort typically doesn’t actually sort the array.  In the normal case, bucket sort is used to partition the data set into groups, or buckets.  Each bucket is then sorted using a separate algorithm such as quicksort, or insertion sort.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;Bucket sort leverages the fact that some algorithms are more efficient on smaller lists.  &lt;a href=&#34;http://en.wikipedia.org/wiki/Insertion_sort&#34;&gt;Insertion Sort&lt;/a&gt; is one such algorithm.  While insertion sort has an upper bound of O(n2), on small lists its performance is typically much better.  In insertion sort, performance is limited by the delta between current position and its correct position.  For small lists, this delta is typically small.  Insertion sort, is also stable, in-place, and unlike merge sort, easy to write an efficient implementation.&lt;/p&gt;
-
-&lt;p&gt;D provides a number  of features that make bucket sort easier to implement, especially its fantastic array support.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;uint[] bucket_sort(uint[] unsorted_data, immutable uint num_buckets,
-immutable uint threads)
-{
-    immutable auto interval =
-                  (minPos!(&amp;quot;a &amp;gt; b&amp;quot;)(unsorted_data)[0]/num_buckets)+1;
-
-    //Unique to D, arrays dimensions are &amp;quot;backwards&amp;quot; from C
-    auto buckets = new uint[][num_buckets]; 
-
-    foreach(uint datum; unsorted_data)
-    {
-        scope(failure) { writefln(&amp;quot;%d %d %d&amp;quot;, datum, interval, num_buckets);}
-        buckets[datum/(interval)] ~= datum;
-    }
-
-    uint[] s;
-    foreach(uint[] bucket; buckets)
-    {
-        s ~= bucket.sort;
-    }
-    return s;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Line 5 illustrates an extremely powerful feature of D: Template Mixins.  Line 5 uses the “a &amp;gt; b” string as compiled code within the function minPos.  minPos() returns a range slice with the minimum key as the first element.  Passing the “a &amp;gt; b” reverses this function, ergo the maximum key is the first position.  This is an extremely powerful technique influenced from functional languages.  D also allows one to concatenate arrays easily, using the “~=” operator.  This, as you can see, makes rejoining the buckets easy.&lt;/p&gt;
-
-&lt;p&gt;D is a powerful language, and the lambda functions offer a whole new design perspective.  Look for my next article where I leverage D’s &lt;a href=&#34;http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html#TaskPool&#34;&gt;TaskPool&lt;/a&gt; to parallelize bucket sort.&lt;/p&gt;
-</description>
+      <description>D Source Code
+Sorting is a very important operation in computer programs. Knuth devotes an entire chapter to sorting and search. Sorting algorithms, like most algorithms, use the Big O notation to compare computational complexity. Bucket sort is one such sorting algorithm. however bucket sort typically doesn’t actually sort the array. In the normal case, bucket sort is used to partition the data set into groups, or buckets. Each bucket is then sorted using a separate algorithm such as quicksort, or insertion sort.</description>
     </item>
     
   </channel>

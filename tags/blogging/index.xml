@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blogging on Code Strokes</title>
+    <title>Blogging on Jeremy&#39;s CodeStrokes</title>
     <link>http://www.codestrokes.com/tags/blogging/</link>
-    <description>Recent content in Blogging on Code Strokes</description>
+    <description>Recent content in Blogging on Jeremy&#39;s CodeStrokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
+    <copyright>Creative Commons Share Alike</copyright>
     <lastBuildDate>Sun, 07 Jun 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://www.codestrokes.com/tags/blogging/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.codestrokes.com/tags/blogging/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Recasting how I blog</title>
@@ -15,9 +18,7 @@
       <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2015/06/converting-to-static-blog/</guid>
-      <description>
-
-&lt;p&gt;I wrote my first article for codestrokes in February 2011 - right as I was
+      <description>&lt;p&gt;I wrote my first article for codestrokes in February 2011 - right as I was
 accepted to graduate school. My goal was to improve my writing in preparation
 for writing a thesis. While through grad school I started with more
 traditional writing tool. I started to learn to write, and I found my writing
@@ -28,121 +29,7 @@ spelling and check for simple grammatical rules. The process was much simpler
 to manage. This motivated me to convert my blog to a static site. This post
 describes my process on simplifying my writing process.&lt;/p&gt;
 
-&lt;h1 id=&#34;my-toolchain:f190086b9bc9fe46a11c16626346622b&#34;&gt;My toolchain&lt;/h1&gt;
-
-&lt;p&gt;The primary goal was leverage the writing tool chain I honed during my thesis
-for maintaining my blog. I didn&amp;rsquo;t want to complexity of a database backed
-blogging site. I wanted to drop my hosting service. I wanted to write in
-a markup language. I wrote my thesis in Latex, and I love the separation of
-presentation from content. This site you are reading today is composed of:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Markdown written in Vim.&lt;/li&gt;
-&lt;li&gt;Changes tracked in git.&lt;/li&gt;
-&lt;li&gt;Markdown converted HTML via Hugo.&lt;/li&gt;
-&lt;li&gt;Static pages hosted by Github Pages.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h1 id=&#34;choosing-a-static-site-generator:f190086b9bc9fe46a11c16626346622b&#34;&gt;Choosing a static site generator&lt;/h1&gt;
-
-&lt;p&gt;I actually didn&amp;rsquo;t spend too much time working on this, since someone already
-did a great deal of the work at &lt;a href=&#34;https://www.staticgen.com/&#34;&gt;https://www.staticgen.com/&lt;/a&gt;.  If you are
-planning to use Github to host your blog, Jekyll will be the easiest to use.
-The Github pages even include documentation on how to use Jekyll with Github
-pages. I however have an aversion to Ruby (though an order of magnitude
-weaker than my aversion to Java).  Near the top was &lt;a href=&#34;gohugo.io&#34;&gt;Hugo&lt;/a&gt;.
-A &lt;del&gt;colleague&lt;/del&gt; friend of mine is quite a convincing evangelist of Go,
-and I decided to give it a try. &amp;ndash; Boy, was I impressed &amp;ndash; The quality of the
-documentation if fantastic. However my favorite feature of Hugo, it is
-a single download. One executable. One. No dependencies&amp;hellip; Its hard to express
-how incredibly relieving this is.&lt;/p&gt;
-
-&lt;p&gt;As an illustration, let me share with you a little lie. I didn&amp;rsquo;t directly just
-to staticgen.com, and find Hugo. I have an affinity for Haskell, and tried to
-use a static site generator called &lt;a href=&#34;https://www.staticgen.com/hakyll&#34;&gt;Hakyll&lt;/a&gt;.&lt;br /&gt;
-I closed the project from github. The repository included a cabal file, which
-I promptly compiled. It took 25 minutes to build all the dependencies. Hakyll
-seems awesome, but I wanted something simple. Simple that I can just write,
-and the publication process becomes ancillary. Pieter Hintjens states that
-a project should continuously seek to reduce barriers for participation.
-Comment on this site are a perfect example. &lt;a href=&#34;https://disqus.com/&#34;&gt;Disqus&lt;/a&gt;
-strikes a fantastic balance between reducing spam, without requiring everyone
-to login to my site. I have no presumptions concerning this site, and
-I completely understand that people do not need yet another account to manage.
-I want people to comment, hence I use a service that reduces the barrier to
-participate.&lt;/p&gt;
-
-&lt;p&gt;A cabal file is a barrier to participate. I want to consume a project, I don&amp;rsquo;t
-want to contribute to it (yet). Hugo had the lowest barrier to entry of the
-site generators I tried. One executable, no dependencies, and fantastic
-documentation.&lt;/p&gt;
-
-&lt;h1 id=&#34;exporting-content:f190086b9bc9fe46a11c16626346622b&#34;&gt;Exporting Content&lt;/h1&gt;
-
-&lt;p&gt;I had a significant number of posts in Wordpress. I wanted to be a good
-content creator, and preserve my URIs.  Really, I&amp;rsquo;m &lt;em&gt;wicked&lt;/em&gt; lazy, and
-preserving my permalinks meant I would not have to migrate my comments. Disqus
-would pick them up on the new site. Thus I wanted an automated way of
-exporting my posts from Wordpress. &lt;a href=&#34;https://github.com/thomasf/exitwp&#34;&gt;Exitwp&lt;/a&gt;
-worked like a charm.&lt;/p&gt;
-
-&lt;h1 id=&#34;choosing-a-theme:f190086b9bc9fe46a11c16626346622b&#34;&gt;Choosing a theme&lt;/h1&gt;
-
-&lt;p&gt;Hugo has a &lt;a href=&#34;https://github.com/spf13/hugoThemes/&#34;&gt;theme gallery&lt;/a&gt; for all the known themes associated with the
-generator.  I picked &lt;a href=&#34;https://github.com/tmaiaroto/hugo-redlounge&#34;&gt;redlounge&lt;/a&gt;.
-My only customization was to add Google Analytics so I can track my meager
-pages views.&lt;/p&gt;
-
-&lt;h1 id=&#34;writing-articles-in-a-series:f190086b9bc9fe46a11c16626346622b&#34;&gt;Writing articles in a series&lt;/h1&gt;
-
-&lt;p&gt;I tend to write articles broken over many pieces. In fact, this article is
-part of my blog transition series. My series support was somewhat lacking in
-Wordpress. For this reincarnation of codestrokes.com, I wanted series to be
-nice and effective. Hugo&amp;rsquo;s taxonomy makes this possible, but it was a great
-series by another author, &lt;a href=&#34;http://npf.io/series/hugo-101/&#34;&gt;Nate Finch&lt;/a&gt; that
-made it easy. Ironically, the series starts with an article about how to
-design series into Hugo. Brilliant.&lt;/p&gt;
-
-&lt;h1 id=&#34;hosting:f190086b9bc9fe46a11c16626346622b&#34;&gt;Hosting&lt;/h1&gt;
-
-&lt;p&gt;I have a few requirements:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Custom domain must work (so I don&amp;rsquo;t have to migrate comments :-)&lt;/li&gt;
-&lt;li&gt;Publishing from git would be sweet, but I can configure Travis-CI or
-a deployment something to deal with that.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://pages.github.com/&#34;&gt;Github pages!&lt;/a&gt;. I just followed the documentation.&lt;/p&gt;
-
-&lt;h1 id=&#34;my-publishing-process:f190086b9bc9fe46a11c16626346622b&#34;&gt;My Publishing Process&lt;/h1&gt;
-
-&lt;p&gt;Here&amp;rsquo;s how I write now:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Clone JeremyLWright@github.com&lt;/li&gt;
-&lt;li&gt;git checkout content
-
-&lt;ol&gt;
-&lt;li&gt;The content branch holds the source, and theme files.&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;Clone the repository again into the public folder.&lt;/li&gt;
-&lt;li&gt;The public folder should be on the master branch.&lt;/li&gt;
-&lt;li&gt;Write.&lt;/li&gt;
-&lt;li&gt;Revise.&lt;/li&gt;
-&lt;li&gt;Write&amp;hellip;&lt;/li&gt;
-&lt;li&gt;Run Hugo.&lt;/li&gt;
-&lt;li&gt;Commit the content branch.&lt;/li&gt;
-&lt;li&gt;Commit the public branch.&lt;/li&gt;
-&lt;li&gt;Push!&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;I&amp;rsquo;m happy with my new process. I&amp;rsquo;m still working out some kinks with my pages
-vs posts (hence you see the About Me page in the middle of my posts). I am
-prone to shiny things so we&amp;rsquo;ll see how long I keep it. This process is simple.
-It removes the barriers of posting, and just lets me write in the tool I am
-most comfortable, and but its hard to argue with simple.&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

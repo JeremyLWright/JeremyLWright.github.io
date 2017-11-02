@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Comparison on Code Strokes</title>
+    <title>Comparison on Jeremy&#39;s CodeStrokes</title>
     <link>http://www.codestrokes.com/tags/comparison/</link>
-    <description>Recent content in Comparison on Code Strokes</description>
+    <description>Recent content in Comparison on Jeremy&#39;s CodeStrokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
+    <copyright>Creative Commons Share Alike</copyright>
     <lastBuildDate>Wed, 18 May 2011 03:06:36 +0000</lastBuildDate>
-    <atom:link href="http://www.codestrokes.com/tags/comparison/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.codestrokes.com/tags/comparison/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>D for the C&#43;&#43; Programmer</title>
@@ -15,103 +18,7 @@
       <pubDate>Wed, 18 May 2011 03:06:36 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2011/05/d-for-the-c-programmer-red-black-tree-part-3/</guid>
-      <description>
-
-&lt;p&gt;As a comparative study, I am porting a Red-Black Tree from C++ to the &lt;a href=&#34;http://www.digitalmars.com/d/2.0/dmd-linux.html&#34;&gt;D programming language&lt;/a&gt; (&lt;a href=&#34;http://www.codestrokes.com/archives/59&#34;&gt;Part 1&lt;/a&gt;, &lt;a href=&#34;http://www.codestrokes.com/archives/83&#34;&gt;Part 2&lt;/a&gt;). Overall D is an easy, practical transition for the C++ programmer. D provides a number of features for implementing correct code, however it is D’s simplicity that makes it truly enticing as a replacement. While D retains _C Style Syntax, _it is considerably simpler than C++, especially in the presence of exceptions.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;h3 id=&#34;simple-and-familiar:26e84b0ada89f819fa8930fe4a08f10c&#34;&gt;Simple and Familiar&lt;/h3&gt;
-
-&lt;p&gt;Readable code makes maintaining programs simpler, ergo cheaper.  D’s syntax stems from the same tree as C, allowing programmers to leverage their considerable experience; yet D comes with a number of useful changes to make code more readable, creating a simple, familiar environment.  This project was intended to expose the differences between D and C++.  Properties are an excellent example of a small change made in D, which reaps great benefit for readability.  Wait, what’s the problem? One can declare getters and setters in C++, isn’t that enough? I say no.  Take the following example in C++:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;void RedBlackTree::Transplant(RedBlackNode::Ptr u, RedBlackNode::Ptr v)
-{
-    if(u-&amp;gt;Parent() == nil)
-        root = v;
-    else if(u == u-&amp;gt;Parent()-&amp;gt;Left())
-        u-&amp;gt;Parent()-&amp;gt;Left(v);
-    else
-        u-&amp;gt;Parent()-&amp;gt;Right(v);
-    v-&amp;gt;Parent(u-&amp;gt;Parent());
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Line 6 actually modified u’s right sibling (u-&amp;gt;Parent()-&amp;gt;Right()).  Where is the equal sign? There isn’t one. Experienced C++ programmers are used to looking at this deficiency as status quo.  However, its much easier in D to see the statement’s intent.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;void Transplant(RedBlackNode u, RedBlackNode v)
-{
-    if(u.Parent == nil)
-        root = v;
-    else if(u == v.Parent.Left)
-        u.Parent.Left = v;
-    else
-                u.Parent.Right = v;
-    v.Parent = u.Parent;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;D uses the property idiom to clearly show that an assignment is taking place.  This simple example is powerful.  Notice that the &lt;em&gt;syntax is nearly identical&lt;/em&gt; between the 2 languages. This similarity makes it very easy for one to use their current C++ skills almost immediately.&lt;/p&gt;
-
-&lt;h3 id=&#34;c-is-whitespace-sensitive:26e84b0ada89f819fa8930fe4a08f10c&#34;&gt;C++ is Whitespace Sensitive&lt;/h3&gt;
-
-&lt;p&gt;One of the biggest complaints I hear from new &lt;a href=&#34;http://www.python.org&#34;&gt;python&lt;/a&gt; programmers is whitespace sensitivity.  Python uses whitespace as a method to control scope, something most editors do automatically anyway using indention.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;def fn1(x):
-    if(x is int):
-        return 1+1;
-    else:
-        x = str(int(x) + 1)
-        return x;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;By forcing whitespace in the syntax braces (“{“ and “}”) are unnecessary, and all python programs look the same making it easier to share code.  It works well, and Python if very consistent in it’s implementation. C style languages are not whitespace sensitive, &lt;strong&gt;except&lt;/strong&gt; special cases in C++.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;void fn1()
-{
-    vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; stl_2d_vector; //Doesn&#39;t compile
-    vector&amp;lt;vector&amp;lt;int&amp;gt; &amp;gt; stl_2d_vector; //Does compile
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;C++ uses the angle-brackets “&amp;lt;” and “&amp;gt;” for a number of functions:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Templates&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Less-Than, Greater-Than comparison&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Bit-Wise Shifting&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Stream-Insertion Operator&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Stream-Extraction Operator&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;This isn’t so bad except that there are two separate, semantic classes here.  Sometimes the &amp;lt; and &amp;gt; characters are used to &lt;strong&gt;enclose text&lt;/strong&gt; as in the &lt;int&gt; example above.  Otherwise, the &amp;lt; and &amp;gt; characters do &lt;strong&gt;not enclose text&lt;/strong&gt; and form an independent operator.  Said another way, angle brackets can form a digraph operator, and can form a semantic grouping…depending on the context.  Context makes C++ difficult to read.&lt;/p&gt;
-
-&lt;p&gt;This is just one example of how the obtuse syntax of C++ makes writing a compiler as well as readable code, difficult.  In this example, the compiler is trying to treat the “&amp;gt;&amp;gt;” digraph as an operator, instead of grouping the template arguments.  The space between the 2 “&amp;gt;” symbol allows the compiler to pair the angle brackets, enclose the template and compile the expression.&lt;/p&gt;
-
-&lt;p&gt;D provides a &lt;a href=&#34;http://www.digitalmars.com/d/2.0/templates-revisited.html&#34;&gt;consistent alternative&lt;/a&gt;. Which leverage an existing operator for enclosing symbols, the parentheses.  D makes instantiating templates easy:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;void fn1()
-{
-    vector!(vector!(int)) stl_2d_vector; //Does compile
-    vector!(vector!(int) ) stl_2d_vector; //Still compiles
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The “!” operator is always used as a unary operator. Sometimes it can be used as not or one’s complement (bit-twiddle) as in:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;if( t != 1) //If T is not equal to 1
-    //Do Something
-t = !t; // One&#39;s complement t;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;However, ! always means “I stand alone, and I modify the token to my right”.  When we create a template, the ! modifies the enclosing parenthetical statement to transform it to a template expression.  D does not overload operators, or tokens. D does not use context sensitive syntax.  D, like python, allows one to write very readable software.&lt;/p&gt;
-
-&lt;p&gt;D gives us tools to write &lt;a href=&#34;http://www.codestrokes.com/archives/83&#34;&gt;correct code&lt;/a&gt;, and offers a simplified syntax that leverages our existing C++ experience.  Starting new projects in a new language is a daunting task, yet D offers a lower-risk path in upgrading to a modern language.  D isn’t perfect but it provides a number of features for C++ developers to start solving real problems, today.&lt;/p&gt;
-</description>
+      <description>As a comparative study, I am porting a Red-Black Tree from C++ to the D programming language (Part 1, Part 2). Overall D is an easy, practical transition for the C++ programmer. D provides a number of features for implementing correct code, however it is D’s simplicity that makes it truly enticing as a replacement. While D retains _C Style Syntax, _it is considerably simpler than C++, especially in the presence of exceptions.</description>
     </item>
     
     <item>
@@ -120,168 +27,8 @@ t = !t; // One&#39;s complement t;
       <pubDate>Mon, 09 May 2011 06:59:01 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2011/05/the-red-black-tree-part-1/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;https://bitbucket.org/jwright/cse310-red-black-tree/overview&#34;&gt;C++ Source Code&lt;/a&gt;
-&lt;a href=&#34;https://bitbucket.org/jwright/red-black-tree-d&#34;&gt;D Source Code&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;D provides a number of features that simplify designing software, especially in the embedded environment.  I will show in this 2 part comparison, between C++ and D, that D helps one write &lt;strong&gt;correct code&lt;/strong&gt;.  Correct code is something &lt;a href=&#34;http://erdani.com/&#34;&gt;Andrei Alexandrescu&lt;/a&gt;, stresses heavily as a prominent feature of D.   I use the Red-Black Tree for such a comparison since its complicated enough to make memory management difficult, while retaining real-world application.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;C++ makes memory management difficult in practice. Memory management, an incidental complexity of C++, is especially difficult in the presence of exceptions. Our goal is to make a fast, correct data structure, not manage memory.  C++ obfuscates this goal.&lt;/p&gt;
-
-&lt;p&gt;There are a few idioms in C++ to help; Resource Acquisition Is Initialization, or RAII for short, states that “…the only code that can be guaranteed to be executed after an &lt;a href=&#34;http://en.wikipedia.org/wiki/Exception_handling&#34;&gt;exception&lt;/a&gt; is thrown are the &lt;a href=&#34;http://en.wikipedia.org/wiki/Destructor_%28computer_science%29&#34;&gt;destructors&lt;/a&gt; of objects residing on the &lt;a href=&#34;http://en.wikipedia.org/wiki/Stack_%28data_structure%29&#34;&gt;stack&lt;/a&gt; (&lt;a href=&#34;http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization&#34;&gt;Wikipedia&lt;/a&gt;)”. Smart Pointers help achieve this.  The Smart pointer offloads much of this responsibility, hiding the complexity, thereby allowing the programmer to focus solely on the task at hand. I use an idiom I learned from my friend &lt;a href=&#34;http://www.chrisanderman.com/&#34;&gt;Chris&lt;/a&gt;, to hide all raw pointers.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;
-    
-    #include 
-    
-    //Smart Class Idiom for RAII in C++
-    class SmartClass
-    {
-    public:
-        typedef std::tr1::shared_ptr Ptr;
-        typedef std::tr1::weak_ptr WeakPtr;
-        static SmartClass::Ptr construct(arguments)
-        {
-    	SmartClass::Ptr c(new SmartClass());
-    	c-&amp;gt;self = c;
-    	return c;
-        }
-    
-        virtual ~SmartClass();
-    private:
-        SmartClass();
-        SmartClass::WeakPtr self;
-    
-    };
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This is a very useful pattern for managing memory. The developer is not
-required to call delete, the smart pointer will do it automatically. Memory
-management is still not automatic, however. The programmer needs to resolve
-the smart vs. weak pointer relationship.  While this strong vs. weak is a much
-simpler question than determining the full _object lifecycle, _&lt;strong&gt;considerable
-effort&lt;/strong&gt; is still placed into managing memory. This detracts from our goal,
-while simultaneously, unnecessarily increasing our software’s complexity.&lt;/p&gt;
-
-&lt;p&gt;Firstly, what is a red-black tree? The &lt;a href=&#34;http://en.wikipedia.org/wiki/Red-black_tree&#34;&gt;Red-Black tree&lt;/a&gt; is an interesting data
-structure because it provides a &lt;em&gt;balanced&lt;/em&gt; binary tree.  There are several
-types of self-balancing binary trees available, AVL trees being one. The
-Red-Black tree, however, uses a less strict balancing mechanism than the AVL
-tree; this makes insertions to a Red-Black tree faster. Deletions are slower
-than an AVL tree. The Red-Black tree uses graph coloring to determining
-overall balance of the tree.&lt;/p&gt;
-
-&lt;p&gt;Balance is an important property of a binary tree to maintain algorithmic
-complexity. If there is not a rebalancing scheme in place, a BST can,
-depending on what order &lt;em&gt;keys&lt;/em&gt; are inserted, fill out as a linked list.
-Searching a linked list is O(n) or “linear” time, not the preferable O(log n).&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://scienceblogs.com/goodmath/2009/11/advanced_haskell_data_structur.php&#34;&gt;&lt;img src=&#34;http://scienceblogs.com/goodmath/upload/2007/01/unbalanced-trees.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The Red-Black tree uses graph coloring to maintain balance. Balance guarantee’s O(log n) search performance.&lt;/p&gt;
-
-&lt;h3 id=&#34;c-insert:5c9c8d9305c23e5a528460c65c1eaa2f&#34;&gt;C++ Insert&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;
-    
-    void RedBlackTree::Insert(uint32_t key)
-    {
-        RedBlackNode::Ptr z = RedBlackNode::construct(key);
-        RedBlackNode::Ptr x = root;
-        RedBlackNode::Ptr y = nil;
-    
-        while(x != nil)
-        {
-            y = x;
-            if(z-&amp;gt;Key() &amp;lt; x-&amp;gt;Key())
-                x = x-&amp;gt;Left();
-            else
-                x = x-&amp;gt;Right();
-        }
-    
-        z-&amp;gt;Parent(y);
-        if(y == nil)
-            root = z;
-        else if(z-&amp;gt;Key() &amp;lt; y-&amp;gt;Key())
-            y-&amp;gt;Left(z);
-        else
-            y-&amp;gt;Right(z);
-        z-&amp;gt;Left(nil);
-        z-&amp;gt;Right(nil);
-        z-&amp;gt;Color(RedBlackNode::RED);
-        Insert_Fixup(z);
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;There are a few issues with this implementation.  If an exception occurs while inserting a node, the Insert_Fixup() doesn’t get run.  An exception in this code, will not cause a memory, leak, however it will leave the tree in an indeterminate state. Any subsequent insertion into the tree will cause Insert_Fixup() to fail. This is &lt;strong&gt;NOT&lt;/strong&gt; correct code.&lt;/p&gt;
-
-&lt;h3 id=&#34;c-delete:5c9c8d9305c23e5a528460c65c1eaa2f&#34;&gt;C++ Delete&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;    void RedBlackTree::Delete(uint32_t key)
-    {
-    
-        RedBlackNode::Ptr z = Search(key);
-        RedBlackNode::Ptr x;
-        if(z == nil)
-            return;
-    
-        RedBlackNode::Ptr y = z;
-        RedBlackNode::color_t original_color = y-&amp;gt;Color();
-        if(z-&amp;gt;Left() == nil)
-        {
-            x = z-&amp;gt;Right();
-            Transplant(z,z-&amp;gt;Right());
-        }
-        else if(z-&amp;gt;Right() == nil)
-        {
-            x = z-&amp;gt;Left();
-            Transplant(z,z-&amp;gt;Left());
-        }
-        else
-        {
-            y = Minimum(z-&amp;gt;Right());
-            original_color = y-&amp;gt;Color();
-            x = y-&amp;gt;Right();
-            if(y-&amp;gt;Parent() == z)
-            {
-                x-&amp;gt;Parent(y);
-            }
-            else
-            {
-                Transplant(y,y-&amp;gt;Right());
-                y-&amp;gt;Right(z-&amp;gt;Right());
-                y-&amp;gt;Right()-&amp;gt;Parent(y);
-            }
-            Transplant(z,y);
-            y-&amp;gt;Left(z-&amp;gt;Left());
-            y-&amp;gt;Left()-&amp;gt;Parent(y);
-            y-&amp;gt;Color(z-&amp;gt;Color());
-        }
-        if(original_color == RedBlackNode::BLACK)
-        {
-            Delete_Fixup(x);
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The Smart Pointer pointer idiom really flexes its power here. The most difficult part about the Red-Black Tree implementation is deleting nodes. One needs to be careful not to delete nodes too soon and cause a &lt;a href=&#34;http://en.wikipedia.org/wiki/Dangling_pointer&#34;&gt;&lt;em&gt;dangling-pointer&lt;/em&gt;&lt;/a&gt;_ _yet, its important that one does delete the nodes to prevent a leak memory, however as you can see there are no delete calls above. The Smart Pointers handle delete when the node falls out of scope.  This implementation does not leak memory! (See the valgrind scripts for evidence).  That is a powerful statement in C++, and difficult to achieve with manual memory management.&lt;/p&gt;
-
-&lt;p&gt;Additionally, smart pointers indirectly offer a very powerful tool: Division of responsibility. The Smart pointers are responsible for managing memory. In the spirit of the &lt;em&gt;Single-Responsibility-Theorem&lt;/em&gt;, they only manage memory, and they do it well. So well, that the developer can focus on the algorithm alone, instead of disrupting the flow with extra memory management code.&lt;/p&gt;
-
-&lt;h4 id=&#34;conclusion:5c9c8d9305c23e5a528460c65c1eaa2f&#34;&gt;Conclusion&lt;/h4&gt;
-
-&lt;p&gt;Excellent! We have a self-balancing BST, that doesn’t leak memory, however is this code correct? No. It is possible, that an exception will leave the tree in a bad state, thereby invalidating the entire structure.  We need a mechanism that provides transactional semantics.  This is difficult in C++, especially due to the &lt;a href=&#34;http://en.wikipedia.org/wiki/Exception_handling_syntax#C.2B.2B&#34;&gt;lack of a finally statement&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;It’s important to understand that smart pointer’s are not a panacea. They do not solve all memory management issue in C++. There are still artifacts of memory management without our algorithm, detracting from the simplicity of our design.  Without a comprehensive memory solution, we will never lose this incidental complexity.&lt;/p&gt;
-
-&lt;p&gt;D provides a number of features that helps one write transactional, &lt;strong&gt;correct&lt;/strong&gt; code. One issue, is in C++, exceptions are much of a “bolt-on” feature.  Much as exceptions are pervasive in our daily lives so in D, exceptions are pervasive in the language.  Its naïve to believe that code will not fail, yet this is how exception management in C++ feels. As evidence of this, one may throw an exception from anywhere in D, even in a destructor; C++ cannot do &lt;a href=&#34;http://www.parashift.com/c++-faq-lite/exceptions.html#faq-17.9&#34;&gt;this&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;In Part 2, we’ll look at how D’s exception management, garbage collection, and the &lt;a href=&#34;http://www.d-programming-language.org/exception-safe.html&#34;&gt;scope() statement&lt;/a&gt; help us write clear, correct code, while lowering incidental complexity.&lt;/p&gt;
-</description>
+      <description>C++ Source Code D Source Code
+D provides a number of features that simplify designing software, especially in the embedded environment. I will show in this 2 part comparison, between C++ and D, that D helps one write correct code. Correct code is something Andrei Alexandrescu, stresses heavily as a prominent feature of D. I use the Red-Black Tree for such a comparison since its complicated enough to make memory management difficult, while retaining real-world application.</description>
     </item>
     
   </channel>

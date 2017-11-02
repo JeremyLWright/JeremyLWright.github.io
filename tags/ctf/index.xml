@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ctf on Code Strokes</title>
+    <title>Ctf on Jeremy&#39;s CodeStrokes</title>
     <link>http://www.codestrokes.com/tags/ctf/</link>
-    <description>Recent content in Ctf on Code Strokes</description>
+    <description>Recent content in Ctf on Jeremy&#39;s CodeStrokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
+    <copyright>Creative Commons Share Alike</copyright>
     <lastBuildDate>Sun, 08 Sep 2013 21:58:06 +0000</lastBuildDate>
-    <atom:link href="http://www.codestrokes.com/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.codestrokes.com/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Linux User&#39;s Group CTF 2013</title>
@@ -15,15 +18,7 @@
       <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2013/09/linux-users-group-ctf-2013/</guid>
-      <description>&lt;p&gt;This past weekend we held another capture the flag event at the Arizona State University&amp;rsquo;s Linux User&amp;rsquo;s Group. It had more of a system admin focus than security cracking exploits, but it was fun an nontheless a diverse learning experience for all those involved. However, almost immediately, I realized the number one rule in CTF, nothing is off limits!
-&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
-The game was organized into two parts, a game server which collected the the scores and displayed the point totals of all teams in real-time, and the virtual servers (hosted on Amazon EC2) which contained the actual games. Players were encouraged to break into teams, and register themselves on the game server. The game server would assign the team a virtual machine, and the team could log in via SSH to behind hacking. Five minutes into the registration process, one team attempted a SQL injection attack against the game server.&lt;/p&gt;
-
-&lt;p&gt;[caption id=&amp;ldquo;attachment_1189&amp;rdquo; align=&amp;ldquo;aligncenter&amp;rdquo; width=&amp;ldquo;700&amp;rdquo;]&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2013/09/Final-Score.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2013/09/Final-Score-1024x429.png&#34; alt=&#34;Notice the SQL Injection attempt&#34; /&gt;
-&lt;/a&gt; Notice the SQL Injection attempt[/caption]&lt;/p&gt;
-
-&lt;p&gt;I wrote the game server as a django webapp, to collect points, and serve as a dashboard for the players. We logged in at the front of the room and displayed the graph on the front projector. It was a very motivating aspect of the game, however I never planned on it being part of the game itself.  First lesson learned in capture the flag, nothing is off limits. Luckily, django does the right thing, and sanitizes form data automatically. The server was unscathed, the failed injection attempt was displayed for all the teams to see. I&amp;rsquo;m currently compiling additional aspects of what worked and what didn&amp;rsquo;t so check back soon. The CTF was a fantastic event this year, and really motivated newbies, and elites a like.&lt;/p&gt;
-</description>
+      <description>This past weekend we held another capture the flag event at the Arizona State University&amp;rsquo;s Linux User&amp;rsquo;s Group. It had more of a system admin focus than security cracking exploits, but it was fun an nontheless a diverse learning experience for all those involved. However, almost immediately, I realized the number one rule in CTF, nothing is off limits! The game was organized into two parts, a game server which collected the the scores and displayed the point totals of all teams in real-time, and the virtual servers (hosted on Amazon EC2) which contained the actual games.</description>
     </item>
     
   </channel>

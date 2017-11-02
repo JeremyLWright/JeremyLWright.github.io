@@ -1,188 +1,160 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<html lang="en">
 <head>
-  <title>
-    Property Driven Design: MinMax // Code Strokes
-  </title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Property Driven Design: MinMax - Jeremy&#39;s CodeStrokes</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="Jeremy">
-
-  <meta property="og:title" content="Property Driven Design: MinMax" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:locale" content="en_US" />
-<meta property="og:url" content="http://www.codestrokes.com/2015/07/property_driven_design_minmax/" />
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
-  
-  
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
-  
-  
+<meta name="author" content="Jeremy" />
+  <meta name="description" content="I wrote an article on Property Testing about a year ago. Isocpp.org even linked to it which was pretty cool. Recently, I uncovered a fantastic talk by Jessica Kerr about property testing. Kerr&amp;rsquo;s talk reinvigorated my languid research effort toward generated testing. Kerr presented the idea (novel to me) that properties aren&amp;rsquo;t rigid. Properties don&amp;rsquo;t need to exclude all possible incorrect results for a given function. Properties simply must reduce the size of the incorrect space. This may seem like semantics, but it is easier to exclude a wild-ass-guess that verify it is correct. Additionally, some domains may not have a solidly defined answer,a nd the result my be probabilistic in nature. This post will focus on deterministic problems for the moment, but realize that property testing is vastly more general than mundane example testing. How properties reduce the size of the problem space makes me imagine this Figure.
+Following Kerr&amp;rsquo;s references, I found a set of projects from a predicate-logic course. This course provides 20 separate projects excellently cast for a property-driven-design tutorial. These projects are unique since besides the typical requirements they enumerate the predicate functions each requirement typifies. Predicate functions are to a predicate-logician as properties are to a computer scientist. These enumerated properties (predicates) clarified many points I misunderstood about property testing.
+This post will step through the design of the first project minmax using C&#43;&#43;. My primary goal for this article is to address a concern raised by a colleague, &amp;ldquo;Does pulling in more complexity &amp;mdash; a fancy test generator &amp;mdash; actually increase quality?&amp;rdquo;
+ Code for this article. Revision Log for this article  
+" />
 
-  <link rel="stylesheet" href="http://www.codestrokes.com//css/redlounge.css">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
-  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="Code Strokes" />
-
-    
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/docco.min.css">
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
+  <meta name="keywords" content="software, design, testing" />
 
 
-  
 
-  
 
-  
+
+
+<meta name="generator" content="Hugo 0.30.2" />
+
+
+<link rel="canonical" href="http://www.codestrokes.com/2015/07/property_driven_design_minmax/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
 </head>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-23129291-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
 <body>
-	
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Jeremy Wright</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a><a href="/project/">
+        <li class="mobile-menu-item">Projects</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Jeremy Wright</a>
+</div>
 
-	<div id="layout" class="pure-g">
-    <div class="sidebar pure-u-1 pure-u-md-1-4">
-  <div class="header">
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/project/">Projects</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
     
+    <header class="post-header">
+      <h1 class="post-title">Property Driven Design: MinMax</h1>
 
-    <h1 class="brand-title">CodeStrokes</h1>
-    <h2 class="brand-tagline">Software Artistry</h2>
-
-    <nav class="nav">
-      <ul class="nav-list">
-        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://www.codestrokes.com/">Home</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about/">About</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/posts/">Blog</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/series/">Series</a></li>
-        
-      </ul>
-    </nav>
+      <div class="post-meta">
+        <span class="post-time"> 2015-07-05 </span>
+        <div class="post-category">
+            <a href="/categories/c&#43;&#43;/">C&#43;&#43;</a><a href="/categories/property-driven-design/">Property Driven Design</a>
+          </div>
+        <span class="more-meta"> 2961 word </span>
+        <span class="more-meta"> 14 min read </span>
+      </div>
+    </header>
 
     
-    <div class="social-buttons">
-      
-        
-        <a href="https://github.com/JeremyLWright" target="_blank"><i class='fa fa-github'></i></a>
-        
-      
-        
-        <a href="https://www.twitter.com/jeremy_l_wright" target="_blank"><i class='fa fa-twitter'></i></a>
-        
-      
-        
-        <a href="https://www.linkedin.com/pub/jeremy-wright/5b/8/844" target="_blank"><i class='fa fa-linkedin'></i></a>
-        
-      
-      
-    </div>
     
-
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#implementing-minmax-with-properties">Implementing MinMax with Properties</a>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#the-maximum-function">The maximum function</a></li>
+<li><a href="#a-compile-time-property">A compile-time property</a></li>
+<li><a href="#generating-a-custom-data-type">Generating a custom data type</a></li>
+<li><a href="#broken-test-code">Broken Test Code</a></li>
+<li><a href="#fixing-our-property">Fixing our property</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</nav>
   </div>
 </div>
 
-	
-	
-
-    <div class="content pure-u-1 pure-u-md-3-4">
-		<a name="top"></a>
-		
-
-		
-			
-		    <div id="toc" class="pure-u-1 pure-u-md-1-4">
-				<small class="toc-label">Contents</small>
-		   	 	<nav id="TableOfContents">
-<ul>
-<li><a href="#implementing-minmax-with-properties:50cf44a3d7a8ca6a3d0b114540b5d3c2">Implementing MinMax with Properties</a>
-<ul>
-<li><a href="#prerequisites:50cf44a3d7a8ca6a3d0b114540b5d3c2">Prerequisites</a></li>
-<li><a href="#the-maximum-function:50cf44a3d7a8ca6a3d0b114540b5d3c2">The maximum function</a></li>
-<li><a href="#a-compile-time-property:50cf44a3d7a8ca6a3d0b114540b5d3c2">A compile-time property</a></li>
-<li><a href="#generating-a-custom-data-type:50cf44a3d7a8ca6a3d0b114540b5d3c2">Generating a custom data type</a></li>
-<li><a href="#broken-test-code:50cf44a3d7a8ca6a3d0b114540b5d3c2">Broken Test Code</a></li>
-<li><a href="#fixing-our-property:50cf44a3d7a8ca6a3d0b114540b5d3c2">Fixing our property</a></li>
-</ul></li>
-<li><a href="#conclusion:50cf44a3d7a8ca6a3d0b114540b5d3c2">Conclusion</a></li>
-</ul>
-</nav>
-		    </div>
-		    
-	    
-  		<section class="post">
-            <h1 class="post-title">
-              <a href="/2015/07/property_driven_design_minmax/">Property Driven Design: MinMax</a>
-            </h1>
-            <h3 class="post-subtitle">
-            	
-            </h3>
-            
-            	<span class="post-date">
-                	<span class="post-date-day"><sup>5</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jul</span> <span class="post-date-year">2015</span>
-            	</span>
-            	
-            
-            	
-            		<span class="post-author-single">By <a class="post-author"  target="">Jeremy</a></span>
-            		
-
-
-
-
-            	
-            
-
-			
-			
-				<div class="post-categories">
-				
-					<a class="post-category post-category-c" href="http://www.codestrokes.com//categories/c">C&#43;&#43;</a>
-				
-					<a class="post-category post-category-property-driven-design" href="http://www.codestrokes.com//categories/property-driven-design">Property Driven Design</a>
-				
-				</div>
-			
-
-			
-
-			
-
-            
-
-<p>I wrote an article on <a href="http://www.codestrokes.com/2014/09/property-testing-in-c/">Property Testing</a>
+    
+    <div class="post-content">
+      <p>I wrote an article on <a href="http://www.codestrokes.com/2014/09/property-testing-in-c/">Property Testing</a>
 about a year ago. Isocpp.org even <a href="https://isocpp.org/blog/2014/12/property-testing">linked to
 it</a> which was pretty cool.
 Recently, I uncovered a fantastic talk by <a href="https://www.youtube.com/watch?v=shngiiBfD80">Jessica Kerr about property
@@ -198,8 +170,7 @@ problems for the moment, but realize that property testing is vastly more
 general than mundane example testing. How properties reduce the size of the
 problem space makes me imagine this Figure.</p>
 
-<p><img src="/img/Properties_solution_space.png" alt="sometimes_code_gives_you_a_wtf" />
-</p>
+<p><img src="/img/Properties_solution_space.png" alt="sometimes_code_gives_you_a_wtf" /></p>
 
 <p>Following Kerr&rsquo;s references, I found a set of projects from a <a href="http://www.cs.ou.edu/~rlpage/SEcollab/20projects/">predicate-logic
 course</a>. This course
@@ -220,6 +191,8 @@ generator &mdash; actually increase quality?&rdquo;</p>
 <li><a href="https://github.com/JeremyLWright/property_driven_design/tree/master/01_minmax">Code for this article</a>.</li>
 <li><a href="https://github.com/JeremyLWright/JeremyLWright.github.io/commits/content/content/posts/2015-07-05-property_driven_design_minmax.markdown">Revision Log for this article</a></li>
 </ul>
+
+<p></p>
 
 <p>In her presentation, Kerr stated, &ldquo;&hellip;what is this answer? I don&rsquo;t know but
 I can put a box around it!&rdquo; This jestful statement is quite
@@ -247,16 +220,16 @@ form</em> are likely correct.&rdquo; Properties then may make successively tight
 around the solution space to constraint the design. Its a powerful
 technique that I increasingly enjoy in my design work.</p>
 
-<h1 id="implementing-minmax-with-properties:50cf44a3d7a8ca6a3d0b114540b5d3c2">Implementing MinMax with Properties</h1>
+<h1 id="implementing-minmax-with-properties">Implementing MinMax with Properties</h1>
 
-<h2 id="prerequisites:50cf44a3d7a8ca6a3d0b114540b5d3c2">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites</h2>
 
 <p>The term <em>measure</em> used in this problem statement means as
 the <a href="http://www.stepanovpapers.com/gcd.pdf">ancient Greeks meant it</a>: a line segment which
 describes an integer number of divisions of another line segment. Today we might use
 the word greatest common divisor.</p>
 
-<h2 id="the-maximum-function:50cf44a3d7a8ca6a3d0b114540b5d3c2">The maximum function</h2>
+<h2 id="the-maximum-function">The maximum function</h2>
 
 <p>Inspired by test-driven-design we&rsquo;ll start by defining a property for our
 maximum function.</p>
@@ -364,7 +337,7 @@ a new bug.</p>
 <p>Also there is something viscerally satisfying about writing a single property
 and seeing 100 tests passing.</p>
 
-<h2 id="a-compile-time-property:50cf44a3d7a8ca6a3d0b114540b5d3c2">A compile-time property</h2>
+<h2 id="a-compile-time-property">A compile-time property</h2>
 
 <p>Next we can verify the property given to us in the <a href="http://www.cs.ou.edu/~rlpage/SEcollab/20projects/minmax.htm">problem statement</a></p>
 
@@ -445,7 +418,7 @@ measure_pair_t minimum_pair(const SinglePassRange&amp; xs)
 a <em>measure_pair_t</em>. We do this by specializing the generator function in the
 autocheck namespace.</p>
 
-<h2 id="generating-a-custom-data-type:50cf44a3d7a8ca6a3d0b114540b5d3c2">Generating a custom data type</h2>
+<h2 id="generating-a-custom-data-type">Generating a custom data type</h2>
 
 <pre><code class="language-cpp">namespace autocheck
 {
@@ -478,7 +451,7 @@ std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, const minmax::measure_p
 }
 </code></pre>
 
-<h2 id="broken-test-code:50cf44a3d7a8ca6a3d0b114540b5d3c2">Broken Test Code</h2>
+<h2 id="broken-test-code">Broken Test Code</h2>
 
 <p>Now autocheck can generate and display our specific type. Setup a property to
 check.</p>
@@ -621,7 +594,7 @@ implement the code. If the two match then we the code probably matches the
 specification. Its raises our level of thinking out of individual numbers, and
 code paths to more abstract thinking, which is something humans do best.</p>
 
-<h2 id="fixing-our-property:50cf44a3d7a8ca6a3d0b114540b5d3c2">Fixing our property</h2>
+<h2 id="fixing-our-property">Fixing our property</h2>
 
 <p>The problem is is that our definition doesn&rsquo;t include self-measures. We can
 adjust it easily.</p>
@@ -732,7 +705,7 @@ OK, passed 100 tests.
 
 <p>Running this multiple times generates no failing test cases.</p>
 
-<h1 id="conclusion:50cf44a3d7a8ca6a3d0b114540b5d3c2">Conclusion</h1>
+<h1 id="conclusion">Conclusion</h1>
 
 <p>So a few real-world metrics. I wrote this code in 3 hours. The
 requirements were relatively simple, but I suspect that using example tests
@@ -753,80 +726,137 @@ numerical problem. In intended to show something more interesting that the
 <em>reverse(reverse(list)) == list</em> example, and something less contrived than my
 previous post on property testing. I look forward to any feedback on this
 post.</p>
+    </div>
 
-	
-			
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Jeremy</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2015-07-05</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
 
-			
-				<div class="tags-list">
-					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
-					
-	                <a class="post-tag post-tag-property-testing" href="http://www.codestrokes.com//tags/property-testing">property-testing</a>,
-	                
-	                <a class="post-tag post-tag-example" href="http://www.codestrokes.com//tags/example">example</a>,
-	                
-	                <a class="post-tag post-tag-tutorial" href="http://www.codestrokes.com//tags/tutorial">tutorial</a>,
-	                
-				</div>
-			
+    
+    
 
-			
-				<div class="paging">
-					<span class="paging-label">More Reading</span>
-					
-					<div class="paging-newer">
-						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
-						<a class="paging-link" href="/2015/09/deploying-d-to-azure-webapp/">4 Simple Steps to Run D Language in Azure Websites</a>
-		            </div>
-		            
-
-					
-					<div class="paging-older">
-						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
-			            <a class="paging-link" href="/2015/06/converting-to-static-blog/">Recasting how I blog</a>
-		            </div>
-		            
-	            </div>
-            
-          </section>
+    <footer class="post-footer">
+      <div class="post-tags">
           
-          	<div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'codestrokes2';
-    var disqus_identifier = 'http:\/\/www.codestrokes.com\/2015\/07\/property_driven_design_minmax\/';
-    var disqus_title = 'Property Driven Design: MinMax';
-    var disqus_url = 'http:\/\/www.codestrokes.com\/2015\/07\/property_driven_design_minmax\/';
+          <a href="/tags/property-testing/">property-testing</a>
+          
+          <a href="/tags/example/">example</a>
+          
+          <a href="/tags/tutorial/">tutorial</a>
+          
+        </div>
 
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2015/09/deploying-d-to-azure-webapp/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">4 Simple Steps to Run D Language in Azure Websites</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2015/06/converting-to-static-blog/">
+            <span class="next-text nav-default">Recasting how I blog</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
     (function() {
+        
+        
+        if (window.location.hostname === 'localhost') return;
+
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'codestrokes2';
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-          
-        
-      <div class="footer">
-	<hr class="thin" />
-	<div class="pure-menu pure-menu-horizontal pure-menu-open">
-		<ul class="footer-menu">
-		
-			<li><a href="/posts/">Blog</a></li>
-		
-			<li><a href="/series/">Series</a></li>
-		
-		</ul>
-	</div>
-
-	<p>&copy; 2015. All rights reserved. </p>
-</div>
-    </div>
-  </div>
-	
-
-	
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com/" class="dsq-brlink" target="_blank">comments powered by <span class="logo-disqus">Disqus</span></a>
 
   
+      </div>  
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://stackoverflow.com/users/1612667/jeremy-wright" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://www.linkedin.com/in/jeremylwright/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/JeremyLWright" class="iconfont icon-github" title="github"></a>
+  <a href="http://www.codestrokes.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2013 - 
+    2017
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Creative Commons Share Alike</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-23129291-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
 </body>
 </html>

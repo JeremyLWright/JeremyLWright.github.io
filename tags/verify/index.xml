@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Verify on Code Strokes</title>
+    <title>Verify on Jeremy&#39;s CodeStrokes</title>
     <link>http://www.codestrokes.com/tags/verify/</link>
-    <description>Recent content in Verify on Code Strokes</description>
+    <description>Recent content in Verify on Jeremy&#39;s CodeStrokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
+    <copyright>Creative Commons Share Alike</copyright>
     <lastBuildDate>Sat, 03 May 2014 20:56:49 +0000</lastBuildDate>
-    <atom:link href="http://www.codestrokes.com/tags/verify/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.codestrokes.com/tags/verify/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Design for Testability via Security </title>
@@ -15,109 +18,7 @@
       <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2014/05/design-for-testability-via-security/</guid>
-      <description>
-
-&lt;p&gt;I was discussing bootloader design with a colleague of mine the other day. We were attempting to load new a third-party hardware component. The device has a poor protocol, and a useless verification step. This discussion got me thinking however how the concepts used to build a strong self-enforcing security protocol, also apply to building a testable, and reliable communication protocol. Thus, security helps us build better products not because they are secure, but because they are verifiable.
-&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
-This idea initially struck me as strange, since many of the secure software interfaces I&amp;rsquo;ve used in the past, are quite obtuse. This is not a fundamental aspect of security, by rather an artifact of poor design (think OpenSSL). This is sad, since security is already a difficult concept, and requires a great deal of study to maintain throughout the life cycle of a product. Secure interfaces should make security easier, not more difficult. This is however a separate rant. So back to the bootloader.&lt;/p&gt;
-
-&lt;p&gt;This specific device is connected by a CAN bus. This is not critical to my argument except the fact that CAN is a reliable, but slow and message order is not guaranteed. In fact, within a window of 4 packets, order is essentially random. Think about this for a moment: load firmware with random message order. The goal is to design a protocol to work with this. Firmware loading fits into a three step process: Prepare, Load, Verify. This process works independent of underlying storage techniques. For example, NAND must be erased on a full page boundary, that can be done in the prepare step. Loading to a file system, Prepare might be a simple NOP.&lt;/p&gt;
-
-&lt;p&gt;Firstly, know that the final, verification step is essential. Some environments, the bootloader runs out of RAM, if the load process fails, and the hardware reboots without verification, the bootloader may no longer function, and you just build a sweet digital brick. So verification must check that the firmware the user attempted to load, matches the firmware written to the flash. There are several mechanisms to verify this. The hardware my colleague and I are working with, simply reads the flash back to you. At a high level this sounds fine.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Loader ---&amp;gt; Send Data     ---&amp;gt; Bootloader
-Loader ---&amp;gt; Data Complete ---&amp;gt; Bootloader
-Loader ---&amp;gt; Verify        ---&amp;gt; Bootloader
-Loader &amp;lt;--- Send Data     &amp;lt;--- Bootloader
-Loader Loader Verifies data matches.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Remember, message order is random. If the bootloader dumps its flash back on the CAN bus, without a sequence number or flash addresses, the data that comes back is completely useless. Each data packet is intact, but is position within the overall data block is unknown. The best one can do is probabilisticly reorder the packets to attempt to get a confidence the bootloader has the same data we attempted to send. Okay, so what would be better? Lets model this as a security problem and design a secure document sending protocol.&lt;/p&gt;
-
-&lt;h3 id=&#34;prepare:9d165bcce3b5cd91e19ccd1b43634f44&#34;&gt;Prepare&lt;/h3&gt;
-
-&lt;p&gt;Alice and Bob want to exchange a document. (Any protocol can be made more &amp;ldquo;secure&amp;rdquo; by describing it with &lt;a href=&#34;https://xkcd.com/1323/&#34;&gt;Alice and Bob.&lt;/a&gt;) The communication channel is UDP, untrusted, and public. How should Alice and Bob communicate? Every security protocol starts with authentication. Bob wants to verify the sender is Alice. Alice wants to verify it&amp;rsquo;s sending the document to Bob, and not someone else. So lets negotiate a key based on a preshared secret. This will form the prepare step of our high-level bootloader model.
-&lt;table &gt;
-&lt;tr &gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;td &gt;Alice generates a nonce.
-&lt;/td&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;td &gt;
-&lt;/td&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;td &gt;Bob waiting for message.
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr &gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;td &gt;Alice encrypts bob_public_key(nonce_alice:sha256(nonce_alice))
-&lt;/td&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;td &gt;-&amp;gt;
-&lt;/td&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;td &gt;Bob
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr &gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;td &gt;Alice
-&lt;/td&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;td &gt;&amp;lt;-
-&lt;/td&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;td &gt;Bob decrypts the message.
-Bob generates a new nonce. Bob encrypts
-alice_public_key(nonce_bob:sha256(nonce_bob):nonce_alice:sha256(nonce_alice))&lt;/p&gt;
-
-&lt;p&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;&lt;/p&gt;
-
-&lt;p&gt;Alice now has Bob&amp;rsquo;s nonce. Bob has Alice&amp;rsquo;s nonce. Any listening attacker only has 2 messages of cipher text. Bob know&amp;rsquo;s the message was sent from Alice because only Alice has Alice&amp;rsquo;s private key,thus only Alice could have made the nonce message. Bob knows the nonce was intentional because Alice included the secure hash of the nonce.&lt;/p&gt;
-
-&lt;p&gt;This protocol is protected against replay attack since Bob decrypts the nonce and hash, and reencrypts with Alice&amp;rsquo;s public key. This allows Alice to verify Bob received her original message. Furthermore the messages are protected against manipulation because all messages include hashes. Bob, and Alice are authenticated. Additionally, they share a new, secret session key.&lt;/p&gt;
-
-&lt;p&gt;Alice builds the session key, &amp;ldquo;sha256(nonce_bob:nonce_alice)&amp;ldquo;.&lt;/p&gt;
-
-&lt;p&gt;Bob builds the session key, &amp;ldquo;sha256(nonce_bob:nonce_alice)&amp;ldquo;.&lt;/p&gt;
-
-&lt;p&gt;Now only Bob and Alice at this time instance can have this new shared secret. Alice and Bob can now communicate securely. &lt;del&gt;Let&amp;rsquo;s load some firmware to Bob now.&lt;/del&gt; Let&amp;rsquo;s transfer a document to Bob now.&lt;/p&gt;
-
-&lt;h3 id=&#34;transfer:9d165bcce3b5cd91e19ccd1b43634f44&#34;&gt;Transfer&lt;/h3&gt;
-
-&lt;p&gt;Alice creates a document and signs it e.g. document:alice_private_key(sha256(document)).  Notice that Alice&amp;rsquo;s private key is used to encrypt here. This is correct. We want Bob to receive the document, create a hash of the document. Bob then uses Alice&amp;rsquo;s public key to &amp;ldquo;encrypt&amp;rdquo; the signature sent by Alice. He will get the plain text hash, and compare. The signature does not protect the hash i.e. it does not provide confidentiality since anyone can decrypt with the public key. Instead the signature provides integrity. The hash protects that the document was unchanged. The signature of the hash protects that the hash was computed only by Alice.&lt;/p&gt;
-
-&lt;p&gt;Alice breaks up the document into packets to send over UDP. Each packet includes a sequence number and a hash of that message.&lt;/p&gt;
-
-&lt;p&gt;packet = aes(session_key, i:document[i]:sha256(i:document[i]))&lt;/p&gt;
-
-&lt;p&gt;The session key encrypts the entire message to provide confidentiality. This also strengthens the Man in the middle attack, since this session_key is ephemeral. Since it exists for only this authenticated session, an attacker cannot resend this data later to Bob. The sha256 hash provides integrity i.e. &lt;del&gt;transmission errors&lt;/del&gt; malicious corruption. Bob verifies each individual packet by calculating the has of the received document[i], and comparing it. If the packets arrive out of order, which in &lt;del&gt;CAN&lt;/del&gt; UDP they will, Bob can sort them.&lt;/p&gt;
-
-&lt;p&gt;Once Bob has the entire message he can verify the signature.  Bob now has the document, all listeners only have cipher version of the document. Furthermore, Bob can verify the entire document is valid. Bob will &lt;del&gt;erase his flash, and load the new firmware into memory&lt;/del&gt; PROFIT!&lt;/p&gt;
-
-&lt;h3 id=&#34;verify:9d165bcce3b5cd91e19ccd1b43634f44&#34;&gt;Verify&lt;/h3&gt;
-
-&lt;p&gt;The device my colleague and I are trying to fix simply dumped the document back to Alice.  Essentially:&lt;/p&gt;
-
-&lt;p&gt;packet = document[i]&lt;/p&gt;
-
-&lt;p&gt;Each packet isn&amp;rsquo;t protected from corruption. The order of the document is unverifiable. The best Alice can do is attempt to verify multiple times hoping the document messages randomly converge on the document Alice originally sent. This is the same as using &lt;a href=&#34;http://en.wikipedia.org/wiki/Bogosort&#34;&gt;Bogosort&lt;/a&gt; as a verification step. Not awesome. Instead we&amp;rsquo;ve built up some very secure machinery to &lt;del&gt;load software reliably&lt;/del&gt; transfer a document securely.&lt;/p&gt;
-
-&lt;p&gt;One method, although rather naive would be for Bob to send back the document to Alice in the same manner, encrypting each packet and the final signature. This however is very wasteful. Instead Alice only needs to confirm that Bob has the document in its entirely, that it is in the flash, and that all packets were loaded in the correct order. Bob simply needs to send a signature. Bob then reads his flash, and calculates a sha256. Bob then sends 1 message:&lt;/p&gt;
-
-&lt;p&gt;packet = aes(session_key, bob_private_key(sha256(flash_read)))&lt;/p&gt;
-
-&lt;p&gt;The packet is confidential because it is encrypted by aes. The message is protected from integrity because Alice already has the hash, she simple needs to verify that it matches the know value. Note that if Alice didn&amp;rsquo;t have the hash already we would include a hash of the hash to provide further integrity. Alice knows that it was Bob who verified the flash because the hash is signed with Bob&amp;rsquo;s key. Lastly, Alice knows the message is part of this load session and not a previous one replayed by an attacker because the whole message is encrypted by a session key.&lt;/p&gt;
-
-&lt;h3 id=&#34;conclusion:9d165bcce3b5cd91e19ccd1b43634f44&#34;&gt;Conclusion&lt;/h3&gt;
-
-&lt;p&gt;Alice and Bob now have a protocol secure against a number of attacks, but how is this useful for a bootloader? Each attack can be modeled as random noise, transmission errors, or other external effects would impede the flow of traffic. Security simply provides a more common vernacular for discussing transmission issues. It&amp;rsquo;s also easier to reason about adversarial attackers rather than electrical interference. By translating the problem into a security one, we can model all these affects as &amp;ldquo;bad people&amp;rdquo; and it is a lot more fun to slay dragons, than it is to protect against some amorphous something.&lt;/p&gt;
-
-&lt;p&gt;Okay, but what does this have to do with testability? Ah. It&amp;rsquo;s subtle, but the same process we took to make our protocol secure also made each step verifiable. For instance, the final verification step could have been as simple as Bob sending an ACK that he verified the document&amp;rsquo;s signature. This however isn&amp;rsquo;t secure. An ACK can be faked, or replayed. Instead Bob build a cryptographically secure signature for Alice to verify. From a tester&amp;rsquo;s perspective Alice is the &amp;ldquo;verifier&amp;rdquo;, and Bob generates test data. Bob cannot be trusted to verify something himself, the test must generate auditable output. Thus the same process which drove us to make a secure response, also generated a auditable one for the tester to report. Thus security is more useful than simply protecting our data, it helps us design better products.&lt;/p&gt;
-</description>
+      <description>I was discussing bootloader design with a colleague of mine the other day. We were attempting to load new a third-party hardware component. The device has a poor protocol, and a useless verification step. This discussion got me thinking however how the concepts used to build a strong self-enforcing security protocol, also apply to building a testable, and reliable communication protocol. Thus, security helps us build better products not because they are secure, but because they are verifiable.</description>
     </item>
     
   </channel>

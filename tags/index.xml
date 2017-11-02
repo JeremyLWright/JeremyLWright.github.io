@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Jeremy&#39;s CodeStrokes</title>
+    <link>http://www.codestrokes.com/tags/</link>
+    <description>Recent content in Tags on Jeremy&#39;s CodeStrokes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Creative Commons Share Alike</copyright>
+    <lastBuildDate>Sat, 03 May 2014 20:56:49 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.codestrokes.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>747</title>
+      <link>http://www.codestrokes.com/tags/747/</link>
+      <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/747/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ast</title>
+      <link>http://www.codestrokes.com/tags/ast/</link>
+      <pubDate>Mon, 28 May 2012 17:03:55 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/ast/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Automake</title>
+      <link>http://www.codestrokes.com/tags/automake/</link>
+      <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/automake/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Azure</title>
+      <link>http://www.codestrokes.com/tags/azure/</link>
+      <pubDate>Fri, 25 Sep 2015 20:10:00 +0700</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/azure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bison</title>
+      <link>http://www.codestrokes.com/tags/bison/</link>
+      <pubDate>Mon, 28 May 2012 17:03:55 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/bison/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Blogging</title>
+      <link>http://www.codestrokes.com/tags/blogging/</link>
+      <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/blogging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Book</title>
+      <link>http://www.codestrokes.com/tags/book/</link>
+      <pubDate>Wed, 24 Jul 2013 04:48:01 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/book/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bootloader</title>
+      <link>http://www.codestrokes.com/tags/bootloader/</link>
+      <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/bootloader/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bottom Up</title>
+      <link>http://www.codestrokes.com/tags/bottom-up/</link>
+      <pubDate>Sun, 15 Jul 2012 17:00:44 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/bottom-up/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;</title>
+      <link>http://www.codestrokes.com/tags/c&#43;&#43;/</link>
+      <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/c&#43;&#43;/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;11</title>
+      <link>http://www.codestrokes.com/tags/c&#43;&#43;11/</link>
+      <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/c&#43;&#43;11/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cipher</title>
+      <link>http://www.codestrokes.com/tags/cipher/</link>
+      <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/cipher/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Command Line</title>
+      <link>http://www.codestrokes.com/tags/command-line/</link>
+      <pubDate>Fri, 12 Aug 2011 06:00:18 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/command-line/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Comparison</title>
+      <link>http://www.codestrokes.com/tags/comparison/</link>
+      <pubDate>Wed, 18 May 2011 03:06:36 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/comparison/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Compiler</title>
+      <link>http://www.codestrokes.com/tags/compiler/</link>
+      <pubDate>Mon, 28 May 2012 17:03:55 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/compiler/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Contest</title>
+      <link>http://www.codestrokes.com/tags/contest/</link>
+      <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/contest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Copyright</title>
+      <link>http://www.codestrokes.com/tags/copyright/</link>
+      <pubDate>Sat, 14 Apr 2012 17:53:21 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/copyright/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Correct Code</title>
+      <link>http://www.codestrokes.com/tags/correct-code/</link>
+      <pubDate>Wed, 18 May 2011 03:06:36 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/correct-code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cracking</title>
+      <link>http://www.codestrokes.com/tags/cracking/</link>
+      <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/cracking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cryptogram</title>
+      <link>http://www.codestrokes.com/tags/cryptogram/</link>
+      <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/cryptogram/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Crytography</title>
+      <link>http://www.codestrokes.com/tags/crytography/</link>
+      <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/crytography/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ctf</title>
+      <link>http://www.codestrokes.com/tags/ctf/</link>
+      <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/ctf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Customize</title>
+      <link>http://www.codestrokes.com/tags/customize/</link>
+      <pubDate>Fri, 12 Aug 2011 06:00:18 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/customize/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>D</title>
+      <link>http://www.codestrokes.com/tags/d/</link>
+      <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/d/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Structure</title>
+      <link>http://www.codestrokes.com/tags/data-structure/</link>
+      <pubDate>Mon, 09 May 2011 06:59:01 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/data-structure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dependencies</title>
+      <link>http://www.codestrokes.com/tags/dependencies/</link>
+      <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/dependencies/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dependency</title>
+      <link>http://www.codestrokes.com/tags/dependency/</link>
+      <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/dependency/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dsl</title>
+      <link>http://www.codestrokes.com/tags/dsl/</link>
+      <pubDate>Sun, 07 Jul 2013 23:00:30 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/dsl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Euler</title>
+      <link>http://www.codestrokes.com/tags/euler/</link>
+      <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/euler/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Event</title>
+      <link>http://www.codestrokes.com/tags/event/</link>
+      <pubDate>Mon, 30 Apr 2012 02:38:44 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/event/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Example</title>
+      <link>http://www.codestrokes.com/tags/example/</link>
+      <pubDate>Sun, 05 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/example/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Explaination</title>
+      <link>http://www.codestrokes.com/tags/explaination/</link>
+      <pubDate>Tue, 18 Sep 2012 23:11:51 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/explaination/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Explanation</title>
+      <link>http://www.codestrokes.com/tags/explanation/</link>
+      <pubDate>Tue, 18 Sep 2012 23:11:51 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/explanation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Firmware</title>
+      <link>http://www.codestrokes.com/tags/firmware/</link>
+      <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/firmware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Flex</title>
+      <link>http://www.codestrokes.com/tags/flex/</link>
+      <pubDate>Mon, 28 May 2012 17:03:55 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/flex/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Functional</title>
+      <link>http://www.codestrokes.com/tags/functional/</link>
+      <pubDate>Mon, 22 Apr 2013 05:29:11 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/functional/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Generation</title>
+      <link>http://www.codestrokes.com/tags/generation/</link>
+      <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/generation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hack a Thon</title>
+      <link>http://www.codestrokes.com/tags/hack-a-thon/</link>
+      <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/hack-a-thon/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hacking</title>
+      <link>http://www.codestrokes.com/tags/hacking/</link>
+      <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/hacking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hash</title>
+      <link>http://www.codestrokes.com/tags/hash/</link>
+      <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/hash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Haskell</title>
+      <link>http://www.codestrokes.com/tags/haskell/</link>
+      <pubDate>Sun, 20 Oct 2013 23:00:00 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/haskell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Idiom</title>
+      <link>http://www.codestrokes.com/tags/idiom/</link>
+      <pubDate>Sun, 05 Feb 2012 21:14:29 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/idiom/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Itanium</title>
+      <link>http://www.codestrokes.com/tags/itanium/</link>
+      <pubDate>Mon, 07 Oct 2013 01:23:13 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/itanium/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>http://www.codestrokes.com/tags/java/</link>
+      <pubDate>Tue, 28 Aug 2012 05:31:04 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Knuth</title>
+      <link>http://www.codestrokes.com/tags/knuth/</link>
+      <pubDate>Mon, 07 Oct 2013 01:23:13 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/knuth/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Latex</title>
+      <link>http://www.codestrokes.com/tags/latex/</link>
+      <pubDate>Sun, 24 Mar 2013 18:25:50 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/latex/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Make</title>
+      <link>http://www.codestrokes.com/tags/make/</link>
+      <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/make/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Managed Code</title>
+      <link>http://www.codestrokes.com/tags/managed-code/</link>
+      <pubDate>Tue, 28 Aug 2012 05:31:04 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/managed-code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Memory</title>
+      <link>http://www.codestrokes.com/tags/memory/</link>
+      <pubDate>Sun, 23 Oct 2011 19:00:21 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/memory/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mercurial</title>
+      <link>http://www.codestrokes.com/tags/mercurial/</link>
+      <pubDate>Wed, 06 Jul 2011 05:18:48 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/mercurial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Monoalphabetic</title>
+      <link>http://www.codestrokes.com/tags/monoalphabetic/</link>
+      <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/monoalphabetic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Multicore</title>
+      <link>http://www.codestrokes.com/tags/multicore/</link>
+      <pubDate>Mon, 07 Oct 2013 01:23:13 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/multicore/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Newbie</title>
+      <link>http://www.codestrokes.com/tags/newbie/</link>
+      <pubDate>Tue, 18 Sep 2012 23:11:51 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/newbie/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Optimization</title>
+      <link>http://www.codestrokes.com/tags/optimization/</link>
+      <pubDate>Sun, 14 Jul 2013 23:00:11 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/optimization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Parallel</title>
+      <link>http://www.codestrokes.com/tags/parallel/</link>
+      <pubDate>Sun, 23 Oct 2011 17:55:47 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/parallel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pattern</title>
+      <link>http://www.codestrokes.com/tags/pattern/</link>
+      <pubDate>Sun, 07 Jul 2013 23:00:30 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/pattern/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Performance</title>
+      <link>http://www.codestrokes.com/tags/performance/</link>
+      <pubDate>Sun, 14 Jul 2013 23:00:11 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/performance/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Process</title>
+      <link>http://www.codestrokes.com/tags/process/</link>
+      <pubDate>Sun, 19 Jun 2011 18:59:47 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/process/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Productivity</title>
+      <link>http://www.codestrokes.com/tags/productivity/</link>
+      <pubDate>Sun, 22 Jan 2012 17:53:43 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/productivity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Project Euler</title>
+      <link>http://www.codestrokes.com/tags/project-euler/</link>
+      <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/project-euler/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Property Testing</title>
+      <link>http://www.codestrokes.com/tags/property-testing/</link>
+      <pubDate>Sun, 05 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/property-testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>http://www.codestrokes.com/tags/python/</link>
+      <pubDate>Sun, 20 Oct 2013 23:00:00 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Raii</title>
+      <link>http://www.codestrokes.com/tags/raii/</link>
+      <pubDate>Sun, 06 May 2012 07:00:10 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/raii/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Real Time</title>
+      <link>http://www.codestrokes.com/tags/real-time/</link>
+      <pubDate>Sun, 29 May 2011 18:02:24 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/real-time/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Realtime</title>
+      <link>http://www.codestrokes.com/tags/realtime/</link>
+      <pubDate>Sun, 29 May 2011 18:02:24 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/realtime/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rust</title>
+      <link>http://www.codestrokes.com/tags/rust/</link>
+      <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/rust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Security</title>
+      <link>http://www.codestrokes.com/tags/security/</link>
+      <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sorting</title>
+      <link>http://www.codestrokes.com/tags/sorting/</link>
+      <pubDate>Sun, 29 May 2011 18:02:24 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/sorting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stepanov</title>
+      <link>http://www.codestrokes.com/tags/stepanov/</link>
+      <pubDate>Sun, 24 Nov 2013 22:14:50 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/stepanov/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stl</title>
+      <link>http://www.codestrokes.com/tags/stl/</link>
+      <pubDate>Sun, 24 Nov 2013 22:14:50 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/stl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Substitution Cipher</title>
+      <link>http://www.codestrokes.com/tags/substitution-cipher/</link>
+      <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/substitution-cipher/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Subversion</title>
+      <link>http://www.codestrokes.com/tags/subversion/</link>
+      <pubDate>Wed, 06 Jul 2011 05:18:48 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/subversion/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Template</title>
+      <link>http://www.codestrokes.com/tags/template/</link>
+      <pubDate>Sun, 05 Feb 2012 21:14:29 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/template/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Test</title>
+      <link>http://www.codestrokes.com/tags/test/</link>
+      <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/test/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Testing</title>
+      <link>http://www.codestrokes.com/tags/testing/</link>
+      <pubDate>Thu, 22 Sep 2011 22:40:42 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tools</title>
+      <link>http://www.codestrokes.com/tags/tools/</link>
+      <pubDate>Sun, 24 Mar 2013 18:25:50 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/tools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Top Down</title>
+      <link>http://www.codestrokes.com/tags/top-down/</link>
+      <pubDate>Sun, 15 Jul 2012 17:00:44 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/top-down/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tree</title>
+      <link>http://www.codestrokes.com/tags/tree/</link>
+      <pubDate>Mon, 09 May 2011 06:59:01 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/tree/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tutorial</title>
+      <link>http://www.codestrokes.com/tags/tutorial/</link>
+      <pubDate>Sun, 05 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Type Safety</title>
+      <link>http://www.codestrokes.com/tags/type-safety/</link>
+      <pubDate>Mon, 06 Jun 2011 06:59:00 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/type-safety/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unit Test</title>
+      <link>http://www.codestrokes.com/tags/unit-test/</link>
+      <pubDate>Wed, 03 Sep 2014 23:00:00 -0700</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/unit-test/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unix</title>
+      <link>http://www.codestrokes.com/tags/unix/</link>
+      <pubDate>Sun, 17 Feb 2013 19:53:11 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/unix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Verify</title>
+      <link>http://www.codestrokes.com/tags/verify/</link>
+      <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/verify/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Version Control</title>
+      <link>http://www.codestrokes.com/tags/version-control/</link>
+      <pubDate>Wed, 06 Jul 2011 05:18:48 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/version-control/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vim</title>
+      <link>http://www.codestrokes.com/tags/vim/</link>
+      <pubDate>Fri, 12 Aug 2011 06:00:18 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/vim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Virtual</title>
+      <link>http://www.codestrokes.com/tags/virtual/</link>
+      <pubDate>Sun, 05 Feb 2012 21:14:29 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/virtual/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Writing</title>
+      <link>http://www.codestrokes.com/tags/writing/</link>
+      <pubDate>Sun, 24 Mar 2013 18:25:50 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/tags/writing/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

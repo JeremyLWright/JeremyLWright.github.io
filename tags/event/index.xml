@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Event on Code Strokes</title>
+    <title>Event on Jeremy&#39;s CodeStrokes</title>
     <link>http://www.codestrokes.com/tags/event/</link>
-    <description>Recent content in Event on Code Strokes</description>
+    <description>Recent content in Event on Jeremy&#39;s CodeStrokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
+    <copyright>Creative Commons Share Alike</copyright>
     <lastBuildDate>Mon, 30 Apr 2012 02:38:44 +0000</lastBuildDate>
-    <atom:link href="http://www.codestrokes.com/tags/event/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.codestrokes.com/tags/event/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Capture the Flag - Running a Hacking Competition</title>
@@ -15,42 +18,7 @@
       <pubDate>Mon, 30 Apr 2012 02:38:44 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2012/04/capture-the-flag-running-a-hacking-competition/</guid>
-      <description>&lt;p&gt;Black-Hat hacking in an controlled environment, like this, is an important skill for software developers. The &lt;a href=&#34;http://en.wikipedia.org/wiki/The_Art_of_War&#34;&gt;Art of War&lt;/a&gt; describes knowing one&amp;rsquo;s enemy, and with the prevalence of internet-enabled applications today, it has never been more critical to know how the &amp;ldquo;enemy&amp;rdquo; can take down a system. While capture-the-flag is a fun, and exciting intellectual game, it is serious training for software engineers of all types, and skill levels. I recently setup a small capture the flag event for the &lt;a href=&#34;http://asulug.org/&#34;&gt;Arizona Linux User&amp;rsquo;s Group&lt;/a&gt;, and it was very fun.&lt;/p&gt;
-
-&lt;p&gt;To setup a catpure the flag event, here are a few guidelines I found useful:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Brute-force attacks are no fun. There is no intellect involved, and while one brute forces the box, no one else can have a try.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Setup a box to provide services to the rest of the network. Clearly define this box as off limits.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Use virtual machines for target systems. This allows one to restore the system from an image if someone goes too far.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Physically separate the game from any other networks.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Provide ISOs of &lt;a href=&#34;http://www.backtrack-linux.org/&#34;&gt;Backtrack&lt;/a&gt; Linux&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;Organizing a hacking event takes time, and planning.&lt;/p&gt;
-
-&lt;p&gt;For this event I setup 3 systems:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;A host system which provided DNS, and hosted the virtual machines.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;A Windows 2000 virtual machine.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;A Ubuntu 12.04 virtual machine.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The windows 2000 box has a pile of vulnerabilities. These vulnerabilities have been scripted into hacking applications, which allow automatic take down of the system. This is not necessarily a bad thing however, since it does provide a level of accomplishment, and is conducive to hiding clues. One clue I thought of after this event, was to set the &lt;a href=&#34;http://en.wikipedia.org/wiki/Steganography&#34;&gt;background&lt;/a&gt; to something with &lt;a href=&#34;http://en.wikipedia.org/wiki/Steganography&#34;&gt;hidden&lt;/a&gt; data in it. Tools exist to analyse the entropy of an image to determine if it contains data. One could encode the hash of some password into the image, then use a rainbow table to decrypt the hash.&lt;/p&gt;
-
-&lt;p&gt;Essentially, break down the event into a series of quests. All quests lead to the same end i.e. network domination and a free round at the happy hour, but some paths are different than others. One quest may have more intellectual clues stenography, SQL injection, riddles which yield a password a la King&amp;rsquo;s Quest. Another path may be fraught with vulnerabilities. The latter requires a encyclopedic knowledge of known vulnerabilities to crack this quest. I recommend making this path longer, since Google skills can shorten it immensely.&lt;/p&gt;
-
-&lt;p&gt;Next, determine how the game will be scored and clearly post this information. For the latest event I hosted, I posted all the objectives at the front of the room, and wrote someones name as each objective was acquired. This worked well, but a more interactive system would be far more exciting. Something that showed the dominance and protection of different network factions. Honestly, this is more work, but certainly provides more excitement to the game.&lt;/p&gt;
-
-&lt;p&gt;Lastly, make the event fun, and provide other activities for those who don&amp;rsquo;t want to hack. This can be a very fun event, yet still important to learning how to build secure software. Ping me if you have other ideas for a hacking event, or post in the comments :-).&lt;/p&gt;
-</description>
+      <description>Black-Hat hacking in an controlled environment, like this, is an important skill for software developers. The Art of War describes knowing one&amp;rsquo;s enemy, and with the prevalence of internet-enabled applications today, it has never been more critical to know how the &amp;ldquo;enemy&amp;rdquo; can take down a system. While capture-the-flag is a fun, and exciting intellectual game, it is serious training for software engineers of all types, and skill levels. I recently setup a small capture the flag event for the Arizona Linux User&amp;rsquo;s Group, and it was very fun.</description>
     </item>
     
   </channel>

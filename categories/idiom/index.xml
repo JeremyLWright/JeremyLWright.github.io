@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Idiom on Code Strokes</title>
+    <title>Idiom on Jeremy&#39;s CodeStrokes</title>
     <link>http://www.codestrokes.com/categories/idiom/</link>
-    <description>Recent content in Idiom on Code Strokes</description>
+    <description>Recent content in Idiom on Jeremy&#39;s CodeStrokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
+    <copyright>Creative Commons Share Alike</copyright>
     <lastBuildDate>Sun, 20 Oct 2013 23:00:00 +0000</lastBuildDate>
-    <atom:link href="http://www.codestrokes.com/categories/idiom/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.codestrokes.com/categories/idiom/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Idiomatic Learning</title>
@@ -15,17 +18,7 @@
       <pubDate>Sun, 20 Oct 2013 23:00:00 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2013/10/idiomatic-learning/</guid>
-      <description>&lt;p&gt;When learning a new language I find it helpful to study a languages idioms. Idioms exist in a language for a specific reason. Sometimes that reason is to further the principles of the language, other times it’s to mask, or otherwise deal with some underlying design decision of the language. Currently, I am studying Haskell, and currently I am struggle to clarify the idioms of the language. The syntax is still very new and awkward, currently with a total authoring in Haskell of 713 lines.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;Python has some interesting idioms, but the one that really helped me when learning was “..tuples should have trailing commas…” At that time, the only other language I knew was C, and PIC Assembly. I was very much a hardware engineer, and Python, for me, was a step out of that hardware-centric mindset. So with such a staunch, inflexible background as this, such an idiom felt, dirty and wrong? My first reaction to this was, “What? Really? Why, are python programmers too lazy?” At first I refused to do this, claiming that my source code was more elegant, and clean. However some time later I learned the second part of this idiom, “…tuples should have trailing commas, BECAUSE syntactically the comma creates the tuple, not the parenthesizes.” Whoa! What an epiphany. From this simple clause, I can now create a tuple with 1 element! The because clause of an idiom, really opens doors in your mind. It really clarifies some subtle point, or characteristic of the language.&lt;/p&gt;
-
-&lt;p&gt;C++ on the other hand has a number of idioms that have become quite ingrained that it&amp;rsquo;s hard to separate, &amp;ldquo;yeah that&amp;rsquo;s just C++ syntax&amp;rdquo;, from, &amp;ldquo;That&amp;rsquo;s just how I do it,&amp;rdquo; to, &amp;ldquo;Oh yeah, I guess template &lt;typename T&gt; class &amp;hellip; isn&amp;rsquo;t very intuitive is it.&amp;rdquo; C++ is a complex multi-paradigm language with one sweeping design decision: You pay for what you use. For instance, take class methods. In C++ class methods are not polymorphic by default. I remember as a fledgling C++ programmer asking my computer science friend, Brian, &amp;ldquo;&amp;hellip;classes are useless without polymorphism. That&amp;rsquo;s just stupid.&amp;rdquo; He tried to explain it to me, but I was probably to frustrated to understand. What I didn&amp;rsquo;t know was the because, and I continued my ignorant use of virtual until I read &lt;a href=&#34;http://www.amazon.com/gp/product/0201543303/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=0201543303&amp;amp;linkCode=as2&amp;amp;tag=codestro-20&#34;&gt;The Design and Evolution of C++&lt;/a&gt;&lt;img src=&#34;http://ir-na.amazon-adsystem.com/e/ir?t=codestro-20&amp;amp;l=as2&amp;amp;o=1&amp;amp;a=0201543303&#34; alt=&#34;&#34; /&gt;
- that I learned the reason. Polymorphism requires a level of indirection to implement. Doing so affects performance. C++ doesn&amp;rsquo;t push this on you unless you want it, just non-polymorphic by default, virtual if you want. Beautiful. Now as an embedded system designer I love this aspect of C++. I am free to use the features I need without paying for the ones I don&amp;rsquo;t.&lt;/p&gt;
-
-&lt;p&gt;So now as I approach Haskell, I read blogs, and statements with a temporary suspension of judgement until I learn the because.&lt;/p&gt;
-</description>
+      <description>When learning a new language I find it helpful to study a languages idioms. Idioms exist in a language for a specific reason. Sometimes that reason is to further the principles of the language, other times it’s to mask, or otherwise deal with some underlying design decision of the language. Currently, I am studying Haskell, and currently I am struggle to clarify the idioms of the language. The syntax is still very new and awkward, currently with a total authoring in Haskell of 713 lines.</description>
     </item>
     
     <item>
@@ -34,60 +27,7 @@
       <pubDate>Sun, 06 May 2012 07:00:10 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2012/05/anderson-smart-pointer-idiom-updated/</guid>
-      <description>&lt;p&gt;C++11 provides us with a ton of new tools for expressing complex ideas in an efficient way. C++11 is unique among modern languages in that it provides a productive syntax, while also generating exceptionally fast code. For the first time ever, software engineers are responsible for increasing the performance of software systems. For decades we&amp;rsquo;ve been standing on the shoulders of hardware engineers. Hardware engineers have been increasing the clock speeds of our processors, but we&amp;rsquo;ve hit a physical limit. It&amp;rsquo;s our turn to pick up the baton in this relay race and get to the finish line. C++11 provides a number of tools to help us get there, and smart pointers are one such tool.
-&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
-The &lt;a href=&#34;http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/&#34;&gt;Anderson Smart-Pointer idiom&lt;/a&gt; is a pattern developed by a &lt;a href=&#34;http://www.chrisanderman.com/&#34;&gt;colleague of mine&lt;/a&gt;. It supplants the constructor of a class with a factory method, to eliminate all raw pointers in a software system. Secondly, it provides typedefs for the smart pointers so one may use a terse type to express a more verbose concept. C++11 provides three tools which allow us to make this pattern more generic, while also increasing its performance.&lt;/p&gt;
-
-&lt;p&gt;C++11 allows us to apply the &lt;a href=&#34;http://en.wikipedia.org/wiki/Don&#39;t_repeat_yourself&#34;&gt;DRY&lt;/a&gt; principle to the factory method.  Variadic templates allow us to render a completely generic version of the factory method. Until C++11, one was forced to duplicate the parameter list of the constructor in the factor method. This violates DRY, making maintenance more difficult. The factory construct now looks like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;template&amp;lt;typename... Ts&amp;gt;
- static SmartClass::Ptr construct(Ts... vs)
- {
- SmartClass::Ptr c = std::make_shared&amp;lt;SmartClass&amp;gt;(SmartClass(vs...));
- c-&amp;gt;self = c;
- return c;
- }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Except for the class name, this method never changes. This is powerful since it creates a &lt;a href=&#34;http://en.wikipedia.org/wiki/Separation_of_concerns&#34;&gt;separation of concerns&lt;/a&gt;. The factory method is only concerned with creating a smart-pointer handle to some dynamically created object. Any specific details in the constructor, i.e. the parameters, are forwarded to the actual constructor. This renders thee factory method completely generic.&lt;/p&gt;
-
-&lt;p&gt;Line 4 also debuts another C++11 addition: perfect-forwarding. C++11 contains a special non-member constructor for shared pointers. This special constructor leverages the STL&amp;rsquo;s &lt;a href=&#34;http://en.cppreference.com/w/cpp/utility/forward&#34;&gt;perfect-forwarding&lt;/a&gt; to remove as much function-call overhead as possible. This small fragment of code, leverages the massively powerful &lt;a href=&#34;http://en.wikipedia.org/wiki/C%2B%2B11#Rvalue_references_and_move_constructors&#34;&gt;move-semantics&lt;/a&gt; in C++11, generating extremely efficient code.&lt;/p&gt;
-
-&lt;p&gt;The last component which rounds out our updated idiom is that the smart pointer templates are now part of the standard namespace. Together the entire pattern looks like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#include &amp;lt;memory&amp;gt;
-#include &amp;lt;iostream&amp;gt;
-
-class SmartClass
-{
-public:
-typedef std::shared_ptr&amp;lt;SmartClass&amp;gt; Ptr;
-typedef std::weak_ptr&amp;lt;SmartClass&amp;gt; WeakPtr;
-template&amp;lt;typename... Ts&amp;gt;
-static SmartClass::Ptr construct(Ts... vs)
-{
-SmartClass::Ptr c = std::make_shared&amp;lt;SmartClass&amp;gt;(SmartClass(vs...));
-c-&amp;gt;self = c;
-return c;
-}
-virtual ~SmartClass();
-private:
-SmartClass(int param1, char param2);
-SmartClass::WeakPtr self;
-
-};
-
-int main(int argc, const char *argv[])
-{
-SmartClass::Ptr p = SmartClass::construct(2, &#39;c&#39;);
-return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Notice two things about the updated pattern. Even though the construct method is a template, we do not have to explicitly enumerate the constructor&amp;rsquo;s types at the call site (line 25). Secondly, even though we&amp;rsquo;re using a template, the entire class does not have to exist in the header file, only the template part, i.e. the construct method needs to be in the header. This is useful since it allows one to hide business logic in the cpp file, while still leveraging a generic template.&lt;/p&gt;
-
-&lt;p&gt;The updated Anderson smart-pointer idiom, extends an already powerful pattern into a more generic, high performance pattern. By applying &lt;a href=&#34;http://en.wikipedia.org/wiki/Don&#39;t_repeat_yourself&#34;&gt;DRY&lt;/a&gt; to the factory method, we are able to create a completely generic version of the constructor, which improves maintenance and separates the concerns of class construction from the memory management. Secondly, by leveraging the move semantics of &lt;em&gt;make_shared&amp;lt;&amp;gt;()&lt;/em&gt;, we create a shared_ptr with almost zero overhead. Lastly, the most powerful piece of this update is that  the public interface if this pattern has zero change. Code which already uses this patterns doesn&amp;rsquo;t have to change. Updating the factory method and recompiling will pull in all the benefits.&lt;/p&gt;
-</description>
+      <description>C++11 provides us with a ton of new tools for expressing complex ideas in an efficient way. C++11 is unique among modern languages in that it provides a productive syntax, while also generating exceptionally fast code. For the first time ever, software engineers are responsible for increasing the performance of software systems. For decades we&amp;rsquo;ve been standing on the shoulders of hardware engineers. Hardware engineers have been increasing the clock speeds of our processors, but we&amp;rsquo;ve hit a physical limit.</description>
     </item>
     
     <item>
@@ -96,111 +36,7 @@ return 0;
       <pubDate>Sun, 05 Feb 2012 21:14:29 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2012/02/compile-time-polymorphism/</guid>
-      <description>
-
-&lt;p&gt;Polymorphism is a tool in object orientation, which allows us to model behavior, while simultaneously leverage existing code. Polymorphism allows is behavior reuse.  In C++ polymorphism, comes in 2 flavors, the standard runtime variant, and a curious compile time variant.  Runtime polymorphism, like Java, leverages virtual functions to dynamically bind[1. With virtual functions the compiler doesn&amp;rsquo;t know which method to call until runtime. In C++ this is implemented with the &lt;a href=&#34;http://en.wikipedia.org/wiki/Virtual_method_table&#34;&gt;virtual method table&lt;/a&gt;] a method at the call site. Compile Time polymorphism uses templates, to bind at compile time, thus negating the performance affect of virtual functions.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;Polymorphism is a powerful concept. Polymorphism is a powerful tool in object-orientation, allowing one to realistically model the behavior or structure of some entity in software. This is key to any software design. Regardless, of idioms, language, paradigm, a realistic model is essential to a good design. If follow every best practice in software design, but your system doesn&amp;rsquo;t accurately reflect the real-world model, your software will be difficult to work with, and it will be impossible to bring new people on your project.  An accurate portrayal is required.&lt;/p&gt;
-
-&lt;p&gt;C++ affords us 2 forms of g: compile-time [2. Compile-Time polymorphism is also known as static polymorphism. I, however find this nomenclature confusing.  &amp;rdquo;static dynamicism&amp;rdquo;&amp;hellip;. Um, what?], and runtime.  Runtime is the most straightforward, and uses virtual functions.  However, as we&amp;rsquo;ll see later, virtual function have their own performance costs.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2012/02/SuperSimplePolymorphism.png.jpg.jpeg&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2012/02/SuperSimplePolymorphism.png.jpg.jpeg&#34; alt=&#34;&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;We&amp;rsquo;re going to implement this very simple hierarchy, to demonstrate polymorphism is its most basic form.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;struct Base {
-    Base (){}
-    virtual ~Base (){}
-    virtual void DoSomething(){
-        cout &amp;lt;&amp;lt; &amp;quot;Hello From Base.&amp;quot; &amp;lt;&amp;lt; endl;
-    }
-};
-
-struct Child : public Base {
-    Child (){}
-    virtual ~Child (){}
-    virtual void DoSomething() {
-        cout &amp;lt;&amp;lt; &amp;quot;Hello from Child.&amp;quot; &amp;lt;&amp;lt; endl;
-    }
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Using the following driver code.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int main(int argc, char const *argv[]){   
-    Base* b = new Child();
-    b-&amp;gt;DoSomething();
-    delete b;
-}
-
-
-
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Produces the following output:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;bash $ ./a.out
-Hello from Child
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This works, and its a familiar idiom. However virtual functions have a some performance issues. Since the call isn&amp;rsquo;t bound until until runtime, the methods cannot be inlined, and will probably incur a cache miss [1. &lt;a href=&#34;http://coldattic.info/shvedsky/pro/blogs/a-foo-walks-into-a-bar/posts/3&#34;&gt;A foo walks into a bar&lt;/a&gt;] , which on modern processors with the very deep caches is a very costly effect.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2012/02/Untitled-1.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2012/02/Untitled-1.png&#34; alt=&#34;&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Secondly, even with cacheing aside virtual functions are about 2.5 times slower than direct function calls; where as inlining, i.e. zero-function overhead is about 20 times faster [1. &lt;a href=&#34;http://assemblyrequired.crashworks.org/2009/01/19/how-slow-are-virtual-functions-really/&#34;&gt;How Slow Are Virtual Functions Really&lt;/a&gt;]. So this is a major issue is performance critical code, such as games. The EA directly states that virtual functions forbidden in their code [1. &lt;a href=&#34;http://assemblyrequired.crashworks.org/2008/12/22/ea-stl-prevents-memory-leaks/#more-92&#34;&gt;How the EA prevents Memory Leaks&lt;/a&gt;].  However, polymorphism is a powerful tool. Are we relegated to a &amp;ldquo;lower&amp;rdquo; form of Object-Orientation with writing performance critical code? No. In fact the opposite is true.  C++&amp;rsquo;s template system is powerful and allows us to add dnasicm at compile time.&lt;/p&gt;
-
-&lt;p&gt;We can implement the same behavior as the UML figure above using templates. This improves the performance of our code in two ways. Firstly, by omitting virtual function we pickup a ~2.5x boost. Secondly, by using composition instead of inheritance we also get a small bump, and the compiler is more likely to inline the &amp;ldquo;inner&amp;rdquo; function.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;template &amp;lt;typename ChildType&amp;gt;
-struct Base {
-    Base (){}
-    virtual ~Base2 (){}
-    void DoSomething() {
-        myChild.DoSomething(); // This is the &amp;quot;inner&amp;quot; function.
-    }
-private:
-    ChildType myChild;
-};
-
-struct Child /* Notice the lack of inheritance here */{
-    Child () {}
-    virtual ~Child(){}
-    void DoSomething(){
-        cout &amp;lt;&amp;lt; &amp;quot;Hello from Child.&amp;quot; &amp;lt;&amp;lt; endl;
-    }
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Our driver is similar to before, except for the instantiation. Instead of inheriting behavior from a base class and overriding it, the Child, or implementing type, is passed in as an instantiation argument. This creates a new type, which is the dynamic behavior we want. Using the following driver code, we achieve the same output as before.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int main(int argc, char const *argv[]){   
-    Base&amp;lt;Child&amp;gt;* b = new Base&amp;lt;Child2&amp;gt;();
-    b-&amp;gt;DoSomething();
-    delete b;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;C++11 (-std=c++0x in gcc4.6) allows one 1 more improvement in the driver code to prevent memory leaks.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int main(int argc, char const *argv[]){   
-auto b2 = make_shared&amp;lt;Base2&amp;lt;Child2&amp;gt; &amp;gt;();
-b2-&amp;gt;DoSomething();
-//Notice we don&#39;t have to call delete. Woot, exception safety!
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;So polymorphism is a powerful tool for creating dynamicism in programs, however with the inherent [1. Pun intended] performance issues the standard form of polymorphism is not the tool for every job. C++ templates allow use a manageable way to achieve similar behavior at compile time!&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h4 id=&#34;references:e250069d864db99c70bebd39675460a8&#34;&gt;References&lt;/h4&gt;
-</description>
+      <description>Polymorphism is a tool in object orientation, which allows us to model behavior, while simultaneously leverage existing code. Polymorphism allows is behavior reuse. In C++ polymorphism, comes in 2 flavors, the standard runtime variant, and a curious compile time variant. Runtime polymorphism, like Java, leverages virtual functions to dynamically bind[1. With virtual functions the compiler doesn&amp;rsquo;t know which method to call until runtime. In C++ this is implemented with the virtual method table] a method at the call site.</description>
     </item>
     
   </channel>

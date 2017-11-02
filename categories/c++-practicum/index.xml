@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43; Practicum on Jeremy&#39;s CodeStrokes</title>
+    <link>http://www.codestrokes.com/categories/c&#43;&#43;-practicum/</link>
+    <description>Recent content in C&#43;&#43; Practicum on Jeremy&#39;s CodeStrokes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Creative Commons Share Alike</copyright>
+    <lastBuildDate>Sun, 21 Aug 2011 07:23:25 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.codestrokes.com/categories/c++-practicum/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Good Tools, Excellent Results</title>
+      <link>http://www.codestrokes.com/2011/08/good-tools-excellent-results/</link>
+      <pubDate>Sun, 21 Aug 2011 07:23:25 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/08/good-tools-excellent-results/</guid>
+      <description>This semester for the C++ practicum we are building a clone of Zork. Like many games of the genre, Zork is driven by a database. Our implementation is a JSON database. I chose JSON for a few reasons, but most importantly because its a human readable format that&amp;rsquo;s simple to understand. I started by editing JSON files by hand in a text editor, however I found very quickly that investigating in a quick tool greatly improved my quality.</description>
+    </item>
+    
+    <item>
+      <title>Game Framework for C&#43;&#43; Practicum</title>
+      <link>http://www.codestrokes.com/2011/06/game-framework-for-c-practicum/</link>
+      <pubDate>Sat, 25 Jun 2011 22:37:51 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/2011/06/game-framework-for-c-practicum/</guid>
+      <description>For this year&amp;rsquo;s C++ practicum, we are going to build a small game engine. I&amp;rsquo;m keeping the code on bitbucket: http://bitbucket.org/jwright/gamecomponents Join us, or fork the code and make your own design. I look forward to seeing how this progresses.</description>
+    </item>
+    
+  </channel>
+</rss>

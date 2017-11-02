@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python on Code Strokes</title>
+    <title>Python on Jeremy&#39;s CodeStrokes</title>
     <link>http://www.codestrokes.com/tags/python/</link>
-    <description>Recent content in Python on Code Strokes</description>
+    <description>Recent content in Python on Jeremy&#39;s CodeStrokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
+    <copyright>Creative Commons Share Alike</copyright>
     <lastBuildDate>Sun, 20 Oct 2013 23:00:00 +0000</lastBuildDate>
-    <atom:link href="http://www.codestrokes.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.codestrokes.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Idiomatic Learning</title>
@@ -15,17 +18,7 @@
       <pubDate>Sun, 20 Oct 2013 23:00:00 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2013/10/idiomatic-learning/</guid>
-      <description>&lt;p&gt;When learning a new language I find it helpful to study a languages idioms. Idioms exist in a language for a specific reason. Sometimes that reason is to further the principles of the language, other times it’s to mask, or otherwise deal with some underlying design decision of the language. Currently, I am studying Haskell, and currently I am struggle to clarify the idioms of the language. The syntax is still very new and awkward, currently with a total authoring in Haskell of 713 lines.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;Python has some interesting idioms, but the one that really helped me when learning was “..tuples should have trailing commas…” At that time, the only other language I knew was C, and PIC Assembly. I was very much a hardware engineer, and Python, for me, was a step out of that hardware-centric mindset. So with such a staunch, inflexible background as this, such an idiom felt, dirty and wrong? My first reaction to this was, “What? Really? Why, are python programmers too lazy?” At first I refused to do this, claiming that my source code was more elegant, and clean. However some time later I learned the second part of this idiom, “…tuples should have trailing commas, BECAUSE syntactically the comma creates the tuple, not the parenthesizes.” Whoa! What an epiphany. From this simple clause, I can now create a tuple with 1 element! The because clause of an idiom, really opens doors in your mind. It really clarifies some subtle point, or characteristic of the language.&lt;/p&gt;
-
-&lt;p&gt;C++ on the other hand has a number of idioms that have become quite ingrained that it&amp;rsquo;s hard to separate, &amp;ldquo;yeah that&amp;rsquo;s just C++ syntax&amp;rdquo;, from, &amp;ldquo;That&amp;rsquo;s just how I do it,&amp;rdquo; to, &amp;ldquo;Oh yeah, I guess template &lt;typename T&gt; class &amp;hellip; isn&amp;rsquo;t very intuitive is it.&amp;rdquo; C++ is a complex multi-paradigm language with one sweeping design decision: You pay for what you use. For instance, take class methods. In C++ class methods are not polymorphic by default. I remember as a fledgling C++ programmer asking my computer science friend, Brian, &amp;ldquo;&amp;hellip;classes are useless without polymorphism. That&amp;rsquo;s just stupid.&amp;rdquo; He tried to explain it to me, but I was probably to frustrated to understand. What I didn&amp;rsquo;t know was the because, and I continued my ignorant use of virtual until I read &lt;a href=&#34;http://www.amazon.com/gp/product/0201543303/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=0201543303&amp;amp;linkCode=as2&amp;amp;tag=codestro-20&#34;&gt;The Design and Evolution of C++&lt;/a&gt;&lt;img src=&#34;http://ir-na.amazon-adsystem.com/e/ir?t=codestro-20&amp;amp;l=as2&amp;amp;o=1&amp;amp;a=0201543303&#34; alt=&#34;&#34; /&gt;
- that I learned the reason. Polymorphism requires a level of indirection to implement. Doing so affects performance. C++ doesn&amp;rsquo;t push this on you unless you want it, just non-polymorphic by default, virtual if you want. Beautiful. Now as an embedded system designer I love this aspect of C++. I am free to use the features I need without paying for the ones I don&amp;rsquo;t.&lt;/p&gt;
-
-&lt;p&gt;So now as I approach Haskell, I read blogs, and statements with a temporary suspension of judgement until I learn the because.&lt;/p&gt;
-</description>
+      <description>When learning a new language I find it helpful to study a languages idioms. Idioms exist in a language for a specific reason. Sometimes that reason is to further the principles of the language, other times it’s to mask, or otherwise deal with some underlying design decision of the language. Currently, I am studying Haskell, and currently I am struggle to clarify the idioms of the language. The syntax is still very new and awkward, currently with a total authoring in Haskell of 713 lines.</description>
     </item>
     
     <item>
@@ -34,26 +27,14 @@
       <pubDate>Sat, 22 Sep 2012 15:36:10 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2012/09/asulug-talk-django-web-framework/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;ASU Linux User’s Group (ASULUG) — LUG Talks&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Sat 6 Oct 1:30pm — BYENG 210&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt; &lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;The Django Web Framework&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Jeremy Wright&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Abstract&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Django: Awesome Jazz Musician, Awesome Web Framework.&lt;/p&gt;
-
-&lt;p&gt;Django is a web framework similar to the popular Ruby on RAILS, but leveraging the Python programming language. Born out of the newspaper industry, Django is touted as the “web framework for perfectionists with deadlines.” Django is a powerful tool for any size web project: Web Services, Storefronts, CMS’s—Django conquers all. Additionally, Django’s built-in webserver and automated back-end generator make for easy and fast development.&lt;/p&gt;
-
-&lt;p&gt;Please join the ASU Linux User’s Group on October 6th at 1:30pm to learn how to apply this amazing technology to your own projects.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Jeremy Wright is an embedded software engineer working on machine automation equipment at a local engineering firm. He completed a Bachelors of Science in Electrical Engineering from the Univer­sity of Arizona in 2008 before starting his career with Avionic Systems before moving into Agriculture. Currently, Jeremy is working on his Master’s of Computer Science with a Concentration in Information Assurance. Jeremy is also the current instructor for CSE 394 C++ Practicum. He specializes in C++ and deeply embedded real-time software.&lt;/em&gt;&lt;/p&gt;
-</description>
+      <description>ASU Linux User’s Group (ASULUG) — LUG Talks
+Sat 6 Oct 1:30pm — BYENG 210
+ 
+The Django Web Framework
+Jeremy Wright
+Abstract
+Django: Awesome Jazz Musician, Awesome Web Framework.
+Django is a web framework similar to the popular Ruby on RAILS, but leveraging the Python programming language. Born out of the newspaper industry, Django is touted as the “web framework for perfectionists with deadlines.” Django is a powerful tool for any size web project: Web Services, Storefronts, CMS’s—Django conquers all.</description>
     </item>
     
     <item>
@@ -62,58 +43,7 @@
       <pubDate>Sun, 23 Oct 2011 19:00:21 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</guid>
-      <description>&lt;p&gt;Choosing to use C++ brings the additional complexity of memory management.  Dennis Ritchie once stated: The C Programming Language — A language which combines the flexibility of assembly language with the power of assembly language. C++ inherits much of that _flexibility, _however, this &lt;a href=&#34;http://www.infoq.com/presentations/Are-We-There-Yet-Rich-Hickey&#34;&gt;incidental complexity&lt;/a&gt;, can be relegated to a single class, leaving you with the high-level elegance of Python. RAII help with this additional complexity, however without a pattern for guidance implementing RAII consistently can be difficult, defeating the safety it provides.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;Resource Acquisition Is Initialization (&lt;a href=&#34;http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization&#34;&gt;RAII&lt;/a&gt;) is a powerful tool for managing resources.  RAII &lt;a href=&#34;http://www.research.att.com/~bs/bs_faq2.html#finally&#34;&gt;justifies&lt;/a&gt; the apparent missing finally clause. Stroustrup claims that with proper RAII,  &lt;a href=&#34;http://www.research.att.com/~bs/bs_faq2.html#finally&#34;&gt;finally&lt;/a&gt; is not required. D also &lt;a href=&#34;http://www.d-programming-language.org/exception-safe.html&#34;&gt;implements&lt;/a&gt; RAII with scope operators. Ok, so RAII is powerful, but what is it?&lt;/p&gt;
-
-&lt;p&gt;In C++, destructors are the only entity guaranteed to execute after an exception.  So resources which need to be automatically reclaimed need  to acquire at initialization, and release at destruction.  Such resources must be declared on the stack, to permit this idiom.&lt;/p&gt;
-
-&lt;p&gt;Writing exception-safe code, e.g. managing resources throughout exceptions is difficult, and while RAII makes it easier, managing RAII correctly is difficult without a pattern. A colleague of mine, &lt;a href=&#34;http://www.chrisanderman.com/&#34;&gt;Anderson&lt;/a&gt;, developed a fantastic pattern/&lt;a href=&#34;http://erdani.com/publications/cuj-2005-12.pdf&#34;&gt;policy&lt;/a&gt; using smart pointers which makes RAII automatic.&lt;/p&gt;
-
-&lt;p&gt;Two patterns compose the Anderson Smart Pointer Pattern: Factory Constructor, and PIMPL.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#ifdef _WIN
-#include &amp;lt;memory&amp;gt;
-#else
-#include &amp;lt;tr1/memory&amp;gt;
-#endif
-
-class Name
-{
-public:
-#ifdef _WIN
-    typedef std::shared_ptr Ptr; //This uses the class as a namespace.
-    typedef std::weak_ptr WeakPtr;
-#else
-    typedef std::tr1::shared_ptr Ptr;
-    typedef std::tr1::weak_ptr WeakPtr;
-#endif
-    static name::Ptr construct(); //Factory Constructor
-    virtual ~name();
-private:
-    Name(); //Notice the constructor is private
-    name::WeakPtr self; //self (from python), replaces this
-};
-
-Name::Ptr Name::construct()
-{
-    Name::Ptr c(new Name());
-    //Self completes the PIMPL idiom,
-    //thereby hiding all behavior behind a safe, reference counted wall
-    c-&amp;gt;self = c;
-    return c;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This pattern is used as an RAII &lt;a href=&#34;http://erdani.com/publications/cuj-2005-12.pdf&#34;&gt;policy&lt;/a&gt;. Using the pattern liberally can eliminate new and delete from your program, and you will not leak memory. Even with multiple exceptions, you&amp;rsquo;re &lt;a href=&#34;https://bitbucket.org/jwright/cse310-red-black-tree/overview&#34;&gt;program will not leak&lt;/a&gt;.  Creating an instance of an RAII class is easy now:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Name::Ptr myInstance = Name::construct();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This Pattern will make one extra virtual call as it performs the reference counting, but the performance hit is typically nominal compared to the safety it provides to the system. The Anderson Smart-Pointer Pattern increases robustness of your programs, but interestingly it also provides a new elegance. Since one is not managing memory, and resources constantly, it makes C++ perform more like a high level language. For example, I implemented a &lt;a href=&#34;https://bitbucket.org/jwright/cse310-red-black-tree/src/d787e75b724a/BaseCode/RedBlackTree.cpp#cl-137&#34;&gt;red black tree&lt;/a&gt; using this pattern.  I didn&amp;rsquo;t need to worry about deleting nodes, just the requirements of my program. With the incidental complexity relegated to a single class, I am left with the elegant, expressiveness of Python, yet retain the raw performance of C++.&lt;/p&gt;
-</description>
+      <description>Choosing to use C++ brings the additional complexity of memory management. Dennis Ritchie once stated: The C Programming Language — A language which combines the flexibility of assembly language with the power of assembly language. C++ inherits much of that _flexibility, _however, this incidental complexity, can be relegated to a single class, leaving you with the high-level elegance of Python. RAII help with this additional complexity, however without a pattern for guidance implementing RAII consistently can be difficult, defeating the safety it provides.</description>
     </item>
     
     <item>
@@ -122,33 +52,7 @@ Name::Ptr Name::construct()
       <pubDate>Sun, 21 Aug 2011 07:23:25 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2011/08/good-tools-excellent-results/</guid>
-      <description>&lt;p&gt;This semester for the C++ practicum we are building a clone of Zork.  Like many games of the genre, Zork is driven by a database.  Our implementation is a JSON database.  I chose JSON for a few reasons, but most importantly because its a human readable format that&amp;rsquo;s simple to understand.  I started by editing JSON files by hand in a text editor, however I found very quickly that investigating in a quick tool greatly improved my quality.&lt;/p&gt;
-
-&lt;p&gt;&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;I chose JSON as a format. Next, I needed a schema.  Currently the schema design is as follows:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;quot;Clearing&amp;quot;: {
- &amp;quot;Description&amp;quot;: &amp;quot;You are in a clearing. There is a berry bramble to your right.&amp;quot;,
- &amp;quot;Exits&amp;quot;: {
-     &amp;quot;East&amp;quot;: &amp;quot;Up a Tree&amp;quot;,
-     &amp;quot;North&amp;quot;: &amp;quot;Grating Room&amp;quot;,
-     &amp;quot;South&amp;quot;: &amp;quot;Clearing&amp;quot;,
-     &amp;quot;West&amp;quot;: &amp;quot;&amp;quot;
- },
- &amp;quot;Items&amp;quot;: [&amp;quot;Berries&amp;quot;, &amp;quot;Sword&amp;quot;]
- }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If nothing else its simple. So I started to layout the map, editing the JSON database directly in my text editor.  I found that even with such a simple schema, in a simple format such as JSON, it is incredible difficult to manage more than a few rooms.  I needed a better tool, a Map Editor.&lt;/p&gt;
-
-&lt;p&gt;Python to the rescue.  Using PyQt and Qt Designer I was able to whip up a dirty little map editor in an evening (totally about 3 hours).&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2011/08/Screenshot-Practicum-Game-Editor.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2011/08/Screenshot-Practicum-Game-Editor-1024x786.png&#34; alt=&#34;&#34; /&gt;
-&lt;/a&gt;With this I can not manage a much larger database, giving my players a much more immersive environment.  Secondly, my students can use and even extend the tool to make even better game play.&lt;/p&gt;
-
-&lt;p&gt;I wasted quite a bit of time hand editing JSON files, when such a simple tool could be built in less than half the time.  I took it as just another example of, &amp;ldquo;Sometimes you have to slow down to speed up.&amp;rdquo;  Take time to make your tools work.  Take time to make the right tools, and it will always pay dividends.&lt;/p&gt;
-
-&lt;p&gt;Source Code is available here: &lt;a href=&#34;https://bitbucket.org/jwright/gamecomponents&#34;&gt;https://bitbucket.org/jwright/gamecomponents&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>This semester for the C++ practicum we are building a clone of Zork. Like many games of the genre, Zork is driven by a database. Our implementation is a JSON database. I chose JSON for a few reasons, but most importantly because its a human readable format that&amp;rsquo;s simple to understand. I started by editing JSON files by hand in a text editor, however I found very quickly that investigating in a quick tool greatly improved my quality.</description>
     </item>
     
   </channel>

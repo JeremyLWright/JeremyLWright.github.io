@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Series on Jeremy&#39;s CodeStrokes</title>
+    <link>http://www.codestrokes.com/series/</link>
+    <description>Recent content in Series on Jeremy&#39;s CodeStrokes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Creative Commons Share Alike</copyright>
+    <lastBuildDate>Sun, 07 Jun 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.codestrokes.com/series/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Codestrokes Blog Reboot</title>
+      <link>http://www.codestrokes.com/series/codestrokes-blog-reboot/</link>
+      <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/series/codestrokes-blog-reboot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Property Driven Design</title>
+      <link>http://www.codestrokes.com/series/property-driven-design/</link>
+      <pubDate>Sun, 05 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/series/property-driven-design/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>The Red Black Tree</title>
+      <link>http://www.codestrokes.com/series/the-red-black-tree/</link>
+      <pubDate>Wed, 18 May 2011 03:06:36 +0000</pubDate>
+      
+      <guid>http://www.codestrokes.com/series/the-red-black-tree/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Virtual on Code Strokes</title>
+    <title>Virtual on Jeremy&#39;s CodeStrokes</title>
     <link>http://www.codestrokes.com/tags/virtual/</link>
-    <description>Recent content in Virtual on Code Strokes</description>
+    <description>Recent content in Virtual on Jeremy&#39;s CodeStrokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
+    <copyright>Creative Commons Share Alike</copyright>
     <lastBuildDate>Sun, 05 Feb 2012 21:14:29 +0000</lastBuildDate>
-    <atom:link href="http://www.codestrokes.com/tags/virtual/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.codestrokes.com/tags/virtual/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Compile-Time Polymorphism</title>
@@ -15,111 +18,7 @@
       <pubDate>Sun, 05 Feb 2012 21:14:29 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2012/02/compile-time-polymorphism/</guid>
-      <description>
-
-&lt;p&gt;Polymorphism is a tool in object orientation, which allows us to model behavior, while simultaneously leverage existing code. Polymorphism allows is behavior reuse.  In C++ polymorphism, comes in 2 flavors, the standard runtime variant, and a curious compile time variant.  Runtime polymorphism, like Java, leverages virtual functions to dynamically bind[1. With virtual functions the compiler doesn&amp;rsquo;t know which method to call until runtime. In C++ this is implemented with the &lt;a href=&#34;http://en.wikipedia.org/wiki/Virtual_method_table&#34;&gt;virtual method table&lt;/a&gt;] a method at the call site. Compile Time polymorphism uses templates, to bind at compile time, thus negating the performance affect of virtual functions.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;Polymorphism is a powerful concept. Polymorphism is a powerful tool in object-orientation, allowing one to realistically model the behavior or structure of some entity in software. This is key to any software design. Regardless, of idioms, language, paradigm, a realistic model is essential to a good design. If follow every best practice in software design, but your system doesn&amp;rsquo;t accurately reflect the real-world model, your software will be difficult to work with, and it will be impossible to bring new people on your project.  An accurate portrayal is required.&lt;/p&gt;
-
-&lt;p&gt;C++ affords us 2 forms of g: compile-time [2. Compile-Time polymorphism is also known as static polymorphism. I, however find this nomenclature confusing.  &amp;rdquo;static dynamicism&amp;rdquo;&amp;hellip;. Um, what?], and runtime.  Runtime is the most straightforward, and uses virtual functions.  However, as we&amp;rsquo;ll see later, virtual function have their own performance costs.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2012/02/SuperSimplePolymorphism.png.jpg.jpeg&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2012/02/SuperSimplePolymorphism.png.jpg.jpeg&#34; alt=&#34;&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;We&amp;rsquo;re going to implement this very simple hierarchy, to demonstrate polymorphism is its most basic form.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;struct Base {
-    Base (){}
-    virtual ~Base (){}
-    virtual void DoSomething(){
-        cout &amp;lt;&amp;lt; &amp;quot;Hello From Base.&amp;quot; &amp;lt;&amp;lt; endl;
-    }
-};
-
-struct Child : public Base {
-    Child (){}
-    virtual ~Child (){}
-    virtual void DoSomething() {
-        cout &amp;lt;&amp;lt; &amp;quot;Hello from Child.&amp;quot; &amp;lt;&amp;lt; endl;
-    }
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Using the following driver code.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int main(int argc, char const *argv[]){   
-    Base* b = new Child();
-    b-&amp;gt;DoSomething();
-    delete b;
-}
-
-
-
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Produces the following output:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;bash $ ./a.out
-Hello from Child
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This works, and its a familiar idiom. However virtual functions have a some performance issues. Since the call isn&amp;rsquo;t bound until until runtime, the methods cannot be inlined, and will probably incur a cache miss [1. &lt;a href=&#34;http://coldattic.info/shvedsky/pro/blogs/a-foo-walks-into-a-bar/posts/3&#34;&gt;A foo walks into a bar&lt;/a&gt;] , which on modern processors with the very deep caches is a very costly effect.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.codestrokes.com/wp-content/uploads/2012/02/Untitled-1.png&#34;&gt;&lt;img src=&#34;http://www.codestrokes.com/wp-content/uploads/2012/02/Untitled-1.png&#34; alt=&#34;&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Secondly, even with cacheing aside virtual functions are about 2.5 times slower than direct function calls; where as inlining, i.e. zero-function overhead is about 20 times faster [1. &lt;a href=&#34;http://assemblyrequired.crashworks.org/2009/01/19/how-slow-are-virtual-functions-really/&#34;&gt;How Slow Are Virtual Functions Really&lt;/a&gt;]. So this is a major issue is performance critical code, such as games. The EA directly states that virtual functions forbidden in their code [1. &lt;a href=&#34;http://assemblyrequired.crashworks.org/2008/12/22/ea-stl-prevents-memory-leaks/#more-92&#34;&gt;How the EA prevents Memory Leaks&lt;/a&gt;].  However, polymorphism is a powerful tool. Are we relegated to a &amp;ldquo;lower&amp;rdquo; form of Object-Orientation with writing performance critical code? No. In fact the opposite is true.  C++&amp;rsquo;s template system is powerful and allows us to add dnasicm at compile time.&lt;/p&gt;
-
-&lt;p&gt;We can implement the same behavior as the UML figure above using templates. This improves the performance of our code in two ways. Firstly, by omitting virtual function we pickup a ~2.5x boost. Secondly, by using composition instead of inheritance we also get a small bump, and the compiler is more likely to inline the &amp;ldquo;inner&amp;rdquo; function.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;template &amp;lt;typename ChildType&amp;gt;
-struct Base {
-    Base (){}
-    virtual ~Base2 (){}
-    void DoSomething() {
-        myChild.DoSomething(); // This is the &amp;quot;inner&amp;quot; function.
-    }
-private:
-    ChildType myChild;
-};
-
-struct Child /* Notice the lack of inheritance here */{
-    Child () {}
-    virtual ~Child(){}
-    void DoSomething(){
-        cout &amp;lt;&amp;lt; &amp;quot;Hello from Child.&amp;quot; &amp;lt;&amp;lt; endl;
-    }
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Our driver is similar to before, except for the instantiation. Instead of inheriting behavior from a base class and overriding it, the Child, or implementing type, is passed in as an instantiation argument. This creates a new type, which is the dynamic behavior we want. Using the following driver code, we achieve the same output as before.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int main(int argc, char const *argv[]){   
-    Base&amp;lt;Child&amp;gt;* b = new Base&amp;lt;Child2&amp;gt;();
-    b-&amp;gt;DoSomething();
-    delete b;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;C++11 (-std=c++0x in gcc4.6) allows one 1 more improvement in the driver code to prevent memory leaks.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int main(int argc, char const *argv[]){   
-auto b2 = make_shared&amp;lt;Base2&amp;lt;Child2&amp;gt; &amp;gt;();
-b2-&amp;gt;DoSomething();
-//Notice we don&#39;t have to call delete. Woot, exception safety!
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;So polymorphism is a powerful tool for creating dynamicism in programs, however with the inherent [1. Pun intended] performance issues the standard form of polymorphism is not the tool for every job. C++ templates allow use a manageable way to achieve similar behavior at compile time!&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h4 id=&#34;references:e250069d864db99c70bebd39675460a8&#34;&gt;References&lt;/h4&gt;
-</description>
+      <description>Polymorphism is a tool in object orientation, which allows us to model behavior, while simultaneously leverage existing code. Polymorphism allows is behavior reuse. In C++ polymorphism, comes in 2 flavors, the standard runtime variant, and a curious compile time variant. Runtime polymorphism, like Java, leverages virtual functions to dynamically bind[1. With virtual functions the compiler doesn&amp;rsquo;t know which method to call until runtime. In C++ this is implemented with the virtual method table] a method at the call site.</description>
     </item>
     
   </channel>

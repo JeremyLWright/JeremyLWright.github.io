@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Review on Code Strokes</title>
+    <title>Review on Jeremy&#39;s CodeStrokes</title>
     <link>http://www.codestrokes.com/categories/review/</link>
-    <description>Recent content in Review on Code Strokes</description>
+    <description>Recent content in Review on Jeremy&#39;s CodeStrokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
+    <copyright>Creative Commons Share Alike</copyright>
     <lastBuildDate>Sun, 13 Oct 2013 23:00:23 +0000</lastBuildDate>
-    <atom:link href="http://www.codestrokes.com/categories/review/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.codestrokes.com/categories/review/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>&#34;Smaller&#34; Reviews are More Effective</title>
@@ -15,22 +18,8 @@
       <pubDate>Sun, 13 Oct 2013 23:00:23 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2013/10/smaller-reviews-are-more-effective/</guid>
-      <description>&lt;p&gt;I was reviewing a new software module for work today, and discovered that when the class fit on a single screen my comments were more meaningful, than when the class was larger.  My comments for spatially larger classes were mostly focused on syntactic, and idiomatic details. It was an interesting self-observation, but this certainly isn&amp;rsquo;t new information.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;I&amp;rsquo;ve heard the adage that smaller reviews are more effective than larger ones. At a conference I attended hosted by Atlassian: The JIRA team noted several instances where the time per file decreased with the number of files in the review. This is an interesting observation, and certainly is intuitive thinking about corporate programming and the culture that invites. However, I think of this metric as the extra-dependency size. Where extra is the logical dependency between components of the different files. This is translatable to the system review, and I feel code is the wrong place to be finding system bugs.&lt;/p&gt;
-
-&lt;p&gt;Instead code reviews are supposed to look at the coding faults introduced by the coder themselves. I there there should be a new metric I&amp;rsquo;m calling the &amp;ldquo;inter-dependency&amp;rdquo; size. It is the worst case distance (In number of lines) between a bug, and its inputs. For instance:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;int add(int a, int b) const
- {
- return a - b;
- }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This snippet has an inter-dependency size of 2. The function call brings in the inputs, to the computation performed on those inputs. This is much easier to catch in practice than a very large function with lots of mutation. When I setup a review for my own code, I relish, even dare my co-workers to find errors. It saves me a lot of trouble to find the bug now, instead of the night of my daughter&amp;rsquo;s ballet recital. I define revies as a process to maximize the probability my team will find mistakes. I then posit to design my reviews with as much care as I design the code itself, and minimize the inter-dependency size for my functions.&lt;/p&gt;
-</description>
+      <description>I was reviewing a new software module for work today, and discovered that when the class fit on a single screen my comments were more meaningful, than when the class was larger. My comments for spatially larger classes were mostly focused on syntactic, and idiomatic details. It was an interesting self-observation, but this certainly isn&amp;rsquo;t new information.
+I&amp;rsquo;ve heard the adage that smaller reviews are more effective than larger ones. At a conference I attended hosted by Atlassian: The JIRA team noted several instances where the time per file decreased with the number of files in the review.</description>
     </item>
     
     <item>
@@ -39,12 +28,7 @@
       <pubDate>Wed, 24 Jul 2013 04:48:01 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2013/07/review-how-to-write-a-thesis-2/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://www.amazon.com/gp/product/0335244289/ref=as_li_ss_il?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=390957&amp;amp;creativeASIN=0335244289&amp;amp;linkCode=as2&amp;amp;tag=codestro-20&#34;&gt;&lt;img src=&#34;http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;amp;ASIN=0335244289&amp;amp;Format=_SL160_&amp;amp;ID=AsinImage&amp;amp;MarketPlace=US&amp;amp;ServiceVersion=20070822&amp;amp;WS=1&amp;amp;tag=codestro-20&#34; alt=&#34;&#34; /&gt;
-&lt;/a&gt;&lt;img src=&#34;http://ir-na.amazon-adsystem.com/e/ir?t=codestro-20&amp;amp;l=as2&amp;amp;o=1&amp;amp;a=0335244289&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;My family purchased this book for me, as a motivator to start thinking about the thesis component of my master&amp;rsquo;s degree. &amp;ldquo;It must be substantial&amp;hellip;&amp;rdquo; said a colleague of mine. &amp;ldquo;It must be original work&amp;hellip;&amp;rdquo; Original, substantial, all words that left me with uneasiness about how to start. This book however was an easy read, and gave some very pragmatic advice on how to start, yet the most important quote I drew from the book was, &amp;ldquo;What are the questions in your field?&amp;rdquo; Oh, that&amp;rsquo;s a much easier way to look at it. Not as, &amp;ldquo;I must make something original.&amp;rdquo; Rather, &amp;ldquo;I have to answer some questions&amp;hellip;&amp;rdquo;  This book really triggered a thought in my own thesis planning. and I recommend taking a look.&lt;/p&gt;
-</description>
+      <description>My family purchased this book for me, as a motivator to start thinking about the thesis component of my master&amp;rsquo;s degree. &amp;ldquo;It must be substantial&amp;hellip;&amp;rdquo; said a colleague of mine. &amp;ldquo;It must be original work&amp;hellip;&amp;rdquo; Original, substantial, all words that left me with uneasiness about how to start. This book however was an easy read, and gave some very pragmatic advice on how to start, yet the most important quote I drew from the book was, &amp;ldquo;What are the questions in your field?</description>
     </item>
     
   </channel>

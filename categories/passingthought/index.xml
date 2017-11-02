@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Passingthought on Code Strokes</title>
+    <title>Passingthought on Jeremy&#39;s CodeStrokes</title>
     <link>http://www.codestrokes.com/categories/passingthought/</link>
-    <description>Recent content in Passingthought on Code Strokes</description>
+    <description>Recent content in Passingthought on Jeremy&#39;s CodeStrokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
+    <copyright>Creative Commons Share Alike</copyright>
     <lastBuildDate>Sat, 07 May 2011 22:10:54 +0000</lastBuildDate>
-    <atom:link href="http://www.codestrokes.com/categories/passingthought/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.codestrokes.com/categories/passingthought/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Java 4K Contest</title>
@@ -15,9 +18,7 @@
       <pubDate>Sat, 07 May 2011 22:10:54 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2011/05/java-4k-contest/</guid>
-      <description>&lt;p&gt;Crazy challenging game contest: &lt;a href=&#34;http://javaunlimited.net/contests/java4k.php&#34;&gt;http://javaunlimited.net/contests/java4k.php&lt;/a&gt;
-Reminds me of the winners of a 96KB contest: &lt;a href=&#34;http://en.wikipedia.org/wiki/.kkrieger&#34;&gt;http://en.wikipedia.org/wiki/.kkrieger&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Crazy challenging game contest: http://javaunlimited.net/contests/java4k.php Reminds me of the winners of a 96KB contest: http://en.wikipedia.org/wiki/.kkrieger</description>
     </item>
     
   </channel>

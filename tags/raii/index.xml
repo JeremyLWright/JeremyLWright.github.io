@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Raii on Code Strokes</title>
+    <title>Raii on Jeremy&#39;s CodeStrokes</title>
     <link>http://www.codestrokes.com/tags/raii/</link>
-    <description>Recent content in Raii on Code Strokes</description>
+    <description>Recent content in Raii on Jeremy&#39;s CodeStrokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
+    <copyright>Creative Commons Share Alike</copyright>
     <lastBuildDate>Sun, 06 May 2012 07:00:10 +0000</lastBuildDate>
-    <atom:link href="http://www.codestrokes.com/tags/raii/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.codestrokes.com/tags/raii/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Anderson Smart-Pointer Idiom Updated!</title>
@@ -15,60 +18,7 @@
       <pubDate>Sun, 06 May 2012 07:00:10 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2012/05/anderson-smart-pointer-idiom-updated/</guid>
-      <description>&lt;p&gt;C++11 provides us with a ton of new tools for expressing complex ideas in an efficient way. C++11 is unique among modern languages in that it provides a productive syntax, while also generating exceptionally fast code. For the first time ever, software engineers are responsible for increasing the performance of software systems. For decades we&amp;rsquo;ve been standing on the shoulders of hardware engineers. Hardware engineers have been increasing the clock speeds of our processors, but we&amp;rsquo;ve hit a physical limit. It&amp;rsquo;s our turn to pick up the baton in this relay race and get to the finish line. C++11 provides a number of tools to help us get there, and smart pointers are one such tool.
-&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
-The &lt;a href=&#34;http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/&#34;&gt;Anderson Smart-Pointer idiom&lt;/a&gt; is a pattern developed by a &lt;a href=&#34;http://www.chrisanderman.com/&#34;&gt;colleague of mine&lt;/a&gt;. It supplants the constructor of a class with a factory method, to eliminate all raw pointers in a software system. Secondly, it provides typedefs for the smart pointers so one may use a terse type to express a more verbose concept. C++11 provides three tools which allow us to make this pattern more generic, while also increasing its performance.&lt;/p&gt;
-
-&lt;p&gt;C++11 allows us to apply the &lt;a href=&#34;http://en.wikipedia.org/wiki/Don&#39;t_repeat_yourself&#34;&gt;DRY&lt;/a&gt; principle to the factory method.  Variadic templates allow us to render a completely generic version of the factory method. Until C++11, one was forced to duplicate the parameter list of the constructor in the factor method. This violates DRY, making maintenance more difficult. The factory construct now looks like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;template&amp;lt;typename... Ts&amp;gt;
- static SmartClass::Ptr construct(Ts... vs)
- {
- SmartClass::Ptr c = std::make_shared&amp;lt;SmartClass&amp;gt;(SmartClass(vs...));
- c-&amp;gt;self = c;
- return c;
- }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Except for the class name, this method never changes. This is powerful since it creates a &lt;a href=&#34;http://en.wikipedia.org/wiki/Separation_of_concerns&#34;&gt;separation of concerns&lt;/a&gt;. The factory method is only concerned with creating a smart-pointer handle to some dynamically created object. Any specific details in the constructor, i.e. the parameters, are forwarded to the actual constructor. This renders thee factory method completely generic.&lt;/p&gt;
-
-&lt;p&gt;Line 4 also debuts another C++11 addition: perfect-forwarding. C++11 contains a special non-member constructor for shared pointers. This special constructor leverages the STL&amp;rsquo;s &lt;a href=&#34;http://en.cppreference.com/w/cpp/utility/forward&#34;&gt;perfect-forwarding&lt;/a&gt; to remove as much function-call overhead as possible. This small fragment of code, leverages the massively powerful &lt;a href=&#34;http://en.wikipedia.org/wiki/C%2B%2B11#Rvalue_references_and_move_constructors&#34;&gt;move-semantics&lt;/a&gt; in C++11, generating extremely efficient code.&lt;/p&gt;
-
-&lt;p&gt;The last component which rounds out our updated idiom is that the smart pointer templates are now part of the standard namespace. Together the entire pattern looks like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#include &amp;lt;memory&amp;gt;
-#include &amp;lt;iostream&amp;gt;
-
-class SmartClass
-{
-public:
-typedef std::shared_ptr&amp;lt;SmartClass&amp;gt; Ptr;
-typedef std::weak_ptr&amp;lt;SmartClass&amp;gt; WeakPtr;
-template&amp;lt;typename... Ts&amp;gt;
-static SmartClass::Ptr construct(Ts... vs)
-{
-SmartClass::Ptr c = std::make_shared&amp;lt;SmartClass&amp;gt;(SmartClass(vs...));
-c-&amp;gt;self = c;
-return c;
-}
-virtual ~SmartClass();
-private:
-SmartClass(int param1, char param2);
-SmartClass::WeakPtr self;
-
-};
-
-int main(int argc, const char *argv[])
-{
-SmartClass::Ptr p = SmartClass::construct(2, &#39;c&#39;);
-return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Notice two things about the updated pattern. Even though the construct method is a template, we do not have to explicitly enumerate the constructor&amp;rsquo;s types at the call site (line 25). Secondly, even though we&amp;rsquo;re using a template, the entire class does not have to exist in the header file, only the template part, i.e. the construct method needs to be in the header. This is useful since it allows one to hide business logic in the cpp file, while still leveraging a generic template.&lt;/p&gt;
-
-&lt;p&gt;The updated Anderson smart-pointer idiom, extends an already powerful pattern into a more generic, high performance pattern. By applying &lt;a href=&#34;http://en.wikipedia.org/wiki/Don&#39;t_repeat_yourself&#34;&gt;DRY&lt;/a&gt; to the factory method, we are able to create a completely generic version of the constructor, which improves maintenance and separates the concerns of class construction from the memory management. Secondly, by leveraging the move semantics of &lt;em&gt;make_shared&amp;lt;&amp;gt;()&lt;/em&gt;, we create a shared_ptr with almost zero overhead. Lastly, the most powerful piece of this update is that  the public interface if this pattern has zero change. Code which already uses this patterns doesn&amp;rsquo;t have to change. Updating the factory method and recompiling will pull in all the benefits.&lt;/p&gt;
-</description>
+      <description>C++11 provides us with a ton of new tools for expressing complex ideas in an efficient way. C++11 is unique among modern languages in that it provides a productive syntax, while also generating exceptionally fast code. For the first time ever, software engineers are responsible for increasing the performance of software systems. For decades we&amp;rsquo;ve been standing on the shoulders of hardware engineers. Hardware engineers have been increasing the clock speeds of our processors, but we&amp;rsquo;ve hit a physical limit.</description>
     </item>
     
     <item>
@@ -77,58 +27,7 @@ return 0;
       <pubDate>Sun, 23 Oct 2011 19:00:21 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</guid>
-      <description>&lt;p&gt;Choosing to use C++ brings the additional complexity of memory management.  Dennis Ritchie once stated: The C Programming Language — A language which combines the flexibility of assembly language with the power of assembly language. C++ inherits much of that _flexibility, _however, this &lt;a href=&#34;http://www.infoq.com/presentations/Are-We-There-Yet-Rich-Hickey&#34;&gt;incidental complexity&lt;/a&gt;, can be relegated to a single class, leaving you with the high-level elegance of Python. RAII help with this additional complexity, however without a pattern for guidance implementing RAII consistently can be difficult, defeating the safety it provides.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;Resource Acquisition Is Initialization (&lt;a href=&#34;http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization&#34;&gt;RAII&lt;/a&gt;) is a powerful tool for managing resources.  RAII &lt;a href=&#34;http://www.research.att.com/~bs/bs_faq2.html#finally&#34;&gt;justifies&lt;/a&gt; the apparent missing finally clause. Stroustrup claims that with proper RAII,  &lt;a href=&#34;http://www.research.att.com/~bs/bs_faq2.html#finally&#34;&gt;finally&lt;/a&gt; is not required. D also &lt;a href=&#34;http://www.d-programming-language.org/exception-safe.html&#34;&gt;implements&lt;/a&gt; RAII with scope operators. Ok, so RAII is powerful, but what is it?&lt;/p&gt;
-
-&lt;p&gt;In C++, destructors are the only entity guaranteed to execute after an exception.  So resources which need to be automatically reclaimed need  to acquire at initialization, and release at destruction.  Such resources must be declared on the stack, to permit this idiom.&lt;/p&gt;
-
-&lt;p&gt;Writing exception-safe code, e.g. managing resources throughout exceptions is difficult, and while RAII makes it easier, managing RAII correctly is difficult without a pattern. A colleague of mine, &lt;a href=&#34;http://www.chrisanderman.com/&#34;&gt;Anderson&lt;/a&gt;, developed a fantastic pattern/&lt;a href=&#34;http://erdani.com/publications/cuj-2005-12.pdf&#34;&gt;policy&lt;/a&gt; using smart pointers which makes RAII automatic.&lt;/p&gt;
-
-&lt;p&gt;Two patterns compose the Anderson Smart Pointer Pattern: Factory Constructor, and PIMPL.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#ifdef _WIN
-#include &amp;lt;memory&amp;gt;
-#else
-#include &amp;lt;tr1/memory&amp;gt;
-#endif
-
-class Name
-{
-public:
-#ifdef _WIN
-    typedef std::shared_ptr Ptr; //This uses the class as a namespace.
-    typedef std::weak_ptr WeakPtr;
-#else
-    typedef std::tr1::shared_ptr Ptr;
-    typedef std::tr1::weak_ptr WeakPtr;
-#endif
-    static name::Ptr construct(); //Factory Constructor
-    virtual ~name();
-private:
-    Name(); //Notice the constructor is private
-    name::WeakPtr self; //self (from python), replaces this
-};
-
-Name::Ptr Name::construct()
-{
-    Name::Ptr c(new Name());
-    //Self completes the PIMPL idiom,
-    //thereby hiding all behavior behind a safe, reference counted wall
-    c-&amp;gt;self = c;
-    return c;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This pattern is used as an RAII &lt;a href=&#34;http://erdani.com/publications/cuj-2005-12.pdf&#34;&gt;policy&lt;/a&gt;. Using the pattern liberally can eliminate new and delete from your program, and you will not leak memory. Even with multiple exceptions, you&amp;rsquo;re &lt;a href=&#34;https://bitbucket.org/jwright/cse310-red-black-tree/overview&#34;&gt;program will not leak&lt;/a&gt;.  Creating an instance of an RAII class is easy now:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Name::Ptr myInstance = Name::construct();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This Pattern will make one extra virtual call as it performs the reference counting, but the performance hit is typically nominal compared to the safety it provides to the system. The Anderson Smart-Pointer Pattern increases robustness of your programs, but interestingly it also provides a new elegance. Since one is not managing memory, and resources constantly, it makes C++ perform more like a high level language. For example, I implemented a &lt;a href=&#34;https://bitbucket.org/jwright/cse310-red-black-tree/src/d787e75b724a/BaseCode/RedBlackTree.cpp#cl-137&#34;&gt;red black tree&lt;/a&gt; using this pattern.  I didn&amp;rsquo;t need to worry about deleting nodes, just the requirements of my program. With the incidental complexity relegated to a single class, I am left with the elegant, expressiveness of Python, yet retain the raw performance of C++.&lt;/p&gt;
-</description>
+      <description>Choosing to use C++ brings the additional complexity of memory management. Dennis Ritchie once stated: The C Programming Language — A language which combines the flexibility of assembly language with the power of assembly language. C++ inherits much of that _flexibility, _however, this incidental complexity, can be relegated to a single class, leaving you with the high-level elegance of Python. RAII help with this additional complexity, however without a pattern for guidance implementing RAII consistently can be difficult, defeating the safety it provides.</description>
     </item>
     
   </channel>

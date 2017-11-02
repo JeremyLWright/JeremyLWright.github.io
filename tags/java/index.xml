@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Java on Code Strokes</title>
+    <title>Java on Jeremy&#39;s CodeStrokes</title>
     <link>http://www.codestrokes.com/tags/java/</link>
-    <description>Recent content in Java on Code Strokes</description>
+    <description>Recent content in Java on Jeremy&#39;s CodeStrokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
+    <copyright>Creative Commons Share Alike</copyright>
     <lastBuildDate>Tue, 28 Aug 2012 05:31:04 +0000</lastBuildDate>
-    <atom:link href="http://www.codestrokes.com/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.codestrokes.com/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>The Turbulent History of Managed Code</title>
@@ -15,52 +18,8 @@
       <pubDate>Tue, 28 Aug 2012 05:31:04 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2012/08/the-turbulent-history-of-managed-code/</guid>
-      <description>
-
-&lt;p&gt;Managed Code is a fascinating technology; Just-In-Time compilation provides advanced run-time optimization and strong type safety can &lt;a href=&#34;http://channel9.msdn.com/Shows/Going+Deep/Singularity-III-Revenge-of-the-SIP&#34;&gt;render the hardware MMU obsolete&lt;/a&gt;. However the managed code renaissance is again in decline, and interestingly more than technology, business is changing the managed/native landscape. More than any other other metric, managed code is about maximizing programmer productivity.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;In 1977, Infocom released Zork. Zork was an innovative game. Its &lt;a href=&#34;http://www.inform-fiction.org/manual/html/s34.html&#34;&gt;sophisticated&lt;/a&gt; linguistics made for an immersive experience for its adventurers.  Language wasn&amp;rsquo;t the only innovation made by Infocom. Infocom released Zork on a custom virtual machine called the Z-Machine. Z-Machine functioned as an abstraction layer to the hardware, allowing one code base to run on multiple separate architectures. The Z-Machine was a major technical advancement, but more than that it allowed programmers to work on a single code base rather than writing duplicate code for differing architectures.&lt;/p&gt;
-
-&lt;p&gt;The Z-Machine afforded enormous financial benefit by allowing simultaneous release to multiple architectures. However, as Infocom discovered during the development of Cornerstone, Z-Machine did have an enormous performance overhead. Cornerstone was a business database application. Infocom decided early in development that the flexibility Z-Machine afforded Zork, would benefit Cornerstone. Cornerstone however, was not the slow paced text adventure game of Zork. Cornerstone was a serious business class application designed to compete with dBase and FoxPro. Z-Machine permitted more productive programmers but at the cost of performance. Performance Cornerstone direly required.&lt;/p&gt;
-
-&lt;p&gt;The Java programming language, arguably the most popular language in the world, was &lt;a href=&#34;http://en.wikipedia.org/wiki/Write_once,_run_anywhere&#34;&gt;solely designed&lt;/a&gt; to optimize programmer&amp;rsquo;s productivity. Sun first touted this noble goal with the statement, &amp;ldquo;Write once, run anywhere&amp;rdquo;. Java makes many compromises in the name of &lt;em&gt;safety from the programmer&lt;/em&gt;. The managed coder is prevented from low level access to hardware in the name of safety. If the coder cannot segfault, program will be more stable. Java automatically range checks all arrays, and provides a periodic garbage collector, all in the name of stability, security and productivity. Performance is not a metric for this target.&lt;/p&gt;
-
-&lt;p&gt;When Java was release, the hardware at the time was advancing rapidly. Clockspeeds were accelerating at an alarming rate. Hardware engineer&amp;rsquo;s enormous effort allowed software engineers to trade performance. Simultaneously, business applications were growing ever larger. Larger applications meant larger teams. These large teams leveraged Java to help manage some of the preceived ___ problems_ with native code. Simultaneously, this trade of performance afforded the businesses to target multiple architectures from a single code base. Managed code was making a huge surge.&lt;/p&gt;
-
-&lt;p&gt;In 2002, Microsoft was working on Longhorn, and Microsoft started down the same perilous road as Infocom. Jim Allchin released an edict stating that all OS interfaces shall be M&lt;em&gt;anaged Interfaced&lt;/em&gt;._ _The question of the time was, &amp;ldquo;Can Managed Code solve all important problems?&amp;rdquo;, leaving native code only to device drivers. Those who touch the metal.  Native interfaces were permitted, but never in place of managed ones. Microsoft saw the productivity managed interfaces afforded programmers. This meant a healthier bottom line. Microsoft attempted to leverage this harder than anyone had before.  Infocom build a database on managed technologies. Microsoft wanted to build an operating system! Longhorn had an ambitious list of features and managed code was at the center of it all. Eventually, Microsoft forwent managed code and quickly released Vista. Microsoft discovered what Infocom discovered years prior, there are certain limits to managed code&amp;rsquo;s capabilities.&lt;/p&gt;
-
-&lt;p&gt;Fast forward to the era of cloud computing, which is simply a re-branding of yesteryear&amp;rsquo;s time-share systems. Processing time is once again premium to programmer&amp;rsquo;s time. On the hardware side, we&amp;rsquo;ve hit a limit with clock speeds. Increasing the performance of our software applications is no longer up to the hardware engineers, its now our responsibility. We no longer have the luxury of managed code.  Our responsibility is to compute some result and release the systems&amp;rsquo; resources, or for battery powered devices return to low power mode. Native code is the only tool we currently have to leverage the hardware and meet our performance goals.&lt;/p&gt;
-
-&lt;p&gt;Embedded systems are now ubiquitous, where the name of the game is battery life, and immersive apps. Nothing permits us to leverage the advanced features of these embedded processors like native code does. Managed code is faster now too, and will always have a place in application development. However when there is a linear relationship between cost and runtime, Native code is king.&lt;/p&gt;
-
-&lt;h4 id=&#34;references:5d862b683b62e00a04451b62b40cdb50&#34;&gt;References&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://msdn.microsoft.com/en-us/library/ms993883.aspx&#34;&gt;http://msdn.microsoft.com/en-us/library/ms993883.aspx&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.theinquirer.net/inquirer/news/1004218/longhorn-to-have-managed-interfaces&#34;&gt;http://www.theinquirer.net/inquirer/news/1004218/longhorn-to-have-managed-interfaces&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Z-machine&#34;&gt;http://en.wikipedia.org/wiki/Z-machine&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Zork&#34;&gt;http://en.wikipedia.org/wiki/Zork&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.inform-fiction.org/zmachine/standards/index.html&#34;&gt;http://www.inform-fiction.org/zmachine/standards/index.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Java_performance&#34;&gt;http://en.wikipedia.org/wiki/Java_performance&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Jim_Allchin&#34;&gt;http://en.wikipedia.org/wiki/Jim_Allchin&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/-Not-Your-Father-s-C-?format=html5&#34;&gt;http://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/-Not-Your-Father-s-C-?format=html5&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://herbsutter.com/2012/04/02/reader-qa-when-will-better-jits-save-managed-code/&#34;&gt;http://herbsutter.com/2012/04/02/reader-qa-when-will-better-jits-save-managed-code/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.gotw.ca/publications/concurrency-ddj.htm&#34;&gt;http://www.gotw.ca/publications/concurrency-ddj.htm&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://herbsutter.com/welcome-to-the-jungle/&#34;&gt;http://herbsutter.com/welcome-to-the-jungle/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Managed Code is a fascinating technology; Just-In-Time compilation provides advanced run-time optimization and strong type safety can render the hardware MMU obsolete. However the managed code renaissance is again in decline, and interestingly more than technology, business is changing the managed/native landscape. More than any other other metric, managed code is about maximizing programmer productivity.
+In 1977, Infocom released Zork. Zork was an innovative game. Its sophisticated linguistics made for an immersive experience for its adventurers.</description>
     </item>
     
     <item>
@@ -69,9 +28,7 @@
       <pubDate>Sat, 07 May 2011 22:10:54 +0000</pubDate>
       
       <guid>http://www.codestrokes.com/2011/05/java-4k-contest/</guid>
-      <description>&lt;p&gt;Crazy challenging game contest: &lt;a href=&#34;http://javaunlimited.net/contests/java4k.php&#34;&gt;http://javaunlimited.net/contests/java4k.php&lt;/a&gt;
-Reminds me of the winners of a 96KB contest: &lt;a href=&#34;http://en.wikipedia.org/wiki/.kkrieger&#34;&gt;http://en.wikipedia.org/wiki/.kkrieger&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Crazy challenging game contest: http://javaunlimited.net/contests/java4k.php Reminds me of the winners of a 96KB contest: http://en.wikipedia.org/wiki/.kkrieger</description>
     </item>
     
   </channel>
