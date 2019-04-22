@@ -3,13 +3,16 @@ VERSION:4.0
 PRODID:-//Thunderbird.net/NONSGML Thunderbird CardBook V35.6//EN-GB
 UID:28df3b93-67a9-4029-a803-cffc36be6327
 CATEGORIES:Business
-FN:Jeremy Wright Quiescent Engineering\, LLC
-N:Wright;Jeremy;;;
+FN:Jeremy L Wright Quiescent Engineering\, LLC
+N:Wright;Jeremy;L;;
 TITLE:Founder
 ORG:Quiescent Engineering\, LLC
 EMAIL;TYPE=WORK:jwright@quiescent.us
 TEL;TYPE=MAIN:+1 (623) 330-9139
-REV:20190421T170750Z
+ITEM1.URL:https://www.linkedin.com/in/jeremylwright/
+ITEM1.X-ABLABEL:LinkedIn
+URL;TYPE=WORK:https://quiescent.us
+REV:20190421T195114Z
 PHOTO:DATA:IMAGE/PNG;BASE64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAHCCAYAAADCYlNdAAA
  gAElEQVR4XrS9CY9kWXoddt6+xr5k5FKVVdX7tIe0TJuyQYMyJEiGDfgX2oIsyZZl2YLpDRJsy
  KYWwiSHw5mp7uqlurasXCNjX96+Gee7kT1NwyTFoZSNmKrJyox47757zz3f+c73Xe1+MWs03UB
