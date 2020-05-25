@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Code Strokes</title>
+    <title>Quiescent Engineering</title>
     <link>https://quiescent.us/</link>
-    <description>Recent content on Code Strokes</description>
+    <description>Recent content on Quiescent Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 03 Jun 2015 16:09:11 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 25 May 2020 12:17:00 -0700</lastBuildDate>
     
 	<atom:link href="https://quiescent.us/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>About Me</title>
+      <link>https://quiescent.us/about/</link>
+      <pubDate>Mon, 25 May 2020 12:17:00 -0700</pubDate>
+      
+      <guid>https://quiescent.us/about/</guid>
+      <description>When you do things right, no one can be sure you did anything at all (Futurama Season 3)
+I specialize in the software no one sees. The high performance, concurrent, real-time, high-reliability systems that enable our way of life. I love the software no one notices.
+My software fights fraud, and drives tractors. I&amp;rsquo;ve baked solar cells, made escalators more efficient, optimized fantasy sports and my software helps airplanes land safely.</description>
+    </item>
     
     <item>
       <title>System languages should include Webapps</title>
@@ -89,18 +100,6 @@ I finished my thesis, I was writing in vim. I used a makefile to check
 spelling and check for simple grammatical rules. The process was much simpler
 to manage. This motivated me to convert my blog to a static site. This post
 describes my process on simplifying my writing process.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>About Me</title>
-      <link>https://quiescent.us/about/</link>
-      <pubDate>Wed, 03 Jun 2015 16:09:11 +0000</pubDate>
-      
-      <guid>https://quiescent.us/about/</guid>
-      <description>Software Engineer interested in clouds, data, and type systems.
-I love software, and the impact we make on the individuals in our world. My perspective on quality is ever evolving and this blog is intended as breadcrumbs describing that change.
-If you would like to know more about my opinions try some of my articles, I&amp;rsquo;d love to hear your comments and discussions.
-Talks  Hosted Script for Games (Link2)  Code  Hill Cracker - A hill climbing system for cracking monoalphabetic ciphers Cloud Assure - A cloud based POMDP data leakage system Whispers - A cloud based risk assessment WebDoc - Multi-user document sharing system RoboTractor - a Machine automatic system over XMPP  Papers  Master&amp;rsquo;s Thesis  My Free Time  Guitar dotfiles   </description>
     </item>
     
     <item>
