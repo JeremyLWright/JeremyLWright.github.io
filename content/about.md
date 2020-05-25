@@ -2,21 +2,35 @@
 title: About Me
 author: Jeremy
 nocomment: true
-date: 2015-06-03 16:09:11+00:00
+date: 2020-05-25 12:17:00-07:00
 slug: about
 ---
 
-Software Engineer interested in clouds, data, and type systems.
+When you do things right, no one can be sure you did anything at all (Futurama Season 3) 
 
-I love software, and the impact we make on the individuals in our world. My
-perspective on quality is ever evolving and this blog is intended as
-breadcrumbs describing that change.
+I specialize in the software no one sees. The high performance, concurrent,
+real-time, high-reliability systems that enable our way of life.  I love the
+software no one notices. 
 
-If you would like to know more about my opinions try some of my articles, I'd love to hear your comments and discussions.
+My software fights fraud, and drives tractors. I've baked solar cells, made
+escalators more efficient, optimized fantasy sports and my software helps
+airplanes land safely.
+
+I've improved data center efficiency, and currently design and maintain
+risk-management microservices for high-performance payment systems behind
+Zelle. Currently, I am working on a novel approach to integrated messaging at
+[JoyLabs](https://joylabs.com)
+
+Research Interests
+------------------
+
+- Formal Specifications
+- Mentoring and Teaching
+- Type Safety
 
 Talks
 -----
-- [Hosted Script for Games](http://sodaasu.com/2012/03/30/video-and-source-code-from-embedded-scripting-for-games-talk/) ([Link2](https://vimeo.com/39505796))
+- [Hosted Script for Games](https://vimeo.com/39505796))
 
 Code
 ----
@@ -33,7 +47,7 @@ Papers
 
 My Free Time
 ------------
-- [Guitar](http://www.meetup.com/Young-Musicians-in-Phoenix-20s-30s/)
+- [XBOX](https://www.xboxgamertag.com/search/Quiescent)
 - [dotfiles](https://github.com/JeremyLWright/dotfiles)
 - ![Project Euler](http://projecteuler.net/profile/jwright85.png)
 

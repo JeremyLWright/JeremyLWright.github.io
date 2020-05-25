@@ -1,6 +1,6 @@
 baseurl = "https://quiescent.us/"
 languageCode = "en-us"
-title = "Code Strokes"
+title = "Quiescent Engineering"
 disqusShortname = "codestrokes2"
 pygmentsuseclasses = true
 theme="redlounge"
@@ -8,8 +8,8 @@ theme="redlounge"
     posts = "/:year/:month/:slug/"
 
 [params]
-	sidebartitle="CodeStrokes"
-	sidebartagline="Software Artistry"
+	sidebartitle="QE"
+	sidebartagline="Go Far. Go Together"
     GoogleAnalytics="UA-23129291-1"
     highlightStyle = "docco"
 
