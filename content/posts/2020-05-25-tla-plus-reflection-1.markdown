@@ -13,8 +13,8 @@ tag:
 The first time I opened [Hillel's
 book](https://www.hillelwayne.com/post/practical-tla/) and skimmed the first
 chapter I was subconsciously looking for a reason not to sink a bunch of time
-into yet another language/ecosystem project. That internal bias prevented me
-from seeing the point of the first chapter.
+into yet another language/ecosystem project. That bias prevented me from
+seeing the point of the first chapter.
 
 <!-- more -->
 
