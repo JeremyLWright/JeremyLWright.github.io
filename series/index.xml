@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Series on Quiescent Engineering</title>
+    <title>Series on QE</title>
     <link>https://quiescent.us/series/</link>
-    <description>Recent content in Series on Quiescent Engineering</description>
+    <description>Recent content in Series on QE</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jul 2015 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 25 May 2020 15:00:14 -0700</lastBuildDate>
     
 	<atom:link href="https://quiescent.us/series/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Practical TLA&#43;</title>
+      <link>https://quiescent.us/series/practical-tla&#43;/</link>
+      <pubDate>Mon, 25 May 2020 15:00:14 -0700</pubDate>
+      
+      <guid>https://quiescent.us/series/practical-tla&#43;/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Property Driven Design</title>

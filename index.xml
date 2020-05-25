@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Quiescent Engineering</title>
+    <title>QE</title>
     <link>https://quiescent.us/</link>
-    <description>Recent content on Quiescent Engineering</description>
+    <description>Recent content on QE</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 May 2020 12:17:00 -0700</lastBuildDate>
+    <lastBuildDate>Mon, 25 May 2020 15:31:21 -0700</lastBuildDate>
     
 	<atom:link href="https://quiescent.us/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>My Learning Process</title>
+      <link>https://quiescent.us/2020/05/learning-process/</link>
+      <pubDate>Mon, 25 May 2020 15:31:21 -0700</pubDate>
+      
+      <guid>https://quiescent.us/2020/05/learning-process/</guid>
+      <description>As of 2020 Learning Questions My learning process consists of a set of learning questions. These questions are almost certainly wrong and reflect at least the following:
+ My motivation for learning a topic. My misconceptions of a given topic and the seemingly magic qualities a beginner believes it can provide.  The learning questions are initially, almost certainly wrong. This is good. It shows my current understanding or lack there-of.</description>
+    </item>
+    
+    <item>
+      <title>TLA&#43; Chapter 1: Reflection</title>
+      <link>https://quiescent.us/2020/05/tla-chap1/</link>
+      <pubDate>Mon, 25 May 2020 15:00:14 -0700</pubDate>
+      
+      <guid>https://quiescent.us/2020/05/tla-chap1/</guid>
+      <description>The first time I opened Hillel&amp;rsquo;s book and skimmed the first chapter I was subconsciously looking for a reason not to sink a bunch of time into yet another language/ecosystem project. That internal bias prevented me from seeing the point of the first chapter.
+Hillel&amp;rsquo;s first chapter ends with a definition of stuttering and how in the presence of real world temporal effects, a safe, reliable in all cases wire transfer system borders on impossible.</description>
+    </item>
     
     <item>
       <title>About Me</title>
