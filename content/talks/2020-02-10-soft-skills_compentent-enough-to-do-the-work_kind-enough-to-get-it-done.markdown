@@ -11,6 +11,32 @@ tags:
 - listen
 ---
 
+Part love story part super power -> Listening.
+
+Wow. When you hear an introduction about yourself do you ever contend that
+past you was a studious tool, then you realize that present you is pretty lazy
+and future you just wants to take a break and have some fun? Anyways...
+
+About 13 years ago I was blessed with an overwhelming serendipitous event. I
+met this woman she was cute, she was fun, she was beautiful, she was a dancer,
+and she was deaf. And I taught myself sign language to ask her out. And
+today, 13 years later, we're married, 2 children, and I now have a superpower
+to share with you, to make you a better listener. It will make you a better
+engineer, a better significant other, and it will make you a better person, if
+you just listen to those around you. What's the premise of go fast and break
+things? It's because we don't know what the hell we're doing. we don't know if
+the thing we want to build is the right thing to build. what's the premise
+of formal methods of alloy, tla+, it's the if we do know what we want to
+build, we're terrible at telling that to another person. So I want to go over
+the process I use to listen to people. to really hear what they're trying to
+say - not the words, trying to hear the big picture of what's going on. to
+be more engaged with the conversation. I want to talk about a few things.
+I want to talk about segmenting - a tool that we all already do. it's a tool
+to give you a more efficient memory - to listen with a higher level of
+abstraction. 
+
++++++++++++++++++++++++++++++++
+
 What is your super power? Are you a l33t coder? Whip up a website? Burn a time
 checked FPGA? Actually get CSS to roll up the window? 
 
