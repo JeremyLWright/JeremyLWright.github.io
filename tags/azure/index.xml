@@ -1,25 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Azure on Jeremy&#39;s CodeStrokes</title>
-    <link>http://www.codestrokes.com/tags/azure/</link>
-    <description>Recent content in Azure on Jeremy&#39;s CodeStrokes</description>
+    <title>Azure on Code Strokes</title>
+    <link>https://quiescent.us/tags/azure/</link>
+    <description>Recent content in Azure on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>Creative Commons Share Alike</copyright>
+    <language>en-us</language>
     <lastBuildDate>Fri, 25 Sep 2015 20:10:00 +0700</lastBuildDate>
     
-	<atom:link href="http://www.codestrokes.com/tags/azure/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quiescent.us/tags/azure/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>4 Simple Steps to Run D Language in Azure Websites</title>
-      <link>http://www.codestrokes.com/2015/09/deploying-d-to-azure-webapp/</link>
+      <link>https://quiescent.us/2015/09/deploying-d-to-azure-webapp/</link>
       <pubDate>Fri, 25 Sep 2015 20:10:00 +0700</pubDate>
       
-      <guid>http://www.codestrokes.com/2015/09/deploying-d-to-azure-webapp/</guid>
+      <guid>https://quiescent.us/2015/09/deploying-d-to-azure-webapp/</guid>
       <description>I shameless stole these steps from 4 Simple Steps to Run Go Language in Azure Websites. This post is simply a transliteration to D. Thank you very much to Wade Wegner for the original post.
-4 Simple Steps  Create your Azure Website in Azure Portal.  Configure FTP deployment   2&amp;#46; Run dub init vibed_hello_world --type=vibe.d and change the default app.d to read the port from an environment variable.</description>
+4 Simple Steps  Create your Azure Website in Azure Portal.  Configure FTP deployment    2. Run dub init vibed_hello_world --type=vibe.d and change the default app.d to read the port from an environment variable.</description>
     </item>
     
   </channel>

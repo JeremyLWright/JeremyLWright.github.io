@@ -1,408 +1,322 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Parallel Binary Buddy: The Friendly Memory Manager - Jeremy&#39;s CodeStrokes</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <title>
+    Parallel Binary Buddy: The Friendly Memory Manager // Code Strokes
+  </title>
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 
 
-<meta name="author" content="Jeremy" />
-  <meta name="description" content="Fragmentation, the allocator&amp;rsquo;s sin. Each byte A buddy, A friend
-Introduction
-Memory management is pervasive in all forms of software, not just operating systems. Embedded Systems, when dynamic memory is acceptable, tend to use memory pools to the heap. Standard desktop applications use the platform&amp;rsquo;s std::new or malloc. However, when a system is more complex, a memory manager may be used. Memory managers allow the programmer to strictly control application memory, in a way that flows with the rest of the system&amp;rsquo;s design." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <meta name="keywords" content="software, design, testing" />
-
-
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="Jeremy">
+<meta name="generator" content="Hugo 0.68.3" />
 
 
+  <meta property="og:title" content="Parallel Binary Buddy: The Friendly Memory Manager" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="https://quiescent.us/2011/11/parallel-binary-buddy-the-friendly-memory-manager/" />
 
 
-<meta name="generator" content="Hugo 0.30.2" />
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="https://quiescent.us//css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Code Strokes" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 
 
-<link rel="canonical" href="http://www.codestrokes.com/2011/11/parallel-binary-buddy-the-friendly-memory-manager/" />
+  
 
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" href="/favicon.ico" />
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  
 
+  
 
-
-
-<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
-
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
+  
 </head>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-23129291-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Jeremy Wright</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">About</li>
-      </a><a href="/project/">
-        <li class="mobile-menu-item">Projects</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Jeremy Wright</a>
-</div>
+	
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">About</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/project/">Projects</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
     
-    <header class="post-header">
-      <h1 class="post-title">Parallel Binary Buddy: The Friendly Memory Manager</h1>
 
-      <div class="post-meta">
-        <span class="post-time"> 2011-11-23 </span>
+	
+
+    <h1 class="brand-title">CodeStrokes</h1>
+    <h2 class="brand-tagline">Software Artistry</h2>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="https://quiescent.us/">Home</a></li>
         
-        <span class="more-meta"> 1344 word </span>
-        <span class="more-meta"> 7 min read </span>
-      </div>
-    </header>
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about">About</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/posts">Blog</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/series">Series</a></li>
+        
+      </ul>
+    </nav>
 
     
+    <div class="social-buttons">
+      
+        
+        <a href="https://github.com/JeremyLWright" target="_blank"><i class='fa fa-github'></i></a>
+        
+      
+        
+        <a href="https://www.linkedin.com/pub/jeremy-wright/5b/8/844" target="_blank"><i class='fa fa-linkedin'></i></a>
+        
+      
+        
+        <a href="https://www.twitter.com/jeremy_l_wright" target="_blank"><i class='fa fa-twitter'></i></a>
+        
+      
+      
+    </div>
     
-<div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content">
-      <nav id="TableOfContents">
-<ul>
-<li><a href="#architecture">Architecture</a></li>
-<li><a href="#performance">Performance</a></li>
-</ul>
-</nav>
+
   </div>
 </div>
 
-    
-    <div class="post-content">
-      
+	
+	
 
-<p>Fragmentation, the
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+
+		
+			
+		    <div id="toc" class="pure-u-1 pure-u-md-1-4">
+				<small class="toc-label">Contents</small>
+		   	 	<nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading-1"></a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-4"></a></li>
+  </ul>
+</nav>
+		    </div>
+		    
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/2011/11/parallel-binary-buddy-the-friendly-memory-manager/">Parallel Binary Buddy: The Friendly Memory Manager</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>23</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Nov</span> <span class="post-date-year">2011</span>
+            	</span>
+            	
+            
+            	
+            		<span class="post-author-single">By <a class="post-author"  target="">Jeremy</a></span>
+            		
+
+
+
+
+            	
+            
+
+			
+			
+
+			
+
+			
+
+            <p>Fragmentation, the
 allocator&rsquo;s sin. Each byte
 A buddy, A friend</p>
-
-<!-- more -->
-
+<!-- raw HTML omitted -->
+<h1 id="heading"></h1>
 <p>Introduction</p>
-
 <p>Memory management is pervasive in all forms of software, not just operating systems. Embedded Systems, when dynamic memory is acceptable, tend to use memory pools to the heap. Standard desktop applications use the platform&rsquo;s std::new or malloc. However, when a system is more complex, a memory manager may be used. Memory managers allow the programmer to strictly control application memory, in a way that flows with the rest of the system&rsquo;s design. A perfect example of the power a memory manager can provide, is MegaTexture, a component in id Software&rsquo;s new id Tech 5 graphics engine [<a href="Report.html#SIGGRAPH2009">5</a>].</p>
-
 <p>In a video game, the system has 3 levels of memory: Non-Volatile Storage (e.g. Flash or rotating media), System Memory (RAM), and Video RAM. Video RAM is by far the fastest, yet most scarce, ergo the most precious. id Tech 5 implemented a memory manger that streams graphics data between these 3 memory layers. This allows the programmer to load enormous textures; textures which would not normally fit into Video RAM. The Memory Manager treats the System RAM, and finally Non-Volatile Storage as virtual memory for the Video card. Since MegaTexture is part of a game engine, the MegaTexture knows what parts of the map need to be drawn, depending on the player&rsquo;s locale. Using this spacial locality, the memory manager transfers the correct textures in varying levels of detail into the video card&rsquo;s RAM. This way, the system always has the correct textures ready to go. This fantastic system allows id Software to run incredibly high resolution screens at 60 frames per second!</p>
-
 <p>id software&rsquo;s MegaTexture is just one example of how a custom memory manager can simplify, and improve the quality of one&rsquo;s software. For this project we implemented a parallel memory manager using the Binary Buddy allocation scheme. This scheme is used in tandem with the slab allocator, to provide dynamic memory for kernel objects in the Linux kernel [<a href="Report.html#kalloc">2</a>, p. 134].</p>
-
 <h1 id="architecture">Architecture</h1>
-
 <p>The parallel architecture is largely influenced by the design offered by Johnson and Davis in their paper [<a href="Report.html#johnson">3</a>]. I used the POSIX threading library to add parallelism to the allocator. As a deviation from the design offered by Johnson, this design uses templates to prevent internal fragmentation. Templates allow one to pass in the C++ type as an argument to the allocator. The allocator, using templates, dynamically creates blocks of precisely that size. This guaranteeing that allocations will be optimized for that specific size, and multiples of that size. In this way, allocating arrays of similar objects will not result in internal fragmentation.</p>
-
 <p>Interestingly, templates had a bigger affect than just space-efficiency. The templates create compile time generated pointers of the correct block size, regardless of the type. Since transactions are not translated to bytes, the code is more direct, and easier to understand. The templates created a custom block type which simplified manipulating memory blocks instead of raw byte pointers.</p>
-
 <h1 id="performance">Performance</h1>
-
 <p>I measured the performance of the allocator using 2 metrics: overhead and allocations per second. The former is defined as the number of pending allocation requests, i.e. time spent blocked on a synchronization primitive. This time is an artifact of locking the individual memory levels while another thread allocates memory. This is wasted time and directly detrimental to the performance of the allocator. The latter is defined as raw query speed.</p>
-
 <p>I setup 3 tests using allocators of various sizes. Each allocator requests memory blocks until full see Tests/TestInstrument.cpp for an example of this. As a comparison I ran a similar test against std::new. See Table 1 for results.</p>
-
-<table >**Table 1:**
-Allocation Performance
-<tbody >
-<tr >
-
-<td >
-<table cellpadding="3" >
-<tbody >
-<tr >
-
-<td align="LEFT" >Scheme
-</td>
-
-<td align="CENTER" >Allocation Speed (ms)
-</td>
-
-<td align="RIGHT" >GB/Sec
-</td>
-</tr>
-<tr >
-
-<td align="LEFT" >std::new
-</td>
-
-<td align="CENTER" >1.3
-</td>
-
-<td align="RIGHT" >102.9
-</td>
-</tr>
-<tr >
-
-<td align="LEFT" >Spinlock
-</td>
-
-<td align="CENTER" >5.9
-</td>
-
-<td align="RIGHT" >22.2
-</td>
-</tr>
-<tr >
-
-<td align="LEFT" >Mutex
-</td>
-
-<td align="CENTER" >12.4
-</td>
-
-<td align="RIGHT" >2.6
-</td>
-</tr>
-</tbody>
-</table>
-
-<p></td>
-</tr>
-</tbody>
-</table></p>
-
-<p>[caption id=&ldquo;attachment_486&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;695&rdquo; caption=&ldquo;Figure 1: Raw Allocation performance.&ldquo;]<a href="http://www.codestrokes.com/wp-content/uploads/2011/11/SpeedComparisons.png"><img src="http://www.codestrokes.com/wp-content/uploads/2011/11/SpeedComparisons-1024x768.png" alt="" /></a>[/caption]</p>
-
-<p>To measure overhead in the allocator, I instrumented the request pending queues to track a ``high-water mark&rdquo;. I tracked this overhead over various sized allocators, and found that the smallest levels never had waiting blocks. I expected this for the smallest levels, yet consistently the smallest 3 levels never requested an allocation to wait (Figure 3). The largest levels have at least 1 pending request, from the initial recursive split. Additionally, regardless of the allocator&rsquo;s native block size, the graph is similar. Block size does not affect the number of pending requests.</p>
-
-<p>[caption id=&ldquo;attachment_481&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;695&rdquo; caption=&ldquo;Figure 3: Pending requests as a measure of overhead.&ldquo;]<a href="http://www.codestrokes.com/wp-content/uploads/2011/11/combined.png"><img src="http://www.codestrokes.com/wp-content/uploads/2011/11/combined-1024x768.png" alt="" /></a>[/caption]</p>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>[caption id=&quot;attachment_486&rdquo; align=&quot;aligncenter&rdquo; width=&quot;695&rdquo; caption=&quot;Figure 1: Raw Allocation performance.&quot;]<a href="http://www.codestrokes.com/wp-content/uploads/2011/11/SpeedComparisons.png"><img src="http://www.codestrokes.com/wp-content/uploads/2011/11/SpeedComparisons-1024x768.png" alt=""></a>[/caption]</p>
+<p>To measure overhead in the allocator, I instrumented the request pending queues to track a ``high-water mark&rsquo;'. I tracked this overhead over various sized allocators, and found that the smallest levels never had waiting blocks. I expected this for the smallest levels, yet consistently the smallest 3 levels never requested an allocation to wait (Figure 3). The largest levels have at least 1 pending request, from the initial recursive split. Additionally, regardless of the allocator&rsquo;s native block size, the graph is similar. Block size does not affect the number of pending requests.</p>
+<p>[caption id=&quot;attachment_481&rdquo; align=&quot;aligncenter&rdquo; width=&quot;695&rdquo; caption=&quot;Figure 3: Pending requests as a measure of overhead.&quot;]<a href="http://www.codestrokes.com/wp-content/uploads/2011/11/combined.png"><img src="http://www.codestrokes.com/wp-content/uploads/2011/11/combined-1024x768.png" alt=""></a>[/caption]</p>
+<h2 id="heading-1"></h2>
 <p>Beating std::new</p>
-
 <p><em>new</em> is fast. I wanted to out perform <em>std::new</em>. I was not successful; however more intrigue was the effect pthreads primitives play in the performance of an application. My initial implementation using pthread_mutex_t to synchronize. This resulted in a 10x slow-down over std::new. Simply replacing the mutexes with pthread_spinlock_t resulted in a 2x speedup over mutexes as shown in Figure 2.</p>
-
-<p>[caption id=&ldquo;attachment_482&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;695&rdquo; caption=&ldquo;Figure 2:On a multicore machine, spinlocks result in better performanceover mutexes&rdquo;]<a href="http://www.codestrokes.com/wp-content/uploads/2011/11/NormalizedSpeedComp.png"><img src="http://www.codestrokes.com/wp-content/uploads/2011/11/NormalizedSpeedComp-1024x768.png" alt="" /></a>[/caption]</p>
-
+<p>[caption id=&quot;attachment_482&rdquo; align=&quot;aligncenter&rdquo; width=&quot;695&rdquo; caption=&quot;Figure 2:On a multicore machine, spinlocks result in better performanceover mutexes&rdquo;]<a href="http://www.codestrokes.com/wp-content/uploads/2011/11/NormalizedSpeedComp.png"><img src="http://www.codestrokes.com/wp-content/uploads/2011/11/NormalizedSpeedComp-1024x768.png" alt=""></a>[/caption]</p>
 <p>It is important to not however that this trade-off only happens on a multicore machine. Spinlocks are essentially very tight while loops, waiting on some condition. This does not suspend the thread. On a single core machine, spinlocks are very inefficient. The different here is that the average amount of time spent waiting for the lock, is less than cost of a system() call. So on a multicore we can block one core while another core completes the parallel request and releases the lock.</p>
-
+<h1 id="heading-2"></h1>
 <p>Extending the STL</p>
-
 <p>The Binary Buddy memory allocator is unsuitable as a general purpose STL allocator since it does not maintain the memory interface for all STL containers. For example, the STL vector guarantees that the successive items in the vector will be stored contiguously in memory. In a sense, raw pointers are permitted to access a vector, since the binary buddy does not make this guarantee, it is unsuitable for the vector [<a href="Report.html#cppstl">4</a>, p. 727]. However, the this allocator is sufficient for the STL list, or any container which is only indexed by iterators.</p>
-
 <p>STL Allocators also allow for an interesting performance boost by offering locality hints to the allocator [<a href="Report.html#cppstl">4</a>, p. 733]. These hints allow upper level software to suggest efficient memory locations to lower level allocation algorithms. These hints offered as memory addresses, can boost performance up to 13% over the default FreeBSD allocator[<a href="Report.html#locality">1</a>].</p>
-
 <p>More interestingly than performance, is the additional capabilities one has when using a custom allocator over a default platform one. By manually managing the heap, the developer has access to all memory use by the system. One could serialize that memory to disk, and provide a fast initialization mechanism for application restarts. A sort-of suspend for one&rsquo;s application. Additionally, since the allocator is setup as a gatekeeper for all application memory, its easier to log and track who is requesting what.
 While this would hamper performance it is an interesting debugging tool for difficult to reproduce, multi-threaded memory bugs.</p>
-
 <p>Lastly, the allocator can be used as a mock library, improving unit testing. Unlike <em>std::new</em>, the allocator under the developers control. Because of this, it is easier to simulate out of memory errors and other difficult to reproduce situations.</p>
-
+<h1 id="heading-3"></h1>
 <p>Conclusion</p>
-
 <p>The binary buddy system is a conceptually simple scheme which completely eliminates external fragmentation. When combined with C++ templates, all fragmentation may be eliminated. Offering the application developer space-efficient access to dynamic memory.</p>
-
 <p>Custom allocators are difficult. Difficult to implement, even more difficult to out perform your platforms default allocator. However, the reasons for custom allocators are more than just performance. Interesting debugging tools, fast initialization, and more robust software though better testing are but a few enhancements afforded by custom memory allocators.</p>
-
+<h2 id="heading-4"></h2>
 <p>Bibliography</p>
-
 <ol>
-<li><p>Lawerence Rauchwerger Alin Jula. Two memory allocators that use hints to improve locality. <em>Texas A&amp;M University</em>, 2009.</p></li>
-
-<li><p>Mel Gorman. _Understanding the Linux Virtual Memory Manager. _Prentice Hall, 2004.</p></li>
-
-<li><p>T. Johsson and T. Davis. Space efficient parallel buddy memory management. <em>Proceedings of the Fourth IEEE Internations Conference on
-Computing and Information (ICCI&rsquo;92)</em>, 1992.</p></li>
-
-<li><p>Nicolai M. Josuttis.<em>The C++ Standard Library</em>. Addison-Wesley, 2005.</p></li>
-
-<li><p>J.M.P. van Waveren. From texture virtualizaton to massive parallelization.In <em>id Tech 5 Challenges</em>, 2009. [](<a href="http://mrl.cs.vsb.cz/people/gaura/agu/05-JP_id_Tech_5_Challenges.pdf)[http://mrl.cs.vsb.cz/people/gaura/agu/05-JP_id_Tech_5_Challenges.pdf](http://mrl.cs.vsb.cz/people/gaura/agu/05-JP_id_Tech_5_Challenges.pdf">http://mrl.cs.vsb.cz/people/gaura/agu/05-JP_id_Tech_5_Challenges.pdf)[http://mrl.cs.vsb.cz/people/gaura/agu/05-JP_id_Tech_5_Challenges.pdf](http://mrl.cs.vsb.cz/people/gaura/agu/05-JP_id_Tech_5_Challenges.pdf</a>).</p></li>
+<li>
+<p>Lawerence Rauchwerger Alin Jula. Two memory allocators that use hints to improve locality. <em>Texas A&amp;M University</em>, 2009.</p>
+</li>
+<li>
+<p>Mel Gorman. _Understanding the Linux Virtual Memory Manager. _Prentice Hall, 2004.</p>
+</li>
+<li>
+<p>T. Johsson and T. Davis. Space efficient parallel buddy memory management. <em>Proceedings of the Fourth IEEE Internations Conference on
+Computing and Information (ICCI&rsquo;92)</em>, 1992.</p>
+</li>
+<li>
+<p>Nicolai M. Josuttis.<em>The C++ Standard Library</em>. Addison-Wesley, 2005.</p>
+</li>
+<li>
+<p>J.M.P. van Waveren. From texture virtualizaton to massive parallelization.In <em>id Tech 5 Challenges</em>, 2009. <a href="http://mrl.cs.vsb.cz/people/gaura/agu/05-JP_id_Tech_5_Challenges.pdf"></a><a href="http://mrl.cs.vsb.cz/people/gaura/agu/05-JP_id_Tech_5_Challenges.pdf">http://mrl.cs.vsb.cz/people/gaura/agu/05-JP_id_Tech_5_Challenges.pdf</a>.</p>
+</li>
 </ol>
 
-    </div>
+	
+			
 
-    
-    
-<div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">Jeremy</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">2011-11-23</span>
-  </p>
-  
-  <p class="copyright-item">
-    <span class="item-title">License</span>
-    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
-  </p>
-</div>
+			
+				<div class="tags-list">
+					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
+					
+	                <a class="post-tag post-tag-c&#43;&#43;" href="https://quiescent.us//tags/c&#43;&#43;">C&#43;&#43;</a>,
+	                
+				</div>
+			
 
-    
-    
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/">Making C&#43;&#43; like Python: The Anderson Smart Pointer Pattern</a>
+		            </div>
+		            
 
-    <footer class="post-footer">
-      <div class="post-tags">
+					
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/2012/01/abusing-ram/">Abusing RAM</a>
+		            </div>
+		            
+	            </div>
+            
+          </section>
           
-          <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
-          
-        </div>
-
-      
-      <nav class="post-nav">
-        
-          <a class="prev" href="/2012/01/abusing-ram/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Abusing RAM</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        
-          <a class="next" href="/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/">
-            <span class="next-text nav-default">Making C&#43;&#43; like Python: The Anderson Smart Pointer Pattern</span>
-            <span class="prev-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        
-  <div id="disqus_thread"></div>
-    <script type="text/javascript">
+          	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
     (function() {
-        
-        
-        if (window.location.hostname === 'localhost') return;
-
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        var disqus_shortname = 'codestrokes2';
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
     })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com/" class="dsq-brlink" target="_blank">comments powered by <span class="logo-disqus">Disqus</span></a>
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+			<li><a href="/posts">Blog</a></li>
+		
+			<li><a href="/series">Series</a></li>
+		
+		</ul>
+	</div>
 
-  
-      </div>  
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="https://stackoverflow.com/users/1612667/jeremy-wright" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
-      <a href="https://www.linkedin.com/in/jeremylwright/" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="https://github.com/JeremyLWright" class="iconfont icon-github" title="github"></a>
-  <a href="http://www.codestrokes.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+	<p>&copy; 2020. All rights reserved.</p>
 </div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  <span class="copyright-year">
-    &copy; 
-    
-      2013 - 
-    2017
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Creative Commons Share Alike</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
   </div>
+	
+
+	
+
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
-<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
-  <script type="text/javascript">
-    window.MathJax = {
-      showProcessingMessages: false,
-      messageStyle: 'none'
-    };
-  </script>
-  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
-
-
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-23129291-1', 'auto');
-ga('send', 'pageview');
-</script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
-
-
-
 </body>
 </html>

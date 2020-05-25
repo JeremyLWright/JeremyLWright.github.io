@@ -1,169 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Compile-Time Polymorphism - Jeremy&#39;s CodeStrokes</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <title>
+    Compile-Time Polymorphism // Code Strokes
+  </title>
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 
 
-<meta name="author" content="Jeremy" />
-  <meta name="description" content="Polymorphism is a tool in object orientation, which allows us to model behavior, while simultaneously leverage existing code. Polymorphism allows is behavior reuse. In C&#43;&#43; polymorphism, comes in 2 flavors, the standard runtime variant, and a curious compile time variant. Runtime polymorphism, like Java, leverages virtual functions to dynamically bind[1. With virtual functions the compiler doesn&amp;rsquo;t know which method to call until runtime. In C&#43;&#43; this is implemented with the virtual method table] a method at the call site." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <meta name="keywords" content="software, design, testing" />
-
-
-
-
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="Jeremy">
+<meta name="generator" content="Hugo 0.68.3" />
 
 
-<meta name="generator" content="Hugo 0.30.2" />
+  <meta property="og:title" content="Compile-Time Polymorphism" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="https://quiescent.us/2012/02/compile-time-polymorphism/" />
 
 
-<link rel="canonical" href="http://www.codestrokes.com/2012/02/compile-time-polymorphism/" />
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
 
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" href="/favicon.ico" />
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="stylesheet" href="https://quiescent.us//css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Code Strokes" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 
 
+  
 
+  
 
-<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+  
 
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
+  
 </head>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-23129291-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Jeremy Wright</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">About</li>
-      </a><a href="/project/">
-        <li class="mobile-menu-item">Projects</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Jeremy Wright</a>
-</div>
+	
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">About</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/project/">Projects</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
     
-    <header class="post-header">
-      <h1 class="post-title">Compile-Time Polymorphism</h1>
 
-      <div class="post-meta">
-        <span class="post-time"> 2012-02-05 </span>
-        <div class="post-category">
-            <a href="/categories/idiom/">Idiom</a>
-          </div>
-        <span class="more-meta"> 758 word </span>
-        <span class="more-meta"> 4 min read </span>
-      </div>
-    </header>
+	
+
+    <h1 class="brand-title">CodeStrokes</h1>
+    <h2 class="brand-tagline">Software Artistry</h2>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="https://quiescent.us/">Home</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about">About</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/posts">Blog</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/series">Series</a></li>
+        
+      </ul>
+    </nav>
 
     
-    
-<div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content">
-      <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#references">References</a></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
-
-    
-    <div class="post-content">
+    <div class="social-buttons">
       
+        
+        <a href="https://github.com/JeremyLWright" target="_blank"><i class='fa fa-github'></i></a>
+        
+      
+        
+        <a href="https://www.linkedin.com/pub/jeremy-wright/5b/8/844" target="_blank"><i class='fa fa-linkedin'></i></a>
+        
+      
+        
+        <a href="https://www.twitter.com/jeremy_l_wright" target="_blank"><i class='fa fa-twitter'></i></a>
+        
+      
+      
+    </div>
+    
 
-<p>Polymorphism is a tool in object orientation, which allows us to model behavior, while simultaneously leverage existing code. Polymorphism allows is behavior reuse.  In C++ polymorphism, comes in 2 flavors, the standard runtime variant, and a curious compile time variant.  Runtime polymorphism, like Java, leverages virtual functions to dynamically bind[1. With virtual functions the compiler doesn&rsquo;t know which method to call until runtime. In C++ this is implemented with the <a href="http://en.wikipedia.org/wiki/Virtual_method_table">virtual method table</a>] a method at the call site. Compile Time polymorphism uses templates, to bind at compile time, thus negating the performance affect of virtual functions.</p>
+  </div>
+</div>
 
-<!-- more -->
+	
+	
 
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+
+		
+			
+		    <div id="toc" class="pure-u-1 pure-u-md-1-4">
+				<small class="toc-label">Contents</small>
+		   	 	<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+		    </div>
+		    
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/2012/02/compile-time-polymorphism/">Compile-Time Polymorphism</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>5</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Feb</span> <span class="post-date-year">2012</span>
+            	</span>
+            	
+            
+            	
+            		<span class="post-author-single">By <a class="post-author"  target="">Jeremy</a></span>
+            		
+
+
+
+
+            	
+            
+
+			
+			
+				<div class="post-categories">
+				
+					<a class="post-category post-category-idiom" href="https://quiescent.us//categories/idiom">Idiom</a>
+				
+				</div>
+			
+
+			
+
+			
+
+            <p>Polymorphism is a tool in object orientation, which allows us to model behavior, while simultaneously leverage existing code. Polymorphism allows is behavior reuse.  In C++ polymorphism, comes in 2 flavors, the standard runtime variant, and a curious compile time variant.  Runtime polymorphism, like Java, leverages virtual functions to dynamically bind[1. With virtual functions the compiler doesn&rsquo;t know which method to call until runtime. In C++ this is implemented with the <a href="http://en.wikipedia.org/wiki/Virtual_method_table">virtual method table</a>] a method at the call site. Compile Time polymorphism uses templates, to bind at compile time, thus negating the performance affect of virtual functions.</p>
+<!-- raw HTML omitted -->
 <p>Polymorphism is a powerful concept. Polymorphism is a powerful tool in object-orientation, allowing one to realistically model the behavior or structure of some entity in software. This is key to any software design. Regardless, of idioms, language, paradigm, a realistic model is essential to a good design. If follow every best practice in software design, but your system doesn&rsquo;t accurately reflect the real-world model, your software will be difficult to work with, and it will be impossible to bring new people on your project.  An accurate portrayal is required.</p>
-
-<p>C++ affords us 2 forms of g: compile-time [2. Compile-Time polymorphism is also known as static polymorphism. I, however find this nomenclature confusing.  &rdquo;static dynamicism&rdquo;&hellip;. Um, what?], and runtime.  Runtime is the most straightforward, and uses virtual functions.  However, as we&rsquo;ll see later, virtual function have their own performance costs.</p>
-
-<p><a href="http://www.codestrokes.com/wp-content/uploads/2012/02/SuperSimplePolymorphism.png.jpg.jpeg"><img src="http://www.codestrokes.com/wp-content/uploads/2012/02/SuperSimplePolymorphism.png.jpg.jpeg" alt="" /></a></p>
-
+<p>C++ affords us 2 forms of g: compile-time [2. Compile-Time polymorphism is also known as static polymorphism. I, however find this nomenclature confusing.  &ldquo;static dynamicism&rdquo;&hellip;. Um, what?], and runtime.  Runtime is the most straightforward, and uses virtual functions.  However, as we&rsquo;ll see later, virtual function have their own performance costs.</p>
+<p><a href="http://www.codestrokes.com/wp-content/uploads/2012/02/SuperSimplePolymorphism.png.jpg.jpeg"><img src="http://www.codestrokes.com/wp-content/uploads/2012/02/SuperSimplePolymorphism.png.jpg.jpeg" alt=""></a></p>
 <p>We&rsquo;re going to implement this very simple hierarchy, to demonstrate polymorphism is its most basic form.</p>
-
 <pre><code>struct Base {
     Base (){}
     virtual ~Base (){}
@@ -180,9 +201,7 @@ struct Child : public Base {
     }
 };
 </code></pre>
-
 <p>Using the following driver code.</p>
-
 <pre><code>int main(int argc, char const *argv[]){   
     Base* b = new Child();
     b-&gt;DoSomething();
@@ -194,21 +213,14 @@ struct Child : public Base {
 
 }
 </code></pre>
-
 <p>Produces the following output:</p>
-
 <pre><code>bash $ ./a.out
 Hello from Child
 </code></pre>
-
 <p>This works, and its a familiar idiom. However virtual functions have a some performance issues. Since the call isn&rsquo;t bound until until runtime, the methods cannot be inlined, and will probably incur a cache miss [1. <a href="http://coldattic.info/shvedsky/pro/blogs/a-foo-walks-into-a-bar/posts/3">A foo walks into a bar</a>] , which on modern processors with the very deep caches is a very costly effect.</p>
-
-<p><a href="http://www.codestrokes.com/wp-content/uploads/2012/02/Untitled-1.png"><img src="http://www.codestrokes.com/wp-content/uploads/2012/02/Untitled-1.png" alt="" /></a></p>
-
-<p>Secondly, even with cacheing aside virtual functions are about 2.5 times slower than direct function calls; where as inlining, i.e. zero-function overhead is about 20 times faster [1. <a href="http://assemblyrequired.crashworks.org/2009/01/19/how-slow-are-virtual-functions-really/">How Slow Are Virtual Functions Really</a>]. So this is a major issue is performance critical code, such as games. The EA directly states that virtual functions forbidden in their code [1. <a href="http://assemblyrequired.crashworks.org/2008/12/22/ea-stl-prevents-memory-leaks/#more-92">How the EA prevents Memory Leaks</a>].  However, polymorphism is a powerful tool. Are we relegated to a &ldquo;lower&rdquo; form of Object-Orientation with writing performance critical code? No. In fact the opposite is true.  C++&rsquo;s template system is powerful and allows us to add dnasicm at compile time.</p>
-
+<p><a href="http://www.codestrokes.com/wp-content/uploads/2012/02/Untitled-1.png"><img src="http://www.codestrokes.com/wp-content/uploads/2012/02/Untitled-1.png" alt=""></a></p>
+<p>Secondly, even with cacheing aside virtual functions are about 2.5 times slower than direct function calls; where as inlining, i.e. zero-function overhead is about 20 times faster [1. <a href="http://assemblyrequired.crashworks.org/2009/01/19/how-slow-are-virtual-functions-really/">How Slow Are Virtual Functions Really</a>]. So this is a major issue is performance critical code, such as games. The EA directly states that virtual functions forbidden in their code [1. <a href="http://assemblyrequired.crashworks.org/2008/12/22/ea-stl-prevents-memory-leaks/#more-92">How the EA prevents Memory Leaks</a>].  However, polymorphism is a powerful tool. Are we relegated to a &ldquo;lower&rdquo; form of Object-Orientation with writing performance critical code? No. In fact the opposite is true.  C++'s template system is powerful and allows us to add dnasicm at compile time.</p>
 <p>We can implement the same behavior as the UML figure above using templates. This improves the performance of our code in two ways. Firstly, by omitting virtual function we pickup a ~2.5x boost. Secondly, by using composition instead of inheritance we also get a small bump, and the compiler is more likely to inline the &ldquo;inner&rdquo; function.</p>
-
 <pre><code>template &lt;typename ChildType&gt;
 struct Base {
     Base (){}
@@ -228,166 +240,106 @@ struct Child /* Notice the lack of inheritance here */{
     }
 };
 </code></pre>
-
 <p>Our driver is similar to before, except for the instantiation. Instead of inheriting behavior from a base class and overriding it, the Child, or implementing type, is passed in as an instantiation argument. This creates a new type, which is the dynamic behavior we want. Using the following driver code, we achieve the same output as before.</p>
-
 <pre><code>int main(int argc, char const *argv[]){   
     Base&lt;Child&gt;* b = new Base&lt;Child2&gt;();
     b-&gt;DoSomething();
     delete b;
 }
 </code></pre>
-
 <p>C++11 (-std=c++0x in gcc4.6) allows one 1 more improvement in the driver code to prevent memory leaks.</p>
-
 <pre><code>int main(int argc, char const *argv[]){   
 auto b2 = make_shared&lt;Base2&lt;Child2&gt; &gt;();
 b2-&gt;DoSomething();
 //Notice we don't have to call delete. Woot, exception safety!
 }
 </code></pre>
-
 <p>So polymorphism is a powerful tool for creating dynamicism in programs, however with the inherent [1. Pun intended] performance issues the standard form of polymorphism is not the tool for every job. C++ templates allow use a manageable way to achieve similar behavior at compile time!</p>
-
-<hr />
-
+<hr>
 <h4 id="references">References</h4>
 
-    </div>
+	
+			
 
+			
+				<div class="tags-list">
+					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
+					
+	                <a class="post-tag post-tag-c&#43;&#43;" href="https://quiescent.us//tags/c&#43;&#43;">C&#43;&#43;</a>,
+	                
+	                <a class="post-tag post-tag-idiom" href="https://quiescent.us//tags/idiom">idiom</a>,
+	                
+	                <a class="post-tag post-tag-performance" href="https://quiescent.us//tags/performance">performance</a>,
+	                
+	                <a class="post-tag post-tag-template" href="https://quiescent.us//tags/template">template</a>,
+	                
+	                <a class="post-tag post-tag-virtual" href="https://quiescent.us//tags/virtual">virtual</a>,
+	                
+				</div>
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/2012/01/modern-c/">Modern C&#43;&#43;</a>
+		            </div>
+		            
+
+					
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/2012/02/branching-with-mercurial/">Branching with Mercurial</a>
+		            </div>
+		            
+	            </div>
+            
+          </section>
+          
+          	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
     
-<div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">Jeremy</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">2012-02-05</span>
-  </p>
-  
-  <p class="copyright-item">
-    <span class="item-title">License</span>
-    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
-  </p>
-</div>
-
     
-    
-
-    <footer class="post-footer">
-      <div class="post-tags">
-          
-          <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
-          
-          <a href="/tags/idiom/">idiom</a>
-          
-          <a href="/tags/performance/">performance</a>
-          
-          <a href="/tags/template/">template</a>
-          
-          <a href="/tags/virtual/">virtual</a>
-          
-        </div>
-
-      
-      <nav class="post-nav">
-        
-          <a class="prev" href="/2012/02/branching-with-mercurial/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Branching with Mercurial</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        
-          <a class="next" href="/2012/01/modern-c/">
-            <span class="next-text nav-default">Modern C&#43;&#43;</span>
-            <span class="prev-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        
-  <div id="disqus_thread"></div>
-    <script type="text/javascript">
+    };
     (function() {
-        
-        
-        if (window.location.hostname === 'localhost') return;
-
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        var disqus_shortname = 'codestrokes2';
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
     })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com/" class="dsq-brlink" target="_blank">comments powered by <span class="logo-disqus">Disqus</span></a>
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+			<li><a href="/posts">Blog</a></li>
+		
+			<li><a href="/series">Series</a></li>
+		
+		</ul>
+	</div>
 
-  
-      </div>  
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="https://stackoverflow.com/users/1612667/jeremy-wright" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
-      <a href="https://www.linkedin.com/in/jeremylwright/" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="https://github.com/JeremyLWright" class="iconfont icon-github" title="github"></a>
-  <a href="http://www.codestrokes.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+	<p>&copy; 2020. All rights reserved.</p>
 </div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  <span class="copyright-year">
-    &copy; 
-    
-      2013 - 
-    2017
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Creative Commons Share Alike</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
   </div>
+	
+
+	
+
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
-<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
-  <script type="text/javascript">
-    window.MathJax = {
-      showProcessingMessages: false,
-      messageStyle: 'none'
-    };
-  </script>
-  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
-
-
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-23129291-1', 'auto');
-ga('send', 'pageview');
-</script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
-
-
-
 </body>
 </html>

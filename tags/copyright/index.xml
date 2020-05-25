@@ -1,23 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Copyright on Jeremy&#39;s CodeStrokes</title>
-    <link>http://www.codestrokes.com/tags/copyright/</link>
-    <description>Recent content in Copyright on Jeremy&#39;s CodeStrokes</description>
+    <title>copyright on Code Strokes</title>
+    <link>https://quiescent.us/tags/copyright/</link>
+    <description>Recent content in copyright on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>Creative Commons Share Alike</copyright>
+    <language>en-us</language>
     <lastBuildDate>Sat, 14 Apr 2012 17:53:21 +0000</lastBuildDate>
     
-	<atom:link href="http://www.codestrokes.com/tags/copyright/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quiescent.us/tags/copyright/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Copyright - The Anti-Innovator</title>
-      <link>http://www.codestrokes.com/2012/04/copyright-the-anti-innovator/</link>
+      <link>https://quiescent.us/2012/04/copyright-the-anti-innovator/</link>
       <pubDate>Sat, 14 Apr 2012 17:53:21 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2012/04/copyright-the-anti-innovator/</guid>
+      <guid>https://quiescent.us/2012/04/copyright-the-anti-innovator/</guid>
       <description>The French government dismantled and destroyed the Mona Lisa, along with a number of other masterpiece paintings today after courts decided that paintbrushes are copyrighted. Furthermore their derivative works, i.e. items creating using paintbrushes, are subject to copyright infringement. This of course is a fabrication, but this is exactly the point Oracle is trying to make when trying to copyright programming languages. Programming languages are tools for programmers to create the world we live in.</description>
     </item>
     

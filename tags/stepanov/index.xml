@@ -1,24 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Stepanov on Jeremy&#39;s CodeStrokes</title>
-    <link>http://www.codestrokes.com/tags/stepanov/</link>
-    <description>Recent content in Stepanov on Jeremy&#39;s CodeStrokes</description>
+    <title>Stepanov on Code Strokes</title>
+    <link>https://quiescent.us/tags/stepanov/</link>
+    <description>Recent content in Stepanov on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>Creative Commons Share Alike</copyright>
+    <language>en-us</language>
     <lastBuildDate>Sun, 24 Nov 2013 22:14:50 +0000</lastBuildDate>
     
-	<atom:link href="http://www.codestrokes.com/tags/stepanov/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quiescent.us/tags/stepanov/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Sean Parent: No Raw Loops</title>
-      <link>http://www.codestrokes.com/2013/11/sean-parent-no-raw-loops/</link>
+      <link>https://quiescent.us/2013/11/sean-parent-no-raw-loops/</link>
       <pubDate>Sun, 24 Nov 2013 22:14:50 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2013/11/sean-parent-no-raw-loops/</guid>
-      <description>A group of colleagues and I watched Sean Parent&amp;rsquo;s Going Native Talk on &amp;ldquo;C++ Seasoning&amp;rdquo;. Parent takes some extreme views on how to use C++, but his examples for using the STL to simplify code are phenomenal. For a recent AI project I decided to apply Parent&amp;rsquo;s goal of &amp;ldquo;no raw loops&amp;rdquo;, I was blown away by the transformation&amp;hellip; err std::transformation this had on my code. In this post I indented to demonstrate several complex code blocks, or overly specific code blocks what were replaced by some STL magic.</description>
+      <guid>https://quiescent.us/2013/11/sean-parent-no-raw-loops/</guid>
+      <description>A group of colleagues and I watched Sean Parent&amp;rsquo;s Going Native Talk on &amp;ldquo;C++ Seasoning&amp;quot;. Parent takes some extreme views on how to use C++, but his examples for using the STL to simplify code are phenomenal. For a recent AI project I decided to apply Parent&amp;rsquo;s goal of &amp;ldquo;no raw loops&amp;rdquo;, I was blown away by the transformation&amp;hellip; err std::transformation this had on my code. In this post I indented to demonstrate several complex code blocks, or overly specific code blocks what were replaced by some STL magic.</description>
     </item>
     
   </channel>

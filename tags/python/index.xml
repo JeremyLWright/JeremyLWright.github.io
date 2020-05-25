@@ -1,35 +1,34 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python on Jeremy&#39;s CodeStrokes</title>
-    <link>http://www.codestrokes.com/tags/python/</link>
-    <description>Recent content in Python on Jeremy&#39;s CodeStrokes</description>
+    <title>Python on Code Strokes</title>
+    <link>https://quiescent.us/tags/python/</link>
+    <description>Recent content in Python on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>Creative Commons Share Alike</copyright>
+    <language>en-us</language>
     <lastBuildDate>Sun, 20 Oct 2013 23:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.codestrokes.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quiescent.us/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Idiomatic Learning</title>
-      <link>http://www.codestrokes.com/2013/10/idiomatic-learning/</link>
+      <link>https://quiescent.us/2013/10/idiomatic-learning/</link>
       <pubDate>Sun, 20 Oct 2013 23:00:00 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2013/10/idiomatic-learning/</guid>
+      <guid>https://quiescent.us/2013/10/idiomatic-learning/</guid>
       <description>When learning a new language I find it helpful to study a languages idioms. Idioms exist in a language for a specific reason. Sometimes that reason is to further the principles of the language, other times it’s to mask, or otherwise deal with some underlying design decision of the language. Currently, I am studying Haskell, and currently I am struggle to clarify the idioms of the language. The syntax is still very new and awkward, currently with a total authoring in Haskell of 713 lines.</description>
     </item>
     
     <item>
       <title>ASULUG Talk: Django Web Framework</title>
-      <link>http://www.codestrokes.com/2012/09/asulug-talk-django-web-framework/</link>
+      <link>https://quiescent.us/2012/09/asulug-talk-django-web-framework/</link>
       <pubDate>Sat, 22 Sep 2012 15:36:10 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2012/09/asulug-talk-django-web-framework/</guid>
+      <guid>https://quiescent.us/2012/09/asulug-talk-django-web-framework/</guid>
       <description>ASU Linux User’s Group (ASULUG) — LUG Talks
 Sat 6 Oct 1:30pm — BYENG 210
- 
+** **
 The Django Web Framework
 Jeremy Wright
 Abstract
@@ -39,19 +38,19 @@ Django is a web framework similar to the popular Ruby on RAILS, but leveraging t
     
     <item>
       <title>Making C&#43;&#43; like Python: The Anderson Smart Pointer Pattern</title>
-      <link>http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</link>
+      <link>https://quiescent.us/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</link>
       <pubDate>Sun, 23 Oct 2011 19:00:21 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</guid>
+      <guid>https://quiescent.us/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</guid>
       <description>Choosing to use C++ brings the additional complexity of memory management. Dennis Ritchie once stated: The C Programming Language — A language which combines the flexibility of assembly language with the power of assembly language. C++ inherits much of that _flexibility, _however, this incidental complexity, can be relegated to a single class, leaving you with the high-level elegance of Python. RAII help with this additional complexity, however without a pattern for guidance implementing RAII consistently can be difficult, defeating the safety it provides.</description>
     </item>
     
     <item>
       <title>Good Tools, Excellent Results</title>
-      <link>http://www.codestrokes.com/2011/08/good-tools-excellent-results/</link>
+      <link>https://quiescent.us/2011/08/good-tools-excellent-results/</link>
       <pubDate>Sun, 21 Aug 2011 07:23:25 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2011/08/good-tools-excellent-results/</guid>
+      <guid>https://quiescent.us/2011/08/good-tools-excellent-results/</guid>
       <description>This semester for the C++ practicum we are building a clone of Zork. Like many games of the genre, Zork is driven by a database. Our implementation is a JSON database. I chose JSON for a few reasons, but most importantly because its a human readable format that&amp;rsquo;s simple to understand. I started by editing JSON files by hand in a text editor, however I found very quickly that investigating in a quick tool greatly improved my quality.</description>
     </item>
     

@@ -1,23 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Managed Code on Jeremy&#39;s CodeStrokes</title>
-    <link>http://www.codestrokes.com/tags/managed-code/</link>
-    <description>Recent content in Managed Code on Jeremy&#39;s CodeStrokes</description>
+    <title>Managed Code on Code Strokes</title>
+    <link>https://quiescent.us/tags/managed-code/</link>
+    <description>Recent content in Managed Code on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>Creative Commons Share Alike</copyright>
+    <language>en-us</language>
     <lastBuildDate>Tue, 28 Aug 2012 05:31:04 +0000</lastBuildDate>
     
-	<atom:link href="http://www.codestrokes.com/tags/managed-code/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quiescent.us/tags/managed-code/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>The Turbulent History of Managed Code</title>
-      <link>http://www.codestrokes.com/2012/08/the-turbulent-history-of-managed-code/</link>
+      <link>https://quiescent.us/2012/08/the-turbulent-history-of-managed-code/</link>
       <pubDate>Tue, 28 Aug 2012 05:31:04 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2012/08/the-turbulent-history-of-managed-code/</guid>
+      <guid>https://quiescent.us/2012/08/the-turbulent-history-of-managed-code/</guid>
       <description>Managed Code is a fascinating technology; Just-In-Time compilation provides advanced run-time optimization and strong type safety can render the hardware MMU obsolete. However the managed code renaissance is again in decline, and interestingly more than technology, business is changing the managed/native landscape. More than any other other metric, managed code is about maximizing programmer productivity.
 In 1977, Infocom released Zork. Zork was an innovative game. Its sophisticated linguistics made for an immersive experience for its adventurers.</description>
     </item>

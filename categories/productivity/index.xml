@@ -1,105 +1,104 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Productivity on Jeremy&#39;s CodeStrokes</title>
-    <link>http://www.codestrokes.com/categories/productivity/</link>
-    <description>Recent content in Productivity on Jeremy&#39;s CodeStrokes</description>
+    <title>Productivity on Code Strokes</title>
+    <link>https://quiescent.us/categories/productivity/</link>
+    <description>Recent content in Productivity on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>Creative Commons Share Alike</copyright>
+    <language>en-us</language>
     <lastBuildDate>Sun, 24 Nov 2013 22:14:50 +0000</lastBuildDate>
     
-	<atom:link href="http://www.codestrokes.com/categories/productivity/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quiescent.us/categories/productivity/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Sean Parent: No Raw Loops</title>
-      <link>http://www.codestrokes.com/2013/11/sean-parent-no-raw-loops/</link>
+      <link>https://quiescent.us/2013/11/sean-parent-no-raw-loops/</link>
       <pubDate>Sun, 24 Nov 2013 22:14:50 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2013/11/sean-parent-no-raw-loops/</guid>
-      <description>A group of colleagues and I watched Sean Parent&amp;rsquo;s Going Native Talk on &amp;ldquo;C++ Seasoning&amp;rdquo;. Parent takes some extreme views on how to use C++, but his examples for using the STL to simplify code are phenomenal. For a recent AI project I decided to apply Parent&amp;rsquo;s goal of &amp;ldquo;no raw loops&amp;rdquo;, I was blown away by the transformation&amp;hellip; err std::transformation this had on my code. In this post I indented to demonstrate several complex code blocks, or overly specific code blocks what were replaced by some STL magic.</description>
+      <guid>https://quiescent.us/2013/11/sean-parent-no-raw-loops/</guid>
+      <description>A group of colleagues and I watched Sean Parent&amp;rsquo;s Going Native Talk on &amp;ldquo;C++ Seasoning&amp;quot;. Parent takes some extreme views on how to use C++, but his examples for using the STL to simplify code are phenomenal. For a recent AI project I decided to apply Parent&amp;rsquo;s goal of &amp;ldquo;no raw loops&amp;rdquo;, I was blown away by the transformation&amp;hellip; err std::transformation this had on my code. In this post I indented to demonstrate several complex code blocks, or overly specific code blocks what were replaced by some STL magic.</description>
     </item>
     
     <item>
       <title>Text Processing for Programmers</title>
-      <link>http://www.codestrokes.com/2013/02/text-processing-for-programmers/</link>
+      <link>https://quiescent.us/2013/02/text-processing-for-programmers/</link>
       <pubDate>Sun, 17 Feb 2013 19:53:11 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2013/02/text-processing-for-programmers/</guid>
+      <guid>https://quiescent.us/2013/02/text-processing-for-programmers/</guid>
       <description>I was reading a blog about coding interviews, and one comment made near the bottom struck me, &amp;ldquo;&amp;hellip;&amp;ldquo;Um&amp;hellip; grep?&amp;rdquo; then they&amp;rsquo;re probably OK&amp;hellip;&amp;rdquo; As I read that comment, I realized I&amp;rsquo;d never answer that way, and I agreed with the author that was a problem. That began my dabble in grep, awk and sed, and these tools will change your workflow and even how you think about profiling code. Grep has even become a verb in my daily life, &amp;ldquo;Is this greppable?</description>
     </item>
     
     <item>
       <title>The Turbulent History of Managed Code</title>
-      <link>http://www.codestrokes.com/2012/08/the-turbulent-history-of-managed-code/</link>
+      <link>https://quiescent.us/2012/08/the-turbulent-history-of-managed-code/</link>
       <pubDate>Tue, 28 Aug 2012 05:31:04 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2012/08/the-turbulent-history-of-managed-code/</guid>
+      <guid>https://quiescent.us/2012/08/the-turbulent-history-of-managed-code/</guid>
       <description>Managed Code is a fascinating technology; Just-In-Time compilation provides advanced run-time optimization and strong type safety can render the hardware MMU obsolete. However the managed code renaissance is again in decline, and interestingly more than technology, business is changing the managed/native landscape. More than any other other metric, managed code is about maximizing programmer productivity.
 In 1977, Infocom released Zork. Zork was an innovative game. Its sophisticated linguistics made for an immersive experience for its adventurers.</description>
     </item>
     
     <item>
       <title>The Importance of System Design</title>
-      <link>http://www.codestrokes.com/2012/07/the-importance-of-system-design/</link>
+      <link>https://quiescent.us/2012/07/the-importance-of-system-design/</link>
       <pubDate>Sun, 15 Jul 2012 17:00:44 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2012/07/the-importance-of-system-design/</guid>
+      <guid>https://quiescent.us/2012/07/the-importance-of-system-design/</guid>
       <description>For the small programs we tend to implement as part of a semester project, or the simple &amp;ldquo;one-off/get-it-done&amp;rdquo; programs at work, system design rarely plays a part. However, even in the smallest problems a top-level system design is critical for consistency and ease of use. Class components, regardless of how precise and accurate they are in their own internal design, if they aren&amp;rsquo;t externally consistent with other objects, the system will be brittle, and difficult to use.</description>
     </item>
     
     <item>
       <title>Copyright - The Anti-Innovator</title>
-      <link>http://www.codestrokes.com/2012/04/copyright-the-anti-innovator/</link>
+      <link>https://quiescent.us/2012/04/copyright-the-anti-innovator/</link>
       <pubDate>Sat, 14 Apr 2012 17:53:21 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2012/04/copyright-the-anti-innovator/</guid>
+      <guid>https://quiescent.us/2012/04/copyright-the-anti-innovator/</guid>
       <description>The French government dismantled and destroyed the Mona Lisa, along with a number of other masterpiece paintings today after courts decided that paintbrushes are copyrighted. Furthermore their derivative works, i.e. items creating using paintbrushes, are subject to copyright infringement. This of course is a fabrication, but this is exactly the point Oracle is trying to make when trying to copyright programming languages. Programming languages are tools for programmers to create the world we live in.</description>
     </item>
     
     <item>
       <title>Branching with Mercurial</title>
-      <link>http://www.codestrokes.com/2012/02/branching-with-mercurial/</link>
+      <link>https://quiescent.us/2012/02/branching-with-mercurial/</link>
       <pubDate>Mon, 20 Feb 2012 02:18:15 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2012/02/branching-with-mercurial/</guid>
+      <guid>https://quiescent.us/2012/02/branching-with-mercurial/</guid>
       <description>Mercurial supports two separate methods for branching. The first is built into how distributed version control functions, in that every clone is a branch itself. This is the branching method Joel Sposky recommends on hginit.com. The second method is called local branches. Initially I liked the local branch method; I liked it for the fact that I felt smart for using it. It did not improve productivity. There is a simple reason for this, with local branches it is difficult to diff the branch to the main branch of development e.</description>
     </item>
     
     <item>
       <title>Making C&#43;&#43; like Python: The Anderson Smart Pointer Pattern</title>
-      <link>http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</link>
+      <link>https://quiescent.us/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</link>
       <pubDate>Sun, 23 Oct 2011 19:00:21 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</guid>
+      <guid>https://quiescent.us/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</guid>
       <description>Choosing to use C++ brings the additional complexity of memory management. Dennis Ritchie once stated: The C Programming Language — A language which combines the flexibility of assembly language with the power of assembly language. C++ inherits much of that _flexibility, _however, this incidental complexity, can be relegated to a single class, leaving you with the high-level elegance of Python. RAII help with this additional complexity, however without a pattern for guidance implementing RAII consistently can be difficult, defeating the safety it provides.</description>
     </item>
     
     <item>
       <title>Hijacking System Programs</title>
-      <link>http://www.codestrokes.com/2011/08/hijacking-system-programs/</link>
+      <link>https://quiescent.us/2011/08/hijacking-system-programs/</link>
       <pubDate>Fri, 12 Aug 2011 06:00:18 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2011/08/hijacking-system-programs/</guid>
+      <guid>https://quiescent.us/2011/08/hijacking-system-programs/</guid>
       <description>Let&amp;rsquo;s say for a moment that you are a graduate student, with shell access to your schools server. The server maintains a number of tools you need for classes, and research. All is well, except the stock editor on the server is wicked old. Like an eternity old. Well that happened to me. I am fully addicted to my custom vim configuration, but it requires vim7.3. My school&amp;rsquo;s server only has 7.</description>
     </item>
     
     <item>
       <title>Version Control More Than Collaboration</title>
-      <link>http://www.codestrokes.com/2011/07/version-control-more-than-collaboration/</link>
+      <link>https://quiescent.us/2011/07/version-control-more-than-collaboration/</link>
       <pubDate>Wed, 06 Jul 2011 05:18:48 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2011/07/version-control-more-than-collaboration/</guid>
+      <guid>https://quiescent.us/2011/07/version-control-more-than-collaboration/</guid>
       <description>I&amp;rsquo;ve used version control in some form or another since I was a freshman in college, however I&amp;rsquo;m quite the anomaly. I will use a tool fully knowing that its more than I need, just to learn something new. Initially, this is how I approached version control. Except for a few unique situations version control of my homework, seemed like more work than it was worth. I used to think version control was merely a collaboration tool for teams of people.</description>
     </item>
     
     <item>
       <title>Being Truely Productive</title>
-      <link>http://www.codestrokes.com/2011/06/being-truely-productive/</link>
+      <link>https://quiescent.us/2011/06/being-truely-productive/</link>
       <pubDate>Sun, 19 Jun 2011 18:59:47 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2011/06/being-truely-productive/</guid>
+      <guid>https://quiescent.us/2011/06/being-truely-productive/</guid>
       <description>Productivity is an elusive mistress. I approach productivity much like any design problem. I lay out my requirements, and I iterate until I am happy with the outcome. Over the last few years I have spent a lot time laying out my design process. Along the way I found a number of tools that were helpful. This is my personal process and while I think it&amp;rsquo;s a great process. It&amp;rsquo;s important to refactor for yourself.</description>
     </item>
     

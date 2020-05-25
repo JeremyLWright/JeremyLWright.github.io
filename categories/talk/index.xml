@@ -1,26 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Talk on Jeremy&#39;s CodeStrokes</title>
-    <link>http://www.codestrokes.com/categories/talk/</link>
-    <description>Recent content in Talk on Jeremy&#39;s CodeStrokes</description>
+    <title>Talk on Code Strokes</title>
+    <link>https://quiescent.us/categories/talk/</link>
+    <description>Recent content in Talk on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>Creative Commons Share Alike</copyright>
+    <language>en-us</language>
     <lastBuildDate>Sat, 22 Sep 2012 15:36:10 +0000</lastBuildDate>
     
-	<atom:link href="http://www.codestrokes.com/categories/talk/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quiescent.us/categories/talk/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>ASULUG Talk: Django Web Framework</title>
-      <link>http://www.codestrokes.com/2012/09/asulug-talk-django-web-framework/</link>
+      <link>https://quiescent.us/2012/09/asulug-talk-django-web-framework/</link>
       <pubDate>Sat, 22 Sep 2012 15:36:10 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2012/09/asulug-talk-django-web-framework/</guid>
+      <guid>https://quiescent.us/2012/09/asulug-talk-django-web-framework/</guid>
       <description>ASU Linux User’s Group (ASULUG) — LUG Talks
 Sat 6 Oct 1:30pm — BYENG 210
- 
+** **
 The Django Web Framework
 Jeremy Wright
 Abstract

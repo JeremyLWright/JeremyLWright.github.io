@@ -1,233 +1,241 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>My Haskell Environment for Project Euler - Jeremy&#39;s CodeStrokes</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <title>
+    My Haskell Environment for Project Euler // Code Strokes
+  </title>
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 
 
-<meta name="author" content="admin" />
-  <meta name="description" content="For the last several months I&amp;rsquo;ve been working on Project Euler in Haskell. My intent has been to learn Haskell, and grasp the functional concepts. While working on several problems it&amp;rsquo;s important to have a workflow that allows for a fast cycle time. I spent some time with Cabal, attempting to build a scheme that works efficiently, but was unable to do so. Instead I setup a mix of cabal-dev, and make to build a fast workflow that allow for compiling, testing, common code libraries, and benchmarks." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <meta name="keywords" content="software, design, testing" />
-
-
-
-
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="admin">
+<meta name="generator" content="Hugo 0.68.3" />
 
 
-<meta name="generator" content="Hugo 0.30.2" />
+  <meta property="og:title" content="My Haskell Environment for Project Euler" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="https://quiescent.us/2013/08/my-haskell-environment-for-project-euler/" />
 
 
-<link rel="canonical" href="http://www.codestrokes.com/2013/08/my-haskell-environment-for-project-euler/" />
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
 
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" href="/favicon.ico" />
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="stylesheet" href="https://quiescent.us//css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Code Strokes" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 
 
+  
 
+  
 
-<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+  
 
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
+  
 </head>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-23129291-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Jeremy Wright</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">About</li>
-      </a><a href="/project/">
-        <li class="mobile-menu-item">Projects</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Jeremy Wright</a>
-</div>
+	
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">About</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/project/">Projects</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
     
-    <header class="post-header">
-      <h1 class="post-title">My Haskell Environment for Project Euler</h1>
 
-      <div class="post-meta">
-        <span class="post-time"> 2013-08-02 </span>
-        <div class="post-category">
-            <a href="/categories/functional/">Functional</a>
-          </div>
-        <span class="more-meta"> 2121 word </span>
-        <span class="more-meta"> 10 min read </span>
-      </div>
-    </header>
+	
+
+    <h1 class="brand-title">CodeStrokes</h1>
+    <h2 class="brand-tagline">Software Artistry</h2>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="https://quiescent.us/">Home</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about">About</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/posts">Blog</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/series">Series</a></li>
+        
+      </ul>
+    </nav>
 
     
-    
-<div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content">
+    <div class="social-buttons">
       
+        
+        <a href="https://github.com/JeremyLWright" target="_blank"><i class='fa fa-github'></i></a>
+        
+      
+        
+        <a href="https://www.linkedin.com/pub/jeremy-wright/5b/8/844" target="_blank"><i class='fa fa-linkedin'></i></a>
+        
+      
+        
+        <a href="https://www.twitter.com/jeremy_l_wright" target="_blank"><i class='fa fa-twitter'></i></a>
+        
+      
+      
+    </div>
+    
+
   </div>
 </div>
 
-    
-    <div class="post-content">
-      <p>For the last several months I&rsquo;ve been working on Project Euler in Haskell. My intent has been to learn Haskell, and grasp the functional concepts. While working on several problems it&rsquo;s important to have a workflow that allows for a fast cycle time. I spent some time with Cabal, attempting to build a scheme that works efficiently, but was unable to do so. Instead I setup a mix of cabal-dev, and make to build a fast workflow that allow for compiling, testing, common code libraries, and benchmarks. This post is a walk though of that workflow. <!-- more -->
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+
+		
+			
+		    <div id="toc" class="pure-u-1 pure-u-md-1-4">
+				<small class="toc-label">Contents</small>
+		   	 	<nav id="TableOfContents"></nav>
+		    </div>
+		    
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/2013/08/my-haskell-environment-for-project-euler/">My Haskell Environment for Project Euler</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>2</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Aug</span> <span class="post-date-year">2013</span>
+            	</span>
+            	
+            
+            	
+            		<span class="post-author-single">By <a class="post-author"  target="">admin</a></span>
+            		
+
+
+
+
+            	
+            
+
+			
+			
+				<div class="post-categories">
+				
+					<a class="post-category post-category-functional" href="https://quiescent.us//categories/functional">Functional</a>
+				
+				</div>
+			
+
+			
+
+			
+
+            <p>For the last several months I&rsquo;ve been working on Project Euler in Haskell. My intent has been to learn Haskell, and grasp the functional concepts. While working on several problems it&rsquo;s important to have a workflow that allows for a fast cycle time. I spent some time with Cabal, attempting to build a scheme that works efficiently, but was unable to do so. Instead I setup a mix of cabal-dev, and make to build a fast workflow that allow for compiling, testing, common code libraries, and benchmarks. This post is a walk though of that workflow. <!-- raw HTML omitted -->
 My most important requirements is cycle time. I a minimum edit-compile-test/execute cycle. This helps me to clearly and quickly work on problems. Especially in compiled languages with libraries, and common code, it is important that a single code change is a single file recompiles a minimum of effort (<a href="http://www.joelonsoftware.com/articles/fog0000000043.html">Joel Spoksky</a>). Therefore my Makefile must describe the dependencies, which themselves are dynamic as the code base grows and changes. Cabal supposedly does this, but Project Euler is uniquely outside the framework offered by cabal. In Project Euler, each solution is a single executable. The project itself is many executables. Maintaining a cabal files for that many executables does not meet my desire for dynamically managed dependencies. Instead I favor make; simple <em>make</em>. Therefore the requirements of my project euler environemnt are:</p>
-
 <ol>
-<li><p>Primary Requirement</p>
-
-<ul>
-<li>Fast Cycle Time
-
-
-
-
-<br /></li>
-</ul></li>
-
-<li><p>Secondary Requirements</p>
-
-<ul>
-<li><p>Testing</p>
-
-<ul>
-<li>Unit testing is a minimum, but haskell allows test generation which is something I plan to learn and use heavily.
-
-
-
-
-<br /></li>
-</ul></li>
-
-<li><p>Sandbox Dependencies</p>
-
-<ul>
-<li>standard and contributed libraries i.e. libraries not written by me should not clutter the standard library search space e.g. /usr/local/ghc/lib&hellip;
-
-
-
-
-<br /></li>
-</ul></li>
-
-<li><p>Minimal Rebuilt</p>
-
-<ul>
-<li><p>I must have a clean and simple test environment to run unit tests on my common modules, as well as any project file</p></li>
-
-<li><p>I want changing source files, should only rebuild the tests affected by those changes.</p></li>
-</ul></li>
-
-<li><p>Benchmarking</p>
-
-<ul>
-<li>I must have a dependable and repeatable benchmark for evaluating my code. Project Euler encourages one to complete each solution in 1 minute. Benchmarking is useful to see the common code base improve over time, as well as assert all programs complete in the encouraged time limit.
-
-
-
-
-<br /></li>
-</ul></li>
-
-<li><p>Profiling</p>
-
-<ul>
-<li>Profiling is essential, especially in Haskell, since laziness makes space complexity difficult to estimate.
-
-
-
-
-
-
-
-<br /></li>
-</ul></li>
-</ul></li>
-
-<li><p>Tertiary Requirements:</p>
-
-<ul>
-<li><p>Background Exploration</p>
-
-<ul>
-<li>I am using Project Euler as a conduit to learn Haskell. As such, I must be able to explore random ideas in a meaningful way. Those changes should be preserved do I can go back and look at my past attempts.</li>
-</ul></li>
-</ul></li>
+<li>Primary Requirement</li>
 </ol>
+<pre><code>* Fast Cycle Time
+</code></pre>
+<ol start="2">
+<li>Secondary Requirements</li>
+</ol>
+<pre><code>* Testing
 
+
+  * Unit testing is a minimum, but haskell allows test generation which is something I plan to learn and use heavily.
+
+
+
+
+
+* Sandbox Dependencies
+
+
+  * standard and contributed libraries i.e. libraries not written by me should not clutter the standard library search space e.g. /usr/local/ghc/lib...
+
+
+
+
+
+* Minimal Rebuilt
+
+
+  * I must have a clean and simple test environment to run unit tests on my common modules, as well as any project file
+
+
+  * I want changing source files, should only rebuild the tests affected by those changes.
+
+
+
+
+
+* Benchmarking
+
+
+  * I must have a dependable and repeatable benchmark for evaluating my code. Project Euler encourages one to complete each solution in 1 minute. Benchmarking is useful to see the common code base improve over time, as well as assert all programs complete in the encouraged time limit.
+
+
+
+
+
+* Profiling
+
+
+  * Profiling is essential, especially in Haskell, since laziness makes space complexity difficult to estimate.
+</code></pre>
+<ol start="3">
+<li>Tertiary Requirements:</li>
+</ol>
+<pre><code>* Background Exploration
+
+
+  * I am using Project Euler as a conduit to learn Haskell. As such, I must be able to explore random ideas in a meaningful way. Those changes should be preserved do I can go back and look at my past attempts.
+</code></pre>
 <p>With these requirements in mind, and 10 Project Euler solutions complete, I set out to design a project environment. It&rsquo;s important that I already had some solutions complete before I started this endeavor. Why? Two reasons: 1 personally, I am prone to analysis-paralysis, in that I will tweak my editor, and build environment to get it &ldquo;perfect&rdquo; before I write any code. This is useless.Secondly, usually, you don&rsquo;t know what you need until you don&rsquo;t have it. By that I mean, 2 or 3 source files, it doesn&rsquo;t really matter how slow or inefficient your compile-test-execute loop is since its only a small environment. The start of time of the compiler is the most significant aspect of this cycle. The dependencies are not complex enough to really demonstrate the effort. However, as the project grows these inefficiencies build, and expand on one another until you realize what&rsquo;s missing. For me that was 10 solutions in.</p>
-
 <p>At 10 solutions in I found myself trying to break a module into 2 pieces, and discovered the trivial <em>ghc &ndash;make</em> step I used became less effective. At this point it wasn&rsquo;t really a time efficient, but an irritation. An irritation I knew would grow to zap a significant amount of time. I fix my own irritations as soon as I can in a process I call <a href="https://summit.atlassian.com/archives/2012/dev-speed/moneypenny-speaks">Dev-Speed</a> (a term I stole from the development team at Atlassian). Dev-Speed is the concept that an efficient work environment will make a more efficient engineer, thus higher quality code. Efficiency for me is minimal irritation for common tasks. However, fixing any irritation as it raises it&rsquo;s head will take one back to analysis paralysis and nothing will get done. Thus dev-speed is the process of setting regular intervals for project effort. At the end of the interval I reward myself by fixing some irritation in my cycle. This has the added impact of accelerating my development. When I hit a problem instead of procrastinating by choosing a &ldquo;better&rdquo; font for my editor, I work harder to get to my dev-speed cycle sooner. 10 solutions ended my first cycle. Ah. Now it&rsquo;s time to make it awesome.</p>
-
-<p>First step is purely mechanical: project structure. Initially I had a flat simple structure with a Makefile and my source files in the same folder. For a few sources this was fine. I know I would out grow this structure, but I choose to not spend any time thinking about a better structure and instead ignored the irritation until my dev-speed cycle. For my folder structure I like to be idiomatic of the language, so I searched: &ldquo;Haskell project folder structure&rdquo; and found (<a href="http://www.haskell.org/haskellwiki/Structure_of_a_Haskell_project">http://www.haskell.org/haskellwiki/Structure_of_a_Haskell_project</a>). I stole the project structure outright.</p>
-
+<p>First step is purely mechanical: project structure. Initially I had a flat simple structure with a Makefile and my source files in the same folder. For a few sources this was fine. I know I would out grow this structure, but I choose to not spend any time thinking about a better structure and instead ignored the irritation until my dev-speed cycle. For my folder structure I like to be idiomatic of the language, so I searched: &ldquo;Haskell project folder structure&rdquo; and found (<a href="http://www.haskell.org/haskellwiki/Structure_of_a_Haskell_project)">http://www.haskell.org/haskellwiki/Structure_of_a_Haskell_project)</a>. I stole the project structure outright.</p>
 <pre><code>.
 ├── dist
 ├── doc
@@ -242,17 +250,11 @@ My most important requirements is cycle time. I a minimum edit-compile-test/exec
 │   └── Euler
 └── util
 </code></pre>
-
 <p>Now I have a clean, usable structure, and a place for everything to go. My requirements now have folders to work within. However there is a problem, I have a place to put <em>my own</em> libraries, but what about standard libraries and packages for the project. I need sandbox builds. Coming from python, I love virtual environments. Professionally, all our projects are cross-compiled, and we worked out a similar virtual-environment setup for C++/ARM/x86/x86-64. As this is one of my requirements. I searched for Haskell virtual environments and found a project by Galois called cabal-dev, which creates cabal sandboxes. This allows me to list by dependencies locally, and install them locally. Now I can freely install Hackage packages without fear of corrupting other Haskell Projects of my own or on the system. Cleaning a corrupt cabal repository is easier too, just make clean!</p>
-
 <p>Okay primary requirements are met. Contributed libraries will not clutter my global spaces, and I have a clean efficient folder structure to built my project. Next step is to setup my makefile to build everything. Make is a fantastic tool, really. It doesn&rsquo;t get a lot of direct attention or praise, but it is certainly the master of time based dependency management.</p>
-
-<blockquote>While tweaking the makefile, _make -d | less_ was massively useful. It prints out the process steps make is executing so you can tune the makefile to only rebuild what' necessary, our see what make believes is missing.</blockquote>
-
+<!-- raw HTML omitted -->
 <p>It&rsquo;s more than just a source building tool. Since I have common libraries shared among multiple executables I&rsquo;m using ghc&rsquo;s makefile dependency features. (<a href="http://www.haskell.org/ghc/docs/7.6.2/html/users_guide/separate-compilation.html#makefile-dependencies">http://www.haskell.org/ghc/docs/7.6.2/html/users_guide/separate-compilation.html#makefile-dependencies</a>). So lets analyze the dependencies.</p>
-
 <p>All my source files are in /src. My library code is in /src/Euler. Data Files are in /src/Data. contributed libraries are installed by cabal-dev into /dist. Now as I create new solutions I don&rsquo;t want to edit the makefile to add the new source files. Make should just discover them. This is a wildcard pattern SRCS=$(wildcard src/*.hs) #Define a variable called SRCS, that includes all the .hs files in the src folder.  Now what we need is a mapping from the source files to the executable. Make needs to know what the resulting executable name will be in order to see that it&rsquo;s missing. For example lets say we want to compile /src/001.hs into /src/001. Make will start up and look for /src/001 if it doesn&rsquo;t exist, it will look for a rule that defines how to convert /src/001.hs to /src/001.</p>
-
 <pre><code>all: $(PROGS)
 
 %: %.hs
@@ -260,19 +262,13 @@ My most important requirements is cycle time. I a minimum edit-compile-test/exec
 .hs.o:
         $(HC) -c $&lt; $(HC_OPTS)
 </code></pre>
-
 <p>These 2 rules do just that .hs -&gt; .o -&gt; executable (i.e. no extension). Said another way, give me something.hs and I&rsquo;ll return you something.o then give me something .o I&rsquo;ll return you an executable. Make calls these recipes. So we have a variable with a list of the .hs files called SRCS we need a list of the progs -&gt; $(PROGS). Make has a facility for this called pattern substution.</p>
-
 <pre><code>PROGS=$(patsubst %.hs,%,$(SRCS))
 </code></pre>
-
 <p>This line defines a variable that converts all the source files to executable names. In this case it simply drops the .hs extension. On windows one would want to add .exe</p>
-
 <pre><code>PROGS=$(patsubst %.hs,%.exe,$(SRCS))
 </code></pre>
-
 <p>Now we have a list of the programs, and a list of the sources, but we have a catch. What about the libraries? Who depends on those? It&rsquo;s important that we setup our build such that only the solutions truely dependent on a library function will be rebuilt, otherwise we watse a great deal of time building project which haven;t actually changed. For this case, ghc will generate the dependency rules for us which describe which source files are dependent on which library sources. Additionally, when the dependencies are correct make -j will do the right thing, which can massively improve the build speed. Here&rsquo;s the rule to generate the build dependencies</p>
-
 <pre><code>depend: .depend
     @:
 
@@ -281,23 +277,15 @@ My most important requirements is cycle time. I a minimum edit-compile-test/exec
 
 -include .depend
 </code></pre>
-
 <p>ghc will by default append the dependencies to the current Makefile. I personally don&rsquo;t like that. the  dependencies are a generated item, and should therefore not be checked into version control. So I generate a separate file .depend and include it with the -include. -include will not complain if the file doesn&rsquo;t exist, as is the case on a clean build.</p>
-
-<p>[caption id=&ldquo;attachment_1135&rdquo; align=&ldquo;alignright&rdquo; width=&ldquo;300&rdquo;]<a href="http://www.codestrokes.com/wp-content/uploads/2013/08/euler.png"><img src="http://www.codestrokes.com/wp-content/uploads/2013/08/euler-300x225.png" alt="Euler benchmarks up to 037" /></a> Benchmarks generated with octave measuring the current solutions.[/caption]</p>
-
+<p>[caption id=&quot;attachment_1135&rdquo; align=&quot;alignright&rdquo; width=&quot;300&rdquo;]<a href="http://www.codestrokes.com/wp-content/uploads/2013/08/euler.png"><img src="http://www.codestrokes.com/wp-content/uploads/2013/08/euler-300x225.png" alt="Euler benchmarks up to 037"></a> Benchmarks generated with octave measuring the current solutions.[/caption]</p>
 <p>Great! Now we have a dependable build system and make -j does the right thing. Next we need benchmarks. Beyond just the project euler guidelines benchmarks are extremely important. From an educational standpoint you have a quantitative item to measure progress, (or lack there of). From a professional point of view, it&rsquo;s always satisfying to display a graph showing your performance is better than someone else. Graphs are how gentlemen insult each other.</p>
-
 <p>What are we benchmarking? Compile Time, Run Time, and a set of common functions. Compile time is important for comparing against the intrepreted langauges like Python. A runtime spec from Python includes the compile time ostensibly, so it&rsquo;s an interesting point of comparison. The general setup here is a JSON file which maps numbered solutions to the correct answers, a python script to run and time the programs and compare the answer, and lastly an octave script to tie all the data files together into beautiful soul crushing graphs. At the top level are the Makefile rules to execute the recipes in an sensible order.</p>
-
 <p>I want to type <em>make check</em> on the command line to verify all programs are correct. This is especially useful when hacking on library code since the changes could break old solutions. This is separate from <em>make test</em> which runs my unit tests. Make check should output a graph file (eventually) so lets call out the file we want to generate</p>
-
 <pre><code>check: euler.png
     @:
 </code></pre>
-
 <p>make needs a recipe for euler.png</p>
-
 <pre><code>euler.png: dist/times.dat $(BENCH_PROGS)
         testsuite/benchmarks/prime &gt; dist/bench.dat
         octave util/process.m
@@ -305,9 +293,7 @@ My most important requirements is cycle time. I a minimum edit-compile-test/exec
 dist/times.dat: $(PROGS)
     util/EulerValues.py --answers util/answers.js --file dist/times.dat $(PROGS)
 </code></pre>
-
 <p>The euler graph needs runtimes, and the bench programs themselves. times.dat is generated by the python script and depends on the programs. Now each component is built, we can run the benchmark programs and finally octave to output the graph. There is the makefile in it&rsquo;s entirety</p>
-
 <pre><code>SRCS=$(wildcard src/*.hs)
 BENCH_SRCS=$(wildcard testsuite/benchmarks/*.hs)
 BENCH_PROGS=$(patsubst %.hs,%,$(BENCH_SRCS))
@@ -373,150 +359,96 @@ depend: $(SRCS) $(DEP_LIBS)
 
 -include .depend
 </code></pre>
-
 <p>There we have it. A cleanly organized, portable project with minimal rebuild, and a fast edit/build/run cycle! I&rsquo;m always looking for improvements for my next dev-speed cycle. Please comment on any points of improvements.</p>
 
-    </div>
+	
+			
 
+			
+				<div class="tags-list">
+					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
+					
+	                <a class="post-tag post-tag-automake" href="https://quiescent.us//tags/automake">automake</a>,
+	                
+	                <a class="post-tag post-tag-dependencies" href="https://quiescent.us//tags/dependencies">dependencies</a>,
+	                
+	                <a class="post-tag post-tag-dependency" href="https://quiescent.us//tags/dependency">dependency</a>,
+	                
+	                <a class="post-tag post-tag-euler" href="https://quiescent.us//tags/euler">euler</a>,
+	                
+	                <a class="post-tag post-tag-generation" href="https://quiescent.us//tags/generation">generation</a>,
+	                
+	                <a class="post-tag post-tag-haskell" href="https://quiescent.us//tags/haskell">Haskell</a>,
+	                
+	                <a class="post-tag post-tag-make" href="https://quiescent.us//tags/make">make</a>,
+	                
+	                <a class="post-tag post-tag-project-euler" href="https://quiescent.us//tags/project-euler">project euler</a>,
+	                
+				</div>
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/2013/07/review-how-to-write-a-thesis-2/">How to Write a Thesis</a>
+		            </div>
+		            
+
+					
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/2013/08/interesting-article-about-monads/">Interesting article about Monads</a>
+		            </div>
+		            
+	            </div>
+            
+          </section>
+          
+          	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
     
-<div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">admin</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">2013-08-02</span>
-  </p>
-  
-  <p class="copyright-item">
-    <span class="item-title">License</span>
-    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
-  </p>
-</div>
-
     
-    
-
-    <footer class="post-footer">
-      <div class="post-tags">
-          
-          <a href="/tags/automake/">automake</a>
-          
-          <a href="/tags/dependencies/">dependencies</a>
-          
-          <a href="/tags/dependency/">dependency</a>
-          
-          <a href="/tags/euler/">euler</a>
-          
-          <a href="/tags/generation/">generation</a>
-          
-          <a href="/tags/haskell/">Haskell</a>
-          
-          <a href="/tags/make/">make</a>
-          
-          <a href="/tags/project-euler/">project euler</a>
-          
-        </div>
-
-      
-      <nav class="post-nav">
-        
-          <a class="prev" href="/2013/08/interesting-article-about-monads/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Interesting article about Monads</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        
-          <a class="next" href="/2013/07/review-how-to-write-a-thesis-2/">
-            <span class="next-text nav-default">How to Write a Thesis</span>
-            <span class="prev-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        
-  <div id="disqus_thread"></div>
-    <script type="text/javascript">
+    };
     (function() {
-        
-        
-        if (window.location.hostname === 'localhost') return;
-
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        var disqus_shortname = 'codestrokes2';
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
     })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com/" class="dsq-brlink" target="_blank">comments powered by <span class="logo-disqus">Disqus</span></a>
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+			<li><a href="/posts">Blog</a></li>
+		
+			<li><a href="/series">Series</a></li>
+		
+		</ul>
+	</div>
 
-  
-      </div>  
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="https://stackoverflow.com/users/1612667/jeremy-wright" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
-      <a href="https://www.linkedin.com/in/jeremylwright/" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="https://github.com/JeremyLWright" class="iconfont icon-github" title="github"></a>
-  <a href="http://www.codestrokes.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+	<p>&copy; 2020. All rights reserved.</p>
 </div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  <span class="copyright-year">
-    &copy; 
-    
-      2013 - 
-    2017
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Creative Commons Share Alike</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
   </div>
+	
+
+	
+
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
-<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
-  <script type="text/javascript">
-    window.MathJax = {
-      showProcessingMessages: false,
-      messageStyle: 'none'
-    };
-  </script>
-  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
-
-
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-23129291-1', 'auto');
-ga('send', 'pageview');
-</script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
-
-
-
 </body>
 </html>

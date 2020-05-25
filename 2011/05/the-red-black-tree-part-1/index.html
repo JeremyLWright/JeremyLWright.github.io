@@ -1,203 +1,221 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>The Red-Black Tree - Jeremy&#39;s CodeStrokes</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <title>
+    The Red-Black Tree // Code Strokes
+  </title>
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 
 
-<meta name="author" content="Jeremy" />
-  <meta name="description" content="C&#43;&#43; Source Code D Source Code
-D provides a number of features that simplify designing software, especially in the embedded environment. I will show in this 2 part comparison, between C&#43;&#43; and D, that D helps one write correct code. Correct code is something Andrei Alexandrescu, stresses heavily as a prominent feature of D. I use the Red-Black Tree for such a comparison since its complicated enough to make memory management difficult, while retaining real-world application." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <meta name="keywords" content="software, design, testing" />
-
-
-
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="Jeremy">
+<meta name="generator" content="Hugo 0.68.3" />
 
 
-
-<meta name="generator" content="Hugo 0.30.2" />
-
-
-<link rel="canonical" href="http://www.codestrokes.com/2011/05/the-red-black-tree-part-1/" />
-
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" href="/favicon.ico" />
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta property="og:title" content="The Red-Black Tree" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="https://quiescent.us/2011/05/the-red-black-tree-part-1/" />
 
 
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="https://quiescent.us//css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Code Strokes" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 
 
-<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+  
 
+  
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
+  
 
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
+  
 </head>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-23129291-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Jeremy Wright</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">About</li>
-      </a><a href="/project/">
-        <li class="mobile-menu-item">Projects</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Jeremy Wright</a>
-</div>
+	
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">About</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/project/">Projects</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
     
-    <header class="post-header">
-      <h1 class="post-title">The Red-Black Tree</h1>
 
-      <div class="post-meta">
-        <span class="post-time"> 2011-05-09 </span>
-        <div class="post-category">
-            <a href="/categories/algorithm/">Algorithm</a>
-          </div>
-        <span class="more-meta"> 1025 word </span>
-        <span class="more-meta"> 5 min read </span>
-      </div>
-    </header>
+	
+
+    <h1 class="brand-title">CodeStrokes</h1>
+    <h2 class="brand-tagline">Software Artistry</h2>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="https://quiescent.us/">Home</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about">About</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/posts">Blog</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/series">Series</a></li>
+        
+      </ul>
+    </nav>
 
     
-    
-<div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content">
-      <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#c-insert">C++ Insert</a></li>
-<li><a href="#c-delete">C++ Delete</a>
-<ul>
-<li><a href="#conclusion">Conclusion</a></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
-
-    
-    <div class="post-content">
+    <div class="social-buttons">
       
+        
+        <a href="https://github.com/JeremyLWright" target="_blank"><i class='fa fa-github'></i></a>
+        
+      
+        
+        <a href="https://www.linkedin.com/pub/jeremy-wright/5b/8/844" target="_blank"><i class='fa fa-linkedin'></i></a>
+        
+      
+        
+        <a href="https://www.twitter.com/jeremy_l_wright" target="_blank"><i class='fa fa-twitter'></i></a>
+        
+      
+      
+    </div>
+    
 
-<p><a href="https://bitbucket.org/jwright/cse310-red-black-tree/overview">C++ Source Code</a>
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+
+		
+			
+		    <div id="toc" class="pure-u-1 pure-u-md-1-4">
+				<small class="toc-label">Contents</small>
+		   	 	<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#c-insert">C++ Insert</a></li>
+        <li><a href="#c-delete">C++ Delete</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+		    </div>
+		    
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/2011/05/the-red-black-tree-part-1/">The Red-Black Tree</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>9</sup></span><span class="post-date-separator">/</span><span class="post-date-month">May</span> <span class="post-date-year">2011</span>
+            	</span>
+            	
+            
+            	
+            		<span class="post-author-single">By <a class="post-author"  target="">Jeremy</a></span>
+            		
+
+
+
+
+            	
+            
+
+			
+			
+				<div class="post-categories">
+				
+					<a class="post-category post-category-algorithm" href="https://quiescent.us//categories/algorithm">Algorithm</a>
+				
+				</div>
+			
+
+			
+
+			
+
+            <p><a href="https://bitbucket.org/jwright/cse310-red-black-tree/overview">C++ Source Code</a>
 <a href="https://bitbucket.org/jwright/red-black-tree-d">D Source Code</a></p>
-
 <p>D provides a number of features that simplify designing software, especially in the embedded environment.  I will show in this 2 part comparison, between C++ and D, that D helps one write <strong>correct code</strong>.  Correct code is something <a href="http://erdani.com/">Andrei Alexandrescu</a>, stresses heavily as a prominent feature of D.   I use the Red-Black Tree for such a comparison since its complicated enough to make memory management difficult, while retaining real-world application.</p>
-
-<!-- more -->
-
+<!-- raw HTML omitted -->
 <p>C++ makes memory management difficult in practice. Memory management, an incidental complexity of C++, is especially difficult in the presence of exceptions. Our goal is to make a fast, correct data structure, not manage memory.  C++ obfuscates this goal.</p>
-
 <p>There are a few idioms in C++ to help; Resource Acquisition Is Initialization, or RAII for short, states that “…the only code that can be guaranteed to be executed after an <a href="http://en.wikipedia.org/wiki/Exception_handling">exception</a> is thrown are the <a href="http://en.wikipedia.org/wiki/Destructor_%28computer_science%29">destructors</a> of objects residing on the <a href="http://en.wikipedia.org/wiki/Stack_%28data_structure%29">stack</a> (<a href="http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization">Wikipedia</a>)”. Smart Pointers help achieve this.  The Smart pointer offloads much of this responsibility, hiding the complexity, thereby allowing the programmer to focus solely on the task at hand. I use an idiom I learned from my friend <a href="http://www.chrisanderman.com/">Chris</a>, to hide all raw pointers.</p>
-
-<pre><code class="language-cpp">
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp">
     
-    #include 
+    <span class="cp">#include</span> 
     
-    //Smart Class Idiom for RAII in C++
-    class SmartClass
-    {
-    public:
-        typedef std::tr1::shared_ptr Ptr;
-        typedef std::tr1::weak_ptr WeakPtr;
-        static SmartClass::Ptr construct(arguments)
-        {
-    	SmartClass::Ptr c(new SmartClass());
-    	c-&gt;self = c;
-    	return c;
-        }
+    <span class="cpf">//Smart Class Idiom for RAII in C++</span><span class="cp">
+</span><span class="cp"></span>    <span class="k">class</span> <span class="nc">SmartClass</span>
+    <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+        <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">shared_ptr</span> <span class="n">Ptr</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">weak_ptr</span> <span class="n">WeakPtr</span><span class="p">;</span>
+        <span class="k">static</span> <span class="n">SmartClass</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">construct</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+        <span class="p">{</span>
+    	<span class="n">SmartClass</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">c</span><span class="p">(</span><span class="k">new</span> <span class="n">SmartClass</span><span class="p">());</span>
+    	<span class="n">c</span><span class="o">-&gt;</span><span class="n">self</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+    	<span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+        <span class="p">}</span>
     
-        virtual ~SmartClass();
-    private:
-        SmartClass();
-        SmartClass::WeakPtr self;
+        <span class="k">virtual</span> <span class="o">~</span><span class="n">SmartClass</span><span class="p">();</span>
+    <span class="k">private</span><span class="o">:</span>
+        <span class="n">SmartClass</span><span class="p">();</span>
+        <span class="n">SmartClass</span><span class="o">::</span><span class="n">WeakPtr</span> <span class="n">self</span><span class="p">;</span>
     
-    };
-</code></pre>
-
-<p>This is a very useful pattern for managing memory. The developer is not
+    <span class="p">};</span>
+</code></pre></div><p>This is a very useful pattern for managing memory. The developer is not
 required to call delete, the smart pointer will do it automatically. Memory
 management is still not automatic, however. The programmer needs to resolve
 the smart vs. weak pointer relationship.  While this strong vs. weak is a much
 simpler question than determining the full _object lifecycle, _<strong>considerable
 effort</strong> is still placed into managing memory. This detracts from our goal,
 while simultaneously, unnecessarily increasing our software’s complexity.</p>
-
 <p>Firstly, what is a red-black tree? The <a href="http://en.wikipedia.org/wiki/Red-black_tree">Red-Black tree</a> is an interesting data
 structure because it provides a <em>balanced</em> binary tree.  There are several
 types of self-balancing binary trees available, AVL trees being one. The
@@ -205,249 +223,179 @@ Red-Black tree, however, uses a less strict balancing mechanism than the AVL
 tree; this makes insertions to a Red-Black tree faster. Deletions are slower
 than an AVL tree. The Red-Black tree uses graph coloring to determining
 overall balance of the tree.</p>
-
 <p>Balance is an important property of a binary tree to maintain algorithmic
 complexity. If there is not a rebalancing scheme in place, a BST can,
 depending on what order <em>keys</em> are inserted, fill out as a linked list.
 Searching a linked list is O(n) or “linear” time, not the preferable O(log n).</p>
-
-<p><a href="http://scienceblogs.com/goodmath/2009/11/advanced_haskell_data_structur.php"><img src="http://scienceblogs.com/goodmath/upload/2007/01/unbalanced-trees.jpg" alt="" /></a></p>
-
+<p><a href="http://scienceblogs.com/goodmath/2009/11/advanced_haskell_data_structur.php"><img src="http://scienceblogs.com/goodmath/upload/2007/01/unbalanced-trees.jpg" alt=""></a></p>
 <p>The Red-Black tree uses graph coloring to maintain balance. Balance guarantee’s O(log n) search performance.</p>
-
 <h3 id="c-insert">C++ Insert</h3>
-
-<pre><code class="language-cpp">
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp">
     
-    void RedBlackTree::Insert(uint32_t key)
-    {
-        RedBlackNode::Ptr z = RedBlackNode::construct(key);
-        RedBlackNode::Ptr x = root;
-        RedBlackNode::Ptr y = nil;
+    <span class="kt">void</span> <span class="n">RedBlackTree</span><span class="o">::</span><span class="n">Insert</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">key</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">z</span> <span class="o">=</span> <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">construct</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">x</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">y</span> <span class="o">=</span> <span class="n">nil</span><span class="p">;</span>
     
-        while(x != nil)
-        {
-            y = x;
-            if(z-&gt;Key() &lt; x-&gt;Key())
-                x = x-&gt;Left();
-            else
-                x = x-&gt;Right();
-        }
+        <span class="k">while</span><span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="n">nil</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Key</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">Key</span><span class="p">())</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">();</span>
+            <span class="k">else</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">();</span>
+        <span class="p">}</span>
     
-        z-&gt;Parent(y);
-        if(y == nil)
-            root = z;
-        else if(z-&gt;Key() &lt; y-&gt;Key())
-            y-&gt;Left(z);
-        else
-            y-&gt;Right(z);
-        z-&gt;Left(nil);
-        z-&gt;Right(nil);
-        z-&gt;Color(RedBlackNode::RED);
-        Insert_Fixup(z);
-    }
-</code></pre>
-
-<p>There are a few issues with this implementation.  If an exception occurs while inserting a node, the Insert_Fixup() doesn’t get run.  An exception in this code, will not cause a memory, leak, however it will leave the tree in an indeterminate state. Any subsequent insertion into the tree will cause Insert_Fixup() to fail. This is <strong>NOT</strong> correct code.</p>
-
+        <span class="n">z</span><span class="o">-&gt;</span><span class="n">Parent</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">nil</span><span class="p">)</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Key</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">Key</span><span class="p">())</span>
+            <span class="n">y</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">(</span><span class="n">z</span><span class="p">);</span>
+        <span class="k">else</span>
+            <span class="n">y</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">(</span><span class="n">z</span><span class="p">);</span>
+        <span class="n">z</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">(</span><span class="n">nil</span><span class="p">);</span>
+        <span class="n">z</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">(</span><span class="n">nil</span><span class="p">);</span>
+        <span class="n">z</span><span class="o">-&gt;</span><span class="n">Color</span><span class="p">(</span><span class="n">RedBlackNode</span><span class="o">::</span><span class="n">RED</span><span class="p">);</span>
+        <span class="n">Insert_Fixup</span><span class="p">(</span><span class="n">z</span><span class="p">);</span>
+    <span class="p">}</span>
+</code></pre></div><p>There are a few issues with this implementation.  If an exception occurs while inserting a node, the Insert_Fixup() doesn’t get run.  An exception in this code, will not cause a memory, leak, however it will leave the tree in an indeterminate state. Any subsequent insertion into the tree will cause Insert_Fixup() to fail. This is <strong>NOT</strong> correct code.</p>
 <h3 id="c-delete">C++ Delete</h3>
-
-<pre><code class="language-cpp">    void RedBlackTree::Delete(uint32_t key)
-    {
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp">    <span class="kt">void</span> <span class="n">RedBlackTree</span><span class="o">::</span><span class="n">Delete</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">key</span><span class="p">)</span>
+    <span class="p">{</span>
     
-        RedBlackNode::Ptr z = Search(key);
-        RedBlackNode::Ptr x;
-        if(z == nil)
-            return;
+        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Search</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">x</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">z</span> <span class="o">==</span> <span class="n">nil</span><span class="p">)</span>
+            <span class="k">return</span><span class="p">;</span>
     
-        RedBlackNode::Ptr y = z;
-        RedBlackNode::color_t original_color = y-&gt;Color();
-        if(z-&gt;Left() == nil)
-        {
-            x = z-&gt;Right();
-            Transplant(z,z-&gt;Right());
-        }
-        else if(z-&gt;Right() == nil)
-        {
-            x = z-&gt;Left();
-            Transplant(z,z-&gt;Left());
-        }
-        else
-        {
-            y = Minimum(z-&gt;Right());
-            original_color = y-&gt;Color();
-            x = y-&gt;Right();
-            if(y-&gt;Parent() == z)
-            {
-                x-&gt;Parent(y);
-            }
-            else
-            {
-                Transplant(y,y-&gt;Right());
-                y-&gt;Right(z-&gt;Right());
-                y-&gt;Right()-&gt;Parent(y);
-            }
-            Transplant(z,y);
-            y-&gt;Left(z-&gt;Left());
-            y-&gt;Left()-&gt;Parent(y);
-            y-&gt;Color(z-&gt;Color());
-        }
-        if(original_color == RedBlackNode::BLACK)
-        {
-            Delete_Fixup(x);
-        }
-    }
-</code></pre>
-
-<p>The Smart Pointer pointer idiom really flexes its power here. The most difficult part about the Red-Black Tree implementation is deleting nodes. One needs to be careful not to delete nodes too soon and cause a <a href="http://en.wikipedia.org/wiki/Dangling_pointer"><em>dangling-pointer</em></a>_ _yet, its important that one does delete the nodes to prevent a leak memory, however as you can see there are no delete calls above. The Smart Pointers handle delete when the node falls out of scope.  This implementation does not leak memory! (See the valgrind scripts for evidence).  That is a powerful statement in C++, and difficult to achieve with manual memory management.</p>
-
+        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">y</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
+        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">color_t</span> <span class="n">original_color</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">Color</span><span class="p">();</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">()</span> <span class="o">==</span> <span class="n">nil</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">();</span>
+            <span class="n">Transplant</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">());</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">()</span> <span class="o">==</span> <span class="n">nil</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">();</span>
+            <span class="n">Transplant</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">());</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">Minimum</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">());</span>
+            <span class="n">original_color</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">Color</span><span class="p">();</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">();</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">y</span><span class="o">-&gt;</span><span class="n">Parent</span><span class="p">()</span> <span class="o">==</span> <span class="n">z</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">x</span><span class="o">-&gt;</span><span class="n">Parent</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">Transplant</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">());</span>
+                <span class="n">y</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">());</span>
+                <span class="n">y</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">Parent</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="n">Transplant</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
+            <span class="n">y</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">());</span>
+            <span class="n">y</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">Parent</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+            <span class="n">y</span><span class="o">-&gt;</span><span class="n">Color</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Color</span><span class="p">());</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">original_color</span> <span class="o">==</span> <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">BLACK</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Delete_Fixup</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div><p>The Smart Pointer pointer idiom really flexes its power here. The most difficult part about the Red-Black Tree implementation is deleting nodes. One needs to be careful not to delete nodes too soon and cause a <a href="http://en.wikipedia.org/wiki/Dangling_pointer"><em>dangling-pointer</em></a>_ _yet, its important that one does delete the nodes to prevent a leak memory, however as you can see there are no delete calls above. The Smart Pointers handle delete when the node falls out of scope.  This implementation does not leak memory! (See the valgrind scripts for evidence).  That is a powerful statement in C++, and difficult to achieve with manual memory management.</p>
 <p>Additionally, smart pointers indirectly offer a very powerful tool: Division of responsibility. The Smart pointers are responsible for managing memory. In the spirit of the <em>Single-Responsibility-Theorem</em>, they only manage memory, and they do it well. So well, that the developer can focus on the algorithm alone, instead of disrupting the flow with extra memory management code.</p>
-
 <h4 id="conclusion">Conclusion</h4>
-
 <p>Excellent! We have a self-balancing BST, that doesn’t leak memory, however is this code correct? No. It is possible, that an exception will leave the tree in a bad state, thereby invalidating the entire structure.  We need a mechanism that provides transactional semantics.  This is difficult in C++, especially due to the <a href="http://en.wikipedia.org/wiki/Exception_handling_syntax#C.2B.2B">lack of a finally statement</a>.</p>
-
 <p>It’s important to understand that smart pointer’s are not a panacea. They do not solve all memory management issue in C++. There are still artifacts of memory management without our algorithm, detracting from the simplicity of our design.  Without a comprehensive memory solution, we will never lose this incidental complexity.</p>
-
 <p>D provides a number of features that helps one write transactional, <strong>correct</strong> code. One issue, is in C++, exceptions are much of a “bolt-on” feature.  Much as exceptions are pervasive in our daily lives so in D, exceptions are pervasive in the language.  Its naïve to believe that code will not fail, yet this is how exception management in C++ feels. As evidence of this, one may throw an exception from anywhere in D, even in a destructor; C++ cannot do <a href="http://www.parashift.com/c++-faq-lite/exceptions.html#faq-17.9">this</a>.</p>
-
 <p>In Part 2, we’ll look at how D’s exception management, garbage collection, and the <a href="http://www.d-programming-language.org/exception-safe.html">scope() statement</a> help us write clear, correct code, while lowering incidental complexity.</p>
 
-    </div>
+	
+			
 
+			
+				<div class="tags-list">
+					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
+					
+	                <a class="post-tag post-tag-c&#43;&#43;" href="https://quiescent.us//tags/c&#43;&#43;">C&#43;&#43;</a>,
+	                
+	                <a class="post-tag post-tag-comparison" href="https://quiescent.us//tags/comparison">comparison</a>,
+	                
+	                <a class="post-tag post-tag-d" href="https://quiescent.us//tags/d">D</a>,
+	                
+	                <a class="post-tag post-tag-data-structure" href="https://quiescent.us//tags/data-structure">Data Structure</a>,
+	                
+	                <a class="post-tag post-tag-tree" href="https://quiescent.us//tags/tree">Tree</a>,
+	                
+				</div>
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/2011/05/java-4k-contest/">Java 4K Contest</a>
+		            </div>
+		            
+
+					
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/2011/05/class-invariants-red-black-tree-part-2/">Class Invariants</a>
+		            </div>
+		            
+	            </div>
+            
+          </section>
+          
+          	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
     
-<div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">Jeremy</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">2011-05-09</span>
-  </p>
-  
-  <p class="copyright-item">
-    <span class="item-title">License</span>
-    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
-  </p>
-</div>
-
     
-    
-
-    <footer class="post-footer">
-      <div class="post-tags">
-          
-          <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
-          
-          <a href="/tags/comparison/">comparison</a>
-          
-          <a href="/tags/d/">D</a>
-          
-          <a href="/tags/data-structure/">Data Structure</a>
-          
-          <a href="/tags/tree/">Tree</a>
-          
-        </div>
-
-      
-      <nav class="post-nav">
-        
-          <a class="prev" href="/2011/05/class-invariants-red-black-tree-part-2/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Class Invariants</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        
-          <a class="next" href="/2011/05/java-4k-contest/">
-            <span class="next-text nav-default">Java 4K Contest</span>
-            <span class="prev-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        
-  <div id="disqus_thread"></div>
-    <script type="text/javascript">
+    };
     (function() {
-        
-        
-        if (window.location.hostname === 'localhost') return;
-
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        var disqus_shortname = 'codestrokes2';
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
     })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com/" class="dsq-brlink" target="_blank">comments powered by <span class="logo-disqus">Disqus</span></a>
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+			<li><a href="/posts">Blog</a></li>
+		
+			<li><a href="/series">Series</a></li>
+		
+		</ul>
+	</div>
 
-  
-      </div>  
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="https://stackoverflow.com/users/1612667/jeremy-wright" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
-      <a href="https://www.linkedin.com/in/jeremylwright/" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="https://github.com/JeremyLWright" class="iconfont icon-github" title="github"></a>
-  <a href="http://www.codestrokes.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+	<p>&copy; 2020. All rights reserved.</p>
 </div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  <span class="copyright-year">
-    &copy; 
-    
-      2013 - 
-    2017
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Creative Commons Share Alike</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
   </div>
+	
+
+	
+
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
-<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
-  <script type="text/javascript">
-    window.MathJax = {
-      showProcessingMessages: false,
-      messageStyle: 'none'
-    };
-  </script>
-  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
-
-
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-23129291-1', 'auto');
-ga('send', 'pageview');
-</script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
-
-
-
 </body>
 </html>

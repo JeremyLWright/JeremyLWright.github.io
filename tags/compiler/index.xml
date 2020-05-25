@@ -1,23 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Compiler on Jeremy&#39;s CodeStrokes</title>
-    <link>http://www.codestrokes.com/tags/compiler/</link>
-    <description>Recent content in Compiler on Jeremy&#39;s CodeStrokes</description>
+    <title>compiler on Code Strokes</title>
+    <link>https://quiescent.us/tags/compiler/</link>
+    <description>Recent content in compiler on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>Creative Commons Share Alike</copyright>
+    <language>en-us</language>
     <lastBuildDate>Mon, 28 May 2012 17:03:55 +0000</lastBuildDate>
     
-	<atom:link href="http://www.codestrokes.com/tags/compiler/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quiescent.us/tags/compiler/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Building an Interpreter</title>
-      <link>http://www.codestrokes.com/2012/05/building-an-interpreter/</link>
+      <link>https://quiescent.us/2012/05/building-an-interpreter/</link>
       <pubDate>Mon, 28 May 2012 17:03:55 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2012/05/building-an-interpreter/</guid>
+      <guid>https://quiescent.us/2012/05/building-an-interpreter/</guid>
       <description>When I started programming, I thought that compilers where these magic behemoths; Oracles which consumed your source code, and prophesied the resulting program. I thought that the compiler was an integral part of the &amp;ldquo;system&amp;rdquo;. I was excited to realize that the compiler is simply another program. A program you can write yourself. You can write a compiler, for your very own language. Go ahead, make up a language, I&amp;rsquo;ll wait&amp;hellip;</description>
     </item>
     

@@ -1,23 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Command Line on Jeremy&#39;s CodeStrokes</title>
-    <link>http://www.codestrokes.com/tags/command-line/</link>
-    <description>Recent content in Command Line on Jeremy&#39;s CodeStrokes</description>
+    <title>command line on Code Strokes</title>
+    <link>https://quiescent.us/tags/command-line/</link>
+    <description>Recent content in command line on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>Creative Commons Share Alike</copyright>
+    <language>en-us</language>
     <lastBuildDate>Fri, 12 Aug 2011 06:00:18 +0000</lastBuildDate>
     
-	<atom:link href="http://www.codestrokes.com/tags/command-line/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quiescent.us/tags/command-line/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hijacking System Programs</title>
-      <link>http://www.codestrokes.com/2011/08/hijacking-system-programs/</link>
+      <link>https://quiescent.us/2011/08/hijacking-system-programs/</link>
       <pubDate>Fri, 12 Aug 2011 06:00:18 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2011/08/hijacking-system-programs/</guid>
+      <guid>https://quiescent.us/2011/08/hijacking-system-programs/</guid>
       <description>Let&amp;rsquo;s say for a moment that you are a graduate student, with shell access to your schools server. The server maintains a number of tools you need for classes, and research. All is well, except the stock editor on the server is wicked old. Like an eternity old. Well that happened to me. I am fully addicted to my custom vim configuration, but it requires vim7.3. My school&amp;rsquo;s server only has 7.</description>
     </item>
     

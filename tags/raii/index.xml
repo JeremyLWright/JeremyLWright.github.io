@@ -1,32 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Raii on Jeremy&#39;s CodeStrokes</title>
-    <link>http://www.codestrokes.com/tags/raii/</link>
-    <description>Recent content in Raii on Jeremy&#39;s CodeStrokes</description>
+    <title>RAII on Code Strokes</title>
+    <link>https://quiescent.us/tags/raii/</link>
+    <description>Recent content in RAII on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>Creative Commons Share Alike</copyright>
+    <language>en-us</language>
     <lastBuildDate>Sun, 06 May 2012 07:00:10 +0000</lastBuildDate>
     
-	<atom:link href="http://www.codestrokes.com/tags/raii/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quiescent.us/tags/raii/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Anderson Smart-Pointer Idiom Updated!</title>
-      <link>http://www.codestrokes.com/2012/05/anderson-smart-pointer-idiom-updated/</link>
+      <link>https://quiescent.us/2012/05/anderson-smart-pointer-idiom-updated/</link>
       <pubDate>Sun, 06 May 2012 07:00:10 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2012/05/anderson-smart-pointer-idiom-updated/</guid>
+      <guid>https://quiescent.us/2012/05/anderson-smart-pointer-idiom-updated/</guid>
       <description>C++11 provides us with a ton of new tools for expressing complex ideas in an efficient way. C++11 is unique among modern languages in that it provides a productive syntax, while also generating exceptionally fast code. For the first time ever, software engineers are responsible for increasing the performance of software systems. For decades we&amp;rsquo;ve been standing on the shoulders of hardware engineers. Hardware engineers have been increasing the clock speeds of our processors, but we&amp;rsquo;ve hit a physical limit.</description>
     </item>
     
     <item>
       <title>Making C&#43;&#43; like Python: The Anderson Smart Pointer Pattern</title>
-      <link>http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</link>
+      <link>https://quiescent.us/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</link>
       <pubDate>Sun, 23 Oct 2011 19:00:21 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</guid>
+      <guid>https://quiescent.us/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</guid>
       <description>Choosing to use C++ brings the additional complexity of memory management. Dennis Ritchie once stated: The C Programming Language — A language which combines the flexibility of assembly language with the power of assembly language. C++ inherits much of that _flexibility, _however, this incidental complexity, can be relegated to a single class, leaving you with the high-level elegance of Python. RAII help with this additional complexity, however without a pattern for guidance implementing RAII consistently can be difficult, defeating the safety it provides.</description>
     </item>
     

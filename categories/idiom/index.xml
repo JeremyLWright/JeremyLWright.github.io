@@ -1,41 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Idiom on Jeremy&#39;s CodeStrokes</title>
-    <link>http://www.codestrokes.com/categories/idiom/</link>
-    <description>Recent content in Idiom on Jeremy&#39;s CodeStrokes</description>
+    <title>Idiom on Code Strokes</title>
+    <link>https://quiescent.us/categories/idiom/</link>
+    <description>Recent content in Idiom on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>Creative Commons Share Alike</copyright>
+    <language>en-us</language>
     <lastBuildDate>Sun, 20 Oct 2013 23:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.codestrokes.com/categories/idiom/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quiescent.us/categories/idiom/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Idiomatic Learning</title>
-      <link>http://www.codestrokes.com/2013/10/idiomatic-learning/</link>
+      <link>https://quiescent.us/2013/10/idiomatic-learning/</link>
       <pubDate>Sun, 20 Oct 2013 23:00:00 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2013/10/idiomatic-learning/</guid>
+      <guid>https://quiescent.us/2013/10/idiomatic-learning/</guid>
       <description>When learning a new language I find it helpful to study a languages idioms. Idioms exist in a language for a specific reason. Sometimes that reason is to further the principles of the language, other times it’s to mask, or otherwise deal with some underlying design decision of the language. Currently, I am studying Haskell, and currently I am struggle to clarify the idioms of the language. The syntax is still very new and awkward, currently with a total authoring in Haskell of 713 lines.</description>
     </item>
     
     <item>
       <title>Anderson Smart-Pointer Idiom Updated!</title>
-      <link>http://www.codestrokes.com/2012/05/anderson-smart-pointer-idiom-updated/</link>
+      <link>https://quiescent.us/2012/05/anderson-smart-pointer-idiom-updated/</link>
       <pubDate>Sun, 06 May 2012 07:00:10 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2012/05/anderson-smart-pointer-idiom-updated/</guid>
+      <guid>https://quiescent.us/2012/05/anderson-smart-pointer-idiom-updated/</guid>
       <description>C++11 provides us with a ton of new tools for expressing complex ideas in an efficient way. C++11 is unique among modern languages in that it provides a productive syntax, while also generating exceptionally fast code. For the first time ever, software engineers are responsible for increasing the performance of software systems. For decades we&amp;rsquo;ve been standing on the shoulders of hardware engineers. Hardware engineers have been increasing the clock speeds of our processors, but we&amp;rsquo;ve hit a physical limit.</description>
     </item>
     
     <item>
       <title>Compile-Time Polymorphism</title>
-      <link>http://www.codestrokes.com/2012/02/compile-time-polymorphism/</link>
+      <link>https://quiescent.us/2012/02/compile-time-polymorphism/</link>
       <pubDate>Sun, 05 Feb 2012 21:14:29 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2012/02/compile-time-polymorphism/</guid>
+      <guid>https://quiescent.us/2012/02/compile-time-polymorphism/</guid>
       <description>Polymorphism is a tool in object orientation, which allows us to model behavior, while simultaneously leverage existing code. Polymorphism allows is behavior reuse. In C++ polymorphism, comes in 2 flavors, the standard runtime variant, and a curious compile time variant. Runtime polymorphism, like Java, leverages virtual functions to dynamically bind[1. With virtual functions the compiler doesn&amp;rsquo;t know which method to call until runtime. In C++ this is implemented with the virtual method table] a method at the call site.</description>
     </item>
     

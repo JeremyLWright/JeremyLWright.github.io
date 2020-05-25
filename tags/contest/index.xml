@@ -1,32 +1,32 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Contest on Jeremy&#39;s CodeStrokes</title>
-    <link>http://www.codestrokes.com/tags/contest/</link>
-    <description>Recent content in Contest on Jeremy&#39;s CodeStrokes</description>
+    <title>Contest on Code Strokes</title>
+    <link>https://quiescent.us/tags/contest/</link>
+    <description>Recent content in Contest on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>Creative Commons Share Alike</copyright>
+    <language>en-us</language>
     <lastBuildDate>Sun, 08 Sep 2013 21:58:06 +0000</lastBuildDate>
     
-	<atom:link href="http://www.codestrokes.com/tags/contest/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quiescent.us/tags/contest/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Linux User&#39;s Group CTF 2013</title>
-      <link>http://www.codestrokes.com/2013/09/linux-users-group-ctf-2013/</link>
+      <link>https://quiescent.us/2013/09/linux-users-group-ctf-2013/</link>
       <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2013/09/linux-users-group-ctf-2013/</guid>
-      <description>This past weekend we held another capture the flag event at the Arizona State University&amp;rsquo;s Linux User&amp;rsquo;s Group. It had more of a system admin focus than security cracking exploits, but it was fun an nontheless a diverse learning experience for all those involved. However, almost immediately, I realized the number one rule in CTF, nothing is off limits! The game was organized into two parts, a game server which collected the the scores and displayed the point totals of all teams in real-time, and the virtual servers (hosted on Amazon EC2) which contained the actual games.</description>
+      <guid>https://quiescent.us/2013/09/linux-users-group-ctf-2013/</guid>
+      <description>This past weekend we held another capture the flag event at the Arizona State University&amp;rsquo;s Linux User&amp;rsquo;s Group. It had more of a system admin focus than security cracking exploits, but it was fun an nontheless a diverse learning experience for all those involved. However, almost immediately, I realized the number one rule in CTF, nothing is off limits!
+The game was organized into two parts, a game server which collected the the scores and displayed the point totals of all teams in real-time, and the virtual servers (hosted on Amazon EC2) which contained the actual games.</description>
     </item>
     
     <item>
       <title>Java 4K Contest</title>
-      <link>http://www.codestrokes.com/2011/05/java-4k-contest/</link>
+      <link>https://quiescent.us/2011/05/java-4k-contest/</link>
       <pubDate>Sat, 07 May 2011 22:10:54 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2011/05/java-4k-contest/</guid>
+      <guid>https://quiescent.us/2011/05/java-4k-contest/</guid>
       <description>Crazy challenging game contest: http://javaunlimited.net/contests/java4k.php Reminds me of the winners of a 96KB contest: http://en.wikipedia.org/wiki/.kkrieger</description>
     </item>
     

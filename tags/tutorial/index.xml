@@ -1,23 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tutorial on Jeremy&#39;s CodeStrokes</title>
-    <link>http://www.codestrokes.com/tags/tutorial/</link>
-    <description>Recent content in Tutorial on Jeremy&#39;s CodeStrokes</description>
+    <title>tutorial on Code Strokes</title>
+    <link>https://quiescent.us/tags/tutorial/</link>
+    <description>Recent content in tutorial on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>Creative Commons Share Alike</copyright>
+    <language>en-us</language>
     <lastBuildDate>Sun, 05 Jul 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.codestrokes.com/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quiescent.us/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Property Driven Design: MinMax</title>
-      <link>http://www.codestrokes.com/2015/07/property_driven_design_minmax/</link>
+      <link>https://quiescent.us/2015/07/property_driven_design_minmax/</link>
       <pubDate>Sun, 05 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2015/07/property_driven_design_minmax/</guid>
+      <guid>https://quiescent.us/2015/07/property_driven_design_minmax/</guid>
       <description>&lt;p&gt;I wrote an article on &lt;a href=&#34;http://www.codestrokes.com/2014/09/property-testing-in-c/&#34;&gt;Property Testing&lt;/a&gt;
 about a year ago. Isocpp.org even &lt;a href=&#34;https://isocpp.org/blog/2014/12/property-testing&#34;&gt;linked to
 it&lt;/a&gt; which was pretty cool.
@@ -33,9 +32,7 @@ result my be probabilistic in nature. This post will focus on deterministic
 problems for the moment, but realize that property testing is vastly more
 general than mundane example testing. How properties reduce the size of the
 problem space makes me imagine this Figure.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://www.codestrokes.com/img/Properties_solution_space.png&#34; alt=&#34;sometimes_code_gives_you_a_wtf&#34; /&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;img src=&#34;https://quiescent.us/img/Properties_solution_space.png&#34; alt=&#34;sometimes_code_gives_you_a_wtf&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Following Kerr&amp;rsquo;s references, I found a set of projects from a &lt;a href=&#34;http://www.cs.ou.edu/~rlpage/SEcollab/20projects/&#34;&gt;predicate-logic
 course&lt;/a&gt;. This course
 provides 20 separate projects excellently cast for a property-driven-design
@@ -44,30 +41,25 @@ they enumerate the predicate functions each requirement typifies. Predicate
 functions are to a predicate-logician as properties are to a computer
 scientist. These enumerated properties (predicates) clarified
 many points I misunderstood about property testing.&lt;/p&gt;
-
 &lt;p&gt;This post will step through the design of the first project
 &lt;a href=&#34;http://www.cs.ou.edu/~rlpage/SEcollab/20projects/minmax.htm&#34;&gt;minmax&lt;/a&gt; using
 C++. My primary goal for this article is to address a concern raised by
-a colleague, &amp;ldquo;Does pulling in more complexity &amp;mdash; a fancy test
-generator &amp;mdash; actually increase quality?&amp;rdquo;&lt;/p&gt;
-
+a colleague, &amp;ldquo;Does pulling in more complexity — a fancy test
+generator — actually increase quality?&amp;rdquo;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/property_driven_design/tree/master/01_minmax&#34;&gt;Code for this article&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/JeremyLWright.github.io/commits/content/content/posts/2015-07-05-property_driven_design_minmax.markdown&#34;&gt;Revision Log for this article&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;/ul&gt;</description>
     </item>
     
     <item>
       <title>Why do some tutorials use std::cout and others use just cout?</title>
-      <link>http://www.codestrokes.com/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</link>
+      <link>https://quiescent.us/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</link>
       <pubDate>Fri, 19 Aug 2011 16:55:56 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</guid>
-      <description>Many tutorials start &amp;ldquo;Hello World&amp;rdquo; like so:
-#include &amp;lt;iostream&amp;gt; using namespace std; int main() { cout &amp;lt;&amp;lt; &amp;quot;Hello World&amp;quot; &amp;lt;&amp;lt; endl; return 0; }  However sometimes, and in my opinion the more correct version is written:
-#include &amp;lt;iostream&amp;gt; int main() { std::cout &amp;lt;&amp;lt; &amp;quot;Hello World&amp;quot; &amp;lt;&amp;lt; std::endl; return 0; }  The difference between the 2 programs is the double colon (::). This is called the namespace resolution operator. C++ has a wonderful concept called namespaces.</description>
+      <guid>https://quiescent.us/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</guid>
+      <description>#include &amp;lt;iostream&amp;gt; using namespace std; int main() { cout &amp;lt;&amp;lt; &amp;quot;Hello World&amp;quot; &amp;lt;&amp;lt; endl; return 0; }  However sometimes, and in my opinion the more correct version is written:
+#include &amp;lt;iostream&amp;gt; int main() { std::cout &amp;lt;&amp;lt; &amp;quot;Hello World&amp;quot; &amp;lt;&amp;lt; std::endl; return 0; }  The difference between the 2 programs is the double colon (::). This is called the namespace resolution operator. C++ has a wonderful concept called namespaces. Namespaces allow you to group or organize sets of objects into named collections.</description>
     </item>
     
   </channel>

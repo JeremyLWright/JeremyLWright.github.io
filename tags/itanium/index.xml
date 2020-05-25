@@ -1,23 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Itanium on Jeremy&#39;s CodeStrokes</title>
-    <link>http://www.codestrokes.com/tags/itanium/</link>
-    <description>Recent content in Itanium on Jeremy&#39;s CodeStrokes</description>
+    <title>itanium on Code Strokes</title>
+    <link>https://quiescent.us/tags/itanium/</link>
+    <description>Recent content in itanium on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>Creative Commons Share Alike</copyright>
+    <language>en-us</language>
     <lastBuildDate>Mon, 07 Oct 2013 01:23:13 +0000</lastBuildDate>
     
-	<atom:link href="http://www.codestrokes.com/tags/itanium/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quiescent.us/tags/itanium/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>The Itanium Flop</title>
-      <link>http://www.codestrokes.com/2013/10/the-itanium-flop/</link>
+      <link>https://quiescent.us/2013/10/the-itanium-flop/</link>
       <pubDate>Mon, 07 Oct 2013 01:23:13 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2013/10/the-itanium-flop/</guid>
+      <guid>https://quiescent.us/2013/10/the-itanium-flop/</guid>
       <description>I wake up in the morning with ideas that please me, and some of those ideas actually please me also later in the day when I&amp;rsquo;ve entered them into my computer. - Donald Knuth
 I&amp;rsquo;m on a bit of a Knuth kick right now, and I&amp;rsquo;ve been procrastinating studying, and homework to find interviews, and papers by the master himself. I currently have a list of microfiche references to check out as soon as I get to the basement of my university&amp;rsquo;s library: Woot, computational necromancy!</description>
     </item>

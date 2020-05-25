@@ -1,23 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Codestrokes Blog Reboot on Jeremy&#39;s CodeStrokes</title>
-    <link>http://www.codestrokes.com/series/codestrokes-blog-reboot/</link>
-    <description>Recent content in Codestrokes Blog Reboot on Jeremy&#39;s CodeStrokes</description>
+    <title>CodeStrokes Blog Reboot on Code Strokes</title>
+    <link>https://quiescent.us/series/codestrokes-blog-reboot/</link>
+    <description>Recent content in CodeStrokes Blog Reboot on Code Strokes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>Creative Commons Share Alike</copyright>
+    <language>en-us</language>
     <lastBuildDate>Sun, 07 Jun 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.codestrokes.com/series/codestrokes-blog-reboot/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quiescent.us/series/codestrokes-blog-reboot/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Recasting how I blog</title>
-      <link>http://www.codestrokes.com/2015/06/converting-to-static-blog/</link>
+      <link>https://quiescent.us/2015/06/converting-to-static-blog/</link>
       <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://www.codestrokes.com/2015/06/converting-to-static-blog/</guid>
+      <guid>https://quiescent.us/2015/06/converting-to-static-blog/</guid>
       <description>&lt;p&gt;I wrote my first article for codestrokes in February 2011 - right as I was
 accepted to graduate school. My goal was to improve my writing in preparation
 for writing a thesis. While through grad school I started with more
@@ -27,9 +26,7 @@ I blogged with a massive database backed blogging engine. By the time
 I finished my thesis, I was writing in vim. I used a makefile to check
 spelling and check for simple grammatical rules. The process was much simpler
 to manage. This motivated me to convert my blog to a static site. This post
-describes my process on simplifying my writing process.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+describes my process on simplifying my writing process.&lt;/p&gt;</description>
     </item>
     
   </channel>
