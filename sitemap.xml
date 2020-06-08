@@ -13,11 +13,6 @@
   </url>
   
   <url>
-    <loc>https://quiescent.us/</loc>
-    <lastmod>2020-05-25T15:31:21-07:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://quiescent.us/series/practical-tla&#43;/</loc>
     <lastmod>2020-05-25T15:00:14-07:00</lastmod>
   </url>
@@ -34,6 +29,11 @@
   
   <url>
     <loc>https://quiescent.us/about/</loc>
+    <lastmod>2020-05-25T12:17:00-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quiescent.us/</loc>
     <lastmod>2020-05-25T12:17:00-07:00</lastmod>
   </url>
   

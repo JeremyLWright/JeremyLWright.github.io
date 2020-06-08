@@ -14,7 +14,7 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="">
-<meta name="generator" content="Hugo 0.71.1" />
+<meta name="generator" content="Hugo 0.68.3" />
 
 
   <meta property="og:title" content="Property Testing in C&#43;&#43;" />
@@ -67,7 +67,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'UA-23129291-1', 'auto');
+ga('create', 'UA-168773592-1', 'auto');
   ga('send', 'pageview');
 
 </script>
@@ -203,7 +203,7 @@ pay.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">jwright@phaseshift-linux:~/art/CppQuickCheck/b$ ./examples/testPayroll
 * Checking property <span class="s2">&#34;Pay should be positive&#34;</span> ...
 * *** Failed! Falsifiable after <span class="m">32</span> tests <span class="k">for</span> input:
-*   0: <span class="m">24</span>
+*   0: 24
 *
 </code></pre></div><p>Cool it found that an input of 0 will falsify the test. Lets add some more tests.</p>
 <p>Let&rsquo;s add a property that verifies for the input range of overtime that the
@@ -294,7 +294,7 @@ calculation is simple so we can provide a full implementation.</p>
 <span class="p">}</span>
 </code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">* Checking property <span class="s2">&#34;Not working overtime makes the math easy.&#34;</span> ...
 *** Failed! Falsifiable after <span class="m">1</span> <span class="nb">test</span> and <span class="m">1</span> shrink <span class="k">for</span> input:
-0: <span class="m">0</span>
+0: 0
 </code></pre></div><p>To be honest, while setting up the tests for this post I fully expected the
 tests to start passing and this article would end here. Instead I learned some
 real value on using these properties as a debugging and design tool. Let&rsquo;s add
@@ -302,7 +302,7 @@ a printf to the code to get a sense what&rsquo;s happening</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">* Checking property <span class="s2">&#34;Not working overtime makes the math easy.&#34;</span> ...
 Overtime: <span class="m">18446744073709551576</span> &lt;--- Whoa what happened there?
 *** Failed! Falsifiable after <span class="m">1</span> <span class="nb">test</span> and <span class="m">1</span> shrink <span class="k">for</span> input:
-0: <span class="m">0</span>
+0: 0
 </code></pre></div><p>Overtime seems to be an unsigned value, and passing in 0 causes the value to wrap around. The rule (<a href="http://scottmeyers.blogspot.com/2013/07/when-decltype-meets-auto.html">http://scottmeyers.blogspot.com/2013/07/when-decltype-meets-auto.html</a>) assures that overtime becomes a size_t since hours is size_t. We can force floating conversion by stating that 40 is a floating point number.<!-- raw HTML omitted --></p>
 <div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">float</span> <span class="nf">payroll</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">size_t</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">person_id</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">hours</span><span class="p">)</span>
 <span class="p">{</span>
@@ -318,7 +318,7 @@ Overtime: <span class="m">18446744073709551576</span> &lt;--- Whoa what happened
 +++ OK, passed <span class="m">100</span> tests <span class="o">(</span>40% trivial<span class="o">)</span>.
 * Checking property <span class="s2">&#34;You cannot get paid all overtime, or all std time&#34;</span> ...
 *** Failed! Falsifiable after <span class="m">1</span> <span class="nb">test</span> and <span class="m">1</span> shrink <span class="k">for</span> input:
-  0: <span class="m">60</span>
+  0: 60
 * Checking property <span class="s2">&#34;Not working overtime makes the math easy.&#34;</span> ...
 +++ OK, passed <span class="m">100</span> tests.
 </code></pre></div><p>Argh! Still wrong? The property must be wrong. Notice that the properties are quite simple. No single test verifies the full range, but the properties provide useful documentation and make it easy to reason about the code. The properties are probably correct then. &hellip;yeah, it wasn&rsquo;t the property…</p>
