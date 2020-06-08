@@ -10,7 +10,7 @@ theme="redlounge"
 [params]
 	sidebartitle="Quiescent Engineering, LLC"
 	sidebartagline="Go Far. Go Together"
-    GoogleAnalytics="UA-23129291-1"
+    GoogleAnalytics="UA-168773592-1"
     highlightStyle = "docco"
 
 [taxonomies]
