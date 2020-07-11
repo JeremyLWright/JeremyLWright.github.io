@@ -1,33 +1,56 @@
 baseurl = "https://quiescent.us/"
 languageCode = "en-us"
-title = "QE"
+enableRobotsTXT = true
+title = "Quiescent Engineering, LLC."
+copyright = "©2020 Jeremy Wright"
+
 disqusShortname = "codestrokes2"
 pygmentsuseclasses = true
-theme="redlounge"
+theme="hugo-notepadium"
 [permalinks]
     posts = "/:year/:month/:slug/"
 
+[markup.highlight]
+codeFences = true
+noClasses = false
+
 [params]
 	sidebartitle="Quiescent Engineering, LLC"
-	sidebartagline="Go Far. Go Together"
+	style="light"
+	dateFormat="Monday, January 2, 2006"
+	slogan="Go Far. Go Together."
     GoogleAnalytics="UA-168773592-1"
     highlightStyle = "docco"
 
-[taxonomies]
-	tag = "tags"
-	category = "categories"
-	series = "series"
+[params.share]
+	enable = true
+	addThisId = "ra-1234567890"
+	inlineToolId = ""
 
-[[menu.main]]
-	name = "Blog"
+[params.comments]
+	enable=false
+
+[params.profile]
+  enable = false
+  avatar = "/img/avatar.jpg"
+  name = "Jeremy Wright"
+  bio = "[About Me](/about/)"  # support markdown syntax
+  github = "JeremyLWright"  # https://github.com/XXX
+
+[params.nav]
+	showCategories = true
+	showTags = true
+
+[[params.nav.custom]]
+	title = "Blog"
 	url = "/posts"
 
 [[menu.main]]
 	name = "Series"
 	url = "/series"
 
-[[menu.main]]
-	name = "About"
+[[params.nav.custom]]
+	title = "About"
 	url = "/about"
 
 [[menu.footer]]

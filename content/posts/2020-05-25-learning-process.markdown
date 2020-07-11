@@ -2,6 +2,10 @@
 title: "My Learning Process"
 date: 2020-05-25T15:31:21-07:00
 slug: learning-process
+tags:
+- learning
+- study
+- reflection
 ---
 
 # As of 2020
