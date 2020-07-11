@@ -1,33 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>hacking on QE</title>
-    <link>https://quiescent.us/tags/hacking/</link>
-    <description>Recent content in hacking on QE</description>
+    <title>hacking on Quiescent Engineering, LLC.</title>
+    <link>/tags/hacking/</link>
+    <description>Recent content in hacking on Quiescent Engineering, LLC.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
     <lastBuildDate>Sun, 08 Sep 2013 21:58:06 +0000</lastBuildDate>
     
-	<atom:link href="https://quiescent.us/tags/hacking/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/hacking/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Linux User&#39;s Group CTF 2013</title>
-      <link>https://quiescent.us/2013/09/linux-users-group-ctf-2013/</link>
+      <link>/2013/09/linux-users-group-ctf-2013/</link>
       <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
       
-      <guid>https://quiescent.us/2013/09/linux-users-group-ctf-2013/</guid>
+      <guid>/2013/09/linux-users-group-ctf-2013/</guid>
       <description>This past weekend we held another capture the flag event at the Arizona State University&amp;rsquo;s Linux User&amp;rsquo;s Group. It had more of a system admin focus than security cracking exploits, but it was fun an nontheless a diverse learning experience for all those involved. However, almost immediately, I realized the number one rule in CTF, nothing is off limits!
 The game was organized into two parts, a game server which collected the the scores and displayed the point totals of all teams in real-time, and the virtual servers (hosted on Amazon EC2) which contained the actual games.</description>
+      
     </item>
     
     <item>
       <title>Capture the Flag - Running a Hacking Competition</title>
-      <link>https://quiescent.us/2012/04/capture-the-flag-running-a-hacking-competition/</link>
+      <link>/2012/04/capture-the-flag-running-a-hacking-competition/</link>
       <pubDate>Mon, 30 Apr 2012 02:38:44 +0000</pubDate>
       
-      <guid>https://quiescent.us/2012/04/capture-the-flag-running-a-hacking-competition/</guid>
+      <guid>/2012/04/capture-the-flag-running-a-hacking-competition/</guid>
       <description>Black-Hat hacking in an controlled environment, like this, is an important skill for software developers. The Art of War describes knowing one&amp;rsquo;s enemy, and with the prevalence of internet-enabled applications today, it has never been more critical to know how the &amp;ldquo;enemy&amp;rdquo; can take down a system. While capture-the-flag is a fun, and exciting intellectual game, it is serious training for software engineers of all types, and skill levels. I recently setup a small capture the flag event for the Arizona Linux User&amp;rsquo;s Group, and it was very fun.</description>
+      
     </item>
     
   </channel>

@@ -1,23 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>event on QE</title>
-    <link>https://quiescent.us/tags/event/</link>
-    <description>Recent content in event on QE</description>
+    <title>event on Quiescent Engineering, LLC.</title>
+    <link>/tags/event/</link>
+    <description>Recent content in event on Quiescent Engineering, LLC.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
     <lastBuildDate>Mon, 30 Apr 2012 02:38:44 +0000</lastBuildDate>
     
-	<atom:link href="https://quiescent.us/tags/event/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/event/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Capture the Flag - Running a Hacking Competition</title>
-      <link>https://quiescent.us/2012/04/capture-the-flag-running-a-hacking-competition/</link>
+      <link>/2012/04/capture-the-flag-running-a-hacking-competition/</link>
       <pubDate>Mon, 30 Apr 2012 02:38:44 +0000</pubDate>
       
-      <guid>https://quiescent.us/2012/04/capture-the-flag-running-a-hacking-competition/</guid>
+      <guid>/2012/04/capture-the-flag-running-a-hacking-competition/</guid>
       <description>Black-Hat hacking in an controlled environment, like this, is an important skill for software developers. The Art of War describes knowing one&amp;rsquo;s enemy, and with the prevalence of internet-enabled applications today, it has never been more critical to know how the &amp;ldquo;enemy&amp;rdquo; can take down a system. While capture-the-flag is a fun, and exciting intellectual game, it is serious training for software engineers of all types, and skill levels. I recently setup a small capture the flag event for the Arizona Linux User&amp;rsquo;s Group, and it was very fun.</description>
+      
     </item>
     
   </channel>

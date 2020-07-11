@@ -1,34 +1,37 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>productivity on QE</title>
-    <link>https://quiescent.us/tags/productivity/</link>
-    <description>Recent content in productivity on QE</description>
+    <title>productivity on Quiescent Engineering, LLC.</title>
+    <link>/tags/productivity/</link>
+    <description>Recent content in productivity on Quiescent Engineering, LLC.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
     <lastBuildDate>Sun, 22 Jan 2012 17:53:43 +0000</lastBuildDate>
     
-	<atom:link href="https://quiescent.us/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Abusing RAM</title>
-      <link>https://quiescent.us/2012/01/abusing-ram/</link>
+      <link>/2012/01/abusing-ram/</link>
       <pubDate>Sun, 22 Jan 2012 17:53:43 +0000</pubDate>
       
-      <guid>https://quiescent.us/2012/01/abusing-ram/</guid>
+      <guid>/2012/01/abusing-ram/</guid>
       <description>My system has 16GB of RAM, but since I run Linux I rarely use more than about 3GB. So how do I justify such a extreme amounts of memory? Ramdisks.
 I run Lubuntu1, but hopefully this works for you too. Basically, I create a ramdisk and mount it in /mnt/ramdisk, then I setup the login/logout scripts to transfer to and from the ramdisk.
 Step 1: Create a ramdisk Add this line to your fstab:</description>
+      
     </item>
     
     <item>
       <title>Good Tools, Excellent Results</title>
-      <link>https://quiescent.us/2011/08/good-tools-excellent-results/</link>
+      <link>/2011/08/good-tools-excellent-results/</link>
       <pubDate>Sun, 21 Aug 2011 07:23:25 +0000</pubDate>
       
-      <guid>https://quiescent.us/2011/08/good-tools-excellent-results/</guid>
+      <guid>/2011/08/good-tools-excellent-results/</guid>
       <description>This semester for the C++ practicum we are building a clone of Zork. Like many games of the genre, Zork is driven by a database. Our implementation is a JSON database. I chose JSON for a few reasons, but most importantly because its a human readable format that&amp;rsquo;s simple to understand. I started by editing JSON files by hand in a text editor, however I found very quickly that investigating in a quick tool greatly improved my quality.</description>
+      
     </item>
     
   </channel>

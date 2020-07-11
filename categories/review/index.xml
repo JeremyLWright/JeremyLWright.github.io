@@ -1,33 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Review on QE</title>
-    <link>https://quiescent.us/categories/review/</link>
-    <description>Recent content in Review on QE</description>
+    <title>Review on Quiescent Engineering, LLC.</title>
+    <link>/categories/review/</link>
+    <description>Recent content in Review on Quiescent Engineering, LLC.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
     <lastBuildDate>Sun, 13 Oct 2013 23:00:23 +0000</lastBuildDate>
     
-	<atom:link href="https://quiescent.us/categories/review/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/categories/review/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>&#34;Smaller&#34; Reviews are More Effective</title>
-      <link>https://quiescent.us/2013/10/smaller-reviews-are-more-effective/</link>
+      <link>/2013/10/smaller-reviews-are-more-effective/</link>
       <pubDate>Sun, 13 Oct 2013 23:00:23 +0000</pubDate>
       
-      <guid>https://quiescent.us/2013/10/smaller-reviews-are-more-effective/</guid>
+      <guid>/2013/10/smaller-reviews-are-more-effective/</guid>
       <description>I was reviewing a new software module for work today, and discovered that when the class fit on a single screen my comments were more meaningful, than when the class was larger. My comments for spatially larger classes were mostly focused on syntactic, and idiomatic details. It was an interesting self-observation, but this certainly isn&amp;rsquo;t new information.
 I&amp;rsquo;ve heard the adage that smaller reviews are more effective than larger ones. At a conference I attended hosted by Atlassian: The JIRA team noted several instances where the time per file decreased with the number of files in the review.</description>
+      
     </item>
     
     <item>
       <title>How to Write a Thesis</title>
-      <link>https://quiescent.us/2013/07/review-how-to-write-a-thesis-2/</link>
+      <link>/2013/07/review-how-to-write-a-thesis-2/</link>
       <pubDate>Wed, 24 Jul 2013 04:48:01 +0000</pubDate>
       
-      <guid>https://quiescent.us/2013/07/review-how-to-write-a-thesis-2/</guid>
+      <guid>/2013/07/review-how-to-write-a-thesis-2/</guid>
       <description>My family purchased this book for me, as a motivator to start thinking about the thesis component of my master&amp;rsquo;s degree. &amp;ldquo;It must be substantial&amp;hellip;&amp;rdquo; said a colleague of mine. &amp;ldquo;It must be original work&amp;hellip;&amp;rdquo; Original, substantial, all words that left me with uneasiness about how to start. This book however was an easy read, and gave some very pragmatic advice on how to start, yet the most important quote I drew from the book was, &amp;ldquo;What are the questions in your field?</description>
+      
     </item>
     
   </channel>

@@ -1,23 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>template on QE</title>
-    <link>https://quiescent.us/tags/template/</link>
-    <description>Recent content in template on QE</description>
+    <title>template on Quiescent Engineering, LLC.</title>
+    <link>/tags/template/</link>
+    <description>Recent content in template on Quiescent Engineering, LLC.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
     <lastBuildDate>Sun, 05 Feb 2012 21:14:29 +0000</lastBuildDate>
     
-	<atom:link href="https://quiescent.us/tags/template/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/template/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Compile-Time Polymorphism</title>
-      <link>https://quiescent.us/2012/02/compile-time-polymorphism/</link>
+      <link>/2012/02/compile-time-polymorphism/</link>
       <pubDate>Sun, 05 Feb 2012 21:14:29 +0000</pubDate>
       
-      <guid>https://quiescent.us/2012/02/compile-time-polymorphism/</guid>
+      <guid>/2012/02/compile-time-polymorphism/</guid>
       <description>Polymorphism is a tool in object orientation, which allows us to model behavior, while simultaneously leverage existing code. Polymorphism allows is behavior reuse. In C++ polymorphism, comes in 2 flavors, the standard runtime variant, and a curious compile time variant. Runtime polymorphism, like Java, leverages virtual functions to dynamically bind[1. With virtual functions the compiler doesn&amp;rsquo;t know which method to call until runtime. In C++ this is implemented with the virtual method table] a method at the call site.</description>
+      
     </item>
     
   </channel>

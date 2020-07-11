@@ -1,59 +1,65 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>C&#43;&#43;11 on QE</title>
-    <link>https://quiescent.us/tags/c&#43;&#43;11/</link>
-    <description>Recent content in C&#43;&#43;11 on QE</description>
+    <title>C&#43;&#43;11 on Quiescent Engineering, LLC.</title>
+    <link>/tags/c&#43;&#43;11/</link>
+    <description>Recent content in C&#43;&#43;11 on Quiescent Engineering, LLC.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
     <lastBuildDate>Wed, 12 Feb 2014 08:50:00 -0700</lastBuildDate>
     
-	<atom:link href="https://quiescent.us/tags/c++11/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/c++11/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Massively Intelligent Non-Deterministic Luminating Effortless Super Solver</title>
-      <link>https://quiescent.us/2014/02/cracking-subciphercpp/</link>
+      <link>/2014/02/cracking-subciphercpp/</link>
       <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
       
-      <guid>https://quiescent.us/2014/02/cracking-subciphercpp/</guid>
+      <guid>/2014/02/cracking-subciphercpp/</guid>
       <description>&lt;p&gt;I worked the title of this article several times before I finally settled on the subtly epic heading you see above. Hopefully this title will funnel people off google into my blog (delicious SEO). I wanted to push the A.I. component of my solution because A.I. is awesome and mysterious, and cool (and can like solve jeopardy). I was quickly disillusioned however. Really, A.I. isn&amp;rsquo;t magic, rather it&amp;rsquo;s just the same thing computers have been doing for a long time: computing. Sadly this realization took several months in an A.I. class before I was sufficiently crestfallen. A.I. patterns including the hill climbing algorithm used here are indeed &amp;ldquo;intelligent&amp;rdquo; but really it a reflecting of the algorithm designer, not the entity executing the algorithm. So I built a substitution cipher solver in C++. It&amp;rsquo;s fast it uses random numbers i.e. non-deterministic, it uses an A.I. algorithm i.e. Intelligent, it uses threads i.e. Massively, it deciphers i.e. luminates the text and it solves super stuff therefore the title is completely justified. I give you my Massively Intelligent Non-Deterministic Luminating Effortless Super Solver (MINDLESS). If none of that interests you then please stick around and follow the side quest of looking for &lt;!-- raw HTML omitted --&gt;emotionally charged parenthesis&lt;!-- raw HTML omitted --&gt;.&lt;/p&gt;</description>
+      
     </item>
     
     <item>
       <title>Sean Parent: No Raw Loops</title>
-      <link>https://quiescent.us/2013/11/sean-parent-no-raw-loops/</link>
+      <link>/2013/11/sean-parent-no-raw-loops/</link>
       <pubDate>Sun, 24 Nov 2013 22:14:50 +0000</pubDate>
       
-      <guid>https://quiescent.us/2013/11/sean-parent-no-raw-loops/</guid>
-      <description>A group of colleagues and I watched Sean Parent&amp;rsquo;s Going Native Talk on &amp;ldquo;C++ Seasoning&amp;quot;. Parent takes some extreme views on how to use C++, but his examples for using the STL to simplify code are phenomenal. For a recent AI project I decided to apply Parent&amp;rsquo;s goal of &amp;ldquo;no raw loops&amp;rdquo;, I was blown away by the transformation&amp;hellip; err std::transformation this had on my code. In this post I indented to demonstrate several complex code blocks, or overly specific code blocks what were replaced by some STL magic.</description>
+      <guid>/2013/11/sean-parent-no-raw-loops/</guid>
+      <description>A group of colleagues and I watched Sean Parent&amp;rsquo;s Going Native Talk on &amp;ldquo;C++ Seasoning&amp;rdquo;. Parent takes some extreme views on how to use C++, but his examples for using the STL to simplify code are phenomenal. For a recent AI project I decided to apply Parent&amp;rsquo;s goal of &amp;ldquo;no raw loops&amp;rdquo;, I was blown away by the transformation&amp;hellip; err std::transformation this had on my code. In this post I indented to demonstrate several complex code blocks, or overly specific code blocks what were replaced by some STL magic.</description>
+      
     </item>
     
     <item>
       <title>Anderson Smart-Pointer Idiom Updated!</title>
-      <link>https://quiescent.us/2012/05/anderson-smart-pointer-idiom-updated/</link>
+      <link>/2012/05/anderson-smart-pointer-idiom-updated/</link>
       <pubDate>Sun, 06 May 2012 07:00:10 +0000</pubDate>
       
-      <guid>https://quiescent.us/2012/05/anderson-smart-pointer-idiom-updated/</guid>
+      <guid>/2012/05/anderson-smart-pointer-idiom-updated/</guid>
       <description>C++11 provides us with a ton of new tools for expressing complex ideas in an efficient way. C++11 is unique among modern languages in that it provides a productive syntax, while also generating exceptionally fast code. For the first time ever, software engineers are responsible for increasing the performance of software systems. For decades we&amp;rsquo;ve been standing on the shoulders of hardware engineers. Hardware engineers have been increasing the clock speeds of our processors, but we&amp;rsquo;ve hit a physical limit.</description>
+      
     </item>
     
     <item>
       <title>Talk at SoDA</title>
-      <link>https://quiescent.us/2012/03/talk-at-soda/</link>
+      <link>/2012/03/talk-at-soda/</link>
       <pubDate>Sat, 31 Mar 2012 18:48:55 +0000</pubDate>
       
-      <guid>https://quiescent.us/2012/03/talk-at-soda/</guid>
+      <guid>/2012/03/talk-at-soda/</guid>
       <description>SoDA Meeting: Embedded Scripting for Games from SoDA @ ASU on Vimeo.</description>
+      
     </item>
     
     <item>
       <title>Multicast Delegates in C&#43;&#43;11</title>
-      <link>https://quiescent.us/2012/03/multicast-delegates-in-c11/</link>
+      <link>/2012/03/multicast-delegates-in-c11/</link>
       <pubDate>Sun, 25 Mar 2012 05:32:43 +0000</pubDate>
       
-      <guid>https://quiescent.us/2012/03/multicast-delegates-in-c11/</guid>
-      <description>C# has a wonderfully flexible delegate system capable of multicast events. This simple tool makes event driven software easier to write, and reduces coupling between objects. In 2003 Herb Sutter implemented a general form of the Observer pattern [1]. He called this the multi_function. It uses a mixture of TR1 and boost components to build a multi-cast delegate similar to C#&amp;lsquo;s. Fast-forward 9 years, and we now have variadic-templates thanks to C++11.</description>
+      <guid>/2012/03/multicast-delegates-in-c11/</guid>
+      <description>C# has a wonderfully flexible delegate system capable of multicast events. This simple tool makes event driven software easier to write, and reduces coupling between objects. In 2003 Herb Sutter implemented a general form of the Observer pattern [1]. He called this the multi_function. It uses a mixture of TR1 and boost components to build a multi-cast delegate similar to C#&amp;rsquo;s. Fast-forward 9 years, and we now have variadic-templates thanks to C++11.</description>
+      
     </item>
     
   </channel>

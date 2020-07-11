@@ -1,797 +1,885 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tags on QE</title>
-    <link>https://quiescent.us/tags/</link>
-    <description>Recent content in Tags on QE</description>
+    <title>Tags on Quiescent Engineering, LLC.</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on Quiescent Engineering, LLC.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
     <lastBuildDate>Sat, 03 Oct 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://quiescent.us/tags/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>C&#43;&#43;</title>
-      <link>https://quiescent.us/tags/c&#43;&#43;/</link>
+      <link>/tags/c&#43;&#43;/</link>
       <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/c&#43;&#43;/</guid>
+      <guid>/tags/c&#43;&#43;/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>D</title>
-      <link>https://quiescent.us/tags/d/</link>
+      <link>/tags/d/</link>
       <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/d/</guid>
+      <guid>/tags/d/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>Rust</title>
-      <link>https://quiescent.us/tags/rust/</link>
+      <link>/tags/rust/</link>
       <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/rust/</guid>
+      <guid>/tags/rust/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>Azure</title>
-      <link>https://quiescent.us/tags/azure/</link>
+      <link>/tags/azure/</link>
       <pubDate>Fri, 25 Sep 2015 20:10:00 +0700</pubDate>
       
-      <guid>https://quiescent.us/tags/azure/</guid>
+      <guid>/tags/azure/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>example</title>
-      <link>https://quiescent.us/tags/example/</link>
+      <link>/tags/example/</link>
       <pubDate>Sun, 05 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/example/</guid>
+      <guid>/tags/example/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>property-testing</title>
-      <link>https://quiescent.us/tags/property-testing/</link>
+      <link>/tags/property-testing/</link>
       <pubDate>Sun, 05 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/property-testing/</guid>
+      <guid>/tags/property-testing/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>tutorial</title>
-      <link>https://quiescent.us/tags/tutorial/</link>
+      <link>/tags/tutorial/</link>
       <pubDate>Sun, 05 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/tutorial/</guid>
+      <guid>/tags/tutorial/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>blogging</title>
-      <link>https://quiescent.us/tags/blogging/</link>
+      <link>/tags/blogging/</link>
       <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/blogging/</guid>
+      <guid>/tags/blogging/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>unit test</title>
-      <link>https://quiescent.us/tags/unit-test/</link>
+      <link>/tags/unit-test/</link>
       <pubDate>Wed, 03 Sep 2014 23:00:00 -0700</pubDate>
       
-      <guid>https://quiescent.us/tags/unit-test/</guid>
+      <guid>/tags/unit-test/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>747</title>
-      <link>https://quiescent.us/tags/747/</link>
+      <link>/tags/747/</link>
       <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/747/</guid>
+      <guid>/tags/747/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>bootloader</title>
-      <link>https://quiescent.us/tags/bootloader/</link>
+      <link>/tags/bootloader/</link>
       <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/bootloader/</guid>
+      <guid>/tags/bootloader/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>firmware</title>
-      <link>https://quiescent.us/tags/firmware/</link>
+      <link>/tags/firmware/</link>
       <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/firmware/</guid>
+      <guid>/tags/firmware/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>hash</title>
-      <link>https://quiescent.us/tags/hash/</link>
+      <link>/tags/hash/</link>
       <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/hash/</guid>
+      <guid>/tags/hash/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>Security</title>
-      <link>https://quiescent.us/tags/security/</link>
+      <link>/tags/security/</link>
       <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/security/</guid>
+      <guid>/tags/security/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>test</title>
-      <link>https://quiescent.us/tags/test/</link>
+      <link>/tags/test/</link>
       <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/test/</guid>
+      <guid>/tags/test/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>verify</title>
-      <link>https://quiescent.us/tags/verify/</link>
+      <link>/tags/verify/</link>
       <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/verify/</guid>
+      <guid>/tags/verify/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>C&#43;&#43;11</title>
-      <link>https://quiescent.us/tags/c&#43;&#43;11/</link>
+      <link>/tags/c&#43;&#43;11/</link>
       <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
       
-      <guid>https://quiescent.us/tags/c&#43;&#43;11/</guid>
+      <guid>/tags/c&#43;&#43;11/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>cipher</title>
-      <link>https://quiescent.us/tags/cipher/</link>
+      <link>/tags/cipher/</link>
       <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
       
-      <guid>https://quiescent.us/tags/cipher/</guid>
+      <guid>/tags/cipher/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>cryptogram</title>
-      <link>https://quiescent.us/tags/cryptogram/</link>
+      <link>/tags/cryptogram/</link>
       <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
       
-      <guid>https://quiescent.us/tags/cryptogram/</guid>
+      <guid>/tags/cryptogram/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>crytography</title>
-      <link>https://quiescent.us/tags/crytography/</link>
+      <link>/tags/crytography/</link>
       <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
       
-      <guid>https://quiescent.us/tags/crytography/</guid>
+      <guid>/tags/crytography/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>monoalphabetic</title>
-      <link>https://quiescent.us/tags/monoalphabetic/</link>
+      <link>/tags/monoalphabetic/</link>
       <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
       
-      <guid>https://quiescent.us/tags/monoalphabetic/</guid>
+      <guid>/tags/monoalphabetic/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>substitution cipher</title>
-      <link>https://quiescent.us/tags/substitution-cipher/</link>
+      <link>/tags/substitution-cipher/</link>
       <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
       
-      <guid>https://quiescent.us/tags/substitution-cipher/</guid>
+      <guid>/tags/substitution-cipher/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>Stepanov</title>
-      <link>https://quiescent.us/tags/stepanov/</link>
+      <link>/tags/stepanov/</link>
       <pubDate>Sun, 24 Nov 2013 22:14:50 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/stepanov/</guid>
+      <guid>/tags/stepanov/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>STL</title>
-      <link>https://quiescent.us/tags/stl/</link>
+      <link>/tags/stl/</link>
       <pubDate>Sun, 24 Nov 2013 22:14:50 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/stl/</guid>
+      <guid>/tags/stl/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>Haskell</title>
-      <link>https://quiescent.us/tags/haskell/</link>
+      <link>/tags/haskell/</link>
       <pubDate>Sun, 20 Oct 2013 23:00:00 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/haskell/</guid>
+      <guid>/tags/haskell/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>Python</title>
-      <link>https://quiescent.us/tags/python/</link>
+      <link>/tags/python/</link>
       <pubDate>Sun, 20 Oct 2013 23:00:00 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/python/</guid>
+      <guid>/tags/python/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>itanium</title>
-      <link>https://quiescent.us/tags/itanium/</link>
+      <link>/tags/itanium/</link>
       <pubDate>Mon, 07 Oct 2013 01:23:13 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/itanium/</guid>
+      <guid>/tags/itanium/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>knuth</title>
-      <link>https://quiescent.us/tags/knuth/</link>
+      <link>/tags/knuth/</link>
       <pubDate>Mon, 07 Oct 2013 01:23:13 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/knuth/</guid>
+      <guid>/tags/knuth/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>multicore</title>
-      <link>https://quiescent.us/tags/multicore/</link>
+      <link>/tags/multicore/</link>
       <pubDate>Mon, 07 Oct 2013 01:23:13 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/multicore/</guid>
+      <guid>/tags/multicore/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>Contest</title>
-      <link>https://quiescent.us/tags/contest/</link>
+      <link>/tags/contest/</link>
       <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/contest/</guid>
+      <guid>/tags/contest/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>cracking</title>
-      <link>https://quiescent.us/tags/cracking/</link>
+      <link>/tags/cracking/</link>
       <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/cracking/</guid>
+      <guid>/tags/cracking/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>CTF</title>
-      <link>https://quiescent.us/tags/ctf/</link>
+      <link>/tags/ctf/</link>
       <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/ctf/</guid>
+      <guid>/tags/ctf/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>hack-a-thon</title>
-      <link>https://quiescent.us/tags/hack-a-thon/</link>
+      <link>/tags/hack-a-thon/</link>
       <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/hack-a-thon/</guid>
+      <guid>/tags/hack-a-thon/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>hacking</title>
-      <link>https://quiescent.us/tags/hacking/</link>
+      <link>/tags/hacking/</link>
       <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/hacking/</guid>
+      <guid>/tags/hacking/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>automake</title>
-      <link>https://quiescent.us/tags/automake/</link>
+      <link>/tags/automake/</link>
       <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/automake/</guid>
+      <guid>/tags/automake/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>dependencies</title>
-      <link>https://quiescent.us/tags/dependencies/</link>
+      <link>/tags/dependencies/</link>
       <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/dependencies/</guid>
+      <guid>/tags/dependencies/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>dependency</title>
-      <link>https://quiescent.us/tags/dependency/</link>
+      <link>/tags/dependency/</link>
       <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/dependency/</guid>
+      <guid>/tags/dependency/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>euler</title>
-      <link>https://quiescent.us/tags/euler/</link>
+      <link>/tags/euler/</link>
       <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/euler/</guid>
+      <guid>/tags/euler/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>generation</title>
-      <link>https://quiescent.us/tags/generation/</link>
+      <link>/tags/generation/</link>
       <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/generation/</guid>
+      <guid>/tags/generation/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>make</title>
-      <link>https://quiescent.us/tags/make/</link>
+      <link>/tags/make/</link>
       <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/make/</guid>
+      <guid>/tags/make/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>project euler</title>
-      <link>https://quiescent.us/tags/project-euler/</link>
+      <link>/tags/project-euler/</link>
       <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/project-euler/</guid>
+      <guid>/tags/project-euler/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>book</title>
-      <link>https://quiescent.us/tags/book/</link>
+      <link>/tags/book/</link>
       <pubDate>Wed, 24 Jul 2013 04:48:01 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/book/</guid>
+      <guid>/tags/book/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>optimization</title>
-      <link>https://quiescent.us/tags/optimization/</link>
+      <link>/tags/optimization/</link>
       <pubDate>Sun, 14 Jul 2013 23:00:11 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/optimization/</guid>
+      <guid>/tags/optimization/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>performance</title>
-      <link>https://quiescent.us/tags/performance/</link>
+      <link>/tags/performance/</link>
       <pubDate>Sun, 14 Jul 2013 23:00:11 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/performance/</guid>
+      <guid>/tags/performance/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>DSL</title>
-      <link>https://quiescent.us/tags/dsl/</link>
+      <link>/tags/dsl/</link>
       <pubDate>Sun, 07 Jul 2013 23:00:30 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/dsl/</guid>
+      <guid>/tags/dsl/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>pattern</title>
-      <link>https://quiescent.us/tags/pattern/</link>
+      <link>/tags/pattern/</link>
       <pubDate>Sun, 07 Jul 2013 23:00:30 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/pattern/</guid>
+      <guid>/tags/pattern/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>functional</title>
-      <link>https://quiescent.us/tags/functional/</link>
+      <link>/tags/functional/</link>
       <pubDate>Mon, 22 Apr 2013 05:29:11 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/functional/</guid>
+      <guid>/tags/functional/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>latex</title>
-      <link>https://quiescent.us/tags/latex/</link>
+      <link>/tags/latex/</link>
       <pubDate>Sun, 24 Mar 2013 18:25:50 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/latex/</guid>
+      <guid>/tags/latex/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>tools</title>
-      <link>https://quiescent.us/tags/tools/</link>
+      <link>/tags/tools/</link>
       <pubDate>Sun, 24 Mar 2013 18:25:50 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/tools/</guid>
+      <guid>/tags/tools/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>writing</title>
-      <link>https://quiescent.us/tags/writing/</link>
+      <link>/tags/writing/</link>
       <pubDate>Sun, 24 Mar 2013 18:25:50 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/writing/</guid>
+      <guid>/tags/writing/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>unix</title>
-      <link>https://quiescent.us/tags/unix/</link>
+      <link>/tags/unix/</link>
       <pubDate>Sun, 17 Feb 2013 19:53:11 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/unix/</guid>
+      <guid>/tags/unix/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>explaination</title>
-      <link>https://quiescent.us/tags/explaination/</link>
+      <link>/tags/explaination/</link>
       <pubDate>Tue, 18 Sep 2012 23:11:51 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/explaination/</guid>
+      <guid>/tags/explaination/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>explanation</title>
-      <link>https://quiescent.us/tags/explanation/</link>
+      <link>/tags/explanation/</link>
       <pubDate>Tue, 18 Sep 2012 23:11:51 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/explanation/</guid>
+      <guid>/tags/explanation/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>newbie</title>
-      <link>https://quiescent.us/tags/newbie/</link>
+      <link>/tags/newbie/</link>
       <pubDate>Tue, 18 Sep 2012 23:11:51 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/newbie/</guid>
+      <guid>/tags/newbie/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>Java</title>
-      <link>https://quiescent.us/tags/java/</link>
+      <link>/tags/java/</link>
       <pubDate>Tue, 28 Aug 2012 05:31:04 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/java/</guid>
+      <guid>/tags/java/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>Managed Code</title>
-      <link>https://quiescent.us/tags/managed-code/</link>
+      <link>/tags/managed-code/</link>
       <pubDate>Tue, 28 Aug 2012 05:31:04 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/managed-code/</guid>
+      <guid>/tags/managed-code/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>bottom-up</title>
-      <link>https://quiescent.us/tags/bottom-up/</link>
+      <link>/tags/bottom-up/</link>
       <pubDate>Sun, 15 Jul 2012 17:00:44 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/bottom-up/</guid>
+      <guid>/tags/bottom-up/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>top-down</title>
-      <link>https://quiescent.us/tags/top-down/</link>
+      <link>/tags/top-down/</link>
       <pubDate>Sun, 15 Jul 2012 17:00:44 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/top-down/</guid>
+      <guid>/tags/top-down/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>AST</title>
-      <link>https://quiescent.us/tags/ast/</link>
+      <link>/tags/ast/</link>
       <pubDate>Mon, 28 May 2012 17:03:55 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/ast/</guid>
+      <guid>/tags/ast/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>Bison</title>
-      <link>https://quiescent.us/tags/bison/</link>
+      <link>/tags/bison/</link>
       <pubDate>Mon, 28 May 2012 17:03:55 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/bison/</guid>
+      <guid>/tags/bison/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>compiler</title>
-      <link>https://quiescent.us/tags/compiler/</link>
+      <link>/tags/compiler/</link>
       <pubDate>Mon, 28 May 2012 17:03:55 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/compiler/</guid>
+      <guid>/tags/compiler/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>Flex</title>
-      <link>https://quiescent.us/tags/flex/</link>
+      <link>/tags/flex/</link>
       <pubDate>Mon, 28 May 2012 17:03:55 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/flex/</guid>
+      <guid>/tags/flex/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>RAII</title>
-      <link>https://quiescent.us/tags/raii/</link>
+      <link>/tags/raii/</link>
       <pubDate>Sun, 06 May 2012 07:00:10 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/raii/</guid>
+      <guid>/tags/raii/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>event</title>
-      <link>https://quiescent.us/tags/event/</link>
+      <link>/tags/event/</link>
       <pubDate>Mon, 30 Apr 2012 02:38:44 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/event/</guid>
+      <guid>/tags/event/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>copyright</title>
-      <link>https://quiescent.us/tags/copyright/</link>
+      <link>/tags/copyright/</link>
       <pubDate>Sat, 14 Apr 2012 17:53:21 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/copyright/</guid>
+      <guid>/tags/copyright/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>idiom</title>
-      <link>https://quiescent.us/tags/idiom/</link>
+      <link>/tags/idiom/</link>
       <pubDate>Sun, 05 Feb 2012 21:14:29 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/idiom/</guid>
+      <guid>/tags/idiom/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>template</title>
-      <link>https://quiescent.us/tags/template/</link>
+      <link>/tags/template/</link>
       <pubDate>Sun, 05 Feb 2012 21:14:29 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/template/</guid>
+      <guid>/tags/template/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>virtual</title>
-      <link>https://quiescent.us/tags/virtual/</link>
+      <link>/tags/virtual/</link>
       <pubDate>Sun, 05 Feb 2012 21:14:29 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/virtual/</guid>
+      <guid>/tags/virtual/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>productivity</title>
-      <link>https://quiescent.us/tags/productivity/</link>
+      <link>/tags/productivity/</link>
       <pubDate>Sun, 22 Jan 2012 17:53:43 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/productivity/</guid>
+      <guid>/tags/productivity/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>memory</title>
-      <link>https://quiescent.us/tags/memory/</link>
+      <link>/tags/memory/</link>
       <pubDate>Sun, 23 Oct 2011 19:00:21 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/memory/</guid>
+      <guid>/tags/memory/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>parallel</title>
-      <link>https://quiescent.us/tags/parallel/</link>
+      <link>/tags/parallel/</link>
       <pubDate>Sun, 23 Oct 2011 17:55:47 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/parallel/</guid>
+      <guid>/tags/parallel/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>testing</title>
-      <link>https://quiescent.us/tags/testing/</link>
+      <link>/tags/testing/</link>
       <pubDate>Thu, 22 Sep 2011 22:40:42 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/testing/</guid>
+      <guid>/tags/testing/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>command line</title>
-      <link>https://quiescent.us/tags/command-line/</link>
+      <link>/tags/command-line/</link>
       <pubDate>Fri, 12 Aug 2011 06:00:18 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/command-line/</guid>
+      <guid>/tags/command-line/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>customize</title>
-      <link>https://quiescent.us/tags/customize/</link>
+      <link>/tags/customize/</link>
       <pubDate>Fri, 12 Aug 2011 06:00:18 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/customize/</guid>
+      <guid>/tags/customize/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>vim</title>
-      <link>https://quiescent.us/tags/vim/</link>
+      <link>/tags/vim/</link>
       <pubDate>Fri, 12 Aug 2011 06:00:18 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/vim/</guid>
+      <guid>/tags/vim/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>mercurial</title>
-      <link>https://quiescent.us/tags/mercurial/</link>
+      <link>/tags/mercurial/</link>
       <pubDate>Wed, 06 Jul 2011 05:18:48 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/mercurial/</guid>
+      <guid>/tags/mercurial/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>subversion</title>
-      <link>https://quiescent.us/tags/subversion/</link>
+      <link>/tags/subversion/</link>
       <pubDate>Wed, 06 Jul 2011 05:18:48 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/subversion/</guid>
+      <guid>/tags/subversion/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>version control</title>
-      <link>https://quiescent.us/tags/version-control/</link>
+      <link>/tags/version-control/</link>
       <pubDate>Wed, 06 Jul 2011 05:18:48 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/version-control/</guid>
+      <guid>/tags/version-control/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>process</title>
-      <link>https://quiescent.us/tags/process/</link>
+      <link>/tags/process/</link>
       <pubDate>Sun, 19 Jun 2011 18:59:47 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/process/</guid>
+      <guid>/tags/process/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>Type Safety</title>
-      <link>https://quiescent.us/tags/type-safety/</link>
+      <link>/tags/type-safety/</link>
       <pubDate>Mon, 06 Jun 2011 06:59:00 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/type-safety/</guid>
+      <guid>/tags/type-safety/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>real-time</title>
-      <link>https://quiescent.us/tags/real-time/</link>
+      <link>/tags/real-time/</link>
       <pubDate>Sun, 29 May 2011 18:02:24 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/real-time/</guid>
+      <guid>/tags/real-time/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>realtime</title>
-      <link>https://quiescent.us/tags/realtime/</link>
+      <link>/tags/realtime/</link>
       <pubDate>Sun, 29 May 2011 18:02:24 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/realtime/</guid>
+      <guid>/tags/realtime/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>Sorting</title>
-      <link>https://quiescent.us/tags/sorting/</link>
+      <link>/tags/sorting/</link>
       <pubDate>Sun, 29 May 2011 18:02:24 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/sorting/</guid>
+      <guid>/tags/sorting/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>comparison</title>
-      <link>https://quiescent.us/tags/comparison/</link>
+      <link>/tags/comparison/</link>
       <pubDate>Wed, 18 May 2011 03:06:36 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/comparison/</guid>
+      <guid>/tags/comparison/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>correct code</title>
-      <link>https://quiescent.us/tags/correct-code/</link>
+      <link>/tags/correct-code/</link>
       <pubDate>Wed, 18 May 2011 03:06:36 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/correct-code/</guid>
+      <guid>/tags/correct-code/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>Data Structure</title>
-      <link>https://quiescent.us/tags/data-structure/</link>
+      <link>/tags/data-structure/</link>
       <pubDate>Mon, 09 May 2011 06:59:01 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/data-structure/</guid>
+      <guid>/tags/data-structure/</guid>
       <description></description>
+      
     </item>
     
     <item>
       <title>Tree</title>
-      <link>https://quiescent.us/tags/tree/</link>
+      <link>/tags/tree/</link>
       <pubDate>Mon, 09 May 2011 06:59:01 +0000</pubDate>
       
-      <guid>https://quiescent.us/tags/tree/</guid>
+      <guid>/tags/tree/</guid>
       <description></description>
+      
     </item>
     
   </channel>

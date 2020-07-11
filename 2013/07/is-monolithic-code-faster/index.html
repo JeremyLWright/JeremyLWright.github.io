@@ -1,191 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-<head>
-  <title>
-    Is Monolithic Code Faster? // QE
-  </title>
-
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="admin">
-<meta name="generator" content="Hugo 0.68.3" />
-
-
-  <meta property="og:title" content="Is Monolithic Code Faster?" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:locale" content="en_US" />
-<meta property="og:url" content="https://quiescent.us/2013/07/is-monolithic-code-faster/" />
-
-
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
-  
-  
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
-  
-  
-
-  <link rel="stylesheet" href="https://quiescent.us//css/redlounge.css">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
-  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="QE" />
-
-    
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-
-
-  
-
-  
-
-  
-
-  
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168773592-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-168773592-1');
-</script>
-</head>
-
-
-<body>
-	
-
-	<div id="layout" class="pure-g">
-    <div class="sidebar pure-u-1 pure-u-md-1-4">
-  <div class="header">
-    
-
-	
-
-    <h1 class="brand-title">Quiescent Engineering, LLC</h1>
-    <h2 class="brand-tagline">Go Far. Go Together</h2>
-
-    <nav class="nav">
-      <ul class="nav-list">
-        <li class="nav-item"><span class="nav-item-separator">//</span><a href="https://quiescent.us/">Home</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about">About</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/posts">Blog</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/series">Series</a></li>
-        
-      </ul>
-    </nav>
-
-    
-    <div class="social-buttons">
-      
-        
-        <a href="https://github.com/JeremyLWright" target="_blank"><i class='fa fa-github'></i></a>
-        
-      
-        
-        <a href="https://www.linkedin.com/pub/jeremy-wright/5b/8/844" target="_blank"><i class='fa fa-linkedin'></i></a>
-        
-      
-        
-        <a href="https://www.twitter.com/jeremy_l_wright" target="_blank"><i class='fa fa-twitter'></i></a>
-        
-      
-      
-    </div>
-    
-
-  </div>
-</div>
-
-	
-	
-
-    <div class="content pure-u-1 pure-u-md-3-4">
-		<a name="top"></a>
-		
-
-		
-			
-		    <div id="toc" class="pure-u-1 pure-u-md-1-4">
-				<small class="toc-label">Contents</small>
-		   	 	<nav id="TableOfContents">
-  <ul>
-    <li><a href="#the-experiment">The Experiment</a>
-      <ul>
-        <li><a href="#code-overview">Code Overview</a></li>
-      </ul>
-    </li>
-    <li><a href="#results">Results</a></li>
-    <li><a href="#inlining">Inlining</a></li>
-    <li><a href="#conclusion">Conclusion</a></li>
-  </ul>
-</nav>
-		    </div>
-		    
-	    
-  		<section class="post">
-            <h1 class="post-title">
-              <a href="/2013/07/is-monolithic-code-faster/">Is Monolithic Code Faster?</a>
-            </h1>
-            <h3 class="post-subtitle">
-            	
-            </h3>
-            
-            	<span class="post-date">
-                	<span class="post-date-day"><sup>14</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jul</span> <span class="post-date-year">2013</span>
-            	</span>
-            	
-            
-            	
-            		<span class="post-author-single">By <a class="post-author"  target="">admin</a></span>
-            		
-
-
-
-
-            	
-            
-
-			
-			
-				<div class="post-categories">
-				
-					<a class="post-category post-category-compilation" href="https://quiescent.us//categories/compilation">Compilation</a>
-				
-				</div>
-			
-
-			
-
-			
-
-            <p>As a software engineer I have a vested interest in disproving this statement. Bjarne Stroustroup says C++ is designed to create efficient abstractions. A software engineer’s  job is to create simple <a href="http://www.codestrokes.com/2012/09/abstraction-in-plain-english/">abstractions </a>to complex systems. State machines form a large part of many systems. The other day, a co-worker came to me, and asked, “Is it better to make straight line code for each case statement, even if it repeats, or is it better to abstraction into functions and make the code ‘cleaner’.”  Is “cleaner” code faster?</p>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.73.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Is Monolithic Code Faster?&nbsp;&ndash;&nbsp;Quiescent Engineering, LLC.</title><link rel="stylesheet" href="/css/core.min.6fe5d1dee32d5c1f625e8d9d541db5df28b4c99bf9f600cc7284f342438549386d2338be608f2edbb2e7fef8cbcccf30.css" integrity="sha384-b&#43;XR3uMtXB9iXo2dVB213yi0yZv59gDMcoTzQkOFSThtIzi&#43;YI8u27Ln/vjLzM8w"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Is Monolithic Code Faster?" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">Quiescent Engineering, LLC.</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Is Monolithic Code Faster?</h1><p class="article date">Sunday, July 14, 2013</p></section><article class="article markdown-body"><p>As a software engineer I have a vested interest in disproving this statement. Bjarne Stroustroup says C++ is designed to create efficient abstractions. A software engineer’s  job is to create simple <a href="http://www.codestrokes.com/2012/09/abstraction-in-plain-english/"target="_blank">abstractions </a>to complex systems. State machines form a large part of many systems. The other day, a co-worker came to me, and asked, “Is it better to make straight line code for each case statement, even if it repeats, or is it better to abstraction into functions and make the code ‘cleaner’.”  Is “cleaner” code faster?</p>
 <!-- raw HTML omitted -->
 <h2 id="the-experiment">The Experiment</h2>
 <p>The experiment I propose is to make a peanut butter and jelly sandwich, using a finite state machine.</p>
-<p>[caption id=&quot;attachment_1089&rdquo; align=&quot;alignleft&rdquo; width=&quot;97&rdquo;]<a href="http://www.codestrokes.com/wp-content/uploads/2013/07/sm1.png"><img src="http://www.codestrokes.com/wp-content/uploads/2013/07/sm1-97x300.png" alt="sm"></a> State Machine expressed in 4 separate methods.[/caption]</p>
+<p>[caption id=&quot;attachment_1089&rdquo; align=&quot;alignleft&rdquo; width=&quot;97&rdquo;]<a href="http://www.codestrokes.com/wp-content/uploads/2013/07/sm1.png"target="_blank"><img  src="http://www.codestrokes.com/wp-content/uploads/2013/07/sm1-97x300.png"
+        alt="sm"/></a> State Machine expressed in 4 separate methods.[/caption]</p>
 <p>The state machine has a series of steps, each of which take a number of ticks. The tick simply counts the  amount of time in each state. The ticks simulate work being done in that state. For this experiment we are defining monolithic code to mean a switch() statement with no function calls. For modular code we offer 3 solutions:</p>
 <ol>
 <li>
@@ -265,7 +90,8 @@ Row &lt; EatSandwich       , none  , RemoveBread       , ResetTick, user_is_hung
 </code></pre>
 <p>This is Boost&rsquo;s MSM. essentially, MSM is a domain specific language described completely within a C++ template.</p>
 <h2 id="results">Results</h2>
-<p>[caption id=&quot;attachment_1097&rdquo; align=&quot;alignleft&rdquo; width=&quot;300&rdquo;]<a href="http://www.codestrokes.com/wp-content/uploads/2013/07/O2Speedups.png"><img src="http://www.codestrokes.com/wp-content/uploads/2013/07/O2Speedups-300x225.png" alt="O2Speedups"></a> Speedup normalized against the monolithic case. (Compiled with O2 optimization)[/caption]</p>
+<p>[caption id=&quot;attachment_1097&rdquo; align=&quot;alignleft&rdquo; width=&quot;300&rdquo;]<a href="http://www.codestrokes.com/wp-content/uploads/2013/07/O2Speedups.png"target="_blank"><img  src="http://www.codestrokes.com/wp-content/uploads/2013/07/O2Speedups-300x225.png"
+        alt="O2Speedups"/></a> Speedup normalized against the monolithic case. (Compiled with O2 optimization)[/caption]</p>
 <p>I started this project with the full intention of cheating to assure monolithic code is slower than &ldquo;proper&rdquo; code. However, the evidence shows, properly abstracted code can be faster, but there is a limit. As MSM shows one can take abstraction too far or too general such that performance becomes difficult. So How does this happen? One of the most impacting tool for code performance, caching, and compilers have a fancy trick to optimize cache performance. Inlining.</p>
 <h2 id="inlining">Inlining</h2>
 <p>Function inlining is simply a copy-paste operation by the compiler to remove the overhead of a function call. In gcc, and Visual Studio, the compiler is free to inline any function it wills. Conversely, the inline keyword simply provides a suggestion or a hint to the compiler to inline a function. The compiler is free to ignore the suggestion. Once the compiler chooses to inline a function, it simply copies the source from the function and replaces the function call itself.</p>
@@ -274,48 +100,12 @@ Row &lt; EatSandwich       , none  , RemoveBread       , ResetTick, user_is_hung
 <h2 id="conclusion">Conclusion</h2>
 <p>Cleanly abstracted code can be faster than monolithic code. Even without cheating the benchmark :-).  Compilers make advanced optimizations, as such it&rsquo;s of little benefit to immediately make a blanket statement to try to beat the performance of an optimizing compiler. For dynamic languages, JIT systems make even more comprehensive enhancements offering staggering performance.</p>
 <p>Reference:
-<a href="http://en.wikipedia.org/wiki/Inline_expansion">http://en.wikipedia.org/wiki/Inline_expansion</a>
-<a href="http://en.wikipedia.org/wiki/Inline_caching">http://en.wikipedia.org/wiki/Inline_caching</a>
-<a href="http://www.iecc.com/linker/linker11.html">http://www.iecc.com/linker/linker11.html</a></p>
-<p><a href="http://morepypy.blogspot.com/2011/02/pypy-faster-than-c-on-carefully-crafted.html">http://morepypy.blogspot.com/2011/02/pypy-faster-than-c-on-carefully-crafted.html</a></p>
-
-	
-			
-
-			
-				<div class="tags-list">
-					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
-					
-	                <a class="post-tag post-tag-c&#43;&#43;" href="https://quiescent.us//tags/c&#43;&#43;">C&#43;&#43;</a>,
-	                
-	                <a class="post-tag post-tag-optimization" href="https://quiescent.us//tags/optimization">optimization</a>,
-	                
-	                <a class="post-tag post-tag-performance" href="https://quiescent.us//tags/performance">performance</a>,
-	                
-				</div>
-			
-
-			
-				<div class="paging">
-					<span class="paging-label">More Reading</span>
-					
-					<div class="paging-newer">
-						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
-						<a class="paging-link" href="/2013/07/patterns-are-evidence-of-a-languages-lacking/">Patterns are evidence of a language&#39;s lacking</a>
-		            </div>
-		            
-
-					
-					<div class="paging-older">
-						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
-			            <a class="paging-link" href="/2013/07/review-how-to-write-a-thesis-2/">How to Write a Thesis</a>
-		            </div>
-		            
-	            </div>
-            
-          </section>
-          
-          	<div id="disqus_thread"></div>
+<a href="http://en.wikipedia.org/wiki/Inline_expansion"target="_blank">http://en.wikipedia.org/wiki/Inline_expansion</a>
+<a href="http://en.wikipedia.org/wiki/Inline_caching"target="_blank">http://en.wikipedia.org/wiki/Inline_caching</a>
+<a href="http://www.iecc.com/linker/linker11.html"target="_blank">http://www.iecc.com/linker/linker11.html</a></p>
+<p><a href="http://morepypy.blogspot.com/2011/02/pypy-faster-than-c-on-carefully-crafted.html"target="_blank">http://morepypy.blogspot.com/2011/02/pypy-faster-than-c-on-carefully-crafted.html</a></p>
+</article><section class="article labels"><a class="category" href=/categories/compilation/>Compilation</a><a class="tag" href=/tags/c&#43;&#43;/>C&#43;&#43;</a><a class="tag" href=/tags/optimization/>optimization</a><a class="tag" href=/tags/performance/>performance</a></section></div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2013/07/review-how-to-write-a-thesis-2/"><span class="iconfont icon-article"></span>How to Write a Thesis</a></p><p><a class="link" href="/2013/07/patterns-are-evidence-of-a-languages-lacking/"><span class="iconfont icon-article"></span>Patterns are evidence of a language's lacking</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -334,29 +124,10 @@ Row &lt; EatSandwich       , none  , RemoveBread       , ResetTick, user_is_hung
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-          
-        
-      <div class="footer">
-	<hr class="thin" />
-	<div class="pure-menu pure-menu-horizontal pure-menu-open">
-		<ul class="footer-menu">
-		
-			<li><a href="/posts">Blog</a></li>
-		
-			<li><a href="/series">Series</a></li>
-		
-		</ul>
-	</div>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 Jeremy Wright</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p></div></section></body>
 
-	<p>&copy; 2020. All rights reserved.</p>
-</div>
-    </div>
-  </div>
-	
-
-	
-
-  
-</body>
 </html>

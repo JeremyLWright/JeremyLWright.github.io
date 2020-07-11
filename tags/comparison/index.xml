@@ -1,33 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>comparison on QE</title>
-    <link>https://quiescent.us/tags/comparison/</link>
-    <description>Recent content in comparison on QE</description>
+    <title>comparison on Quiescent Engineering, LLC.</title>
+    <link>/tags/comparison/</link>
+    <description>Recent content in comparison on Quiescent Engineering, LLC.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
     <lastBuildDate>Wed, 18 May 2011 03:06:36 +0000</lastBuildDate>
     
-	<atom:link href="https://quiescent.us/tags/comparison/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/comparison/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>D for the C&#43;&#43; Programmer</title>
-      <link>https://quiescent.us/2011/05/d-for-the-c-programmer-red-black-tree-part-3/</link>
+      <link>/2011/05/d-for-the-c-programmer-red-black-tree-part-3/</link>
       <pubDate>Wed, 18 May 2011 03:06:36 +0000</pubDate>
       
-      <guid>https://quiescent.us/2011/05/d-for-the-c-programmer-red-black-tree-part-3/</guid>
+      <guid>/2011/05/d-for-the-c-programmer-red-black-tree-part-3/</guid>
       <description>As a comparative study, I am porting a Red-Black Tree from C++ to the D programming language (Part 1, Part 2). Overall D is an easy, practical transition for the C++ programmer. D provides a number of features for implementing correct code, however it is D’s simplicity that makes it truly enticing as a replacement. While D retains _C Style Syntax, _it is considerably simpler than C++, especially in the presence of exceptions.</description>
+      
     </item>
     
     <item>
       <title>The Red-Black Tree</title>
-      <link>https://quiescent.us/2011/05/the-red-black-tree-part-1/</link>
+      <link>/2011/05/the-red-black-tree-part-1/</link>
       <pubDate>Mon, 09 May 2011 06:59:01 +0000</pubDate>
       
-      <guid>https://quiescent.us/2011/05/the-red-black-tree-part-1/</guid>
+      <guid>/2011/05/the-red-black-tree-part-1/</guid>
       <description>C++ Source Code D Source Code
 D provides a number of features that simplify designing software, especially in the embedded environment. I will show in this 2 part comparison, between C++ and D, that D helps one write correct code. Correct code is something Andrei Alexandrescu, stresses heavily as a prominent feature of D. I use the Red-Black Tree for such a comparison since its complicated enough to make memory management difficult, while retaining real-world application.</description>
+      
     </item>
     
   </channel>

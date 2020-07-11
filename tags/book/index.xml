@@ -1,23 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>book on QE</title>
-    <link>https://quiescent.us/tags/book/</link>
-    <description>Recent content in book on QE</description>
+    <title>book on Quiescent Engineering, LLC.</title>
+    <link>/tags/book/</link>
+    <description>Recent content in book on Quiescent Engineering, LLC.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
     <lastBuildDate>Wed, 24 Jul 2013 04:48:01 +0000</lastBuildDate>
     
-	<atom:link href="https://quiescent.us/tags/book/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/book/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>How to Write a Thesis</title>
-      <link>https://quiescent.us/2013/07/review-how-to-write-a-thesis-2/</link>
+      <link>/2013/07/review-how-to-write-a-thesis-2/</link>
       <pubDate>Wed, 24 Jul 2013 04:48:01 +0000</pubDate>
       
-      <guid>https://quiescent.us/2013/07/review-how-to-write-a-thesis-2/</guid>
+      <guid>/2013/07/review-how-to-write-a-thesis-2/</guid>
       <description>My family purchased this book for me, as a motivator to start thinking about the thesis component of my master&amp;rsquo;s degree. &amp;ldquo;It must be substantial&amp;hellip;&amp;rdquo; said a colleague of mine. &amp;ldquo;It must be original work&amp;hellip;&amp;rdquo; Original, substantial, all words that left me with uneasiness about how to start. This book however was an easy read, and gave some very pragmatic advice on how to start, yet the most important quote I drew from the book was, &amp;ldquo;What are the questions in your field?</description>
+      
     </item>
     
   </channel>

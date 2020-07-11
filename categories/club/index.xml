@@ -1,25 +1,27 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Club on QE</title>
-    <link>https://quiescent.us/categories/club/</link>
-    <description>Recent content in Club on QE</description>
+    <title>Club on Quiescent Engineering, LLC.</title>
+    <link>/categories/club/</link>
+    <description>Recent content in Club on Quiescent Engineering, LLC.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
     <lastBuildDate>Mon, 04 Mar 2013 19:09:31 +0000</lastBuildDate>
     
-	<atom:link href="https://quiescent.us/categories/club/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/categories/club/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Beagle Board Cluster Demo&#39;d at ASU</title>
-      <link>https://quiescent.us/2013/03/beagle-board-cluster-demod-at-asu/</link>
+      <link>/2013/03/beagle-board-cluster-demod-at-asu/</link>
       <pubDate>Mon, 04 Mar 2013 19:09:31 +0000</pubDate>
       
-      <guid>https://quiescent.us/2013/03/beagle-board-cluster-demod-at-asu/</guid>
+      <guid>/2013/03/beagle-board-cluster-demod-at-asu/</guid>
       <description>We presented our Beagle Board Cluster at the Engineering Career Fair. Look out for a design writeup soon!
 http://asulug.org/2013/03/engineering-open-house/
 [suffusion-adsense client=&#39;ca-pub-6284398857369558&amp;rsquo; slot=&#39;1495369305&amp;rsquo; width=&#39;728&amp;rsquo; height=&#39;90&amp;rsquo;]</description>
+      
     </item>
     
   </channel>

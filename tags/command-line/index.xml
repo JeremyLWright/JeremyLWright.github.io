@@ -1,23 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>command line on QE</title>
-    <link>https://quiescent.us/tags/command-line/</link>
-    <description>Recent content in command line on QE</description>
+    <title>command line on Quiescent Engineering, LLC.</title>
+    <link>/tags/command-line/</link>
+    <description>Recent content in command line on Quiescent Engineering, LLC.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
     <lastBuildDate>Fri, 12 Aug 2011 06:00:18 +0000</lastBuildDate>
     
-	<atom:link href="https://quiescent.us/tags/command-line/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/command-line/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hijacking System Programs</title>
-      <link>https://quiescent.us/2011/08/hijacking-system-programs/</link>
+      <link>/2011/08/hijacking-system-programs/</link>
       <pubDate>Fri, 12 Aug 2011 06:00:18 +0000</pubDate>
       
-      <guid>https://quiescent.us/2011/08/hijacking-system-programs/</guid>
+      <guid>/2011/08/hijacking-system-programs/</guid>
       <description>Let&amp;rsquo;s say for a moment that you are a graduate student, with shell access to your schools server. The server maintains a number of tools you need for classes, and research. All is well, except the stock editor on the server is wicked old. Like an eternity old. Well that happened to me. I am fully addicted to my custom vim configuration, but it requires vim7.3. My school&amp;rsquo;s server only has 7.</description>
+      
     </item>
     
   </channel>

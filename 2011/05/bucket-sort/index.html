@@ -1,179 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-<head>
-  <title>
-    Bucket Sort // QE
-  </title>
-
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="admin">
-<meta name="generator" content="Hugo 0.68.3" />
-
-
-  <meta property="og:title" content="Bucket Sort" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:locale" content="en_US" />
-<meta property="og:url" content="https://quiescent.us/2011/05/bucket-sort/" />
-
-
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
-  
-  
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
-  
-  
-
-  <link rel="stylesheet" href="https://quiescent.us//css/redlounge.css">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
-  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="QE" />
-
-    
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-
-
-  
-
-  
-
-  
-
-  
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168773592-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-168773592-1');
-</script>
-</head>
-
-
-<body>
-	
-
-	<div id="layout" class="pure-g">
-    <div class="sidebar pure-u-1 pure-u-md-1-4">
-  <div class="header">
-    
-
-	
-
-    <h1 class="brand-title">Quiescent Engineering, LLC</h1>
-    <h2 class="brand-tagline">Go Far. Go Together</h2>
-
-    <nav class="nav">
-      <ul class="nav-list">
-        <li class="nav-item"><span class="nav-item-separator">//</span><a href="https://quiescent.us/">Home</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about">About</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/posts">Blog</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/series">Series</a></li>
-        
-      </ul>
-    </nav>
-
-    
-    <div class="social-buttons">
-      
-        
-        <a href="https://github.com/JeremyLWright" target="_blank"><i class='fa fa-github'></i></a>
-        
-      
-        
-        <a href="https://www.linkedin.com/pub/jeremy-wright/5b/8/844" target="_blank"><i class='fa fa-linkedin'></i></a>
-        
-      
-        
-        <a href="https://www.twitter.com/jeremy_l_wright" target="_blank"><i class='fa fa-twitter'></i></a>
-        
-      
-      
-    </div>
-    
-
-  </div>
-</div>
-
-	
-	
-
-    <div class="content pure-u-1 pure-u-md-3-4">
-		<a name="top"></a>
-		
-
-		
-			
-		    <div id="toc" class="pure-u-1 pure-u-md-1-4">
-				<small class="toc-label">Contents</small>
-		   	 	<nav id="TableOfContents"></nav>
-		    </div>
-		    
-	    
-  		<section class="post">
-            <h1 class="post-title">
-              <a href="/2011/05/bucket-sort/">Bucket Sort</a>
-            </h1>
-            <h3 class="post-subtitle">
-            	
-            </h3>
-            
-            	<span class="post-date">
-                	<span class="post-date-day"><sup>24</sup></span><span class="post-date-separator">/</span><span class="post-date-month">May</span> <span class="post-date-year">2011</span>
-            	</span>
-            	
-            
-            	
-            		<span class="post-author-single">By <a class="post-author"  target="">admin</a></span>
-            		
-
-
-
-
-            	
-            
-
-			
-			
-				<div class="post-categories">
-				
-					<a class="post-category post-category-algorithm" href="https://quiescent.us//categories/algorithm">Algorithm</a>
-				
-				</div>
-			
-
-			
-
-			
-
-            <p><a href="https://bitbucket.org/jwright/bucket-sort/overview">D Source Code</a></p>
-<p>Sorting is a very important operation in computer programs. Knuth devotes an entire chapter to sorting and search. Sorting algorithms, like most algorithms, use the <a href="http://en.wikipedia.org/wiki/Big_Oh_notation">Big O notation</a> to compare <a href="http://en.wikipedia.org/wiki/Computational_complexity_theory">computational complexity</a>.  <a href="http://en.wikipedia.org/wiki/Bucket_sort">Bucket sort</a> is one such sorting algorithm.  however bucket sort typically doesn’t actually sort the array.  In the normal case, bucket sort is used to partition the data set into groups, or buckets.  Each bucket is then sorted using a separate algorithm such as quicksort, or insertion sort.</p>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.73.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Bucket Sort&nbsp;&ndash;&nbsp;Quiescent Engineering, LLC.</title><link rel="stylesheet" href="/css/core.min.6fe5d1dee32d5c1f625e8d9d541db5df28b4c99bf9f600cc7284f342438549386d2338be608f2edbb2e7fef8cbcccf30.css" integrity="sha384-b&#43;XR3uMtXB9iXo2dVB213yi0yZv59gDMcoTzQkOFSThtIzi&#43;YI8u27Ln/vjLzM8w"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Bucket Sort" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">Quiescent Engineering, LLC.</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Bucket Sort</h1><p class="article date">Tuesday, May 24, 2011</p></section><article class="article markdown-body"><p><a href="https://bitbucket.org/jwright/bucket-sort/overview"target="_blank">D Source Code</a></p>
+<p>Sorting is a very important operation in computer programs. Knuth devotes an entire chapter to sorting and search. Sorting algorithms, like most algorithms, use the <a href="http://en.wikipedia.org/wiki/Big_Oh_notation"target="_blank">Big O notation</a> to compare <a href="http://en.wikipedia.org/wiki/Computational_complexity_theory"target="_blank">computational complexity</a>.  <a href="http://en.wikipedia.org/wiki/Bucket_sort"target="_blank">Bucket sort</a> is one such sorting algorithm.  however bucket sort typically doesn’t actually sort the array.  In the normal case, bucket sort is used to partition the data set into groups, or buckets.  Each bucket is then sorted using a separate algorithm such as quicksort, or insertion sort.</p>
 <!-- raw HTML omitted -->
-<p>Bucket sort leverages the fact that some algorithms are more efficient on smaller lists.  <a href="http://en.wikipedia.org/wiki/Insertion_sort">Insertion Sort</a> is one such algorithm.  While insertion sort has an upper bound of O(n2), on small lists its performance is typically much better.  In insertion sort, performance is limited by the delta between current position and its correct position.  For small lists, this delta is typically small.  Insertion sort, is also stable, in-place, and unlike merge sort, easy to write an efficient implementation.</p>
+<p>Bucket sort leverages the fact that some algorithms are more efficient on smaller lists.  <a href="http://en.wikipedia.org/wiki/Insertion_sort"target="_blank">Insertion Sort</a> is one such algorithm.  While insertion sort has an upper bound of O(n2), on small lists its performance is typically much better.  In insertion sort, performance is limited by the delta between current position and its correct position.  For small lists, this delta is typically small.  Insertion sort, is also stable, in-place, and unlike merge sort, easy to write an efficient implementation.</p>
 <p>D provides a number  of features that make bucket sort easier to implement, especially its fantastic array support.</p>
 <pre><code>uint[] bucket_sort(uint[] unsorted_data, immutable uint num_buckets,
 immutable uint threads)
@@ -199,43 +34,9 @@ immutable uint threads)
 }
 </code></pre>
 <p>Line 5 illustrates an extremely powerful feature of D: Template Mixins.  Line 5 uses the “a &gt; b” string as compiled code within the function minPos.  minPos() returns a range slice with the minimum key as the first element.  Passing the “a &gt; b” reverses this function, ergo the maximum key is the first position.  This is an extremely powerful technique influenced from functional languages.  D also allows one to concatenate arrays easily, using the “~=” operator.  This, as you can see, makes rejoining the buckets easy.</p>
-<p>D is a powerful language, and the lambda functions offer a whole new design perspective.  Look for my next article where I leverage D’s <a href="http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html#TaskPool">TaskPool</a> to parallelize bucket sort.</p>
-
-	
-			
-
-			
-				<div class="tags-list">
-					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
-					
-	                <a class="post-tag post-tag-d" href="https://quiescent.us//tags/d">D</a>,
-	                
-	                <a class="post-tag post-tag-sorting" href="https://quiescent.us//tags/sorting">Sorting</a>,
-	                
-				</div>
-			
-
-			
-				<div class="paging">
-					<span class="paging-label">More Reading</span>
-					
-					<div class="paging-newer">
-						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
-						<a class="paging-link" href="/2011/05/d-for-the-c-programmer-red-black-tree-part-3/">D for the C&#43;&#43; Programmer</a>
-		            </div>
-		            
-
-					
-					<div class="paging-older">
-						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
-			            <a class="paging-link" href="/2011/05/parallelism-in-d-bucket-sort-part-2/">Parallelism in D</a>
-		            </div>
-		            
-	            </div>
-            
-          </section>
-          
-          	<div id="disqus_thread"></div>
+<p>D is a powerful language, and the lambda functions offer a whole new design perspective.  Look for my next article where I leverage D’s <a href="http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html#TaskPool"target="_blank">TaskPool</a> to parallelize bucket sort.</p>
+</article><section class="article labels"><a class="category" href=/categories/algorithm/>Algorithm</a><a class="tag" href=/tags/d/>D</a><a class="tag" href=/tags/sorting/>Sorting</a></section></div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2011/05/parallelism-in-d-bucket-sort-part-2/"><span class="iconfont icon-article"></span>Parallelism in D</a></p><p><a class="link" href="/2011/05/d-for-the-c-programmer-red-black-tree-part-3/"><span class="iconfont icon-article"></span>D for the C++ Programmer</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -254,29 +55,10 @@ immutable uint threads)
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-          
-        
-      <div class="footer">
-	<hr class="thin" />
-	<div class="pure-menu pure-menu-horizontal pure-menu-open">
-		<ul class="footer-menu">
-		
-			<li><a href="/posts">Blog</a></li>
-		
-			<li><a href="/series">Series</a></li>
-		
-		</ul>
-	</div>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 Jeremy Wright</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p></div></section></body>
 
-	<p>&copy; 2020. All rights reserved.</p>
-</div>
-    </div>
-  </div>
-	
-
-	
-
-  
-</body>
 </html>

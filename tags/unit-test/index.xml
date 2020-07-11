@@ -1,23 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>unit test on QE</title>
-    <link>https://quiescent.us/tags/unit-test/</link>
-    <description>Recent content in unit test on QE</description>
+    <title>unit test on Quiescent Engineering, LLC.</title>
+    <link>/tags/unit-test/</link>
+    <description>Recent content in unit test on Quiescent Engineering, LLC.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
     <lastBuildDate>Wed, 03 Sep 2014 23:00:00 -0700</lastBuildDate>
     
-	<atom:link href="https://quiescent.us/tags/unit-test/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/unit-test/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Property Testing in C&#43;&#43;</title>
-      <link>https://quiescent.us/2014/09/property-testing-in-c/</link>
+      <link>/2014/09/property-testing-in-c/</link>
       <pubDate>Wed, 03 Sep 2014 23:00:00 -0700</pubDate>
       
-      <guid>https://quiescent.us/2014/09/property-testing-in-c/</guid>
+      <guid>/2014/09/property-testing-in-c/</guid>
       <description>&lt;!-- raw HTML omitted --&gt;</description>
+      
     </item>
     
   </channel>

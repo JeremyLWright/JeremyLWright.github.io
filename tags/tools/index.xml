@@ -1,32 +1,35 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>tools on QE</title>
-    <link>https://quiescent.us/tags/tools/</link>
-    <description>Recent content in tools on QE</description>
+    <title>tools on Quiescent Engineering, LLC.</title>
+    <link>/tags/tools/</link>
+    <description>Recent content in tools on Quiescent Engineering, LLC.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
     <lastBuildDate>Sun, 24 Mar 2013 18:25:50 +0000</lastBuildDate>
     
-	<atom:link href="https://quiescent.us/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/tools/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Latex Walkthrough</title>
-      <link>https://quiescent.us/2013/03/latex-walkthrough/</link>
+      <link>/2013/03/latex-walkthrough/</link>
       <pubDate>Sun, 24 Mar 2013 18:25:50 +0000</pubDate>
       
-      <guid>https://quiescent.us/2013/03/latex-walkthrough/</guid>
+      <guid>/2013/03/latex-walkthrough/</guid>
       <description>Latex Walkthrough from Jeremy Wright on Vimeo.</description>
+      
     </item>
     
     <item>
       <title>Good Tools, Excellent Results</title>
-      <link>https://quiescent.us/2011/08/good-tools-excellent-results/</link>
+      <link>/2011/08/good-tools-excellent-results/</link>
       <pubDate>Sun, 21 Aug 2011 07:23:25 +0000</pubDate>
       
-      <guid>https://quiescent.us/2011/08/good-tools-excellent-results/</guid>
+      <guid>/2011/08/good-tools-excellent-results/</guid>
       <description>This semester for the C++ practicum we are building a clone of Zork. Like many games of the genre, Zork is driven by a database. Our implementation is a JSON database. I chose JSON for a few reasons, but most importantly because its a human readable format that&amp;rsquo;s simple to understand. I started by editing JSON files by hand in a text editor, however I found very quickly that investigating in a quick tool greatly improved my quality.</description>
+      
     </item>
     
   </channel>

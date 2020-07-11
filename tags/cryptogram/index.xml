@@ -1,23 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>cryptogram on QE</title>
-    <link>https://quiescent.us/tags/cryptogram/</link>
-    <description>Recent content in cryptogram on QE</description>
+    <title>cryptogram on Quiescent Engineering, LLC.</title>
+    <link>/tags/cryptogram/</link>
+    <description>Recent content in cryptogram on Quiescent Engineering, LLC.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
     <lastBuildDate>Wed, 12 Feb 2014 08:50:00 -0700</lastBuildDate>
     
-	<atom:link href="https://quiescent.us/tags/cryptogram/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/cryptogram/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Massively Intelligent Non-Deterministic Luminating Effortless Super Solver</title>
-      <link>https://quiescent.us/2014/02/cracking-subciphercpp/</link>
+      <link>/2014/02/cracking-subciphercpp/</link>
       <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
       
-      <guid>https://quiescent.us/2014/02/cracking-subciphercpp/</guid>
+      <guid>/2014/02/cracking-subciphercpp/</guid>
       <description>&lt;p&gt;I worked the title of this article several times before I finally settled on the subtly epic heading you see above. Hopefully this title will funnel people off google into my blog (delicious SEO). I wanted to push the A.I. component of my solution because A.I. is awesome and mysterious, and cool (and can like solve jeopardy). I was quickly disillusioned however. Really, A.I. isn&amp;rsquo;t magic, rather it&amp;rsquo;s just the same thing computers have been doing for a long time: computing. Sadly this realization took several months in an A.I. class before I was sufficiently crestfallen. A.I. patterns including the hill climbing algorithm used here are indeed &amp;ldquo;intelligent&amp;rdquo; but really it a reflecting of the algorithm designer, not the entity executing the algorithm. So I built a substitution cipher solver in C++. It&amp;rsquo;s fast it uses random numbers i.e. non-deterministic, it uses an A.I. algorithm i.e. Intelligent, it uses threads i.e. Massively, it deciphers i.e. luminates the text and it solves super stuff therefore the title is completely justified. I give you my Massively Intelligent Non-Deterministic Luminating Effortless Super Solver (MINDLESS). If none of that interests you then please stick around and follow the side quest of looking for &lt;!-- raw HTML omitted --&gt;emotionally charged parenthesis&lt;!-- raw HTML omitted --&gt;.&lt;/p&gt;</description>
+      
     </item>
     
   </channel>

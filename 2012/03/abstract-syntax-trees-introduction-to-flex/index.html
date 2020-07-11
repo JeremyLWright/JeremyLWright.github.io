@@ -1,172 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-<head>
-  <title>
-    Abstract Syntax Trees: Introduction to Flex // QE
-  </title>
-
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="Jeremy">
-<meta name="generator" content="Hugo 0.68.3" />
-
-
-  <meta property="og:title" content="Abstract Syntax Trees: Introduction to Flex" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:locale" content="en_US" />
-<meta property="og:url" content="https://quiescent.us/2012/03/abstract-syntax-trees-introduction-to-flex/" />
-
-
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
-  
-  
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
-  
-  
-
-  <link rel="stylesheet" href="https://quiescent.us//css/redlounge.css">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
-  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="QE" />
-
-    
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-
-
-  
-
-  
-
-  
-
-  
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168773592-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-168773592-1');
-</script>
-</head>
-
-
-<body>
-	
-
-	<div id="layout" class="pure-g">
-    <div class="sidebar pure-u-1 pure-u-md-1-4">
-  <div class="header">
-    
-
-	
-
-    <h1 class="brand-title">Quiescent Engineering, LLC</h1>
-    <h2 class="brand-tagline">Go Far. Go Together</h2>
-
-    <nav class="nav">
-      <ul class="nav-list">
-        <li class="nav-item"><span class="nav-item-separator">//</span><a href="https://quiescent.us/">Home</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about">About</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/posts">Blog</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/series">Series</a></li>
-        
-      </ul>
-    </nav>
-
-    
-    <div class="social-buttons">
-      
-        
-        <a href="https://github.com/JeremyLWright" target="_blank"><i class='fa fa-github'></i></a>
-        
-      
-        
-        <a href="https://www.linkedin.com/pub/jeremy-wright/5b/8/844" target="_blank"><i class='fa fa-linkedin'></i></a>
-        
-      
-        
-        <a href="https://www.twitter.com/jeremy_l_wright" target="_blank"><i class='fa fa-twitter'></i></a>
-        
-      
-      
-    </div>
-    
-
-  </div>
-</div>
-
-	
-	
-
-    <div class="content pure-u-1 pure-u-md-3-4">
-		<a name="top"></a>
-		
-
-		
-			
-		    <div id="toc" class="pure-u-1 pure-u-md-1-4">
-				<small class="toc-label">Contents</small>
-		   	 	<nav id="TableOfContents"></nav>
-		    </div>
-		    
-	    
-  		<section class="post">
-            <h1 class="post-title">
-              <a href="/2012/03/abstract-syntax-trees-introduction-to-flex/">Abstract Syntax Trees: Introduction to Flex</a>
-            </h1>
-            <h3 class="post-subtitle">
-            	
-            </h3>
-            
-            	<span class="post-date">
-                	<span class="post-date-day"><sup>18</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Mar</span> <span class="post-date-year">2012</span>
-            	</span>
-            	
-            
-            	
-            		<span class="post-author-single">By <a class="post-author"  target="">Jeremy</a></span>
-            		
-
-
-
-
-            	
-            
-
-			
-			
-
-			
-
-			
-
-            <p>Bison is an incredibly powerful parser generator tool. However most of the examples, and tutorials demonstrate Bison&rsquo;s parsing ability, using on-the-fly computation instead of building a Syntax Tree. Bison is fully capable to generate the front-end of a simple compiler, but to do so, we have to build a syntax tree. Come to find out, building a syntax tree with Bison isn&rsquo;t that difficult, and the key is how one leverages the semantic actions. In this post, we&rsquo;ll look at a basic introduction to bison, then how to build a parse tree for a simple in-fix algebraic statement.</p>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.73.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Abstract Syntax Trees: Introduction to Flex&nbsp;&ndash;&nbsp;Quiescent Engineering, LLC.</title><link rel="stylesheet" href="/css/core.min.6fe5d1dee32d5c1f625e8d9d541db5df28b4c99bf9f600cc7284f342438549386d2338be608f2edbb2e7fef8cbcccf30.css" integrity="sha384-b&#43;XR3uMtXB9iXo2dVB213yi0yZv59gDMcoTzQkOFSThtIzi&#43;YI8u27Ln/vjLzM8w"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Abstract Syntax Trees: Introduction to Flex" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">Quiescent Engineering, LLC.</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Abstract Syntax Trees: Introduction to Flex</h1><p class="article date">Sunday, March 18, 2012</p></section><article class="article markdown-body"><p>Bison is an incredibly powerful parser generator tool. However most of the examples, and tutorials demonstrate Bison&rsquo;s parsing ability, using on-the-fly computation instead of building a Syntax Tree. Bison is fully capable to generate the front-end of a simple compiler, but to do so, we have to build a syntax tree. Come to find out, building a syntax tree with Bison isn&rsquo;t that difficult, and the key is how one leverages the semantic actions. In this post, we&rsquo;ll look at a basic introduction to bison, then how to build a parse tree for a simple in-fix algebraic statement.</p>
 <!-- raw HTML omitted -->
-<p>Bison is a parser generator, and when combined with Flex (which we look at in a future post), can generate a very powerful, and very fast parser, and syntatic analyzer. Semantic analysis is still the responsibly of the language implementer.  These tools have different <a href="http://en.wikipedia.org/wiki/Chomsky_hierarchy">computational power</a>. Flex recognizes the simplest languages1, the regular languages. Regular languages are those which can be recognized with a finite-state machine, i.e. languages which do not require memory. Flex forms the tokenizer, or lexer of the compiler. It breaks the stream of characters into groups of identifiers called Tokens.</p>
+<p>Bison is a parser generator, and when combined with Flex (which we look at in a future post), can generate a very powerful, and very fast parser, and syntatic analyzer. Semantic analysis is still the responsibly of the language implementer.  These tools have different <a href="http://en.wikipedia.org/wiki/Chomsky_hierarchy"target="_blank">computational power</a>. Flex recognizes the simplest languages1, the regular languages. Regular languages are those which can be recognized with a finite-state machine, i.e. languages which do not require memory. Flex forms the tokenizer, or lexer of the compiler. It breaks the stream of characters into groups of identifiers called Tokens.</p>
 <p>Flex is very easy to use. It consists of 3 sections. Each section is separated by a &ldquo;%%&rdquo; token. The first section setups up options. The next section defines all the tokens and their mapping to Non-Terminals. The last section is for raw C code to define helper, and other useful functions.</p>
 <pre><code>%option noyywrap yylineno
 %{
@@ -201,33 +42,8 @@ int yylex();
 <ol>
 <li>This isn&rsquo;t entirely true. Flex implements POSIX regular expressions, which have more computational power than regular languages. However, for the sake of simplcity, we&rsquo;ll say Flex recognizes regular languages.</li>
 </ol>
-
-	
-			
-
-			
-
-			
-				<div class="paging">
-					<span class="paging-label">More Reading</span>
-					
-					<div class="paging-newer">
-						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
-						<a class="paging-link" href="/2012/02/branching-with-mercurial/">Branching with Mercurial</a>
-		            </div>
-		            
-
-					
-					<div class="paging-older">
-						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
-			            <a class="paging-link" href="/2012/03/multicast-delegates-in-c11/">Multicast Delegates in C&#43;&#43;11</a>
-		            </div>
-		            
-	            </div>
-            
-          </section>
-          
-          	<div id="disqus_thread"></div>
+</article></div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2012/03/multicast-delegates-in-c11/"><span class="iconfont icon-article"></span>Multicast Delegates in C++11</a></p><p><a class="link" href="/2012/02/branching-with-mercurial/"><span class="iconfont icon-article"></span>Branching with Mercurial</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -246,29 +62,10 @@ int yylex();
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-          
-        
-      <div class="footer">
-	<hr class="thin" />
-	<div class="pure-menu pure-menu-horizontal pure-menu-open">
-		<ul class="footer-menu">
-		
-			<li><a href="/posts">Blog</a></li>
-		
-			<li><a href="/series">Series</a></li>
-		
-		</ul>
-	</div>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 Jeremy Wright</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p></div></section></body>
 
-	<p>&copy; 2020. All rights reserved.</p>
-</div>
-    </div>
-  </div>
-	
-
-	
-
-  
-</body>
 </html>

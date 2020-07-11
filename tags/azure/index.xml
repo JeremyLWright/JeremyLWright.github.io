@@ -1,24 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Azure on QE</title>
-    <link>https://quiescent.us/tags/azure/</link>
-    <description>Recent content in Azure on QE</description>
+    <title>Azure on Quiescent Engineering, LLC.</title>
+    <link>/tags/azure/</link>
+    <description>Recent content in Azure on Quiescent Engineering, LLC.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
     <lastBuildDate>Fri, 25 Sep 2015 20:10:00 +0700</lastBuildDate>
     
-	<atom:link href="https://quiescent.us/tags/azure/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/azure/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>4 Simple Steps to Run D Language in Azure Websites</title>
-      <link>https://quiescent.us/2015/09/deploying-d-to-azure-webapp/</link>
+      <link>/2015/09/deploying-d-to-azure-webapp/</link>
       <pubDate>Fri, 25 Sep 2015 20:10:00 +0700</pubDate>
       
-      <guid>https://quiescent.us/2015/09/deploying-d-to-azure-webapp/</guid>
+      <guid>/2015/09/deploying-d-to-azure-webapp/</guid>
       <description>I shameless stole these steps from 4 Simple Steps to Run Go Language in Azure Websites. This post is simply a transliteration to D. Thank you very much to Wade Wegner for the original post.
 4 Simple Steps  Create your Azure Website in Azure Portal.  Configure FTP deployment    2. Run dub init vibed_hello_world --type=vibe.d and change the default app.d to read the port from an environment variable.</description>
+      
     </item>
     
   </channel>

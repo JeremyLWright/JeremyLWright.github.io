@@ -1,33 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>parallel on QE</title>
-    <link>https://quiescent.us/tags/parallel/</link>
-    <description>Recent content in parallel on QE</description>
+    <title>parallel on Quiescent Engineering, LLC.</title>
+    <link>/tags/parallel/</link>
+    <description>Recent content in parallel on Quiescent Engineering, LLC.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
     <lastBuildDate>Sun, 23 Oct 2011 17:55:47 +0000</lastBuildDate>
     
-	<atom:link href="https://quiescent.us/tags/parallel/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/parallel/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Parallel Game-of-Life</title>
-      <link>https://quiescent.us/2011/10/parallel-game-of-life/</link>
+      <link>/2011/10/parallel-game-of-life/</link>
       <pubDate>Sun, 23 Oct 2011 17:55:47 +0000</pubDate>
       
-      <guid>https://quiescent.us/2011/10/parallel-game-of-life/</guid>
-      <description>Conway&amp;rsquo;s Game of Life is a dramatic illustration of emmergent behavior; that a seemingly complex system, such as cell mitosis can be governed by a set of simple rules. OpenMP is a fantastic set of language extensions which allows one to add dramatic parallelism without complex thread management. As a demonstration of OpenMP&amp;lsquo;s simplicity I implemented the Game of Life. The code and all analysis is available on bitbucket.org.
+      <guid>/2011/10/parallel-game-of-life/</guid>
+      <description>Conway&amp;rsquo;s Game of Life is a dramatic illustration of emmergent behavior; that a seemingly complex system, such as cell mitosis can be governed by a set of simple rules. OpenMP is a fantastic set of language extensions which allows one to add dramatic parallelism without complex thread management. As a demonstration of OpenMP&amp;rsquo;s simplicity I implemented the Game of Life. The code and all analysis is available on bitbucket.org.
 In a real program, it common to have swathes of code which cannot be made parallel.</description>
+      
     </item>
     
     <item>
       <title>Parallelism in D</title>
-      <link>https://quiescent.us/2011/05/parallelism-in-d-bucket-sort-part-2/</link>
+      <link>/2011/05/parallelism-in-d-bucket-sort-part-2/</link>
       <pubDate>Sun, 29 May 2011 18:02:24 +0000</pubDate>
       
-      <guid>https://quiescent.us/2011/05/parallelism-in-d-bucket-sort-part-2/</guid>
+      <guid>/2011/05/parallelism-in-d-bucket-sort-part-2/</guid>
       <description>Parallelism, it sounds like a religion, and in some sense it is. Like many facets of software engineering, writing good parallel code is more of an art than a science. I come from a FPGA background where parallelism is part of the language; part of the culture! The tools are designed to find deadlocks, analyze timing and the language itself is fully aware of parallelism. The hardware world understands parallelism, yet writing parallel software is still difficult.</description>
+      
     </item>
     
   </channel>

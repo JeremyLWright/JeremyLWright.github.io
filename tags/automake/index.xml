@@ -1,23 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>automake on QE</title>
-    <link>https://quiescent.us/tags/automake/</link>
-    <description>Recent content in automake on QE</description>
+    <title>automake on Quiescent Engineering, LLC.</title>
+    <link>/tags/automake/</link>
+    <description>Recent content in automake on Quiescent Engineering, LLC.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
     <lastBuildDate>Fri, 02 Aug 2013 16:51:40 +0000</lastBuildDate>
     
-	<atom:link href="https://quiescent.us/tags/automake/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/automake/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>My Haskell Environment for Project Euler</title>
-      <link>https://quiescent.us/2013/08/my-haskell-environment-for-project-euler/</link>
+      <link>/2013/08/my-haskell-environment-for-project-euler/</link>
       <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
       
-      <guid>https://quiescent.us/2013/08/my-haskell-environment-for-project-euler/</guid>
+      <guid>/2013/08/my-haskell-environment-for-project-euler/</guid>
       <description>For the last several months I&amp;rsquo;ve been working on Project Euler in Haskell. My intent has been to learn Haskell, and grasp the functional concepts. While working on several problems it&amp;rsquo;s important to have a workflow that allows for a fast cycle time. I spent some time with Cabal, attempting to build a scheme that works efficiently, but was unable to do so. Instead I setup a mix of cabal-dev, and make to build a fast workflow that allow for compiling, testing, common code libraries, and benchmarks.</description>
+      
     </item>
     
   </channel>
