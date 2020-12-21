@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Java on Quiescent Engineering, LLC.</title>
+    <link>/tags/java/</link>
+    <description>Recent content in Java on Quiescent Engineering, LLC.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
+    <lastBuildDate>Tue, 28 Aug 2012 05:31:04 +0000</lastBuildDate>
+    
+        <atom:link href="/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The Turbulent History of Managed Code</title>
+      <link>/2012/08/the-turbulent-history-of-managed-code/</link>
+      <pubDate>Tue, 28 Aug 2012 05:31:04 +0000</pubDate>
+      
+      <guid>/2012/08/the-turbulent-history-of-managed-code/</guid>
+      <description>Managed Code is a fascinating technology; Just-In-Time compilation provides advanced run-time optimization and strong type safety can render the hardware MMU obsolete. However the managed code renaissance is again in decline, and interestingly more than technology, business is changing the managed/native landscape. More than any other other metric, managed code is about maximizing programmer productivity.
+In 1977, Infocom released Zork. Zork was an innovative game. Its sophisticated linguistics made for an immersive experience for its adventurers.</description>
+      
+    </item>
+    
+    <item>
+      <title>Java 4K Contest</title>
+      <link>/2011/05/java-4k-contest/</link>
+      <pubDate>Sat, 07 May 2011 22:10:54 +0000</pubDate>
+      
+      <guid>/2011/05/java-4k-contest/</guid>
+      <description>Crazy challenging game contest: http://javaunlimited.net/contests/java4k.php Reminds me of the winners of a 96KB contest: http://en.wikipedia.org/wiki/.kkrieger</description>
+      
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>AI on Quiescent Engineering, LLC.</title>
+    <link>/categories/ai/</link>
+    <description>Recent content in AI on Quiescent Engineering, LLC.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
+    <lastBuildDate>Sun, 01 Sep 2013 22:35:41 +0000</lastBuildDate>
+    
+        <atom:link href="/categories/ai/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My First Logic Program</title>
+      <link>/2013/09/my-first-logic-program/</link>
+      <pubDate>Sun, 01 Sep 2013 22:35:41 +0000</pubDate>
+      
+      <guid>/2013/09/my-first-logic-program/</guid>
+      <description>This semester, I&amp;rsquo;m taking an introduction to artificial intelligence, and despite this being the second week, I&amp;rsquo;ve learned a great deal. Our second assignment was to implement a program in clingo (clasp on gringo) which is a derivative of Prologue. This is my first experience with a logical programming language, and I am intrigued to the possibilities.
+Immediately I was intrigued by the freeform expressiveness of the language. The example we did in class for example was to determine which muppet went to which amusement park.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

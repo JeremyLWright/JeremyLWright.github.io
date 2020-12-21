@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>learning on Quiescent Engineering, LLC.</title>
+    <link>/tags/learning/</link>
+    <description>Recent content in learning on Quiescent Engineering, LLC.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
+    <lastBuildDate>Mon, 25 May 2020 15:31:21 -0700</lastBuildDate>
+    
+        <atom:link href="/tags/learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My Learning Process</title>
+      <link>/2020/05/learning-process/</link>
+      <pubDate>Mon, 25 May 2020 15:31:21 -0700</pubDate>
+      
+      <guid>/2020/05/learning-process/</guid>
+      <description>As of 2020 Learning Questions My learning process consists of a set of learning questions. These questions are almost certainly wrong and reflect at least the following:
+ My motivation for learning a topic. My misconceptions of a given topic and the seemingly magic qualities a beginner believes it can provide.  The learning questions are initially, almost certainly wrong. This is good. It shows my current understanding or lack there-of.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

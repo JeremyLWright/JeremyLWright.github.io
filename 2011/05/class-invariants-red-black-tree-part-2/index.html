@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.79.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Class Invariants&nbsp;&ndash;&nbsp;Quiescent Engineering, LLC.</title><link rel="stylesheet" href="/css/core.min.6fe5d1dee32d5c1f625e8d9d541db5df28b4c99bf9f600cc7284f342438549386d2338be608f2edbb2e7fef8cbcccf30.css" integrity="sha384-b&#43;XR3uMtXB9iXo2dVB213yi0yZv59gDMcoTzQkOFSThtIzi&#43;YI8u27Ln/vjLzM8w"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Class Invariants" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">Quiescent Engineering, LLC.</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Class Invariants</h1><p class="article date">Friday, May 13, 2011</p></section><article class="article markdown-body"><p>This week, I started porting my <a href="http://www.codestrokes.com/archives/59"target="_blank">C++ implementation</a> of the Red-Black tree to D.  I am trying to pay special attention to the features of D, intended to make writing correct code easier. While on that vane,  I was reading an excellent <a href="http://reprog.wordpress.com/2010/04/25/writing-correct-code-part-1-invariants-binary-search-part-4a/"target="_blank">article</a>, discussing invariants, and I was pleased to find such a useful implementation of the <a href="http://www.digitalmars.com/d/2.0/class.html#Invariant"target="_blank">class invariant</a> in the D language.</p>
+<!-- raw HTML omitted -->
+<p>Invariants come from the same “<a href="http://en.wikipedia.org/wiki/Design_by_contract"target="_blank">design-by-contract</a>” idiom, famous for pre- and post- conditions. Essentially, invariants describe a state, or behavior which must remain true for a class.  If the invariant fails, during the classes life-cycle something is wrong; either the assumptions underlying the class’s behavior (the invariant is wrong), or a bug in the class itself.  In either case, the invariant help the you, the developer find a problem.  While discussing this feature a colleague asked,</p>
+<!-- raw HTML omitted -->
+<p>“How do I use this in a real application?” its quite a loaded question, however valuable. For my small red-black tree, I’m using invariants to check that the “<a href="http://en.wikipedia.org/wiki/Red-black_tree#Properties"target="_blank">black-height</a>” is maintained.  This is essential to the performance of the class, both in terms of correctness, and run-time complexity.  The Delete operation, for instance, will not function correctly if the black height is incorrect. This “black-height” is a property of the entire class as a whole, it must be maintained at all time for the class to be correct.  This is the very definition of the <a href="http://en.wikipedia.org/wiki/Class_invariant"target="_blank">class invariant</a>. Excellent! However this still doesn’t satisfy our question; in a more general context, how does the class invariant help us?</p>
+<p>The intent of the class invariant is to maintain a <strong>consistent state</strong>, not a fixed one.  Consistency is an important concept we work hard to maintain in our programs. Instead of a class, with its mutable state, lets look at a simpler construct in programming, a loop.</p>
+<p>The loop conditional can be thought of as an invariant for that scope. When the invariant is no longer true, the work of our loop is done.  For example:</p>
+<pre><code>for (size_t i=0; i &lt; string.length(); ++i)
+{
+    //do something...
+}
+</code></pre>
+<p>The, _i &lt; string.length(), _is a simple invariant in that it must remain true through the life of the loop.  We cannot allow our index _i _to grow unbounded, or risk causing a segfault. Invariants, therefore, are an intimate part of controlling program consistency. Especially consistency through multiple states. We extend this concept to the class to keep a consistent view of data, or some more dynamic property.</p>
+<p>So invariants are good, they help one question their design assumptions, and maintain class consistency. What does D provide to help us use this? The <a href="http://www.digitalmars.com/d/2.0/class.html#Invariant"target="_blank">class invariant</a>.</p>
+<pre><code>class RedBlackTree {
+    public:
+        this()
+        {
+            nil = new RedBlackNode(0);
+            nil.Left = nil;
+            nil.Right = nil;
+            nil.Parent = nil;
+            nil.Color = RedBlackNode.Colors.BLACK;
+            root = nil;
+        }
+        ~this(){ }
+
+        unittest
+        {
+        ///TODO fill out the unit tests.
+        }
+
+        invariant()
+        {
+            //Check the black height is equal across all simple paths
+            assert(verify_black_height() == true);
+        }
+</code></pre>
+<p>D provides a custom function that will automatically be called before and after any public method is called.  This functionality is compiled out in release versions. So when the class is <a href="http://en.wikipedia.org/wiki/Open/closed_principle"target="_blank">closed</a>, we can compile for release and automatically remove the runtime overhead. This makes for an extremely useful, yet low-cost vector toward writing <strong>correct code</strong>.</p>
+<p>D’s support for class invariants helps one achieve correct code simply, and concisely.  The language support permits the asserts to be checked automatically with minimal affect to the programmer’s flow. The class invariant contracts do not affect final performance in release builds. Consequently, invariants are a powerful tool in the quest for correct code and D leverages that perfectly!</p>
+</article><section class="article labels"><a class="category" href=/categories/algorithm/>Algorithm</a><a class="tag" href=/tags/correct-code/>correct code</a><a class="tag" href=/tags/d/>D</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.a8bf9f6f334e22a6002d9757880b6a18a0782dbe71c8c331ba76607d0b858aa3261a116797f86516d1a8b38a0cc107c7.js#pubid=ra-1234567890" integrity="sha384-qL&#43;fbzNOIqYALZdXiAtqGKB4Lb5xyMMxunZgfQuFiqMmGhFnl/hlFtGos4oMwQfH"></script></div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2011/05/d-for-the-c-programmer-red-black-tree-part-3/"><span class="iconfont icon-article"></span>D for the C++ Programmer</a></p><p><a class="link" href="/2011/05/the-red-black-tree-part-1/"><span class="iconfont icon-article"></span>The Red-Black Tree</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 Jeremy Wright</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p></div></section></body>
+
+</html>

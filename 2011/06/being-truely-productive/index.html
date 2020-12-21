@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.79.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Being Truely Productive&nbsp;&ndash;&nbsp;Quiescent Engineering, LLC.</title><link rel="stylesheet" href="/css/core.min.6fe5d1dee32d5c1f625e8d9d541db5df28b4c99bf9f600cc7284f342438549386d2338be608f2edbb2e7fef8cbcccf30.css" integrity="sha384-b&#43;XR3uMtXB9iXo2dVB213yi0yZv59gDMcoTzQkOFSThtIzi&#43;YI8u27Ln/vjLzM8w"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Being Truely Productive" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">Quiescent Engineering, LLC.</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Being Truely Productive</h1><p class="article date">Sunday, June 19, 2011</p></section><article class="article markdown-body"><p>Productivity is an elusive mistress.  I approach productivity much like any design problem. I lay out my requirements, and I iterate until I am happy with the outcome. Over the last few years I have spent a lot time laying out my design process.  Along the way I found a number of tools that were helpful.  This is my personal process and while I think it&rsquo;s a great process.  It&rsquo;s important to refactor for yourself. The key to my productivity is consistency. I work well with a defined workflow. Lastly, interruptions are a certainty, so one must find a way to make context switches less disruptive.</p>
+<!-- raw HTML omitted -->
+<p>Consistency <em>is</em> my process, and tools help me deal with strict and dynamic constraints.  I use a number of tools help me be productive, yet consistency is the most powerful function for me.</p>
+<!-- raw HTML omitted -->
+<p><a href="http://www.codestrokes.com/wp-content/uploads/2011/06/OneNoteOnline.png"target="_blank"><img  src="http://www.codestrokes.com/wp-content/uploads/2011/06/OneNoteOnline-300x161.png"
+        alt="Screenshot of OneNote on Live.com"/></a>This brings me to a struggle I had to overcome. When I was in college, I enjoyed hating Microsoft. It was more of a social thing than an actual reason. Later I found that, there is balance, I don&rsquo;t have to be a Microsoft Fan-Boy to use their products. Use what works for you. Just because it isn&rsquo;t FSF, or GNU software doesn&rsquo;t mean its crap.  In fact it may be exactly what you need.</p>
+<!-- raw HTML omitted -->
+<p>It is crucial that I maintain a homogeneous workflow regardless of my environment: Windows/Linux, Home/School/Office etc.  When choosing tools, I tend to not look for the most powerful, yet instead I search for  the simplest, lowest common denominator.  I use Vim, as an editor, and IDE. The Visual Studio IDE is  fantastic, but can I write Verilog in it? No. Eclipse is nice and  cross-platform, but can I edit .sdc files? No.  Vim is powerful, and  ubiquitous. I can do all of my work, anything I am tasked  with, in Vim. FPGA, C++, Java, C# .NET, PIC C, write a love letter to my  wife (probably most the important task), Vim does it all.   Regardless of the language, platform, or toolchain my editor is consistent. Constantly changing tools, helps you learn, but will not help you be more productive. Regardless of which tools you use, use them consistently.  The only downside I&rsquo;ve found in learning Vim, has been if for some reason I am in any other editor I litter the page with little <em>:w</em>. Here is my <a href="https://bitbucket.org/jwright/vim-configuration"target="_blank">Vim Configuration.</a> I am working on a dedicated article on my vim configuration. Lookout for it here.</p>
+<p>Save everything.  Tool configurations, one-off scripts, capricious prototypes.  Keep it all.  It&rsquo;s important to realize that everything you create has value, and the value changes over time.  Keep it. I use mercurial.  It seems the DVCS movement is really taking over in cutting edge development companies.  Companies like <a href="http://blogs.atlassian.com/developer/2011/02/moving_to_mercurial_-_why_we_did_it.html"target="_blank">Atlassian</a>. DVCSs such as git, and mercurial do a number of things different that make the process more productive, but the single reason I switched to mercurial from subversion: <strong>Local Commits</strong>.  I cannot state enough how local commits have made me a better programmer.  Local commits do two things for me. They make context switches (i.e. interruptions) cheap, and local commits let me make more mistakes.</p>
+<p>More mistakes? How does more mistakes make one <em>more productive</em>.  Simple, I keep a history of all my mistakes so I am not destined to repeat them.  Very often when I am working on a project I want to experiment with some new idiom or pattern.  I use the local commit like a video game save-point.  The commit message is usually something to the effect of:</p>
+<pre><code>Mercurial Commit:
+Probably a bad idea. :-/ Save point for PIMPL experiment.
+</code></pre>
+<p>I freely continue with my idea. If it works out well, then excellent I can always look back and see how I added a given idiom to some existing code. Yet, more typically, my experiment is an utter failure.  I just hg revert, and done. However all is not lost, all that history is saved. I can always look back and see how I applied or rather misapplied my experiment. Reviewing my mistakes helps me to improve. Vim has nearly infinite undo, <a href="https://groups.google.com/group/vim_announce/browse_thread/thread/66c02efd1523554b?pli=1"target="_blank">persistent undo</a>, and <a href="http://vimdoc.sourceforge.net/htmldoc/undo.html"target="_blank">branching undo</a>, all in an effort to provide similar functionality.  This however is not sufficient. Mercurial lets you save your mistakes!</p>
+<!-- raw HTML omitted -->
+<p>Prototyping is an important way to gauge investment of your time. Before you start a project work out a bit of a prototype.  Sometimes I get an idea in my head and I just start hacking, usually once I get the idea flushed out I&rsquo;m done.  I just wanted to see, &ldquo;Will that work?&rdquo; Prototyping makes this easy without being too costly, time wise.  I use 3 tools for my prototypes: Python, Octave, and Excel.  Between these three there isn&rsquo;t much one cannot do. Excel is great for just pounding out some number. I frequently use excel to mock out data sets to see where I need to instrument my code to capture some concept.</p>
+<p>Lastly, you need a coding standard.  All the time. When writing personal code, maintainable typically isn&rsquo;t a concern. It&rsquo;s your code, you understand it. It&rsquo;s probably not a long lived project. A coding standard however doesn&rsquo;t slow you down, it makes you more effective.  If you write software consistently, you can lever <a href="https://bitbucket.org/jwright/vim-configuration/src/1da9bad9fe53/snippets/"target="_blank">snippet tools</a>, and code formatting tools to generate boiler plate for you. If you always use the same class layout its easy to go back and find what you need. Yet most important for me, consistency makes <a href="http://www.joelonsoftware.com/articles/Wrong.html"target="_blank">wrong code look wrong</a>.</p>
+<p>Tools are important. As you can see, I use a number of tools regularly, however the best weapon against time is consistency.  Be consistent in your process, and you will reap rewards.  Please leave your comments. I am curious what tools and processes you, my readers, implement.</p>
+</article><section class="article labels"><a class="category" href=/categories/productivity/>Productivity</a><a class="tag" href=/tags/process/>process</a><a class="tag" href=/tags/vim/>vim</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.a8bf9f6f334e22a6002d9757880b6a18a0782dbe71c8c331ba76607d0b858aa3261a116797f86516d1a8b38a0cc107c7.js#pubid=ra-1234567890" integrity="sha384-qL&#43;fbzNOIqYALZdXiAtqGKB4Lb5xyMMxunZgfQuFiqMmGhFnl/hlFtGos4oMwQfH"></script></div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2011/06/we-need-a-1-button/"><span class="iconfont icon-article"></span>We Need a -1 Button</a></p><p><a class="link" href="/2011/06/overview-of-upcoming-articles/"><span class="iconfont icon-article"></span>Overview of Upcoming Articles</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 Jeremy Wright</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p></div></section></body>
+
+</html>

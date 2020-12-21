@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Type Safety on Quiescent Engineering, LLC.</title>
+    <link>/tags/type-safety/</link>
+    <description>Recent content in Type Safety on Quiescent Engineering, LLC.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
+    <lastBuildDate>Mon, 06 Jun 2011 06:59:00 +0000</lastBuildDate>
+    
+        <atom:link href="/tags/type-safety/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Type-Safe Variable Argument Lists</title>
+      <link>/2011/06/type-safe-variable-argument-lists/</link>
+      <pubDate>Mon, 06 Jun 2011 06:59:00 +0000</pubDate>
+      
+      <guid>/2011/06/type-safe-variable-argument-lists/</guid>
+      <description>Type-safety is a popular topic. Perceived as a panacea for bad software, the Department of Defense implemented Ada. The original thought was restriction synonymous with robustness. From this, opponents claim type safe languages place the programmer’s hands in handcuffs, thereby thwarting generic code. Modern languages, such as D, and Java leverage a statically checked type system with a focus on consistency, not restriction. Modern type systems abet generic code, without sacrificing robustness.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

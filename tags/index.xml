@@ -1,0 +1,966 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on Quiescent Engineering, LLC.</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on Quiescent Engineering, LLC.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
+    <lastBuildDate>Mon, 13 Jul 2020 00:00:00 -0700</lastBuildDate>
+    
+        <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>data</title>
+      <link>/tags/data/</link>
+      <pubDate>Mon, 13 Jul 2020 00:00:00 -0700</pubDate>
+      
+      <guid>/tags/data/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>database</title>
+      <link>/tags/database/</link>
+      <pubDate>Mon, 13 Jul 2020 00:00:00 -0700</pubDate>
+      
+      <guid>/tags/database/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>migration</title>
+      <link>/tags/migration/</link>
+      <pubDate>Mon, 13 Jul 2020 00:00:00 -0700</pubDate>
+      
+      <guid>/tags/migration/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>learning</title>
+      <link>/tags/learning/</link>
+      <pubDate>Mon, 25 May 2020 15:31:21 -0700</pubDate>
+      
+      <guid>/tags/learning/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>reflection</title>
+      <link>/tags/reflection/</link>
+      <pubDate>Mon, 25 May 2020 15:31:21 -0700</pubDate>
+      
+      <guid>/tags/reflection/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>study</title>
+      <link>/tags/study/</link>
+      <pubDate>Mon, 25 May 2020 15:31:21 -0700</pubDate>
+      
+      <guid>/tags/study/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>book</title>
+      <link>/tags/book/</link>
+      <pubDate>Mon, 25 May 2020 15:00:14 -0700</pubDate>
+      
+      <guid>/tags/book/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>hillel</title>
+      <link>/tags/hillel/</link>
+      <pubDate>Mon, 25 May 2020 15:00:14 -0700</pubDate>
+      
+      <guid>/tags/hillel/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>tla&#43;</title>
+      <link>/tags/tla&#43;/</link>
+      <pubDate>Mon, 25 May 2020 15:00:14 -0700</pubDate>
+      
+      <guid>/tags/tla&#43;/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;</title>
+      <link>/tags/c&#43;&#43;/</link>
+      <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/c&#43;&#43;/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>D</title>
+      <link>/tags/d/</link>
+      <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/d/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Rust</title>
+      <link>/tags/rust/</link>
+      <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/rust/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Azure</title>
+      <link>/tags/azure/</link>
+      <pubDate>Fri, 25 Sep 2015 20:10:00 +0700</pubDate>
+      
+      <guid>/tags/azure/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>example</title>
+      <link>/tags/example/</link>
+      <pubDate>Sun, 05 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/example/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>property-testing</title>
+      <link>/tags/property-testing/</link>
+      <pubDate>Sun, 05 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/property-testing/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>tutorial</title>
+      <link>/tags/tutorial/</link>
+      <pubDate>Sun, 05 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/tutorial/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>blogging</title>
+      <link>/tags/blogging/</link>
+      <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/blogging/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>unit test</title>
+      <link>/tags/unit-test/</link>
+      <pubDate>Wed, 03 Sep 2014 23:00:00 -0700</pubDate>
+      
+      <guid>/tags/unit-test/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>747</title>
+      <link>/tags/747/</link>
+      <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
+      
+      <guid>/tags/747/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>bootloader</title>
+      <link>/tags/bootloader/</link>
+      <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
+      
+      <guid>/tags/bootloader/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>firmware</title>
+      <link>/tags/firmware/</link>
+      <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
+      
+      <guid>/tags/firmware/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>hash</title>
+      <link>/tags/hash/</link>
+      <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
+      
+      <guid>/tags/hash/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Security</title>
+      <link>/tags/security/</link>
+      <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
+      
+      <guid>/tags/security/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>test</title>
+      <link>/tags/test/</link>
+      <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
+      
+      <guid>/tags/test/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>verify</title>
+      <link>/tags/verify/</link>
+      <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
+      
+      <guid>/tags/verify/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;11</title>
+      <link>/tags/c&#43;&#43;11/</link>
+      <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
+      
+      <guid>/tags/c&#43;&#43;11/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>cipher</title>
+      <link>/tags/cipher/</link>
+      <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
+      
+      <guid>/tags/cipher/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>cryptogram</title>
+      <link>/tags/cryptogram/</link>
+      <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
+      
+      <guid>/tags/cryptogram/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>crytography</title>
+      <link>/tags/crytography/</link>
+      <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
+      
+      <guid>/tags/crytography/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>monoalphabetic</title>
+      <link>/tags/monoalphabetic/</link>
+      <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
+      
+      <guid>/tags/monoalphabetic/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>substitution cipher</title>
+      <link>/tags/substitution-cipher/</link>
+      <pubDate>Wed, 12 Feb 2014 08:50:00 -0700</pubDate>
+      
+      <guid>/tags/substitution-cipher/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Stepanov</title>
+      <link>/tags/stepanov/</link>
+      <pubDate>Sun, 24 Nov 2013 22:14:50 +0000</pubDate>
+      
+      <guid>/tags/stepanov/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>STL</title>
+      <link>/tags/stl/</link>
+      <pubDate>Sun, 24 Nov 2013 22:14:50 +0000</pubDate>
+      
+      <guid>/tags/stl/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Haskell</title>
+      <link>/tags/haskell/</link>
+      <pubDate>Sun, 20 Oct 2013 23:00:00 +0000</pubDate>
+      
+      <guid>/tags/haskell/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>/tags/python/</link>
+      <pubDate>Sun, 20 Oct 2013 23:00:00 +0000</pubDate>
+      
+      <guid>/tags/python/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>itanium</title>
+      <link>/tags/itanium/</link>
+      <pubDate>Mon, 07 Oct 2013 01:23:13 +0000</pubDate>
+      
+      <guid>/tags/itanium/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>knuth</title>
+      <link>/tags/knuth/</link>
+      <pubDate>Mon, 07 Oct 2013 01:23:13 +0000</pubDate>
+      
+      <guid>/tags/knuth/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>multicore</title>
+      <link>/tags/multicore/</link>
+      <pubDate>Mon, 07 Oct 2013 01:23:13 +0000</pubDate>
+      
+      <guid>/tags/multicore/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Contest</title>
+      <link>/tags/contest/</link>
+      <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
+      
+      <guid>/tags/contest/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>cracking</title>
+      <link>/tags/cracking/</link>
+      <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
+      
+      <guid>/tags/cracking/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>CTF</title>
+      <link>/tags/ctf/</link>
+      <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
+      
+      <guid>/tags/ctf/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>hack-a-thon</title>
+      <link>/tags/hack-a-thon/</link>
+      <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
+      
+      <guid>/tags/hack-a-thon/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>hacking</title>
+      <link>/tags/hacking/</link>
+      <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
+      
+      <guid>/tags/hacking/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>automake</title>
+      <link>/tags/automake/</link>
+      <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
+      
+      <guid>/tags/automake/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>dependencies</title>
+      <link>/tags/dependencies/</link>
+      <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
+      
+      <guid>/tags/dependencies/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>dependency</title>
+      <link>/tags/dependency/</link>
+      <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
+      
+      <guid>/tags/dependency/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>euler</title>
+      <link>/tags/euler/</link>
+      <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
+      
+      <guid>/tags/euler/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>generation</title>
+      <link>/tags/generation/</link>
+      <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
+      
+      <guid>/tags/generation/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>make</title>
+      <link>/tags/make/</link>
+      <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
+      
+      <guid>/tags/make/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>project euler</title>
+      <link>/tags/project-euler/</link>
+      <pubDate>Fri, 02 Aug 2013 16:51:40 +0000</pubDate>
+      
+      <guid>/tags/project-euler/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>optimization</title>
+      <link>/tags/optimization/</link>
+      <pubDate>Sun, 14 Jul 2013 23:00:11 +0000</pubDate>
+      
+      <guid>/tags/optimization/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>performance</title>
+      <link>/tags/performance/</link>
+      <pubDate>Sun, 14 Jul 2013 23:00:11 +0000</pubDate>
+      
+      <guid>/tags/performance/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>DSL</title>
+      <link>/tags/dsl/</link>
+      <pubDate>Sun, 07 Jul 2013 23:00:30 +0000</pubDate>
+      
+      <guid>/tags/dsl/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>pattern</title>
+      <link>/tags/pattern/</link>
+      <pubDate>Sun, 07 Jul 2013 23:00:30 +0000</pubDate>
+      
+      <guid>/tags/pattern/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>functional</title>
+      <link>/tags/functional/</link>
+      <pubDate>Mon, 22 Apr 2013 05:29:11 +0000</pubDate>
+      
+      <guid>/tags/functional/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>latex</title>
+      <link>/tags/latex/</link>
+      <pubDate>Sun, 24 Mar 2013 18:25:50 +0000</pubDate>
+      
+      <guid>/tags/latex/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>tools</title>
+      <link>/tags/tools/</link>
+      <pubDate>Sun, 24 Mar 2013 18:25:50 +0000</pubDate>
+      
+      <guid>/tags/tools/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>writing</title>
+      <link>/tags/writing/</link>
+      <pubDate>Sun, 24 Mar 2013 18:25:50 +0000</pubDate>
+      
+      <guid>/tags/writing/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>unix</title>
+      <link>/tags/unix/</link>
+      <pubDate>Sun, 17 Feb 2013 19:53:11 +0000</pubDate>
+      
+      <guid>/tags/unix/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>explaination</title>
+      <link>/tags/explaination/</link>
+      <pubDate>Tue, 18 Sep 2012 23:11:51 +0000</pubDate>
+      
+      <guid>/tags/explaination/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>explanation</title>
+      <link>/tags/explanation/</link>
+      <pubDate>Tue, 18 Sep 2012 23:11:51 +0000</pubDate>
+      
+      <guid>/tags/explanation/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>newbie</title>
+      <link>/tags/newbie/</link>
+      <pubDate>Tue, 18 Sep 2012 23:11:51 +0000</pubDate>
+      
+      <guid>/tags/newbie/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>/tags/java/</link>
+      <pubDate>Tue, 28 Aug 2012 05:31:04 +0000</pubDate>
+      
+      <guid>/tags/java/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Managed Code</title>
+      <link>/tags/managed-code/</link>
+      <pubDate>Tue, 28 Aug 2012 05:31:04 +0000</pubDate>
+      
+      <guid>/tags/managed-code/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>bottom-up</title>
+      <link>/tags/bottom-up/</link>
+      <pubDate>Sun, 15 Jul 2012 17:00:44 +0000</pubDate>
+      
+      <guid>/tags/bottom-up/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>top-down</title>
+      <link>/tags/top-down/</link>
+      <pubDate>Sun, 15 Jul 2012 17:00:44 +0000</pubDate>
+      
+      <guid>/tags/top-down/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>AST</title>
+      <link>/tags/ast/</link>
+      <pubDate>Mon, 28 May 2012 17:03:55 +0000</pubDate>
+      
+      <guid>/tags/ast/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Bison</title>
+      <link>/tags/bison/</link>
+      <pubDate>Mon, 28 May 2012 17:03:55 +0000</pubDate>
+      
+      <guid>/tags/bison/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>compiler</title>
+      <link>/tags/compiler/</link>
+      <pubDate>Mon, 28 May 2012 17:03:55 +0000</pubDate>
+      
+      <guid>/tags/compiler/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Flex</title>
+      <link>/tags/flex/</link>
+      <pubDate>Mon, 28 May 2012 17:03:55 +0000</pubDate>
+      
+      <guid>/tags/flex/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>RAII</title>
+      <link>/tags/raii/</link>
+      <pubDate>Sun, 06 May 2012 07:00:10 +0000</pubDate>
+      
+      <guid>/tags/raii/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>event</title>
+      <link>/tags/event/</link>
+      <pubDate>Mon, 30 Apr 2012 02:38:44 +0000</pubDate>
+      
+      <guid>/tags/event/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>copyright</title>
+      <link>/tags/copyright/</link>
+      <pubDate>Sat, 14 Apr 2012 17:53:21 +0000</pubDate>
+      
+      <guid>/tags/copyright/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>idiom</title>
+      <link>/tags/idiom/</link>
+      <pubDate>Sun, 05 Feb 2012 21:14:29 +0000</pubDate>
+      
+      <guid>/tags/idiom/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>template</title>
+      <link>/tags/template/</link>
+      <pubDate>Sun, 05 Feb 2012 21:14:29 +0000</pubDate>
+      
+      <guid>/tags/template/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>virtual</title>
+      <link>/tags/virtual/</link>
+      <pubDate>Sun, 05 Feb 2012 21:14:29 +0000</pubDate>
+      
+      <guid>/tags/virtual/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>productivity</title>
+      <link>/tags/productivity/</link>
+      <pubDate>Sun, 22 Jan 2012 17:53:43 +0000</pubDate>
+      
+      <guid>/tags/productivity/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>memory</title>
+      <link>/tags/memory/</link>
+      <pubDate>Sun, 23 Oct 2011 19:00:21 +0000</pubDate>
+      
+      <guid>/tags/memory/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>parallel</title>
+      <link>/tags/parallel/</link>
+      <pubDate>Sun, 23 Oct 2011 17:55:47 +0000</pubDate>
+      
+      <guid>/tags/parallel/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>testing</title>
+      <link>/tags/testing/</link>
+      <pubDate>Thu, 22 Sep 2011 22:40:42 +0000</pubDate>
+      
+      <guid>/tags/testing/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>command line</title>
+      <link>/tags/command-line/</link>
+      <pubDate>Fri, 12 Aug 2011 06:00:18 +0000</pubDate>
+      
+      <guid>/tags/command-line/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>customize</title>
+      <link>/tags/customize/</link>
+      <pubDate>Fri, 12 Aug 2011 06:00:18 +0000</pubDate>
+      
+      <guid>/tags/customize/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>vim</title>
+      <link>/tags/vim/</link>
+      <pubDate>Fri, 12 Aug 2011 06:00:18 +0000</pubDate>
+      
+      <guid>/tags/vim/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>mercurial</title>
+      <link>/tags/mercurial/</link>
+      <pubDate>Wed, 06 Jul 2011 05:18:48 +0000</pubDate>
+      
+      <guid>/tags/mercurial/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>subversion</title>
+      <link>/tags/subversion/</link>
+      <pubDate>Wed, 06 Jul 2011 05:18:48 +0000</pubDate>
+      
+      <guid>/tags/subversion/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>version control</title>
+      <link>/tags/version-control/</link>
+      <pubDate>Wed, 06 Jul 2011 05:18:48 +0000</pubDate>
+      
+      <guid>/tags/version-control/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>process</title>
+      <link>/tags/process/</link>
+      <pubDate>Sun, 19 Jun 2011 18:59:47 +0000</pubDate>
+      
+      <guid>/tags/process/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Type Safety</title>
+      <link>/tags/type-safety/</link>
+      <pubDate>Mon, 06 Jun 2011 06:59:00 +0000</pubDate>
+      
+      <guid>/tags/type-safety/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>real-time</title>
+      <link>/tags/real-time/</link>
+      <pubDate>Sun, 29 May 2011 18:02:24 +0000</pubDate>
+      
+      <guid>/tags/real-time/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>realtime</title>
+      <link>/tags/realtime/</link>
+      <pubDate>Sun, 29 May 2011 18:02:24 +0000</pubDate>
+      
+      <guid>/tags/realtime/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Sorting</title>
+      <link>/tags/sorting/</link>
+      <pubDate>Sun, 29 May 2011 18:02:24 +0000</pubDate>
+      
+      <guid>/tags/sorting/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>comparison</title>
+      <link>/tags/comparison/</link>
+      <pubDate>Wed, 18 May 2011 03:06:36 +0000</pubDate>
+      
+      <guid>/tags/comparison/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>correct code</title>
+      <link>/tags/correct-code/</link>
+      <pubDate>Wed, 18 May 2011 03:06:36 +0000</pubDate>
+      
+      <guid>/tags/correct-code/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Data Structure</title>
+      <link>/tags/data-structure/</link>
+      <pubDate>Mon, 09 May 2011 06:59:01 +0000</pubDate>
+      
+      <guid>/tags/data-structure/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Tree</title>
+      <link>/tags/tree/</link>
+      <pubDate>Mon, 09 May 2011 06:59:01 +0000</pubDate>
+      
+      <guid>/tags/tree/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>

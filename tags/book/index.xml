@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>book on Quiescent Engineering, LLC.</title>
+    <link>/tags/book/</link>
+    <description>Recent content in book on Quiescent Engineering, LLC.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
+    <lastBuildDate>Mon, 25 May 2020 15:00:14 -0700</lastBuildDate>
+    
+        <atom:link href="/tags/book/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>TLA&#43; Chapter 1: Reflection</title>
+      <link>/2020/05/tla-chap1/</link>
+      <pubDate>Mon, 25 May 2020 15:00:14 -0700</pubDate>
+      
+      <guid>/2020/05/tla-chap1/</guid>
+      <description>The first time I opened Hillel&amp;rsquo;s book and skimmed the first chapter I was subconsciously looking for a reason not to sink a bunch of time into yet another language/ecosystem project. That bias prevented me from seeing the point of the first chapter.
+Hillel&amp;rsquo;s first chapter ends with a definition of stuttering and how in the presence of real world temporal effects, a safe, reliable in all cases wire transfer system borders on impossible.</description>
+      
+    </item>
+    
+    <item>
+      <title>How to Write a Thesis</title>
+      <link>/2013/07/review-how-to-write-a-thesis-2/</link>
+      <pubDate>Wed, 24 Jul 2013 04:48:01 +0000</pubDate>
+      
+      <guid>/2013/07/review-how-to-write-a-thesis-2/</guid>
+      <description>My family purchased this book for me, as a motivator to start thinking about the thesis component of my master&amp;rsquo;s degree. &amp;ldquo;It must be substantial&amp;hellip;&amp;rdquo; said a colleague of mine. &amp;ldquo;It must be original work&amp;hellip;&amp;rdquo; Original, substantial, all words that left me with uneasiness about how to start. This book however was an easy read, and gave some very pragmatic advice on how to start, yet the most important quote I drew from the book was, &amp;ldquo;What are the questions in your field?</description>
+      
+    </item>
+    
+  </channel>
+</rss>

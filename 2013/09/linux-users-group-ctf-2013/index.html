@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.79.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Linux User&#39;s Group CTF 2013&nbsp;&ndash;&nbsp;Quiescent Engineering, LLC.</title><link rel="stylesheet" href="/css/core.min.6fe5d1dee32d5c1f625e8d9d541db5df28b4c99bf9f600cc7284f342438549386d2338be608f2edbb2e7fef8cbcccf30.css" integrity="sha384-b&#43;XR3uMtXB9iXo2dVB213yi0yZv59gDMcoTzQkOFSThtIzi&#43;YI8u27Ln/vjLzM8w"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Linux User&#39;s Group CTF 2013" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">Quiescent Engineering, LLC.</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Linux User's Group CTF 2013</h1><p class="article date">Sunday, September 8, 2013</p></section><article class="article markdown-body"><p>This past weekend we held another capture the flag event at the Arizona State University&rsquo;s Linux User&rsquo;s Group. It had more of a system admin focus than security cracking exploits, but it was fun an nontheless a diverse learning experience for all those involved. However, almost immediately, I realized the number one rule in CTF, nothing is off limits!</p>
+<!-- raw HTML omitted -->
+<p>The game was organized into two parts, a game server which collected the the scores and displayed the point totals of all teams in real-time, and the virtual servers (hosted on Amazon EC2) which contained the actual games. Players were encouraged to break into teams, and register themselves on the game server. The game server would assign the team a virtual machine, and the team could log in via SSH to behind hacking. Five minutes into the registration process, one team attempted a SQL injection attack against the game server.</p>
+<p>[caption id=&ldquo;attachment_1189&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;700&rdquo;]<a href="http://www.codestrokes.com/wp-content/uploads/2013/09/Final-Score.png"target="_blank"><img  src="http://www.codestrokes.com/wp-content/uploads/2013/09/Final-Score-1024x429.png"
+        alt="Notice the SQL Injection attempt"/></a> Notice the SQL Injection attempt[/caption]</p>
+<p>I wrote the game server as a django webapp, to collect points, and serve as a dashboard for the players. We logged in at the front of the room and displayed the graph on the front projector. It was a very motivating aspect of the game, however I never planned on it being part of the game itself.  First lesson learned in capture the flag, nothing is off limits. Luckily, django does the right thing, and sanitizes form data automatically. The server was unscathed, the failed injection attempt was displayed for all the teams to see. I&rsquo;m currently compiling additional aspects of what worked and what didn&rsquo;t so check back soon. The CTF was a fantastic event this year, and really motivated newbies, and elites a like.</p>
+</article><section class="article labels"><a class="category" href=/categories/ctf/>CTF</a><a class="category" href=/categories/security/>Security</a><a class="tag" href=/tags/contest/>Contest</a><a class="tag" href=/tags/cracking/>cracking</a><a class="tag" href=/tags/ctf/>CTF</a><a class="tag" href=/tags/hack-a-thon/>hack-a-thon</a><a class="tag" href=/tags/hacking/>hacking</a><a class="tag" href=/tags/security/>Security</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.a8bf9f6f334e22a6002d9757880b6a18a0782dbe71c8c331ba76607d0b858aa3261a116797f86516d1a8b38a0cc107c7.js#pubid=ra-1234567890" integrity="sha384-qL&#43;fbzNOIqYALZdXiAtqGKB4Lb5xyMMxunZgfQuFiqMmGhFnl/hlFtGos4oMwQfH"></script></div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2013/10/the-itanium-flop/"><span class="iconfont icon-article"></span>The Itanium Flop</a></p><p><a class="link" href="/2013/09/my-first-logic-program/"><span class="iconfont icon-article"></span>My First Logic Program</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 Jeremy Wright</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p></div></section></body>
+
+</html>

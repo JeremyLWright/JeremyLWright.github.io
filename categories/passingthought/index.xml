@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>PassingThought on Quiescent Engineering, LLC.</title>
+    <link>/categories/passingthought/</link>
+    <description>Recent content in PassingThought on Quiescent Engineering, LLC.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
+    <lastBuildDate>Sat, 07 May 2011 22:10:54 +0000</lastBuildDate>
+    
+        <atom:link href="/categories/passingthought/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java 4K Contest</title>
+      <link>/2011/05/java-4k-contest/</link>
+      <pubDate>Sat, 07 May 2011 22:10:54 +0000</pubDate>
+      
+      <guid>/2011/05/java-4k-contest/</guid>
+      <description>Crazy challenging game contest: http://javaunlimited.net/contests/java4k.php Reminds me of the winners of a 96KB contest: http://en.wikipedia.org/wiki/.kkrieger</description>
+      
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Rust on Quiescent Engineering, LLC.</title>
+    <link>/tags/rust/</link>
+    <description>Recent content in Rust on Quiescent Engineering, LLC.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
+    <lastBuildDate>Sat, 03 Oct 2015 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>System languages should include Webapps</title>
+      <link>/2015/10/system-languages-include-web/</link>
+      <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/2015/10/system-languages-include-web/</guid>
+      <description>I was reading an FAQ today about some subtle C++ point and I came across a comment that explicitly excludes the beginning language-learner.
+ By the way, it confuses most novice C++ programmers that private virtuals can be overridden&amp;hellip; However the private virtual approach is now common enough that confusion of novices is less of a concern.
+ This left me frustrated that a language that has been core to my personal success so flippantly brushed aside its future user.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

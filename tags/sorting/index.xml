@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Sorting on Quiescent Engineering, LLC.</title>
+    <link>/tags/sorting/</link>
+    <description>Recent content in Sorting on Quiescent Engineering, LLC.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
+    <lastBuildDate>Sun, 29 May 2011 18:02:24 +0000</lastBuildDate>
+    
+        <atom:link href="/tags/sorting/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Parallelism in D</title>
+      <link>/2011/05/parallelism-in-d-bucket-sort-part-2/</link>
+      <pubDate>Sun, 29 May 2011 18:02:24 +0000</pubDate>
+      
+      <guid>/2011/05/parallelism-in-d-bucket-sort-part-2/</guid>
+      <description>Parallelism, it sounds like a religion, and in some sense it is. Like many facets of software engineering, writing good parallel code is more of an art than a science. I come from a FPGA background where parallelism is part of the language; part of the culture! The tools are designed to find deadlocks, analyze timing and the language itself is fully aware of parallelism. The hardware world understands parallelism, yet writing parallel software is still difficult.</description>
+      
+    </item>
+    
+    <item>
+      <title>Bucket Sort</title>
+      <link>/2011/05/bucket-sort/</link>
+      <pubDate>Tue, 24 May 2011 04:59:59 +0000</pubDate>
+      
+      <guid>/2011/05/bucket-sort/</guid>
+      <description>D Source Code
+Sorting is a very important operation in computer programs. Knuth devotes an entire chapter to sorting and search. Sorting algorithms, like most algorithms, use the Big O notation to compare computational complexity. Bucket sort is one such sorting algorithm. however bucket sort typically doesn’t actually sort the array. In the normal case, bucket sort is used to partition the data set into groups, or buckets. Each bucket is then sorted using a separate algorithm such as quicksort, or insertion sort.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

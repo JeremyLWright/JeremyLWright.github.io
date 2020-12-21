@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.79.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Version Control More Than Collaboration&nbsp;&ndash;&nbsp;Quiescent Engineering, LLC.</title><link rel="stylesheet" href="/css/core.min.6fe5d1dee32d5c1f625e8d9d541db5df28b4c99bf9f600cc7284f342438549386d2338be608f2edbb2e7fef8cbcccf30.css" integrity="sha384-b&#43;XR3uMtXB9iXo2dVB213yi0yZv59gDMcoTzQkOFSThtIzi&#43;YI8u27Ln/vjLzM8w"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Version Control More Than Collaboration" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">Quiescent Engineering, LLC.</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Version Control More Than Collaboration</h1><p class="article date">Wednesday, July 6, 2011</p></section><article class="article markdown-body"><p>I&rsquo;ve used version control in some form or another since I was a freshman in college, however I&rsquo;m quite the anomaly.  I will use a tool fully knowing that its more than I need, just to learn something new.  Initially, this is how I approached version control. Except for a few unique situations version control of my homework, seemed like more work than it was worth.  I used to think version control was merely a collaboration tool for teams of people.  I couldn&rsquo;t have been more wrong.</p>
+<!-- raw HTML omitted -->
+<p>Now I teach a small not-for-credit C++ class at ASU, and one of my students said something interesting:</p>
+<!-- raw HTML omitted -->
+<p>I thought it was an excellent perspective, version control is primarily intended as a collaboration tool, simply look at <a href="https://github.com/"target="_blank">github</a>&rsquo;s slogan: _Social Coding.  _Coding for <strong>groups of people</strong>. Yet, version control is much more than that.  For instance how many times when writing a paper, do you use the Undo? For most non-technical computer users, its probably the only keyboard shortcut they know: Ctrl+Z.  Version control is essentially** infinite undo**. Revert is great.  It frees you from fear of breaking existing code.</p>
+<p>I have a friend, lets call him my &ldquo;lets-get-serious-friend&rdquo;.  Who is great at hacking out piles of code until something works. If you need a quick, solution this friend can nail it.  He&rsquo;ll try several different approaches toward a problem. If that doesn&rsquo;t work he&rsquo;ll comment out the function, with a comment of why it didn&rsquo;t work.</p>
+<p>He&rsquo;s very organized about it, and its a solid approach for him. Yet, after he&rsquo;s finished a solution, he cannot quite remove all the dead code. Writing code is an artistic process and throwing code away, even if it doesn&rsquo;t quite work, is emotional. When the code is particularly clever, it is especially hard to hit the delete key (or rather the dd &ldquo;key&rdquo; :-).  Version control lets you remove all that emotion. You can keep it all, every version.  If in the future you find a use for that clever tidbit, its tucked away safely in your code repository.</p>
+<p>Undo is nice, and being able to keep everything is better, but the nirvana of coding is branching. I came from subversion, so I never really learned to branch. However with my recent <a href="http://www.codestrokes.com/2011/06/game-framework-for-c-practicum/"target="_blank">Game Components</a> project, I&rsquo;ve really been leveraging the hg branch command.  Joel Spolsky says <a href="http://hginit.com/00.html"target="_blank">not to use the named branch</a> feature in Mercurial, however I disagree; and the <a href="http://blogs.atlassian.com/devtools/2011/06/fisheye-crucible-26-commit-graph.html"target="_blank">Crucible/Fisheye</a> team at Atlassian use named branches so its can&rsquo;t be all bad.  Let me give you an example.</p>
+<p>I was hacking on the Models for my Game Components project, I <a href="https://bitbucket.org/jwright/gamecomponents/changeset/10efe59c3d75"target="_blank">committed</a> the code,  but I wasn&rsquo;t really happy with the result. I decided a ModelFactory might be useful in fixing some of the code smell.  The code I had worked, but it was quite fragile, and it required the controller to know too much about the data.  <em>I think</em> a factory will solve the problem, but I&rsquo;m not quite sure.  I could try it out, and if it doesn&rsquo;t work revert, but refactoring in a ModelFactory is a bigger effort than I could support that day. So I branched:</p>
+<pre><code>hg branch ModelFactory
+hg update -C ModelFactory
+hg commit --new-branch
+</code></pre>
+<p>Excellent. Now I have a clean place to play with my idea. If it fails I can just kill the branch, but the really great thing if I get stuck, I can jump back to my main (default) branch and continue working on some other component of my game:</p>
+<pre><code>hg update -C default
+</code></pre>
+<p>So branching is a tool to help you deal with writer&rsquo;s block.  In a way, branching is like a little drawer.  When you want to work on that little project, open the drawer and pull out the item.  When you&rsquo;re bored or stuck, but it back in the drawer. Its always there. Its easily accessible, but it doesn&rsquo;t clutter up your workspace.</p>
+<p><a href="https://bitbucket.org/jwright/gamecomponents/changeset/7f49b0b960c8"target="_blank">Currently</a>, I&rsquo;m still not convinced the ModelFactory fixes my issue, so I&rsquo;m working on the level editor now, on the DialogEditorTool branch. School starts in about 1 month so I gotta figure it out by then, but it&rsquo;s there, in a branch, organized, and out of the way.  So version control is more than just a collaboration tool. It helps you permits you to keep your files clean, and free of dead code, while keeping every bit and byte. Version control, help you grow your code without fear of permanently losing some fragile configuration.  Its an process to help you stay organized even if your development plans aren&rsquo;t.</p>
+</article><section class="article labels"><a class="category" href=/categories/productivity/>Productivity</a><a class="tag" href=/tags/mercurial/>mercurial</a><a class="tag" href=/tags/subversion/>subversion</a><a class="tag" href=/tags/version-control/>version control</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.a8bf9f6f334e22a6002d9757880b6a18a0782dbe71c8c331ba76607d0b858aa3261a116797f86516d1a8b38a0cc107c7.js#pubid=ra-1234567890" integrity="sha384-qL&#43;fbzNOIqYALZdXiAtqGKB4Lb5xyMMxunZgfQuFiqMmGhFnl/hlFtGos4oMwQfH"></script></div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2011/08/hijacking-system-programs/"><span class="iconfont icon-article"></span>Hijacking System Programs</a></p><p><a class="link" href="/2011/06/game-framework-for-c-practicum/"><span class="iconfont icon-article"></span>Game Framework for C++ Practicum</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 Jeremy Wright</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p></div></section></body>
+
+</html>

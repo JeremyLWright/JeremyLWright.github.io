@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>explaination on Quiescent Engineering, LLC.</title>
+    <link>/tags/explaination/</link>
+    <description>Recent content in explaination on Quiescent Engineering, LLC.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
+    <lastBuildDate>Tue, 18 Sep 2012 23:11:51 +0000</lastBuildDate>
+    
+        <atom:link href="/tags/explaination/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Abstraction in Plain English</title>
+      <link>/2012/09/abstraction-in-plain-english/</link>
+      <pubDate>Tue, 18 Sep 2012 23:11:51 +0000</pubDate>
+      
+      <guid>/2012/09/abstraction-in-plain-english/</guid>
+      <description>Abstraction is an interesting concept. For me personally, abstraction was never clearly explained. I left school and entered my first job knowing I should abstract things, but I realize now my understanding of abstraction amounted to obscurity.
+Abstraction to me meant, “Don’t use that thing directly, abstract it and use some interface instead.&amp;quot; &amp;ldquo;That’s what good programmers do,&amp;rdquo; I told myself. I taught myself a lot about function pointers, and advanced OO techniques using pure virtual classes all to avoid using something directly.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

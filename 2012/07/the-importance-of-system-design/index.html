@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.79.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>The Importance of System Design&nbsp;&ndash;&nbsp;Quiescent Engineering, LLC.</title><link rel="stylesheet" href="/css/core.min.6fe5d1dee32d5c1f625e8d9d541db5df28b4c99bf9f600cc7284f342438549386d2338be608f2edbb2e7fef8cbcccf30.css" integrity="sha384-b&#43;XR3uMtXB9iXo2dVB213yi0yZv59gDMcoTzQkOFSThtIzi&#43;YI8u27Ln/vjLzM8w"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="The Importance of System Design" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">Quiescent Engineering, LLC.</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">The Importance of System Design</h1><p class="article date">Sunday, July 15, 2012</p></section><article class="article markdown-body"><p>For the small programs we tend to implement as part of a semester project, or the simple &ldquo;one-off/get-it-done&rdquo; programs at work, system design rarely plays a part. However, even in the smallest problems a top-level system design is critical for consistency and ease of use. Class components, regardless of how precise and accurate they are in their own internal design, if they aren&rsquo;t externally consistent with other objects, the system will be brittle, and difficult to use.</p>
+<!-- raw HTML omitted -->
+<p>In a recent project, I used a bottom-up approach. I designed each class in isolation. I was very diligent to define the ownership semantics, and use each smart pointer and r-value reference type correctly. Despite all the time spent on the details of each object, when I tried to use the objects together, their interfaces were so inconsistent the individual objects were unusable. Case in point:</p>
+<pre><code>for(auto playersHand : player)
+{
+    if(playersHand-&gt;Value() &gt; dealersHand-&gt;Value())
+    {
+        player.Win(*playersHand-&gt;GetBet().get()); //&lt;-- This is a red-flag
+    }
+}
+</code></pre>
+<p>If you have to retrieve the raw pointer from the smart_pointer container, you are doing something wrong.</p>
+<p>Here the Player wants a reference to the winning Bet. The player doesn&rsquo;t own the bet, nor does it modify it, it just wants a reference, so I used the <em>passing by const-to-reference</em> idiom. The Hand however shares a reference between the Table, and the Player. So I used a shared_ptr<!-- raw HTML omitted -->.  shared_ptr implies that it owns and entirely manages the underlying pointer. Smart pointers can reduce or eliminate raw pointers in your system, making it safer. Fetching the raw pointer from such a container invites even bigger problems than managing the raw pointer yourself. Now you have two entities claiming ownership of a raw pointer. This is a fast way to a double-delete problem or more likely a memory leak.</p>
+<p>C++11 contains a powerful number of tools to allow more general components in our designs. This is however, a two-edge sword. Generic components are great. They enable tested code to be reused across multiple projects. This alone improve quality, and reduces time-to-market. Derisking our projects is a very positive thing, and we should continue doing so.</p>
+<!-- raw HTML omitted -->
+<p>C++11&rsquo;s generalization tools also allow code to be more easily refactored. Take for instance the following C++98 code:</p>
+<pre><code> for(vector&lt;shared_ptr &gt;::iterator player = players_.begin(); 
+    player != players_.end();
+    ++player)
+{
+    for(vector&lt;shared_ptr &gt;::iterator playersHand = player.begin();
+            playersHand != player.end();
+            ++playersHand)
+    {
+        /** ... Other Code Here ... */
+    }
+}
+</code></pre>
+<p>Compared to the equivalent C++11 code.</p>
+<pre><code>for(auto player : players_)
+{
+    for(auto playersHand : player)
+    {
+        /** ... Other Code Here ... */
+    }
+}
+</code></pre>
+<p>Now, typedefs can help here, but the C++11 version is still far more general. There are no types explicitly called out in the for loops. This is immensely powerful. It allows one to change the underlying container in each type, and the for loop simply iterates over the new type. This makes refactoring easier, but making the code more general also makes a system design more important than ever. As our code becomes more general its more important that types behave consistantly. For example, look at the C++98 version above. By looking at the iterator declaration, we know that we&rsquo;re iterating over a shared pointer, ergo we&rsquo;ll use the -&gt; operator. However in the C++11 version we have no idea what type player is. Its declared with auto, and fed by our user defined type. Where C++98 used declarations to state the interface, C++11 requires consistency.</p>
+<p>Within a program, the designer must make broad statements over the objects' behavior. If all objects within a system behave the same, then the users of those components can expect a certain level consistency. It becomes clear which use cases of an object are correct and which are not. This follows from Joel Spolsky&rsquo;s idiom <a href="http://www.joelonsoftware.com/articles/Wrong.html"target="_blank">Make Wrong Code Look Wrong</a>.  The compiler can tell us we are using the wrong operator, but this is a sign that we&rsquo;re lacking a consistent interface with our objects. Notice however that the compiler cannot tell us if we are using the object in a semantically incorrect way. Just because it compiles, doesn&rsquo;t mean its right. Scott Meyers puts this as: &ldquo;Make interfaces easy to use correctly and hard to use incorrectly.&rdquo;</p>
+<p>Use the new generalization tools in C++11. It will make your code better. Our programs have always needed a system-design; it&rsquo;s simply more apparent now. C++11 enables you to make better quality systems by forcing consistency across your objects and simultaneously making your code more general <a href="http://tirania.org/blog/archive/2012/Apr-04.html"target="_blank">without sacrificing performance</a>.</p>
+</article><section class="article labels"><a class="category" href=/categories/productivity/>Productivity</a><a class="category" href=/categories/system/>System</a><a class="tag" href=/tags/bottom-up/>bottom-up</a><a class="tag" href=/tags/top-down/>top-down</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.a8bf9f6f334e22a6002d9757880b6a18a0782dbe71c8c331ba76607d0b858aa3261a116797f86516d1a8b38a0cc107c7.js#pubid=ra-1234567890" integrity="sha384-qL&#43;fbzNOIqYALZdXiAtqGKB4Lb5xyMMxunZgfQuFiqMmGhFnl/hlFtGos4oMwQfH"></script></div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2012/07/know-its-name/"><span class="iconfont icon-article"></span>Know Its Name</a></p><p><a class="link" href="/2012/05/building-an-interpreter/"><span class="iconfont icon-article"></span>Building an Interpreter</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 Jeremy Wright</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p></div></section></body>
+
+</html>

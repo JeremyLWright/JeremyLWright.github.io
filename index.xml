@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Quiescent Engineering, LLC.</title>
+    <link>/</link>
+    <description>Recent content on Quiescent Engineering, LLC.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
+    <lastBuildDate>Mon, 13 Jul 2020 00:00:00 -0700</lastBuildDate>
+    
+        <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About Me</title>
+      <link>/about/</link>
+      <pubDate>Sun, 20 Dec 2020 17:30:00 -0700</pubDate>
+      
+      <guid>/about/</guid>
+      <description>When you do things right, no one can be sure you did anything at all.
+— Futurama Season 3
+ I specialize in the software no one sees. The high performance, concurrent, hard real-time, high-reliability systems that enable our way of life.
+My software fights fraud, and drives tractors. I&amp;rsquo;ve baked solar cells, made escalators more efficient, optimized fantasy sports. My software helps airplanes land safely.
+I&amp;rsquo;ve improved data center efficiency, and contributed designs and implementation of risk-management microservices for high-performance payment systems behind Zelle®.</description>
+      
+    </item>
+    
+    <item>
+      <title>Posts</title>
+      <link>/posts/</link>
+      <pubDate>Mon, 13 Jul 2020 00:00:00 -0700</pubDate>
+      
+      <guid>/posts/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>

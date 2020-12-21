@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>performance on Quiescent Engineering, LLC.</title>
+    <link>/tags/performance/</link>
+    <description>Recent content in performance on Quiescent Engineering, LLC.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
+    <lastBuildDate>Sun, 14 Jul 2013 23:00:11 +0000</lastBuildDate>
+    
+        <atom:link href="/tags/performance/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Is Monolithic Code Faster?</title>
+      <link>/2013/07/is-monolithic-code-faster/</link>
+      <pubDate>Sun, 14 Jul 2013 23:00:11 +0000</pubDate>
+      
+      <guid>/2013/07/is-monolithic-code-faster/</guid>
+      <description>As a software engineer I have a vested interest in disproving this statement. Bjarne Stroustroup says C++ is designed to create efficient abstractions. A software engineer’s job is to create simple abstractions to complex systems. State machines form a large part of many systems. The other day, a co-worker came to me, and asked, “Is it better to make straight line code for each case statement, even if it repeats, or is it better to abstraction into functions and make the code ‘cleaner’.</description>
+      
+    </item>
+    
+    <item>
+      <title>Compile-Time Polymorphism</title>
+      <link>/2012/02/compile-time-polymorphism/</link>
+      <pubDate>Sun, 05 Feb 2012 21:14:29 +0000</pubDate>
+      
+      <guid>/2012/02/compile-time-polymorphism/</guid>
+      <description>Polymorphism is a tool in object orientation, which allows us to model behavior, while simultaneously leverage existing code. Polymorphism allows is behavior reuse. In C++ polymorphism, comes in 2 flavors, the standard runtime variant, and a curious compile time variant. Runtime polymorphism, like Java, leverages virtual functions to dynamically bind[1. With virtual functions the compiler doesn&amp;rsquo;t know which method to call until runtime. In C++ this is implemented with the virtual method table] a method at the call site.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

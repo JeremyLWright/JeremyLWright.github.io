@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.79.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Capture the Flag - Running a Hacking Competition&nbsp;&ndash;&nbsp;Quiescent Engineering, LLC.</title><link rel="stylesheet" href="/css/core.min.6fe5d1dee32d5c1f625e8d9d541db5df28b4c99bf9f600cc7284f342438549386d2338be608f2edbb2e7fef8cbcccf30.css" integrity="sha384-b&#43;XR3uMtXB9iXo2dVB213yi0yZv59gDMcoTzQkOFSThtIzi&#43;YI8u27Ln/vjLzM8w"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Capture the Flag - Running a Hacking Competition" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">Quiescent Engineering, LLC.</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Capture the Flag - Running a Hacking Competition</h1><p class="article date">Monday, April 30, 2012</p></section><article class="article markdown-body"><p>Black-Hat hacking in an controlled environment, like this, is an important skill for software developers. The <a href="http://en.wikipedia.org/wiki/The_Art_of_War"target="_blank">Art of War</a> describes knowing one&rsquo;s enemy, and with the prevalence of internet-enabled applications today, it has never been more critical to know how the &ldquo;enemy&rdquo; can take down a system. While capture-the-flag is a fun, and exciting intellectual game, it is serious training for software engineers of all types, and skill levels. I recently setup a small capture the flag event for the <a href="http://asulug.org/"target="_blank">Arizona Linux User&rsquo;s Group</a>, and it was very fun.</p>
+<p>To setup a catpure the flag event, here are a few guidelines I found useful:</p>
+<ul>
+<li>
+<p>Brute-force attacks are no fun. There is no intellect involved, and while one brute forces the box, no one else can have a try.</p>
+</li>
+<li>
+<p>Setup a box to provide services to the rest of the network. Clearly define this box as off limits.</p>
+</li>
+<li>
+<p>Use virtual machines for target systems. This allows one to restore the system from an image if someone goes too far.</p>
+</li>
+<li>
+<p>Physically separate the game from any other networks.</p>
+</li>
+<li>
+<p>Provide ISOs of <a href="http://www.backtrack-linux.org/"target="_blank">Backtrack</a> Linux</p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<p>For this event I setup 3 systems:</p>
+<ul>
+<li>
+<p>A host system which provided DNS, and hosted the virtual machines.</p>
+</li>
+<li>
+<p>A Windows 2000 virtual machine.</p>
+</li>
+<li>
+<p>A Ubuntu 12.04 virtual machine.</p>
+</li>
+</ul>
+<p>The windows 2000 box has a pile of vulnerabilities. These vulnerabilities have been scripted into hacking applications, which allow automatic take down of the system. This is not necessarily a bad thing however, since it does provide a level of accomplishment, and is conducive to hiding clues. One clue I thought of after this event, was to set the <a href="http://en.wikipedia.org/wiki/Steganography"target="_blank">background</a> to something with <a href="http://en.wikipedia.org/wiki/Steganography"target="_blank">hidden</a> data in it. Tools exist to analyse the entropy of an image to determine if it contains data. One could encode the hash of some password into the image, then use a rainbow table to decrypt the hash.</p>
+<p>Essentially, break down the event into a series of quests. All quests lead to the same end i.e. network domination and a free round at the happy hour, but some paths are different than others. One quest may have more intellectual clues stenography, SQL injection, riddles which yield a password a la King&rsquo;s Quest. Another path may be fraught with vulnerabilities. The latter requires a encyclopedic knowledge of known vulnerabilities to crack this quest. I recommend making this path longer, since Google skills can shorten it immensely.</p>
+<p>Next, determine how the game will be scored and clearly post this information. For the latest event I hosted, I posted all the objectives at the front of the room, and wrote someones name as each objective was acquired. This worked well, but a more interactive system would be far more exciting. Something that showed the dominance and protection of different network factions. Honestly, this is more work, but certainly provides more excitement to the game.</p>
+<p>Lastly, make the event fun, and provide other activities for those who don&rsquo;t want to hack. This can be a very fun event, yet still important to learning how to build secure software. Ping me if you have other ideas for a hacking event, or post in the comments :-).</p>
+</article><section class="article labels"><a class="category" href=/categories/ctf/>CTF</a><a class="category" href=/categories/security/>Security</a><a class="tag" href=/tags/cracking/>cracking</a><a class="tag" href=/tags/event/>event</a><a class="tag" href=/tags/hack-a-thon/>hack-a-thon</a><a class="tag" href=/tags/hacking/>hacking</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.a8bf9f6f334e22a6002d9757880b6a18a0782dbe71c8c331ba76607d0b858aa3261a116797f86516d1a8b38a0cc107c7.js#pubid=ra-1234567890" integrity="sha384-qL&#43;fbzNOIqYALZdXiAtqGKB4Lb5xyMMxunZgfQuFiqMmGhFnl/hlFtGos4oMwQfH"></script></div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2012/05/anderson-smart-pointer-idiom-updated/"><span class="iconfont icon-article"></span>Anderson Smart-Pointer Idiom Updated!</a></p><p><a class="link" href="/2012/04/copyright-the-anti-innovator/"><span class="iconfont icon-article"></span>Copyright - The Anti-Innovator</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 Jeremy Wright</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p></div></section></body>
+
+</html>

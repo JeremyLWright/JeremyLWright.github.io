@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.79.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>TLA&#43; Chapter 1: Reflection&nbsp;&ndash;&nbsp;Quiescent Engineering, LLC.</title><link rel="stylesheet" href="/css/core.min.6fe5d1dee32d5c1f625e8d9d541db5df28b4c99bf9f600cc7284f342438549386d2338be608f2edbb2e7fef8cbcccf30.css" integrity="sha384-b&#43;XR3uMtXB9iXo2dVB213yi0yZv59gDMcoTzQkOFSThtIzi&#43;YI8u27Ln/vjLzM8w"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="TLA&#43; Chapter 1: Reflection" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">Quiescent Engineering, LLC.</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">TLA+ Chapter 1: Reflection</h1><p class="article date">Monday, May 25, 2020</p></section><article class="article markdown-body"><p>The first time I opened <a href="https://www.hillelwayne.com/post/practical-tla/"target="_blank">Hillel&rsquo;s
+book</a> and skimmed the first
+chapter I was subconsciously looking for a reason not to sink a bunch of time
+into yet another language/ecosystem project. That bias prevented me from
+seeing the point of the first chapter.</p>
+<!-- raw HTML omitted -->
+<p>Hillel&rsquo;s first chapter ends with a definition of stuttering and how in the
+presence of real world temporal effects, a safe, reliable in all cases wire
+transfer system borders on impossible. This initially turned me off,
+sophomorically reflecting, &ldquo;Well if this book won&rsquo;t let me make reliable
+software then forget it.&rdquo;</p>
+<p>This result however is precisely what formal methods and TLA+ in particular
+seeks to provide. These tools tell you, in 22 lines of PlusCal that your
+assumptions about the eventual consistency of your system is invalid.</p>
+<blockquote>
+<p>PlusCal shows you in 22 lines that your assumptions of your are invalid.</p>
+</blockquote>
+<p>This simply wire transfer specification generates 25 unique system states, and
+the seemingly obvious property that no money gets created or lost <em>doesn&rsquo;t
+hold</em>.  In my experience, these types of fundamental properties are exactly
+the type of thing that get&rsquo;s lost in requirements, and never gets checked in
+testing. This is where PlusCal shines: showing you that your assumptions need
+refinement.</p>
+<h2 id="learning-questionshahahugoshortcode-s0-hbhb"><a href="https://quiescent.us/2020/05/learning-process/">Learning Questions</a></h2>
+<p>This leads me to refine my motivation for learning TLA+ (and PlusCal).
+Throughout this journey, we&rsquo;ll see what of these motivations hold to be true
+and which are refined:</p>
+<ol>
+<li>Build intuitive models to validate system assumptions.</li>
+<li>Build models to verify the &ldquo;obvious stuff&rdquo;.</li>
+<li>Identify when system properties change.
+<ol>
+<li>When working on a legacy system are assumptions and practices that were
+try at the beginning of the design still true? Id est, do the
+invariants and eventual consistent properties of the system still hold
+after the countless features and patches added over time?</li>
+</ol>
+</li>
+</ol>
+<h2 id="anki-cardshahahugoshortcode-s1-hbhb"><a href="https://quiescent.us/2020/05/learning-process/">Anki Cards</a></h2>
+<ol>
+<li>In temporal logic {{c1::Stuttering}} is when a process simply stops.</li>
+<li>Stuttering models what real world phenomena?
+<ol>
+<li>Timeouts, slow consumers, server crashes.</li>
+</ol>
+</li>
+</ol>
+</article><section class="article labels"><a class="category" href=/categories/design/>design</a><a class="tag" href=/tags/tla&#43;/>tla&#43;</a><a class="tag" href=/tags/hillel/>hillel</a><a class="tag" href=/tags/book/>book</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.a8bf9f6f334e22a6002d9757880b6a18a0782dbe71c8c331ba76607d0b858aa3261a116797f86516d1a8b38a0cc107c7.js#pubid=ra-1234567890" integrity="sha384-qL&#43;fbzNOIqYALZdXiAtqGKB4Lb5xyMMxunZgfQuFiqMmGhFnl/hlFtGos4oMwQfH"></script></div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2020/05/learning-process/"><span class="iconfont icon-article"></span>My Learning Process</a></p><p><a class="link" href="/2015/10/system-languages-include-web/"><span class="iconfont icon-article"></span>System languages should include Webapps</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 Jeremy Wright</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p></div></section></body>
+
+</html>

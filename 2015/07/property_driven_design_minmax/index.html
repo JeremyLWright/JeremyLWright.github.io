@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.79.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Property Driven Design: MinMax&nbsp;&ndash;&nbsp;Quiescent Engineering, LLC.</title><link rel="stylesheet" href="/css/core.min.6fe5d1dee32d5c1f625e8d9d541db5df28b4c99bf9f600cc7284f342438549386d2338be608f2edbb2e7fef8cbcccf30.css" integrity="sha384-b&#43;XR3uMtXB9iXo2dVB213yi0yZv59gDMcoTzQkOFSThtIzi&#43;YI8u27Ln/vjLzM8w"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Property Driven Design: MinMax" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">Quiescent Engineering, LLC.</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Property Driven Design: MinMax</h1><p class="article date">Sunday, July 5, 2015</p></section><article class="article markdown-body"><p>I wrote an article on <a href="http://www.codestrokes.com/2014/09/property-testing-in-c/"target="_blank">Property Testing</a>
+about a year ago. Isocpp.org even <a href="https://isocpp.org/blog/2014/12/property-testing"target="_blank">linked to
+it</a> which was pretty cool.
+Recently, I uncovered a fantastic talk by <a href="https://www.youtube.com/watch?v=shngiiBfD80"target="_blank">Jessica Kerr about property
+testing</a>. Kerr&rsquo;s talk
+reinvigorated my languid research effort toward generated testing. Kerr
+presented the idea (novel to me) that properties aren&rsquo;t rigid. Properties
+don&rsquo;t need to exclude all possible incorrect results for a given function.
+Properties simply must <em>reduce the size</em> of the incorrect space. This may seem
+like semantics, but it is easier to exclude a wild-ass-guess that verify it is correct.
+Additionally, some domains may not have a solidly defined answer,a nd the
+result my be probabilistic in nature. This post will focus on deterministic
+problems for the moment, but realize that property testing is vastly more
+general than mundane example testing. How properties reduce the size of the
+problem space makes me imagine this Figure.</p>
+<p><img  src="/img/Properties_solution_space.png"
+        alt="sometimes_code_gives_you_a_wtf"/></p>
+<p>Following Kerr&rsquo;s references, I found a set of projects from a <a href="http://www.cs.ou.edu/~rlpage/SEcollab/20projects/"target="_blank">predicate-logic
+course</a>. This course
+provides 20 separate projects excellently cast for a property-driven-design
+tutorial. These projects are unique since besides the typical requirements
+they enumerate the predicate functions each requirement typifies. Predicate
+functions are to a predicate-logician as properties are to a computer
+scientist. These enumerated properties (predicates) clarified
+many points I misunderstood about property testing.</p>
+<p>This post will step through the design of the first project
+<a href="http://www.cs.ou.edu/~rlpage/SEcollab/20projects/minmax.htm"target="_blank">minmax</a> using
+C++. My primary goal for this article is to address a concern raised by
+a colleague, &ldquo;Does pulling in more complexity — a fancy test
+generator — actually increase quality?&rdquo;</p>
+<ul>
+<li><a href="https://github.com/JeremyLWright/property_driven_design/tree/master/01_minmax"target="_blank">Code for this article</a>.</li>
+<li><a href="https://github.com/JeremyLWright/JeremyLWright.github.io/commits/content/content/posts/2015-07-05-property_driven_design_minmax.markdown"target="_blank">Revision Log for this article</a></li>
+</ul>
+<p>In her presentation, Kerr stated, &ldquo;&hellip;what is this answer? I don&rsquo;t know but
+I can put a box around it!&rdquo; This jestful statement is quite
+inspired. Example tests — the test typically used in unit tests (the FPGA/ASIC
+guys call these Directed Tests) — draw individual points within the
+correct region of the solution space.</p>
+<p>There are paradigms, e.g., structured testing using McCabe
+complexity, for selecting effective points within this solution space,
+but in the end you are still drawing points. Properties on the
+other hand draw boxes around the solution space. Notice that the properties
+may include incorrect solutions. While this may seem as a defect to
+property driven design, it is precisely this simplification that makes
+properties resilient to refactoring and maintenance cycles. While still
+providing value by excluding out of bounds results. This resilience is draws
+from PDD&rsquo;s lineage as a black-box testing method. Conversely, structured
+testing is a whitebox method that looks as what test data will
+induce 100% block coverage. As the code changes over time, the
+predicates and conditionals change which intern influence the code coverage. In
+a sense the points in the correct solution place are always moving around. The
+Example based tests are tightly coupled to the implementation they are
+attempting to verify. Properties however operate at a higher level of
+abstraction. Properties allow one to say &ldquo;solutions of <em>approximately this
+form</em> are likely correct.&rdquo; Properties then may make successively tighter bounds
+around the solution space to constraint the design. Its a powerful
+technique that I increasingly enjoy in my design work.</p>
+<h1 id="implementing-minmax-with-properties">Implementing MinMax with Properties</h1>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>The term <em>measure</em> used in this problem statement means as
+the <a href="http://www.stepanovpapers.com/gcd.pdf"target="_blank">ancient Greeks meant it</a>: a line segment which
+describes an integer number of divisions of another line segment. Today we might use
+the word greatest common divisor.</p>
+<h2 id="the-maximum-function">The maximum function</h2>
+<p>Inspired by test-driven-design we&rsquo;ll start by defining a property for our
+maximum function.</p>
+<ol>
+<li>Define a function, <em>maximum</em>, that delivers the largest value in a non-empty list of rational numbers.</li>
+</ol>
+<p>Using the <a href="https://github.com/thejohnfreeman/autocheck"target="_blank">autocheck library</a> we can express this requirement as follows:</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">prop_max_element_t</span>
+<span class="p">{</span>
+	<span class="k">template</span><span class="o">&lt;</span>
+		<span class="k">typename</span> <span class="n">SinglePassRange</span><span class="o">&gt;</span>
+	<span class="kt">bool</span> <span class="k">operator</span><span class="p">()(</span><span class="k">const</span> <span class="n">SinglePassRange</span><span class="o">&amp;</span> <span class="n">xs</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">auto</span> <span class="n">ref_max</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max_element</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cbegin</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">std</span><span class="o">::</span><span class="n">cend</span><span class="p">(</span><span class="n">xs</span><span class="p">));</span>
+		<span class="k">const</span> <span class="k">auto</span> <span class="n">test_max</span> <span class="o">=</span> <span class="n">minmax</span><span class="o">::</span><span class="n">maximum</span><span class="p">(</span><span class="n">xs</span><span class="p">);</span>
+		<span class="k">return</span> <span class="o">*</span><span class="n">ref_max</span> <span class="o">==</span> <span class="n">test_max</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+<span class="p">};</span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">minmax</span><span class="p">,</span> <span class="n">maximum_prop</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">autocheck</span><span class="o">::</span><span class="n">gtest_reporter</span> <span class="n">rep</span><span class="p">;</span>
+
+	<span class="k">auto</span> <span class="n">arbitrary</span> <span class="o">=</span> 
+		<span class="n">autocheck</span><span class="o">::</span><span class="n">discard_if</span><span class="p">([](</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">size_t</span><span class="o">&gt;&amp;</span> <span class="n">xs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">bool</span> <span class="p">{</span> <span class="k">return</span> <span class="n">xs</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span> <span class="p">},</span>
+		<span class="n">autocheck</span><span class="o">::</span><span class="n">make_arbitrary</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">size_t</span><span class="o">&gt;&gt;</span><span class="p">());</span>
+		
+	<span class="n">autocheck</span><span class="o">::</span><span class="n">check</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">size_t</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+			<span class="n">prop_max_element_t</span><span class="p">(),</span>
+			<span class="mi">100</span><span class="p">,</span>
+			<span class="n">arbitrary</span><span class="p">,</span>
+			<span class="n">rep</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p>Lets breakdown the definition of the arbitrary generator:</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp">	<span class="k">auto</span> <span class="n">arbitrary</span> <span class="o">=</span> 
+		<span class="n">autocheck</span><span class="o">::</span><span class="n">discard_if</span><span class="p">([](</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">size_t</span><span class="o">&gt;&amp;</span> <span class="n">xs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">bool</span> <span class="p">{</span> <span class="k">return</span> <span class="n">xs</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span> <span class="p">},</span>
+		<span class="n">autocheck</span><span class="o">::</span><span class="n">make_arbitrary</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">size_t</span><span class="o">&gt;&gt;</span><span class="p">());</span>
+</code></pre></div><p>The signature of an arbitrary generator is best read bottom to top.  The first
+step generates a random vector of random length. The line above it throws away
+vectors who&rsquo;s size is equal to zero. We will see later how to generate data
+that meets our requirements, but sometimes its easier to just throw away some
+data rather than try to generate only valid data.</p>
+<p>With this property we can test our stub function:</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">namespace</span> <span class="n">minmax</span>
+<span class="p">{</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">SinglePassRange</span><span class="o">&gt;</span>
+<span class="k">typename</span> <span class="n">SinglePassRange</span><span class="o">::</span><span class="n">value_type</span> <span class="n">maximum</span><span class="p">(</span><span class="k">const</span> <span class="n">SinglePassRange</span><span class="o">&amp;</span> <span class="n">range</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//Stubbed method
+</span><span class="c1"></span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>This generates a failed output as we expected</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> RUN      <span class="o">]</span> minmax.maximum_prop
+d:<span class="se">\p</span>roperty_driven_design<span class="se">\b</span>uild<span class="se">\t</span>hirdparty<span class="se">\s</span>rc<span class="se">\a</span>utocheck<span class="se">\i</span>nclude<span class="se">\a</span>utocheck<span class="se">\r</span>eporter.hpp<span class="o">(</span>91<span class="o">)</span>: error: Value of: AUTOCHECK_SUCCESS
+  Actual: <span class="nb">false</span>
+Expected: <span class="nb">true</span>
+Falsifiable, after <span class="m">3</span> tests:
+<span class="o">([</span>2, 0<span class="o">])</span>
+
+<span class="o">[</span>  FAILED  <span class="o">]</span> minmax.maximum_prop <span class="o">(</span><span class="m">3</span> ms<span class="o">)</span>
+</code></pre></div><p>Now that we are confident the test machinery is working, we can remove our
+stub implementation and provide a (hopefully correct) definition.</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">namespace</span> <span class="n">minmax</span>
+<span class="p">{</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">SinglePassRange</span><span class="o">&gt;</span>
+<span class="k">typename</span> <span class="n">SinglePassRange</span><span class="o">::</span><span class="n">value_type</span> <span class="n">maximum</span><span class="p">(</span><span class="k">const</span> <span class="n">SinglePassRange</span><span class="o">&amp;</span> <span class="n">range</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="o">*</span><span class="n">std</span><span class="o">::</span><span class="n">max_element</span><span class="p">(</span>
+			<span class="n">std</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">range</span><span class="p">),</span>
+			<span class="n">std</span><span class="o">::</span><span class="n">end</span><span class="p">(</span><span class="n">range</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>We will no re-run our test to verify the implementation.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> RUN      <span class="o">]</span> minmax.maximum_prop
+OK, passed <span class="m">100</span> tests.
+<span class="o">[</span>       OK <span class="o">]</span> minmax.maximum_prop <span class="o">(</span><span class="m">14</span> ms<span class="o">)</span>
+</code></pre></div><p>This demonstrates another useful property of properties :-). The data passing
+through our property is randomly generated, ergo each time the test runs we
+execute different tests. Typing <em>make test</em> multiple times is actually useful, not just something you do to procrastinate at 4:45pm when you&rsquo;ve found
+a new bug.</p>
+<p>Also there is something viscerally satisfying about writing a single property
+and seeing 100 tests passing.</p>
+<h2 id="a-compile-time-property">A compile-time property</h2>
+<p>Next we can verify the property given to us in the <a href="http://www.cs.ou.edu/~rlpage/SEcollab/20projects/minmax.htm"target="_blank">problem statement</a></p>
+<ol>
+<li>If xs is a non-empty true-list of rational numbers, then (maximum xs) is a rational number.</li>
+</ol>
+<p>Since C++ is a statically typed language this property may appear to be self
+evident. However this demonstrates another benefit of property driven design.
+We can document that we intend to only work with rational numbers. Then since
+C++ is statically type we can validate the property statically, and any
+maintenance programmer will fail to compile without modifying the test.</p>
+<p>We can express this property as so</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">prop_maximum_should_give_rational_number_t</span>
+<span class="p">{</span>
+	<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">SinglePassRange</span><span class="o">&gt;</span>
+	<span class="kt">bool</span> <span class="k">operator</span><span class="p">()(</span><span class="k">const</span> <span class="n">SinglePassRange</span><span class="o">&amp;</span> <span class="n">xs</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">static_assert</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_integral</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">minmax</span><span class="o">::</span><span class="n">maximum</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">,</span> <span class="s">&#34;Maximum only works on rational numbers.&#34;</span><span class="p">);</span>
+		<span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">is_integral</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">minmax</span><span class="o">::</span><span class="n">maximum</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div><p>This shows another pattern of testing I picked up from <a href="https://www.youtube.com/watch?v=sDMngNP7pOw"target="_blank">Bruce Tate</a>, tests should be named as a should-statement. This property here says: My property for maximum <em>should</em> give rational numbers. If this is ever falsified our test the static_assert() will fail compilation.</p>
+<p>We can add another property that demonstrates the blackbox nature of property
+testing.</p>
+<p>2. The value (maximum xs) occurs in the list xs</p>
+<p>Properties as basic as this seem silly at first, but they serve a very useful
+purpose. Recall the poorly drawn graphic from above. We are searching for bugs
+in our program by defining bounds around the solution space. This property
+states something very profound about our function. The output of our function
+is dependent on the input. This trends the function toward referential
+transparency. At a more basic level though, this might be a property one
+starts with. Notice that if we implemented this property first, with our stub
+function in place, our random generator would have falsified it easily with
+any list where 0 was not a member.</p>
+<p>We can express this property with autocheck as:</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">prop_maximum_should_return_a_value_from_the_list_t</span>
+<span class="p">{</span>
+	<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">SinglePassRange</span><span class="o">&gt;</span>
+	<span class="kt">bool</span> <span class="k">operator</span><span class="p">()(</span><span class="k">const</span> <span class="n">SinglePassRange</span><span class="o">&amp;</span> <span class="n">xs</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">const</span> <span class="k">auto</span> <span class="n">m</span> <span class="o">=</span> <span class="n">minmax</span><span class="o">::</span><span class="n">maximum</span><span class="p">(</span><span class="n">xs</span><span class="p">);</span>
+		<span class="k">const</span> <span class="k">auto</span> <span class="n">is_present</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">find</span><span class="p">(</span>
+				<span class="n">std</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span>
+				<span class="n">std</span><span class="o">::</span><span class="n">end</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span>
+				<span class="n">m</span><span class="p">);</span>
+		<span class="k">return</span> <span class="n">is_present</span> <span class="o">!=</span> <span class="n">std</span><span class="o">::</span><span class="n">end</span><span class="p">(</span><span class="n">xs</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div><p>Simply put, if minmax::maximum returns some value m, that value must be
+present in the list.  Notice again that m may be the minimum value in the
+list. This property isn&rsquo;t checking for the complete correctness of the
+function. It is testing one small aspect of the function&rsquo;s possible solution
+space.</p>
+<p>Next we can move on to our next function, <em>minimum_pair</em>, which we can
+implement with a stub to always return the first element:</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">SinglePassRange</span><span class="o">&gt;</span>
+<span class="n">measure_pair_t</span> <span class="n">minimum_pair</span><span class="p">(</span><span class="k">const</span> <span class="n">SinglePassRange</span><span class="o">&amp;</span> <span class="n">xs</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="o">*</span><span class="n">std</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">xs</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p>To property test this function we&rsquo;ll need to teach autocheck how to generate
+a <em>measure_pair_t</em>. We do this by specializing the generator function in the
+autocheck namespace.</p>
+<h2 id="generating-a-custom-data-type">Generating a custom data type</h2>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">namespace</span> <span class="n">autocheck</span>
+<span class="p">{</span>
+
+<span class="c1">//Tell autocheck how to generate a measure_pair_t
+</span><span class="c1"></span><span class="k">template</span> <span class="o">&lt;&gt;</span>
+<span class="k">class</span> <span class="nc">generator</span><span class="o">&lt;</span><span class="n">minmax</span><span class="o">::</span><span class="n">measure_pair_t</span><span class="o">&gt;</span>
+<span class="p">{</span>
+	<span class="k">public</span><span class="o">:</span>
+	<span class="k">using</span> <span class="n">result_type</span> <span class="o">=</span> <span class="n">minmax</span><span class="o">::</span><span class="n">measure_pair_t</span><span class="p">;</span>
+
+	<span class="n">result_type</span> <span class="nf">operator</span><span class="p">()()</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="k">operator</span><span class="p">()(</span><span class="mi">0</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="n">result_type</span> <span class="nf">operator</span><span class="p">()(</span><span class="n">size_t</span> <span class="n">size</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">auto</span> <span class="n">rational_gen</span> <span class="o">=</span> <span class="n">generator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span><span class="o">&gt;</span><span class="p">();</span>
+		<span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="n">rational_gen</span><span class="p">(</span><span class="n">size</span><span class="p">),</span> <span class="n">rational_gen</span><span class="p">(</span><span class="n">size</span><span class="p">));</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">//Tell autocheck how to display a measure_pair_t
+</span><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">minmax</span><span class="o">::</span><span class="n">measure_pair_t</span><span class="o">&amp;</span> <span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;{&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">p</span><span class="p">.</span><span class="n">first</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;, &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">p</span><span class="p">.</span><span class="n">second</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;}&#34;</span><span class="p">;</span>
+	<span class="k">return</span> <span class="n">os</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><h2 id="broken-test-code">Broken Test Code</h2>
+<p>Now autocheck can generate and display our specific type. Setup a property to
+check.</p>
+<p>4. If xs is a non-empty true-list of measure pairs, then (minimum-pair xs) is a measure-pair.</p>
+<p>To express this property we must first have a definition of a measure pair
+(We&rsquo;ll see how this definition is not quite correct, but our properties will
+sus that out quite quickly):</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">using</span> <span class="n">measure_pair_t</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">size_t</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="c1">///Provided definition: measure pair: a two-element list whose first element, a rational number, is the measure of its other element
+</span><span class="c1"></span><span class="kt">bool</span> <span class="nf">is_measure_pair</span><span class="p">(</span><span class="k">const</span> <span class="n">measure_pair_t</span><span class="o">&amp;</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="c1">//A measure pair is a two element list, who&#39;s first element (a rational
+</span><span class="c1"></span>	<span class="c1">//number), is the measure of its other element
+</span><span class="c1"></span>	<span class="k">const</span> <span class="k">auto</span> <span class="n">first_element_is_rational</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">is_integral</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">first</span><span class="p">)</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+
+	<span class="k">const</span> <span class="k">auto</span> <span class="n">other_element_is_measure_of_first</span> <span class="o">=</span> 
+		<span class="c1">//To be a measure the first value must be less-than the second.
+</span><span class="c1"></span>		<span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">first</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">.</span><span class="n">second</span><span class="p">)</span>
+		<span class="c1">//And the second element must evenly divide the first element.
+</span><span class="c1"></span>		<span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">second</span> <span class="o">%</span> <span class="n">x</span><span class="p">.</span><span class="n">first</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+	<span class="k">return</span> <span class="n">first_element_is_rational</span>
+		<span class="o">&amp;&amp;</span> <span class="n">other_element_is_measure_of_first</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>And our property to check that the return value from minimum pair should meet
+the definition of a measure pair.</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">prop_minimum_pair_should_return_a_measure_pair_t</span>
+<span class="p">{</span>
+	<span class="kt">bool</span> <span class="nf">operator</span><span class="p">()(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">minmax</span><span class="o">::</span><span class="n">measure_pair_t</span><span class="o">&gt;&amp;</span> <span class="n">xs</span><span class="p">)</span> <span class="k">const</span>
+	<span class="p">{</span>
+		<span class="k">using</span> <span class="k">namespace</span> <span class="n">minmax</span><span class="p">;</span>
+		<span class="k">const</span> <span class="k">auto</span> <span class="n">test_pair</span> <span class="o">=</span> <span class="n">minimum_pair</span><span class="p">(</span><span class="n">xs</span><span class="p">);</span>
+		<span class="k">return</span> <span class="n">is_measure_pair</span><span class="p">(</span><span class="n">test_pair</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div><p>Executing this gives us, as expected due to our stub, a falsifiable case.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> RUN      <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
+unknown file: error: SEH exception with code 0xc0000094 thrown in the <span class="nb">test</span> body.
+
+<span class="o">[</span>  FAILED  <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair <span class="o">(</span><span class="m">1</span> ms<span class="o">)</span>
+</code></pre></div><p>Error 0xc0000094 is a divide by zero. Ah! Good catch autocheck. I know
+I personally would not have exercised this using a directed test. This is
+another strength of random testing. The random generators are not biased with
+programmer intuition. Our requirements state that a measure-pair is always
+non-zero so we will update the generator to exclude zero values.</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">namespace</span> <span class="n">autocheck</span>
+<span class="p">{</span>
+<span class="k">template</span> <span class="o">&lt;&gt;</span>
+<span class="k">class</span> <span class="nc">generator</span><span class="o">&lt;</span><span class="n">minmax</span><span class="o">::</span><span class="n">measure_pair_t</span><span class="o">&gt;</span>
+<span class="p">{</span>
+	<span class="k">public</span><span class="o">:</span>
+	<span class="k">using</span> <span class="n">result_type</span> <span class="o">=</span> <span class="n">minmax</span><span class="o">::</span><span class="n">measure_pair_t</span><span class="p">;</span>
+
+	<span class="n">result_type</span> <span class="nf">operator</span><span class="p">()()</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="k">operator</span><span class="p">()(</span><span class="mi">0</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="n">result_type</span> <span class="nf">operator</span><span class="p">()(</span><span class="k">const</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">const</span> <span class="k">auto</span> <span class="n">non_zero_gen</span> <span class="o">=</span> <span class="p">[</span><span class="n">size</span><span class="p">]()</span>
+		<span class="p">{</span>
+			<span class="k">auto</span> <span class="n">rational_gen</span> <span class="o">=</span> <span class="n">generator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span><span class="o">&gt;</span><span class="p">();</span>
+			<span class="k">auto</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">rational_gen</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">temp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">//Skip over zero!
+</span><span class="c1"></span>				<span class="k">return</span> <span class="n">temp</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+			<span class="k">return</span> <span class="n">temp</span><span class="p">;</span>
+		<span class="p">};</span>
+		<span class="k">const</span> <span class="k">auto</span> <span class="n">measure</span> <span class="o">=</span> <span class="n">non_zero_gen</span><span class="p">();</span>
+		<span class="k">const</span> <span class="k">auto</span> <span class="n">factor</span> <span class="o">=</span> <span class="n">non_zero_gen</span><span class="p">();</span>
+		<span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="n">measure</span><span class="o">*</span><span class="n">factor</span><span class="p">,</span> <span class="n">measure</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div><p>Now with zero values excluded we&rsquo;ll get a falsifiable test case:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> RUN      <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
+d:<span class="se">\p</span>roperty_driven_design<span class="se">\b</span>uild<span class="se">\t</span>hirdparty<span class="se">\s</span>rc<span class="se">\a</span>utocheck<span class="se">\i</span>nclude<span class="se">\a</span>utocheck<span class="se">\r</span>eporter.hpp<span class="o">(</span>91<span class="o">)</span>: error: Value of: AUTOCHECK_SUCCESS
+  Actual: <span class="nb">false</span>
+Expected: <span class="nb">true</span>
+Falsifiable, after <span class="m">1</span> tests:
+<span class="o">([{</span>1, 1<span class="o">}])</span>
+
+<span class="o">[</span>  FAILED  <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair <span class="o">(</span><span class="m">1</span> ms<span class="o">)</span>
+</code></pre></div><p>This test case demonstrates that our understand of the word measure wasn&rsquo;t
+quite right when we implemented the <em>is_measure_pair</em> predicate. A value can
+always be a measure of itself, i.e., a number always measures itself one time.
+Since our function is still a stub we are still excercising the test
+machinery, not the production code yet. One school of thought is
+that we are wasting time writing, and rewriting, test code before we&rsquo;ve even
+worked on the code we&rsquo;re getting paid to write however, this failing test case is
+evidence for a different perspective. The test code is letting us explore the
+problem space.</p>
+<p>Imagine a traditional directed test scenerio. We unknowingly have a limited
+understanding of the problem space. We implement some tests. Those tests
+reflect our understanding of the problem. We then implement the functions. The
+tests pass, all the while we unknowingly provided weak tests for the given
+problem domain. Lastly, we inspect the implementation and add some additional
+tests to assure 100% code coverage.</p>
+<p>In this scenerio, we did TDD correctly by writing the tests first. We did our
+red/green refactor. We implemented the function. Our tests pass, and we
+achieved 100% code coverage. We did all the things we are supposed to do, and
+we still delivered a defective function. The problem is that all these steps
+happen at the same conceptual level of abstraction. It&rsquo;s a linear prorgession
+from our understanding, to writing tests, to writing implementation, to
+inspecting coverage. At no point was there some outside force that can
+excercise the code beyond our understanding. This is the benefit of
+property-driven-design. Randomness will generate test cases you the programmer
+didn&rsquo;t think of. You the programmer then need to classify that generated test
+case as valid input or invalid input. That is a useful! It expands your own
+understanding.</p>
+<p>John Hughes <a href="https://www.youtube.com/watch?v=FnjutUoNSmg"target="_blank">put it
+best</a> when he state that property
+testing is about comparing the specification to the code. The properties
+encode the specification. The code does what it does. When the checker finds
+a discrepancy it is the engineer&rsquo;s job to find where the defect lies. This is
+very powerful. We, the engineer, aren&rsquo;t relegated to imagining test data for
+our functions what will make it blow up. We simply describe concepts
+(properties) of what we believe the specification is telling us to do. Then we
+implement the code. If the two match then we the code probably matches the
+specification. Its raises our level of thinking out of individual numbers, and
+code paths to more abstract thinking, which is something humans do best.</p>
+<h2 id="fixing-our-property">Fixing our property</h2>
+<p>The problem is is that our definition doesn&rsquo;t include self-measures. We can
+adjust it easily.</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">bool</span> <span class="nf">is_measure_pair</span><span class="p">(</span><span class="k">const</span> <span class="n">measure_pair_t</span><span class="o">&amp;</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="c1">//A measure pair is a two element list, who&#39;s first element (a rational
+</span><span class="c1"></span>	<span class="c1">//number), is the measure of its other element
+</span><span class="c1"></span>	<span class="k">const</span> <span class="k">auto</span> <span class="n">first_element_is_rational</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">is_integral</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">first</span><span class="p">)</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+
+	<span class="k">const</span> <span class="k">auto</span> <span class="n">other_element_is_measure_of_first</span> <span class="o">=</span> 
+		<span class="c1">//To be a measure the first value must be equal-to or less-than the second.
+</span><span class="c1"></span>		<span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">first</span> <span class="o">==</span> <span class="n">x</span><span class="p">.</span><span class="n">second</span><span class="p">)</span> <span class="o">||</span>
+		<span class="p">((</span><span class="n">x</span><span class="p">.</span><span class="n">first</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">.</span><span class="n">second</span> <span class="p">)</span>
+		<span class="c1">//And the second element must evenly divide the first element.
+</span><span class="c1"></span>		<span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">second</span> <span class="o">%</span> <span class="n">x</span><span class="p">.</span><span class="n">first</span> <span class="o">==</span> <span class="mi">0</span><span class="p">));</span>
+	<span class="k">return</span> <span class="n">first_element_is_rational</span>
+		<span class="o">&amp;&amp;</span> <span class="n">other_element_is_measure_of_first</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>Executing this generates a new failing case:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> RUN      <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
+d:<span class="se">\p</span>roperty_driven_design<span class="se">\b</span>uild<span class="se">\t</span>hirdparty<span class="se">\s</span>rc<span class="se">\a</span>utocheck<span class="se">\i</span>nclude<span class="se">\a</span>utocheck<span class="se">\r</span>epor
+ter.hpp<span class="o">(</span>91<span class="o">)</span>: error: Value of: AUTOCHECK_SUCCESS
+  Actual: <span class="nb">false</span>
+Expected: <span class="nb">true</span>
+Falsifiable, after <span class="m">3</span> tests:
+<span class="o">([{</span>2, 1<span class="o">}</span>, <span class="o">{</span>2, 2<span class="o">}])</span>
+
+<span class="o">[</span>  FAILED  <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair <span class="o">(</span><span class="m">1</span> ms<span class="o">)</span>
+</code></pre></div><p>We can run it again to see if we get a different case:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> RUN      <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
+d:<span class="se">\p</span>roperty_driven_design<span class="se">\b</span>uild<span class="se">\t</span>hirdparty<span class="se">\s</span>rc<span class="se">\a</span>utocheck<span class="se">\i</span>nclude<span class="se">\a</span>utocheck<span class="se">\r</span>eporter.hpp<span class="o">(</span>91<span class="o">)</span>: error: Value of: AUTOCHECK_SUCCESS
+  Actual: <span class="nb">false</span>
+Expected: <span class="nb">true</span>
+Falsifiable, after <span class="m">7</span> tests:
+<span class="o">([{</span>4, 1<span class="o">}</span>, <span class="o">{</span>4, 2<span class="o">}</span>, <span class="o">{</span>2, 2<span class="o">}</span>, <span class="o">{</span>1, 1<span class="o">}])</span>
+
+<span class="o">[</span>  FAILED  <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair <span class="o">(</span><span class="m">1</span> ms<span class="o">)</span>
+</code></pre></div><p>This is awesome! Our failing test case is bigger now. Again to quote John
+Hughes, &ldquo;<a href="https://www.youtube.com/watch?v=zi0rHwfiX1Q"target="_blank">This is progress! We are now passing for lists of size 1!</a>&rdquo; Our function is still implemented as a stub, so we can have some confidence that our test code is behaving properly. Let&rsquo;s implement our minimum_pair function:</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">SinglePassRange</span><span class="o">&gt;</span>
+<span class="n">measure_pair_t</span> <span class="n">minimum_pair</span><span class="p">(</span><span class="k">const</span> <span class="n">SinglePassRange</span><span class="o">&amp;</span> <span class="n">xs</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="o">*</span><span class="n">std</span><span class="o">::</span><span class="n">min_element</span><span class="p">(</span>
+			<span class="n">std</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span>
+			<span class="n">std</span><span class="o">::</span><span class="n">end</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span>
+			<span class="o">::</span><span class="n">minmax</span><span class="o">::</span><span class="k">operator</span><span class="o">&lt;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p>Executing our test code:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">D:<span class="se">\p</span>roperty_driven_design<span class="se">\b</span>uild&gt;01_minmax
+Running main<span class="o">()</span> from gtest_main.cc
+<span class="o">[==========]</span> Running <span class="m">7</span> tests from <span class="m">3</span> <span class="nb">test</span> cases.
+<span class="o">[</span>----------<span class="o">]</span> Global <span class="nb">test</span> environment set-up.
+<span class="o">[</span>----------<span class="o">]</span> <span class="m">1</span> <span class="nb">test</span> from minmax
+<span class="o">[</span> RUN      <span class="o">]</span> minmax.maximum_directed
+<span class="o">[</span>       OK <span class="o">]</span> minmax.maximum_directed <span class="o">(</span><span class="m">0</span> ms<span class="o">)</span>
+<span class="o">[</span>----------<span class="o">]</span> <span class="m">1</span> <span class="nb">test</span> from minmax <span class="o">(</span><span class="m">1</span> ms total<span class="o">)</span>
+
+<span class="o">[</span>----------<span class="o">]</span> <span class="m">5</span> tests from MinMaxFixture
+<span class="o">[</span> RUN      <span class="o">]</span> MinMaxFixture.prop_maximum_should_give_greatest_value
+OK, passed <span class="m">100</span> tests.
+<span class="o">[</span>       OK <span class="o">]</span> MinMaxFixture.prop_maximum_should_give_greatest_value <span class="o">(</span><span class="m">13</span> ms<span class="o">)</span>
+<span class="o">[</span> RUN      <span class="o">]</span> MinMaxFixture.prop_maximum_should_give_rational_number
+OK, passed <span class="m">100</span> tests.
+<span class="o">[</span>       OK <span class="o">]</span> MinMaxFixture.prop_maximum_should_give_rational_number <span class="o">(</span><span class="m">11</span> ms<span class="o">)</span>
+<span class="o">[</span> RUN      <span class="o">]</span> MinMaxFixture.prop_maximum_should_return_a_value_from_the_list
+OK, passed <span class="m">100</span> tests <span class="o">(</span>2% trivial<span class="o">)</span>.
+10% 10, odd-length.
+10% 20, even-length.
+10% 30, odd-length.
+10% 40, even-length.
+10% 50, odd-length.
+10% 60, even-length.
+10% 70, odd-length.
+10% 80, even-length.
+10% 90, odd-length.
+9% 0, even-length.
+<span class="o">[</span>       OK <span class="o">]</span> MinMaxFixture.prop_maximum_should_return_a_value_from_the_list <span class="o">(</span><span class="m">24</span> ms<span class="o">)</span>
+<span class="o">[</span> RUN      <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
+OK, passed <span class="m">100</span> tests.
+<span class="o">[</span>       OK <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair <span class="o">(</span><span class="m">20</span> ms<span class="o">)</span>
+<span class="o">[</span> RUN      <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_the_smallest_pair
+OK, passed <span class="m">100</span> tests.
+<span class="o">[</span>       OK <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_the_smallest_pair <span class="o">(</span><span class="m">23</span> ms<span class="o">)</span>
+<span class="o">[</span>----------<span class="o">]</span> <span class="m">5</span> tests from MinMaxFixture <span class="o">(</span><span class="m">92</span> ms total<span class="o">)</span>
+
+<span class="o">[</span>----------<span class="o">]</span> <span class="m">1</span> <span class="nb">test</span> from MinMaxDirected
+<span class="o">[</span> RUN      <span class="o">]</span> MinMaxDirected.directed_minimum_pair_shouls_return_a_measure_pair
+<span class="o">[</span>       OK <span class="o">]</span> MinMaxDirected.directed_minimum_pair_shouls_return_a_measure_pair <span class="o">(</span><span class="m">0</span> ms<span class="o">)</span>
+<span class="o">[</span>----------<span class="o">]</span> <span class="m">1</span> <span class="nb">test</span> from MinMaxDirected <span class="o">(</span><span class="m">0</span> ms total<span class="o">)</span>
+
+<span class="o">[</span>----------<span class="o">]</span> Global <span class="nb">test</span> environment tear-down
+<span class="o">[==========]</span> <span class="m">7</span> tests from <span class="m">3</span> <span class="nb">test</span> cases ran. <span class="o">(</span><span class="m">96</span> ms total<span class="o">)</span>
+<span class="o">[</span>  PASSED  <span class="o">]</span> <span class="m">7</span> tests.
+</code></pre></div><p>Running this multiple times generates no failing test cases.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>So a few real-world metrics. I wrote this code in 3 hours. The
+requirements were relatively simple, but I suspect that using example tests
+would have resulted in a similar completion time. Additionally, I suspect, my
+directed tests would have found more defects near the end of my development
+rather than the beginning. I felt this affect as an acceleration. I found feel
+as I closed each property that I had fewer defects in the code I previously
+thought was done. This is a big confidence booster in my opinion.
+Additionally, another pattern I learned from John Hughes, that I didn&rsquo;t
+explicitly describe here but you can see in the code, save failed tests.
+A failing test is gold! When the random generator uncovers something
+interesting save it as a directed test. Then fix the failure and leave the
+directed test behind. It will be a reminder of a corner case you missed. Plus
+some developers like to see examples tests, even random ones.</p>
+<p>In this post I walked through a property-driven-design approach to a simple
+numerical problem. In intended to show something more interesting that the
+<em>reverse(reverse(list)) == list</em> example, and something less contrived than my
+previous post on property testing. I look forward to any feedback on this
+post.</p></article><section class="article labels"><a class="category" href=/categories/c&#43;&#43;/>C&#43;&#43;</a><a class="category" href=/categories/property-driven-design/>Property Driven Design</a><a class="tag" href=/tags/property-testing/>property-testing</a><a class="tag" href=/tags/example/>example</a><a class="tag" href=/tags/tutorial/>tutorial</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.a8bf9f6f334e22a6002d9757880b6a18a0782dbe71c8c331ba76607d0b858aa3261a116797f86516d1a8b38a0cc107c7.js#pubid=ra-1234567890" integrity="sha384-qL&#43;fbzNOIqYALZdXiAtqGKB4Lb5xyMMxunZgfQuFiqMmGhFnl/hlFtGos4oMwQfH"></script></div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2015/09/deploying-d-to-azure-webapp/"><span class="iconfont icon-article"></span>4 Simple Steps to Run D Language in Azure Websites</a></p><p><a class="link" href="/2015/06/converting-to-static-blog/"><span class="iconfont icon-article"></span>Recasting how I blog</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 Jeremy Wright</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p></div></section></body>
+
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>testing on Quiescent Engineering, LLC.</title>
+    <link>/tags/testing/</link>
+    <description>Recent content in testing on Quiescent Engineering, LLC.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
+    <lastBuildDate>Thu, 22 Sep 2011 22:40:42 +0000</lastBuildDate>
+    
+        <atom:link href="/tags/testing/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The $1,000,000 Compile</title>
+      <link>/2011/09/the-1000000-compile/</link>
+      <pubDate>Thu, 22 Sep 2011 22:40:42 +0000</pubDate>
+      
+      <guid>/2011/09/the-1000000-compile/</guid>
+      <description>Hitting the compile and run button costs $1,000,000. How would such a cost affect your test strategy? As extreme as that sounds, its a harsh reality for ASIC designers. The start-up costs for an ASIC design are extreme, as a result ASIC verification is very important. Especially since you can&amp;rsquo;t just update a buggy ASIC. In software engineering, we design increasingly complex systems requiring more and more elegant test strategies. I propose ASIC verification is in a more mature state, and software engineers could learn a lot from the translation of these techniques.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

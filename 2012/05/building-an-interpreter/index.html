@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.79.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Building an Interpreter&nbsp;&ndash;&nbsp;Quiescent Engineering, LLC.</title><link rel="stylesheet" href="/css/core.min.6fe5d1dee32d5c1f625e8d9d541db5df28b4c99bf9f600cc7284f342438549386d2338be608f2edbb2e7fef8cbcccf30.css" integrity="sha384-b&#43;XR3uMtXB9iXo2dVB213yi0yZv59gDMcoTzQkOFSThtIzi&#43;YI8u27Ln/vjLzM8w"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Building an Interpreter" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">Quiescent Engineering, LLC.</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Building an Interpreter</h1><p class="article date">Monday, May 28, 2012</p></section><article class="article markdown-body"><p>When I started programming, I thought that compilers where these magic behemoths; Oracles which consumed your source code, and prophesied  the resulting program.  I thought that the compiler was an integral part of the &ldquo;system&rdquo;. I was excited to realize that the compiler is simply another program. A program you can write yourself. You can write a compiler, for your very own language.  Go ahead, make up a language, I&rsquo;ll wait&hellip;</p>
+<p><a href="http://www.codestrokes.com/wp-content/uploads/2012/05/hourglass.gif"target="_blank"><img  src="http://www.codestrokes.com/wp-content/uploads/2012/05/hourglass.gif"
+        alt/></a></p>
+<p>Seriously though, making your own language is a very difficult task, and implementing a language useful enough for non-trivial problems is even more difficult. There is however, a very approachable goal here: Domain Specific Languages (DSLs).  DSLs are focused languages useful to a limited group of people for a limited purpose.</p>
+<p>I like to think of DSLs as tools. For example, sometimes one needs to automate a task, its might be easier to write a small program that helps with that task. But it might be even more useful to write a language that allows you to describe the problem better, then one can write a program using the new language to finish the task in an efficient and repeatable way.  The program has limited usefulness beyond its initial application, but for the application at hand, its perfect. SQL is the canonical example. In this post we&rsquo;ll start with a basic grammar in EBNF. We&rsquo;ll translate that to a flex lexer, and connect that to a bison parser. We&rsquo;ll end up with a syntax tree which we&rsquo;ll execute to calculate a result.</p>
+<!-- raw HTML omitted -->
+<p>The first step in writing a language is creating the grammar. This is horrifically difficult, however for this example we&rsquo;ll assume we already have a grammar.</p>
+<pre><code>Program → Block
+Block → {Declaration} {Statement}
+Declaration → VariableDeclaration | ConstantDeclaration
+VariableDeclaration → var Id {‘,’ Id}
+ConstantDeclaration → const Id ‘=’ Number
+Statement → Assignment | PrintStmt | IfStmt | DoStmt
+Assignment → Id ‘:=’ Expression
+PrintStmt → print Expression
+IfStmt → if {do Expression ‘-&gt;’ Block end} end
+DoStmt → loop {do Expression ‘-&gt;’ Block end} end
+Expression → Simple [ Relop Simple ]
+Simple → UniTerm {Ampop UniTerm}
+UniTerm → Perop UniTerm | Term
+Term → Factor [Atop Term]
+Factor → ‘(’ Expression ‘)’ | Number | Id
+Relop → ‘=’ | ’&lt;’ | ’&gt;’ | ‘/=’ | ‘&lt;=’ | ‘&gt;=’
+Ampop → ‘&amp;’
+Perop → ‘%’
+Atop → ‘@’
+</code></pre>
+<p>Now we have a grammar, and we can think up some simple test cases. These will be used to evaluate the compiler we&rsquo;re building. This is infinitely important. Compilers are built on the principles of Context-Free-Languages, which by definition are infinite, ergo testing is critically important. Since you cannot possible think of every test case, directed test maybe insufficient, but this discussion is beyond the scope of the post.</p>
+<p>To use Bison to parse this, we need make sure that the grammar is LL(k). Bison is not capable of parsing the entire CFL space, furthermore, <a href="http://dinosaur.compilertools.net/bison/bison_6.html#SEC42"target="_blank">bison prefers left-recursion</a>. Many compiler books encourage right-recursion since<a href="http://stackoverflow.com/questions/847439/why-cant-a-recursive-descent-parser-handle-left-recursion"target="_blank"> recursive-decent prefers it</a>. LL(k) is a different animal.  To prove that this grammar is LL(k) compatible, is beyond the scope of this post, but it entails calculating the <em>First</em> and _Follow _sets for each grammar rule.</p>
+<h2 id="converting-to-bnf">Converting to BNF</h2>
+<p>Our grammar is in EBNF right now. I&rsquo;ve found it easier to write the bison grammar from the BNF form. I found <a href="http://lampwww.epfl.ch/teaching/archive/compilation-ssc/2000/part4/parsing/node3.html"target="_blank">a few tricks</a> to help. Following these tricks blindly will result in a grammar which is a bit bigger than necessary e.g. the grammar will not be minimum. For our simple grammar this is not a big issue. However, for a production compiler, a minimum grammar is very important.</p>
+<pre><code> Program → Block
+ Block → ε | Block Declaration | Block Statement
+ Declaration → VariableDeclaration | ConstantDeclaration
+ VariableDeclaration → 'var' TIDENTIFIER | ',' TIDENTIFIER
+ ConstantDeclaration → 'const' TIDENTIFIER '=' TNUMBER
+ Statement → Assignment | PrintStmt | IfStmt | DoStmt
+ Assignment → TIDENTIFIER TASSIGN Expression
+ PrintStmt → 'print' Expression
+ IfStmt → 'if' Condition 'end'
+ DoStmt → 'loop' Condition 'end'
+ Condition → ε | Condition do Expression '-&gt;' Block 'end'
+ Expression → Simple | Simple RELOP Simple | Simple TEQ Simple
+ Simple → UniTerm | Simple TAMPOP UniTerm
+ UniTerm → TPEROP UniTerm | Term
+ Term → Factor | Factor TATOP Term
+ Factor → LPAREN Expression RPAREN | TNUMBER | TIDENTIFIER
+</code></pre>
+<p>Notice that a few rules appear missing. Actually during translation we noted which items can be recognized by the lexer. These tokens are captured by flex/lex, and simplify how much work Bison needs to do. As a general rule the sooner you can translate something the better. This allows your deeper layer to be more abstract e.g. replacing strings in favor of tokens.  (Get <a href="http://www.codestrokes.com/wp-content/uploads/2012/05/Bison-Flex.7z"target="_blank">Bison-Flex</a> Files). Now that we have the lexer, and syntax analyzer, we can work on <strong>semantic</strong> analysis. This is an important point that took me a while to understand: syntax is orthogonal to semantics. Said another way, <em>how something is said is separate to what is said</em>.  Bison will parse the syntax and give use the terminal tokens in the correct order, but it is our responsibility to translate that to actual code.</p>
+<h2 id="syntax-directed-translation">Syntax-Directed Translation</h2>
+<p><a href="http://en.wikipedia.org/wiki/Syntax-directed_translation"target="_blank">Syntax-Directed Transalation</a>, is one method for attaching semantic actions to the rules of a grammar. I image that the grammar rule is  the line to the constructor of a C++ class. For example, take the _Assignment _rule:</p>
+<pre><code>Assignment → TIDENTIFIER TASSIGN Expression
+</code></pre>
+<p>This rule has 2 important parts, TIDENTIFIER and the Expression. The TASSIGN token is implied by the rule itself. This allows us to write a class as follows:</p>
+<pre><code>struct Assignment {
+
+    Assignment(string id, Expression* rhs):
+    _rhs(rhs),
+    _identifier(id)
+    {
+    }
+
+    virtual string ToString()
+    {
+        return &quot;Assignment:: &quot;;
+    }
+
+    virtual void Execute()
+    {
+        int value = _rhs-&gt;Execute();
+        programSymbolTable-&gt;GetSymbol(_identifier)-&gt;SetValue(_rhs-&gt;Execute());
+    }
+
+  Expression* _rhs;
+  string const _identifier;
+};
+</code></pre>
+<p>Following in this way we can complete semantic actions for each rule. To finish our interpreter we simply need to leverage the Bison PDA to link all the objects together.</p>
+<h2 id="the-abstract-syntax-tree">The Abstract Syntax Tree</h2>
+<p>Behind the scenes, Bison uses a very efficient table driven parser. For this project, I&rsquo;ve found its easier to treat Bison parser as a black-box, and independent of how is actually implemented, imagine Bison uses a theoretical Push-down Automata.</p>
+<p>[caption id=&quot;&quot; align=&ldquo;aligncenter&rdquo; width=&ldquo;340&rdquo; caption=&ldquo;PDA from Wikipedia.org&rdquo;]<a href="http://en.wikipedia.org/wiki/Pushdown_automaton"target="_blank"><img  src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Pushdown-overview.svg/340px-Pushdown-overview.svg.png"
+        alt="PDA from wikipedia"/></a>[/caption]</p>
+<p>From this picture Bison&rsquo;s <em>$$</em> token represents the A. The input tape is preprocessed by flex. Ergo, at this point the input tape, is a_ string of tokens_, not a string of characters. We mentioned earlier that Bison prefers left-recursion, this is directly attributed to the PDA architecture it uses. Bison&rsquo;s method of matching the stack allows right-recursion to use bounded stack space. We&rsquo;ve discussed before how <a href="http://www.codestrokes.com/2011/11/parallel-binary-buddy-the-friendly-memory-manager/"target="_blank">memory allocation</a> is one of the slowest operations a program can perform, therefore limiting the memory usage is always a meaningful performance enhancement.</p>
+<p>Bison&rsquo;s will now parse the input tokens for use, and as it matches each rule, automatically recurse through the rules until it reaches a terminal. This in turn will call your semantic actions in the reverse order to compose your tree. By returning each new node of the tree into the $$, Bison will pass the chain of objects back up the parse tree. Let&rsquo;s see an example:</p>
+<pre><code>N := i &amp; 1
+</code></pre>
+<p>This is an assignment. the bison follows our rules in the following order:</p>
+<pre><code>Assignment : TIDENTIFIER TASSIGN Expression
+TIDENTIFIER = 'N', matched by flex
+TASSIGN = ':=' matched by flex
+</code></pre>
+<p>Expression is a non-terminal so keep parsing
+Our stack at this point has the following items in it:</p>
+<pre><code>TIDENTIFIER:'N'
+TASSIGN:':='
+</code></pre>
+<p>Now Bison has to resolve the Expression rule into terminals, so bison jumps to the Expression Rule:</p>
+<pre><code>Expression : Simple
+           | Simple RELOP Simple
+           | Simple TEQ Simple
+</code></pre>
+<p>Simple matches, so keep parsing.</p>
+<pre><code>Simple: UniTerm
+           | Simple TAMPOP UniTerm
+TAMPOP = '&amp;'
+</code></pre>
+<p>UniTerm matches so keep parsing. Following in this way, we eventually reach the Factor rule:</p>
+<pre><code>Factor : LPAREN Expression RPAREN { $$ = $2; }
+        | TNUMBER { $$ = new Factor($1); } &lt;-- Runs this one for the '1'
+        | TIDENTIFIER { $$ = new Factor(*$1); } &lt;-- Runs this for the 'i'
+TNUMBER = '1'
+TIDENTIFIER = 'i'
+</code></pre>
+<p>Now we return up the parse tree, at each semantic action we pass the newly created object into the $$ token. The power of Bison, is how it calls the rules in the correct order allowing you to compose your tree correctly, or recognize a syntax error if rules don&rsquo;t match.</p>
+<p>At this point there a fork in the road. We can either execute our tree directly, which makes our interpreter complete, or we can move on to code-generation. Code generation will translate the AST we built into some other language. This target language is frequently C for DSLs. C allows for massive flexibility, while retaining platform portability. Every platform has a C compiler, there by targeting C, your language also runs on every platform. This difference between interpreter and compiler is subtle, since some interpreters include virtual machines, and translate the source code to an intermediate form which the internal virtual machine executes. Python is one such example of this.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Bison is a powerful tool, combined with Syntax-Directed translation, we have a powerful tool for matching languages. Bison can parse streaming data as well, by combining these techniques, one can recognize a stream of commands sent over a network, or other dynamic source. For the embedded spaces this offers a very powerful way of interfacing with downstream sensors and ECUs. Bison is also extremely efficient and uses a bounded memory stack, allowing use in the smallest of microcontrollers.</p>
+</article><section class="article labels"><a class="category" href=/categories/compilation/>Compilation</a><a class="tag" href=/tags/ast/>AST</a><a class="tag" href=/tags/bison/>Bison</a><a class="tag" href=/tags/c&#43;&#43;/>C&#43;&#43;</a><a class="tag" href=/tags/compiler/>compiler</a><a class="tag" href=/tags/flex/>Flex</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.a8bf9f6f334e22a6002d9757880b6a18a0782dbe71c8c331ba76607d0b858aa3261a116797f86516d1a8b38a0cc107c7.js#pubid=ra-1234567890" integrity="sha384-qL&#43;fbzNOIqYALZdXiAtqGKB4Lb5xyMMxunZgfQuFiqMmGhFnl/hlFtGos4oMwQfH"></script></div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2012/07/the-importance-of-system-design/"><span class="iconfont icon-article"></span>The Importance of System Design</a></p><p><a class="link" href="/2012/05/anderson-smart-pointer-idiom-updated/"><span class="iconfont icon-article"></span>Anderson Smart-Pointer Idiom Updated!</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 Jeremy Wright</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p></div></section></body>
+
+</html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Security on Quiescent Engineering, LLC.</title>
+    <link>/categories/security/</link>
+    <description>Recent content in Security on Quiescent Engineering, LLC.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
+    <lastBuildDate>Sat, 03 May 2014 20:56:49 +0000</lastBuildDate>
+    
+        <atom:link href="/categories/security/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Design for Testability via Security </title>
+      <link>/2014/05/design-for-testability-via-security/</link>
+      <pubDate>Sat, 03 May 2014 20:56:49 +0000</pubDate>
+      
+      <guid>/2014/05/design-for-testability-via-security/</guid>
+      <description>I was discussing bootloader design with a colleague of mine the other day. We were attempting to load new a third-party hardware component. The device has a poor protocol, and a useless verification step. This discussion got me thinking however how the concepts used to build a strong self-enforcing security protocol, also apply to building a testable, and reliable communication protocol. Thus, security helps us build better products not because they are secure, but because they are verifiable.</description>
+      
+    </item>
+    
+    <item>
+      <title>A Thunk on Laziness</title>
+      <link>/2013/10/a-thunk-on-laziness/</link>
+      <pubDate>Sun, 27 Oct 2013 23:00:17 +0000</pubDate>
+      
+      <guid>/2013/10/a-thunk-on-laziness/</guid>
+      <description>I originally approached Haskell excited, and wide-eyed mystified by the type theory. Type became my golden hammer. In my C programs I typedef&amp;rsquo;d everything so it&amp;rsquo;d have a &amp;ldquo;unique&amp;rdquo; type. I was cautious with my casting. I was hooked. I had an intuitive understanding of laziness, as implemented by Haskell, that would allow one to write&amp;quot;streaming&amp;quot; algorithms. That is programs that deal with data in an online way to process data as it streams through.</description>
+      
+    </item>
+    
+    <item>
+      <title>Linux User&#39;s Group CTF 2013</title>
+      <link>/2013/09/linux-users-group-ctf-2013/</link>
+      <pubDate>Sun, 08 Sep 2013 21:58:06 +0000</pubDate>
+      
+      <guid>/2013/09/linux-users-group-ctf-2013/</guid>
+      <description>This past weekend we held another capture the flag event at the Arizona State University&amp;rsquo;s Linux User&amp;rsquo;s Group. It had more of a system admin focus than security cracking exploits, but it was fun an nontheless a diverse learning experience for all those involved. However, almost immediately, I realized the number one rule in CTF, nothing is off limits!
+The game was organized into two parts, a game server which collected the the scores and displayed the point totals of all teams in real-time, and the virtual servers (hosted on Amazon EC2) which contained the actual games.</description>
+      
+    </item>
+    
+    <item>
+      <title>Capture the Flag - Running a Hacking Competition</title>
+      <link>/2012/04/capture-the-flag-running-a-hacking-competition/</link>
+      <pubDate>Mon, 30 Apr 2012 02:38:44 +0000</pubDate>
+      
+      <guid>/2012/04/capture-the-flag-running-a-hacking-competition/</guid>
+      <description>Black-Hat hacking in an controlled environment, like this, is an important skill for software developers. The Art of War describes knowing one&amp;rsquo;s enemy, and with the prevalence of internet-enabled applications today, it has never been more critical to know how the &amp;ldquo;enemy&amp;rdquo; can take down a system. While capture-the-flag is a fun, and exciting intellectual game, it is serious training for software engineers of all types, and skill levels. I recently setup a small capture the flag event for the Arizona Linux User&amp;rsquo;s Group, and it was very fun.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

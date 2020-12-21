@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.79.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Recasting how I blog&nbsp;&ndash;&nbsp;Quiescent Engineering, LLC.</title><link rel="stylesheet" href="/css/core.min.6fe5d1dee32d5c1f625e8d9d541db5df28b4c99bf9f600cc7284f342438549386d2338be608f2edbb2e7fef8cbcccf30.css" integrity="sha384-b&#43;XR3uMtXB9iXo2dVB213yi0yZv59gDMcoTzQkOFSThtIzi&#43;YI8u27Ln/vjLzM8w"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Recasting how I blog" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">Quiescent Engineering, LLC.</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Recasting how I blog</h1><p class="article date">Sunday, June 7, 2015</p></section><article class="article markdown-body"><p>I wrote my first article for codestrokes in February 2011 - right as I was
+accepted to graduate school. My goal was to improve my writing in preparation
+for writing a thesis. While through grad school I started with more
+traditional writing tool. I started to learn to write, and I found my writing
+style: Simplicity.  I started writing with a big fancy word processor.
+I blogged with a massive database backed blogging engine. By the time
+I finished my thesis, I was writing in vim. I used a makefile to check
+spelling and check for simple grammatical rules. The process was much simpler
+to manage. This motivated me to convert my blog to a static site. This post
+describes my process on simplifying my writing process.</p>
+<h1 id="my-toolchain">My toolchain</h1>
+<p>The primary goal was leverage the writing tool chain I honed during my thesis
+for maintaining my blog. I didn&rsquo;t want to complexity of a database backed
+blogging site. I wanted to drop my hosting service. I wanted to write in
+a markup language. I wrote my thesis in Latex, and I love the separation of
+presentation from content. This site you are reading today is composed of:</p>
+<ol>
+<li>Markdown written in Vim.</li>
+<li>Changes tracked in git.</li>
+<li>Markdown converted HTML via Hugo.</li>
+<li>Static pages hosted by Github Pages.</li>
+</ol>
+<h1 id="choosing-a-static-site-generator">Choosing a static site generator</h1>
+<p>I actually didn&rsquo;t spend too much time working on this, since someone already
+did a great deal of the work at <a href="https://www.staticgen.com/">https://www.staticgen.com/</a>.  If you are
+planning to use Github to host your blog, Jekyll will be the easiest to use.
+The Github pages even include documentation on how to use Jekyll with Github
+pages. I however have an aversion to Ruby (though an order of magnitude
+weaker than my aversion to Java).  Near the top was <a href="gohugo.io">Hugo</a>.
+A <!-- raw HTML omitted -->colleague<!-- raw HTML omitted --> friend of mine is quite a convincing evangelist of Go,
+and I decided to give it a try. &ndash; Boy, was I impressed &ndash; The quality of the
+documentation if fantastic. However my favorite feature of Hugo, it is
+a single download. One executable. One. No dependencies&hellip; Its hard to express
+how incredibly relieving this is.</p>
+<p>As an illustration, let me share with you a little lie. I didn&rsquo;t directly just
+to staticgen.com, and find Hugo. I have an affinity for Haskell, and tried to
+use a static site generator called <a href="https://www.staticgen.com/hakyll"target="_blank">Hakyll</a>.<br>
+I closed the project from github. The repository included a cabal file, which
+I promptly compiled. It took 25 minutes to build all the dependencies. Hakyll
+seems awesome, but I wanted something simple. Simple that I can just write,
+and the publication process becomes ancillary. Pieter Hintjens states that
+a project should continuously seek to reduce barriers for participation.
+Comment on this site are a perfect example. <a href="https://disqus.com/"target="_blank">Disqus</a>
+strikes a fantastic balance between reducing spam, without requiring everyone
+to login to my site. I have no presumptions concerning this site, and
+I completely understand that people do not need yet another account to manage.
+I want people to comment, hence I use a service that reduces the barrier to
+participate.</p>
+<p>A cabal file is a barrier to participate. I want to consume a project, I don&rsquo;t
+want to contribute to it (yet). Hugo had the lowest barrier to entry of the
+site generators I tried. One executable, no dependencies, and fantastic
+documentation.</p>
+<h1 id="exporting-content">Exporting Content</h1>
+<p>I had a significant number of posts in Wordpress. I wanted to be a good
+content creator, and preserve my URIs.  Really, I&rsquo;m <em>wicked</em> lazy, and
+preserving my permalinks meant I would not have to migrate my comments. Disqus
+would pick them up on the new site. Thus I wanted an automated way of
+exporting my posts from Wordpress. <a href="https://github.com/thomasf/exitwp"target="_blank">Exitwp</a>
+worked like a charm.</p>
+<h1 id="choosing-a-theme">Choosing a theme</h1>
+<p>Hugo has a <a href="https://github.com/spf13/hugoThemes/"target="_blank">theme gallery</a> for all the known themes associated with the
+generator.  I picked <a href="https://github.com/tmaiaroto/hugo-redlounge"target="_blank">redlounge</a>.
+My only customization was to add Google Analytics so I can track my meager
+pages views.</p>
+<h1 id="writing-articles-in-a-series">Writing articles in a series</h1>
+<p>I tend to write articles broken over many pieces. In fact, this article is
+part of my blog transition series. My series support was somewhat lacking in
+Wordpress. For this reincarnation of codestrokes.com, I wanted series to be
+nice and effective. Hugo&rsquo;s taxonomy makes this possible, but it was a great
+series by another author, <a href="http://npf.io/series/hugo-101/"target="_blank">Nate Finch</a> that
+made it easy. Ironically, the series starts with an article about how to
+design series into Hugo. Brilliant.</p>
+<h1 id="hosting">Hosting</h1>
+<p>I have a few requirements:</p>
+<ol>
+<li>Custom domain must work (so I don&rsquo;t have to migrate comments :-)</li>
+<li>Publishing from git would be sweet, but I can configure Travis-CI or
+a deployment something to deal with that.</li>
+</ol>
+<p><a href="https://pages.github.com/"target="_blank">Github pages!</a>. I just followed the documentation.</p>
+<h1 id="my-publishing-process">My Publishing Process</h1>
+<p>Here&rsquo;s how I write now:</p>
+<ol>
+<li>Clone <a href="mailto:JeremyLWright@github.com">JeremyLWright@github.com</a></li>
+<li>git checkout content
+<ol>
+<li>The content branch holds the source, and theme files.</li>
+</ol>
+</li>
+<li>Clone the repository again into the public folder.</li>
+<li>The public folder should be on the master branch.</li>
+<li>Write.</li>
+<li>Revise.</li>
+<li>Write&hellip;</li>
+<li>Run Hugo.</li>
+<li>Commit the content branch.</li>
+<li>Commit the public branch.</li>
+<li>Push!</li>
+</ol>
+<p>I&rsquo;m happy with my new process. I&rsquo;m still working out some kinks with my pages
+vs posts (hence you see the About Me page in the middle of my posts). I am
+prone to shiny things so we&rsquo;ll see how long I keep it. This process is simple.
+It removes the barriers of posting, and just lets me write in the tool I am
+most comfortable, and but its hard to argue with simple.</p></article><section class="article labels"><a class="category" href=/categories/writing/>Writing</a><a class="tag" href=/tags/blogging/>blogging</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.a8bf9f6f334e22a6002d9757880b6a18a0782dbe71c8c331ba76607d0b858aa3261a116797f86516d1a8b38a0cc107c7.js#pubid=ra-1234567890" integrity="sha384-qL&#43;fbzNOIqYALZdXiAtqGKB4Lb5xyMMxunZgfQuFiqMmGhFnl/hlFtGos4oMwQfH"></script></div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2015/07/property_driven_design_minmax/"><span class="iconfont icon-article"></span>Property Driven Design: MinMax</a></p><p><a class="link" href="/2015/02/introduction-to-pointers/"><span class="iconfont icon-article"></span>Introduction to Pointers</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 Jeremy Wright</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p></div></section></body>
+
+</html>
