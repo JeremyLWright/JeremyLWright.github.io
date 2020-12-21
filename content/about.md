@@ -56,5 +56,5 @@ Code
 My Free Time
 ------------
 - [dotfiles](https://github.com/JeremyLWright/dotfiles)
-- ![Project Euler](http://projecteuler.net/profile/jwright85.png)
+- ![Project Euler](https://projecteuler.net/profile/jwright85.png)
 
