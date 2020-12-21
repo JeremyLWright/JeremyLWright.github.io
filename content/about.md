@@ -2,7 +2,7 @@
 title: About Me
 author: Jeremy
 nocomment: true
-date: 2020-05-25 12:17:00-07:00
+date: 2020-12-20 17:30:00-07:00
 slug: about
 ---
 
