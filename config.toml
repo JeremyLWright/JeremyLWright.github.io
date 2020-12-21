@@ -1,7 +1,7 @@
 baseurl = "https://quiescent.us/"
 languageCode = "en-us"
 enableRobotsTXT = true
-title = "Quiescent Engineering, LLC."
+title = "The Quiescent Current"
 copyright = "©2020 Jeremy Wright"
 
 disqusShortname = "codestrokes2"
@@ -15,7 +15,7 @@ codeFences = true
 noClasses = false
 
 [params]
-	sidebartitle="Quiescent Engineering, LLC"
+	sidebartitle="The Quiescent Current"
 	style="light"
 	dateFormat="Monday, January 2, 2006"
 	slogan="Go Far. Go Together."
