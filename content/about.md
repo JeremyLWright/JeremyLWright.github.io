@@ -55,7 +55,6 @@ Code
 
 My Free Time
 ------------
-- [XBOX](https://www.xboxgamertag.com/search/Quiescent)
 - [dotfiles](https://github.com/JeremyLWright/dotfiles)
 - ![Project Euler](http://projecteuler.net/profile/jwright85.png)
 
