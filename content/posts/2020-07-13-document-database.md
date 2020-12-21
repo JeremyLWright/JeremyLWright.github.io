@@ -2,6 +2,7 @@
 title: "My Document Database is a Filesystem"
 date: 2020-07-13T00:00:00-07:00
 slug: flat-file-database
+draft: true
 tags:  
 - data
 - database
