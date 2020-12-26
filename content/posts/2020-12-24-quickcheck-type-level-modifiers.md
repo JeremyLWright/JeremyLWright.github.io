@@ -105,7 +105,7 @@ is *what is bound to the name ```height```*. In the first version, I'm binding
 a ```Positive Int``` to the name ```height``` in the second version I'm
 binding merely an ```Int``` to ```height```. The Positive type modifier
 assures that the values bound to it's parameter are always positive. The bound
-value however will retain the Int type, event though it's value is always
+value however will retain the ```Int``` type, even though it's value is always
 positive. 
 
 I'm unstuck now. Moving on.
