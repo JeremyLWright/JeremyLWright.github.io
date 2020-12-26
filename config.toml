@@ -28,7 +28,7 @@ noClasses = false
 	inlineToolId = ""
 
 [params.comments]
-	enable=false
+	enable=true
 
 [params.profile]
   enable = false
