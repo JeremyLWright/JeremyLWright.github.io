@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>©2020 Jeremy Wright</copyright>
-    <lastBuildDate>Mon, 25 May 2020 15:31:21 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 24 Dec 2020 00:00:00 -0700</lastBuildDate>
     
         <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Posts</title>
+      <link>/posts/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 -0700</pubDate>
+      
+      <guid>/posts/</guid>
+      <description></description>
+      
+    </item>
     
     <item>
       <title>About Me</title>
@@ -23,16 +33,6 @@
  I specialize in the software no one sees. The high performance, concurrent, hard real-time, high-reliability systems that enable our way of life.
 My software fights fraud, and drives tractors. I&amp;rsquo;ve baked solar cells, made escalators more efficient, optimized fantasy sports. My software helps airplanes land safely.
 I&amp;rsquo;ve improved data center efficiency, and contributed designs and implementation of risk-management microservices for high-performance payment systems behind Zelle®.</description>
-      
-    </item>
-    
-    <item>
-      <title>Posts</title>
-      <link>/posts/</link>
-      <pubDate>Mon, 25 May 2020 15:31:21 -0700</pubDate>
-      
-      <guid>/posts/</guid>
-      <description></description>
       
     </item>
     

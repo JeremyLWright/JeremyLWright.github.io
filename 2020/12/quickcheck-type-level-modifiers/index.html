@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.79.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Using QuickCheck&#39;s Positive Type Level Modifier&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6fe5d1dee32d5c1f625e8d9d541db5df28b4c99bf9f600cc7284f342438549386d2338be608f2edbb2e7fef8cbcccf30.css" integrity="sha384-b&#43;XR3uMtXB9iXo2dVB213yi0yZv59gDMcoTzQkOFSThtIzi&#43;YI8u27Ln/vjLzM8w"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Using QuickCheck&#39;s Positive Type Level Modifier" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Using QuickCheck's Positive Type Level Modifier</h1><p class="article date">Thursday, December 24, 2020</p></section><article class="article markdown-body"><p>One of my students this semester was struggling with the material. This
+student is a very diligent worker and has been researching the problems trying
+to get a better understanding of the material before digging in. Sometimes
+however, there is no replacement for just digging in and coding something.
+This does at least two things, it solidifies the material you&rsquo;re read so far,
+and most importantly it shows you the limits of what you currently understand
+and urges you to learn more. Interestingly, I&rsquo;ve found in my own intellectual
+endeavors some things just don&rsquo;t make any sense until you&rsquo;ve tried to use it
+<em>in anger</em>.</p>
+<hr>
+<p>I gave this student the advice to</p>
+<blockquote>
+<p>Put down the books.
+Pick up a pencil, some paper and a compiler
+Code it. Make your brain hurt.</p>
+</blockquote>
+<p>As I was sharing this I realized how hypocritical I was. I&rsquo;ve <em>been
+learning</em> Haskell, and yet I haven&rsquo;t coded in Haskell in over a year. I&rsquo;ve
+been reading books, watching videos.</p>
+<blockquote>
+<p>I&rsquo;ve been a Spectator.
+It&rsquo;s time to be a Doer.</p>
+</blockquote>
+<p>I started working through the codewars.com problems, specifically working on
+the test cases for this <a href="https://www.codewars.com/kata/576757b1df89ecf5bd00073b/train/haskell"target="_blank">problem</a>.</p>
+<p>While coding the QuickCheck properties (tests) for this problem however, I was
+completely lost at trying to build a property with only positive generator
+values.</p>
+<p>This particular test is trying to show that the height of the pyramid is the
+length of the out put array/list.</p>
+<pre><code>prop_heightIsLength :: Int -&gt;  Bool
+prop_heightIsLength height = length ( buildTower height ) == height
+</code></pre><p>However, <code>buildTower</code> only defined for positive values. My first pass of
+the property is generates negative values (and 0 values) as input. After some
+searching I was able to find the Positive type modifier for quickcheck.</p>
+<p><a href="https://hackage.haskell.org/package/QuickCheck-2.4.1.1/docs/Test-QuickCheck.html#t:Positive">https://hackage.haskell.org/package/QuickCheck-2.4.1.1/docs/Test-QuickCheck.html#t:Positive</a></p>
+<pre><code>prop_heightIsLength :: Positive Int -&gt;  Bool
+prop_heightIsLength height = length ( buildTower height ) == height
+</code></pre><p>However, this doesn&rsquo;t compile.</p>
+<pre><code>Couldn't match expected type ‘Positive Int’
+                  with actual type ‘Int’
+</code></pre><p>Which brings me to my biggest challenge in learning anything new. Frequently
+in learning something new I don&rsquo;t have enough knowledge to ask the right
+question, or even understand the answer. This is one of those cases.</p>
+<h2 id="failed-questions">Failed Questions</h2>
+<ol>
+<li>haskell unwrap Positive newtype</li>
+<li>haskell use QuickCheck Positive</li>
+<li>haskell constraint quickcheck generator</li>
+</ol>
+<p>This lead me to the closest answer</p>
+<p><a href="https://stackoverflow.com/questions/11910143/positive-integer-type#11910221">https://stackoverflow.com/questions/11910143/positive-integer-type#11910221</a></p>
+<p>However, it is demonstrating how to build a custom generator. I just want to
+use the built in constraints!</p>
+<blockquote>
+<p>Why is this so hard?
+Because I didn&rsquo;t know how to read the type signature of the Postive type.</p>
+</blockquote>
+<pre><code>-- This property does not compile
+prop_heightIsLength :: Positive Int -&gt;  Bool
+prop_heightIsLength height = length ( buildTower height ) == height
+
+
+-- This property compiles
+prop_heightIsLength' :: Positive Int -&gt;  Bool
+prop_heightIsLength' (Positive height) = length ( buildTower height ) == height
+</code></pre><p>Naively, I thought the different is the parenthesis. Remember, parenthesis are
+<em>only used for grouping</em> in haskell. They have no other purpose. The different
+is <em>what is bound to the name <code>height</code></em>. In the first version, I&rsquo;m binding
+a <code>Positive Int</code> to the name <code>height</code> in the second version I&rsquo;m
+binding merely an <code>Int</code> to <code>height</code>. The Positive type modifier
+assures that the values bound to it&rsquo;s parameter are always positive. The bound
+value however will retain the Int type, event though it&rsquo;s value is always
+positive.</p>
+<p>I&rsquo;m unstuck now. Moving on.</p>
+</article><section class="article labels"><a class="tag" href=/tags/haskell/>haskell</a><a class="tag" href=/tags/quickcheck/>QuickCheck</a><a class="tag" href=/tags/im-stuck/>I&#39;m Stuck</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.a8bf9f6f334e22a6002d9757880b6a18a0782dbe71c8c331ba76607d0b858aa3261a116797f86516d1a8b38a0cc107c7.js#pubid=ra-1234567890" integrity="sha384-qL&#43;fbzNOIqYALZdXiAtqGKB4Lb5xyMMxunZgfQuFiqMmGhFnl/hlFtGos4oMwQfH"></script></div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2020/05/learning-process/"><span class="iconfont icon-article"></span>My Learning Process</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 Jeremy Wright</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p></div></section></body>
+
+</html>

@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>©2020 Jeremy Wright</copyright>
-    <lastBuildDate>Mon, 25 May 2020 15:31:21 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 24 Dec 2020 00:00:00 -0700</lastBuildDate>
     
         <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Using QuickCheck&#39;s Positive Type Level Modifier</title>
+      <link>/2020/12/quickcheck-type-level-modifiers/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 -0700</pubDate>
+      
+      <guid>/2020/12/quickcheck-type-level-modifiers/</guid>
+      <description>One of my students this semester was struggling with the material. This student is a very diligent worker and has been researching the problems trying to get a better understanding of the material before digging in. Sometimes however, there is no replacement for just digging in and coding something. This does at least two things, it solidifies the material you&amp;rsquo;re read so far, and most importantly it shows you the limits of what you currently understand and urges you to learn more.</description>
+      
+    </item>
     
     <item>
       <title>My Learning Process</title>
