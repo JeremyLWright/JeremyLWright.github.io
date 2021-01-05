@@ -7,22 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>©2020 Jeremy Wright</copyright>
-    <lastBuildDate>Sun, 22 Jan 2012 17:53:43 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 21 Aug 2011 07:23:25 +0000</lastBuildDate>
     
         <atom:link href="/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Abusing RAM</title>
-      <link>/2012/01/abusing-ram/</link>
-      <pubDate>Sun, 22 Jan 2012 17:53:43 +0000</pubDate>
-      
-      <guid>/2012/01/abusing-ram/</guid>
-      <description>My system has 16GB of RAM, but since I run Linux I rarely use more than about 3GB. So how do I justify such a extreme amounts of memory? Ramdisks.
-I run Lubuntu1, but hopefully this works for you too. Basically, I create a ramdisk and mount it in /mnt/ramdisk, then I setup the login/logout scripts to transfer to and from the ramdisk.
-Step 1: Create a ramdisk Add this line to your fstab:</description>
-      
-    </item>
     
     <item>
       <title>Good Tools, Excellent Results</title>

@@ -16,11 +16,14 @@
     <loc>https://quiescent.us/categories/</loc><lastmod>2020-05-25T15:00:14-07:00</lastmod></url><url>
     <loc>https://quiescent.us/categories/design/</loc><lastmod>2020-05-25T15:00:14-07:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/hillel/</loc><lastmod>2020-05-25T15:00:14-07:00</lastmod></url><url>
+    <loc>https://quiescent.us/series/practical-tla&#43;/</loc><lastmod>2020-05-25T15:00:14-07:00</lastmod></url><url>
+    <loc>https://quiescent.us/series/</loc><lastmod>2020-05-25T15:00:14-07:00</lastmod></url><url>
+    <loc>https://quiescent.us/series/</loc><lastmod>2020-05-25T15:00:14-07:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/tla&#43;/</loc><lastmod>2020-05-25T15:00:14-07:00</lastmod></url><url>
-    <loc>https://quiescent.us/2020/05/tla-chap1/</loc><lastmod>2020-05-25T15:00:14-07:00</lastmod></url><url>
+    <loc>https://quiescent.us/series/pratical-tla&#43;/tla-chap1/</loc><lastmod>2020-05-25T15:00:14-07:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/c&#43;&#43;/</loc><lastmod>2015-10-03T00:00:00+00:00</lastmod></url><url>
+    <loc>https://quiescent.us/categories/coding/</loc><lastmod>2015-10-03T00:00:00+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/d/</loc><lastmod>2015-10-03T00:00:00+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/categories/opinion/</loc><lastmod>2015-10-03T00:00:00+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/rust/</loc><lastmod>2015-10-03T00:00:00+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2015/10/system-languages-include-web/</loc><lastmod>2015-10-03T00:00:00+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2015/09/deploying-d-to-azure-webapp/</loc><lastmod>2015-09-25T20:10:00+07:00</lastmod></url><url>
@@ -138,34 +141,24 @@
     <loc>https://quiescent.us/2012/05/building-an-interpreter/</loc><lastmod>2012-05-28T17:03:55+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/compiler/</loc><lastmod>2012-05-28T17:03:55+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/flex/</loc><lastmod>2012-05-28T17:03:55+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/2012/05/anderson-smart-pointer-idiom-updated/</loc><lastmod>2012-05-06T07:00:10+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/tags/raii/</loc><lastmod>2012-05-06T07:00:10+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/2012/04/capture-the-flag-running-a-hacking-competition/</loc><lastmod>2012-04-30T02:38:44+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/tags/event/</loc><lastmod>2012-04-30T02:38:44+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/tags/copyright/</loc><lastmod>2012-04-14T17:53:21+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/2012/04/copyright-the-anti-innovator/</loc><lastmod>2012-04-14T17:53:21+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/2012/03/talk-at-soda/</loc><lastmod>2012-03-31T18:48:55+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2012/03/multicast-delegates-in-c11/</loc><lastmod>2012-03-25T05:32:43+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2012/03/abstract-syntax-trees-introduction-to-flex/</loc><lastmod>2012-03-18T05:36:51+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2012/02/branching-with-mercurial/</loc><lastmod>2012-02-20T02:18:15+00:00</lastmod></url><url>
+    <loc>https://quiescent.us/categories/project/</loc><lastmod>2012-02-20T02:18:15+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2012/02/compile-time-polymorphism/</loc><lastmod>2012-02-05T21:14:29+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/idiom/</loc><lastmod>2012-02-05T21:14:29+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/template/</loc><lastmod>2012-02-05T21:14:29+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/virtual/</loc><lastmod>2012-02-05T21:14:29+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/2012/01/modern-c/</loc><lastmod>2012-01-22T18:10:30+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/2012/01/abusing-ram/</loc><lastmod>2012-01-22T17:53:43+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/tags/productivity/</loc><lastmod>2012-01-22T17:53:43+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2011/11/parallel-binary-buddy-the-friendly-memory-manager/</loc><lastmod>2011-11-23T18:50:20+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</loc><lastmod>2011-10-23T19:00:21+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/memory/</loc><lastmod>2011-10-23T19:00:21+00:00</lastmod></url><url>
+    <loc>https://quiescent.us/tags/raii/</loc><lastmod>2011-10-23T19:00:21+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/parallel/</loc><lastmod>2011-10-23T17:55:47+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2011/10/parallel-game-of-life/</loc><lastmod>2011-10-23T17:55:47+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/categories/parallelism/</loc><lastmod>2011-10-23T17:55:47+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/categories/left-field/</loc><lastmod>2011-09-22T22:40:42+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/testing/</loc><lastmod>2011-09-22T22:40:42+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2011/09/the-1000000-compile/</loc><lastmod>2011-09-22T22:40:42+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/categories/c&#43;&#43;-practicum/</loc><lastmod>2011-08-21T07:23:25+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2011/08/good-tools-excellent-results/</loc><lastmod>2011-08-21T07:23:25+00:00</lastmod></url><url>
+    <loc>https://quiescent.us/tags/productivity/</loc><lastmod>2011-08-21T07:23:25+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</loc><lastmod>2011-08-19T16:55:56+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/command-line/</loc><lastmod>2011-08-12T06:00:18+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/customize/</loc><lastmod>2011-08-12T06:00:18+00:00</lastmod></url><url>
@@ -176,10 +169,10 @@
     <loc>https://quiescent.us/tags/version-control/</loc><lastmod>2011-07-06T05:18:48+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2011/07/version-control-more-than-collaboration/</loc><lastmod>2011-07-06T05:18:48+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2011/06/game-framework-for-c-practicum/</loc><lastmod>2011-06-25T22:37:51+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/2011/06/we-need-a-1-button/</loc><lastmod>2011-06-22T19:58:29+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2011/06/being-truely-productive/</loc><lastmod>2011-06-19T18:59:47+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/process/</loc><lastmod>2011-06-19T18:59:47+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2011/06/overview-of-upcoming-articles/</loc><lastmod>2011-06-16T19:51:14+00:00</lastmod></url><url>
+    <loc>https://quiescent.us/tags/algorithm/</loc><lastmod>2011-06-06T06:59:00+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/type-safety/</loc><lastmod>2011-06-06T06:59:00+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2011/06/type-safe-variable-argument-lists/</loc><lastmod>2011-06-06T06:59:00+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2011/05/parallelism-in-d-bucket-sort-part-2/</loc><lastmod>2011-05-29T18:02:24+00:00</lastmod></url><url>
@@ -189,13 +182,14 @@
     <loc>https://quiescent.us/2011/05/bucket-sort/</loc><lastmod>2011-05-24T04:59:59+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/comparison/</loc><lastmod>2011-05-18T03:06:36+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/correct-code/</loc><lastmod>2011-05-18T03:06:36+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/2011/05/d-for-the-c-programmer-red-black-tree-part-3/</loc><lastmod>2011-05-18T03:06:36+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/2011/05/class-invariants-red-black-tree-part-2/</loc><lastmod>2011-05-13T02:40:48+00:00</lastmod></url><url>
+    <loc>https://quiescent.us/series/the-red-black-tree/d-for-the-c-programmer-red-black-tree-part-3/</loc><lastmod>2011-05-18T03:06:36+00:00</lastmod></url><url>
+    <loc>https://quiescent.us/series/the-red-black-tree/</loc><lastmod>2011-05-18T03:06:36+00:00</lastmod></url><url>
+    <loc>https://quiescent.us/series/the-red-black-tree/class-invariants-red-black-tree-part-2/</loc><lastmod>2011-05-13T02:40:48+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/data-structure/</loc><lastmod>2011-05-09T06:59:01+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/2011/05/the-red-black-tree-part-1/</loc><lastmod>2011-05-09T06:59:01+00:00</lastmod></url><url>
+    <loc>https://quiescent.us/series/the-red-black-tree/the-red-black-tree-part-1/</loc><lastmod>2011-05-09T06:59:01+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/tree/</loc><lastmod>2011-05-09T06:59:01+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2011/05/java-4k-contest/</loc><lastmod>2011-05-07T22:10:54+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/categories/passingthought/</loc><lastmod>2011-05-07T22:10:54+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2011/05/thing-a-week-algorithm-edition/</loc><lastmod>2011-05-03T23:37:37+00:00</lastmod></url><url>
     <loc>https://quiescent.us/categories/about/</loc><lastmod>2011-02-11T02:37:45+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/2011/02/hello-world/</loc><lastmod>2011-02-11T02:37:45+00:00</lastmod></url></urlset>
+    <loc>https://quiescent.us/2011/02/hello-world/</loc><lastmod>2011-02-11T02:37:45+00:00</lastmod></url><url>
+    <loc>https://quiescent.us/categories/teaching/talks/</loc></url></urlset>

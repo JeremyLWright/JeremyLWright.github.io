@@ -14,10 +14,10 @@
     
     <item>
       <title>The Red-Black Tree</title>
-      <link>/2011/05/the-red-black-tree-part-1/</link>
+      <link>/series/the-red-black-tree/the-red-black-tree-part-1/</link>
       <pubDate>Mon, 09 May 2011 06:59:01 +0000</pubDate>
       
-      <guid>/2011/05/the-red-black-tree-part-1/</guid>
+      <guid>/series/the-red-black-tree/the-red-black-tree-part-1/</guid>
       <description>C++ Source Code D Source Code
 D provides a number of features that simplify designing software, especially in the embedded environment. I will show in this 2 part comparison, between C++ and D, that D helps one write correct code. Correct code is something Andrei Alexandrescu, stresses heavily as a prominent feature of D. I use the Red-Black Tree for such a comparison since its complicated enough to make memory management difficult, while retaining real-world application.</description>
       

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>design on The Quiescent Current</title>
+    <title>Design on The Quiescent Current</title>
     <link>/categories/design/</link>
-    <description>Recent content in design on The Quiescent Current</description>
+    <description>Recent content in Design on The Quiescent Current</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>©2020 Jeremy Wright</copyright>
@@ -14,12 +14,22 @@
     
     <item>
       <title>TLA&#43; Chapter 1: Reflection</title>
-      <link>/2020/05/tla-chap1/</link>
+      <link>/series/pratical-tla&#43;/tla-chap1/</link>
       <pubDate>Mon, 25 May 2020 15:00:14 -0700</pubDate>
       
-      <guid>/2020/05/tla-chap1/</guid>
+      <guid>/series/pratical-tla&#43;/tla-chap1/</guid>
       <description>The first time I opened Hillel&amp;rsquo;s book and skimmed the first chapter I was subconsciously looking for a reason not to sink a bunch of time into yet another language/ecosystem project. That bias prevented me from seeing the point of the first chapter.
 Hillel&amp;rsquo;s first chapter ends with a definition of stuttering and how in the presence of real world temporal effects, a safe, reliable in all cases wire transfer system borders on impossible.</description>
+      
+    </item>
+    
+    <item>
+      <title>The Importance of System Design</title>
+      <link>/2012/07/the-importance-of-system-design/</link>
+      <pubDate>Sun, 15 Jul 2012 17:00:44 +0000</pubDate>
+      
+      <guid>/2012/07/the-importance-of-system-design/</guid>
+      <description>For the small programs we tend to implement as part of a semester project, or the simple &amp;ldquo;one-off/get-it-done&amp;rdquo; programs at work, system design rarely plays a part. However, even in the smallest problems a top-level system design is critical for consistency and ease of use. Class components, regardless of how precise and accurate they are in their own internal design, if they aren&amp;rsquo;t externally consistent with other objects, the system will be brittle, and difficult to use.</description>
       
     </item>
     

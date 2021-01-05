@@ -23,15 +23,5 @@ Abstraction to me meant, “Don’t use that thing directly, abstract it and use
       
     </item>
     
-    <item>
-      <title>The Importance of System Design</title>
-      <link>/2012/07/the-importance-of-system-design/</link>
-      <pubDate>Sun, 15 Jul 2012 17:00:44 +0000</pubDate>
-      
-      <guid>/2012/07/the-importance-of-system-design/</guid>
-      <description>For the small programs we tend to implement as part of a semester project, or the simple &amp;ldquo;one-off/get-it-done&amp;rdquo; programs at work, system design rarely plays a part. However, even in the smallest problems a top-level system design is critical for consistency and ease of use. Class components, regardless of how precise and accurate they are in their own internal design, if they aren&amp;rsquo;t externally consistent with other objects, the system will be brittle, and difficult to use.</description>
-      
-    </item>
-    
   </channel>
 </rss>

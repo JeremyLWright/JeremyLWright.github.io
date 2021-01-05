@@ -22,25 +22,5 @@
       
     </item>
     
-    <item>
-      <title>Anderson Smart-Pointer Idiom Updated!</title>
-      <link>/2012/05/anderson-smart-pointer-idiom-updated/</link>
-      <pubDate>Sun, 06 May 2012 07:00:10 +0000</pubDate>
-      
-      <guid>/2012/05/anderson-smart-pointer-idiom-updated/</guid>
-      <description>C++11 provides us with a ton of new tools for expressing complex ideas in an efficient way. C++11 is unique among modern languages in that it provides a productive syntax, while also generating exceptionally fast code. For the first time ever, software engineers are responsible for increasing the performance of software systems. For decades we&amp;rsquo;ve been standing on the shoulders of hardware engineers. Hardware engineers have been increasing the clock speeds of our processors, but we&amp;rsquo;ve hit a physical limit.</description>
-      
-    </item>
-    
-    <item>
-      <title>Compile-Time Polymorphism</title>
-      <link>/2012/02/compile-time-polymorphism/</link>
-      <pubDate>Sun, 05 Feb 2012 21:14:29 +0000</pubDate>
-      
-      <guid>/2012/02/compile-time-polymorphism/</guid>
-      <description>Polymorphism is a tool in object orientation, which allows us to model behavior, while simultaneously leverage existing code. Polymorphism allows is behavior reuse. In C++ polymorphism, comes in 2 flavors, the standard runtime variant, and a curious compile time variant. Runtime polymorphism, like Java, leverages virtual functions to dynamically bind[1. With virtual functions the compiler doesn&amp;rsquo;t know which method to call until runtime. In C++ this is implemented with the virtual method table] a method at the call site.</description>
-      
-    </item>
-    
   </channel>
 </rss>

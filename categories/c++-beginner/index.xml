@@ -22,16 +22,5 @@
       
     </item>
     
-    <item>
-      <title>Why do some tutorials use std::cout and others use just cout?</title>
-      <link>/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</link>
-      <pubDate>Fri, 19 Aug 2011 16:55:56 +0000</pubDate>
-      
-      <guid>/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/</guid>
-      <description>#include &amp;lt;iostream&amp;gt; using namespace std; int main() { cout &amp;lt;&amp;lt; &amp;quot;Hello World&amp;quot; &amp;lt;&amp;lt; endl; return 0; }  However sometimes, and in my opinion the more correct version is written:
-#include &amp;lt;iostream&amp;gt; int main() { std::cout &amp;lt;&amp;lt; &amp;quot;Hello World&amp;quot; &amp;lt;&amp;lt; std::endl; return 0; }  The difference between the 2 programs is the double colon (::). This is called the namespace resolution operator. C++ has a wonderful concept called namespaces. Namespaces allow you to group or organize sets of objects into named collections.</description>
-      
-    </item>
-    
   </channel>
 </rss>

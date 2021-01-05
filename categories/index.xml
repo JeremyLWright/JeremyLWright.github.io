@@ -13,7 +13,7 @@
     
     
     <item>
-      <title>design</title>
+      <title>Design</title>
       <link>/categories/design/</link>
       <pubDate>Mon, 25 May 2020 15:00:14 -0700</pubDate>
       
@@ -23,11 +23,11 @@
     </item>
     
     <item>
-      <title>Opinion</title>
-      <link>/categories/opinion/</link>
+      <title>Coding</title>
+      <link>/categories/coding/</link>
       <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
       
-      <guid>/categories/opinion/</guid>
+      <guid>/categories/coding/</guid>
       <description></description>
       
     </item>
@@ -223,41 +223,11 @@
     </item>
     
     <item>
-      <title>Parallelism</title>
-      <link>/categories/parallelism/</link>
-      <pubDate>Sun, 23 Oct 2011 17:55:47 +0000</pubDate>
+      <title>Project</title>
+      <link>/categories/project/</link>
+      <pubDate>Mon, 20 Feb 2012 02:18:15 +0000</pubDate>
       
-      <guid>/categories/parallelism/</guid>
-      <description></description>
-      
-    </item>
-    
-    <item>
-      <title>Left-Field</title>
-      <link>/categories/left-field/</link>
-      <pubDate>Thu, 22 Sep 2011 22:40:42 +0000</pubDate>
-      
-      <guid>/categories/left-field/</guid>
-      <description></description>
-      
-    </item>
-    
-    <item>
-      <title>C&#43;&#43; Practicum</title>
-      <link>/categories/c&#43;&#43;-practicum/</link>
-      <pubDate>Sun, 21 Aug 2011 07:23:25 +0000</pubDate>
-      
-      <guid>/categories/c&#43;&#43;-practicum/</guid>
-      <description></description>
-      
-    </item>
-    
-    <item>
-      <title>PassingThought</title>
-      <link>/categories/passingthought/</link>
-      <pubDate>Sat, 07 May 2011 22:10:54 +0000</pubDate>
-      
-      <guid>/categories/passingthought/</guid>
+      <guid>/categories/project/</guid>
       <description></description>
       
     </item>
@@ -268,6 +238,16 @@
       <pubDate>Fri, 11 Feb 2011 02:37:45 +0000</pubDate>
       
       <guid>/categories/about/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Teaching/Talks</title>
+      <link>/categories/teaching/talks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/teaching/talks/</guid>
       <description></description>
       
     </item>

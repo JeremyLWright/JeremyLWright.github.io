@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Practical TLA&#43; on The Quiescent Current</title>
+    <link>/series/practical-tla&#43;/</link>
+    <description>Recent content in Practical TLA&#43; on The Quiescent Current</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
+    <lastBuildDate>Mon, 25 May 2020 15:00:14 -0700</lastBuildDate>
+    
+        <atom:link href="/series/practical-tla+/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>TLA&#43; Chapter 1: Reflection</title>
+      <link>/series/pratical-tla&#43;/tla-chap1/</link>
+      <pubDate>Mon, 25 May 2020 15:00:14 -0700</pubDate>
+      
+      <guid>/series/pratical-tla&#43;/tla-chap1/</guid>
+      <description>The first time I opened Hillel&amp;rsquo;s book and skimmed the first chapter I was subconsciously looking for a reason not to sink a bunch of time into yet another language/ecosystem project. That bias prevented me from seeing the point of the first chapter.
+Hillel&amp;rsquo;s first chapter ends with a definition of stuttering and how in the presence of real world temporal effects, a safe, reliable in all cases wire transfer system borders on impossible.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

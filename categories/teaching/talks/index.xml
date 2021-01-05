@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Teaching/Talks on The Quiescent Current</title>
+    <link>/categories/teaching/talks/</link>
+    <description>Recent content in Teaching/Talks on The Quiescent Current</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
+    
+        <atom:link href="/categories/teaching/talks/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hijacking System Programs</title>
+      <link>/2011/08/hijacking-system-programs/</link>
+      <pubDate>Fri, 12 Aug 2011 06:00:18 +0000</pubDate>
+      
+      <guid>/2011/08/hijacking-system-programs/</guid>
+      <description>Let&amp;rsquo;s say for a moment that you are a graduate student, with shell access to your schools server. The server maintains a number of tools you need for classes, and research. All is well, except the stock editor on the server is wicked old. Like an eternity old. Well that happened to me. I am fully addicted to my custom vim configuration, but it requires vim7.3. My school&amp;rsquo;s server only has 7.</description>
+      
+    </item>
+    
+    <item>
+      <title>Version Control More Than Collaboration</title>
+      <link>/2011/07/version-control-more-than-collaboration/</link>
+      <pubDate>Wed, 06 Jul 2011 05:18:48 +0000</pubDate>
+      
+      <guid>/2011/07/version-control-more-than-collaboration/</guid>
+      <description>I&amp;rsquo;ve used version control in some form or another since I was a freshman in college, however I&amp;rsquo;m quite the anomaly. I will use a tool fully knowing that its more than I need, just to learn something new. Initially, this is how I approached version control. Except for a few unique situations version control of my homework, seemed like more work than it was worth. I used to think version control was merely a collaboration tool for teams of people.</description>
+      
+    </item>
+    
+    <item>
+      <title>Game Framework for C&#43;&#43; Practicum</title>
+      <link>/2011/06/game-framework-for-c-practicum/</link>
+      <pubDate>Sat, 25 Jun 2011 22:37:51 +0000</pubDate>
+      
+      <guid>/2011/06/game-framework-for-c-practicum/</guid>
+      <description>For this year&amp;rsquo;s C++ practicum, we are going to build a small game engine. I&amp;rsquo;m keeping the code on bitbucket: http://bitbucket.org/jwright/gamecomponents Join us, or fork the code and make your own design. I look forward to seeing how this progresses.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

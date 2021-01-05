@@ -33,26 +33,6 @@
     </item>
     
     <item>
-      <title>Anderson Smart-Pointer Idiom Updated!</title>
-      <link>/2012/05/anderson-smart-pointer-idiom-updated/</link>
-      <pubDate>Sun, 06 May 2012 07:00:10 +0000</pubDate>
-      
-      <guid>/2012/05/anderson-smart-pointer-idiom-updated/</guid>
-      <description>C++11 provides us with a ton of new tools for expressing complex ideas in an efficient way. C++11 is unique among modern languages in that it provides a productive syntax, while also generating exceptionally fast code. For the first time ever, software engineers are responsible for increasing the performance of software systems. For decades we&amp;rsquo;ve been standing on the shoulders of hardware engineers. Hardware engineers have been increasing the clock speeds of our processors, but we&amp;rsquo;ve hit a physical limit.</description>
-      
-    </item>
-    
-    <item>
-      <title>Talk at SoDA</title>
-      <link>/2012/03/talk-at-soda/</link>
-      <pubDate>Sat, 31 Mar 2012 18:48:55 +0000</pubDate>
-      
-      <guid>/2012/03/talk-at-soda/</guid>
-      <description>SoDA Meeting: Embedded Scripting for Games from SoDA @ ASU on Vimeo.</description>
-      
-    </item>
-    
-    <item>
       <title>Multicast Delegates in C&#43;&#43;11</title>
       <link>/2012/03/multicast-delegates-in-c11/</link>
       <pubDate>Sun, 25 Mar 2012 05:32:43 +0000</pubDate>

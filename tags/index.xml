@@ -703,36 +703,6 @@
     </item>
     
     <item>
-      <title>RAII</title>
-      <link>/tags/raii/</link>
-      <pubDate>Sun, 06 May 2012 07:00:10 +0000</pubDate>
-      
-      <guid>/tags/raii/</guid>
-      <description></description>
-      
-    </item>
-    
-    <item>
-      <title>event</title>
-      <link>/tags/event/</link>
-      <pubDate>Mon, 30 Apr 2012 02:38:44 +0000</pubDate>
-      
-      <guid>/tags/event/</guid>
-      <description></description>
-      
-    </item>
-    
-    <item>
-      <title>copyright</title>
-      <link>/tags/copyright/</link>
-      <pubDate>Sat, 14 Apr 2012 17:53:21 +0000</pubDate>
-      
-      <guid>/tags/copyright/</guid>
-      <description></description>
-      
-    </item>
-    
-    <item>
       <title>idiom</title>
       <link>/tags/idiom/</link>
       <pubDate>Sun, 05 Feb 2012 21:14:29 +0000</pubDate>
@@ -763,21 +733,21 @@
     </item>
     
     <item>
-      <title>productivity</title>
-      <link>/tags/productivity/</link>
-      <pubDate>Sun, 22 Jan 2012 17:53:43 +0000</pubDate>
-      
-      <guid>/tags/productivity/</guid>
-      <description></description>
-      
-    </item>
-    
-    <item>
       <title>memory</title>
       <link>/tags/memory/</link>
       <pubDate>Sun, 23 Oct 2011 19:00:21 +0000</pubDate>
       
       <guid>/tags/memory/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>RAII</title>
+      <link>/tags/raii/</link>
+      <pubDate>Sun, 23 Oct 2011 19:00:21 +0000</pubDate>
+      
+      <guid>/tags/raii/</guid>
       <description></description>
       
     </item>
@@ -798,6 +768,16 @@
       <pubDate>Thu, 22 Sep 2011 22:40:42 +0000</pubDate>
       
       <guid>/tags/testing/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>productivity</title>
+      <link>/tags/productivity/</link>
+      <pubDate>Sun, 21 Aug 2011 07:23:25 +0000</pubDate>
+      
+      <guid>/tags/productivity/</guid>
       <description></description>
       
     </item>
@@ -868,6 +848,16 @@
       <pubDate>Sun, 19 Jun 2011 18:59:47 +0000</pubDate>
       
       <guid>/tags/process/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>algorithm</title>
+      <link>/tags/algorithm/</link>
+      <pubDate>Mon, 06 Jun 2011 06:59:00 +0000</pubDate>
+      
+      <guid>/tags/algorithm/</guid>
       <description></description>
       
     </item>
