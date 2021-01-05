@@ -32,15 +32,5 @@
       
     </item>
     
-    <item>
-      <title>Multicast Delegates in C&#43;&#43;11</title>
-      <link>/2012/03/multicast-delegates-in-c11/</link>
-      <pubDate>Sun, 25 Mar 2012 05:32:43 +0000</pubDate>
-      
-      <guid>/2012/03/multicast-delegates-in-c11/</guid>
-      <description>C# has a wonderfully flexible delegate system capable of multicast events. This simple tool makes event driven software easier to write, and reduces coupling between objects. In 2003 Herb Sutter implemented a general form of the Observer pattern [1]. He called this the multi_function. It uses a mixture of TR1 and boost components to build a multi-cast delegate similar to C#&amp;rsquo;s. Fast-forward 9 years, and we now have variadic-templates thanks to C++11.</description>
-      
-    </item>
-    
   </channel>
 </rss>

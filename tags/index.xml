@@ -13,16 +13,6 @@
     
     
     <item>
-      <title>Haskell</title>
-      <link>/tags/haskell/</link>
-      <pubDate>Thu, 24 Dec 2020 00:00:00 -0700</pubDate>
-      
-      <guid>/tags/haskell/</guid>
-      <description></description>
-      
-    </item>
-    
-    <item>
       <title>I&#39;m Stuck</title>
       <link>/tags/im-stuck/</link>
       <pubDate>Thu, 24 Dec 2020 00:00:00 -0700</pubDate>
@@ -343,16 +333,6 @@
     </item>
     
     <item>
-      <title>Python</title>
-      <link>/tags/python/</link>
-      <pubDate>Sun, 20 Oct 2013 23:00:00 +0000</pubDate>
-      
-      <guid>/tags/python/</guid>
-      <description></description>
-      
-    </item>
-    
-    <item>
       <title>itanium</title>
       <link>/tags/itanium/</link>
       <pubDate>Mon, 07 Oct 2013 01:23:13 +0000</pubDate>
@@ -588,6 +568,16 @@
       <pubDate>Sun, 17 Feb 2013 19:53:11 +0000</pubDate>
       
       <guid>/tags/unix/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>/tags/python/</link>
+      <pubDate>Sat, 22 Sep 2012 15:36:10 +0000</pubDate>
+      
+      <guid>/tags/python/</guid>
       <description></description>
       
     </item>

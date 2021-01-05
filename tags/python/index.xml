@@ -7,20 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>©2020 Jeremy Wright</copyright>
-    <lastBuildDate>Sun, 20 Oct 2013 23:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 22 Sep 2012 15:36:10 +0000</lastBuildDate>
     
         <atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Idiomatic Learning</title>
-      <link>/2013/10/idiomatic-learning/</link>
-      <pubDate>Sun, 20 Oct 2013 23:00:00 +0000</pubDate>
-      
-      <guid>/2013/10/idiomatic-learning/</guid>
-      <description>When learning a new language I find it helpful to study a languages idioms. Idioms exist in a language for a specific reason. Sometimes that reason is to further the principles of the language, other times it’s to mask, or otherwise deal with some underlying design decision of the language. Currently, I am studying Haskell, and currently I am struggle to clarify the idioms of the language. The syntax is still very new and awkward, currently with a total authoring in Haskell of 713 lines.</description>
-      
-    </item>
     
     <item>
       <title>ASULUG Talk: Django Web Framework</title>

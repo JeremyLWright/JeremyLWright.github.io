@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Languages on The Quiescent Current</title>
+    <link>/languages/</link>
+    <description>Recent content in Languages on The Quiescent Current</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>©2020 Jeremy Wright</copyright>
+    <lastBuildDate>Thu, 24 Dec 2020 00:00:00 -0700</lastBuildDate>
+    
+        <atom:link href="/languages/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Haskell</title>
+      <link>/languages/haskell/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 -0700</pubDate>
+      
+      <guid>/languages/haskell/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;</title>
+      <link>/languages/c&#43;&#43;/</link>
+      <pubDate>Tue, 17 Feb 2015 03:46:55 +0000</pubDate>
+      
+      <guid>/languages/c&#43;&#43;/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>/languages/python/</link>
+      <pubDate>Sun, 20 Oct 2013 23:00:00 +0000</pubDate>
+      
+      <guid>/languages/python/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>D</title>
+      <link>/languages/d/</link>
+      <pubDate>Sun, 23 Oct 2011 19:00:21 +0000</pubDate>
+      
+      <guid>/languages/d/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>

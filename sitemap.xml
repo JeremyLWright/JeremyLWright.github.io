@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"><url>
-    <loc>https://quiescent.us/tags/haskell/</loc><lastmod>2020-12-24T00:00:00-07:00</lastmod></url><url>
+    <loc>https://quiescent.us/languages/haskell/</loc><lastmod>2020-12-24T00:00:00-07:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/im-stuck/</loc><lastmod>2020-12-24T00:00:00-07:00</lastmod></url><url>
+    <loc>https://quiescent.us/languages/</loc><lastmod>2020-12-24T00:00:00-07:00</lastmod></url><url>
     <loc>https://quiescent.us/posts/</loc><lastmod>2020-12-24T00:00:00-07:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/quickcheck/</loc><lastmod>2020-12-24T00:00:00-07:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/</loc><lastmod>2020-12-24T00:00:00-07:00</lastmod></url><url>
@@ -38,6 +39,7 @@
     <loc>https://quiescent.us/tags/blogging/</loc><lastmod>2015-06-07T00:00:00+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2015/06/converting-to-static-blog/</loc><lastmod>2015-06-07T00:00:00+00:00</lastmod></url><url>
     <loc>https://quiescent.us/categories/writing/</loc><lastmod>2015-06-07T00:00:00+00:00</lastmod></url><url>
+    <loc>https://quiescent.us/languages/c&#43;&#43;/</loc><lastmod>2015-02-17T03:46:55+00:00</lastmod></url><url>
     <loc>https://quiescent.us/categories/c&#43;&#43;-beginner/</loc><lastmod>2015-02-17T03:46:55+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2015/02/introduction-to-pointers/</loc><lastmod>2015-02-17T03:46:55+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2014/09/property-testing-in-c/</loc><lastmod>2014-09-03T23:00:00-07:00</lastmod></url><url>
@@ -72,7 +74,7 @@
     <loc>https://quiescent.us/2013/10/a-thunk-on-laziness/</loc><lastmod>2013-10-27T23:00:17+00:00</lastmod></url><url>
     <loc>https://quiescent.us/categories/idiom/</loc><lastmod>2013-10-20T23:00:00+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2013/10/idiomatic-learning/</loc><lastmod>2013-10-20T23:00:00+00:00</lastmod></url><url>
-    <loc>https://quiescent.us/tags/python/</loc><lastmod>2013-10-20T23:00:00+00:00</lastmod></url><url>
+    <loc>https://quiescent.us/languages/python/</loc><lastmod>2013-10-20T23:00:00+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2013/10/smaller-reviews-are-more-effective/</loc><lastmod>2013-10-13T23:00:23+00:00</lastmod></url><url>
     <loc>https://quiescent.us/categories/review/</loc><lastmod>2013-10-13T23:00:23+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/itanium/</loc><lastmod>2013-10-07T01:23:13+00:00</lastmod></url><url>
@@ -122,6 +124,7 @@
     <loc>https://quiescent.us/tags/unix/</loc><lastmod>2013-02-17T19:53:11+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2012/11/short-valgrind-video-tutorial/</loc><lastmod>2012-11-12T03:40:11+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2012/09/asulug-talk-django-web-framework/</loc><lastmod>2012-09-22T15:36:10+00:00</lastmod></url><url>
+    <loc>https://quiescent.us/tags/python/</loc><lastmod>2012-09-22T15:36:10+00:00</lastmod></url><url>
     <loc>https://quiescent.us/categories/talk/</loc><lastmod>2012-09-22T15:36:10+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2012/09/abstraction-in-plain-english/</loc><lastmod>2012-09-18T23:11:51+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/explaination/</loc><lastmod>2012-09-18T23:11:51+00:00</lastmod></url><url>
@@ -150,6 +153,7 @@
     <loc>https://quiescent.us/tags/template/</loc><lastmod>2012-02-05T21:14:29+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/virtual/</loc><lastmod>2012-02-05T21:14:29+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2011/11/parallel-binary-buddy-the-friendly-memory-manager/</loc><lastmod>2011-11-23T18:50:20+00:00</lastmod></url><url>
+    <loc>https://quiescent.us/languages/d/</loc><lastmod>2011-10-23T19:00:21+00:00</lastmod></url><url>
     <loc>https://quiescent.us/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/</loc><lastmod>2011-10-23T19:00:21+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/memory/</loc><lastmod>2011-10-23T19:00:21+00:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/raii/</loc><lastmod>2011-10-23T19:00:21+00:00</lastmod></url><url>

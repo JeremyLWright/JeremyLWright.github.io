@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Haskell on The Quiescent Current</title>
-    <link>/tags/haskell/</link>
+    <link>/languages/haskell/</link>
     <description>Recent content in Haskell on The Quiescent Current</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>©2020 Jeremy Wright</copyright>
     <lastBuildDate>Thu, 24 Dec 2020 00:00:00 -0700</lastBuildDate>
     
-        <atom:link href="/tags/haskell/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/languages/haskell/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
