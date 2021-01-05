@@ -9,11 +9,12 @@ wordpress_id: 468
 categories:
 - Coding
 tags:
-- C++
-- D
 - memory
 - Python
 - RAII
+languages: 
+- C++
+- D
 ---
 
 Choosing to use C++ brings the additional complexity of memory management.  Dennis Ritchie once stated: The C Programming Language — A language which combines the flexibility of assembly language with the power of assembly language. C++ inherits much of that _flexibility, _however, this [incidental complexity](http://www.infoq.com/presentations/Are-We-There-Yet-Rich-Hickey), can be relegated to a single class, leaving you with the high-level elegance of Python. RAII help with this additional complexity, however without a pattern for guidance implementing RAII consistently can be difficult, defeating the safety it provides.

@@ -6,7 +6,7 @@ layout: post
 slug: parallel-binary-buddy-the-friendly-memory-manager
 title: 'Parallel Binary Buddy: The Friendly Memory Manager'
 wordpress_id: 480
-tags:
+languages: 
 - C++
 ---
 

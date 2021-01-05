@@ -6,7 +6,7 @@ layout: post
 slug: know-its-name
 title: Know Its Name
 wordpress_id: 700
-tags:
+languages:
 - C++
 - Haskell
 ---

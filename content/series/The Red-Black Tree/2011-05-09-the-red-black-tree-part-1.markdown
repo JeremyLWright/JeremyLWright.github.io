@@ -9,11 +9,12 @@ wordpress_id: 59
 series: ["The Red-Black Tree"]
 tags:
 - Algorithm
-- C++
 - comparison
-- D
 - Data Structure
 - Tree
+languages:
+- C++
+- D
 ---
 
 [C++ Source Code](https://bitbucket.org/jwright/cse310-red-black-tree/overview)

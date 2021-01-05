@@ -6,7 +6,7 @@ layout: post
 slug: haskell-a-few-problems-later
 title: Haskell a Few Problems Later
 wordpress_id: 871
-tags:
+languages:
 - Haskell
 ---
 

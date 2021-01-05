@@ -8,7 +8,7 @@ title: Idiomatic Learning
 wordpress_id: 1126
 categories:
 - Idiom
-tags:
+languages:
 - C++
 - Haskell
 - Python

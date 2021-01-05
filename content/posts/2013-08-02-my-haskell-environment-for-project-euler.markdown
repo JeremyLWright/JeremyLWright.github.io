@@ -14,9 +14,11 @@ tags:
 - dependency
 - euler
 - generation
-- Haskell
 - make
 - project euler
+languages:
+- Haskell
+
 ---
 
 For the last several months I've been working on Project Euler in Haskell. My intent has been to learn Haskell, and grasp the functional concepts. While working on several problems it's important to have a workflow that allows for a fast cycle time. I spent some time with Cabal, attempting to build a scheme that works efficiently, but was unable to do so. Instead I setup a mix of cabal-dev, and make to build a fast workflow that allow for compiling, testing, common code libraries, and benchmarks. This post is a walk though of that workflow. <!-- more -->

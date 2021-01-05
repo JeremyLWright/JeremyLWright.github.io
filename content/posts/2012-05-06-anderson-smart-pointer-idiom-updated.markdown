@@ -10,9 +10,9 @@ expiryDate: 2020-01-01T00:00:00+00:00
 categories:
 - Idiom
 tags:
-- C++
-- C++11
 - RAII
+languages:
+- C++
 ---
 
 C++11 provides us with a ton of new tools for expressing complex ideas in an efficient way. C++11 is unique among modern languages in that it provides a productive syntax, while also generating exceptionally fast code. For the first time ever, software engineers are responsible for increasing the performance of software systems. For decades we've been standing on the shoulders of hardware engineers. Hardware engineers have been increasing the clock speeds of our processors, but we've hit a physical limit. It's our turn to pick up the baton in this relay race and get to the finish line. C++11 provides a number of tools to help us get there, and smart pointers are one such tool.

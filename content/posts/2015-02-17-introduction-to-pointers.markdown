@@ -8,6 +8,8 @@ title: Introduction to Pointers
 wordpress_id: 1354
 categories:
 - C++ Beginner
+languages:
+- C++
 ---
 
 Please see my introduction to pointers at https://www.youtube.com/watch?v=mkYBz5Db-Ok.

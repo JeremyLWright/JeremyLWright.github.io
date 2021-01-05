@@ -7,7 +7,7 @@ slug: modern-c
 title: Modern C++
 wordpress_id: 507
 expiryDate: 2020-01-01T00:00:00+00:00
-tags:
+languages:
 - C++
 ---
 

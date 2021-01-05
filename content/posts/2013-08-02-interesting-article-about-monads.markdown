@@ -6,7 +6,7 @@ layout: post
 slug: interesting-article-about-monads
 title: Interesting article about Monads
 wordpress_id: 1130
-tags:
+languages:
 - Haskell
 ---
 

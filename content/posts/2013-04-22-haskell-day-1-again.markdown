@@ -10,6 +10,7 @@ categories:
 - Functional
 tags:
 - functional
+languages:
 - Haskell
 ---
 

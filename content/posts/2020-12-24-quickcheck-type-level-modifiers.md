@@ -4,9 +4,10 @@ date: 2020-12-24T00:00:00-07:00
 slug: quickcheck-type-level-modifiers
 draft: false
 tags:
-- haskell
 - QuickCheck
 - I'm Stuck
+languages:
+- haskell
 ---
 
 One of my students this semester was struggling with the material. This

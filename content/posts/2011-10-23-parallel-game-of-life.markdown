@@ -9,8 +9,9 @@ wordpress_id: 405
 categories:
 - Coding
 tags:
-- C++
 - parallel
+languages: 
+- C++
 ---
 
 Conway's [Game of Life](http://www.bitstorm.org/gameoflife/) is a dramatic illustration of emmergent behavior; that a seemingly complex system, such as cell mitosis can be governed by a set of simple rules. OpenMP is a fantastic set of language extensions which allows one to add dramatic parallelism without complex thread management.  As a demonstration of [OpenMP](http://openmp.org/wp/)'s simplicity I implemented the Game of Life. The code and all analysis is available on [bitbucket.org](https://bitbucket.org/jwright/parallel-game-of-life).

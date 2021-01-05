@@ -9,10 +9,11 @@ wordpress_id: 313
 categories:
 - Coding
 tags:
-- C++
 - productivity
 - Python
 - tools
+languages: 
+- C++
 ---
 
 This semester for the C++ practicum we are building a clone of Zork.  Like many games of the genre, Zork is driven by a database.  Our implementation is a JSON database.  I chose JSON for a few reasons, but most importantly because its a human readable format that's simple to understand.  I started by editing JSON files by hand in a text editor, however I found very quickly that investigating in a quick tool greatly improved my quality.

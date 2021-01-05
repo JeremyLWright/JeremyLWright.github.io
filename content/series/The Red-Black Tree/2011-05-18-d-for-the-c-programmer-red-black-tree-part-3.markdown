@@ -9,9 +9,10 @@ wordpress_id: 91
 series: ["The Red-Black Tree"]
 tags:
 - Algorithm
-- C++
 - comparison
 - correct code
+languages:
+- C++
 - D
 ---
 

@@ -7,6 +7,8 @@ draft: true
 expiryDate: 2020-01-01T00:00:00+00:00
 categories:
 - C++ Beginner
+languages:
+- C++
 tags:
 - testing
 - self-improvement

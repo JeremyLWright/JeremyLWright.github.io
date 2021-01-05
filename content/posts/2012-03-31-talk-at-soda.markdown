@@ -9,8 +9,9 @@ wordpress_id: 586
 expiryDate: 2020-01-01T00:00:00+00:00
 tags:
 - Bison
-- C++11
 - Flex
+languages:
+- C++
 ---
 
 [SoDA Meeting: Embedded Scripting for Games](http://vimeo.com/39505796) from [SoDA @ ASU](http://vimeo.com/asusoda) on [Vimeo](http://vimeo.com).

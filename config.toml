@@ -12,6 +12,7 @@ theme="hugo-notepadium"
   series = "series"
   tag = "tags"
   category = "categories"
+  language = "languages"
 
 [permalinks]
     posts = "/:year/:month/:slug/"
@@ -55,6 +56,10 @@ theme="hugo-notepadium"
 [[params.nav.custom]]
 	title = "Series"
 	url = "/series"
+
+[[params.nav.custom]]
+	title = "Languages"
+	url = "/languages"
 
 [[params.nav.custom]]
 	title = "About"
