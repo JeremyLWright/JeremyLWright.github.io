@@ -5,6 +5,7 @@ date: 2012-04-14 17:53:21+00:00
 layout: post
 slug: copyright-the-anti-innovator
 title: Copyright - The Anti-Innovator
+expiryDate: 2020-01-01T00:00:00+00:00
 wordpress_id: 591
 categories:
 - Productivity

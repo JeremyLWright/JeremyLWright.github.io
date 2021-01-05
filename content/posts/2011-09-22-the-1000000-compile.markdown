@@ -7,7 +7,7 @@ slug: the-1000000-compile
 title: The $1,000,000 Compile
 wordpress_id: 392
 categories:
-- Left-Field
+- Coding
 tags:
 - testing
 ---

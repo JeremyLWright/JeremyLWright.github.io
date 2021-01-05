@@ -7,12 +7,18 @@ copyright = "©2020 Jeremy Wright"
 disqusShortname = "codestrokes2"
 pygmentsuseclasses = true
 theme="hugo-notepadium"
+
+[taxonomies]
+  series = "series"
+  tag = "tags"
+  category = "categories"
+
 [permalinks]
     posts = "/:year/:month/:slug/"
 
 [markup.highlight]
-codeFences = true
-noClasses = false
+	codeFences = true
+	noClasses = false
 
 [params]
 	sidebartitle="The Quiescent Current"
@@ -40,13 +46,14 @@ noClasses = false
 [params.nav]
 	showCategories = true
 	showTags = true
+	showSeries = true
 
 [[params.nav.custom]]
 	title = "Blog"
 	url = "/posts"
 
-[[menu.main]]
-	name = "Series"
+[[params.nav.custom]]
+	title = "Series"
 	url = "/series"
 
 [[params.nav.custom]]

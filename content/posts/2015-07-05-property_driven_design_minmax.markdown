@@ -11,7 +11,6 @@ tags:
 - property-testing
 - example
 - tutorial
-series: "Property Driven Design"
 ---
 
 

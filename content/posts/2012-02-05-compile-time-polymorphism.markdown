@@ -7,7 +7,7 @@ slug: compile-time-polymorphism
 title: Compile-Time Polymorphism
 wordpress_id: 515
 categories:
-- Idiom
+- Coding
 tags:
 - C++
 - idiom

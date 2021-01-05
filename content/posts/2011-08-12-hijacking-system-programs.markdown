@@ -7,7 +7,7 @@ slug: hijacking-system-programs
 title: Hijacking System Programs
 wordpress_id: 268
 categories:
-- Productivity
+- Teaching/Talks
 tags:
 - command line
 - customize

@@ -7,7 +7,7 @@ slug: making-c-like-python-the-anderson-smart-pointer-pattern
 title: 'Making C++ like Python: The Anderson Smart Pointer Pattern'
 wordpress_id: 468
 categories:
-- Productivity
+- Coding
 tags:
 - C++
 - D

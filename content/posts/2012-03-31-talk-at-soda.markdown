@@ -6,6 +6,7 @@ layout: post
 slug: talk-at-soda
 title: Talk at SoDA
 wordpress_id: 586
+expiryDate: 2020-01-01T00:00:00+00:00
 tags:
 - Bison
 - C++11

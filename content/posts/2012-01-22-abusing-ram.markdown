@@ -6,6 +6,7 @@ layout: post
 slug: abusing-ram
 title: Abusing RAM
 wordpress_id: 499
+expiryDate: 2020-01-01T00:00:00+00:00
 tags:
 - productivity
 ---

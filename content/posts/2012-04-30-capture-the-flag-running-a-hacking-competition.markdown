@@ -6,6 +6,7 @@ layout: post
 slug: capture-the-flag-running-a-hacking-competition
 title: Capture the Flag - Running a Hacking Competition
 wordpress_id: 611
+expiryDate: 2020-01-01T00:00:00+00:00
 categories:
 - CTF
 - Security

@@ -7,8 +7,9 @@ slug: type-safe-variable-argument-lists
 title: Type-Safe Variable Argument Lists
 wordpress_id: 172
 categories:
-- Algorithm
+- Coding
 tags:
+- Algorithm
 - D
 - Type Safety
 ---

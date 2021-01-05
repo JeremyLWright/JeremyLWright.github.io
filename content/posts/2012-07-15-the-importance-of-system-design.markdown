@@ -7,8 +7,7 @@ slug: the-importance-of-system-design
 title: The Importance of System Design
 wordpress_id: 669
 categories:
-- Productivity
-- System
+- Design
 tags:
 - bottom-up
 - top-down

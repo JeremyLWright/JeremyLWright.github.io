@@ -7,7 +7,7 @@ slug: bucket-sort
 title: Bucket Sort
 wordpress_id: 101
 categories:
-- Algorithm
+- Coding
 tags:
 - D
 - Sorting

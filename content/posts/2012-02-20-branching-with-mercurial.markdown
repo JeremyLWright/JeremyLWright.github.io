@@ -7,7 +7,7 @@ slug: branching-with-mercurial
 title: Branching with Mercurial
 wordpress_id: 556
 categories:
-- Productivity
+- Project
 ---
 
 Mercurial supports two separate methods for branching. The first is built into how distributed version control functions, in that every clone is a branch itself. This is the branching method Joel Sposky recommends on hginit.com. The second method is called _[local branches](http://mercurial.selenic.com/wiki/Branch)_. Initially I liked the local branch method; I liked it for the fact that I felt smart for using it. It did not improve productivity. There is a simple reason for this, with local branches it is difficult to diff the branch to the main branch of development e.g. the trunk. This post will walk through local branches, how I used then, and finally, how I quit local branches in favor of a cloning approach.

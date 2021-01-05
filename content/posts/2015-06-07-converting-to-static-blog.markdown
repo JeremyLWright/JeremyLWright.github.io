@@ -7,8 +7,6 @@ categories:
 - Writing
 tags:
 - blogging
-series:
-- CodeStrokes Blog Reboot
 ---
 
 I wrote my first article for codestrokes in February 2011 - right as I was

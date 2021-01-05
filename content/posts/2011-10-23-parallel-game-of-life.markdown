@@ -7,7 +7,7 @@ slug: parallel-game-of-life
 title: Parallel Game-of-Life
 wordpress_id: 405
 categories:
-- Parallelism
+- Coding
 tags:
 - C++
 - parallel

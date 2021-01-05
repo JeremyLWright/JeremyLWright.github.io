@@ -7,7 +7,7 @@ slug: good-tools-excellent-results
 title: Good Tools, Excellent Results
 wordpress_id: 313
 categories:
-- C++ Practicum
+- Coding
 tags:
 - C++
 - productivity

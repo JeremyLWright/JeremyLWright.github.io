@@ -7,7 +7,7 @@ slug: being-truely-productive
 title: Being Truely Productive
 wordpress_id: 219
 categories:
-- Productivity
+- Writing
 tags:
 - process
 - vim

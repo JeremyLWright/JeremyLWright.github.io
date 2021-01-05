@@ -5,7 +5,7 @@ slug: system-languages-include-web
 title: "System languages should include Webapps"
 draft: false
 categories:
-- Opinion
+- Coding
 tags:
 - D
 - Rust

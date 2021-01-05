@@ -6,10 +6,9 @@ layout: post
 slug: d-for-the-c-programmer-red-black-tree-part-3
 title: D for the C++ Programmer
 wordpress_id: 91
-series: "The Red-Black Tree"
-categories:
-- Algorithm
+series: ["The Red-Black Tree"]
 tags:
+- Algorithm
 - C++
 - comparison
 - correct code

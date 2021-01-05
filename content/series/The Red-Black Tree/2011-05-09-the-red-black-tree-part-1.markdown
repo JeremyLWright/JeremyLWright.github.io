@@ -6,10 +6,9 @@ layout: post
 slug: the-red-black-tree-part-1
 title: The Red-Black Tree
 wordpress_id: 59
-series: "The Red-Black Tree"
-categories:
-- Algorithm
+series: ["The Red-Black Tree"]
 tags:
+- Algorithm
 - C++
 - comparison
 - D

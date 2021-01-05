@@ -4,6 +4,7 @@ date: 2015-06-14 00:00:00+00:00
 slug: how-to-be-an-elite-programmer
 title: How to be an Elite Programmer
 draft: true
+expiryDate: 2020-01-01T00:00:00+00:00
 categories:
 - C++ Beginner
 tags:

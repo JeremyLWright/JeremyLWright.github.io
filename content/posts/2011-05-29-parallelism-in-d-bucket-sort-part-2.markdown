@@ -7,9 +7,10 @@ slug: parallelism-in-d-bucket-sort-part-2
 title: Parallelism in D
 wordpress_id: 116
 categories:
-- Algorithm
+- Coding
 tags:
 - D
+- algorithm
 - parallel
 - real-time
 - realtime
