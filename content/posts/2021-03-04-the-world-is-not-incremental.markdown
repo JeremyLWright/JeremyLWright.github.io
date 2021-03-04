@@ -95,7 +95,7 @@ Similarly, go code has checks for nil, but the effect is the same, state explosi
 
 Thus, math allows us to more concisely describe a single atomic state. This has other impacts however though, which the hyperbook attempts to tease out in Section 2.7, Question 2.2. The next steps of my study, thus are to tackle this question and enrich my greycode specification.
 
-## [Learning Questions]({{<ref "2020-05-25-learning-process.markdown">}})
+# [Learning Questions]({{<ref "2020-05-25-learning-process.markdown">}})
 
 - Express [GreyCode](https://github.com/JeremyLWright/specs/blob/algorithm/max/algorithm/GreyCodeCounter/GreyCodeCounter.tla) in TLA⁺
 - Express the invariants in greycode as a temporal action instead of using ghost variables.
@@ -104,5 +104,5 @@ Thus, math allows us to more concisely describe a single atomic state. This has 
 
 # Acknowledgements
 
-Thank you to Alexander N. for his time and insight into TLA⁺.
+Thank you to Alexander N. for his collaboration, time and insight into TLA⁺.
 
