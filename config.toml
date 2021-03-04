@@ -6,7 +6,7 @@ copyright = "©2020 Jeremy Wright"
 
 disqusShortname = "codestrokes2"
 pygmentsuseclasses = true
-theme="hugo-notepadium"
+theme="hugo-notepadium2"
 
 [taxonomies]
   series = "series"
