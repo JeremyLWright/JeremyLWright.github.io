@@ -44,6 +44,10 @@ theme="hugo-notepadium"
   bio = "[About Me](/about/)"  # support markdown syntax
   github = "JeremyLWright"  # https://github.com/XXX
 
+[params.math]
+    enable = true  
+    use = "katex"  # option: "katex", "mathjax". default: "katex"
+
 [params.nav]
 	showCategories = true
 	showTags = true

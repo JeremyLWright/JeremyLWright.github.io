@@ -46,7 +46,7 @@ This particular test is trying to show that the height of the pyramid is the
 length of the out put array/list.
 
 
-```
+```haskell
 prop_heightIsLength :: Int ->  Bool
 prop_heightIsLength height = length ( buildTower height ) == height
 ```
@@ -57,7 +57,7 @@ searching I was able to find the Positive type modifier for quickcheck.
 
 https://hackage.haskell.org/package/QuickCheck-2.4.1.1/docs/Test-QuickCheck.html#t:Positive
 
-```
+```haskell
 prop_heightIsLength :: Positive Int ->  Bool
 prop_heightIsLength height = length ( buildTower height ) == height
 ```
@@ -89,7 +89,7 @@ use the built in constraints!
 > Why is this so hard?
 > Because I didn't know how to read the type signature of the Postive type.
 
-```
+```haskell
 -- This property does not compile
 prop_heightIsLength :: Positive Int ->  Bool
 prop_heightIsLength height = length ( buildTower height ) == height

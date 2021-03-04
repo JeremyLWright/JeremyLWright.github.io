@@ -38,7 +38,7 @@ the type of thing that get's lost in requirements, and never gets checked in
 testing. This is where PlusCal shines: showing you that your assumptions need
 refinement. 
 
-## [Learning Questions]({{ ref "2020-05-25-learning-process.markdown" }})
+## [Learning Questions]({{<ref "/content/posts/2020-05-25-learning-process.markdown">}})
 
 This leads me to refine my motivation for learning TLA+ (and PlusCal).
 Throughout this journey, we'll see what of these motivations hold to be true
@@ -53,7 +53,7 @@ and which are refined:
 	   after the countless features and patches added over time?
 
 
-## [Anki Cards]({{ ref "2020-05-25-learning-process.markdown" }})
+## [Anki Cards]({{<ref "/content/posts/2020-05-25-learning-process.markdown">}})
 
 1. In temporal logic {{c1::Stuttering}} is when a process simply stops.
 1. Stuttering models what real world phenomena?
