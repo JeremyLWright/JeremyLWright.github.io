@@ -6,7 +6,7 @@ copyright = "©2020 Jeremy Wright"
 
 disqusShortname = "codestrokes2"
 pygmentsuseclasses = true
-theme="hugo-notepadium"
+theme="hugo-notepadium2"
 
 [taxonomies]
   series = "series"
@@ -43,6 +43,10 @@ theme="hugo-notepadium"
   name = "Jeremy Wright"
   bio = "[About Me](/about/)"  # support markdown syntax
   github = "JeremyLWright"  # https://github.com/XXX
+
+[params.math]
+    enable = true  
+    use = "katex"  # option: "katex", "mathjax". default: "katex"
 
 [params.nav]
 	showCategories = true
