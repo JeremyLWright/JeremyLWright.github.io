@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.81.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<meta name="supported-color-schemes" content="light dark"><title>The Turbulent History of Managed Code&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6fe5d1dee32d5c1f625e8d9d541db5df28b4c99bf9f600cc7284f342438549386d2338be608f2edbb2e7fef8cbcccf30.css" integrity="sha384-b&#43;XR3uMtXB9iXo2dVB213yi0yZv59gDMcoTzQkOFSThtIzi&#43;YI8u27Ln/vjLzM8w"><meta name="twitter:card" content="summary" />
+<meta name="supported-color-schemes" content="light dark"><title>The Turbulent History of Managed Code&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.53081165f1d03b36fb9f4de24b00505db6b09fc2388839b7b17a05c66c9d7e8a258e194012e5b1f53b59d5f907244126.css" integrity="sha384-UwgRZfHQOzb7n03iSwBQXbawn8I4iDm3sXoFxmydfooljhlAEuWx9TtZ1fkHJEEm"><meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="The Turbulent History of Managed Code" /><body><section id="header">
     <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
         <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
-    <h1 class="article title">The Turbulent History of Managed Code</h1><p class="article date">Tuesday, August 28, 2012</p></section><article class="article markdown-body"><p>Managed Code is a fascinating technology; Just-In-Time compilation provides advanced run-time optimization and strong type safety can <a href="http://channel9.msdn.com/Shows/Going&#43;Deep/Singularity-III-Revenge-of-the-SIP"target="_blank">render the hardware MMU obsolete</a>. However the managed code renaissance is again in decline, and interestingly more than technology, business is changing the managed/native landscape. More than any other other metric, managed code is about maximizing programmer productivity.</p>
+    <h1 class="article title">The Turbulent History of Managed Code</h1><p class="article date">Tuesday, August 28, 2012</p></section><article class="article markdown-body"><p>Managed Code is a fascinating technology; Just-In-Time compilation provides advanced run-time optimization and strong type safety can <a href="http://channel9.msdn.com/Shows/Going&#43;Deep/Singularity-III-Revenge-of-the-SIP"target="_blank" rel="noopener noreferrer">render the hardware MMU obsolete</a>
+. However the managed code renaissance is again in decline, and interestingly more than technology, business is changing the managed/native landscape. More than any other other metric, managed code is about maximizing programmer productivity.</p>
 <!-- raw HTML omitted -->
-<p>In 1977, Infocom released Zork. Zork was an innovative game. Its <a href="http://www.inform-fiction.org/manual/html/s34.html"target="_blank">sophisticated</a> linguistics made for an immersive experience for its adventurers.  Language wasn&rsquo;t the only innovation made by Infocom. Infocom released Zork on a custom virtual machine called the Z-Machine. Z-Machine functioned as an abstraction layer to the hardware, allowing one code base to run on multiple separate architectures. The Z-Machine was a major technical advancement, but more than that it allowed programmers to work on a single code base rather than writing duplicate code for differing architectures.</p>
+<p>In 1977, Infocom released Zork. Zork was an innovative game. Its <a href="http://www.inform-fiction.org/manual/html/s34.html"target="_blank" rel="noopener noreferrer">sophisticated</a>
+ linguistics made for an immersive experience for its adventurers.  Language wasn&rsquo;t the only innovation made by Infocom. Infocom released Zork on a custom virtual machine called the Z-Machine. Z-Machine functioned as an abstraction layer to the hardware, allowing one code base to run on multiple separate architectures. The Z-Machine was a major technical advancement, but more than that it allowed programmers to work on a single code base rather than writing duplicate code for differing architectures.</p>
 <p>The Z-Machine afforded enormous financial benefit by allowing simultaneous release to multiple architectures. However, as Infocom discovered during the development of Cornerstone, Z-Machine did have an enormous performance overhead. Cornerstone was a business database application. Infocom decided early in development that the flexibility Z-Machine afforded Zork, would benefit Cornerstone. Cornerstone however, was not the slow paced text adventure game of Zork. Cornerstone was a serious business class application designed to compete with dBase and FoxPro. Z-Machine permitted more productive programmers but at the cost of performance. Performance Cornerstone direly required.</p>
-<p>The Java programming language, arguably the most popular language in the world, was <a href="http://en.wikipedia.org/wiki/Write_once,_run_anywhere"target="_blank">solely designed</a> to optimize programmer&rsquo;s productivity. Sun first touted this noble goal with the statement, &ldquo;Write once, run anywhere&rdquo;. Java makes many compromises in the name of <em>safety from the programmer</em>. The managed coder is prevented from low level access to hardware in the name of safety. If the coder cannot segfault, program will be more stable. Java automatically range checks all arrays, and provides a periodic garbage collector, all in the name of stability, security and productivity. Performance is not a metric for this target.</p>
+<p>The Java programming language, arguably the most popular language in the world, was <a href="http://en.wikipedia.org/wiki/Write_once,_run_anywhere"target="_blank" rel="noopener noreferrer">solely designed</a>
+ to optimize programmer&rsquo;s productivity. Sun first touted this noble goal with the statement, &ldquo;Write once, run anywhere&rdquo;. Java makes many compromises in the name of <em>safety from the programmer</em>. The managed coder is prevented from low level access to hardware in the name of safety. If the coder cannot segfault, program will be more stable. Java automatically range checks all arrays, and provides a periodic garbage collector, all in the name of stability, security and productivity. Performance is not a metric for this target.</p>
 <p>When Java was release, the hardware at the time was advancing rapidly. Clockspeeds were accelerating at an alarming rate. Hardware engineer&rsquo;s enormous effort allowed software engineers to trade performance. Simultaneously, business applications were growing ever larger. Larger applications meant larger teams. These large teams leveraged Java to help manage some of the preceived ___ problems_ with native code. Simultaneously, this trade of performance afforded the businesses to target multiple architectures from a single code base. Managed code was making a huge surge.</p>
 <p>In 2002, Microsoft was working on Longhorn, and Microsoft started down the same perilous road as Infocom. Jim Allchin released an edict stating that all OS interfaces shall be M_anaged Interfaced_._ _The question of the time was, &ldquo;Can Managed Code solve all important problems?&rdquo;, leaving native code only to device drivers. Those who touch the metal.  Native interfaces were permitted, but never in place of managed ones. Microsoft saw the productivity managed interfaces afforded programmers. This meant a healthier bottom line. Microsoft attempted to leverage this harder than anyone had before.  Infocom build a database on managed technologies. Microsoft wanted to build an operating system! Longhorn had an ambitious list of features and managed code was at the center of it all. Eventually, Microsoft forwent managed code and quickly released Vista. Microsoft discovered what Infocom discovered years prior, there are certain limits to managed code&rsquo;s capabilities.</p>
 <p>Fast forward to the era of cloud computing, which is simply a re-branding of yesteryear&rsquo;s time-share systems. Processing time is once again premium to programmer&rsquo;s time. On the hardware side, we&rsquo;ve hit a limit with clock speeds. Increasing the performance of our software applications is no longer up to the hardware engineers, its now our responsibility. We no longer have the luxury of managed code.  Our responsibility is to compute some result and release the systems' resources, or for battery powered devices return to low power mode. Native code is the only tool we currently have to leverage the hardware and meet our performance goals.</p>
@@ -17,40 +20,52 @@
 <h4 id="references">References</h4>
 <ul>
 <li>
-<p><a href="http://msdn.microsoft.com/en-us/library/ms993883.aspx"target="_blank">http://msdn.microsoft.com/en-us/library/ms993883.aspx</a></p>
+<p><a href="http://msdn.microsoft.com/en-us/library/ms993883.aspx"target="_blank" rel="noopener noreferrer">http://msdn.microsoft.com/en-us/library/ms993883.aspx</a>
+</p>
 </li>
 <li>
-<p><a href="http://www.theinquirer.net/inquirer/news/1004218/longhorn-to-have-managed-interfaces"target="_blank">http://www.theinquirer.net/inquirer/news/1004218/longhorn-to-have-managed-interfaces</a></p>
+<p><a href="http://www.theinquirer.net/inquirer/news/1004218/longhorn-to-have-managed-interfaces"target="_blank" rel="noopener noreferrer">http://www.theinquirer.net/inquirer/news/1004218/longhorn-to-have-managed-interfaces</a>
+</p>
 </li>
 <li>
-<p><a href="http://en.wikipedia.org/wiki/Z-machine"target="_blank">http://en.wikipedia.org/wiki/Z-machine</a></p>
+<p><a href="http://en.wikipedia.org/wiki/Z-machine"target="_blank" rel="noopener noreferrer">http://en.wikipedia.org/wiki/Z-machine</a>
+</p>
 </li>
 <li>
-<p><a href="http://en.wikipedia.org/wiki/Zork"target="_blank">http://en.wikipedia.org/wiki/Zork</a></p>
+<p><a href="http://en.wikipedia.org/wiki/Zork"target="_blank" rel="noopener noreferrer">http://en.wikipedia.org/wiki/Zork</a>
+</p>
 </li>
 <li>
-<p><a href="http://www.inform-fiction.org/zmachine/standards/index.html"target="_blank">http://www.inform-fiction.org/zmachine/standards/index.html</a></p>
+<p><a href="http://www.inform-fiction.org/zmachine/standards/index.html"target="_blank" rel="noopener noreferrer">http://www.inform-fiction.org/zmachine/standards/index.html</a>
+</p>
 </li>
 <li>
-<p><a href="http://en.wikipedia.org/wiki/Java_performance"target="_blank">http://en.wikipedia.org/wiki/Java_performance</a></p>
+<p><a href="http://en.wikipedia.org/wiki/Java_performance"target="_blank" rel="noopener noreferrer">http://en.wikipedia.org/wiki/Java_performance</a>
+</p>
 </li>
 <li>
-<p><a href="http://en.wikipedia.org/wiki/Jim_Allchin"target="_blank">http://en.wikipedia.org/wiki/Jim_Allchin</a></p>
+<p><a href="http://en.wikipedia.org/wiki/Jim_Allchin"target="_blank" rel="noopener noreferrer">http://en.wikipedia.org/wiki/Jim_Allchin</a>
+</p>
 </li>
 <li>
-<p><a href="http://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/-Not-Your-Father-s-C-?format=html5"target="_blank">http://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/-Not-Your-Father-s-C-?format=html5</a></p>
+<p><a href="http://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/-Not-Your-Father-s-C-?format=html5"target="_blank" rel="noopener noreferrer">http://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/-Not-Your-Father-s-C-?format=html5</a>
+</p>
 </li>
 <li>
-<p><a href="http://herbsutter.com/2012/04/02/reader-qa-when-will-better-jits-save-managed-code/"target="_blank">http://herbsutter.com/2012/04/02/reader-qa-when-will-better-jits-save-managed-code/</a></p>
+<p><a href="http://herbsutter.com/2012/04/02/reader-qa-when-will-better-jits-save-managed-code/"target="_blank" rel="noopener noreferrer">http://herbsutter.com/2012/04/02/reader-qa-when-will-better-jits-save-managed-code/</a>
+</p>
 </li>
 <li>
-<p><a href="http://www.gotw.ca/publications/concurrency-ddj.htm"target="_blank">http://www.gotw.ca/publications/concurrency-ddj.htm</a></p>
+<p><a href="http://www.gotw.ca/publications/concurrency-ddj.htm"target="_blank" rel="noopener noreferrer">http://www.gotw.ca/publications/concurrency-ddj.htm</a>
+</p>
 </li>
 <li>
-<p><a href="http://herbsutter.com/welcome-to-the-jungle/"target="_blank">http://herbsutter.com/welcome-to-the-jungle/</a></p>
+<p><a href="http://herbsutter.com/welcome-to-the-jungle/"target="_blank" rel="noopener noreferrer">http://herbsutter.com/welcome-to-the-jungle/</a>
+</p>
 </li>
 </ul>
-</article><section class="article labels"><a class="category" href=/categories/productivity/>Productivity</a><a class="tag" href=/tags/java/>Java</a><a class="tag" href=/tags/managed-code/>Managed Code</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.a8bf9f6f334e22a6002d9757880b6a18a0782dbe71c8c331ba76607d0b858aa3261a116797f86516d1a8b38a0cc107c7.js#pubid=ra-1234567890" integrity="sha384-qL&#43;fbzNOIqYALZdXiAtqGKB4Lb5xyMMxunZgfQuFiqMmGhFnl/hlFtGos4oMwQfH"></script></div>
+</article><section class="article labels"><a class="category" href=/categories/productivity/>Productivity</a><a class="tag" href=/tags/java/>Java</a><a class="tag" href=/tags/managed-code/>Managed Code</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.99872df1091f055fca553e0b74b13c09bd383ef42b1c56a9edb651a91f122d56e7bc9a2fad73528246215b379b043226.js#pubid=ra-1234567890" integrity="sha384-mYct8QkfBV/KVT4LdLE8Cb04PvQrHFap7bZRqR8SLVbnvJovrXNSgkYhWzebBDIm"></script>
+</div>
 <div class="article bottom"><section class="article navigation"><p><a class="link" href="/2012/09/open-source-ctf-game-server/"><span class="iconfont icon-article"></span>Open Source CTF Game Server</a></p><p><a class="link" href="/2012/07/know-its-name/"><span class="iconfont icon-article"></span>Know Its Name</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
@@ -72,8 +87,10 @@
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
     <p class="copyright">©2020 Jeremy Wright</p>
-    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
-        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
-        target="_blank">Notepadium</a></p></div></section></body>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></body>
 
 </html>

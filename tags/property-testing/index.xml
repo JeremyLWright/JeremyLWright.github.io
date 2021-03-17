@@ -1,28 +1,506 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>property-testing on The Quiescent Current</title>
-    <link>/tags/property-testing/</link>
+    <link>https://quiescent.us/tags/property-testing/</link>
     <description>Recent content in property-testing on The Quiescent Current</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>©2020 Jeremy Wright</copyright>
     <lastBuildDate>Sun, 05 Jul 2015 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="/tags/property-testing/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://quiescent.us/tags/property-testing/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>The World Is Not Incremental</title>
+      <link>https://quiescent.us/2021/03/not-incremental/</link>
+      <pubDate>Wed, 03 Mar 2021 15:00:00 -0700</pubDate>
+      
+      <guid>https://quiescent.us/2021/03/not-incremental/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve been struggling to understand the stress the TLA⁺ community is putting on the presence of &lt;em&gt;math&lt;/em&gt; in the  specifications.
+Namely, that specifications are not programming, and the math simplifies, by abstraction, the system.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What exactly is being simplified by using math, instead of &amp;ldquo;programming&amp;rdquo;?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;During TLA⁺ study group this week, we discussed at least 1 aspect that applying math simplifies the description of our systems $$\rightarrow$$ The number of states.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;The &lt;a href=&#34;https://lamport.azurewebsites.net/tla/hyperbook.html&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Hyperbook&lt;/a&gt;
+ defines the standard model of digital systems as&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Standard Model — An abstract system is described as a collection of behaviors,
+each representing a possible execution of the system, where a behavior is a
+sequence of states and a state is an assignment of values to variables.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The subtle, intriguing part of this definition is the &lt;em&gt;a state is an assignment of values to variables&lt;/em&gt;. Variables. Plural.&lt;/p&gt;
+&lt;p&gt;Hence, a state transition is not defined as an assignment, but rather a set of consistent definitions from a to b.&lt;/p&gt;
+&lt;p&gt;Consider the following C code&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C&#34; data-lang=&#34;C&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[])&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+	&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+	&lt;span class=&#34;c1&#34;&gt;//State isn&amp;#39;t complete until here..
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Compare this to how we would represent this state in math, e.g., as part of the standard model. We abstract away the incremental nature of &amp;ldquo;assignment&amp;rdquo; and &amp;ldquo;operations&amp;rdquo;. Instructions are implementation details, they are simply how we build a digital system. They are not in themselves part of our system.&lt;/p&gt;
+&lt;p&gt;$$
+Init \triangleq
+\wedge a = 1
+\wedge b = 5
+\wedge c = 1 + 5$$&lt;/p&gt;
+&lt;p&gt;However, when programming, these incremental states are real. We must consider them, especially in the presence of errors.&lt;/p&gt;
+
+
+  
+    
+  
+
+
+&lt;figure&gt;
+  &lt;img
+    src=&#39;https://g.gravizo.com/svg?%0a%20%20digraph%20G%20%7b%0a%20%20%20%20a%20%5blabel%3d%22A%5cn%7ba%3d5%7d%22%5d%0a%20%20%20%20b%20%5blabel%3d%22B%5cn%7ba%3d5%20b%3d3%7d%22%5d%0a%20%20%20%20c%20%5blabel%3d%22C%5cn%7ba%3d5%20b%3d3%20c%3d8%7d%22%5d%0a%20%20%20%20done%20%5bfillcolor%3d%22grey%22%20label%3d%22Done%22%5d%0a%0a%20%20%20%20init%20-%3e%20a%0a%20%20%20%20a%20-%3e%20b%0a%20%20%20%20b%20-%3e%20c%0a%20%20%20%20c%20-%3e%20done%0a%20%20%7d%0a&#39;
+    alt=&#39;Example System States for C Program&#39;
+    /&gt;
+    &lt;figcaption&gt;Example System States for C Program&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Consider a language with exceptions. You have the following&lt;/p&gt;
+
+
+  
+    
+  
+
+
+&lt;figure&gt;
+  &lt;img
+    src=&#39;https://g.gravizo.com/svg?%0a%20%20digraph%20G%20%7b%0a%20%20%20%20a%20%5blabel%3d%22A%5cn%7ba%3d5%7d%22%5d%0a%20%20%20%20b%20%5blabel%3d%22B%5cn%7ba%3d5%20b%3d3%7d%22%5d%0a%20%20%20%20c%20%5blabel%3d%22C%5cn%7ba%3d5%20b%3d3%20c%3d8%7d%22%5d%0a%20%20%20%20done%20%5bfillcolor%3d%22grey%22%20label%3d%22Done%22%5d%0a%20%20%20%20throw%20%5blabel%3d%22Handle%20Exception%22%5d%0a%0a%20%20%20%20init%20-%3e%20a%0a%20%20%20%20a%20-%3e%20b%0a%20%20%20%20b%20-%3e%20c%0a%20%20%20%20c%20-%3e%20done%0a%20%20%20%20%0a%20%20%20%20init%20-%3e%20throw%20%5blabel%3d%22throw%20BadThingException%28%29%3b%22%5d%0a%20%20%20%20a%20-%3e%20throw%20%5blabel%3d%22throw%20BadThingException%28%29%3b%22%5d%0a%20%20%20%20b%20-%3e%20throw%20%5blabel%3d%22throw%20BadThingException%28%29%3b%22%5d%0a%20%20%20%20c%20-%3e%20throw%20%5blabel%3d%22throw%20BadThingException%28%29%3b%22%5d%0a%20%20%20%20throw%20-%3e%20done%0a%20%20%7d%0a&#39;
+    alt=&#39;State explosions due to exceptions&#39;
+    /&gt;
+    &lt;figcaption&gt;State explosions due to exceptions&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Similarly, go code has checks for nil, but the effect is the same, state explosion as the programmer assembles a particular complete state incrementally.&lt;/p&gt;
+&lt;p&gt;Thus, math allows us to more concisely describe a single atomic state. This has other impacts however though, which the hyperbook attempts to tease out in Section 2.7, Question 2.2. The next steps of my study, thus are to tackle this question and enrich my greycode specification.&lt;/p&gt;
+&lt;h1 id=&#34;learning-questionshahahugoshortcode-s2-hbhb&#34;&gt;&lt;a href=&#34;https://quiescent.us/2020/05/learning-process/&#34;&gt;Learning Questions&lt;/a&gt;
+&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Express &lt;a href=&#34;https://github.com/JeremyLWright/specs/blob/algorithm/max/algorithm/GreyCodeCounter/GreyCodeCounter.tla&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;GreyCode&lt;/a&gt;
+ in TLA⁺&lt;/li&gt;
+&lt;li&gt;Express the invariants in greycode as a temporal action instead of using ghost variables.&lt;/li&gt;
+&lt;li&gt;Hyperbook Section 2.7: Question 2.2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;acknowledgements&#34;&gt;Acknowledgements&lt;/h1&gt;
+&lt;p&gt;Thank you to Alexander N. for his collaboration, time and insight into TLA⁺.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Using QuickCheck&#39;s Positive Type Level Modifier</title>
+      <link>https://quiescent.us/2020/12/quickcheck-type-level-modifiers/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 -0700</pubDate>
+      
+      <guid>https://quiescent.us/2020/12/quickcheck-type-level-modifiers/</guid>
+      <description>&lt;p&gt;One of my students this semester was struggling with the material. This
+student is a very diligent worker and has been researching the problems trying
+to get a better understanding of the material before digging in. Sometimes
+however, there is no replacement for just digging in and coding something.
+This does at least two things, it solidifies the material you&amp;rsquo;re read so far,
+and most importantly it shows you the limits of what you currently understand
+and urges you to learn more. Interestingly, I&amp;rsquo;ve found in my own intellectual
+endeavors some things just don&amp;rsquo;t make any sense until you&amp;rsquo;ve tried to use it
+&lt;em&gt;in anger&lt;/em&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;I gave this student the advice to&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Put down the books.
+Pick up a pencil, some paper and a compiler
+Code it. Make your brain hurt.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;As I was sharing this I realized how hypocritical I was. I&amp;rsquo;ve &lt;em&gt;been
+learning&lt;/em&gt; Haskell, and yet I haven&amp;rsquo;t coded in Haskell in over a year. I&amp;rsquo;ve
+been reading books, watching videos.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I&amp;rsquo;ve been a Spectator.
+It&amp;rsquo;s time to be a Doer.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I started working through the codewars.com problems, specifically working on
+the test cases for this &lt;a href=&#34;https://www.codewars.com/kata/576757b1df89ecf5bd00073b/train/haskell&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;problem&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;While coding the QuickCheck properties (tests) for this problem however, I was
+completely lost at trying to build a property with only positive generator
+values.&lt;/p&gt;
+&lt;p&gt;This particular test is trying to show that the height of the pyramid is the
+length of the out put array/list.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-haskell&#34; data-lang=&#34;haskell&#34;&gt;&lt;span class=&#34;nf&#34;&gt;prop_heightIsLength&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;::&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;Int&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;-&amp;gt;&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;Bool&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;prop_heightIsLength&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;height&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buildTower&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;height&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;height&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;However, &lt;code&gt;buildTower&lt;/code&gt; only defined for positive values. My first pass of
+the property is generates negative values (and 0 values) as input. After some
+searching I was able to find the Positive type modifier for quickcheck.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://hackage.haskell.org/package/QuickCheck-2.4.1.1/docs/Test-QuickCheck.html#t:Positive&#34;&gt;https://hackage.haskell.org/package/QuickCheck-2.4.1.1/docs/Test-QuickCheck.html#t:Positive&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-haskell&#34; data-lang=&#34;haskell&#34;&gt;&lt;span class=&#34;nf&#34;&gt;prop_heightIsLength&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;::&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;Positive&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;Int&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;-&amp;gt;&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;Bool&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;prop_heightIsLength&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;height&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buildTower&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;height&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;height&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;However, this doesn&amp;rsquo;t compile.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Couldn&#39;t match expected type ‘Positive Int’
+                  with actual type ‘Int’
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Which brings me to my biggest challenge in learning anything new. Frequently
+in learning something new I don&amp;rsquo;t have enough knowledge to ask the right
+question, or even understand the answer. This is one of those cases.&lt;/p&gt;
+&lt;h2 id=&#34;failed-questions&#34;&gt;Failed Questions&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;haskell unwrap Positive newtype&lt;/li&gt;
+&lt;li&gt;haskell use QuickCheck Positive&lt;/li&gt;
+&lt;li&gt;haskell constraint quickcheck generator&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This lead me to the closest answer&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/11910143/positive-integer-type#11910221&#34;&gt;https://stackoverflow.com/questions/11910143/positive-integer-type#11910221&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;However, it is demonstrating how to build a custom generator. I just want to
+use the built in constraints!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Why is this so hard?
+Because I didn&amp;rsquo;t know how to read the type signature of the Postive type.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-haskell&#34; data-lang=&#34;haskell&#34;&gt;&lt;span class=&#34;c1&#34;&gt;-- This property does not compile&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;prop_heightIsLength&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;::&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;Positive&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;Int&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;-&amp;gt;&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;Bool&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;prop_heightIsLength&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;height&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buildTower&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;height&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;height&lt;/span&gt;
+
+
+&lt;span class=&#34;c1&#34;&gt;-- This property compiles&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;prop_heightIsLength&amp;#39;&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;::&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;Positive&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;Int&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;-&amp;gt;&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;Bool&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;prop_heightIsLength&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;Positive&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;height&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buildTower&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;height&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;height&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Naively, I thought the different is the parenthesis. Remember, parenthesis are
+&lt;em&gt;only used for grouping&lt;/em&gt; in haskell. They have no other purpose. The different
+is &lt;em&gt;what is bound to the name &lt;code&gt;height&lt;/code&gt;&lt;/em&gt;. In the first version, I&amp;rsquo;m binding
+a &lt;code&gt;Positive Int&lt;/code&gt; to the name &lt;code&gt;height&lt;/code&gt; in the second version I&amp;rsquo;m
+binding merely an &lt;code&gt;Int&lt;/code&gt; to &lt;code&gt;height&lt;/code&gt;. The Positive type modifier
+assures that the values bound to it&amp;rsquo;s parameter are always positive. The bound
+value however will retain the &lt;code&gt;Int&lt;/code&gt; type, even though it&amp;rsquo;s value is always
+positive.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m unstuck now. Moving on.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>https://quiescent.us/about/</link>
+      <pubDate>Sun, 20 Dec 2020 17:30:00 -0700</pubDate>
+      
+      <guid>https://quiescent.us/about/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;When you do things right, no one can be sure you did anything at all.&lt;/p&gt;
+&lt;p&gt;— Futurama Season 3&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I specialize in the software no one sees. The high performance, concurrent,
+hard real-time, high-reliability systems that enable our way of life.&lt;/p&gt;
+&lt;p&gt;My software fights fraud, and drives tractors. I&amp;rsquo;ve baked solar cells, made
+escalators more efficient, optimized fantasy sports. My software helps
+airplanes land safely.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve improved data center efficiency, and contributed designs and
+implementation of risk-management microservices for high-performance payment
+systems behind &lt;a href=&#34;https://ZellePay.com&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Zelle®&lt;/a&gt;
+. Currently, I am working to
+integrated messaging at &lt;a href=&#34;https://joylabs.com&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;JoyLabs&lt;/a&gt;
+ and &lt;a href=&#34;https://memo.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Memo&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;Through all my digital adventures I&amp;rsquo;ve never forgot what it is to be
+a beginner. I love to share that curiosity, and freshness with others in my
+classes.&lt;/p&gt;
+&lt;h2 id=&#34;research-interests&#34;&gt;Research Interests&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Formal Specifications&lt;/li&gt;
+&lt;li&gt;Mentoring &amp;amp; Teaching&lt;/li&gt;
+&lt;li&gt;Type Safety&lt;/li&gt;
+&lt;li&gt;Testing&lt;/li&gt;
+&lt;li&gt;Databases&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;talks&#34;&gt;Talks&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;2&lt;!-- raw HTML omitted --&gt;nd&lt;!-- raw HTML omitted --&gt; Place Arizona State &lt;a href=&#34;https://aztoastmasters.org/spring-2018-contest-results/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Toastmasters International Speech 2018&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://vimeo.com/39505796&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Hosted Script for Games&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;papers&#34;&gt;Papers&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://quiescent.us/publications/WRIGHT_JEREMY_1000738685.pdf&#34;&gt;Master&amp;rsquo;s Thesis&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/hillclimbing-decryptor&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Hill Cracker - A hill climbing system for cracking monoalphabetic
+ciphers&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/CloudAssure&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Cloud Assure - A cloud based POMDP data leakage system&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/thesis&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Whispers - A cloud based risk assessment&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/WebDocumentSystem&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;WebDoc - Multi-user document sharing system&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/cse548-RoboTractor&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;RoboTractor - a Machine automatic system over XMPP&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;my-free-time&#34;&gt;My Free Time&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/dotfiles&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;dotfiles&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;img  src=&#34;https://projecteuler.net/profile/jwright85.png&#34;
+        alt=&#34;Project Euler&#34;/&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>My Learning Process</title>
+      <link>https://quiescent.us/2020/05/learning-process/</link>
+      <pubDate>Mon, 25 May 2020 15:31:21 -0700</pubDate>
+      
+      <guid>https://quiescent.us/2020/05/learning-process/</guid>
+      <description>&lt;h1 id=&#34;as-of-2020&#34;&gt;As of 2020&lt;/h1&gt;
+&lt;h2 id=&#34;learning-questions&#34;&gt;Learning Questions&lt;/h2&gt;
+&lt;p&gt;My learning process consists of a set of learning questions. These questions
+are almost certainly wrong and reflect at least the following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;My motivation for learning a topic.&lt;/li&gt;
+&lt;li&gt;My misconceptions of a given topic and the seemingly magic qualities
+a beginner believes it can provide.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The learning questions are initially, almost certainly wrong. This is good. It
+shows my current understanding or lack there-of. Refinement of these questions
+over time will lead to a deeper understanding of the material.&lt;/p&gt;
+&lt;h2 id=&#34;anki-cards&#34;&gt;Anki Cards&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m currently following the precepts of incremental reading, and capturing of
+facts and ideas into Anki cards. These cards serve as a foundation for
+understanding. Facts themselves cannot build intuition but they provide
+anchors for a framework of understanding.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>TLA&#43; Chapter 1: Reflection</title>
+      <link>https://quiescent.us/series/pratical-tla&#43;/tla-chap1/</link>
+      <pubDate>Mon, 25 May 2020 15:00:14 -0700</pubDate>
+      
+      <guid>https://quiescent.us/series/pratical-tla&#43;/tla-chap1/</guid>
+      <description>&lt;p&gt;The first time I opened &lt;a href=&#34;https://www.hillelwayne.com/post/practical-tla/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Hillel&amp;rsquo;s
+book&lt;/a&gt;
+ and skimmed the first
+chapter I was subconsciously looking for a reason not to sink a bunch of time
+into yet another language/ecosystem project. That bias prevented me from
+seeing the point of the first chapter.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;Hillel&amp;rsquo;s first chapter ends with a definition of stuttering and how in the
+presence of real world temporal effects, a safe, reliable in all cases wire
+transfer system borders on impossible. This initially turned me off,
+sophomorically reflecting, &amp;ldquo;Well if this book won&amp;rsquo;t let me make reliable
+software then forget it.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;This result however is precisely what formal methods and TLA+ in particular
+seeks to provide. These tools tell you, in 22 lines of PlusCal that your
+assumptions about the eventual consistency of your system is invalid.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PlusCal shows you in 22 lines that your assumptions of your are invalid.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This simply wire transfer specification generates 25 unique system states, and
+the seemingly obvious property that no money gets created or lost &lt;em&gt;doesn&amp;rsquo;t
+hold&lt;/em&gt;.  In my experience, these types of fundamental properties are exactly
+the type of thing that get&amp;rsquo;s lost in requirements, and never gets checked in
+testing. This is where PlusCal shines: showing you that your assumptions need
+refinement.&lt;/p&gt;
+&lt;h2 id=&#34;learning-questionshahahugoshortcode-s0-hbhb&#34;&gt;&lt;a href=&#34;https://quiescent.us/2020/05/learning-process/&#34;&gt;Learning Questions&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;This leads me to refine my motivation for learning TLA+ (and PlusCal).
+Throughout this journey, we&amp;rsquo;ll see what of these motivations hold to be true
+and which are refined:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Build intuitive models to validate system assumptions.&lt;/li&gt;
+&lt;li&gt;Build models to verify the &amp;ldquo;obvious stuff&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Identify when system properties change.
+&lt;ol&gt;
+&lt;li&gt;When working on a legacy system are assumptions and practices that were
+try at the beginning of the design still true? Id est, do the
+invariants and eventual consistent properties of the system still hold
+after the countless features and patches added over time?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;anki-cardshahahugoshortcode-s1-hbhb&#34;&gt;&lt;a href=&#34;https://quiescent.us/2020/05/learning-process/&#34;&gt;Anki Cards&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;In temporal logic {{c1::Stuttering}} is when a process simply stops.&lt;/li&gt;
+&lt;li&gt;Stuttering models what real world phenomena?
+&lt;ol&gt;
+&lt;li&gt;Timeouts, slow consumers, server crashes.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>System languages should include Webapps</title>
+      <link>https://quiescent.us/2015/10/system-languages-include-web/</link>
+      <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://quiescent.us/2015/10/system-languages-include-web/</guid>
+      <description>&lt;p&gt;I was reading an &lt;a href=&#34;https://isocpp.org/wiki/faq/strange-inheritance&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;FAQ&lt;/a&gt;
+ today about some subtle C++ point and I came across
+a comment that explicitly excludes the beginning language-learner.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;By the way, it confuses most novice C++ programmers that private virtuals
+can be overridden&amp;hellip; However the private virtual approach is now common
+enough that confusion of novices is less of a concern.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This left me frustrated that a language that has been core to my personal
+success so flippantly brushed aside its future user. The C++ community is
+certainly undergoing a transformation. There is active effort to modernize,
+and refresh C++.  However, lending a hand to beginners is not C++&amp;rsquo;s forte.
+There are more &lt;a href=&#34;codereview.stackexchange.com&#34;&gt;resources&lt;/a&gt;
+ to learn programming
+today than when I started, however the struggles of a beginner are largely
+unchanged. This comment left me thinking not that this C++ idiom is easier
+to understand, its that there aren&amp;rsquo;t any novices left in the C++ community.&lt;/p&gt;
+&lt;p&gt;I am currently reintroducing myself to D. There are two things that
+I admire about the community. First, D is frank about the inconsistencies in
+their language, and actively try to make it easier to understand. Second,
+D embraces web application.&lt;/p&gt;
+&lt;p&gt;During the &lt;a href=&#34;http://dconf.org/2015/index.html&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;DConf videos&lt;/a&gt;
+ speakers voice pain points, and
+inconsistencies in the language. The point isn&amp;rsquo;t to complain, but to
+acknowledge that language experts are not the only users.  With each point Walter
+Bright (the language&amp;rsquo;s author) carefully considers each point.&lt;/p&gt;
+&lt;p&gt;For example, one individual suggested that D&amp;rsquo;s mixins are &amp;ldquo;unprincipled&amp;rdquo;.
+Unprincipled meaning mixins are strings rather than expression trees as in C#&amp;rsquo;s
+LINQ, or Abstract Syntax Trees as in Rust&amp;rsquo;s macros. Bright however
+&lt;a href=&#34;https://www.youtube.com/watch?v=s83u5iw67TY&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;responded&lt;/a&gt;
+ that he agrees mixins are unprincipled, but
+&amp;ldquo;&amp;hellip;[that] they are easy to understand.&amp;rdquo;  Making mixins as straightforward as string
+manipulation makes an otherwise advanced technique something a novice can use.&lt;/p&gt;
+&lt;p&gt;I can certainly attest to the complexity of C#&amp;rsquo;s LINQ. I&amp;rsquo;ve
+&lt;!-- raw HTML omitted --&gt;worked&lt;!-- raw HTML omitted --&gt; struggled on a LINQ provider for a in-house database
+engine. LINQ Expression Trees are certainly in the upper echelons of advanced
+techniques. Implementing mixins as string manipulation is a beautiful
+concession to making a language easier to use.&lt;/p&gt;
+&lt;p&gt;The second principle I loved about the D community, and the thesis of
+this post, is a single statement on &lt;a href=&#34;http://wiki.dlang.org/Vision/2015H1&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;D&amp;rsquo;s roadmap&lt;/a&gt;
+
+&amp;ldquo;Emphasize &lt;a href=&#34;http://vibed.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;vibe.d&lt;/a&gt;
+&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://vibed.org/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Vibe.d&lt;/a&gt;
+ is an asynchronous I/O and web framework library for D.
+I find the combination of I/O library and web framework similar to &lt;a href=&#34;https://playframework.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Play
+Framework&amp;rsquo;s&lt;/a&gt;
+ approach from Scala.  D is classified as a system
+language. The same class as C++. However the D community considers (as does the &lt;a href=&#34;https://www.reddit.com/r/rust/comments/3n3b2d/trying_rust_for_web_services/cvl1lx1&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Rust
+community&lt;/a&gt;
+, &lt;a href=&#34;https://blog.wearewizards.io/trying-rust-for-web-services&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;1&lt;/a&gt;
+, &lt;a href=&#34;http://arewewebyet.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;2&lt;/a&gt;
+) web
+services a key enabler.&lt;/p&gt;
+&lt;p&gt;C++ is entrenched in enterprise applications.  However languages like D, and
+Rust are among the few that can compete with C++&amp;rsquo;s performance. This is,
+I believe, C++&amp;rsquo;s last life-preserving feature, entrenchment.  C++ is hard to
+learn, hard to use, tends to define language experts (also see Haskell).  But
+it is everywhere, and I can get a good paying job by knowing it.&lt;/p&gt;
+&lt;p&gt;HTTP/REST has established itself as the lingua-franca of Service Oriented
+Architectures.  &lt;a href=&#34;http://engineering.linkedin.com/play/play-framework-linkedin&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;LinkedIn&lt;/a&gt;
+ maintains a beautiful and informative
+blog about engineering a massively-online-multiplayer-role-playing-game, also
+known as a social network. At it&amp;rsquo;s heart are a number of services, written in
+various languages, all linked together via HTTP. HTTP is the key that binds
+them all. D is on-board with HTTP, and embracing the Web. Rust appears to be
+as well. This is certainly a massive opportunity to compete with C++ at the
+heart of its entrenchment, enterprise services.&lt;/p&gt;
+&lt;p&gt;As I work on my own personal projects, I like to use compiled languages. I have
+quite a bit of experience with Django, but I don&amp;rsquo;t feel confident to build
+a large, long-term project in a duck-typed language. At risk of sounding like
+a Haskeller, a strong type system really does help enforce a consistent
+application. Even if one just considers refactoring, the compiler looks at
+every line of code, and every function call, every time. I like to believe I&amp;rsquo;m
+professional enough an engineer to say my unit-test exercise 100% coverage,
+but I know I&amp;rsquo;ve never been successful in doing so. I would like to leverage my
+expertise in C++ to build my personal web service experiments, but there
+simply isn&amp;rsquo;t a reasonable way to do that. Go is certainly a contender for this
+space, but I prefer languages that give me more of a hand in generic
+(parametric polymorphic) techniques. For me, now, that language is D.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>4 Simple Steps to Run D Language in Azure Websites</title>
+      <link>https://quiescent.us/2015/09/deploying-d-to-azure-webapp/</link>
+      <pubDate>Fri, 25 Sep 2015 20:10:00 +0700</pubDate>
+      
+      <guid>https://quiescent.us/2015/09/deploying-d-to-azure-webapp/</guid>
+      <description>&lt;p&gt;&lt;em&gt;I shameless stole these steps from &lt;a href=&#34;http://www.wadewegner.com/2014/12/4-simple-steps-to-run-go-language-in-azure-websites/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;4 Simple Steps to Run Go Language in Azure Websites&lt;/a&gt;
+. This post is simply a transliteration to D. Thank you very much to Wade Wegner for the original post.&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&#34;4-simple-steps&#34;&gt;4 Simple Steps&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;Create your Azure Website in Azure Portal.
+&lt;ol&gt;
+&lt;li&gt;Configure FTP deployment&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img  src=&#34;https://quiescent.us/img/Azure-FTP-Config.png&#34;
+        alt=&#34;FTP Configuration&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;2. Run &lt;code&gt;dub init vibed_hello_world --type=vibe.d&lt;/code&gt; and change the default app.d to read the port from an environment variable. &lt;a href=&#34;https://vibed.org/docs&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Docs&lt;/a&gt;
+&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-d&#34; data-lang=&#34;d&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;vibe.d&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;shared&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;std.process&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+	&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;std.conv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+
+	&lt;span class=&#34;n&#34;&gt;immutable&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;port&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;environment&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;HTTP_PLATFORM_PORT&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;];&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//Use the port IIS tells us to.
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+	&lt;span class=&#34;kd&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;settings&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HTTPServerSettings&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;settings&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;port&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;ushort&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;port&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;settings&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;bindAddresses&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;::1&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;127.0.0.1&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;];&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;listenHTTP&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;settings&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hello&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+
+	&lt;span class=&#34;n&#34;&gt;logInfo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Please open http://127.0.0.1:&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;port&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;/ in your browser.&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;hello&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;HTTPServerRequest&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;req&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HTTPServerResponse&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;res&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;res&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;writeBody&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Hello, World!&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;3. Create Web.Config&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+	&lt;span class=&#34;nt&#34;&gt;&amp;lt;system.webServer&amp;gt;&lt;/span&gt;
+		&lt;span class=&#34;nt&#34;&gt;&amp;lt;handlers&amp;gt;&lt;/span&gt;
+			&lt;span class=&#34;nt&#34;&gt;&amp;lt;add&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;httpplatformhandler&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;path=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;*&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;verb=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;*&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;modules=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;httpPlatformHandler&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;resourceType=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Unspecified&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+		&lt;span class=&#34;nt&#34;&gt;&amp;lt;/handlers&amp;gt;&lt;/span&gt;
+		&lt;span class=&#34;nt&#34;&gt;&amp;lt;httpPlatform&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;processPath=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;d:\home\site\wwwroot\vibed_hello_world.exe&amp;#34;&lt;/span&gt; 
+					&lt;span class=&#34;na&#34;&gt;arguments=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; 
+					&lt;span class=&#34;na&#34;&gt;startupTimeLimit=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;60&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+			&lt;span class=&#34;nt&#34;&gt;&amp;lt;environmentVariables&amp;gt;&lt;/span&gt;
+			&lt;span class=&#34;nt&#34;&gt;&amp;lt;/environmentVariables&amp;gt;&lt;/span&gt;
+		&lt;span class=&#34;nt&#34;&gt;&amp;lt;/httpPlatform&amp;gt;&lt;/span&gt;
+	&lt;span class=&#34;nt&#34;&gt;&amp;lt;/system.webServer&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;4. Upload binaries and DLLs to Azure!
+&lt;img  src=&#34;https://quiescent.us/img/upload-to-ftp.png&#34;
+        alt=&#34;Upload to FTP Server&#34;/&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Property Driven Design: MinMax</title>
-      <link>/2015/07/property_driven_design_minmax/</link>
+      <link>https://quiescent.us/2015/07/property_driven_design_minmax/</link>
       <pubDate>Sun, 05 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>/2015/07/property_driven_design_minmax/</guid>
-      <description>&lt;p&gt;I wrote an article on &lt;a href=&#34;http://www.codestrokes.com/2014/09/property-testing-in-c/&#34;target=&#34;_blank&#34;&gt;Property Testing&lt;/a&gt;
-about a year ago. Isocpp.org even &lt;a href=&#34;https://isocpp.org/blog/2014/12/property-testing&#34;target=&#34;_blank&#34;&gt;linked to
-it&lt;/a&gt; which was pretty cool.
-Recently, I uncovered a fantastic talk by &lt;a href=&#34;https://www.youtube.com/watch?v=shngiiBfD80&#34;target=&#34;_blank&#34;&gt;Jessica Kerr about property
-testing&lt;/a&gt;. Kerr&amp;rsquo;s talk
+      <guid>https://quiescent.us/2015/07/property_driven_design_minmax/</guid>
+      <description>&lt;p&gt;I wrote an article on &lt;a href=&#34;http://www.codestrokes.com/2014/09/property-testing-in-c/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Property Testing&lt;/a&gt;
+
+about a year ago. Isocpp.org even &lt;a href=&#34;https://isocpp.org/blog/2014/12/property-testing&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;linked to
+it&lt;/a&gt;
+ which was pretty cool.
+Recently, I uncovered a fantastic talk by &lt;a href=&#34;https://www.youtube.com/watch?v=shngiiBfD80&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Jessica Kerr about property
+testing&lt;/a&gt;
+. Kerr&amp;rsquo;s talk
 reinvigorated my languid research effort toward generated testing. Kerr
 presented the idea (novel to me) that properties aren&amp;rsquo;t rigid. Properties
 don&amp;rsquo;t need to exclude all possible incorrect results for a given function.
@@ -35,8 +513,9 @@ general than mundane example testing. How properties reduce the size of the
 problem space makes me imagine this Figure.&lt;/p&gt;
 &lt;p&gt;&lt;img  src=&#34;https://quiescent.us/img/Properties_solution_space.png&#34;
         alt=&#34;sometimes_code_gives_you_a_wtf&#34;/&gt;&lt;/p&gt;
-&lt;p&gt;Following Kerr&amp;rsquo;s references, I found a set of projects from a &lt;a href=&#34;http://www.cs.ou.edu/~rlpage/SEcollab/20projects/&#34;target=&#34;_blank&#34;&gt;predicate-logic
-course&lt;/a&gt;. This course
+&lt;p&gt;Following Kerr&amp;rsquo;s references, I found a set of projects from a &lt;a href=&#34;http://www.cs.ou.edu/~rlpage/SEcollab/20projects/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;predicate-logic
+course&lt;/a&gt;
+. This course
 provides 20 separate projects excellently cast for a property-driven-design
 tutorial. These projects are unique since besides the typical requirements
 they enumerate the predicate functions each requirement typifies. Predicate
@@ -44,15 +523,593 @@ functions are to a predicate-logician as properties are to a computer
 scientist. These enumerated properties (predicates) clarified
 many points I misunderstood about property testing.&lt;/p&gt;
 &lt;p&gt;This post will step through the design of the first project
-&lt;a href=&#34;http://www.cs.ou.edu/~rlpage/SEcollab/20projects/minmax.htm&#34;target=&#34;_blank&#34;&gt;minmax&lt;/a&gt; using
+&lt;a href=&#34;http://www.cs.ou.edu/~rlpage/SEcollab/20projects/minmax.htm&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;minmax&lt;/a&gt;
+ using
 C++. My primary goal for this article is to address a concern raised by
 a colleague, &amp;ldquo;Does pulling in more complexity — a fancy test
 generator — actually increase quality?&amp;rdquo;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/property_driven_design/tree/master/01_minmax&#34;target=&#34;_blank&#34;&gt;Code for this article&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/JeremyLWright.github.io/commits/content/content/posts/2015-07-05-property_driven_design_minmax.markdown&#34;target=&#34;_blank&#34;&gt;Revision Log for this article&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/property_driven_design/tree/master/01_minmax&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Code for this article&lt;/a&gt;
+.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/JeremyLWright/JeremyLWright.github.io/commits/content/content/posts/2015-07-05-property_driven_design_minmax.markdown&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Revision Log for this article&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In her presentation, Kerr stated, &amp;ldquo;&amp;hellip;what is this answer? I don&amp;rsquo;t know but
+I can put a box around it!&amp;rdquo; This jestful statement is quite
+inspired. Example tests — the test typically used in unit tests (the FPGA/ASIC
+guys call these Directed Tests) — draw individual points within the
+correct region of the solution space.&lt;/p&gt;
+&lt;p&gt;There are paradigms, e.g., structured testing using McCabe
+complexity, for selecting effective points within this solution space,
+but in the end you are still drawing points. Properties on the
+other hand draw boxes around the solution space. Notice that the properties
+may include incorrect solutions. While this may seem as a defect to
+property driven design, it is precisely this simplification that makes
+properties resilient to refactoring and maintenance cycles. While still
+providing value by excluding out of bounds results. This resilience is draws
+from PDD&amp;rsquo;s lineage as a black-box testing method. Conversely, structured
+testing is a whitebox method that looks as what test data will
+induce 100% block coverage. As the code changes over time, the
+predicates and conditionals change which intern influence the code coverage. In
+a sense the points in the correct solution place are always moving around. The
+Example based tests are tightly coupled to the implementation they are
+attempting to verify. Properties however operate at a higher level of
+abstraction. Properties allow one to say &amp;ldquo;solutions of &lt;em&gt;approximately this
+form&lt;/em&gt; are likely correct.&amp;rdquo; Properties then may make successively tighter bounds
+around the solution space to constraint the design. Its a powerful
+technique that I increasingly enjoy in my design work.&lt;/p&gt;
+&lt;h1 id=&#34;implementing-minmax-with-properties&#34;&gt;Implementing MinMax with Properties&lt;/h1&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+&lt;p&gt;The term &lt;em&gt;measure&lt;/em&gt; used in this problem statement means as
+the &lt;a href=&#34;http://www.stepanovpapers.com/gcd.pdf&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;ancient Greeks meant it&lt;/a&gt;
+: a line segment which
+describes an integer number of divisions of another line segment. Today we might use
+the word greatest common divisor.&lt;/p&gt;
+&lt;h2 id=&#34;the-maximum-function&#34;&gt;The maximum function&lt;/h2&gt;
+&lt;p&gt;Inspired by test-driven-design we&amp;rsquo;ll start by defining a property for our
+maximum function.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Define a function, &lt;em&gt;maximum&lt;/em&gt;, that delivers the largest value in a non-empty list of rational numbers.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Using the &lt;a href=&#34;https://github.com/thejohnfreeman/autocheck&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;autocheck library&lt;/a&gt;
+ we can express this requirement as follows:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;prop_max_element_t&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;
+		&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SinglePassRange&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;operator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SinglePassRange&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ref_max&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;max_element&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cbegin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cend&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+		&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test_max&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;minmax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;maximum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ref_max&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test_max&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+	
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;TEST&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;minmax&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;maximum_prop&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;autocheck&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;gtest_reporter&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rep&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+	&lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arbitrary&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 
+		&lt;span class=&#34;n&#34;&gt;autocheck&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;discard_if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([](&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;autocheck&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;make_arbitrary&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;());&lt;/span&gt;
+		
+	&lt;span class=&#34;n&#34;&gt;autocheck&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;check&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+			&lt;span class=&#34;n&#34;&gt;prop_max_element_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt;
+			&lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+			&lt;span class=&#34;n&#34;&gt;arbitrary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+			&lt;span class=&#34;n&#34;&gt;rep&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Lets breakdown the definition of the arbitrary generator:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;	&lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arbitrary&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 
+		&lt;span class=&#34;n&#34;&gt;autocheck&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;discard_if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([](&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;autocheck&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;make_arbitrary&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;());&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The signature of an arbitrary generator is best read bottom to top.  The first
+step generates a random vector of random length. The line above it throws away
+vectors who&amp;rsquo;s size is equal to zero. We will see later how to generate data
+that meets our requirements, but sometimes its easier to just throw away some
+data rather than try to generate only valid data.&lt;/p&gt;
+&lt;p&gt;With this property we can test our stub function:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;minmax&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SinglePassRange&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SinglePassRange&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value_type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;maximum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SinglePassRange&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//Stubbed method
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This generates a failed output as we expected&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; RUN      &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; minmax.maximum_prop
+d:&lt;span class=&#34;se&#34;&gt;\p&lt;/span&gt;roperty_driven_design&lt;span class=&#34;se&#34;&gt;\b&lt;/span&gt;uild&lt;span class=&#34;se&#34;&gt;\t&lt;/span&gt;hirdparty&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;rc&lt;span class=&#34;se&#34;&gt;\a&lt;/span&gt;utocheck&lt;span class=&#34;se&#34;&gt;\i&lt;/span&gt;nclude&lt;span class=&#34;se&#34;&gt;\a&lt;/span&gt;utocheck&lt;span class=&#34;se&#34;&gt;\r&lt;/span&gt;eporter.hpp&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;91&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;: error: Value of: AUTOCHECK_SUCCESS
+  Actual: &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;
+Expected: &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
+Falsifiable, after &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; tests:
+&lt;span class=&#34;o&#34;&gt;([&lt;/span&gt;2, 0&lt;span class=&#34;o&#34;&gt;])&lt;/span&gt;
+
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;  FAILED  &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; minmax.maximum_prop &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; ms&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now that we are confident the test machinery is working, we can remove our
+stub implementation and provide a (hopefully correct) definition.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;minmax&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SinglePassRange&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SinglePassRange&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value_type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;maximum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SinglePassRange&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;max_element&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+			&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;begin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+			&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We will no re-run our test to verify the implementation.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; RUN      &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; minmax.maximum_prop
+OK, passed &lt;span class=&#34;m&#34;&gt;100&lt;/span&gt; tests.
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;       OK &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; minmax.maximum_prop &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;14&lt;/span&gt; ms&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This demonstrates another useful property of properties :-). The data passing
+through our property is randomly generated, ergo each time the test runs we
+execute different tests. Typing &lt;em&gt;make test&lt;/em&gt; multiple times is actually useful, not just something you do to procrastinate at 4:45pm when you&amp;rsquo;ve found
+a new bug.&lt;/p&gt;
+&lt;p&gt;Also there is something viscerally satisfying about writing a single property
+and seeing 100 tests passing.&lt;/p&gt;
+&lt;h2 id=&#34;a-compile-time-property&#34;&gt;A compile-time property&lt;/h2&gt;
+&lt;p&gt;Next we can verify the property given to us in the &lt;a href=&#34;http://www.cs.ou.edu/~rlpage/SEcollab/20projects/minmax.htm&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;problem statement&lt;/a&gt;
+&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;If xs is a non-empty true-list of rational numbers, then (maximum xs) is a rational number.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Since C++ is a statically typed language this property may appear to be self
+evident. However this demonstrates another benefit of property driven design.
+We can document that we intend to only work with rational numbers. Then since
+C++ is statically type we can validate the property statically, and any
+maintenance programmer will fail to compile without modifying the test.&lt;/p&gt;
+&lt;p&gt;We can express this property as so&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;prop_maximum_should_give_rational_number_t&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SinglePassRange&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;operator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SinglePassRange&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;k&#34;&gt;static_assert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_integral&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;decltype&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;minmax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;maximum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Maximum only works on rational numbers.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_integral&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;decltype&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;minmax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;maximum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This shows another pattern of testing I picked up from &lt;a href=&#34;https://www.youtube.com/watch?v=sDMngNP7pOw&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Bruce Tate&lt;/a&gt;
+, tests should be named as a should-statement. This property here says: My property for maximum &lt;em&gt;should&lt;/em&gt; give rational numbers. If this is ever falsified our test the static_assert() will fail compilation.&lt;/p&gt;
+&lt;p&gt;We can add another property that demonstrates the blackbox nature of property
+testing.&lt;/p&gt;
+&lt;p&gt;2. The value (maximum xs) occurs in the list xs&lt;/p&gt;
+&lt;p&gt;Properties as basic as this seem silly at first, but they serve a very useful
+purpose. Recall the poorly drawn graphic from above. We are searching for bugs
+in our program by defining bounds around the solution space. This property
+states something very profound about our function. The output of our function
+is dependent on the input. This trends the function toward referential
+transparency. At a more basic level though, this might be a property one
+starts with. Notice that if we implemented this property first, with our stub
+function in place, our random generator would have falsified it easily with
+any list where 0 was not a member.&lt;/p&gt;
+&lt;p&gt;We can express this property with autocheck as:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;prop_maximum_should_return_a_value_from_the_list_t&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SinglePassRange&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;operator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SinglePassRange&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;m&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;minmax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;maximum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+		&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;is_present&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;find&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+				&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;begin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+				&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+				&lt;span class=&#34;n&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;is_present&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Simply put, if minmax::maximum returns some value m, that value must be
+present in the list.  Notice again that m may be the minimum value in the
+list. This property isn&amp;rsquo;t checking for the complete correctness of the
+function. It is testing one small aspect of the function&amp;rsquo;s possible solution
+space.&lt;/p&gt;
+&lt;p&gt;Next we can move on to our next function, &lt;em&gt;minimum_pair&lt;/em&gt;, which we can
+implement with a stub to always return the first element:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SinglePassRange&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;measure_pair_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;minimum_pair&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SinglePassRange&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;begin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To property test this function we&amp;rsquo;ll need to teach autocheck how to generate
+a &lt;em&gt;measure_pair_t&lt;/em&gt;. We do this by specializing the generator function in the
+autocheck namespace.&lt;/p&gt;
+&lt;h2 id=&#34;generating-a-custom-data-type&#34;&gt;Generating a custom data type&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;autocheck&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;//Tell autocheck how to generate a measure_pair_t
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;generator&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;minmax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;measure_pair_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result_type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;minmax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;measure_pair_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+	&lt;span class=&#34;n&#34;&gt;result_type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;operator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()()&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;operator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+	&lt;span class=&#34;n&#34;&gt;result_type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;operator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rational_gen&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;generator&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;make_pair&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rational_gen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rational_gen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;//Tell autocheck how to display a measure_pair_t
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ostream&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;operator&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ostream&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;minmax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;measure_pair_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;os&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;{&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;, &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;second&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;broken-test-code&#34;&gt;Broken Test Code&lt;/h2&gt;
+&lt;p&gt;Now autocheck can generate and display our specific type. Setup a property to
+check.&lt;/p&gt;
+&lt;p&gt;4. If xs is a non-empty true-list of measure pairs, then (minimum-pair xs) is a measure-pair.&lt;/p&gt;
+&lt;p&gt;To express this property we must first have a definition of a measure pair
+(We&amp;rsquo;ll see how this definition is not quite correct, but our properties will
+sus that out quite quickly):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;measure_pair_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pair&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;///Provided definition: measure pair: a two-element list whose first element, a rational number, is the measure of its other element
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;is_measure_pair&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;measure_pair_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;c1&#34;&gt;//A measure pair is a two element list, who&amp;#39;s first element (a rational
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;c1&#34;&gt;//number), is the measure of its other element
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;first_element_is_rational&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_integral&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;decltype&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+	&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;other_element_is_measure_of_first&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 
+		&lt;span class=&#34;c1&#34;&gt;//To be a measure the first value must be less-than the second.
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;		&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;second&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+		&lt;span class=&#34;c1&#34;&gt;//And the second element must evenly divide the first element.
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;		&lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;second&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;first_element_is_rational&lt;/span&gt;
+		&lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;other_element_is_measure_of_first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And our property to check that the return value from minimum pair should meet
+the definition of a measure pair.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;prop_minimum_pair_should_return_a_measure_pair_t&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;operator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;minmax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;measure_pair_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;minmax&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+		&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test_pair&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;minimum_pair&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;is_measure_pair&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;test_pair&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Executing this gives us, as expected due to our stub, a falsifiable case.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; RUN      &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
+unknown file: error: SEH exception with code 0xc0000094 thrown in the &lt;span class=&#34;nb&#34;&gt;test&lt;/span&gt; body.
+
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;  FAILED  &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; ms&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Error 0xc0000094 is a divide by zero. Ah! Good catch autocheck. I know
+I personally would not have exercised this using a directed test. This is
+another strength of random testing. The random generators are not biased with
+programmer intuition. Our requirements state that a measure-pair is always
+non-zero so we will update the generator to exclude zero values.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;autocheck&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;generator&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;minmax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;measure_pair_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result_type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;minmax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;measure_pair_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+	&lt;span class=&#34;n&#34;&gt;result_type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;operator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()()&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;operator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+	&lt;span class=&#34;n&#34;&gt;result_type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;operator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;non_zero_gen&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]()&lt;/span&gt;
+		&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+			&lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rational_gen&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;generator&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+			&lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;temp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rational_gen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+			&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;temp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//Skip over zero!
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;				&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;temp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+			&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;temp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+		&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+		&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;measure&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;non_zero_gen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+		&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;factor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;non_zero_gen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;make_pair&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;measure&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;factor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;measure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now with zero values excluded we&amp;rsquo;ll get a falsifiable test case:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; RUN      &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
+d:&lt;span class=&#34;se&#34;&gt;\p&lt;/span&gt;roperty_driven_design&lt;span class=&#34;se&#34;&gt;\b&lt;/span&gt;uild&lt;span class=&#34;se&#34;&gt;\t&lt;/span&gt;hirdparty&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;rc&lt;span class=&#34;se&#34;&gt;\a&lt;/span&gt;utocheck&lt;span class=&#34;se&#34;&gt;\i&lt;/span&gt;nclude&lt;span class=&#34;se&#34;&gt;\a&lt;/span&gt;utocheck&lt;span class=&#34;se&#34;&gt;\r&lt;/span&gt;eporter.hpp&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;91&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;: error: Value of: AUTOCHECK_SUCCESS
+  Actual: &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;
+Expected: &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
+Falsifiable, after &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; tests:
+&lt;span class=&#34;o&#34;&gt;([{&lt;/span&gt;1, 1&lt;span class=&#34;o&#34;&gt;}])&lt;/span&gt;
+
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;  FAILED  &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; ms&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This test case demonstrates that our understand of the word measure wasn&amp;rsquo;t
+quite right when we implemented the &lt;em&gt;is_measure_pair&lt;/em&gt; predicate. A value can
+always be a measure of itself, i.e., a number always measures itself one time.
+Since our function is still a stub we are still excercising the test
+machinery, not the production code yet. One school of thought is
+that we are wasting time writing, and rewriting, test code before we&amp;rsquo;ve even
+worked on the code we&amp;rsquo;re getting paid to write however, this failing test case is
+evidence for a different perspective. The test code is letting us explore the
+problem space.&lt;/p&gt;
+&lt;p&gt;Imagine a traditional directed test scenerio. We unknowingly have a limited
+understanding of the problem space. We implement some tests. Those tests
+reflect our understanding of the problem. We then implement the functions. The
+tests pass, all the while we unknowingly provided weak tests for the given
+problem domain. Lastly, we inspect the implementation and add some additional
+tests to assure 100% code coverage.&lt;/p&gt;
+&lt;p&gt;In this scenerio, we did TDD correctly by writing the tests first. We did our
+red/green refactor. We implemented the function. Our tests pass, and we
+achieved 100% code coverage. We did all the things we are supposed to do, and
+we still delivered a defective function. The problem is that all these steps
+happen at the same conceptual level of abstraction. It&amp;rsquo;s a linear prorgession
+from our understanding, to writing tests, to writing implementation, to
+inspecting coverage. At no point was there some outside force that can
+excercise the code beyond our understanding. This is the benefit of
+property-driven-design. Randomness will generate test cases you the programmer
+didn&amp;rsquo;t think of. You the programmer then need to classify that generated test
+case as valid input or invalid input. That is a useful! It expands your own
+understanding.&lt;/p&gt;
+&lt;p&gt;John Hughes &lt;a href=&#34;https://www.youtube.com/watch?v=FnjutUoNSmg&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;put it
+best&lt;/a&gt;
+ when he state that property
+testing is about comparing the specification to the code. The properties
+encode the specification. The code does what it does. When the checker finds
+a discrepancy it is the engineer&amp;rsquo;s job to find where the defect lies. This is
+very powerful. We, the engineer, aren&amp;rsquo;t relegated to imagining test data for
+our functions what will make it blow up. We simply describe concepts
+(properties) of what we believe the specification is telling us to do. Then we
+implement the code. If the two match then we the code probably matches the
+specification. Its raises our level of thinking out of individual numbers, and
+code paths to more abstract thinking, which is something humans do best.&lt;/p&gt;
+&lt;h2 id=&#34;fixing-our-property&#34;&gt;Fixing our property&lt;/h2&gt;
+&lt;p&gt;The problem is is that our definition doesn&amp;rsquo;t include self-measures. We can
+adjust it easily.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;is_measure_pair&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;measure_pair_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;c1&#34;&gt;//A measure pair is a two element list, who&amp;#39;s first element (a rational
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;c1&#34;&gt;//number), is the measure of its other element
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;first_element_is_rational&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_integral&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;decltype&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+	&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;other_element_is_measure_of_first&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 
+		&lt;span class=&#34;c1&#34;&gt;//To be a measure the first value must be equal-to or less-than the second.
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;		&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;second&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt;
+		&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;second&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+		&lt;span class=&#34;c1&#34;&gt;//And the second element must evenly divide the first element.
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;		&lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;second&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;first_element_is_rational&lt;/span&gt;
+		&lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;other_element_is_measure_of_first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Executing this generates a new failing case:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; RUN      &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
+d:&lt;span class=&#34;se&#34;&gt;\p&lt;/span&gt;roperty_driven_design&lt;span class=&#34;se&#34;&gt;\b&lt;/span&gt;uild&lt;span class=&#34;se&#34;&gt;\t&lt;/span&gt;hirdparty&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;rc&lt;span class=&#34;se&#34;&gt;\a&lt;/span&gt;utocheck&lt;span class=&#34;se&#34;&gt;\i&lt;/span&gt;nclude&lt;span class=&#34;se&#34;&gt;\a&lt;/span&gt;utocheck&lt;span class=&#34;se&#34;&gt;\r&lt;/span&gt;epor
+ter.hpp&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;91&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;: error: Value of: AUTOCHECK_SUCCESS
+  Actual: &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;
+Expected: &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
+Falsifiable, after &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; tests:
+&lt;span class=&#34;o&#34;&gt;([{&lt;/span&gt;2, 1&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;, &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;2, 2&lt;span class=&#34;o&#34;&gt;}])&lt;/span&gt;
+
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;  FAILED  &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; ms&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We can run it again to see if we get a different case:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; RUN      &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
+d:&lt;span class=&#34;se&#34;&gt;\p&lt;/span&gt;roperty_driven_design&lt;span class=&#34;se&#34;&gt;\b&lt;/span&gt;uild&lt;span class=&#34;se&#34;&gt;\t&lt;/span&gt;hirdparty&lt;span class=&#34;se&#34;&gt;\s&lt;/span&gt;rc&lt;span class=&#34;se&#34;&gt;\a&lt;/span&gt;utocheck&lt;span class=&#34;se&#34;&gt;\i&lt;/span&gt;nclude&lt;span class=&#34;se&#34;&gt;\a&lt;/span&gt;utocheck&lt;span class=&#34;se&#34;&gt;\r&lt;/span&gt;eporter.hpp&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;91&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;: error: Value of: AUTOCHECK_SUCCESS
+  Actual: &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;
+Expected: &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
+Falsifiable, after &lt;span class=&#34;m&#34;&gt;7&lt;/span&gt; tests:
+&lt;span class=&#34;o&#34;&gt;([{&lt;/span&gt;4, 1&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;, &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;4, 2&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;, &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;2, 2&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;, &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;1, 1&lt;span class=&#34;o&#34;&gt;}])&lt;/span&gt;
+
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;  FAILED  &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; ms&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This is awesome! Our failing test case is bigger now. Again to quote John
+Hughes, &amp;ldquo;&lt;a href=&#34;https://www.youtube.com/watch?v=zi0rHwfiX1Q&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;This is progress! We are now passing for lists of size 1!&lt;/a&gt;
+&amp;rdquo; Our function is still implemented as a stub, so we can have some confidence that our test code is behaving properly. Let&amp;rsquo;s implement our minimum_pair function:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SinglePassRange&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;measure_pair_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;minimum_pair&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SinglePassRange&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;min_element&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+			&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;begin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+			&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+			&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;minmax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;operator&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Executing our test code:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;D:&lt;span class=&#34;se&#34;&gt;\p&lt;/span&gt;roperty_driven_design&lt;span class=&#34;se&#34;&gt;\b&lt;/span&gt;uild&amp;gt;01_minmax
+Running main&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; from gtest_main.cc
+&lt;span class=&#34;o&#34;&gt;[==========]&lt;/span&gt; Running &lt;span class=&#34;m&#34;&gt;7&lt;/span&gt; tests from &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;test&lt;/span&gt; cases.
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;----------&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; Global &lt;span class=&#34;nb&#34;&gt;test&lt;/span&gt; environment set-up.
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;----------&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;test&lt;/span&gt; from minmax
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; RUN      &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; minmax.maximum_directed
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;       OK &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; minmax.maximum_directed &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; ms&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;----------&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;test&lt;/span&gt; from minmax &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; ms total&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;----------&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;5&lt;/span&gt; tests from MinMaxFixture
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; RUN      &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; MinMaxFixture.prop_maximum_should_give_greatest_value
+OK, passed &lt;span class=&#34;m&#34;&gt;100&lt;/span&gt; tests.
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;       OK &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; MinMaxFixture.prop_maximum_should_give_greatest_value &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;13&lt;/span&gt; ms&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; RUN      &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; MinMaxFixture.prop_maximum_should_give_rational_number
+OK, passed &lt;span class=&#34;m&#34;&gt;100&lt;/span&gt; tests.
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;       OK &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; MinMaxFixture.prop_maximum_should_give_rational_number &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; ms&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; RUN      &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; MinMaxFixture.prop_maximum_should_return_a_value_from_the_list
+OK, passed &lt;span class=&#34;m&#34;&gt;100&lt;/span&gt; tests &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;2% trivial&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;.
+10% 10, odd-length.
+10% 20, even-length.
+10% 30, odd-length.
+10% 40, even-length.
+10% 50, odd-length.
+10% 60, even-length.
+10% 70, odd-length.
+10% 80, even-length.
+10% 90, odd-length.
+9% 0, even-length.
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;       OK &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; MinMaxFixture.prop_maximum_should_return_a_value_from_the_list &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;24&lt;/span&gt; ms&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; RUN      &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
+OK, passed &lt;span class=&#34;m&#34;&gt;100&lt;/span&gt; tests.
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;       OK &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;20&lt;/span&gt; ms&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; RUN      &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; MinMaxFixture.prop_minimum_pair_should_return_the_smallest_pair
+OK, passed &lt;span class=&#34;m&#34;&gt;100&lt;/span&gt; tests.
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;       OK &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; MinMaxFixture.prop_minimum_pair_should_return_the_smallest_pair &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;23&lt;/span&gt; ms&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;----------&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;5&lt;/span&gt; tests from MinMaxFixture &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;92&lt;/span&gt; ms total&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;----------&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;test&lt;/span&gt; from MinMaxDirected
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; RUN      &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; MinMaxDirected.directed_minimum_pair_shouls_return_a_measure_pair
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;       OK &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; MinMaxDirected.directed_minimum_pair_shouls_return_a_measure_pair &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; ms&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;----------&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;test&lt;/span&gt; from MinMaxDirected &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; ms total&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;----------&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; Global &lt;span class=&#34;nb&#34;&gt;test&lt;/span&gt; environment tear-down
+&lt;span class=&#34;o&#34;&gt;[==========]&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;7&lt;/span&gt; tests from &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;test&lt;/span&gt; cases ran. &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;96&lt;/span&gt; ms total&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;  PASSED  &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;7&lt;/span&gt; tests.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Running this multiple times generates no failing test cases.&lt;/p&gt;
+&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;So a few real-world metrics. I wrote this code in 3 hours. The
+requirements were relatively simple, but I suspect that using example tests
+would have resulted in a similar completion time. Additionally, I suspect, my
+directed tests would have found more defects near the end of my development
+rather than the beginning. I felt this affect as an acceleration. I found feel
+as I closed each property that I had fewer defects in the code I previously
+thought was done. This is a big confidence booster in my opinion.
+Additionally, another pattern I learned from John Hughes, that I didn&amp;rsquo;t
+explicitly describe here but you can see in the code, save failed tests.
+A failing test is gold! When the random generator uncovers something
+interesting save it as a directed test. Then fix the failure and leave the
+directed test behind. It will be a reminder of a corner case you missed. Plus
+some developers like to see examples tests, even random ones.&lt;/p&gt;
+&lt;p&gt;In this post I walked through a property-driven-design approach to a simple
+numerical problem. In intended to show something more interesting that the
+&lt;em&gt;reverse(reverse(list)) == list&lt;/em&gt; example, and something less contrived than my
+previous post on property testing. I look forward to any feedback on this
+post.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Recasting how I blog</title>
+      <link>https://quiescent.us/2015/06/converting-to-static-blog/</link>
+      <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
       
+      <guid>https://quiescent.us/2015/06/converting-to-static-blog/</guid>
+      <description>&lt;p&gt;I wrote my first article for codestrokes in February 2011 - right as I was
+accepted to graduate school. My goal was to improve my writing in preparation
+for writing a thesis. While through grad school I started with more
+traditional writing tool. I started to learn to write, and I found my writing
+style: Simplicity.  I started writing with a big fancy word processor.
+I blogged with a massive database backed blogging engine. By the time
+I finished my thesis, I was writing in vim. I used a makefile to check
+spelling and check for simple grammatical rules. The process was much simpler
+to manage. This motivated me to convert my blog to a static site. This post
+describes my process on simplifying my writing process.&lt;/p&gt;
+&lt;h1 id=&#34;my-toolchain&#34;&gt;My toolchain&lt;/h1&gt;
+&lt;p&gt;The primary goal was leverage the writing tool chain I honed during my thesis
+for maintaining my blog. I didn&amp;rsquo;t want to complexity of a database backed
+blogging site. I wanted to drop my hosting service. I wanted to write in
+a markup language. I wrote my thesis in Latex, and I love the separation of
+presentation from content. This site you are reading today is composed of:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Markdown written in Vim.&lt;/li&gt;
+&lt;li&gt;Changes tracked in git.&lt;/li&gt;
+&lt;li&gt;Markdown converted HTML via Hugo.&lt;/li&gt;
+&lt;li&gt;Static pages hosted by Github Pages.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;choosing-a-static-site-generator&#34;&gt;Choosing a static site generator&lt;/h1&gt;
+&lt;p&gt;I actually didn&amp;rsquo;t spend too much time working on this, since someone already
+did a great deal of the work at &lt;a href=&#34;https://www.staticgen.com/&#34;&gt;https://www.staticgen.com/&lt;/a&gt;.  If you are
+planning to use Github to host your blog, Jekyll will be the easiest to use.
+The Github pages even include documentation on how to use Jekyll with Github
+pages. I however have an aversion to Ruby (though an order of magnitude
+weaker than my aversion to Java).  Near the top was &lt;a href=&#34;gohugo.io&#34;&gt;Hugo&lt;/a&gt;
+.
+A &lt;!-- raw HTML omitted --&gt;colleague&lt;!-- raw HTML omitted --&gt; friend of mine is quite a convincing evangelist of Go,
+and I decided to give it a try. &amp;ndash; Boy, was I impressed &amp;ndash; The quality of the
+documentation if fantastic. However my favorite feature of Hugo, it is
+a single download. One executable. One. No dependencies&amp;hellip; Its hard to express
+how incredibly relieving this is.&lt;/p&gt;
+&lt;p&gt;As an illustration, let me share with you a little lie. I didn&amp;rsquo;t directly just
+to staticgen.com, and find Hugo. I have an affinity for Haskell, and tried to
+use a static site generator called &lt;a href=&#34;https://www.staticgen.com/hakyll&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Hakyll&lt;/a&gt;
+.&lt;br&gt;
+I closed the project from github. The repository included a cabal file, which
+I promptly compiled. It took 25 minutes to build all the dependencies. Hakyll
+seems awesome, but I wanted something simple. Simple that I can just write,
+and the publication process becomes ancillary. Pieter Hintjens states that
+a project should continuously seek to reduce barriers for participation.
+Comment on this site are a perfect example. &lt;a href=&#34;https://disqus.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Disqus&lt;/a&gt;
+
+strikes a fantastic balance between reducing spam, without requiring everyone
+to login to my site. I have no presumptions concerning this site, and
+I completely understand that people do not need yet another account to manage.
+I want people to comment, hence I use a service that reduces the barrier to
+participate.&lt;/p&gt;
+&lt;p&gt;A cabal file is a barrier to participate. I want to consume a project, I don&amp;rsquo;t
+want to contribute to it (yet). Hugo had the lowest barrier to entry of the
+site generators I tried. One executable, no dependencies, and fantastic
+documentation.&lt;/p&gt;
+&lt;h1 id=&#34;exporting-content&#34;&gt;Exporting Content&lt;/h1&gt;
+&lt;p&gt;I had a significant number of posts in Wordpress. I wanted to be a good
+content creator, and preserve my URIs.  Really, I&amp;rsquo;m &lt;em&gt;wicked&lt;/em&gt; lazy, and
+preserving my permalinks meant I would not have to migrate my comments. Disqus
+would pick them up on the new site. Thus I wanted an automated way of
+exporting my posts from Wordpress. &lt;a href=&#34;https://github.com/thomasf/exitwp&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Exitwp&lt;/a&gt;
+
+worked like a charm.&lt;/p&gt;
+&lt;h1 id=&#34;choosing-a-theme&#34;&gt;Choosing a theme&lt;/h1&gt;
+&lt;p&gt;Hugo has a &lt;a href=&#34;https://github.com/spf13/hugoThemes/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;theme gallery&lt;/a&gt;
+ for all the known themes associated with the
+generator.  I picked &lt;a href=&#34;https://github.com/tmaiaroto/hugo-redlounge&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;redlounge&lt;/a&gt;
+.
+My only customization was to add Google Analytics so I can track my meager
+pages views.&lt;/p&gt;
+&lt;h1 id=&#34;writing-articles-in-a-series&#34;&gt;Writing articles in a series&lt;/h1&gt;
+&lt;p&gt;I tend to write articles broken over many pieces. In fact, this article is
+part of my blog transition series. My series support was somewhat lacking in
+Wordpress. For this reincarnation of codestrokes.com, I wanted series to be
+nice and effective. Hugo&amp;rsquo;s taxonomy makes this possible, but it was a great
+series by another author, &lt;a href=&#34;http://npf.io/series/hugo-101/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Nate Finch&lt;/a&gt;
+ that
+made it easy. Ironically, the series starts with an article about how to
+design series into Hugo. Brilliant.&lt;/p&gt;
+&lt;h1 id=&#34;hosting&#34;&gt;Hosting&lt;/h1&gt;
+&lt;p&gt;I have a few requirements:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Custom domain must work (so I don&amp;rsquo;t have to migrate comments :-)&lt;/li&gt;
+&lt;li&gt;Publishing from git would be sweet, but I can configure Travis-CI or
+a deployment something to deal with that.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a href=&#34;https://pages.github.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Github pages!&lt;/a&gt;
+. I just followed the documentation.&lt;/p&gt;
+&lt;h1 id=&#34;my-publishing-process&#34;&gt;My Publishing Process&lt;/h1&gt;
+&lt;p&gt;Here&amp;rsquo;s how I write now:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Clone &lt;a href=&#34;mailto:JeremyLWright@github.com&#34;&gt;JeremyLWright@github.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;git checkout content
+&lt;ol&gt;
+&lt;li&gt;The content branch holds the source, and theme files.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Clone the repository again into the public folder.&lt;/li&gt;
+&lt;li&gt;The public folder should be on the master branch.&lt;/li&gt;
+&lt;li&gt;Write.&lt;/li&gt;
+&lt;li&gt;Revise.&lt;/li&gt;
+&lt;li&gt;Write&amp;hellip;&lt;/li&gt;
+&lt;li&gt;Run Hugo.&lt;/li&gt;
+&lt;li&gt;Commit the content branch.&lt;/li&gt;
+&lt;li&gt;Commit the public branch.&lt;/li&gt;
+&lt;li&gt;Push!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I&amp;rsquo;m happy with my new process. I&amp;rsquo;m still working out some kinks with my pages
+vs posts (hence you see the About Me page in the middle of my posts). I am
+prone to shiny things so we&amp;rsquo;ll see how long I keep it. This process is simple.
+It removes the barriers of posting, and just lets me write in the tool I am
+most comfortable, and but its hard to argue with simple.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Introduction to Pointers</title>
+      <link>https://quiescent.us/2015/02/introduction-to-pointers/</link>
+      <pubDate>Tue, 17 Feb 2015 03:46:55 +0000</pubDate>
+      
+      <guid>https://quiescent.us/2015/02/introduction-to-pointers/</guid>
+      <description>&lt;p&gt;Please see my introduction to pointers at &lt;a href=&#34;https://www.youtube.com/watch?v=mkYBz5Db-Ok&#34;&gt;https://www.youtube.com/watch?v=mkYBz5Db-Ok&lt;/a&gt;.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"><url>
+    <loc>https://quiescent.us/categories/</loc><lastmod>2021-03-03T15:00:00-07:00</lastmod></url><url>
+    <loc>https://quiescent.us/categories/design/</loc><lastmod>2021-03-03T15:00:00-07:00</lastmod></url><url>
+    <loc>https://quiescent.us/languages/</loc><lastmod>2021-03-03T15:00:00-07:00</lastmod></url><url>
+    <loc>https://quiescent.us/tags/model/</loc><lastmod>2021-03-03T15:00:00-07:00</lastmod></url><url>
+    <loc>https://quiescent.us/posts/</loc><lastmod>2021-03-03T15:00:00-07:00</lastmod></url><url>
+    <loc>https://quiescent.us/tags/</loc><lastmod>2021-03-03T15:00:00-07:00</lastmod></url><url>
+    <loc>https://quiescent.us/</loc><lastmod>2021-03-03T15:00:00-07:00</lastmod></url><url>
+    <loc>https://quiescent.us/2021/03/not-incremental/</loc><lastmod>2021-03-03T15:00:00-07:00</lastmod></url><url>
+    <loc>https://quiescent.us/languages/tla&#43;/</loc><lastmod>2021-03-03T15:00:00-07:00</lastmod></url><url>
     <loc>https://quiescent.us/languages/haskell/</loc><lastmod>2020-12-24T00:00:00-07:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/im-stuck/</loc><lastmod>2020-12-24T00:00:00-07:00</lastmod></url><url>
-    <loc>https://quiescent.us/languages/</loc><lastmod>2020-12-24T00:00:00-07:00</lastmod></url><url>
-    <loc>https://quiescent.us/posts/</loc><lastmod>2020-12-24T00:00:00-07:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/quickcheck/</loc><lastmod>2020-12-24T00:00:00-07:00</lastmod></url><url>
-    <loc>https://quiescent.us/tags/</loc><lastmod>2020-12-24T00:00:00-07:00</lastmod></url><url>
-    <loc>https://quiescent.us/</loc><lastmod>2020-12-24T00:00:00-07:00</lastmod></url><url>
     <loc>https://quiescent.us/2020/12/quickcheck-type-level-modifiers/</loc><lastmod>2020-12-24T00:00:00-07:00</lastmod></url><url>
     <loc>https://quiescent.us/about/</loc><lastmod>2020-12-20T17:30:00-07:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/learning/</loc><lastmod>2020-05-25T15:31:21-07:00</lastmod></url><url>
@@ -14,8 +19,6 @@
     <loc>https://quiescent.us/tags/reflection/</loc><lastmod>2020-05-25T15:31:21-07:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/study/</loc><lastmod>2020-05-25T15:31:21-07:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/book/</loc><lastmod>2020-05-25T15:00:14-07:00</lastmod></url><url>
-    <loc>https://quiescent.us/categories/</loc><lastmod>2020-05-25T15:00:14-07:00</lastmod></url><url>
-    <loc>https://quiescent.us/categories/design/</loc><lastmod>2020-05-25T15:00:14-07:00</lastmod></url><url>
     <loc>https://quiescent.us/tags/hillel/</loc><lastmod>2020-05-25T15:00:14-07:00</lastmod></url><url>
     <loc>https://quiescent.us/series/practical-tla&#43;/</loc><lastmod>2020-05-25T15:00:14-07:00</lastmod></url><url>
     <loc>https://quiescent.us/series/</loc><lastmod>2020-05-25T15:00:14-07:00</lastmod></url><url>

@@ -1,24 +1,31 @@
 <!DOCTYPE html>
-<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.81.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<meta name="supported-color-schemes" content="light dark"><title>Class Invariants&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6fe5d1dee32d5c1f625e8d9d541db5df28b4c99bf9f600cc7284f342438549386d2338be608f2edbb2e7fef8cbcccf30.css" integrity="sha384-b&#43;XR3uMtXB9iXo2dVB213yi0yZv59gDMcoTzQkOFSThtIzi&#43;YI8u27Ln/vjLzM8w"><meta name="twitter:card" content="summary" />
+<meta name="supported-color-schemes" content="light dark"><title>Class Invariants&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.53081165f1d03b36fb9f4de24b00505db6b09fc2388839b7b17a05c66c9d7e8a258e194012e5b1f53b59d5f907244126.css" integrity="sha384-UwgRZfHQOzb7n03iSwBQXbawn8I4iDm3sXoFxmydfooljhlAEuWx9TtZ1fkHJEEm"><meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Class Invariants" /><body><section id="header">
     <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
         <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
-    <h1 class="article title">Class Invariants</h1><p class="article date">Friday, May 13, 2011</p></section><article class="article markdown-body"><p>This week, I started porting my <a href="http://www.codestrokes.com/archives/59"target="_blank">C++ implementation</a> of the Red-Black tree to D.  I am trying to pay special attention to the features of D, intended to make writing correct code easier. While on that vane,  I was reading an excellent <a href="http://reprog.wordpress.com/2010/04/25/writing-correct-code-part-1-invariants-binary-search-part-4a/"target="_blank">article</a>, discussing invariants, and I was pleased to find such a useful implementation of the <a href="http://www.digitalmars.com/d/2.0/class.html#Invariant"target="_blank">class invariant</a> in the D language.</p>
+    <h1 class="article title">Class Invariants</h1><p class="article date">Friday, May 13, 2011</p></section><article class="article markdown-body"><p>This week, I started porting my <a href="http://www.codestrokes.com/archives/59"target="_blank" rel="noopener noreferrer">C++ implementation</a>
+ of the Red-Black tree to D.  I am trying to pay special attention to the features of D, intended to make writing correct code easier. While on that vane,  I was reading an excellent <a href="http://reprog.wordpress.com/2010/04/25/writing-correct-code-part-1-invariants-binary-search-part-4a/"target="_blank" rel="noopener noreferrer">article</a>
+, discussing invariants, and I was pleased to find such a useful implementation of the <a href="http://www.digitalmars.com/d/2.0/class.html#Invariant"target="_blank" rel="noopener noreferrer">class invariant</a>
+ in the D language.</p>
 <!-- raw HTML omitted -->
-<p>Invariants come from the same “<a href="http://en.wikipedia.org/wiki/Design_by_contract"target="_blank">design-by-contract</a>” idiom, famous for pre- and post- conditions. Essentially, invariants describe a state, or behavior which must remain true for a class.  If the invariant fails, during the classes life-cycle something is wrong; either the assumptions underlying the class’s behavior (the invariant is wrong), or a bug in the class itself.  In either case, the invariant help the you, the developer find a problem.  While discussing this feature a colleague asked,</p>
+<p>Invariants come from the same “<a href="http://en.wikipedia.org/wiki/Design_by_contract"target="_blank" rel="noopener noreferrer">design-by-contract</a>
+” idiom, famous for pre- and post- conditions. Essentially, invariants describe a state, or behavior which must remain true for a class.  If the invariant fails, during the classes life-cycle something is wrong; either the assumptions underlying the class’s behavior (the invariant is wrong), or a bug in the class itself.  In either case, the invariant help the you, the developer find a problem.  While discussing this feature a colleague asked,</p>
 <!-- raw HTML omitted -->
-<p>“How do I use this in a real application?” its quite a loaded question, however valuable. For my small red-black tree, I’m using invariants to check that the “<a href="http://en.wikipedia.org/wiki/Red-black_tree#Properties"target="_blank">black-height</a>” is maintained.  This is essential to the performance of the class, both in terms of correctness, and run-time complexity.  The Delete operation, for instance, will not function correctly if the black height is incorrect. This “black-height” is a property of the entire class as a whole, it must be maintained at all time for the class to be correct.  This is the very definition of the <a href="http://en.wikipedia.org/wiki/Class_invariant"target="_blank">class invariant</a>. Excellent! However this still doesn’t satisfy our question; in a more general context, how does the class invariant help us?</p>
+<p>“How do I use this in a real application?” its quite a loaded question, however valuable. For my small red-black tree, I’m using invariants to check that the “<a href="http://en.wikipedia.org/wiki/Red-black_tree#Properties"target="_blank" rel="noopener noreferrer">black-height</a>
+” is maintained.  This is essential to the performance of the class, both in terms of correctness, and run-time complexity.  The Delete operation, for instance, will not function correctly if the black height is incorrect. This “black-height” is a property of the entire class as a whole, it must be maintained at all time for the class to be correct.  This is the very definition of the <a href="http://en.wikipedia.org/wiki/Class_invariant"target="_blank" rel="noopener noreferrer">class invariant</a>
+. Excellent! However this still doesn’t satisfy our question; in a more general context, how does the class invariant help us?</p>
 <p>The intent of the class invariant is to maintain a <strong>consistent state</strong>, not a fixed one.  Consistency is an important concept we work hard to maintain in our programs. Instead of a class, with its mutable state, lets look at a simpler construct in programming, a loop.</p>
 <p>The loop conditional can be thought of as an invariant for that scope. When the invariant is no longer true, the work of our loop is done.  For example:</p>
 <pre><code>for (size_t i=0; i &lt; string.length(); ++i)
 {
-    //do something...
+	//do something...
 }
 </code></pre>
 <p>The, _i &lt; string.length(), _is a simple invariant in that it must remain true through the life of the loop.  We cannot allow our index _i _to grow unbounded, or risk causing a segfault. Invariants, therefore, are an intimate part of controlling program consistency. Especially consistency through multiple states. We extend this concept to the class to keep a consistent view of data, or some more dynamic property.</p>
-<p>So invariants are good, they help one question their design assumptions, and maintain class consistency. What does D provide to help us use this? The <a href="http://www.digitalmars.com/d/2.0/class.html#Invariant"target="_blank">class invariant</a>.</p>
+<p>So invariants are good, they help one question their design assumptions, and maintain class consistency. What does D provide to help us use this? The <a href="http://www.digitalmars.com/d/2.0/class.html#Invariant"target="_blank" rel="noopener noreferrer">class invariant</a>
+.</p>
 <pre><code>class RedBlackTree {
     public:
         this()
@@ -43,9 +50,11 @@
             assert(verify_black_height() == true);
         }
 </code></pre>
-<p>D provides a custom function that will automatically be called before and after any public method is called.  This functionality is compiled out in release versions. So when the class is <a href="http://en.wikipedia.org/wiki/Open/closed_principle"target="_blank">closed</a>, we can compile for release and automatically remove the runtime overhead. This makes for an extremely useful, yet low-cost vector toward writing <strong>correct code</strong>.</p>
+<p>D provides a custom function that will automatically be called before and after any public method is called.  This functionality is compiled out in release versions. So when the class is <a href="http://en.wikipedia.org/wiki/Open/closed_principle"target="_blank" rel="noopener noreferrer">closed</a>
+, we can compile for release and automatically remove the runtime overhead. This makes for an extremely useful, yet low-cost vector toward writing <strong>correct code</strong>.</p>
 <p>D’s support for class invariants helps one achieve correct code simply, and concisely.  The language support permits the asserts to be checked automatically with minimal affect to the programmer’s flow. The class invariant contracts do not affect final performance in release builds. Consequently, invariants are a powerful tool in the quest for correct code and D leverages that perfectly!</p>
-</article><section class="article labels"><a class="tag" href=/tags/algorithm/>Algorithm</a><a class="tag" href=/tags/correct-code/>correct code</a><a class="tag" href=/tags/d/>D</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.a8bf9f6f334e22a6002d9757880b6a18a0782dbe71c8c331ba76607d0b858aa3261a116797f86516d1a8b38a0cc107c7.js#pubid=ra-1234567890" integrity="sha384-qL&#43;fbzNOIqYALZdXiAtqGKB4Lb5xyMMxunZgfQuFiqMmGhFnl/hlFtGos4oMwQfH"></script></div>
+</article><section class="article labels"><a class="tag" href=/tags/algorithm/>Algorithm</a><a class="tag" href=/tags/correct-code/>correct code</a><a class="tag" href=/tags/d/>D</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.99872df1091f055fca553e0b74b13c09bd383ef42b1c56a9edb651a91f122d56e7bc9a2fad73528246215b379b043226.js#pubid=ra-1234567890" integrity="sha384-mYct8QkfBV/KVT4LdLE8Cb04PvQrHFap7bZRqR8SLVbnvJovrXNSgkYhWzebBDIm"></script>
+</div>
 <div class="article bottom"><section class="article navigation"><p><a class="link" href="/series/the-red-black-tree/d-for-the-c-programmer-red-black-tree-part-3/"><span class="iconfont icon-article"></span>D for the C++ Programmer</a></p><p><a class="link" href="/series/the-red-black-tree/the-red-black-tree-part-1/"><span class="iconfont icon-article"></span>The Red-Black Tree</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
@@ -67,8 +76,10 @@
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
     <p class="copyright">©2020 Jeremy Wright</p>
-    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
-        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
-        target="_blank">Notepadium</a></p></div></section></body>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></body>
 
 </html>

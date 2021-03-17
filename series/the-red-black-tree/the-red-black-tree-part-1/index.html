@@ -1,16 +1,24 @@
 <!DOCTYPE html>
-<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.81.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<meta name="supported-color-schemes" content="light dark"><title>The Red-Black Tree&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6fe5d1dee32d5c1f625e8d9d541db5df28b4c99bf9f600cc7284f342438549386d2338be608f2edbb2e7fef8cbcccf30.css" integrity="sha384-b&#43;XR3uMtXB9iXo2dVB213yi0yZv59gDMcoTzQkOFSThtIzi&#43;YI8u27Ln/vjLzM8w"><meta name="twitter:card" content="summary" />
+<meta name="supported-color-schemes" content="light dark"><title>The Red-Black Tree&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.53081165f1d03b36fb9f4de24b00505db6b09fc2388839b7b17a05c66c9d7e8a258e194012e5b1f53b59d5f907244126.css" integrity="sha384-UwgRZfHQOzb7n03iSwBQXbawn8I4iDm3sXoFxmydfooljhlAEuWx9TtZ1fkHJEEm"><meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="The Red-Black Tree" /><body><section id="header">
     <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
         <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
-    <h1 class="article title">The Red-Black Tree</h1><p class="article date">Monday, May 9, 2011</p></section><article class="article markdown-body"><p><a href="https://bitbucket.org/jwright/cse310-red-black-tree/overview"target="_blank">C++ Source Code</a>
-<a href="https://bitbucket.org/jwright/red-black-tree-d"target="_blank">D Source Code</a></p>
-<p>D provides a number of features that simplify designing software, especially in the embedded environment.  I will show in this 2 part comparison, between C++ and D, that D helps one write <strong>correct code</strong>.  Correct code is something <a href="http://erdani.com/"target="_blank">Andrei Alexandrescu</a>, stresses heavily as a prominent feature of D.   I use the Red-Black Tree for such a comparison since its complicated enough to make memory management difficult, while retaining real-world application.</p>
+    <h1 class="article title">The Red-Black Tree</h1><p class="article date">Monday, May 9, 2011</p></section><article class="article markdown-body"><p><a href="https://bitbucket.org/jwright/cse310-red-black-tree/overview"target="_blank" rel="noopener noreferrer">C++ Source Code</a>
+
+<a href="https://bitbucket.org/jwright/red-black-tree-d"target="_blank" rel="noopener noreferrer">D Source Code</a>
+</p>
+<p>D provides a number of features that simplify designing software, especially in the embedded environment.  I will show in this 2 part comparison, between C++ and D, that D helps one write <strong>correct code</strong>.  Correct code is something <a href="http://erdani.com/"target="_blank" rel="noopener noreferrer">Andrei Alexandrescu</a>
+, stresses heavily as a prominent feature of D.   I use the Red-Black Tree for such a comparison since its complicated enough to make memory management difficult, while retaining real-world application.</p>
 <!-- raw HTML omitted -->
 <p>C++ makes memory management difficult in practice. Memory management, an incidental complexity of C++, is especially difficult in the presence of exceptions. Our goal is to make a fast, correct data structure, not manage memory.  C++ obfuscates this goal.</p>
-<p>There are a few idioms in C++ to help; Resource Acquisition Is Initialization, or RAII for short, states that “…the only code that can be guaranteed to be executed after an <a href="http://en.wikipedia.org/wiki/Exception_handling"target="_blank">exception</a> is thrown are the <a href="http://en.wikipedia.org/wiki/Destructor_%28computer_science%29"target="_blank">destructors</a> of objects residing on the <a href="http://en.wikipedia.org/wiki/Stack_%28data_structure%29"target="_blank">stack</a> (<a href="http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization"target="_blank">Wikipedia</a>)”. Smart Pointers help achieve this.  The Smart pointer offloads much of this responsibility, hiding the complexity, thereby allowing the programmer to focus solely on the task at hand. I use an idiom I learned from my friend <a href="http://www.chrisanderman.com/"target="_blank">Chris</a>, to hide all raw pointers.</p>
+<p>There are a few idioms in C++ to help; Resource Acquisition Is Initialization, or RAII for short, states that “…the only code that can be guaranteed to be executed after an <a href="http://en.wikipedia.org/wiki/Exception_handling"target="_blank" rel="noopener noreferrer">exception</a>
+ is thrown are the <a href="http://en.wikipedia.org/wiki/Destructor_%28computer_science%29"target="_blank" rel="noopener noreferrer">destructors</a>
+ of objects residing on the <a href="http://en.wikipedia.org/wiki/Stack_%28data_structure%29"target="_blank" rel="noopener noreferrer">stack</a>
+ (<a href="http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization"target="_blank" rel="noopener noreferrer">Wikipedia</a>
+)”. Smart Pointers help achieve this.  The Smart pointer offloads much of this responsibility, hiding the complexity, thereby allowing the programmer to focus solely on the task at hand. I use an idiom I learned from my friend <a href="http://www.chrisanderman.com/"target="_blank" rel="noopener noreferrer">Chris</a>
+, to hide all raw pointers.</p>
 <div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp">
     
     <span class="cp">#include</span> 
@@ -41,7 +49,8 @@ the smart vs. weak pointer relationship.  While this strong vs. weak is a much
 simpler question than determining the full _object lifecycle, _<strong>considerable
 effort</strong> is still placed into managing memory. This detracts from our goal,
 while simultaneously, unnecessarily increasing our software’s complexity.</p>
-<p>Firstly, what is a red-black tree? The <a href="http://en.wikipedia.org/wiki/Red-black_tree"target="_blank">Red-Black tree</a> is an interesting data
+<p>Firstly, what is a red-black tree? The <a href="http://en.wikipedia.org/wiki/Red-black_tree"target="_blank" rel="noopener noreferrer">Red-Black tree</a>
+ is an interesting data
 structure because it provides a <em>balanced</em> binary tree.  There are several
 types of self-balancing binary trees available, AVL trees being one. The
 Red-Black tree, however, uses a less strict balancing mechanism than the AVL
@@ -52,8 +61,9 @@ overall balance of the tree.</p>
 complexity. If there is not a rebalancing scheme in place, a BST can,
 depending on what order <em>keys</em> are inserted, fill out as a linked list.
 Searching a linked list is O(n) or “linear” time, not the preferable O(log n).</p>
-<p><a href="http://scienceblogs.com/goodmath/2009/11/advanced_haskell_data_structur.php"target="_blank"><img  src="http://scienceblogs.com/goodmath/upload/2007/01/unbalanced-trees.jpg"
-        alt/></a></p>
+<p><a href="http://scienceblogs.com/goodmath/2009/11/advanced_haskell_data_structur.php"target="_blank" rel="noopener noreferrer"><img  src="http://scienceblogs.com/goodmath/upload/2007/01/unbalanced-trees.jpg"
+        alt/></a>
+</p>
 <p>The Red-Black tree uses graph coloring to maintain balance. Balance guarantee’s O(log n) search performance.</p>
 <h3 id="c-insert">C++ Insert</h3>
 <div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp">
@@ -132,14 +142,19 @@ Searching a linked list is O(n) or “linear” time, not the preferable O(log n
             <span class="n">Delete_Fixup</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-</code></pre></div><p>The Smart Pointer pointer idiom really flexes its power here. The most difficult part about the Red-Black Tree implementation is deleting nodes. One needs to be careful not to delete nodes too soon and cause a <a href="http://en.wikipedia.org/wiki/Dangling_pointer"target="_blank"><em>dangling-pointer</em></a>_ _yet, its important that one does delete the nodes to prevent a leak memory, however as you can see there are no delete calls above. The Smart Pointers handle delete when the node falls out of scope.  This implementation does not leak memory! (See the valgrind scripts for evidence).  That is a powerful statement in C++, and difficult to achieve with manual memory management.</p>
+</code></pre></div><p>The Smart Pointer pointer idiom really flexes its power here. The most difficult part about the Red-Black Tree implementation is deleting nodes. One needs to be careful not to delete nodes too soon and cause a <a href="http://en.wikipedia.org/wiki/Dangling_pointer"target="_blank" rel="noopener noreferrer"><em>dangling-pointer</em></a>
+_ _yet, its important that one does delete the nodes to prevent a leak memory, however as you can see there are no delete calls above. The Smart Pointers handle delete when the node falls out of scope.  This implementation does not leak memory! (See the valgrind scripts for evidence).  That is a powerful statement in C++, and difficult to achieve with manual memory management.</p>
 <p>Additionally, smart pointers indirectly offer a very powerful tool: Division of responsibility. The Smart pointers are responsible for managing memory. In the spirit of the <em>Single-Responsibility-Theorem</em>, they only manage memory, and they do it well. So well, that the developer can focus on the algorithm alone, instead of disrupting the flow with extra memory management code.</p>
 <h4 id="conclusion">Conclusion</h4>
-<p>Excellent! We have a self-balancing BST, that doesn’t leak memory, however is this code correct? No. It is possible, that an exception will leave the tree in a bad state, thereby invalidating the entire structure.  We need a mechanism that provides transactional semantics.  This is difficult in C++, especially due to the <a href="http://en.wikipedia.org/wiki/Exception_handling_syntax#C.2B.2B"target="_blank">lack of a finally statement</a>.</p>
+<p>Excellent! We have a self-balancing BST, that doesn’t leak memory, however is this code correct? No. It is possible, that an exception will leave the tree in a bad state, thereby invalidating the entire structure.  We need a mechanism that provides transactional semantics.  This is difficult in C++, especially due to the <a href="http://en.wikipedia.org/wiki/Exception_handling_syntax#C.2B.2B"target="_blank" rel="noopener noreferrer">lack of a finally statement</a>
+.</p>
 <p>It’s important to understand that smart pointer’s are not a panacea. They do not solve all memory management issue in C++. There are still artifacts of memory management without our algorithm, detracting from the simplicity of our design.  Without a comprehensive memory solution, we will never lose this incidental complexity.</p>
-<p>D provides a number of features that helps one write transactional, <strong>correct</strong> code. One issue, is in C++, exceptions are much of a “bolt-on” feature.  Much as exceptions are pervasive in our daily lives so in D, exceptions are pervasive in the language.  Its naïve to believe that code will not fail, yet this is how exception management in C++ feels. As evidence of this, one may throw an exception from anywhere in D, even in a destructor; C++ cannot do <a href="http://www.parashift.com/c&#43;&#43;-faq-lite/exceptions.html#faq-17.9"target="_blank">this</a>.</p>
-<p>In Part 2, we’ll look at how D’s exception management, garbage collection, and the <a href="http://www.d-programming-language.org/exception-safe.html"target="_blank">scope() statement</a> help us write clear, correct code, while lowering incidental complexity.</p>
-</article><section class="article labels"><a class="tag" href=/tags/algorithm/>Algorithm</a><a class="tag" href=/tags/comparison/>comparison</a><a class="tag" href=/tags/data-structure/>Data Structure</a><a class="tag" href=/tags/tree/>Tree</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.a8bf9f6f334e22a6002d9757880b6a18a0782dbe71c8c331ba76607d0b858aa3261a116797f86516d1a8b38a0cc107c7.js#pubid=ra-1234567890" integrity="sha384-qL&#43;fbzNOIqYALZdXiAtqGKB4Lb5xyMMxunZgfQuFiqMmGhFnl/hlFtGos4oMwQfH"></script></div>
+<p>D provides a number of features that helps one write transactional, <strong>correct</strong> code. One issue, is in C++, exceptions are much of a “bolt-on” feature.  Much as exceptions are pervasive in our daily lives so in D, exceptions are pervasive in the language.  Its naïve to believe that code will not fail, yet this is how exception management in C++ feels. As evidence of this, one may throw an exception from anywhere in D, even in a destructor; C++ cannot do <a href="http://www.parashift.com/c&#43;&#43;-faq-lite/exceptions.html#faq-17.9"target="_blank" rel="noopener noreferrer">this</a>
+.</p>
+<p>In Part 2, we’ll look at how D’s exception management, garbage collection, and the <a href="http://www.d-programming-language.org/exception-safe.html"target="_blank" rel="noopener noreferrer">scope() statement</a>
+ help us write clear, correct code, while lowering incidental complexity.</p>
+</article><section class="article labels"><a class="tag" href=/tags/algorithm/>Algorithm</a><a class="tag" href=/tags/comparison/>comparison</a><a class="tag" href=/tags/data-structure/>Data Structure</a><a class="tag" href=/tags/tree/>Tree</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.99872df1091f055fca553e0b74b13c09bd383ef42b1c56a9edb651a91f122d56e7bc9a2fad73528246215b379b043226.js#pubid=ra-1234567890" integrity="sha384-mYct8QkfBV/KVT4LdLE8Cb04PvQrHFap7bZRqR8SLVbnvJovrXNSgkYhWzebBDIm"></script>
+</div>
 <div class="article bottom"><section class="article navigation"><p><a class="link" href="/series/the-red-black-tree/class-invariants-red-black-tree-part-2/"><span class="iconfont icon-article"></span>Class Invariants</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
@@ -161,8 +176,10 @@ Searching a linked list is O(n) or “linear” time, not the preferable O(log n
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
     <p class="copyright">©2020 Jeremy Wright</p>
-    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
-        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
-        target="_blank">Notepadium</a></p></div></section></body>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></body>
 
 </html>
