@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.81.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.88.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<meta name="supported-color-schemes" content="light dark"><title>Property Driven Design: MinMax&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.53081165f1d03b36fb9f4de24b00505db6b09fc2388839b7b17a05c66c9d7e8a258e194012e5b1f53b59d5f907244126.css" integrity="sha384-UwgRZfHQOzb7n03iSwBQXbawn8I4iDm3sXoFxmydfooljhlAEuWx9TtZ1fkHJEEm"><meta name="twitter:card" content="summary" />
+<meta name="supported-color-schemes" content="light dark"><title>Property Driven Design: MinMax&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Property Driven Design: MinMax" /><body><section id="header">
     <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
-        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
     <h1 class="article title">Property Driven Design: MinMax</h1><p class="article date">Sunday, July 5, 2015</p></section><article class="article markdown-body"><p>I wrote an article on <a href="http://www.codestrokes.com/2014/09/property-testing-in-c/"target="_blank" rel="noopener noreferrer">Property Testing</a>
 
 about a year ago. Isocpp.org even <a href="https://isocpp.org/blog/2014/12/property-testing"target="_blank" rel="noopener noreferrer">linked to
@@ -85,7 +85,7 @@ maximum function.</p>
 </ol>
 <p>Using the <a href="https://github.com/thejohnfreeman/autocheck"target="_blank" rel="noopener noreferrer">autocheck library</a>
  we can express this requirement as follows:</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">prop_max_element_t</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">prop_max_element_t</span>
 <span class="p">{</span>
 	<span class="k">template</span><span class="o">&lt;</span>
 		<span class="k">typename</span> <span class="n">SinglePassRange</span><span class="o">&gt;</span>
@@ -113,7 +113,7 @@ maximum function.</p>
 			<span class="n">rep</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div><p>Lets breakdown the definition of the arbitrary generator:</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp">	<span class="k">auto</span> <span class="n">arbitrary</span> <span class="o">=</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp">	<span class="k">auto</span> <span class="n">arbitrary</span> <span class="o">=</span> 
 		<span class="n">autocheck</span><span class="o">::</span><span class="n">discard_if</span><span class="p">([](</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">size_t</span><span class="o">&gt;&amp;</span> <span class="n">xs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">bool</span> <span class="p">{</span> <span class="k">return</span> <span class="n">xs</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span> <span class="p">},</span>
 		<span class="n">autocheck</span><span class="o">::</span><span class="n">make_arbitrary</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">size_t</span><span class="o">&gt;&gt;</span><span class="p">());</span>
 </code></pre></div><p>The signature of an arbitrary generator is best read bottom to top.  The first
@@ -122,7 +122,7 @@ vectors who&rsquo;s size is equal to zero. We will see later how to generate dat
 that meets our requirements, but sometimes its easier to just throw away some
 data rather than try to generate only valid data.</p>
 <p>With this property we can test our stub function:</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">namespace</span> <span class="n">minmax</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">namespace</span> <span class="n">minmax</span>
 <span class="p">{</span>
 
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">SinglePassRange</span><span class="o">&gt;</span>
@@ -132,7 +132,7 @@ data rather than try to generate only valid data.</p>
 </span><span class="c1"></span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div><p>This generates a failed output as we expected</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> RUN      <span class="o">]</span> minmax.maximum_prop
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> RUN      <span class="o">]</span> minmax.maximum_prop
 d:<span class="se">\p</span>roperty_driven_design<span class="se">\b</span>uild<span class="se">\t</span>hirdparty<span class="se">\s</span>rc<span class="se">\a</span>utocheck<span class="se">\i</span>nclude<span class="se">\a</span>utocheck<span class="se">\r</span>eporter.hpp<span class="o">(</span>91<span class="o">)</span>: error: Value of: AUTOCHECK_SUCCESS
   Actual: <span class="nb">false</span>
 Expected: <span class="nb">true</span>
@@ -142,7 +142,7 @@ Falsifiable, after <span class="m">3</span> tests:
 <span class="o">[</span>  FAILED  <span class="o">]</span> minmax.maximum_prop <span class="o">(</span><span class="m">3</span> ms<span class="o">)</span>
 </code></pre></div><p>Now that we are confident the test machinery is working, we can remove our
 stub implementation and provide a (hopefully correct) definition.</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">namespace</span> <span class="n">minmax</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">namespace</span> <span class="n">minmax</span>
 <span class="p">{</span>
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">SinglePassRange</span><span class="o">&gt;</span>
 <span class="k">typename</span> <span class="n">SinglePassRange</span><span class="o">::</span><span class="n">value_type</span> <span class="n">maximum</span><span class="p">(</span><span class="k">const</span> <span class="n">SinglePassRange</span><span class="o">&amp;</span> <span class="n">range</span><span class="p">)</span>
@@ -153,7 +153,7 @@ stub implementation and provide a (hopefully correct) definition.</p>
 <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div><p>We will no re-run our test to verify the implementation.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> RUN      <span class="o">]</span> minmax.maximum_prop
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> RUN      <span class="o">]</span> minmax.maximum_prop
 OK, passed <span class="m">100</span> tests.
 <span class="o">[</span>       OK <span class="o">]</span> minmax.maximum_prop <span class="o">(</span><span class="m">14</span> ms<span class="o">)</span>
 </code></pre></div><p>This demonstrates another useful property of properties :-). The data passing
@@ -174,7 +174,7 @@ We can document that we intend to only work with rational numbers. Then since
 C++ is statically type we can validate the property statically, and any
 maintenance programmer will fail to compile without modifying the test.</p>
 <p>We can express this property as so</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">prop_maximum_should_give_rational_number_t</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">prop_maximum_should_give_rational_number_t</span>
 <span class="p">{</span>
 	<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">SinglePassRange</span><span class="o">&gt;</span>
 	<span class="kt">bool</span> <span class="k">operator</span><span class="p">()(</span><span class="k">const</span> <span class="n">SinglePassRange</span><span class="o">&amp;</span> <span class="n">xs</span><span class="p">)</span>
@@ -198,7 +198,7 @@ starts with. Notice that if we implemented this property first, with our stub
 function in place, our random generator would have falsified it easily with
 any list where 0 was not a member.</p>
 <p>We can express this property with autocheck as:</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">prop_maximum_should_return_a_value_from_the_list_t</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">prop_maximum_should_return_a_value_from_the_list_t</span>
 <span class="p">{</span>
 	<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">SinglePassRange</span><span class="o">&gt;</span>
 	<span class="kt">bool</span> <span class="k">operator</span><span class="p">()(</span><span class="k">const</span> <span class="n">SinglePassRange</span><span class="o">&amp;</span> <span class="n">xs</span><span class="p">)</span>
@@ -218,7 +218,7 @@ function. It is testing one small aspect of the function&rsquo;s possible soluti
 space.</p>
 <p>Next we can move on to our next function, <em>minimum_pair</em>, which we can
 implement with a stub to always return the first element:</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">SinglePassRange</span><span class="o">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">SinglePassRange</span><span class="o">&gt;</span>
 <span class="n">measure_pair_t</span> <span class="n">minimum_pair</span><span class="p">(</span><span class="k">const</span> <span class="n">SinglePassRange</span><span class="o">&amp;</span> <span class="n">xs</span><span class="p">)</span>
 <span class="p">{</span>
 	<span class="k">return</span> <span class="o">*</span><span class="n">std</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">xs</span><span class="p">);</span>
@@ -227,7 +227,7 @@ implement with a stub to always return the first element:</p>
 a <em>measure_pair_t</em>. We do this by specializing the generator function in the
 autocheck namespace.</p>
 <h2 id="generating-a-custom-data-type">Generating a custom data type</h2>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">namespace</span> <span class="n">autocheck</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">namespace</span> <span class="n">autocheck</span>
 <span class="p">{</span>
 
 <span class="c1">//Tell autocheck how to generate a measure_pair_t
@@ -263,7 +263,7 @@ check.</p>
 <p>To express this property we must first have a definition of a measure pair
 (We&rsquo;ll see how this definition is not quite correct, but our properties will
 sus that out quite quickly):</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">using</span> <span class="n">measure_pair_t</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">size_t</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">using</span> <span class="n">measure_pair_t</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">size_t</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="c1">///Provided definition: measure pair: a two-element list whose first element, a rational number, is the measure of its other element
 </span><span class="c1"></span><span class="kt">bool</span> <span class="nf">is_measure_pair</span><span class="p">(</span><span class="k">const</span> <span class="n">measure_pair_t</span><span class="o">&amp;</span> <span class="n">x</span><span class="p">)</span>
@@ -282,7 +282,7 @@ sus that out quite quickly):</p>
 <span class="p">}</span>
 </code></pre></div><p>And our property to check that the return value from minimum pair should meet
 the definition of a measure pair.</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">prop_minimum_pair_should_return_a_measure_pair_t</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">prop_minimum_pair_should_return_a_measure_pair_t</span>
 <span class="p">{</span>
 	<span class="kt">bool</span> <span class="nf">operator</span><span class="p">()(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">minmax</span><span class="o">::</span><span class="n">measure_pair_t</span><span class="o">&gt;&amp;</span> <span class="n">xs</span><span class="p">)</span> <span class="k">const</span>
 	<span class="p">{</span>
@@ -292,7 +292,7 @@ the definition of a measure pair.</p>
 	<span class="p">}</span>
 <span class="p">};</span>
 </code></pre></div><p>Executing this gives us, as expected due to our stub, a falsifiable case.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> RUN      <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> RUN      <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
 unknown file: error: SEH exception with code 0xc0000094 thrown in the <span class="nb">test</span> body.
 
 <span class="o">[</span>  FAILED  <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair <span class="o">(</span><span class="m">1</span> ms<span class="o">)</span>
@@ -301,7 +301,7 @@ I personally would not have exercised this using a directed test. This is
 another strength of random testing. The random generators are not biased with
 programmer intuition. Our requirements state that a measure-pair is always
 non-zero so we will update the generator to exclude zero values.</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">namespace</span> <span class="n">autocheck</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">namespace</span> <span class="n">autocheck</span>
 <span class="p">{</span>
 <span class="k">template</span> <span class="o">&lt;&gt;</span>
 <span class="k">class</span> <span class="nc">generator</span><span class="o">&lt;</span><span class="n">minmax</span><span class="o">::</span><span class="n">measure_pair_t</span><span class="o">&gt;</span>
@@ -331,7 +331,7 @@ non-zero so we will update the generator to exclude zero values.</p>
 <span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div><p>Now with zero values excluded we&rsquo;ll get a falsifiable test case:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> RUN      <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> RUN      <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
 d:<span class="se">\p</span>roperty_driven_design<span class="se">\b</span>uild<span class="se">\t</span>hirdparty<span class="se">\s</span>rc<span class="se">\a</span>utocheck<span class="se">\i</span>nclude<span class="se">\a</span>utocheck<span class="se">\r</span>eporter.hpp<span class="o">(</span>91<span class="o">)</span>: error: Value of: AUTOCHECK_SUCCESS
   Actual: <span class="nb">false</span>
 Expected: <span class="nb">true</span>
@@ -381,7 +381,7 @@ code paths to more abstract thinking, which is something humans do best.</p>
 <h2 id="fixing-our-property">Fixing our property</h2>
 <p>The problem is is that our definition doesn&rsquo;t include self-measures. We can
 adjust it easily.</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">bool</span> <span class="nf">is_measure_pair</span><span class="p">(</span><span class="k">const</span> <span class="n">measure_pair_t</span><span class="o">&amp;</span> <span class="n">x</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">bool</span> <span class="nf">is_measure_pair</span><span class="p">(</span><span class="k">const</span> <span class="n">measure_pair_t</span><span class="o">&amp;</span> <span class="n">x</span><span class="p">)</span>
 <span class="p">{</span>
 	<span class="c1">//A measure pair is a two element list, who&#39;s first element (a rational
 </span><span class="c1"></span>	<span class="c1">//number), is the measure of its other element
@@ -397,7 +397,7 @@ adjust it easily.</p>
 		<span class="o">&amp;&amp;</span> <span class="n">other_element_is_measure_of_first</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div><p>Executing this generates a new failing case:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> RUN      <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> RUN      <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
 d:<span class="se">\p</span>roperty_driven_design<span class="se">\b</span>uild<span class="se">\t</span>hirdparty<span class="se">\s</span>rc<span class="se">\a</span>utocheck<span class="se">\i</span>nclude<span class="se">\a</span>utocheck<span class="se">\r</span>epor
 ter.hpp<span class="o">(</span>91<span class="o">)</span>: error: Value of: AUTOCHECK_SUCCESS
   Actual: <span class="nb">false</span>
@@ -407,7 +407,7 @@ Falsifiable, after <span class="m">3</span> tests:
 
 <span class="o">[</span>  FAILED  <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair <span class="o">(</span><span class="m">1</span> ms<span class="o">)</span>
 </code></pre></div><p>We can run it again to see if we get a different case:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> RUN      <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span> RUN      <span class="o">]</span> MinMaxFixture.prop_minimum_pair_should_return_a_measure_pair
 d:<span class="se">\p</span>roperty_driven_design<span class="se">\b</span>uild<span class="se">\t</span>hirdparty<span class="se">\s</span>rc<span class="se">\a</span>utocheck<span class="se">\i</span>nclude<span class="se">\a</span>utocheck<span class="se">\r</span>eporter.hpp<span class="o">(</span>91<span class="o">)</span>: error: Value of: AUTOCHECK_SUCCESS
   Actual: <span class="nb">false</span>
 Expected: <span class="nb">true</span>
@@ -418,7 +418,7 @@ Falsifiable, after <span class="m">7</span> tests:
 </code></pre></div><p>This is awesome! Our failing test case is bigger now. Again to quote John
 Hughes, &ldquo;<a href="https://www.youtube.com/watch?v=zi0rHwfiX1Q"target="_blank" rel="noopener noreferrer">This is progress! We are now passing for lists of size 1!</a>
 &rdquo; Our function is still implemented as a stub, so we can have some confidence that our test code is behaving properly. Let&rsquo;s implement our minimum_pair function:</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">SinglePassRange</span><span class="o">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">SinglePassRange</span><span class="o">&gt;</span>
 <span class="n">measure_pair_t</span> <span class="n">minimum_pair</span><span class="p">(</span><span class="k">const</span> <span class="n">SinglePassRange</span><span class="o">&amp;</span> <span class="n">xs</span><span class="p">)</span>
 <span class="p">{</span>
 	<span class="k">return</span> <span class="o">*</span><span class="n">std</span><span class="o">::</span><span class="n">min_element</span><span class="p">(</span>
@@ -427,7 +427,7 @@ Hughes, &ldquo;<a href="https://www.youtube.com/watch?v=zi0rHwfiX1Q"target="_bla
 			<span class="o">::</span><span class="n">minmax</span><span class="o">::</span><span class="k">operator</span><span class="o">&lt;</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div><p>Executing our test code:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">D:<span class="se">\p</span>roperty_driven_design<span class="se">\b</span>uild&gt;01_minmax
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">D:<span class="se">\p</span>roperty_driven_design<span class="se">\b</span>uild&gt;01_minmax
 Running main<span class="o">()</span> from gtest_main.cc
 <span class="o">[==========]</span> Running <span class="m">7</span> tests from <span class="m">3</span> <span class="nb">test</span> cases.
 <span class="o">[</span>----------<span class="o">]</span> Global <span class="nb">test</span> environment set-up.
@@ -491,7 +491,7 @@ some developers like to see examples tests, even random ones.</p>
 numerical problem. In intended to show something more interesting that the
 <em>reverse(reverse(list)) == list</em> example, and something less contrived than my
 previous post on property testing. I look forward to any feedback on this
-post.</p></article><section class="article labels"><a class="category" href=/categories/c&#43;&#43;/>C&#43;&#43;</a><a class="category" href=/categories/property-driven-design/>Property Driven Design</a><a class="tag" href=/tags/property-testing/>property-testing</a><a class="tag" href=/tags/example/>example</a><a class="tag" href=/tags/tutorial/>tutorial</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.99872df1091f055fca553e0b74b13c09bd383ef42b1c56a9edb651a91f122d56e7bc9a2fad73528246215b379b043226.js#pubid=ra-1234567890" integrity="sha384-mYct8QkfBV/KVT4LdLE8Cb04PvQrHFap7bZRqR8SLVbnvJovrXNSgkYhWzebBDIm"></script>
+post.</p></article><section class="article labels"><a class="tag" href=/tags/c&#43;&#43;/>C&#43;&#43;</a><a class="tag" href=/tags/property-driven-design/>Property Driven Design</a><a class="tag" href=/tags/property-testing/>property-testing</a><a class="tag" href=/tags/example/>example</a><a class="tag" href=/tags/tutorial/>tutorial</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.99872df1091f055fca553e0b74b13c09bd383ef42b1c56a9edb651a91f122d56e7bc9a2fad73528246215b379b043226.js#pubid=ra-1234567890" integrity="sha384-mYct8QkfBV/KVT4LdLE8Cb04PvQrHFap7bZRqR8SLVbnvJovrXNSgkYhWzebBDIm"></script>
 </div>
 <div class="article bottom"><section class="article navigation"><p><a class="link" href="/2015/09/deploying-d-to-azure-webapp/"><span class="iconfont icon-article"></span>4 Simple Steps to Run D Language in Azure Websites</a></p><p><a class="link" href="/2015/06/converting-to-static-blog/"><span class="iconfont icon-article"></span>Recasting how I blog</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
 <script type="application/javascript">
@@ -513,7 +513,7 @@ post.</p></article><section class="article labels"><a class="category" href=/cat
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
-    <p class="copyright">©2020 Jeremy Wright</p>
+    <p class="copyright">©2021 Jeremy Wright</p>
     <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
         target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
         target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>

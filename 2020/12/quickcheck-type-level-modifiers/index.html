@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.81.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.88.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<meta name="supported-color-schemes" content="light dark"><title>Using QuickCheck&#39;s Positive Type Level Modifier&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.53081165f1d03b36fb9f4de24b00505db6b09fc2388839b7b17a05c66c9d7e8a258e194012e5b1f53b59d5f907244126.css" integrity="sha384-UwgRZfHQOzb7n03iSwBQXbawn8I4iDm3sXoFxmydfooljhlAEuWx9TtZ1fkHJEEm"><meta name="twitter:card" content="summary" />
+<meta name="supported-color-schemes" content="light dark"><title>Using QuickCheck&#39;s Positive Type Level Modifier&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Using QuickCheck&#39;s Positive Type Level Modifier" /><body><section id="header">
     <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
-        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
     <h1 class="article title">Using QuickCheck's Positive Type Level Modifier</h1><p class="article date">Thursday, December 24, 2020</p></section><article class="article markdown-body"><p>One of my students this semester was struggling with the material. This
 student is a very diligent worker and has been researching the problems trying
 to get a better understanding of the material before digging in. Sometimes
@@ -36,16 +36,17 @@ completely lost at trying to build a property with only positive generator
 values.</p>
 <p>This particular test is trying to show that the height of the pyramid is the
 length of the out put array/list.</p>
-<div class="highlight"><pre class="chroma"><code class="language-haskell" data-lang="haskell"><span class="nf">prop_heightIsLength</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span>  <span class="kt">Bool</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-haskell" data-lang="haskell"><span class="nf">prop_heightIsLength</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span>  <span class="kt">Bool</span>
 <span class="nf">prop_heightIsLength</span> <span class="n">height</span> <span class="ow">=</span> <span class="n">length</span> <span class="p">(</span> <span class="n">buildTower</span> <span class="n">height</span> <span class="p">)</span> <span class="o">==</span> <span class="n">height</span>
 </code></pre></div><p>However, <code>buildTower</code> only defined for positive values. My first pass of
 the property is generates negative values (and 0 values) as input. After some
 searching I was able to find the Positive type modifier for quickcheck.</p>
-<p><a href="https://hackage.haskell.org/package/QuickCheck-2.4.1.1/docs/Test-QuickCheck.html#t:Positive">https://hackage.haskell.org/package/QuickCheck-2.4.1.1/docs/Test-QuickCheck.html#t:Positive</a></p>
-<div class="highlight"><pre class="chroma"><code class="language-haskell" data-lang="haskell"><span class="nf">prop_heightIsLength</span> <span class="ow">::</span> <span class="kt">Positive</span> <span class="kt">Int</span> <span class="ow">-&gt;</span>  <span class="kt">Bool</span>
+<p><a href="https://hackage.haskell.org/package/QuickCheck-2.4.1.1/docs/Test-QuickCheck.html#t:Positive"target="_blank" rel="noopener noreferrer">https://hackage.haskell.org/package/QuickCheck-2.4.1.1/docs/Test-QuickCheck.html#t:Positive</a>
+</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-haskell" data-lang="haskell"><span class="nf">prop_heightIsLength</span> <span class="ow">::</span> <span class="kt">Positive</span> <span class="kt">Int</span> <span class="ow">-&gt;</span>  <span class="kt">Bool</span>
 <span class="nf">prop_heightIsLength</span> <span class="n">height</span> <span class="ow">=</span> <span class="n">length</span> <span class="p">(</span> <span class="n">buildTower</span> <span class="n">height</span> <span class="p">)</span> <span class="o">==</span> <span class="n">height</span>
 </code></pre></div><p>However, this doesn&rsquo;t compile.</p>
-<pre><code>Couldn't match expected type ‘Positive Int’
+<pre tabindex="0"><code>Couldn't match expected type ‘Positive Int’
                   with actual type ‘Int’
 </code></pre><p>Which brings me to my biggest challenge in learning anything new. Frequently
 in learning something new I don&rsquo;t have enough knowledge to ask the right
@@ -57,14 +58,15 @@ question, or even understand the answer. This is one of those cases.</p>
 <li>haskell constraint quickcheck generator</li>
 </ol>
 <p>This lead me to the closest answer</p>
-<p><a href="https://stackoverflow.com/questions/11910143/positive-integer-type#11910221">https://stackoverflow.com/questions/11910143/positive-integer-type#11910221</a></p>
+<p><a href="https://stackoverflow.com/questions/11910143/positive-integer-type#11910221"target="_blank" rel="noopener noreferrer">https://stackoverflow.com/questions/11910143/positive-integer-type#11910221</a>
+</p>
 <p>However, it is demonstrating how to build a custom generator. I just want to
 use the built in constraints!</p>
 <blockquote>
 <p>Why is this so hard?
 Because I didn&rsquo;t know how to read the type signature of the Postive type.</p>
 </blockquote>
-<div class="highlight"><pre class="chroma"><code class="language-haskell" data-lang="haskell"><span class="c1">-- This property does not compile</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-haskell" data-lang="haskell"><span class="c1">-- This property does not compile</span>
 <span class="nf">prop_heightIsLength</span> <span class="ow">::</span> <span class="kt">Positive</span> <span class="kt">Int</span> <span class="ow">-&gt;</span>  <span class="kt">Bool</span>
 <span class="nf">prop_heightIsLength</span> <span class="n">height</span> <span class="ow">=</span> <span class="n">length</span> <span class="p">(</span> <span class="n">buildTower</span> <span class="n">height</span> <span class="p">)</span> <span class="o">==</span> <span class="n">height</span>
 
@@ -103,7 +105,7 @@ positive.</p>
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
-    <p class="copyright">©2020 Jeremy Wright</p>
+    <p class="copyright">©2021 Jeremy Wright</p>
     <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
         target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
         target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
