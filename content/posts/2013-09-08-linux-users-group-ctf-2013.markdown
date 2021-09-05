@@ -6,16 +6,13 @@ layout: post
 slug: linux-users-group-ctf-2013
 title: Linux User's Group CTF 2013
 wordpress_id: 1187
-categories:
-- CTF
-- Security
 tags:
-- Contest
-- cracking
 - CTF
+- Contest
+- Security
+- cracking
 - hack-a-thon
 - hacking
-- Security
 ---
 
 This past weekend we held another capture the flag event at the Arizona State University's Linux User's Group. It had more of a system admin focus than security cracking exploits, but it was fun an nontheless a diverse learning experience for all those involved. However, almost immediately, I realized the number one rule in CTF, nothing is off limits!

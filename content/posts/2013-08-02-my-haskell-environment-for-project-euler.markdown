@@ -6,9 +6,8 @@ layout: post
 slug: my-haskell-environment-for-project-euler
 title: My Haskell Environment for Project Euler
 wordpress_id: 1131
-categories:
-- Functional
 tags:
+- Functional
 - automake
 - dependencies
 - dependency

@@ -6,9 +6,8 @@ layout: post
 slug: bucket-sort
 title: Bucket Sort
 wordpress_id: 101
-categories:
-- Coding
 tags:
+- Coding
 - D
 - Sorting
 ---

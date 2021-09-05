@@ -6,7 +6,7 @@ layout: post
 slug: thing-a-week-algorithm-edition
 title: 'Thing a Week: Algorithm Edition'
 wordpress_id: 49
-categories:
+tags:
 - Coding
 ---
 

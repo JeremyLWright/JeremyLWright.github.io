@@ -5,9 +5,8 @@ date: 2015-09-25 20:10:00+07:00
 layout: post
 slug: deploying-d-to-azure-webapp
 title: 4 Simple Steps to Run D Language in Azure Websites
-categories:
-- D
 Tags:
+- D
 - Azure
 ---
 

@@ -6,9 +6,8 @@ layout: post
 slug: review-how-to-write-a-thesis-2
 title: How to Write a Thesis
 wordpress_id: 1121
-categories:
-- Review
 tags:
+- Review
 - book
 ---
 

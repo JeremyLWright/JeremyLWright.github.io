@@ -6,7 +6,7 @@ layout: post
 slug: open-source-ctf-game-server
 title: Open Source CTF Game Server
 wordpress_id: 744
-categories:
+tags:
 - CTF
 ---
 

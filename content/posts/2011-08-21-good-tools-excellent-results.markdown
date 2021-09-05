@@ -6,9 +6,8 @@ layout: post
 slug: good-tools-excellent-results
 title: Good Tools, Excellent Results
 wordpress_id: 313
-categories:
-- Coding
 tags:
+- Coding
 - productivity
 - Python
 - tools

@@ -2,7 +2,7 @@ baseurl = "https://quiescent.us/"
 languageCode = "en-us"
 enableRobotsTXT = true
 title = "The Quiescent Current"
-copyright = "©2020 Jeremy Wright"
+copyright = "©2021 Jeremy Wright"
 
 disqusShortname = "codestrokes2"
 pygmentsuseclasses = true
@@ -11,8 +11,8 @@ theme="hugo-notepadium2"
 [taxonomies]
   series = "series"
   tag = "tags"
-  category = "categories"
   language = "languages"
+  project = "projects"
 
 [permalinks]
     posts = "/:year/:month/:slug/"
@@ -48,14 +48,13 @@ theme="hugo-notepadium2"
     enable = true  
     use = "katex"  # option: "katex", "mathjax". default: "katex"
 
-[params.nav]
-	showCategories = true
-	showTags = true
-	showSeries = true
-
 [[params.nav.custom]]
 	title = "Blog"
 	url = "/posts"
+
+[params.nav]
+	showSeries = true
+	showTags = true
 
 [[params.nav.custom]]
 	title = "Series"

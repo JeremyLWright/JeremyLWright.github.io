@@ -6,7 +6,7 @@ layout: post
 slug: branching-with-mercurial
 title: Branching with Mercurial
 wordpress_id: 556
-categories:
+tags:
 - Project
 ---
 

@@ -6,9 +6,8 @@ layout: post
 slug: patterns-are-evidence-of-a-languages-lacking
 title: Patterns are evidence of a language's lacking
 wordpress_id: 875
-categories:
-- Algorithm
 tags:
+- Algorithm
 - DSL
 - pattern
 ---

@@ -6,7 +6,7 @@ layout: post
 slug: game-framework-for-c-practicum
 title: Game Framework for C++ Practicum
 wordpress_id: 248
-categories:
+tags:
 - Teaching/Talks
 ---
 

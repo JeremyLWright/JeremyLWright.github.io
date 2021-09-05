@@ -6,9 +6,8 @@ layout: post
 slug: the-turbulent-history-of-managed-code
 title: The Turbulent History of Managed Code
 wordpress_id: 734
-categories:
-- Productivity
 tags:
+- Productivity
 - Java
 - Managed Code
 ---

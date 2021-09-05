@@ -4,10 +4,9 @@ date: 2015-07-05 00:00:00+00:00
 slug: property_driven_design_minmax
 title: "Property Driven Design: MinMax"
 draft: false
-categories:
+tags:
 - C++
 - "Property Driven Design"
-tags:
 - property-testing
 - example
 - tutorial

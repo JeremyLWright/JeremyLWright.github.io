@@ -6,9 +6,8 @@ layout: post
 slug: asulug-talk-django-web-framework
 title: 'ASULUG Talk: Django Web Framework'
 wordpress_id: 757
-categories:
-- Talk
 tags:
+- Talk
 - Python
 ---
 

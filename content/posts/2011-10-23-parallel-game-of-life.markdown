@@ -6,9 +6,8 @@ layout: post
 slug: parallel-game-of-life
 title: Parallel Game-of-Life
 wordpress_id: 405
-categories:
-- Coding
 tags:
+- Coding
 - parallel
 languages: 
 - C++

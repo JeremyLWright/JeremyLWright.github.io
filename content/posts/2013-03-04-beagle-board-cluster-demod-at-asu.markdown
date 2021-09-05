@@ -6,7 +6,7 @@ layout: post
 slug: beagle-board-cluster-demod-at-asu
 title: Beagle Board Cluster Demo'd at ASU
 wordpress_id: 837
-categories:
+tags:
 - Club
 ---
 

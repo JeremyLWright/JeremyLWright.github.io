@@ -6,10 +6,10 @@ layout: post
 slug: is-monolithic-code-faster
 title: Is Monolithic Code Faster?
 wordpress_id: 704
-categories:
-- Compilation
-tags:
+languages:
 - C++
+tags:
+- Compilation
 - optimization
 - performance
 ---

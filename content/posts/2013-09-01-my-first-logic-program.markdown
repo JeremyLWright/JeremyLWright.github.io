@@ -6,7 +6,7 @@ layout: post
 slug: my-first-logic-program
 title: My First Logic Program
 wordpress_id: 1170
-categories:
+tags:
 - AI
 ---
 

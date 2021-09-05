@@ -6,7 +6,7 @@ layout: post
 slug: a-thunk-on-laziness
 title: A Thunk on Laziness
 wordpress_id: 1107
-categories:
+tags:
 - Security
 ---
 

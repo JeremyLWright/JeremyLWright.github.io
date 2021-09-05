@@ -6,7 +6,7 @@ layout: post
 slug: idiomatic-learning
 title: Idiomatic Learning
 wordpress_id: 1126
-categories:
+tags:
 - Idiom
 languages:
 - C++

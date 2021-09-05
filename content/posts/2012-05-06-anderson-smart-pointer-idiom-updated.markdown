@@ -7,9 +7,8 @@ slug: anderson-smart-pointer-idiom-updated
 title: Anderson Smart-Pointer Idiom Updated!
 wordpress_id: 605
 expiryDate: 2020-01-01T00:00:00+00:00
-categories:
-- Idiom
 tags:
+- Idiom
 - RAII
 languages:
 - C++

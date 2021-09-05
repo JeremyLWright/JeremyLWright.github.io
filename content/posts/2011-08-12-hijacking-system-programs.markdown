@@ -6,9 +6,9 @@ layout: post
 slug: hijacking-system-programs
 title: Hijacking System Programs
 wordpress_id: 268
-categories:
-- Teaching/Talks
 tags:
+- teaching
+- talks
 - command line
 - customize
 - vim

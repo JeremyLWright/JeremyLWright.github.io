@@ -6,9 +6,8 @@ layout: post
 slug: why-do-some-tutorials-use-stdcout-and-others-use-just-cout
 title: Why do some tutorials use std::cout and others use just cout?
 wordpress_id: 277
-categories:
-- Coding
 tags:
+- Coding
 - tutorial
 ---
 

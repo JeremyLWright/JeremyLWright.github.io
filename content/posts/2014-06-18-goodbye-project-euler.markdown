@@ -6,7 +6,7 @@ layout: post
 slug: goodbye-project-euler
 title: Goodbye Project Euler
 wordpress_id: 1294
-categories:
+tags:
 - Functional
 ---
 

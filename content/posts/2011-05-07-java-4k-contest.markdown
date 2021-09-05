@@ -6,9 +6,8 @@ layout: post
 slug: java-4k-contest
 title: Java 4K Contest
 wordpress_id: 55
-categories:
-- Project
 tags:
+- Project
 - Contest
 - Java
 ---

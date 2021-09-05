@@ -5,11 +5,10 @@ slug: how-to-be-an-elite-programmer
 title: How to be an Elite Programmer
 draft: true
 expiryDate: 2020-01-01T00:00:00+00:00
-categories:
-- C++ Beginner
 languages:
 - C++
 tags:
+- Beginner
 - testing
 - self-improvement
 ---

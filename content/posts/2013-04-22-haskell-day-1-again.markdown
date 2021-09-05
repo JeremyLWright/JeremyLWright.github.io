@@ -6,8 +6,6 @@ layout: post
 slug: haskell-day-1-again
 title: Haskell Day 1 (Again)
 wordpress_id: 850
-categories:
-- Functional
 tags:
 - functional
 languages:

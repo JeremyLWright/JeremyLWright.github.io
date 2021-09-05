@@ -6,7 +6,7 @@ layout: post
 slug: smaller-reviews-are-more-effective
 title: '"Smaller" Reviews are More Effective'
 wordpress_id: 1158
-categories:
+tags:
 - Review
 ---
 

@@ -6,9 +6,8 @@ layout: post
 slug: compile-time-polymorphism
 title: Compile-Time Polymorphism
 wordpress_id: 515
-categories:
-- Coding
 tags:
+- Coding
 - idiom
 - performance
 - template

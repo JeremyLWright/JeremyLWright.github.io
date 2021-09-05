@@ -6,8 +6,8 @@ layout: post
 slug: introduction-to-pointers
 title: Introduction to Pointers
 wordpress_id: 1354
-categories:
-- C++ Beginner
+tags:
+- Beginner
 languages:
 - C++
 ---

@@ -6,7 +6,7 @@ layout: post
 slug: artifical-intelligence-impact-on-medicine
 title: Artifical Intelligence Impact on Medicine
 wordpress_id: 1163
-categories:
+tags:
 - Writing
 ---
 

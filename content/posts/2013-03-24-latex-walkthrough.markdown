@@ -6,8 +6,6 @@ layout: post
 slug: latex-walkthrough
 title: Latex Walkthrough
 wordpress_id: 844
-categories:
-- Writing
 tags:
 - latex
 - tools

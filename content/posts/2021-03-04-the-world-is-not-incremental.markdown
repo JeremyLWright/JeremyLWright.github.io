@@ -2,12 +2,11 @@
 title: "The World Is Not Incremental"
 date: 2021-03-03T15:00:00-07:00
 draft: false
-categories: 
-- Design
 slug: not-incremental
 languages:  
 - tla+
 tags:
+- Design
 - model
 ---
 

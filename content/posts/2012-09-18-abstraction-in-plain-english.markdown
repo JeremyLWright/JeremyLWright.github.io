@@ -6,9 +6,8 @@ layout: post
 slug: abstraction-in-plain-english
 title: Abstraction in Plain English
 wordpress_id: 750
-categories:
-- System
 tags:
+- System
 - explaination
 - explanation
 - newbie

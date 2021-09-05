@@ -6,7 +6,7 @@ layout: post
 slug: what-is-a-unit-test
 title: What is a Unit Test?
 wordpress_id: 1312
-categories:
+tags:
 - Testing
 ---
 

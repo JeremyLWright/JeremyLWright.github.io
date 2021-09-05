@@ -1,11 +1,10 @@
 ---
 title: "TLA+ Chapter 1: Reflection"
 date: 2020-05-25T15:00:14-07:00
-categories: 
-- Design
 slug: tla-chap1
 series: ["Practical TLA+"]
 tags:  
+- Design
 - tla+
 - hillel
 - book

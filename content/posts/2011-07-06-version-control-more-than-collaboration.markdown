@@ -6,9 +6,9 @@ layout: post
 slug: version-control-more-than-collaboration
 title: Version Control More Than Collaboration
 wordpress_id: 251
-categories:
-- Teaching/Talks
 tags:
+- Teaching
+- Talks
 - mercurial
 - subversion
 - version control

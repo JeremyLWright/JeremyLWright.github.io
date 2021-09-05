@@ -6,9 +6,8 @@ layout: post
 slug: the-itanium-flop
 title: The Itanium Flop
 wordpress_id: 1201
-categories:
-- Necromancy
 tags:
+- Necromancy
 - itanium
 - knuth
 - multicore

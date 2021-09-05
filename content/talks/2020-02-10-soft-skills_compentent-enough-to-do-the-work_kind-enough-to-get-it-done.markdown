@@ -4,9 +4,8 @@ date: 2020-02-10 00:00:00+00:00
 slug: competent-and-kind
 title: "Competent and Kind: The importance of soft-skills"
 draft: true
-categories:
-- Opinion
 tags:
+- Opinion
 - Soft-skills
 - listen
 ---

@@ -6,7 +6,7 @@ layout: post
 slug: hello-project-euler-sorry-i-doubted-you
 title: Hello Project Euler, Sorry I doubted you
 wordpress_id: 1310
-categories:
+tags:
 - Functional
 ---
 

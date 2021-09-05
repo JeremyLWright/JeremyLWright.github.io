@@ -6,10 +6,10 @@ layout: post
 slug: sean-parent-no-raw-loops
 title: 'Sean Parent: No Raw Loops'
 wordpress_id: 1230
-categories:
-- Productivity
-tags:
+languages:
 - C++
+tags:
+- Productivity
 - C++11
 - Stepanov
 - STL

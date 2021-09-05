@@ -3,9 +3,8 @@ author: Jeremy
 date: 2015-06-07 00:00:00+00:00
 slug: converting-to-static-blog
 title: Recasting how I blog
-categories:
-- Writing
 tags:
+- Writing
 - blogging
 ---
 

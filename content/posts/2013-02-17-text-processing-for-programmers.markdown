@@ -6,9 +6,8 @@ layout: post
 slug: text-processing-for-programmers
 title: Text Processing for Programmers
 wordpress_id: 827
-categories:
-- Productivity
 tags:
+- Productivity
 - unix
 ---
 

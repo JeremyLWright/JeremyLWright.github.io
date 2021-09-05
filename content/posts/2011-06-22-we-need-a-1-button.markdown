@@ -7,7 +7,7 @@ slug: we-need-a-1-button
 title: We Need a -1 Button
 wordpress_id: 245
 expiryDate: 2020-01-01T00:00:00+00:00
-categories:
+tags:
 - Writing
 ---
 

@@ -6,9 +6,8 @@ layout: post
 slug: building-an-interpreter
 title: Building an Interpreter
 wordpress_id: 630
-categories:
-- Compilation
 tags:
+- Compilation
 - AST
 - Bison
 - C++

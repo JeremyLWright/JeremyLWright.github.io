@@ -6,7 +6,7 @@ layout: post
 slug: hello-world
 title: Welcome to Code Strokes
 wordpress_id: 1
-categories:
+tags:
 - About
 ---
 

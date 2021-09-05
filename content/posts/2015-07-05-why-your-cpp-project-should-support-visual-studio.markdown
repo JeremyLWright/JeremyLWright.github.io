@@ -5,7 +5,7 @@ slug: your_cpp_project_should_support_visual_studio
 title: Your C++ Project should support Visual Studio
 draft: true
 expiryDate: 2020-01-01T00:00:00+00:00
-categories:
+languages:
 - C++
 tags:
 - open-source

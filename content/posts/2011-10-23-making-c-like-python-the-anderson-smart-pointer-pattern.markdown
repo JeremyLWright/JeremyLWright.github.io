@@ -6,9 +6,8 @@ layout: post
 slug: making-c-like-python-the-anderson-smart-pointer-pattern
 title: 'Making C++ like Python: The Anderson Smart Pointer Pattern'
 wordpress_id: 468
-categories:
-- Coding
 tags:
+- Coding
 - memory
 - Python
 - RAII

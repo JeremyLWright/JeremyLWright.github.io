@@ -6,9 +6,8 @@ layout: post
 slug: design-for-testability-via-security
 title: 'Design for Testability via Security '
 wordpress_id: 603
-categories:
-- Security
 tags:
+- Security
 - '747'
 - bootloader
 - firmware
