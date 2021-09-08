@@ -1,7 +1,7 @@
 ---
 title: "My TLA+ Saga"
 date: 2021-09-08T00:00:00-07:00
-draft: true
+draft: false
 slug: my-tla-saga
 languages:  
 - tla+
