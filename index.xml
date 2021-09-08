@@ -6,10 +6,38 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>©2021 Jeremy Wright</copyright>
-    <lastBuildDate>Wed, 03 Mar 2021 15:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 08 Sep 2021 00:00:00 -0700</lastBuildDate>
     
         <atom:link href="https://quiescent.us/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>My TLA&#43; Saga</title>
+      <link>https://quiescent.us/2021/09/my-tla-saga/</link>
+      <pubDate>Wed, 08 Sep 2021 00:00:00 -0700</pubDate>
+      
+      <guid>https://quiescent.us/2021/09/my-tla-saga/</guid>
+      <description>&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Learning together is more fun, and you may not be as self-taught as you believe.&lt;/li&gt;
+&lt;li&gt;The stories we tell ourselves deeply impact our ability (or inability) to grow.&lt;/li&gt;
+&lt;li&gt;The more you learn, the more challenging the material becomes to continue growing. (a.k.a. Duh, but it took me time to realize it, regardless)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;This year mark&amp;rsquo;s my 3rd attempt to learn TLA+.&lt;/p&gt;
+&lt;p&gt;The first time was likely around the same time &lt;a href=&#34;https://www.hillelwayne.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Hillel Wayne&lt;/a&gt;
+ also discovered it. Although where Hillel (obviously) &lt;a href=&#34;https://www.hillelwayne.com/talks/tackling-concurrency-tlaplus/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;grokked it the first time&lt;/a&gt;
+, when I discovered that TLA+ is not a tool for auto-generating property based tests, I quit.&lt;/p&gt;
+&lt;p&gt;The second time, I attended the &lt;a href=&#34;https://conf.tlapl.us/2019/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;TLA+ conference in 2019&lt;/a&gt;
+. I was better prepared to understand the purpose of a spec. This is, in part, because I was aware of the &amp;ldquo;big picture&amp;rdquo; of the day-job&amp;rsquo;s work. Where I had work in aviation, and and embedded systems for awhile, I was compartmentalized. Understandably so as I earned more experience, however I was unprepared to understand large scale the purpose of a specification. 2019 I was just starting to see the value. However, I had a second personal hurdle: I was &amp;ldquo;self taught&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Being &amp;ldquo;self-taught&amp;rdquo; was a point of pride for me. I encapsulated my value to an team by my ability to understand new ideas and be effective reasonably quickly. So much so, that I realized I would hamper myself my not asking for help so I could carry the badge of &amp;ldquo;I&amp;rsquo;m self taught&amp;rdquo;. Guess what, no one cares. If you learn something with a group, from a teacher, or on your own&amp;hellip; NO ONE CARES.&lt;/p&gt;
+&lt;p&gt;Also, it was at least partially a lie. Up to this point, I told myself: &amp;ldquo;taught myself C++&amp;rdquo;. Ya, no. I was surrounded by colleagues who knew a plethora of languages: Python, Go, D, C. Yes, I would self-study, but being surrounded by those who can provide a contrast for your own understanding of a material &lt;em&gt;is invaluable&lt;/em&gt;!&lt;/p&gt;
+&lt;p&gt;This third time, I &lt;a href=&#34;https://www.reddit.com/r/tlaplus/comments/lvloul/study_partner/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;posted to reddit&lt;/a&gt;
+: Who&amp;rsquo;s coming with me!??!!? It&amp;rsquo;s going better. Stay tuned for a series on my todo spec.&lt;/p&gt;
+&lt;p&gt;Finally, thank you to all those in my life who helped me learn the things I know. I am self-motivated, but my knowledge is because of the people in my life.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>The World Is Not Incremental</title>
@@ -1104,17 +1132,6 @@ vs posts (hence you see the About Me page in the middle of my posts). I am
 prone to shiny things so we&amp;rsquo;ll see how long I keep it. This process is simple.
 It removes the barriers of posting, and just lets me write in the tool I am
 most comfortable, and but its hard to argue with simple.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Introduction to Pointers</title>
-      <link>https://quiescent.us/2015/02/introduction-to-pointers/</link>
-      <pubDate>Tue, 17 Feb 2015 03:46:55 +0000</pubDate>
-      
-      <guid>https://quiescent.us/2015/02/introduction-to-pointers/</guid>
-      <description>&lt;p&gt;Please see my introduction to pointers at &lt;a href=&#34;https://www.youtube.com/watch?v=mkYBz5Db-Ok&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;https://www.youtube.com/watch?v=mkYBz5Db-Ok&lt;/a&gt;
-.&lt;/p&gt;
-</description>
     </item>
     
   </channel>
