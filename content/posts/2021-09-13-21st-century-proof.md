@@ -2,7 +2,7 @@
 title: "21st Century Proof :: Structure makes it possible, hard work makes it probable" 
 date: 2021-09-13T00:00:00-07:00
 draft: false
-slug: 21st-century-proof
+slug: twenty-first-century-proof
 languages:  
 - tla+
 - tlaps
