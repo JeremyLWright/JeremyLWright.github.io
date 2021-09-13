@@ -10,7 +10,7 @@ wordpress_id: 570
 
 Bison is an incredibly powerful parser generator tool. However most of the examples, and tutorials demonstrate Bison's parsing ability, using on-the-fly computation instead of building a Syntax Tree. Bison is fully capable to generate the front-end of a simple compiler, but to do so, we have to build a syntax tree. Come to find out, building a syntax tree with Bison isn't that difficult, and the key is how one leverages the semantic actions. In this post, we'll look at a basic introduction to bison, then how to build a parse tree for a simple in-fix algebraic statement.
 
-<!-- more -->
+<!--more-->
 
 Bison is a parser generator, and when combined with Flex (which we look at in a future post), can generate a very powerful, and very fast parser, and syntatic analyzer. Semantic analysis is still the responsibly of the language implementer.  These tools have different [computational power](http://en.wikipedia.org/wiki/Chomsky_hierarchy). Flex recognizes the simplest languages1, the regular languages. Regular languages are those which can be recognized with a finite-state machine, i.e. languages which do not require memory. Flex forms the tokenizer, or lexer of the compiler. It breaks the stream of characters into groups of identifiers called Tokens.
 

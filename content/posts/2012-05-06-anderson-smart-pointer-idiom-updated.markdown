@@ -15,7 +15,7 @@ languages:
 ---
 
 C++11 provides us with a ton of new tools for expressing complex ideas in an efficient way. C++11 is unique among modern languages in that it provides a productive syntax, while also generating exceptionally fast code. For the first time ever, software engineers are responsible for increasing the performance of software systems. For decades we've been standing on the shoulders of hardware engineers. Hardware engineers have been increasing the clock speeds of our processors, but we've hit a physical limit. It's our turn to pick up the baton in this relay race and get to the finish line. C++11 provides a number of tools to help us get there, and smart pointers are one such tool.
-<!-- more -->
+<!--more-->
 The [Anderson Smart-Pointer idiom](http://www.codestrokes.com/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/) is a pattern developed by a [colleague of mine](http://www.chrisanderman.com/). It supplants the constructor of a class with a factory method, to eliminate all raw pointers in a software system. Secondly, it provides typedefs for the smart pointers so one may use a terse type to express a more verbose concept. C++11 provides three tools which allow us to make this pattern more generic, while also increasing its performance.
 
 C++11 allows us to apply the [DRY](http://en.wikipedia.org/wiki/Don't_repeat_yourself) principle to the factory method.  Variadic templates allow us to render a completely generic version of the factory method. Until C++11, one was forced to duplicate the parameter list of the constructor in the factor method. This violates DRY, making maintenance more difficult. The factory construct now looks like this:

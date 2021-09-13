@@ -16,7 +16,7 @@ tags:
 ---
 
 This past weekend we held another capture the flag event at the Arizona State University's Linux User's Group. It had more of a system admin focus than security cracking exploits, but it was fun an nontheless a diverse learning experience for all those involved. However, almost immediately, I realized the number one rule in CTF, nothing is off limits!
-<!-- more -->
+<!--more-->
 The game was organized into two parts, a game server which collected the the scores and displayed the point totals of all teams in real-time, and the virtual servers (hosted on Amazon EC2) which contained the actual games. Players were encouraged to break into teams, and register themselves on the game server. The game server would assign the team a virtual machine, and the team could log in via SSH to behind hacking. Five minutes into the registration process, one team attempted a SQL injection attack against the game server.
 
 [caption id="attachment_1189" align="aligncenter" width="700"][![Notice the SQL Injection attempt](http://www.codestrokes.com/wp-content/uploads/2013/09/Final-Score-1024x429.png)](http://www.codestrokes.com/wp-content/uploads/2013/09/Final-Score.png) Notice the SQL Injection attempt[/caption]

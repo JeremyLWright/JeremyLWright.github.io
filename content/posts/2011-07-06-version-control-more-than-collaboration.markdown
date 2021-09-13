@@ -16,7 +16,7 @@ tags:
 
 I've used version control in some form or another since I was a freshman in college, however I'm quite the anomaly.  I will use a tool fully knowing that its more than I need, just to learn something new.  Initially, this is how I approached version control. Except for a few unique situations version control of my homework, seemed like more work than it was worth.  I used to think version control was merely a collaboration tool for teams of people.  I couldn't have been more wrong.
 
-<!-- more -->
+<!--more-->
 
 Now I teach a small not-for-credit C++ class at ASU, and one of my students said something interesting:
 

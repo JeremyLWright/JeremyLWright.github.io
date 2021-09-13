@@ -23,7 +23,7 @@ Seriously though, making your own language is a very difficult task, and impleme
 
 I like to think of DSLs as tools. For example, sometimes one needs to automate a task, its might be easier to write a small program that helps with that task. But it might be even more useful to write a language that allows you to describe the problem better, then one can write a program using the new language to finish the task in an efficient and repeatable way.  The program has limited usefulness beyond its initial application, but for the application at hand, its perfect. SQL is the canonical example. In this post we'll start with a basic grammar in EBNF. We'll translate that to a flex lexer, and connect that to a bison parser. We'll end up with a syntax tree which we'll execute to calculate a result.
 
-<!-- more -->
+<!--more-->
 
 The first step in writing a language is creating the grammar. This is horrifically difficult, however for this example we'll assume we already have a grammar.
 

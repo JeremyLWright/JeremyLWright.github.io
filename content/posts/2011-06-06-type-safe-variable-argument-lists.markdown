@@ -19,7 +19,7 @@ Type-safety is a popular topic. Perceived as a panacea for bad software, the Dep
 <blockquote>D is a powerful  language, that statically checks code correctness via a strong type system, yet still offers flexible constructs.</blockquote>
 
 
-D’s focus of code correctness, provides a strong type system, in a manner conducive to generic code.  D’s type-safe variable argument list is an example of this.<!-- more -->
+D’s focus of code correctness, provides a strong type system, in a manner conducive to generic code.  D’s type-safe variable argument list is an example of this.<!--more-->
 
 [Singularity](http://research.microsoft.com/en-us/projects/singularity/), [D](http://www.d-programming-language.org), [Verve](http://channel9.msdn.com/Shows/Going+Deep/Verve-A-Type-Safe-Operating-System), all make use of static typing as a tool to check program correctness.  Singularity is not a language, but rather an operating system written in a derivative of C# called [Sing#](http://en.wikipedia.org/wiki/Sing_Sharp).  Sing# exposes a statically check message passing system called channels for inter-process communication.  The Sing# compiler, [Bartok](http://en.wikipedia.org/wiki/Bartok_%28compiler%29), can statically verify space partitioning. Singularity calls this verification a software isolated process.
 

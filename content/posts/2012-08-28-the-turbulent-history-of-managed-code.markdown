@@ -14,7 +14,7 @@ tags:
 
 Managed Code is a fascinating technology; Just-In-Time compilation provides advanced run-time optimization and strong type safety can [render the hardware MMU obsolete](http://channel9.msdn.com/Shows/Going+Deep/Singularity-III-Revenge-of-the-SIP). However the managed code renaissance is again in decline, and interestingly more than technology, business is changing the managed/native landscape. More than any other other metric, managed code is about maximizing programmer productivity.
 
-<!-- more -->
+<!--more-->
 
 In 1977, Infocom released Zork. Zork was an innovative game. Its [sophisticated](http://www.inform-fiction.org/manual/html/s34.html) linguistics made for an immersive experience for its adventurers.  Language wasn't the only innovation made by Infocom. Infocom released Zork on a custom virtual machine called the Z-Machine. Z-Machine functioned as an abstraction layer to the hardware, allowing one code base to run on multiple separate architectures. The Z-Machine was a major technical advancement, but more than that it allowed programmers to work on a single code base rather than writing duplicate code for differing architectures.
 

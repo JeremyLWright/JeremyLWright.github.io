@@ -15,7 +15,7 @@ tags:
 
 This week, I started porting my [C++ implementation](http://www.codestrokes.com/archives/59) of the Red-Black tree to D.  I am trying to pay special attention to the features of D, intended to make writing correct code easier. While on that vane,  I was reading an excellent [article](http://reprog.wordpress.com/2010/04/25/writing-correct-code-part-1-invariants-binary-search-part-4a/), discussing invariants, and I was pleased to find such a useful implementation of the [class invariant](http://www.digitalmars.com/d/2.0/class.html#Invariant) in the D language.
 
-<!-- more -->
+<!--more-->
 
 Invariants come from the same “[design-by-contract](http://en.wikipedia.org/wiki/Design_by_contract)” idiom, famous for pre- and post- conditions. Essentially, invariants describe a state, or behavior which must remain true for a class.  If the invariant fails, during the classes life-cycle something is wrong; either the assumptions underlying the class’s behavior (the invariant is wrong), or a bug in the class itself.  In either case, the invariant help the you, the developer find a problem.  While discussing this feature a colleague asked,
 

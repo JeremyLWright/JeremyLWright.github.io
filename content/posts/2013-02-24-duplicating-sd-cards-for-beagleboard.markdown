@@ -10,7 +10,7 @@ wordpress_id: 831
 
 The ASU Linux User's group is building a Beagleboard cluster. This requires each compute node to have an identical system image, with the exception of the hostname and ipaddress. The easiest way, I found to do this, is to configure one compute node, then duplicate the SD cards across the other nodes. Here is how I did that.
 
-<!-- more -->
+<!--more-->
 
 Save the partitions to an image file using part image
 

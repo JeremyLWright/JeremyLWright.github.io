@@ -15,7 +15,7 @@ tags:
 ---
 
 As a software engineer I have a vested interest in disproving this statement. Bjarne Stroustroup says C++ is designed to create efficient abstractions. A software engineer’s  job is to create simple [abstractions ](http://www.codestrokes.com/2012/09/abstraction-in-plain-english/)to complex systems. State machines form a large part of many systems. The other day, a co-worker came to me, and asked, “Is it better to make straight line code for each case statement, even if it repeats, or is it better to abstraction into functions and make the code ‘cleaner’.”  Is “cleaner” code faster?
-<!-- more -->
+<!--more-->
 
 
 ## The Experiment

@@ -13,7 +13,7 @@ tags:
 
 I was reading a [blog ](https://sites.google.com/site/steveyegge2/five-essential-phone-screen-questions)about coding interviews, and one comment made near the bottom struck me, "..."Um... grep?" then they're probably OK..."  As I read that comment, I realized I'd never answer that way, and I agreed with the author that was a problem. That began my dabble in grep, awk and sed, and these tools will change your workflow and even how you think about profiling code.  Grep has even become a verb in my daily life, "Is this _greppable?_" is my mantra.  Flash forward a few months and once again I had a task for these powerful text processing tools, convert a mysql database to sqlite. Sounds easy, but with file sizes of >700MB, you have to be efficient.
 
-<!-- more -->
+<!--more-->
 As part of a machine learning project for a graduate class I'm using the enron email [public dataset](http://aws.amazon.com/publicdatasets/). This dataset has been further processed and cleaned at [Carnagie Mellon](http://www.cs.cmu.edu/~enron/). This dataset is so valuable because it is real world email from a functioning orginazation. This dataset is used in human factors research, machine learning, and as in my usecase, data security. I downloaded the mysql version and since I intended to use Python to do my processing I wanted to convert it to sqlite.
 [suffusion-adsense client='ca-pub-6284398857369558' slot='8519108503' width='300' height='250']
 

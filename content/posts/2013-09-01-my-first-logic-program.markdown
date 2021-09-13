@@ -11,7 +11,7 @@ tags:
 ---
 
 This semester, I'm taking an introduction to artificial intelligence, and despite this being the second week, I've learned a great deal. Our second assignment was to implement a program in clingo (clasp on gringo) which is a derivative of Prologue. This is my first experience with a logical programming language, and I am intrigued to the possibilities.
-<!-- more -->
+<!--more-->
 Immediately I was intrigued by the freeform expressiveness of the language. The example we did in class for example was to determine which muppet went to which amusement park. The first step was to name the _atoms_ of our program. As far as I can tell, an atom is a value.
 
     

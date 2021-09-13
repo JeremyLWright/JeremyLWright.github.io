@@ -38,7 +38,7 @@ To setup a catpure the flag event, here are a few guidelines I found useful:
   * Provide ISOs of [Backtrack](http://www.backtrack-linux.org/) Linux
 
 
-<!-- more -->Organizing a hacking event takes time, and planning.
+<!--more-->Organizing a hacking event takes time, and planning.
 
 For this event I setup 3 systems:
 

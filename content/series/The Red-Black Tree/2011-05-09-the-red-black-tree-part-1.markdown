@@ -22,7 +22,7 @@ languages:
 
 D provides a number of features that simplify designing software, especially in the embedded environment.  I will show in this 2 part comparison, between C++ and D, that D helps one write **correct code**.  Correct code is something [Andrei Alexandrescu](http://erdani.com/), stresses heavily as a prominent feature of D.   I use the Red-Black Tree for such a comparison since its complicated enough to make memory management difficult, while retaining real-world application.
 
-<!-- more -->
+<!--more-->
 
 C++ makes memory management difficult in practice. Memory management, an incidental complexity of C++, is especially difficult in the presence of exceptions. Our goal is to make a fast, correct data structure, not manage memory.  C++ obfuscates this goal. 
 

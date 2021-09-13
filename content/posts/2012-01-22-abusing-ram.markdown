@@ -13,7 +13,7 @@ tags:
 
 My system has 16GB of RAM, but since I run Linux I rarely use more than about 3GB.  So how do I justify such a extreme amounts of memory? Ramdisks.
 
-<!-- more -->
+<!--more-->
 
 I run Lubuntu1, but hopefully this works for you too. Basically, I create a ramdisk and mount it in /mnt/ramdisk, then I setup the login/logout scripts to transfer to and from the ramdisk.
 

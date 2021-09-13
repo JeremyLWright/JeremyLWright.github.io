@@ -18,7 +18,7 @@ languages:
 
 Choosing to use C++ brings the additional complexity of memory management.  Dennis Ritchie once stated: The C Programming Language — A language which combines the flexibility of assembly language with the power of assembly language. C++ inherits much of that _flexibility, _however, this [incidental complexity](http://www.infoq.com/presentations/Are-We-There-Yet-Rich-Hickey), can be relegated to a single class, leaving you with the high-level elegance of Python. RAII help with this additional complexity, however without a pattern for guidance implementing RAII consistently can be difficult, defeating the safety it provides.
 
-<!-- more -->
+<!--more-->
 
 Resource Acquisition Is Initialization ([RAII](http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization)) is a powerful tool for managing resources.  RAII [justifies](http://www.research.att.com/~bs/bs_faq2.html#finally) the apparent missing finally clause. Stroustrup claims that with proper RAII,  [finally](http://www.research.att.com/~bs/bs_faq2.html#finally) is not required. D also [implements](http://www.d-programming-language.org/exception-safe.html) RAII with scope operators. Ok, so RAII is powerful, but what is it?
 

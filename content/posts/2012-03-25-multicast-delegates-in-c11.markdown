@@ -11,7 +11,7 @@ languages:
 ---
 
 C# has a wonderfully flexible delegate system capable of multicast events.  This simple tool makes event driven software easier to write, and reduces coupling between objects. In 2003 Herb Sutter implemented a general form of the Observer pattern [1].  He called this the multi_function. It uses a mixture of TR1 and boost components to build a multi-cast delegate similar to C#'s.  Fast-forward 9 years, and we now have variadic-templates thanks to C++11.  Variadic-Templates allow us to patch a missing component in Sutter's multi_function. 
-<!-- more -->
+<!--more-->
 
 Variadic Templates sound like a overwhelming cacophony. Templates are complex enough already, why do we need to add more complexity to the issue? However, Variadic Templates don't have to be as difficult as they could be.  Variadic Templates have the potential to destroy readability. They are extremely abstract tools. At a recent conference, Andrei Alexandrescu, not wanting to disappoint, defined the variadic-variadic-template-template [3]. Templates can be abused, and the varadic is no exception. However, when used judiciously varadic templates are just a tool that can solve some very real-world issues.
 

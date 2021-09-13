@@ -8,11 +8,11 @@ languages:
 tags:
 - reflection
 ---
-> - Learning together is more fun, and you may not be as self-taught as you believe.
-> - The stories we tell ourselves deeply impact our ability (or inability) to grow.
-> - The more you learn, the more challenging the material becomes to continue growing. (a.k.a. Duh, but it took me time to realize it, regardless)
+- Learning together is more fun, and you may not be as self-taught as you believe.
+- The stories we tell ourselves deeply impact our ability (or inability) to grow.
+- The more you learn, the more challenging the material becomes to continue growing. (a.k.a. Duh, but it took me time to realize it, regardless)
 
-<!-- more -->
+<!--more-->
 
 This year mark's my 3rd attempt to learn TLA+. 
 

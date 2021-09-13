@@ -16,7 +16,7 @@ languages:
 
 When learning a new language I find it helpful to study a languages idioms. Idioms exist in a language for a specific reason. Sometimes that reason is to further the principles of the language, other times it’s to mask, or otherwise deal with some underlying design decision of the language. Currently, I am studying Haskell, and currently I am struggle to clarify the idioms of the language. The syntax is still very new and awkward, currently with a total authoring in Haskell of 713 lines.
 
-<!-- more -->
+<!--more-->
 
 Python has some interesting idioms, but the one that really helped me when learning was “..tuples should have trailing commas…” At that time, the only other language I knew was C, and PIC Assembly. I was very much a hardware engineer, and Python, for me, was a step out of that hardware-centric mindset. So with such a staunch, inflexible background as this, such an idiom felt, dirty and wrong? My first reaction to this was, “What? Really? Why, are python programmers too lazy?” At first I refused to do this, claiming that my source code was more elegant, and clean. However some time later I learned the second part of this idiom, “…tuples should have trailing commas, BECAUSE syntactically the comma creates the tuple, not the parenthesizes.” Whoa! What an epiphany. From this simple clause, I can now create a tuple with 1 element! The because clause of an idiom, really opens doors in your mind. It really clarifies some subtle point, or characteristic of the language.
 

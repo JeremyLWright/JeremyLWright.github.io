@@ -3,9 +3,10 @@ title: "TLA+ Chapter 1: Reflection"
 date: 2020-05-25T15:00:14-07:00
 slug: tla-chap1
 series: ["Practical TLA+"]
+languages:
+- tla+
 tags:  
 - Design
-- tla+
 - hillel
 - book
 ---
@@ -16,7 +17,7 @@ chapter I was subconsciously looking for a reason not to sink a bunch of time
 into yet another language/ecosystem project. That bias prevented me from
 seeing the point of the first chapter.
 
-<!-- more -->
+<!--more-->
 
 Hillel's first chapter ends with a definition of stuttering and how in the
 presence of real world temporal effects, a safe, reliable in all cases wire

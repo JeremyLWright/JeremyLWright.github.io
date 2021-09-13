@@ -15,7 +15,7 @@ tags:
 
 Abstraction is an interesting concept. For me personally, abstraction was never clearly explained. I left school and entered my first job knowing I should abstract things, but I realize now my understanding of abstraction amounted to obscurity.
 
-<!-- more -->
+<!--more-->
 
 Abstraction to me meant, “Don’t use that thing directly, _abstract it_ and use some interface instead." "That’s what _good_ programmers do," I told myself. I taught myself a lot about function pointers, and advanced OO techniques using pure virtual classes all to avoid using something directly. This is wrong. My entire prespective on abstraction was wrong. A few days ago I was watching a [lecture from Bjarne Stroustrup](http://channel9.msdn.com/Events/GoingNative/GoingNative-2012/Keynote-Bjarne-Stroustrup-Cpp11-Style), comically, one I’ve watch before and it finally clicked.
 

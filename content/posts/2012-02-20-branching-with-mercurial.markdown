@@ -12,7 +12,7 @@ tags:
 
 Mercurial supports two separate methods for branching. The first is built into how distributed version control functions, in that every clone is a branch itself. This is the branching method Joel Sposky recommends on hginit.com. The second method is called _[local branches](http://mercurial.selenic.com/wiki/Branch)_. Initially I liked the local branch method; I liked it for the fact that I felt smart for using it. It did not improve productivity. There is a simple reason for this, with local branches it is difficult to diff the branch to the main branch of development e.g. the trunk. This post will walk through local branches, how I used then, and finally, how I quit local branches in favor of a cloning approach.
 
-<!-- more -->
+<!--more-->
 
 I use version control because I like to experiment when I code. I frequently approach a class design as: What if _this_ happened? Frequently, people comment, "I don't need version control; I'm just one person." This is a rather naive perspective on version control. Yes, version control can be used to collaborate work between different people or different teams. In fact, originally, this was it's primary use case, however version control is so much more.
 

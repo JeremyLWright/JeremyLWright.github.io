@@ -16,7 +16,7 @@ tags:
 
 Let's say for a moment that you are a graduate student, with shell access to your schools server. The server maintains a number of tools you need for classes, and research.  All is well, except the stock editor on the server is wicked old.  Like an eternity old.  Well that happened to me. I am fully addicted to [my custom vim configuration](https://bitbucket.org/jwright/vim-configuration), but it requires vim7.3.  My school's server only has 7.0.  So, how does one install their own application with root privledges?  You create a private root.
 
-<!-- more -->The goal is to install a custom application which either is not available on they system, or the version available is tool old.  Essentially, you just need to install the program to your home folder, and add the new binary to your path.  Here is how I did just that:
+<!--more-->The goal is to install a custom application which either is not available on they system, or the version available is tool old.  Essentially, you just need to install the program to your home folder, and add the new binary to your path.  Here is how I did just that:
 
 
 

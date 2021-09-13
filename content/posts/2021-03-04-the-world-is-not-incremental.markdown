@@ -17,7 +17,7 @@ Namely, that specifications are not programming, and the math simplifies, by abs
 
 During TLA⁺ study group this week, we discussed at least 1 aspect that applying math simplifies the description of our systems $$\rightarrow$$ The number of states.
 
-<!-- more -->
+<!--more-->
 
 The [Hyperbook](https://lamport.azurewebsites.net/tla/hyperbook.html) defines the standard model of digital systems as
 

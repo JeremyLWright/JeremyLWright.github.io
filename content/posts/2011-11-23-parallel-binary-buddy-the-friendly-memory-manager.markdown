@@ -17,7 +17,7 @@ A buddy, A friend
 
 
 
-<!-- more -->
+<!--more-->
 
 
 

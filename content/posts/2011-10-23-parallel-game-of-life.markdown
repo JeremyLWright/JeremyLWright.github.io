@@ -15,7 +15,7 @@ languages:
 
 Conway's [Game of Life](http://www.bitstorm.org/gameoflife/) is a dramatic illustration of emmergent behavior; that a seemingly complex system, such as cell mitosis can be governed by a set of simple rules. OpenMP is a fantastic set of language extensions which allows one to add dramatic parallelism without complex thread management.  As a demonstration of [OpenMP](http://openmp.org/wp/)'s simplicity I implemented the Game of Life. The code and all analysis is available on [bitbucket.org](https://bitbucket.org/jwright/parallel-game-of-life).
 
-<!-- more -->
+<!--more-->
 
 In a real program, it common to have swathes of code which cannot be made parallel. OpenMP's limited perspective on data limits one further.  As such, OpenMP is most effective when the data is decomposed into independently manageable chunks. To evaluate the performance affect of OpenMP on my implementation I used a single Base Class to implement the serial portion of the code. Each child class makes small modifications to the generation calculation, decomposing the data in different ways.  I made three decompositions:
 

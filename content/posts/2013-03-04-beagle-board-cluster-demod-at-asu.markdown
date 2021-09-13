@@ -13,5 +13,5 @@ tags:
 We presented our Beagle Board Cluster at the Engineering Career Fair. Look out for a design writeup soon!
 
 [http://asulug.org/2013/03/engineering-open-house/](http://asulug.org/2013/03/engineering-open-house/)
-<!-- more -->
+<!--more-->
 [suffusion-adsense client='ca-pub-6284398857369558' slot='1495369305' width='728' height='90']

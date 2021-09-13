@@ -17,7 +17,7 @@ tags:
 
 A group of colleagues and I watched Sean Parent's Going Native Talk on "[C++ Seasoning](http://channel9.msdn.com/Events/GoingNative/2013/Cpp-Seasoning)". Parent takes some extreme views on how to use C++, but his examples for using the STL to simplify code are phenomenal. For a recent AI project I decided to apply Parent's _goal_ of "no raw loops", I was blown away by the transformation... err std::transformation this had on my code. In this post I indented to demonstrate several complex code blocks, or overly specific code blocks what were replaced by some STL magic. Alexander Stepanov says, "[...code is a liability.](http://www.youtube.com/watch?v=COuHLky7E2Q)" The more code a program has the more likely it contains bugs. The fewer lines of code, the lesser the opportunity for a bug. I haven't quiet decided if I agree with this point, but it does induce thought either way. Sean Parent's methodology seems to agree, for the purposes of this post we'll agree as well.
 
-<!-- more -->
+<!--more-->
 
 So the assignment statement:
 

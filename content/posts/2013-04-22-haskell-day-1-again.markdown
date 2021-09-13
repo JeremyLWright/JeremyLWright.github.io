@@ -13,7 +13,7 @@ languages:
 ---
 
 I've restarted my haskell programming education. Here is my implementation of [FizzBuzz](http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/)
-<!-- more -->
+<!--more-->
 
     
     

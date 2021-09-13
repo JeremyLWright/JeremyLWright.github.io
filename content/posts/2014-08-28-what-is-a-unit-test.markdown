@@ -11,7 +11,7 @@ tags:
 ---
 
 I'm taking a Software Testing and Verification course as part of my Master's work. Our first assignment was to write a short paper describing a unit test, then implement selection sort and test it under that philosophy. Sarcastically, I commented to my colleagues the triviality of this question. The first response was, "Wow, I don't think that is such an easy question." A technical discussion ensued. This is that log.
-<!-- more -->
+<!--more-->
 
 
 <blockquote>Definition 1:

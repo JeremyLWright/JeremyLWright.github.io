@@ -18,7 +18,7 @@ languages:
 
 As a comparative study, I am porting a Red-Black Tree from C++ to the [D programming language](http://www.digitalmars.com/d/2.0/dmd-linux.html) ([Part 1](http://www.codestrokes.com/archives/59), [Part 2](http://www.codestrokes.com/archives/83)). Overall D is an easy, practical transition for the C++ programmer. D provides a number of features for implementing correct code, however it is D’s simplicity that makes it truly enticing as a replacement. While D retains _C Style Syntax, _it is considerably simpler than C++, especially in the presence of exceptions.
 
-<!-- more -->
+<!--more-->
 
 
 ### Simple and Familiar

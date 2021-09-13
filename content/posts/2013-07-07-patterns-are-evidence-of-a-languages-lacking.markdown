@@ -14,7 +14,7 @@ tags:
 
 A coworker of mine stated something interesting, "...a pattern is evidence of missing feature in the language...". At first I struggled with this statement. How can you design a language general enough to be widely used, and simultaneously cover all the desirable idioms such that patterns are built in? At first this seemed silly to me, until I heard Erik Meijer state in a Haskell lecture, "..this is why we implemented LINQ as a pattern instead of a language feature..."
 
-<!-- more -->
+<!--more-->
 
 It's an interesting concept that a language is responsible for reducing patterns into the language itself. My coworker cited that subroutines were once a pattern for managing groups of functionality. Wikipedia defines a design pattern as a solution to a common problem in software engineering. In this respect, subroutines indeed were a pattern to assembly programmers.  Complex Instruction Sets allowed for a very different programming model than today’s assembly languages who are intended primarily for compilers, but humans. In this environment parameter passing was defined by convention, and even a companies coding standard. Adding a standard method for parameter passing, i.e. stack organization would massive improve productivity. C solved this and did so extremely efficiently. C’s parameter passing syntax makes it easy for programmers to describe small abstractions of functionality into individual blocks, or subroutines. Thus the language incorporated a prevalent pattern from industry.
 

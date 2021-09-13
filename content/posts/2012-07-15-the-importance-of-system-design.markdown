@@ -14,7 +14,7 @@ tags:
 
 For the small programs we tend to implement as part of a semester project, or the simple "one-off/get-it-done" programs at work, system design rarely plays a part. However, even in the smallest problems a top-level system design is critical for consistency and ease of use. Class components, regardless of how precise and accurate they are in their own internal design, if they aren't externally consistent with other objects, the system will be brittle, and difficult to use.
 
-<!-- more -->
+<!--more-->
 
 In a recent project, I used a bottom-up approach. I designed each class in isolation. I was very diligent to define the ownership semantics, and use each smart pointer and r-value reference type correctly. Despite all the time spent on the details of each object, when I tried to use the objects together, their interfaces were so inconsistent the individual objects were unusable. Case in point:
 

@@ -11,7 +11,7 @@ tags:
 - tutorial
 ---
 
-<!-- more -->Many tutorials start "Hello World" like so:
+<!--more-->Many tutorials start "Hello World" like so:
 
     
     #include <iostream>
