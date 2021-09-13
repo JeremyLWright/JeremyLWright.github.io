@@ -6,10 +6,46 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>©2021 Jeremy Wright</copyright>
-    <lastBuildDate>Wed, 08 Sep 2021 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Mon, 13 Sep 2021 00:00:00 -0700</lastBuildDate>
     
         <atom:link href="https://quiescent.us/languages/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>21st Century Proof :: Structure makes it possible, hard work makes it probable</title>
+      <link>https://quiescent.us/2021/09/21st-century-proof/</link>
+      <pubDate>Mon, 13 Sep 2021 00:00:00 -0700</pubDate>
+      
+      <guid>https://quiescent.us/2021/09/21st-century-proof/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;A new way of expressing: &amp;ldquo;work smarter not harder&amp;rdquo; -&amp;gt; Structure makes it possible, hard work makes it probable.&lt;/li&gt;
+&lt;li&gt;Detail can obscure the big picture. Structure can help, if it allows for a personalized, or tunable about of illumination.&lt;/li&gt;
+&lt;li&gt;A proof is not easy if we must read the entire proof to understand.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://lamport.azurewebsites.net/pubs/proof.pdf&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Source&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;This weekend I skimmed Leslie Lamport&amp;rsquo;s &lt;a href=&#34;https://lamport.azurewebsites.net/pubs/proof.pdf&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;How to Write a 21st Century Proof&lt;/a&gt;
+. In it Lamport discusses how mathematicians process for proof has largely unchanged since the 17th century, &amp;ldquo;&amp;hellip;Newton&amp;rsquo;s &lt;em&gt;Principia&lt;/em&gt; seem quite modern&amp;hellip;&amp;rdquo; he states. While I don&amp;rsquo;t aspire to proof, this paper provides two illuminating points I want reflect. One more philosophical regarding the nature of working smart and working hard. The second, how structure itself is worthy of praise.&lt;/p&gt;
+&lt;h1 id=&#34;a-better-work-smarter&#34;&gt;A better work smarter&lt;/h1&gt;
+&lt;p&gt;My issue with the platitude, &amp;ldquo;&amp;hellip;work smarter not harder&amp;hellip;&amp;rdquo; is that much of the work I do is hard. Applying intelligence, rigor, or discipline doesn&amp;rsquo;t not, in general, nullify hard work. Lamport&amp;rsquo;s recasting is insightful. It&amp;rsquo;s that because our work is hard, doing it without &amp;ldquo;smarter&amp;rdquo; approaches renders it impossible.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Structure makes is possible, hard work makes it probable.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;For the task at hand, proof writing, structure provides a clarity that small details aren&amp;rsquo;t missed. Its the &amp;ldquo;work smarter&amp;rdquo; component of the process. Only after this is a good result possible. Only after this does the real work begin.&lt;/p&gt;
+&lt;h1 id=&#34;structure-is-work-good-work&#34;&gt;Structure is work, good work.&lt;/h1&gt;
+&lt;p&gt;In my daily work, &amp;ldquo;working code speaks loudest&amp;rdquo;. The key operational word here is &lt;em&gt;working&lt;/em&gt;. Working code speaks loudest. I feel the stress on working is too often lacking. This phrase is used to assert that we should just start coding to show or &lt;em&gt;prove&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/em&gt; that something is a good idea. I understand the concept of play. Playing with code/idioms/tools to see if something is possible. However, to have a consistently good, consistently working outcome, it takes structure.&lt;/p&gt;
+&lt;p&gt;Lamport, here, discusses structure in terms of a proof. I have a phrase, &amp;lsquo;turn the crank&amp;rsquo;. In it I mean, reduce the hard things to a process so you can just turn the crank to &lt;em&gt;crank out&lt;/em&gt; the next thing, or the incrementally better thing. A lack of structure and/or process doesn&amp;rsquo;t necessarily allow one to crank. Instead it leaves each successive step with this dilemma of what direction analysis paralysis. A structure around the problem at hand, allows one to continuously cut the problem in half. Each decision cuts off a branch of work one doesn&amp;rsquo;t need to do, or is not important at the moment. The last of structure leaves one without this narrowing of effort.&lt;/p&gt;
+&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;I enjoyed the paper, and it&amp;rsquo;s filled with interesting &lt;em&gt;exercises to the reader&lt;/em&gt; around proof, and building structure. I&amp;rsquo;m choosing to ignore these for now, and focus on model checking as I work on a new project idea called &amp;ldquo;Riffing Algorithms&amp;rdquo;.&lt;/p&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Prove in the colloquial sense, not the rigorous. mathematical sense.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;</description>
+    </item>
     
     <item>
       <title>My TLA&#43; Saga</title>
@@ -1002,128 +1038,6 @@ numerical problem. In intended to show something more interesting that the
 &lt;em&gt;reverse(reverse(list)) == list&lt;/em&gt; example, and something less contrived than my
 previous post on property testing. I look forward to any feedback on this
 post.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Recasting how I blog</title>
-      <link>https://quiescent.us/2015/06/converting-to-static-blog/</link>
-      <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://quiescent.us/2015/06/converting-to-static-blog/</guid>
-      <description>&lt;p&gt;I wrote my first article for codestrokes in February 2011 - right as I was
-accepted to graduate school. My goal was to improve my writing in preparation
-for writing a thesis. While through grad school I started with more
-traditional writing tool. I started to learn to write, and I found my writing
-style: Simplicity.  I started writing with a big fancy word processor.
-I blogged with a massive database backed blogging engine. By the time
-I finished my thesis, I was writing in vim. I used a makefile to check
-spelling and check for simple grammatical rules. The process was much simpler
-to manage. This motivated me to convert my blog to a static site. This post
-describes my process on simplifying my writing process.&lt;/p&gt;
-&lt;h1 id=&#34;my-toolchain&#34;&gt;My toolchain&lt;/h1&gt;
-&lt;p&gt;The primary goal was leverage the writing tool chain I honed during my thesis
-for maintaining my blog. I didn&amp;rsquo;t want to complexity of a database backed
-blogging site. I wanted to drop my hosting service. I wanted to write in
-a markup language. I wrote my thesis in Latex, and I love the separation of
-presentation from content. This site you are reading today is composed of:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Markdown written in Vim.&lt;/li&gt;
-&lt;li&gt;Changes tracked in git.&lt;/li&gt;
-&lt;li&gt;Markdown converted HTML via Hugo.&lt;/li&gt;
-&lt;li&gt;Static pages hosted by Github Pages.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;choosing-a-static-site-generator&#34;&gt;Choosing a static site generator&lt;/h1&gt;
-&lt;p&gt;I actually didn&amp;rsquo;t spend too much time working on this, since someone already
-did a great deal of the work at &lt;a href=&#34;https://www.staticgen.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;https://www.staticgen.com/&lt;/a&gt;
-.  If you are
-planning to use Github to host your blog, Jekyll will be the easiest to use.
-The Github pages even include documentation on how to use Jekyll with Github
-pages. I however have an aversion to Ruby (though an order of magnitude
-weaker than my aversion to Java).  Near the top was &lt;a href=&#34;gohugo.io&#34;&gt;Hugo&lt;/a&gt;
-.
-A &lt;!-- raw HTML omitted --&gt;colleague&lt;!-- raw HTML omitted --&gt; friend of mine is quite a convincing evangelist of Go,
-and I decided to give it a try. &amp;ndash; Boy, was I impressed &amp;ndash; The quality of the
-documentation if fantastic. However my favorite feature of Hugo, it is
-a single download. One executable. One. No dependencies&amp;hellip; Its hard to express
-how incredibly relieving this is.&lt;/p&gt;
-&lt;p&gt;As an illustration, let me share with you a little lie. I didn&amp;rsquo;t directly just
-to staticgen.com, and find Hugo. I have an affinity for Haskell, and tried to
-use a static site generator called &lt;a href=&#34;https://www.staticgen.com/hakyll&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Hakyll&lt;/a&gt;
-.&lt;br&gt;
-I closed the project from github. The repository included a cabal file, which
-I promptly compiled. It took 25 minutes to build all the dependencies. Hakyll
-seems awesome, but I wanted something simple. Simple that I can just write,
-and the publication process becomes ancillary. Pieter Hintjens states that
-a project should continuously seek to reduce barriers for participation.
-Comment on this site are a perfect example. &lt;a href=&#34;https://disqus.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Disqus&lt;/a&gt;
-
-strikes a fantastic balance between reducing spam, without requiring everyone
-to login to my site. I have no presumptions concerning this site, and
-I completely understand that people do not need yet another account to manage.
-I want people to comment, hence I use a service that reduces the barrier to
-participate.&lt;/p&gt;
-&lt;p&gt;A cabal file is a barrier to participate. I want to consume a project, I don&amp;rsquo;t
-want to contribute to it (yet). Hugo had the lowest barrier to entry of the
-site generators I tried. One executable, no dependencies, and fantastic
-documentation.&lt;/p&gt;
-&lt;h1 id=&#34;exporting-content&#34;&gt;Exporting Content&lt;/h1&gt;
-&lt;p&gt;I had a significant number of posts in Wordpress. I wanted to be a good
-content creator, and preserve my URIs.  Really, I&amp;rsquo;m &lt;em&gt;wicked&lt;/em&gt; lazy, and
-preserving my permalinks meant I would not have to migrate my comments. Disqus
-would pick them up on the new site. Thus I wanted an automated way of
-exporting my posts from Wordpress. &lt;a href=&#34;https://github.com/thomasf/exitwp&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Exitwp&lt;/a&gt;
-
-worked like a charm.&lt;/p&gt;
-&lt;h1 id=&#34;choosing-a-theme&#34;&gt;Choosing a theme&lt;/h1&gt;
-&lt;p&gt;Hugo has a &lt;a href=&#34;https://github.com/spf13/hugoThemes/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;theme gallery&lt;/a&gt;
- for all the known themes associated with the
-generator.  I picked &lt;a href=&#34;https://github.com/tmaiaroto/hugo-redlounge&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;redlounge&lt;/a&gt;
-.
-My only customization was to add Google Analytics so I can track my meager
-pages views.&lt;/p&gt;
-&lt;h1 id=&#34;writing-articles-in-a-series&#34;&gt;Writing articles in a series&lt;/h1&gt;
-&lt;p&gt;I tend to write articles broken over many pieces. In fact, this article is
-part of my blog transition series. My series support was somewhat lacking in
-Wordpress. For this reincarnation of codestrokes.com, I wanted series to be
-nice and effective. Hugo&amp;rsquo;s taxonomy makes this possible, but it was a great
-series by another author, &lt;a href=&#34;http://npf.io/series/hugo-101/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Nate Finch&lt;/a&gt;
- that
-made it easy. Ironically, the series starts with an article about how to
-design series into Hugo. Brilliant.&lt;/p&gt;
-&lt;h1 id=&#34;hosting&#34;&gt;Hosting&lt;/h1&gt;
-&lt;p&gt;I have a few requirements:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Custom domain must work (so I don&amp;rsquo;t have to migrate comments :-)&lt;/li&gt;
-&lt;li&gt;Publishing from git would be sweet, but I can configure Travis-CI or
-a deployment something to deal with that.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;a href=&#34;https://pages.github.com/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Github pages!&lt;/a&gt;
-. I just followed the documentation.&lt;/p&gt;
-&lt;h1 id=&#34;my-publishing-process&#34;&gt;My Publishing Process&lt;/h1&gt;
-&lt;p&gt;Here&amp;rsquo;s how I write now:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Clone &lt;a href=&#34;mailto:JeremyLWright@github.com&#34;&gt;JeremyLWright@github.com&lt;/a&gt;
-&lt;/li&gt;
-&lt;li&gt;git checkout content
-&lt;ol&gt;
-&lt;li&gt;The content branch holds the source, and theme files.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;Clone the repository again into the public folder.&lt;/li&gt;
-&lt;li&gt;The public folder should be on the master branch.&lt;/li&gt;
-&lt;li&gt;Write.&lt;/li&gt;
-&lt;li&gt;Revise.&lt;/li&gt;
-&lt;li&gt;Write&amp;hellip;&lt;/li&gt;
-&lt;li&gt;Run Hugo.&lt;/li&gt;
-&lt;li&gt;Commit the content branch.&lt;/li&gt;
-&lt;li&gt;Commit the public branch.&lt;/li&gt;
-&lt;li&gt;Push!&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I&amp;rsquo;m happy with my new process. I&amp;rsquo;m still working out some kinks with my pages
-vs posts (hence you see the About Me page in the middle of my posts). I am
-prone to shiny things so we&amp;rsquo;ll see how long I keep it. This process is simple.
-It removes the barriers of posting, and just lets me write in the tool I am
-most comfortable, and but its hard to argue with simple.&lt;/p&gt;</description>
     </item>
     
   </channel>
