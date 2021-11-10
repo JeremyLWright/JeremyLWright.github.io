@@ -231,3 +231,12 @@ That's it! Let's model this in TLA+ and see how the process makes our designs
 interactive. Follow along with the video, or check-out the spec and play with
 it yourself. 
 
+# Acknowledgements
+
+My deepest thanks to my colleagues for providing an environment conducive of
+learning and applying this material. I'd like to thank [Alexander Niederbühl](https://github.com/Alexander-N) for his review of this post and his
+consistent attendance of our TLA+ study group. I'd like to thank [John
+McConnell](https://github.com/johnmcconnell) for asking thought provoking
+questions that drive me to better understand. Finally, I'd like to thank the TLA+
+mailing list for kindly engaging with my questions and taking each question as
+an opportunity to teach.
