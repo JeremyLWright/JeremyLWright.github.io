@@ -1,5 +1,5 @@
 ---
-title: "Flowcharts as a Conversation"
+title: "Flowcharts as a Conversation: Rubber Ducking our Designs"
 date: 2021-11-08T00:00:00-07:00
 slug: rsd-vending 
 series: ["Refined Software Development"]
@@ -10,11 +10,72 @@ tags:
 - book
 ---
 
-Imagine a design process as a conversation. What could you do, if you could
-ask your designs questions. That flow chart on the wall or white board... What
-would you ask it if you could? Given a sketch of a vending machine, would you
-ask, "Will you vend soda without money?" Or potentially you could ask, "What
-would you do if you ran out of soda?" 
+Imagine a design process as a conversation. What could you accomplish if you could
+ask your designs questions? That flow chart on the wall or whiteboard... What
+would you ask it if you could? 
+
+# The Devil is in the Details
+
+Have you ever worked with a detail-oriented colleague? One of those
+individuals who consistently asks you to clarify your position. Whenever you
+make an adjustment, this colleague goes back and rechecks all previous
+statements. They're your partner.  They aren't there to affirm you, or your ego.
+They are there to assure the work you do is as correct as it can be. They
+allow you to remain mentally at the high-level concepts, while they concern
+themselves with the minutia.  Our experience shows us that it is the minutia
+that introduces fundamental flaws, concepts we addressed, but relaxed for some
+other constraint suddenly renders our algorithms errant. The English idiom,
+_the devil is in the details_ is nowhere less true than software.
+
+In this post, I propose [TLA+](https://github.com/tlaplus) is your
+detail-oriented colleague, a mechanical friend for transforming your
+flowcharts and design sketches into a conversation where the computer helps
+you identify gaps and fallacies. We'll also see how [TLA+ can draw your
+flowcharts ](/img/soda.png) as well so you don't lose that visual feedback.
+
+TLA+ is a specification language. TLA+ targets a tool called TLC. Together
+they can help you design applications, especially concurrent and parallel
+systems. TLA+ while being a deeply rigorous verification tool for parallel
+systems, can also be used for sketching simple systems. Engineers and students
+alike use flow charts to sketch their programs. TLA+ can be used for these
+simple use cases as well a conversational transformation from a static description
+of boxes and arrows to a interactive conversation. 
+
+## Caveats to the reader
+
+If you are a reader who's an accomplished programmer, or you know programming
+and software engineering well, this blog post may seem simplistic. I encourage
+you to read this post (and watch the video). TLA+ is a deep tool but it is
+only through humility that we can learn to express it's power. TLA+ will
+render you a beginner again. This is a good thing, although you will not feel
+productive immediately. You will not skim the book over a weekend and apply it
+to your problem on Monday.  This will take time, but I believe it is time well
+spent. 
+
+Give TLA+ a chance to work *on* you, so that it can work *for* you.
+
+This post is intended to be paired with a video.
+
+<!-- more -->
+
+# Without TLA+ we design with a 'Yes-Man'
+
+Whiteboards don't check anything. They are a medium for getting
+your thoughts out of your head. This is a great technique for slowing down,
+yes. When you need to brainstorm, or *ideation* you don't want that detail
+focus. In that phase, Whiteboards are great! Use them! However, once that
+phase is done, jumping from whiteboards to coding could be a mistake.
+Whiteboards don't check anything. They don't help reason through the details.
+They don't check that the system actually achieves your goal. They don't check
+that the system has subtlety errant transitions.
+
+## A Simple Vending Machine
+
+For example, given a sketch of a vending machine, you could ask questions such
+as, "Will you vend soda without money?" Or potentially you could ask, "What
+would you do if you ran out of soda?" Conversation is a powerful tool for
+thought, however the quality of the conversation as a diagnostic tool is
+dependent on who the conversation is with. 
 
 {{< gravizo "What would you ask a flowchart?" >}}
 digraph A {
@@ -45,38 +106,21 @@ collaborative, but your designs would be more resistant to change.  Finally,
 instead of just drawing within a design tool, using the computer for little
 more than a collaborative scratch-pad the computer itself would be a colleague
 assisting your design and though process.  Helping to identify details you may
-mentally _skip over_.
+mentally _skip over_. 
 
-In this post, I propose [TLA+](https://github.com/tlaplus) is just that,
-a mechanism for transforming your flowcharts and design sketches into
-a conversation where the computer helps you identify gaps and fallacies. We'll
-also see how [TLA+ can draw your flowcharts ](/img/soda.png) as well so you
-don't lose that visual asset" 
-
-TLA+ is a specification language. TLA+ targets a tool called TLC. Together
-they can help you design applications, especially concurrent and parallel
-systems. While being a deeply powerful, and rigorous verification tool for
-parallel systems, TLA+ can also be used for sketching your simple systems.
-Engineers and students alike use flow charts to sketch their programs. TLA+
-can be used for this simple use case as well to transform your flowcharts from
-a static description of states to a interactive conversation. 
-
-<!-- more -->
-
-# Caveats to the reader
-
-If you are a reader who's an accomplished programmer, or you know programming
-and software engineering well, this blog post may seem simplistic. I encourage
-you to read this post (and watch the video). TLA+ is a deep tool but it is
-only through humility that we can learn to express it's power. TLA+ will
-render you a beginner again. This is a good thing, although you will not feel
-productive immediately. You will not skim the book over a weekend and apply it
-to your problem on Monday.  This will take time, but I believe it is time well
-spent. 
-
-Give TLA+ a chance to work _on_ you, so that it can work _for_ you.
-
-This post is intended to be paired with a video.
+Now, herein lies the value of leaving the whiteboard, and providing
+a checkable system definition. We could, with enough effort and time prove to
+ourselves that the system is sound. Given enough effort and time, we could
+potentially be correct. However we don't build systems alone. For your next
+colleague to understand the system they'd have to apply the same thought
+process, the same rigorous, tedious, process to prove to themselves they
+understand the system and that it achieves the goal. Furthermore, this process?
+Includes you. You have to be present in transferring that knowledge. Other
+engineering disciplines don't do this. They produce blueprints, models,
+*finite element analyses*, that serve are checkable artifacts the system
+design is sound, that the components chosen meet specified criteria. We
+software engineers should be so bold to follow the footsteps of the
+hard-sciences and specify our systems.  
 
 # Setting up TLA+
 
@@ -84,8 +128,10 @@ Markus Kuppe has a great walk through of using the [toolbox](https:
 //www.youtube.com/watch?v=U2FAnyPygrA). If you simply hate Eclipse, that's
 understandable and there is a VS Code offering as well. However, if you are
 using TLA+ for the first time, I recommend trying the toolbox since it's the
-easiest to get started. 
-
+easiest to get started. In my experience defining the models takes some tribal
+knowledge in the VS code style. While it's easier for a git workflow, it takes
+some getting used to. Try the toolbox first, then decide if you should choose
+VS Code instead.
 
 # Sketching out soda machine
 
@@ -184,8 +230,4 @@ temporal equation. TLC shows us a case we didn't consider.
 That's it! Let's model this in TLA+ and see how the process makes our designs
 interactive. Follow along with the video, or check-out the spec and play with
 it yourself. 
-
-
-
-
 
