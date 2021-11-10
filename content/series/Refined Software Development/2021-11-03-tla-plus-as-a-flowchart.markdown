@@ -153,7 +153,7 @@ answer questions.
 
 ## Interviewing our Flowchart
 
-What you you ask our design if you could? Perhaps, Do I eventually got soda?
+What would you ask our design if you could? Perhaps, Do I eventually got soda?
 TLA+ uses a branch of mathematics called Temporal Logic, which allows us to
 ask questions such as _eventually_ and _always_. Additionally, we can combine
 these to ask if "once something happens it remains". In TLA+ we express these
