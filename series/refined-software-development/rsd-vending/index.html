@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.89.2" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Flowcharts as a Conversation: Rubber Ducking our Designs&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Flowcharts as a Conversation: Rubber Ducking our Designs" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Flowcharts as a Conversation: Rubber Ducking our Designs</h1><p class="article date">Monday, November 8, 2021</p><div class="notice--info">
+      <p>This post is part of the <a href="https://quiescent.us/series/refined-software-development/" style="font-weight: bold">Refined Software Development</a> series.</p>
+    </div></section><article class="article markdown-body"><p>Imagine a design process as a conversation. What could you accomplish if you could
+ask your designs questions? That flow chart on the wall or whiteboard&hellip; What
+would you ask it if you could?</p>
+<h1 id="the-devil-is-in-the-details">The Devil is in the Details</h1>
+<p>Have you ever worked with a detail-oriented colleague? One of those
+individuals who consistently asks you to clarify your position. Whenever you
+make an adjustment, this colleague goes back and rechecks all previous
+statements. They&rsquo;re your partner.  They aren&rsquo;t there to affirm you, or your ego.
+They are there to assure the work you do is as correct as it can be. They
+allow you to remain mentally at the high-level concepts, while they concern
+themselves with the minutia.  Our experience shows us that it is the minutia
+that introduces fundamental flaws, concepts we addressed, but relaxed for some
+other constraint suddenly renders our algorithms errant. The English idiom,
+<em>the devil is in the details</em> is nowhere less true than software.</p>
+<p>In this post, I propose <a href="https://github.com/tlaplus"target="_blank" rel="noopener noreferrer">TLA+</a>
+ is your
+detail-oriented colleague, a mechanical friend for transforming your
+flowcharts and design sketches into a conversation where the computer helps
+you identify gaps and fallacies. We&rsquo;ll also see how <a href="/img/soda.png">TLA+ can draw your
+flowcharts </a>
+ as well so you don&rsquo;t lose that visual feedback.</p>
+<p>TLA+ is a specification language. TLA+ targets a tool called TLC. Together
+they can help you design applications, especially concurrent and parallel
+systems. TLA+ while being a deeply rigorous verification tool for parallel
+systems, can also be used for sketching simple systems. Engineers and students
+alike use flow charts to sketch their programs. TLA+ can be used for these
+simple use cases as well a conversational transformation from a static description
+of boxes and arrows to a interactive conversation.</p>
+<h2 id="caveats-to-the-reader">Caveats to the reader</h2>
+<p>If you are a reader who&rsquo;s an accomplished programmer, or you know programming
+and software engineering well, this blog post may seem simplistic. I encourage
+you to read this post (and watch the video). TLA+ is a deep tool but it is
+only through humility that we can learn to express it&rsquo;s power. TLA+ will
+render you a beginner again. This is a good thing, although you will not feel
+productive immediately. You will not skim the book over a weekend and apply it
+to your problem on Monday.  This will take time, but I believe it is time well
+spent.</p>
+<p>Give TLA+ a chance to work <em>on</em> you, so that it can work <em>for</em> you.</p>
+<p>This post is intended to be paired with a video.</p>
+<!-- raw HTML omitted -->
+<h1 id="without-tla-we-design-with-a-yes-man">Without TLA+ we design with a &lsquo;Yes-Man&rsquo;</h1>
+<p>Whiteboards don&rsquo;t check anything. They are a medium for getting
+your thoughts out of your head. This is a great technique for slowing down,
+yes. When you need to brainstorm, or <em>ideation</em> you don&rsquo;t want that detail
+focus. In that phase, Whiteboards are great! Use them! However, once that
+phase is done, jumping from whiteboards to coding could be a mistake.
+Whiteboards don&rsquo;t check anything. They don&rsquo;t help reason through the details.
+They don&rsquo;t check that the system actually achieves your goal. They don&rsquo;t check
+that the system has subtlety errant transitions.</p>
+<h2 id="a-simple-vending-machine">A Simple Vending Machine</h2>
+<p>For example, given a sketch of a vending machine, you could ask questions such
+as, &ldquo;Will you vend soda without money?&rdquo; Or potentially you could ask, &ldquo;What
+would you do if you ran out of soda?&rdquo; Conversation is a powerful tool for
+thought, however the quality of the conversation as a diagnostic tool is
+dependent on who the conversation is with.</p>
+
+
+  
+    
+  
+
+
+<figure>
+  <img
+    src='https://g.gravizo.com/svg?%0adigraph%20A%20%7b%0a%22Want%20Soda%22%20-%3e%20%22Have%20Soda%22%20%5blabel%3d%22Money%20in%20Machine%22%5d%3b%0a%22Have%20Soda%22%20-%3e%20%22Want%20Soda%22%20%5blabel%3d%22Drink%20Soda%22%5d%3b%0a%7d%0a'
+    alt='What would you ask a flowchart?'
+    />
+    <figcaption>What would you ask a flowchart?</figcaption>
+</figure>
+
+<p>This graph is simple, but as we can immediately see it&rsquo;s too simple to express
+our needs. It doesn&rsquo;t capture how much money we have, or that our money is
+decreasing as we drink soda. In the traditional paradigm, we just add more
+states</p>
+
+
+  
+    
+  
+
+
+<figure>
+  <img
+    src='https://g.gravizo.com/svg?%0adigraph%20A%20%7b%0a%22I%20have%20money%3f%22%20-%3e%20%22I%20Want%20Soda%22%20%5blabel%3d%22Yes%22%5d%3b%0a%22I%20have%20money%3f%22%20-%3e%20%22%3f%3f%3f%22%20%5blabel%3d%22No%22%5d%3b%20%0a%22I%20Want%20Soda%22%20-%3e%20%22I%20Have%20Soda%22%20%5blabel%3d%22Money%20in%20Machine%22%5d%3b%0a%22I%20Have%20Soda%22%20-%3e%20%22I%20Want%20Soda%22%20%5blabel%3d%22Drink%20Soda%22%5d%3b%0a%7d%0a'
+    alt='More detail, but still hard to &#39;check&#39;'
+    />
+    <figcaption>More detail, but still hard to &#39;check&#39;</figcaption>
+</figure>
+
+<p>What happens when you don&rsquo;t have money? If your design as a conversation, and
+entity you could interview, not only would the design process be more
+collaborative, but your designs would be more resistant to change.  Finally,
+instead of just drawing within a design tool, using the computer for little
+more than a collaborative scratch-pad the computer itself would be a colleague
+assisting your design and though process.  Helping to identify details you may
+mentally <em>skip over</em>.</p>
+<p>Now, herein lies the value of leaving the whiteboard, and providing
+a checkable system definition. We could, with enough effort and time prove to
+ourselves that the system is sound. Given enough effort and time, we could
+potentially be correct. However we don&rsquo;t build systems alone. For your next
+colleague to understand the system they&rsquo;d have to apply the same thought
+process, the same rigorous, tedious, process to prove to themselves they
+understand the system and that it achieves the goal. Furthermore, this process?
+Includes you. You have to be present in transferring that knowledge. Other
+engineering disciplines don&rsquo;t do this. They produce blueprints, models,
+<em>finite element analyses</em>, that serve are checkable artifacts the system
+design is sound, that the components chosen meet specified criteria. We
+software engineers should be so bold to follow the footsteps of the
+hard-sciences and specify our systems.</p>
+<h1 id="setting-up-tla">Setting up TLA+</h1>
+<p>Markus Kuppe has a great walk through of using the [toolbox](https:
+//www.youtube.com/watch?v=U2FAnyPygrA). If you simply hate Eclipse, that&rsquo;s
+understandable and there is a VS Code offering as well. However, if you are
+using TLA+ for the first time, I recommend trying the toolbox since it&rsquo;s the
+easiest to get started. In my experience defining the models takes some tribal
+knowledge in the VS code style. While it&rsquo;s easier for a git workflow, it takes
+some getting used to. Try the toolbox first, then decide if you should choose
+VS Code instead.</p>
+<h1 id="sketching-out-soda-machine">Sketching out soda machine</h1>
+<p>Imagine we have the following toy program or assignment.</p>
+<blockquote>
+<p>Design a vending machine.</p>
+<ol>
+<li>The machine must take money, and deliver soda.</li>
+<li>If no soda is available then the machine must not keep the money.</li>
+</ol>
+</blockquote>
+<p>What&rsquo;s your traditional design process? Sketch a flowchart, or some UML? Let&rsquo;s
+take a step back and recall how we used to design things before we were
+programmers. Those first programs we design where it all fit inside <code>main() </code>  because we didn&rsquo;t know how to make functions yet. In a word, Let&rsquo;s Start
+Simply.</p>
+<h2 id="what-are-the-variables">What are the variables?</h2>
+<ol>
+<li>I, the user, wants soda, so lets make a variable for that <code>IWantSoda</code></li>
+<li>Next, there is a soda machine with some number of sodas inside
+<code>sodaMachine</code></li>
+<li>I could presently have a soda or not, <code>IHaveSoda</code></li>
+<li>Finally, I have some amount of money, <code>Money</code></li>
+</ol>
+<p>The professional programmers among you may be thinking
+now about abstractions. The electrical engineers among you may be thinking how
+the hardware will function or what interrupts need to be configured. These are
+good, but let&rsquo;s come <em>up</em> a level of detail. In a future post I will describe
+<em>refinement</em> as a method of connecting a very high-level description, the
+essence/pseudocode of our designs to an actual design.</p>
+<p>Great, now that we have the variables let&rsquo;s consider what possible values
+those variables have.</p>
+<ol>
+<li><code>Money</code> must be greater than or equal to 0.</li>
+<li><code>sodaMachine</code> must be greater than or equal to 0 sodas.</li>
+<li><code>IWantSoda</code> is true or false.</li>
+<li><code>IHaveSoda</code> is true or false.</li>
+</ol>
+<p>That&rsquo;s it. That&rsquo;s our domain. So let&rsquo;s next consider our actions.</p>
+<h2 id="what-are-the-actions">What are the Actions?</h2>
+<p>An action in TLA+ is a transition between states. It&rsquo;s simply the edges of our
+flowchart.</p>
+
+
+  
+    
+  
+
+
+<figure>
+  <img
+    src='https://g.gravizo.com/svg?%0adigraph%20A%20%7b%0a%22Some%20State%20A%22%20-%3e%20%22Some%20State%20B%22%20%5blabel%3d%22Edges%20are%20actions%22%5d%3b%0a%7d%0a'
+    alt='Edges are actions'
+    />
+    <figcaption>Edges are actions</figcaption>
+</figure>
+
+<ol>
+<li>If the soda machine has soda, and I don&rsquo;t, then I put money in the machine.
+That&rsquo;s an action <code>PutMoneyInMachine</code> (This might become
+a function/procedure in our final program, but for now, let&rsquo;s just call it
+an action)
+<ol>
+<li>When I put money in the machine either the machine has soda, or it
+doesn&rsquo;t. If it does then the machine takes my money and gives me
+a soda.</li>
+</ol>
+</li>
+</ol>
+<p>That&rsquo;s it. Our system is pretty simple, when we have money, we buy soda until
+the machine is out of soda, or we are out of money. So far, TLA+ hasn&rsquo;t given
+us anything a normal flowchart can&rsquo;t, but we&rsquo;re about to make our flowchart
+answer questions.</p>
+<h2 id="interviewing-our-flowchart">Interviewing our Flowchart</h2>
+<p>What would you ask our design if you could? Perhaps, Do I eventually got soda?
+TLA+ uses a branch of mathematics called Temporal Logic, which allows us to
+ask questions such as <em>eventually</em> and <em>always</em>. Additionally, we can combine
+these to ask if &ldquo;once something happens it remains&rdquo;. In TLA+ we express these
+questions with <code>&lt;&gt; means eventually</code> and <code>[] means always</code>.</p>
+<table>
+<thead>
+<tr>
+<th>English</th>
+<th>TLA+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eventually</td>
+<td><code>&lt;&gt;</code></td>
+</tr>
+<tr>
+<td>always</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<p>Thus our question:</p>
+<table>
+<thead>
+<tr>
+<th>English</th>
+<th>TLA+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&ldquo;Do I eventually get soda&rdquo;</td>
+<td><code>&lt;&gt;IHaveSoda</code> (Remember IHaveSoda TRUE or FALSE, i.e., <code>IHaveSoda \in {TRUE, FALSE}</code>).</td>
+</tr>
+</tbody>
+</table>
+<p>However, we can only have soda, if we have money, hence we need to express the
+idea if &ldquo;<em>always</em> when I have money, then <em>eventually</em> I have soda&rdquo; This is called
+&ldquo;implication&rdquo; in TLA+ we express this as <code>[](IHaveMoney =&gt; &lt;&gt;IHaveSoda)</code></p>
+<table>
+<thead>
+<tr>
+<th>English</th>
+<th>TLA+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>always</em> when I have money, then <em>eventually</em> I have soda</td>
+<td><code>[](IHaveMoney =&gt; &lt;&gt;IHaveSoda)</code></td>
+</tr>
+</tbody>
+</table>
+<p>However, as we&rsquo;ll see in the video, TLC finds a counter-example for this
+temporal equation. TLC shows us a case we didn&rsquo;t consider.</p>
+<p>That&rsquo;s it! Let&rsquo;s model this in TLA+ and see how the process makes our designs
+interactive. Follow along with the video, or check-out the spec and play with
+it yourself.</p>
+<h1 id="acknowledgements">Acknowledgements</h1>
+<p>My deepest thanks to my colleagues for providing an environment conducive of
+learning and applying this material. I&rsquo;d like to thank <a href="https://github.com/Alexander-N"target="_blank" rel="noopener noreferrer">Alexander Niederbühl</a>
+ for his review of this post and his
+consistent attendance of our TLA+ study group. I&rsquo;d like to thank <a href="https://github.com/johnmcconnell"target="_blank" rel="noopener noreferrer">John
+McConnell</a>
+ for asking thought provoking
+questions that drive me to better understand. Finally, I&rsquo;d like to thank the TLA+
+mailing list for kindly engaging with my questions and taking each question as
+an opportunity to teach.</p>
+</article><section class="article labels"><a class="tag" href=/tags/design/>Design</a><a class="tag" href=/tags/book/>book</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.99872df1091f055fca553e0b74b13c09bd383ef42b1c56a9edb651a91f122d56e7bc9a2fad73528246215b379b043226.js#pubid=ra-1234567890" integrity="sha384-mYct8QkfBV/KVT4LdLE8Cb04PvQrHFap7bZRqR8SLVbnvJovrXNSgkYhWzebBDIm"></script>
+</div>
+<div class="article bottom"><div class="article navigation"><h3 id="series">This series</h3>
+    <ol><li><span class="iconfont icon-article"></span><b>Flowcharts as a Conversation: Rubber Ducking our Designs</b></li></ol></div><section class="article discussion"><div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2021 Jeremy Wright</p>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></body>
+
+</html>

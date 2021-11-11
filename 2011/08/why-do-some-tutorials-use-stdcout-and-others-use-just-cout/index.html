@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.88.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.89.2" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <meta name="supported-color-schemes" content="light dark"><title>Why do some tutorials use std::cout and others use just cout?&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Why do some tutorials use std::cout and others use just cout?" /><body><section id="header">
@@ -23,7 +23,7 @@ int main()
 }
 </code></pre>
 <p>The difference between the 2 programs is the double colon (::).  This is called the <strong>namespace resolution operator</strong>.  C++ has a wonderful concept called namespaces.  Namespaces allow you to group or organize sets of objects into named collections.  That collection is called a namespace.  Namespaces are similar to URLs. Take <a href="http://www.codestrokes.com"target="_blank" rel="noopener noreferrer">www.codestrokes.com</a>
- for example.  Read right-to-left, the URL breaks down the enormous internet into successively more specific collections. First the_ .com_ &ldquo;namespace&rdquo;; Then more specific the: _codestrokes_. Then a single server, the most specific: _www_.</p>
+ for example.  Read right-to-left, the URL breaks down the enormous internet into successively more specific collections. First the_ .com_ &ldquo;namespace&rdquo;; Then more specific the: <em>codestrokes</em>. Then a single server, the most specific: <em>www</em>.</p>
 <p>C++ allows you to make a similar grouping structure, but instead of period (.) denoting the individual collections we use ::.  Ergo to create a similar structure in C++:</p>
 <pre><code>namespace com {
     namespace codestrokes {
