@@ -22,11 +22,10 @@ that introduces fundamental flaws, concepts we addressed, but relaxed for some
 other constraint suddenly renders our algorithms errant. The English idiom,
 <em>the devil is in the details</em> is nowhere less true than software.</p>
 <p>In this post, I propose <a href="https://github.com/tlaplus"target="_blank" rel="noopener noreferrer">TLA+</a>
- is your
+<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> is your
 detail-oriented colleague, a mechanical friend for transforming your
 flowcharts and design sketches into a conversation where the computer helps
-you identify gaps and fallacies. We&rsquo;ll also see how <a href="/img/soda.png">TLA+ can draw your
-flowcharts </a>
+you identify gaps and fallacies. We&rsquo;ll also see how <a href="/img/soda.png">TLA+ can draw your flowcharts</a>
  as well so you don&rsquo;t lose that visual feedback.</p>
 <p>TLA+ is a specification language. TLA+ targets a tool called TLC. Together
 they can help you design applications, especially concurrent and parallel
@@ -117,8 +116,7 @@ design is sound, that the components chosen meet specified criteria. We
 software engineers should be so bold to follow the footsteps of the
 hard-sciences and specify our systems.</p>
 <h1 id="setting-up-tla">Setting up TLA+</h1>
-<p>Markus Kuppe has a great walk through of using the [toolbox](https:
-//www.youtube.com/watch?v=U2FAnyPygrA). If you simply hate Eclipse, that&rsquo;s
+<p>Markus Kuppe has a great walk through of using the toolbox<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. If you simply hate Eclipse, that&rsquo;s
 understandable and there is a VS Code offering as well. However, if you are
 using TLA+ for the first time, I recommend trying the toolbox since it&rsquo;s the
 easiest to get started. In my experience defining the models takes some tribal
@@ -260,12 +258,25 @@ it yourself.</p>
 <p>My deepest thanks to my colleagues for providing an environment conducive of
 learning and applying this material. I&rsquo;d like to thank <a href="https://github.com/Alexander-N"target="_blank" rel="noopener noreferrer">Alexander Niederbühl</a>
  for his review of this post and his
-consistent attendance of our TLA+ study group. I&rsquo;d like to thank <a href="https://github.com/johnmcconnell"target="_blank" rel="noopener noreferrer">John
-McConnell</a>
+consistent attendance of our TLA+ study group. I&rsquo;d like to thank <a href="https://github.com/johnmcconnell"target="_blank" rel="noopener noreferrer">John McConnell</a>
  for asking thought provoking
 questions that drive me to better understand. Finally, I&rsquo;d like to thank the TLA+
 mailing list for kindly engaging with my questions and taking each question as
 an opportunity to teach.</p>
+<h1 id="references">References</h1>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>TLC is an explicit state model checker for specifications written in TLA+. The TLA+Toolbox is an IDE for TLA+.  <a href="https://github.com/tlaplus"target="_blank" rel="noopener noreferrer">https://github.com/tlaplus</a>
+&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>Kuppe, Markus. TLA+ Toolbox. <a href="https://www.youtube.com/watch?v=U2FAnyPygrA"target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=U2FAnyPygrA</a>
+&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
 </article><section class="article labels"><a class="tag" href=/tags/design/>Design</a><a class="tag" href=/tags/book/>book</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.99872df1091f055fca553e0b74b13c09bd383ef42b1c56a9edb651a91f122d56e7bc9a2fad73528246215b379b043226.js#pubid=ra-1234567890" integrity="sha384-mYct8QkfBV/KVT4LdLE8Cb04PvQrHFap7bZRqR8SLVbnvJovrXNSgkYhWzebBDIm"></script>
 </div>
 <div class="article bottom"><div class="article navigation"><h3 id="series">This series</h3>
