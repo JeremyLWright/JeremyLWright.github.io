@@ -131,6 +131,20 @@ knowledge in the VS code style. While it's easier for a git workflow, it takes
 some getting used to. Try the toolbox first, then decide if you should choose
 VS Code instead.
 
+## Setup TLC to draw flowcharts/state-diagrams
+
+Add parameters to the TLC command line in the toolbox ``-dump dot,actionlabels,colorize,snapshot  soda.dot``
+[Configure TLC to dump state diagram](/img/2021-11-03-tla-plus-as-a-flowchart.png)
+
+Doing this will dump a new file ``soda.dot`` every time the model is run.
+I like to put an fswatch on the dot file so the diagram redraws automatically.
+
+``
+fswatch -o soda.dot | xargs -n1 dot soda.dot -Tpng -osoda.png
+``
+
+Now everytime soda.dot changes, the dot compiler will make a new png.
+
 # Sketching out soda machine
 
 Imagine we have the following toy program or assignment.
