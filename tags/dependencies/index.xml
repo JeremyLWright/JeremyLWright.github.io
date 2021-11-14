@@ -133,6 +133,14 @@ easiest to get started. In my experience defining the models takes some tribal
 knowledge in the VS code style. While it&amp;rsquo;s easier for a git workflow, it takes
 some getting used to. Try the toolbox first, then decide if you should choose
 VS Code instead.&lt;/p&gt;
+&lt;h2 id=&#34;setup-tlc-to-draw-flowchartsstate-diagrams&#34;&gt;Setup TLC to draw flowcharts/state-diagrams&lt;/h2&gt;
+&lt;p&gt;Add parameters to the TLC command line in the toolbox &lt;code&gt;-dump dot,actionlabels,colorize,snapshot  soda.dot&lt;/code&gt;
+&lt;a href=&#34;https://quiescent.us/img/2021-11-03-tla-plus-as-a-flowchart.png&#34;&gt;Configure TLC to dump state diagram&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;Doing this will dump a new file &lt;code&gt;soda.dot&lt;/code&gt; every time the model is run.
+I like to put an fswatch on the dot file so the diagram redraws automatically.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;fswatch -o soda.dot | xargs -n1 dot soda.dot -Tpng -osoda.png&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Now everytime soda.dot changes, the dot compiler will make a new png.&lt;/p&gt;
 &lt;h1 id=&#34;sketching-out-soda-machine&#34;&gt;Sketching out soda machine&lt;/h1&gt;
 &lt;p&gt;Imagine we have the following toy program or assignment.&lt;/p&gt;
 &lt;blockquote&gt;
