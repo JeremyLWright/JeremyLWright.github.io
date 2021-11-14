@@ -27,11 +27,10 @@ that introduces fundamental flaws, concepts we addressed, but relaxed for some
 other constraint suddenly renders our algorithms errant. The English idiom,
 _the devil is in the details_ is nowhere less true than software.
 
-In this post, I propose [TLA+](https://github.com/tlaplus) is your
+In this post, I propose [TLA+](https://github.com/tlaplus)[^2] is your
 detail-oriented colleague, a mechanical friend for transforming your
 flowcharts and design sketches into a conversation where the computer helps
-you identify gaps and fallacies. We'll also see how [TLA+ can draw your
-flowcharts ](/img/soda.png) as well so you don't lose that visual feedback.
+you identify gaps and fallacies. We'll also see how [TLA+ can draw your flowcharts](/img/soda.png) as well so you don't lose that visual feedback.
 
 TLA+ is a specification language. TLA+ targets a tool called TLC. Together
 they can help you design applications, especially concurrent and parallel
@@ -124,8 +123,7 @@ hard-sciences and specify our systems.
 
 # Setting up TLA+
 
-Markus Kuppe has a great walk through of using the [toolbox](https:
-//www.youtube.com/watch?v=U2FAnyPygrA). If you simply hate Eclipse, that's
+Markus Kuppe has a great walk through of using the toolbox[^1]. If you simply hate Eclipse, that's
 understandable and there is a VS Code offering as well. However, if you are
 using TLA+ for the first time, I recommend trying the toolbox since it's the
 easiest to get started. In my experience defining the models takes some tribal
@@ -235,8 +233,12 @@ it yourself.
 
 My deepest thanks to my colleagues for providing an environment conducive of
 learning and applying this material. I'd like to thank [Alexander Niederbühl](https://github.com/Alexander-N) for his review of this post and his
-consistent attendance of our TLA+ study group. I'd like to thank [John
-McConnell](https://github.com/johnmcconnell) for asking thought provoking
+consistent attendance of our TLA+ study group. I'd like to thank [John McConnell](https://github.com/johnmcconnell) for asking thought provoking
 questions that drive me to better understand. Finally, I'd like to thank the TLA+
 mailing list for kindly engaging with my questions and taking each question as
 an opportunity to teach.
+
+# References
+
+[^1]: Kuppe, Markus. TLA+ Toolbox. https://www.youtube.com/watch?v=U2FAnyPygrA
+[^2]: TLC is an explicit state model checker for specifications written in TLA+. The TLA+Toolbox is an IDE for TLA+.  https://github.com/tlaplus
