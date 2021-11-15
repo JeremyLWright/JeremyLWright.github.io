@@ -256,4 +256,4 @@ an opportunity to teach.
 
 [^1]: Kuppe, Markus. TLA+ Toolbox. https://www.youtube.com/watch?v=U2FAnyPygrA
 [^2]: TLC is an explicit state model checker for specifications written in TLA+. The TLA+Toolbox is an IDE for TLA+.  https://github.com/tlaplus
-[^3]: Wright, Jeremy. Sketching Designs with TLA+. https://youtu.be/kUpYe3X48mg
+[^3]: Wright, Jeremy. Sketching Designs with TLA+. https://youtu.be/alyqcphUaiI
