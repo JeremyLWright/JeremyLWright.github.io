@@ -45,15 +45,15 @@ simple use cases as well a conversational transformation from a static descripti
 of boxes and arrows to a interactive conversation.&lt;/p&gt;
 &lt;h2 id=&#34;caveats-to-the-reader&#34;&gt;Caveats to the reader&lt;/h2&gt;
 &lt;p&gt;If you are a reader who&amp;rsquo;s an accomplished programmer, or you know programming
-and software engineering well, this blog post may seem simplistic. I encourage
-you to read this post (and watch the video). TLA+ is a deep tool but it is
+and software engineering well, this post may seem simplistic, however I encourage
+you to read this post and watch the video&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. TLA+ is a deep tool but it is
 only through humility that we can learn to express it&amp;rsquo;s power. TLA+ will
 render you a beginner again. This is a good thing, although you will not feel
 productive immediately. You will not skim the book over a weekend and apply it
 to your problem on Monday.  This will take time, but I believe it is time well
 spent.&lt;/p&gt;
 &lt;p&gt;Give TLA+ a chance to work &lt;em&gt;on&lt;/em&gt; you, so that it can work &lt;em&gt;for&lt;/em&gt; you.&lt;/p&gt;
-&lt;p&gt;This post is intended to be paired with a video.&lt;/p&gt;
+&lt;p&gt;This post is intended to be paired with a video&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;h1 id=&#34;without-tla-we-design-with-a-yes-man&#34;&gt;Without TLA+ we design with a &amp;lsquo;Yes-Man&amp;rsquo;&lt;/h1&gt;
 &lt;p&gt;Whiteboards don&amp;rsquo;t check anything. They are a medium for getting
@@ -125,7 +125,7 @@ design is sound, that the components chosen meet specified criteria. We
 software engineers should be so bold to follow the footsteps of the
 hard-sciences and specify our systems.&lt;/p&gt;
 &lt;h1 id=&#34;setting-up-tla&#34;&gt;Setting up TLA+&lt;/h1&gt;
-&lt;p&gt;Markus Kuppe has a great walk through of using the toolbox&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. If you simply hate Eclipse, that&amp;rsquo;s
+&lt;p&gt;Markus Kuppe has a great walk through of using the toolbox&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;. If you simply hate Eclipse, that&amp;rsquo;s
 understandable and there is a VS Code offering as well. However, if you are
 using TLA+ for the first time, I recommend trying the toolbox since it&amp;rsquo;s the
 easiest to get started. In my experience defining the models takes some tribal
@@ -266,10 +266,10 @@ idea if &amp;ldquo;&lt;em&gt;always&lt;/em&gt; when I have money, then &lt;em&gt
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;However, as we&amp;rsquo;ll see in the video, TLC finds a counter-example for this
+&lt;p&gt;However, as we&amp;rsquo;ll see in the video&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;, TLC finds a counter-example for this
 temporal equation. TLC shows us a case we didn&amp;rsquo;t consider.&lt;/p&gt;
 &lt;p&gt;That&amp;rsquo;s it! Let&amp;rsquo;s model this in TLA+ and see how the process makes our designs
-interactive. Follow along with the video, or check-out the spec and play with
+interactive. Follow along with the video&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;, or check-out the spec and play with
 it yourself.&lt;/p&gt;
 &lt;h1 id=&#34;acknowledgements&#34;&gt;Acknowledgements&lt;/h1&gt;
 &lt;p&gt;My deepest thanks to my colleagues for providing an environment conducive of
@@ -289,8 +289,12 @@ an opportunity to teach.&lt;/p&gt;
 &amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;Kuppe, Markus. TLA+ Toolbox. &lt;a href=&#34;https://www.youtube.com/watch?v=U2FAnyPygrA&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;https://www.youtube.com/watch?v=U2FAnyPygrA&lt;/a&gt;
+&lt;p&gt;Wright, Jeremy. Sketching Designs with TLA+. &lt;a href=&#34;https://youtu.be/kUpYe3X48mg&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;https://youtu.be/kUpYe3X48mg&lt;/a&gt;
 &amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Kuppe, Markus. TLA+ Toolbox. &lt;a href=&#34;https://www.youtube.com/watch?v=U2FAnyPygrA&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;https://www.youtube.com/watch?v=U2FAnyPygrA&lt;/a&gt;
+&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/section&gt;
