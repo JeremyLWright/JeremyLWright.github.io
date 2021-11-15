@@ -53,7 +53,12 @@ productive immediately. You will not skim the book over a weekend and apply it
 to your problem on Monday.  This will take time, but I believe it is time well
 spent.&lt;/p&gt;
 &lt;p&gt;Give TLA+ a chance to work &lt;em&gt;on&lt;/em&gt; you, so that it can work &lt;em&gt;for&lt;/em&gt; you.&lt;/p&gt;
-&lt;p&gt;This post is intended to be paired with a video&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;This post is intended to be paired with the video&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; below.&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/alyqcphUaiI&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
 &lt;!-- raw HTML omitted --&gt;
 &lt;h1 id=&#34;without-tla-we-design-with-a-yes-man&#34;&gt;Without TLA+ we design with a &amp;lsquo;Yes-Man&amp;rsquo;&lt;/h1&gt;
 &lt;p&gt;Whiteboards don&amp;rsquo;t check anything. They are a medium for getting
