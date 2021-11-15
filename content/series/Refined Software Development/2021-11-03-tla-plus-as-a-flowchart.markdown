@@ -43,8 +43,8 @@ of boxes and arrows to a interactive conversation.
 ## Caveats to the reader
 
 If you are a reader who's an accomplished programmer, or you know programming
-and software engineering well, this blog post may seem simplistic. I encourage
-you to read this post (and watch the video). TLA+ is a deep tool but it is
+and software engineering well, this post may seem simplistic, however I encourage
+you to read this post and watch the video[^3]. TLA+ is a deep tool but it is
 only through humility that we can learn to express it's power. TLA+ will
 render you a beginner again. This is a good thing, although you will not feel
 productive immediately. You will not skim the book over a weekend and apply it
@@ -53,7 +53,7 @@ spent.
 
 Give TLA+ a chance to work *on* you, so that it can work *for* you.
 
-This post is intended to be paired with a video.
+This post is intended to be paired with a video[^3].
 
 <!-- more -->
 
@@ -236,11 +236,11 @@ idea if "_always_ when I have money, then _eventually_ I have soda" This is call
 |---------|------|
 | _always_ when I have money, then _eventually_ I have soda | ``[](IHaveMoney => <>IHaveSoda)`` |
 
-However, as we'll see in the video, TLC finds a counter-example for this
+However, as we'll see in the video[^3], TLC finds a counter-example for this
 temporal equation. TLC shows us a case we didn't consider.
 
 That's it! Let's model this in TLA+ and see how the process makes our designs
-interactive. Follow along with the video, or check-out the spec and play with
+interactive. Follow along with the video[^3], or check-out the spec and play with
 it yourself. 
 
 # Acknowledgements
@@ -256,3 +256,4 @@ an opportunity to teach.
 
 [^1]: Kuppe, Markus. TLA+ Toolbox. https://www.youtube.com/watch?v=U2FAnyPygrA
 [^2]: TLC is an explicit state model checker for specifications written in TLA+. The TLA+Toolbox is an IDE for TLA+.  https://github.com/tlaplus
+[^3]: Wright, Jeremy. Sketching Designs with TLA+. https://youtu.be/kUpYe3X48mg
