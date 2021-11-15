@@ -53,7 +53,9 @@ spent.
 
 Give TLA+ a chance to work *on* you, so that it can work *for* you.
 
-This post is intended to be paired with a video[^3].
+This post is intended to be paired with the video[^3] below.
+
+{{< youtube id="alyqcphUaiI" >}}
 
 <!-- more -->
 
