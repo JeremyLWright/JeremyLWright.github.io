@@ -10,6 +10,7 @@ tags:
 - low-level
 ---
 
+
 Boolean carries 1 bit of information. The canonical example of binary, On/Off,
 True/False. Yet, the bool type in C and C++ is 1 byte large, 8 bits of
 information. Carrying thus $$2^8 = 256$$ representable values. This may not sound like much, but consider an array of bools (a common misunderstanding beginning C++ students make trying to formulate a bit-field): ``bool fatBitField[8]`` 
@@ -129,7 +130,6 @@ int main(int argc, const char *argv[])
 
 ```
 
-
 Again compare in compiler explorer
 {{< figure src="/img/bit-bool/fully-packed.png" title="Compiler Explorer Fully Packed bitfield" >}}
 
@@ -137,26 +137,33 @@ Notice the source line 8. Here you can see it or's a 2.  This is the compiler re
 
 # Well, why isn't the computer bit addressable then?
 
+The short answer, bit access isn't that common, thus the hardware is optimized for the more common access of bytes. Although due to various levels of cache and the time required to pull objects from different levels of the memory hierarchy (e.g. CPU caches, Main Memory, Durable Storage, Network, etc), multiple blocks of memory are pulled at a time.
 
-Now consider that bool by default stored only 1 bit (instead of a byte). This means that all your code the compiler generates MUST do bit masking. The extra bytes are fetched anyway because the hardware is word oriented and byte addressable. This the CPU cannot even fetch a single bit from the memory even if it wanted to. So, the CPU fetches extra bytes, performs masking, mutates the bool, puts all the bytes back. All ready that sounds like extra work just to "save" three bits of memory per bool. So the wasted space is actually performing a value. Its offloading space for time. It's "wasting" a little space in order to save A LOT of time.
+A related question is "what does 64-bit computing mean?"
 
-But the time argument gets even worse!
+{{< figure src="/img/bit-bool/64bit-meme.jpg" title="64-bit Compute Meme" >}}
 
-CPU's pipeline (hyper-thread is and example of Intel's branded style of this) The most expensive thing is when a pipeline has to stall waiting for a fetch from main memory (or a write conflict). Now consider the following code;
+The more detailed answer comes from understanding that 64-bit computing means. 
 
-bool one;
+Now consider that bool by default stored only 1 bit (instead of a byte). The apocryphal story of "...640KB is enough for everybody..."[^3] is also related to this point...addressable memory.
 
-bool two;
+You may remember when 32-bit addresses were common. Before that computers were 16-bit and even 8-bit addressable. Many microcontrollers (the things that make your fridge and oven work) are still 8-bit. It's all that needed for those use cases. What this means that given an memory address, how many bytes will be pulled from main memory? This is a hardware level concept. Literally there are ~64 individual wires on the board. These wires signal a stream of bits ``0b0111010101...`` to the RAM. The RAM returns the values represented by that address. 
 
-one = true;
+> Thus, the maximum amount of addressable memory is bounded by the size of the address. In 32 bits, this was 4GB. 
 
-two = false;
+$$2^{32} = 4294967296$$
+$$ 4294967296 / 2^{30} = 4 GB $$
 
-Consider bool is 1-bit (in order to save the most amount of space), now one and two are sharing the same addressable memory (they are both in a single byte). Thus the write to two MUST wait for the write to one. If you are in a multi-core environment, the caches for each CPU stall in order to assure that one finishes before two (because the store of two will affect the store of one)
+In 64 bits, 
+$$2^{64} = 18446744073709551615 bytes$$ 
+$$2^{64} / 2^{50} = 16384 Petabytes $$
 
-Now, consider instead each are in separate addressable sections. one and two could be written at the same time because each is independently addressable!
+If instead we decided that each address represented a single bit, in order to get even 4 GB from our 32-bit computing days we'd need CPUs with  35-bit computers
+
+$$ (2^35 / 8) / 2^30 = 4GB $$
 
 # References
 
 [^1]: Microchip. _dsPIC33F/PIC24H Data Memory_. http://ww1.microchip.com/downloads/en/DeviceDoc/70202C.pdf
 [^2]: You can generate the assembly yourself with your own compiler using the ``-S`` option ``➜  clang -std=c11 -S bitmask.c``
+[^3]: Katz, Jon. _Did Gates Really Say 640K is Enough For Anyone?_ https://www.wired.com/1997/01/did-gates-really-say-640k-is-enough-for-anyone/
