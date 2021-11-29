@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.89.4" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Why is bool one byte: Wasting space to save time&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Why is bool one byte: Wasting space to save time" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Why is bool one byte: Wasting space to save time</h1><p class="article date">Sunday, November 28, 2021</p></section><article class="article markdown-body"><p>Boolean carries 1 bit of information. The canonical example of binary, On/Off,
+True/False. Yet, the bool type in C and C++ is 1 byte large, 8 bits of
+information. Carrying thus $$2^8 = 256$$ representable values. This may not sound like much, but consider an array of bools (a common misunderstanding beginning C++ students make trying to formulate a bit-field): <code>bool fatBitField[8]</code></p>
+<p>This <em>wasted</em> space however has a useful purpose. It a common reason in many optimizations we make in data structures, we trade space for time. In this instance we&rsquo;re trading space for a hardware design principle, addressable memory.</p>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdbool.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+	<span class="kt">bool</span> <span class="n">b</span><span class="p">;</span>
+	<span class="kt">bool</span> <span class="n">fatBitField</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%lu</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">b</span><span class="p">));</span>           <span class="c1">// prints 1
+</span><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%lu</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">fatBitField</span><span class="p">));</span> <span class="c1">// prints 8
+</span><span class="c1"></span>	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>Outputs</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">➜  clang -std<span class="o">=</span>c11 byte.c
+➜  ./a.out
+<span class="m">1</span>
+<span class="m">8</span>
+</code></pre></div><p>x86 based machines and most microprocessors except for some uniquely specialized Digital Signal Processors (DSPs) <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> byte addressable. Thus if you wanted to make a bit-field, to pack bools as tight as possible, how would you do so?</p>
+<p>How do you mutate a single bit in C?</p>
+<h2 id="simple-bool">Simple Bool</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdbool.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+	<span class="kt">bool</span> <span class="n">anInt</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+	<span class="n">anInt</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>Plug this into <a href="">Compiler Explorer</a>
+</p>
+<span class="image-container"><span class="link" ><a href="/img/bit-bool/simple-bit-bool.png" 
+        target="_blank"><img class="img" src="/img/bit-bool/simple-bit-bool.png"/></a></span><span class="caption">
+            <span class="title">Compiler Explorer Simple Bool</span class="image-container-caption">
+        </span>
+</span>
+<p>We can see the source lines 5, and 6 correspond to just two instructions, lines 6 and 7 in in the output assembly.</p>
+<p>Let&rsquo;s compare this, the simplest case to manual bit masking</p>
+<h1 id="manual-bit-masking">Manual Bit Masking</h1>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">anInt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+	<span class="n">anInt</span> <span class="o">=</span> <span class="n">anInt</span> <span class="o">^</span> <span class="mi">0</span><span class="n">b1</span><span class="p">;</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>Outputs</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">➜  clang -std<span class="o">=</span>c11 bitmask.c <span class="c1"># Add a printf to get output. Leave it out to get simpler assembly</span>
+➜  ./a.out
+<span class="m">2</span>
+</code></pre></div><p>Again inspect the assembly with Compiler Explorer<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>
+<span class="image-container"><span class="link" ><a href="/img/bit-bool/bit-mask.png" 
+        target="_blank"><img class="img" src="/img/bit-bool/bit-mask.png"/></a></span><span class="caption">
+            <span class="title">Compiler Explorer Bit Mask</span class="image-container-caption">
+        </span>
+</span></p>
+<p>Notice again how simple the instructions are. The corresponding mutation (grey lines) are short and single instruction. Now let&rsquo;s try to make a fully packed bool, using all 8 bits independently addressable.</p>
+<h1 id="c-bitfields-and-unions-to-preserve-space">C BitFields and Unions to preserve space</h1>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="cp">#pragma pack(1)
+</span><span class="cp"></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">_bitfield</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="nl">one</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="nl">two</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="nl">three</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="nl">four</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="nl">five</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="nl">six</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="nl">seven</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="nl">eight</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">bitfield</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="k">union</span> <span class="n">_asInt</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">asInt</span><span class="p">;</span>
+	<span class="n">bitfield</span> <span class="n">asField</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">BitFieldAsInt</span><span class="p">;</span>
+
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+	<span class="n">BitFieldAsInt</span> <span class="n">field</span><span class="p">;</span>
+	<span class="n">field</span><span class="p">.</span><span class="n">asInt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+	<span class="n">field</span><span class="p">.</span><span class="n">asField</span><span class="p">.</span><span class="n">two</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> 
+
+	<span class="c1">//printf(&#34;%X\n&#34;, field.asInt);
+</span><span class="c1"></span>	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div><p>Again compare in compiler explorer
+<span class="image-container"><span class="link" ><a href="/img/bit-bool/fully-packed.png" 
+        target="_blank"><img class="img" src="/img/bit-bool/fully-packed.png"/></a></span><span class="caption">
+            <span class="title">Compiler Explorer Fully Packed bitfield</span class="image-container-caption">
+        </span>
+</span></p>
+<p>Notice the source line 8. Here you can see it or&rsquo;s a 2.  This is the compiler recognizing we are trying to mutate a single bit. We did an assignment and the compiler changed this to an <code>or</code> instruction. However, even though the compiler recognized our assignment can be implemented as an <code>or</code>, it still takes three instructions to do the same and the previous examples. Thus by trying to save space, we are causing the CPU to work more performing extra instructions.</p>
+<h1 id="well-why-isnt-the-computer-bit-addressable-then">Well, why isn&rsquo;t the computer bit addressable then?</h1>
+<p>The short answer, bit access isn&rsquo;t that common, thus the hardware is optimized for the more common access of bytes. Although due to various levels of cache and the time required to pull objects from different levels of the memory hierarchy (e.g. CPU caches, Main Memory, Durable Storage, Network, etc), multiple blocks of memory are pulled at a time.</p>
+<p>A related question is &ldquo;what does 64-bit computing mean?&rdquo;</p>
+<span class="image-container"><span class="link" ><a href="/img/bit-bool/64bit-meme.jpg" 
+        target="_blank"><img class="img" src="/img/bit-bool/64bit-meme.jpg"/></a></span><span class="caption">
+            <span class="title">64-bit Compute Meme</span class="image-container-caption">
+        </span>
+</span>
+<p>The more detailed answer comes from understanding that 64-bit computing means.</p>
+<p>Now consider that bool by default stored only 1 bit (instead of a byte). The apocryphal story of &ldquo;&hellip;640KB is enough for everybody&hellip;&quot;<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> is also related to this point&hellip;addressable memory.</p>
+<p>You may remember when 32-bit addresses were common. Before that computers were 16-bit and even 8-bit addressable. Many microcontrollers (the things that make your fridge and oven work) are still 8-bit. It&rsquo;s all that needed for those use cases. What this means that given an memory address, how many bytes will be pulled from main memory? This is a hardware level concept. Literally there are ~64 individual wires on the board. These wires signal a stream of bits <code>0b0111010101...</code> to the RAM. The RAM returns the values represented by that address.</p>
+<blockquote>
+<p>Thus, the maximum amount of addressable memory is bounded by the size of the address. In 32 bits, this was 4GB.</p>
+</blockquote>
+<p>$$2^{32} = 4294967296$$
+$$ 4294967296 / 2^{30} = 4 GB $$</p>
+<p>In 64 bits,
+$$2^{64} = 18446744073709551615 bytes$$
+$$2^{64} / 2^{50} = 16384 Petabytes $$</p>
+<p>If instead we decided that each address represented a single bit, in order to get even 4 GB from our 32-bit computing days we&rsquo;d need CPUs with  35-bit computers</p>
+<p>$$ (2^35 / 8) / 2^30 = 4GB $$</p>
+<h1 id="references">References</h1>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Microchip. <em>dsPIC33F/PIC24H Data Memory</em>. <a href="http://ww1.microchip.com/downloads/en/DeviceDoc/70202C.pdf"target="_blank" rel="noopener noreferrer">http://ww1.microchip.com/downloads/en/DeviceDoc/70202C.pdf</a>
+&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>You can generate the assembly yourself with your own compiler using the <code>-S</code> option <code>➜  clang -std=c11 -S bitmask.c</code>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>Katz, Jon. <em>Did Gates Really Say 640K is Enough For Anyone?</em> <a href="https://www.wired.com/1997/01/did-gates-really-say-640k-is-enough-for-anyone/"target="_blank" rel="noopener noreferrer">https://www.wired.com/1997/01/did-gates-really-say-640k-is-enough-for-anyone/</a>
+&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</article><section class="article labels"><a class="tag" href=/tags/hardware/>hardware</a><a class="tag" href=/tags/low-level/>low-level</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.99872df1091f055fca553e0b74b13c09bd383ef42b1c56a9edb651a91f122d56e7bc9a2fad73528246215b379b043226.js#pubid=ra-1234567890" integrity="sha384-mYct8QkfBV/KVT4LdLE8Cb04PvQrHFap7bZRqR8SLVbnvJovrXNSgkYhWzebBDIm"></script>
+</div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2021/09/twenty-first-century-proof/"><span class="iconfont icon-article"></span>21st Century Proof :: Structure makes it possible, hard work makes it probable</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2021 Jeremy Wright</p>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></body>
+
+</html>
