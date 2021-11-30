@@ -160,7 +160,10 @@ $$2^{64} / 2^{50} = 16384 Petabytes $$
 
 If instead we decided that each address represented a single bit, in order to get even 4 GB from our 32-bit computing days we'd need CPUs with  35-bit computers
 
-$$ (2^35 / 8) / 2^30 = 4GB $$
+$$ (2^{35} / 8) / 2^{30} = 4GB $$
+
+Thus making a bit addressable memory, requires more hardware. However are those resources worthwhile? It's all about access patterns. How is most memory utilized? Again it largely depends on the domain, which is why some processors have special addressing modes. However on most computing, we want to fetch large blocks of time to amortize the cost of fetching from the next level in the memory cache. "Paying" the time to fetch from the next physical location with wasteful for single bits. 
+
 
 # References
 
