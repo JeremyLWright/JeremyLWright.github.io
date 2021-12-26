@@ -35,6 +35,12 @@ Research Interests
 - Testing
 - Databases
 
+Social Media
+------------
+
+- [LinkedIn](https://www.linkedin.com/in/jeremylwright/)
+- [Twitter](https://twitter.com/FunctionalLazy)
+
 Talks
 -----
 - 2<sup>nd</sup> Place Arizona State [Toastmasters International Speech 2018](https://aztoastmasters.org/spring-2018-contest-results/)
