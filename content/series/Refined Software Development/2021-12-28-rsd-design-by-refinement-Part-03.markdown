@@ -2,6 +2,7 @@
 title: "Design by Refinement Part 3: Sorting by Refinement"
 date: 2021-12-28T00:00:00-07:00
 slug: rsd-sorting 
+draft: true
 series: ["Refined Software Development"]
 languages:
 - tla+

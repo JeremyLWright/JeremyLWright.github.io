@@ -2,6 +2,7 @@
 title: "Design by Refinement Part 2: Define your system before you propose a solution"
 date: 2021-12-25T00:00:00-07:00
 slug: rsd-sorting 
+draft: true
 series: ["Refined Software Development"]
 languages:
 - tla+
