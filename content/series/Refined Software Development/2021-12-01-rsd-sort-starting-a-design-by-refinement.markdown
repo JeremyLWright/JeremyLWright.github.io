@@ -1,6 +1,6 @@
 ---
 title: "TDD is not Design: How refinement, not tests, elucidates abstraction"
-date: 2021-12-01T00:00:00-07:00
+date: 2021-12-28T00:00:00-07:00
 slug: rsd-sorting 
 series: ["Refined Software Development"]
 languages:
