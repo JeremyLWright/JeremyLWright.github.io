@@ -2,11 +2,11 @@ baseurl = "https://quiescent.us/"
 languageCode = "en-us"
 enableRobotsTXT = true
 title = "The Quiescent Current"
-copyright = "©2021 Jeremy Wright"
+copyright = "©2022 Jeremy Wright"
 
 disqusShortname = "codestrokes2"
 pygmentsuseclasses = true
-theme="hugo-notepadium2"
+theme="minimal-bootstrap-hugo-theme"
 
 [taxonomies]
   series = "series"
@@ -17,10 +17,6 @@ theme="hugo-notepadium2"
 [permalinks]
     posts = "/:year/:month/:slug/"
 
-[markup.highlight]
-	codeFences = true
-	noClasses = false
-
 [params]
 	sidebartitle="The Quiescent Current"
 	style="light"
@@ -28,65 +24,75 @@ theme="hugo-notepadium2"
 	slogan="Go Far. Go Together."
     GoogleAnalytics="UA-168773592-1"
     highlightStyle = "docco"
-
-[params.share]
-	enable = true
-	addThisId = "ra-1234567890"
-	inlineToolId = ""
-
-[params.comments]
-	enable=true
-
-[params.profile]
-  enable = false
-  avatar = "/img/avatar.jpg"
-  name = "Jeremy Wright"
-  bio = "[About Me](/about/)"  # support markdown syntax
-  github = "JeremyLWright"  # https://github.com/XXX
+	description = "Some description"
+	contentBackgroundColor = "#fff"
+	contentTextColor = "#212529"
+	contentLinkColor = "#007bff"
+	contentLinkHoverColor = "#0056b3"
+	navbarBackgroundColor = "#212529"
+	navbarLinkColor = "rgba(255, 255, 255, 0.75)"
+	navbarLinkHoverColor = "rgba(255, 255, 255, 1)"
+	wrapperMaxWidth = "800px"
+	customDateFormat = "Jan 2, 2006"
+	customCodeStyle = true
+	customBlockquoteStyle = true
+	showPostSummary = false
+	googleAnalytics = "UA-123456789-1"
+	cookieConsent = true
+	includeBootstrapJs = false
+	faviconSafariPinnedTabColor = "#5bbad5"
+	faviconMsApplicationTileColor = "#da532c"
+	faviconThemeColor = "#ffffff"
 
 [params.math]
     enable = true  
     use = "katex"  # option: "katex", "mathjax". default: "katex"
 
-[[params.nav.custom]]
-	title = "Blog"
-	url = "/posts"
+[menu]
+  [[Menus.nav]]
+  Name = "Posts"
+  url = "/posts"
+  weight = 1
+  [[Menus.nav]]
+  Name = "Series"
+  url = "/series"
+  weight = 2
+  [[Menus.nav]]
+  Name = "Tags"
+  url = "/tags"
+  weight = 2
+  [[Menus.nav]]
+  Name = "About"
+  url = "/about"
+  weight = 4
 
-[params.nav]
-	showSeries = true
-	showTags = true
-
-[[params.nav.custom]]
-	title = "Series"
-	url = "/series"
-
-[[params.nav.custom]]
-	title = "Languages"
-	url = "/languages"
-
-[[params.nav.custom]]
-	title = "About"
-	url = "/about"
-
-[[menu.footer]]
-    name = "Blog"
-    url = "/posts"
-	
-[[menu.footer]]
-    name = "Series"
-	url = "/series"
-
-[[menu.social]]
-    pre = "<i class='fa fa-github'></i>"
-    url = "https://github.com/JeremyLWright"
-    identifier = "github"
-
-[[menu.social]]
-    pre = "<i class='fa fa-twitter'></i>"
-    url = "https://www.twitter.com/jeremy_l_wright"
-    identifier = "twitter"
-
-[[menu.social]]
-    pre = "<i class='fa fa-linkedin'></i>"
-    url = "https://www.linkedin.com/pub/jeremy-wright/5b/8/844"
-    identifier = "linkedin"
+[markup]
+  defaultMarkdownHandler = "goldmark"
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+    [markup.goldmark.parser]
+      attribute = true
+      autoHeadingID = true
+    [markup.goldmark.renderer]
+      hardWraps = false
+      unsafe = true
+      xHTML = false
+  [markup.highlight]
+    codeFences = true
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "monokai"
+    tabWidth = 4
+  [markup.tableOfContents]
+    endLevel = 6
+    startLevel = 2
