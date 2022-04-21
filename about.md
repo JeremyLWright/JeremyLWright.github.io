@@ -58,4 +58,3 @@ My Free Time
 ------------
 - [dotfiles](https://github.com/JeremyLWright/dotfiles)
 - ![Project Euler](https://projecteuler.net/profile/jwright85.png)
-
