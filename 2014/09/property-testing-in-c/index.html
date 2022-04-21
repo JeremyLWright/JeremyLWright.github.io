@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.89.4" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.97.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <meta name="supported-color-schemes" content="light dark"><title>Property Testing in C&#43;&#43;&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Property Testing in C&#43;&#43;" /><body><section id="header">
@@ -7,52 +7,52 @@
         <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
     <h1 class="article title">Property Testing in C++</h1><p class="article date">Wednesday, September 3, 2014</p></section><article class="article markdown-body"><!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">float</span> <span class="nf">payroll</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">size_t</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">person_id</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">hours</span><span class="p">)</span> <span class="p">{</span> 
-    <span class="k">if</span><span class="p">(</span><span class="n">hours</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span> 
-        <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&#34;Hours cannot be greater than 100&#34;</span><span class="p">);</span> 
-    <span class="k">auto</span> <span class="n">overtime</span> <span class="o">=</span> <span class="n">hours</span> <span class="o">-</span> <span class="mi">40</span><span class="p">;</span> 
-    <span class="k">return</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">overtime</span> <span class="o">*</span> <span class="mi">15</span><span class="p">;</span> 
-<span class="p">}</span>
-</code></pre></div><p>This is obviously wrong, but let&rsquo;s suspend that for a moment and think about
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">float</span> <span class="nf">payroll</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">size_t</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">person_id</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">hours</span><span class="p">)</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">hours</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&#34;Hours cannot be greater than 100&#34;</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="n">overtime</span> <span class="o">=</span> <span class="n">hours</span> <span class="o">-</span> <span class="mi">40</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">overtime</span> <span class="o">*</span> <span class="mi">15</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>This is obviously wrong, but let&rsquo;s suspend that for a moment and think about
 properties i.e. invariants we can verify.</p>
 <p>The first property verifies that we do not write a negative paycheck. The
 return type of the function is float, which supports negative values even
 though the output domain of our specification forbids it. Lets write
 a property over the valid input range of hours that we don&rsquo;t generate negative
 pay.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">PropTestPositivePay</span> <span class="o">:</span> <span class="n">cppqc</span><span class="o">::</span><span class="n">Property</span>
-<span class="p">{</span> 
-    <span class="n">PropTestPositivePay</span><span class="p">()</span> <span class="o">:</span> <span class="n">Property</span><span class="p">(</span><span class="n">cppqc</span><span class="o">::</span><span class="n">choose</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span> <span class="p">{}</span> 
-    
-    <span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span>  <span class="n">hours</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> 
-        <span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">size_t</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">id</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span> 
-        <span class="k">return</span> <span class="n">uut</span><span class="o">::</span><span class="n">payroll</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">hours</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> 
-    <span class="p">}</span>
-
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="s">&#34;Pay should be positive&#34;</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">classify</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">v</span><span class="p">)</span> <span class="k">const</span>
-    <span class="p">{</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">sstr</span><span class="p">;</span>
-        <span class="n">sstr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Hours &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span><span class="p">;</span>
-        <span class="k">return</span> <span class="n">sstr</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
-    <span class="p">}</span>
-
-    <span class="kt">bool</span> <span class="nf">trivial</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span>  <span class="n">v</span><span class="p">)</span> <span class="k">const</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="n">v</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div><!-- raw HTML omitted -->
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">jwright@phaseshift-linux:~/art/CppQuickCheck/b$ ./examples/testPayroll
-* Checking property <span class="s2">&#34;Pay should be positive&#34;</span> ...
-* *** Failed! Falsifiable after <span class="m">32</span> tests <span class="k">for</span> input:
-*   0: <span class="m">24</span>
-*
-</code></pre></div><p>Cool it found that an input of 0 will falsify the test. Lets add some more tests.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">PropTestPositivePay</span> <span class="o">:</span> <span class="n">cppqc</span><span class="o">::</span><span class="n">Property</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">PropTestPositivePay</span><span class="p">()</span> <span class="o">:</span> <span class="n">Property</span><span class="p">(</span><span class="n">cppqc</span><span class="o">::</span><span class="n">choose</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span> <span class="p">{}</span> 
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span>  <span class="n">hours</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">size_t</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">id</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">uut</span><span class="o">::</span><span class="n">payroll</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">hours</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;Pay should be positive&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">classify</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">v</span><span class="p">)</span> <span class="k">const</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">sstr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sstr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Hours &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">sstr</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">trivial</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span>  <span class="n">v</span><span class="p">)</span> <span class="k">const</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">v</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jwright@phaseshift-linux:~/art/CppQuickCheck/b$ ./examples/testPayroll
+</span></span><span class="line"><span class="cl">* Checking property <span class="s2">&#34;Pay should be positive&#34;</span> ...
+</span></span><span class="line"><span class="cl">* *** Failed! Falsifiable after <span class="m">32</span> tests <span class="k">for</span> input:
+</span></span><span class="line"><span class="cl">*   0: <span class="m">24</span>
+</span></span><span class="line"><span class="cl">*
+</span></span></code></pre></div><p>Cool it found that an input of 0 will falsify the test. Lets add some more tests.</p>
 <p>Let&rsquo;s add a property that verifies for the input range of overtime that the
 function doesn’t pay all hours at the $10 rate nor all the hours at the $15
 rate. The correct implementation is some mixture of these two.  This
@@ -69,124 +69,124 @@ domain without requiring 1 single verifier to duplicate behavior. This
 property doesn’t exactly know what the correct payroll is. It isn’t
 calculating the correct value, it’s just excluding values that it cannot be.</p>
 <!-- raw HTML omitted -->
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">PropTestOvertimeRateHigher</span> <span class="o">:</span> <span class="n">cppqc</span><span class="o">::</span><span class="n">Property</span> 
-<span class="p">{</span> 
-    <span class="n">PropTestOvertimeRateHigher</span><span class="p">()</span>
-    <span class="o">:</span>
-    <span class="n">Property</span><span class="p">(</span><span class="n">cppqc</span><span class="o">::</span><span class="n">choose</span><span class="p">(</span><span class="mi">41</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span> <span class="p">{}</span> 
-    
-    <span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span>  <span class="n">hours</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> 
-    
-        <span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">size_t</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">id</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span> 
-        <span class="k">auto</span> <span class="n">pay</span> <span class="o">=</span> <span class="n">uut</span><span class="o">::</span><span class="n">payroll</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">hours</span><span class="p">);</span> 
-        <span class="k">return</span> <span class="n">pay</span> <span class="o">&gt;</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">&amp;&amp;</span>  <span class="n">pay</span> <span class="o">&lt;</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">//You cannot get paid all overtime or all standard pay
-</span><span class="c1"></span>    <span class="p">}</span>
-
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="s">&#34;You cannot get paid all overtime, or all std time&#34;</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">classify</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">v</span><span class="p">)</span> <span class="k">const</span>
-    <span class="p">{</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">sstr</span><span class="p">;</span>
-        <span class="n">sstr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Hours &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span><span class="p">;</span>
-        <span class="k">return</span> <span class="n">sstr</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
-    <span class="p">}</span>
-
-    <span class="kt">bool</span> <span class="nf">trivial</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span>  <span class="n">v</span><span class="p">)</span> <span class="k">const</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="n">v</span> <span class="o">==</span> <span class="mi">40</span><span class="p">;</span>
-    <span class="p">}</span>
-
-<span class="p">};</span>
-</code></pre></div><p>Following this thought of excluding a range and testing a simpler property,
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">PropTestOvertimeRateHigher</span> <span class="o">:</span> <span class="n">cppqc</span><span class="o">::</span><span class="n">Property</span> 
+</span></span><span class="line"><span class="cl"><span class="p">{</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">PropTestOvertimeRateHigher</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Property</span><span class="p">(</span><span class="n">cppqc</span><span class="o">::</span><span class="n">choose</span><span class="p">(</span><span class="mi">41</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span> <span class="p">{}</span> 
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span>  <span class="n">hours</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">size_t</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">id</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">auto</span> <span class="n">pay</span> <span class="o">=</span> <span class="n">uut</span><span class="o">::</span><span class="n">payroll</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">hours</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">pay</span> <span class="o">&gt;</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">&amp;&amp;</span>  <span class="n">pay</span> <span class="o">&lt;</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">//You cannot get paid all overtime or all standard pay
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;You cannot get paid all overtime, or all std time&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">classify</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">v</span><span class="p">)</span> <span class="k">const</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">sstr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sstr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Hours &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">sstr</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">trivial</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span>  <span class="n">v</span><span class="p">)</span> <span class="k">const</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">v</span> <span class="o">==</span> <span class="mi">40</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><p>Following this thought of excluding a range and testing a simpler property,
 lets test the payroll without considering overtime. In this case the
 calculation is simple so we can provide a full implementation.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">PropTestIgnoreOvertime</span> <span class="o">:</span> <span class="n">cppqc</span><span class="o">::</span><span class="n">Property</span>
-<span class="p">{</span>
-    <span class="n">PropTestIgnoreOvertime</span><span class="p">()</span> <span class="o">:</span> <span class="n">Property</span><span class="p">(</span><span class="n">cppqc</span><span class="o">::</span><span class="n">choose</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">))</span> <span class="p">{}</span>
-    <span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span>  <span class="n">hours</span><span class="p">)</span> <span class="k">const</span>
-    <span class="p">{</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">size_t</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">id</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span>
-        <span class="k">auto</span> <span class="n">pay</span> <span class="o">=</span> <span class="n">uut</span><span class="o">::</span><span class="n">payroll</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">hours</span><span class="p">);</span>
-        <span class="k">return</span> <span class="n">pay</span> <span class="o">==</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="s">&#34;Not working overtime makes the math easy.&#34;</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">classify</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">v</span><span class="p">)</span> <span class="k">const</span>
-    <span class="p">{</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">sstr</span><span class="p">;</span>
-        <span class="n">sstr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Hours &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span><span class="p">;</span>
-        <span class="k">return</span> <span class="n">sstr</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
-    <span class="p">}</span>
-    <span class="kt">bool</span> <span class="nf">trivial</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span>  <span class="n">v</span><span class="p">)</span> <span class="k">const</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="n">v</span> <span class="o">==</span> <span class="mi">40</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div><p>We run the tests a few times and see the failing test cases. These data are random. Running the test multiple times fails differently, but minimization results in the same or similar values each time to help the programmer debug. So let&rsquo;s fix this code and watch the tests pass to avoid the <!-- raw HTML omitted -->mockery and scandal of code review<!-- raw HTML omitted --></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">float</span> <span class="nf">payroll</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">size_t</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">person_id</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">hours</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">hours</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span>
-        <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&#34;Hours cannot be greater than 100&#34;</span><span class="p">);</span>
-    <span class="k">auto</span> <span class="n">overtime</span> <span class="o">=</span> <span class="n">hours</span> <span class="o">-</span> <span class="mi">40</span><span class="p">;</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">overtime</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">overtime</span> <span class="o">*</span> <span class="mi">15</span><span class="p">;</span>
-    <span class="k">else</span>
-        <span class="k">return</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">* Checking property <span class="s2">&#34;Not working overtime makes the math easy.&#34;</span> ...
-*** Failed! Falsifiable after <span class="m">1</span> <span class="nb">test</span> and <span class="m">1</span> shrink <span class="k">for</span> input:
-0: <span class="m">0</span>
-</code></pre></div><p>To be honest, while setting up the tests for this post I fully expected the
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">PropTestIgnoreOvertime</span> <span class="o">:</span> <span class="n">cppqc</span><span class="o">::</span><span class="n">Property</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">PropTestIgnoreOvertime</span><span class="p">()</span> <span class="o">:</span> <span class="n">Property</span><span class="p">(</span><span class="n">cppqc</span><span class="o">::</span><span class="n">choose</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">))</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span>  <span class="n">hours</span><span class="p">)</span> <span class="k">const</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">size_t</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">id</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">        <span class="k">auto</span> <span class="n">pay</span> <span class="o">=</span> <span class="n">uut</span><span class="o">::</span><span class="n">payroll</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">hours</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">pay</span> <span class="o">==</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;Not working overtime makes the math easy.&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">classify</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">v</span><span class="p">)</span> <span class="k">const</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">sstr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sstr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Hours &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">sstr</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">trivial</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span>  <span class="n">v</span><span class="p">)</span> <span class="k">const</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">v</span> <span class="o">==</span> <span class="mi">40</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><p>We run the tests a few times and see the failing test cases. These data are random. Running the test multiple times fails differently, but minimization results in the same or similar values each time to help the programmer debug. So let&rsquo;s fix this code and watch the tests pass to avoid the <!-- raw HTML omitted -->mockery and scandal of code review<!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">float</span> <span class="nf">payroll</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">size_t</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">person_id</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">hours</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">hours</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&#34;Hours cannot be greater than 100&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="n">overtime</span> <span class="o">=</span> <span class="n">hours</span> <span class="o">-</span> <span class="mi">40</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">overtime</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">overtime</span> <span class="o">*</span> <span class="mi">15</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">* Checking property <span class="s2">&#34;Not working overtime makes the math easy.&#34;</span> ...
+</span></span><span class="line"><span class="cl">*** Failed! Falsifiable after <span class="m">1</span> <span class="nb">test</span> and <span class="m">1</span> shrink <span class="k">for</span> input:
+</span></span><span class="line"><span class="cl">0: <span class="m">0</span>
+</span></span></code></pre></div><p>To be honest, while setting up the tests for this post I fully expected the
 tests to start passing and this article would end here. Instead I learned some
 real value on using these properties as a debugging and design tool. Let&rsquo;s add
 a printf to the code to get a sense what&rsquo;s happening</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">* Checking property <span class="s2">&#34;Not working overtime makes the math easy.&#34;</span> ...
-Overtime: <span class="m">18446744073709551576</span> &lt;--- Whoa what happened there?
-*** Failed! Falsifiable after <span class="m">1</span> <span class="nb">test</span> and <span class="m">1</span> shrink <span class="k">for</span> input:
-0: <span class="m">0</span>
-</code></pre></div><p>Overtime seems to be an unsigned value, and passing in 0 causes the value to wrap around. The rule (<a href="http://scottmeyers.blogspot.com/2013/07/when-decltype-meets-auto.html"target="_blank" rel="noopener noreferrer">http://scottmeyers.blogspot.com/2013/07/when-decltype-meets-auto.html</a>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">* Checking property <span class="s2">&#34;Not working overtime makes the math easy.&#34;</span> ...
+</span></span><span class="line"><span class="cl">Overtime: <span class="m">18446744073709551576</span> &lt;--- Whoa what happened there?
+</span></span><span class="line"><span class="cl">*** Failed! Falsifiable after <span class="m">1</span> <span class="nb">test</span> and <span class="m">1</span> shrink <span class="k">for</span> input:
+</span></span><span class="line"><span class="cl">0: <span class="m">0</span>
+</span></span></code></pre></div><p>Overtime seems to be an unsigned value, and passing in 0 causes the value to wrap around. The rule (<a href="http://scottmeyers.blogspot.com/2013/07/when-decltype-meets-auto.html"target="_blank" rel="noopener noreferrer">http://scottmeyers.blogspot.com/2013/07/when-decltype-meets-auto.html</a>
 ) assures that overtime becomes a size_t since hours is size_t. We can force floating conversion by stating that 40 is a floating point number.<!-- raw HTML omitted --></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">float</span> <span class="nf">payroll</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">size_t</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">person_id</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">hours</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">hours</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span>
-        <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&#34;Hours cannot be greater than 100&#34;</span><span class="p">);</span>
-    <span class="k">auto</span> <span class="n">overtime</span> <span class="o">=</span> <span class="n">hours</span> <span class="o">-</span> <span class="mf">40.0</span><span class="p">;</span> <span class="c1">//&lt;-- Force implicit floating point cast
-</span><span class="c1"></span>    <span class="k">if</span><span class="p">(</span><span class="n">overtime</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">overtime</span> <span class="o">*</span> <span class="mi">15</span><span class="p">;</span>
-    <span class="k">else</span>
-        <span class="k">return</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">* Checking property <span class="s2">&#34;Pay should be positive&#34;</span> ...
-+++ OK, passed <span class="m">100</span> tests <span class="o">(</span>40% trivial<span class="o">)</span>.
-* Checking property <span class="s2">&#34;You cannot get paid all overtime, or all std time&#34;</span> ...
-*** Failed! Falsifiable after <span class="m">1</span> <span class="nb">test</span> and <span class="m">1</span> shrink <span class="k">for</span> input:
-  0: <span class="m">60</span>
-* Checking property <span class="s2">&#34;Not working overtime makes the math easy.&#34;</span> ...
-+++ OK, passed <span class="m">100</span> tests.
-</code></pre></div><p>Argh! Still wrong? The property must be wrong. Notice that the properties are quite simple. No single test verifies the full range, but the properties provide useful documentation and make it easy to reason about the code. The properties are probably correct then. &hellip;yeah, it wasn&rsquo;t the property…</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">float</span> <span class="nf">payroll</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">size_t</span>  <span class="mi">5</span> <span class="p">,</span><span class="o">&gt;</span> <span class="n">person_id</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">hours</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">hours</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span>
-        <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&#34;Hours cannot be greater than 100&#34;</span><span class="p">);</span>
-    <span class="k">auto</span> <span class="n">overtime</span> <span class="o">=</span> <span class="n">hours</span> <span class="o">-</span> <span class="mf">40.0</span><span class="p">;</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">overtime</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">hours</span> <span class="o">-</span> <span class="n">overtime</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">overtime</span> <span class="o">*</span> <span class="mi">15</span><span class="p">;</span>
-    <span class="k">else</span>
-        <span class="k">return</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">* Checking property <span class="s2">&#34;Pay should be positive&#34;</span> ...
-+++ OK, passed <span class="m">100</span> tests <span class="o">(</span>40% trivial<span class="o">)</span>.
-* Checking property <span class="s2">&#34;You cannot get paid all overtime, or all std time&#34;</span> ...
-+++ OK, passed <span class="m">100</span> tests.
-* Checking property <span class="s2">&#34;Not working overtime makes the math easy.&#34;</span> ...
-+++ OK, passed <span class="m">100</span> tests.
-</code></pre></div><p>I started this article wanting to post a simple tutorial on Property testing,
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">float</span> <span class="nf">payroll</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">size_t</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">person_id</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">hours</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">hours</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&#34;Hours cannot be greater than 100&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="n">overtime</span> <span class="o">=</span> <span class="n">hours</span> <span class="o">-</span> <span class="mf">40.0</span><span class="p">;</span> <span class="c1">//&lt;-- Force implicit floating point cast
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span><span class="p">(</span><span class="n">overtime</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">overtime</span> <span class="o">*</span> <span class="mi">15</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">* Checking property <span class="s2">&#34;Pay should be positive&#34;</span> ...
+</span></span><span class="line"><span class="cl">+++ OK, passed <span class="m">100</span> tests <span class="o">(</span>40% trivial<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">* Checking property <span class="s2">&#34;You cannot get paid all overtime, or all std time&#34;</span> ...
+</span></span><span class="line"><span class="cl">*** Failed! Falsifiable after <span class="m">1</span> <span class="nb">test</span> and <span class="m">1</span> shrink <span class="k">for</span> input:
+</span></span><span class="line"><span class="cl">  0: <span class="m">60</span>
+</span></span><span class="line"><span class="cl">* Checking property <span class="s2">&#34;Not working overtime makes the math easy.&#34;</span> ...
+</span></span><span class="line"><span class="cl">+++ OK, passed <span class="m">100</span> tests.
+</span></span></code></pre></div><p>Argh! Still wrong? The property must be wrong. Notice that the properties are quite simple. No single test verifies the full range, but the properties provide useful documentation and make it easy to reason about the code. The properties are probably correct then. &hellip;yeah, it wasn&rsquo;t the property…</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">float</span> <span class="nf">payroll</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">size_t</span>  <span class="mi">5</span> <span class="p">,</span><span class="o">&gt;</span> <span class="n">person_id</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">hours</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">hours</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&#34;Hours cannot be greater than 100&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="n">overtime</span> <span class="o">=</span> <span class="n">hours</span> <span class="o">-</span> <span class="mf">40.0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">overtime</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">(</span><span class="n">hours</span> <span class="o">-</span> <span class="n">overtime</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">overtime</span> <span class="o">*</span> <span class="mi">15</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">* Checking property <span class="s2">&#34;Pay should be positive&#34;</span> ...
+</span></span><span class="line"><span class="cl">+++ OK, passed <span class="m">100</span> tests <span class="o">(</span>40% trivial<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">* Checking property <span class="s2">&#34;You cannot get paid all overtime, or all std time&#34;</span> ...
+</span></span><span class="line"><span class="cl">+++ OK, passed <span class="m">100</span> tests.
+</span></span><span class="line"><span class="cl">* Checking property <span class="s2">&#34;Not working overtime makes the math easy.&#34;</span> ...
+</span></span><span class="line"><span class="cl">+++ OK, passed <span class="m">100</span> tests.
+</span></span></code></pre></div><p>I started this article wanting to post a simple tutorial on Property testing,
 instead I learned to be a bit more careful using auto, and even when the
 function is simple, programmers can make mistakes. For the final logic error,
 the failing input was 60. Thinking about my directed test method, I would
@@ -197,11 +197,11 @@ I would have missed the 60 hours bug, and there is the possibility that
 I missed typed the numbers on my calculator and type in a wrong expected
 value. This example is quite simple but still an interesting demonstration of
 property testing. I&rsquo;m looking forward to applying property testing to my next
-project.</p></article><section class="article labels"><a class="tag" href=/tags/c&#43;&#43;/>c&#43;&#43;</a><a class="tag" href=/tags/unit-test/>unit test</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.99872df1091f055fca553e0b74b13c09bd383ef42b1c56a9edb651a91f122d56e7bc9a2fad73528246215b379b043226.js#pubid=ra-1234567890" integrity="sha384-mYct8QkfBV/KVT4LdLE8Cb04PvQrHFap7bZRqR8SLVbnvJovrXNSgkYhWzebBDIm"></script>
+project.</p></article><section class="article labels"><a class="tag" href=/tags/c&#43;&#43;/>c&#43;&#43;</a><a class="tag" href=/tags/unit-test/>unit test</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.26acbe1a2ce9f782f6bbf368cc6d28f1d234a8ab8310cbcbb6eb69dcd155f2067db37beaa642aedf370075d14d02d307.js#pubid=ra-1234567890" integrity="sha384-Jqy&#43;Gizp94L2u/NozG0o8dI0qKuDEMvLtutp3NFV8gZ9s3vqpkKu3zcAddFNAtMH"></script>
 </div>
 <div class="article bottom"><section class="article navigation"><p><a class="link" href="/2015/02/introduction-to-pointers/"><span class="iconfont icon-article"></span>Introduction to Pointers</a></p><p><a class="link" href="/2014/08/what-is-a-unit-test/"><span class="iconfont icon-article"></span>What is a Unit Test?</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.89.4" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.97.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <meta name="supported-color-schemes" content="light dark"><title>The Red-Black Tree&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="The Red-Black Tree" /><body><section id="header">
@@ -20,30 +20,30 @@
  (<a href="http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization"target="_blank" rel="noopener noreferrer">Wikipedia</a>
 )”. Smart Pointers help achieve this.  The Smart pointer offloads much of this responsibility, hiding the complexity, thereby allowing the programmer to focus solely on the task at hand. I use an idiom I learned from my friend <a href="http://www.chrisanderman.com/"target="_blank" rel="noopener noreferrer">Chris</a>
 , to hide all raw pointers.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp">
-    
-    <span class="cp">#include</span> 
-    
-    <span class="cpf">//Smart Class Idiom for RAII in C++</span><span class="cp">
-</span><span class="cp"></span>    <span class="k">class</span> <span class="nc">SmartClass</span>
-    <span class="p">{</span>
-    <span class="k">public</span><span class="o">:</span>
-        <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">shared_ptr</span> <span class="n">Ptr</span><span class="p">;</span>
-        <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">weak_ptr</span> <span class="n">WeakPtr</span><span class="p">;</span>
-        <span class="k">static</span> <span class="n">SmartClass</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">construct</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
-        <span class="p">{</span>
-    	<span class="n">SmartClass</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">c</span><span class="p">(</span><span class="k">new</span> <span class="n">SmartClass</span><span class="p">());</span>
-    	<span class="n">c</span><span class="o">-&gt;</span><span class="n">self</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
-    	<span class="k">return</span> <span class="n">c</span><span class="p">;</span>
-        <span class="p">}</span>
-    
-        <span class="k">virtual</span> <span class="o">~</span><span class="n">SmartClass</span><span class="p">();</span>
-    <span class="k">private</span><span class="o">:</span>
-        <span class="n">SmartClass</span><span class="p">();</span>
-        <span class="n">SmartClass</span><span class="o">::</span><span class="n">WeakPtr</span> <span class="n">self</span><span class="p">;</span>
-    
-    <span class="p">};</span>
-</code></pre></div><p>This is a very useful pattern for managing memory. The developer is not
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="cp">#include</span> 
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="cpf">//Smart Class Idiom for RAII in C++</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>    <span class="k">class</span> <span class="nc">SmartClass</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">shared_ptr</span> <span class="n">Ptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">weak_ptr</span> <span class="n">WeakPtr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">static</span> <span class="n">SmartClass</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">construct</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    	<span class="n">SmartClass</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">c</span><span class="p">(</span><span class="k">new</span> <span class="n">SmartClass</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    	<span class="n">c</span><span class="o">-&gt;</span><span class="n">self</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    	<span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">        <span class="k">virtual</span> <span class="o">~</span><span class="n">SmartClass</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SmartClass</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SmartClass</span><span class="o">::</span><span class="n">WeakPtr</span> <span class="n">self</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span></code></pre></div><p>This is a very useful pattern for managing memory. The developer is not
 required to call delete, the smart pointer will do it automatically. Memory
 management is still not automatic, however. The programmer needs to resolve
 the smart vs. weak pointer relationship.  While this strong vs. weak is a much
@@ -67,83 +67,83 @@ Searching a linked list is O(n) or “linear” time, not the preferable O(log n
 </p>
 <p>The Red-Black tree uses graph coloring to maintain balance. Balance guarantee’s O(log n) search performance.</p>
 <h3 id="c-insert">C++ Insert</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp">
-    
-    <span class="kt">void</span> <span class="n">RedBlackTree</span><span class="o">::</span><span class="n">Insert</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">key</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">z</span> <span class="o">=</span> <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">construct</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
-        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">x</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
-        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">y</span> <span class="o">=</span> <span class="n">nil</span><span class="p">;</span>
-    
-        <span class="k">while</span><span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="n">nil</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
-            <span class="k">if</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Key</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">Key</span><span class="p">())</span>
-                <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">();</span>
-            <span class="k">else</span>
-                <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">();</span>
-        <span class="p">}</span>
-    
-        <span class="n">z</span><span class="o">-&gt;</span><span class="n">Parent</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">nil</span><span class="p">)</span>
-            <span class="n">root</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
-        <span class="k">else</span> <span class="nf">if</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Key</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">Key</span><span class="p">())</span>
-            <span class="n">y</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">(</span><span class="n">z</span><span class="p">);</span>
-        <span class="k">else</span>
-            <span class="n">y</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">(</span><span class="n">z</span><span class="p">);</span>
-        <span class="n">z</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">(</span><span class="n">nil</span><span class="p">);</span>
-        <span class="n">z</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">(</span><span class="n">nil</span><span class="p">);</span>
-        <span class="n">z</span><span class="o">-&gt;</span><span class="n">Color</span><span class="p">(</span><span class="n">RedBlackNode</span><span class="o">::</span><span class="n">RED</span><span class="p">);</span>
-        <span class="n">Insert_Fixup</span><span class="p">(</span><span class="n">z</span><span class="p">);</span>
-    <span class="p">}</span>
-</code></pre></div><p>There are a few issues with this implementation.  If an exception occurs while inserting a node, the Insert_Fixup() doesn’t get run.  An exception in this code, will not cause a memory, leak, however it will leave the tree in an indeterminate state. Any subsequent insertion into the tree will cause Insert_Fixup() to fail. This is <strong>NOT</strong> correct code.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">RedBlackTree</span><span class="o">::</span><span class="n">Insert</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">z</span> <span class="o">=</span> <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">construct</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">x</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">y</span> <span class="o">=</span> <span class="n">nil</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">        <span class="k">while</span><span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="n">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Key</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">Key</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">                <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span>
+</span></span><span class="line"><span class="cl">                <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">        <span class="n">z</span><span class="o">-&gt;</span><span class="n">Parent</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">root</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="nf">if</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Key</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">Key</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="n">y</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">(</span><span class="n">z</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">            <span class="n">y</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">(</span><span class="n">z</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">z</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">(</span><span class="n">nil</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">z</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">(</span><span class="n">nil</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">z</span><span class="o">-&gt;</span><span class="n">Color</span><span class="p">(</span><span class="n">RedBlackNode</span><span class="o">::</span><span class="n">RED</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Insert_Fixup</span><span class="p">(</span><span class="n">z</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></div><p>There are a few issues with this implementation.  If an exception occurs while inserting a node, the Insert_Fixup() doesn’t get run.  An exception in this code, will not cause a memory, leak, however it will leave the tree in an indeterminate state. Any subsequent insertion into the tree will cause Insert_Fixup() to fail. This is <strong>NOT</strong> correct code.</p>
 <h3 id="c-delete">C++ Delete</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp">    <span class="kt">void</span> <span class="n">RedBlackTree</span><span class="o">::</span><span class="n">Delete</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">key</span><span class="p">)</span>
-    <span class="p">{</span>
-    
-        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Search</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
-        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">x</span><span class="p">;</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">z</span> <span class="o">==</span> <span class="n">nil</span><span class="p">)</span>
-            <span class="k">return</span><span class="p">;</span>
-    
-        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">y</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
-        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">color_t</span> <span class="n">original_color</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">Color</span><span class="p">();</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">()</span> <span class="o">==</span> <span class="n">nil</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">();</span>
-            <span class="n">Transplant</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">());</span>
-        <span class="p">}</span>
-        <span class="k">else</span> <span class="nf">if</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">()</span> <span class="o">==</span> <span class="n">nil</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">();</span>
-            <span class="n">Transplant</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">());</span>
-        <span class="p">}</span>
-        <span class="k">else</span>
-        <span class="p">{</span>
-            <span class="n">y</span> <span class="o">=</span> <span class="n">Minimum</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">());</span>
-            <span class="n">original_color</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">Color</span><span class="p">();</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">();</span>
-            <span class="k">if</span><span class="p">(</span><span class="n">y</span><span class="o">-&gt;</span><span class="n">Parent</span><span class="p">()</span> <span class="o">==</span> <span class="n">z</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="n">x</span><span class="o">-&gt;</span><span class="n">Parent</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
-            <span class="p">}</span>
-            <span class="k">else</span>
-            <span class="p">{</span>
-                <span class="n">Transplant</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">());</span>
-                <span class="n">y</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">());</span>
-                <span class="n">y</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">Parent</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
-            <span class="p">}</span>
-            <span class="n">Transplant</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
-            <span class="n">y</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">());</span>
-            <span class="n">y</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">Parent</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
-            <span class="n">y</span><span class="o">-&gt;</span><span class="n">Color</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Color</span><span class="p">());</span>
-        <span class="p">}</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">original_color</span> <span class="o">==</span> <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">BLACK</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">Delete_Fixup</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-</code></pre></div><p>The Smart Pointer pointer idiom really flexes its power here. The most difficult part about the Red-Black Tree implementation is deleting nodes. One needs to be careful not to delete nodes too soon and cause a <a href="http://en.wikipedia.org/wiki/Dangling_pointer"target="_blank" rel="noopener noreferrer"><em>dangling-pointer</em></a>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">RedBlackTree</span><span class="o">::</span><span class="n">Delete</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Search</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">z</span> <span class="o">==</span> <span class="n">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">y</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">color_t</span> <span class="n">original_color</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">Color</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">()</span> <span class="o">==</span> <span class="n">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Transplant</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="nf">if</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">()</span> <span class="o">==</span> <span class="n">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Transplant</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">y</span> <span class="o">=</span> <span class="n">Minimum</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">            <span class="n">original_color</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">Color</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="p">(</span><span class="n">y</span><span class="o">-&gt;</span><span class="n">Parent</span><span class="p">()</span> <span class="o">==</span> <span class="n">z</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">x</span><span class="o">-&gt;</span><span class="n">Parent</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Transplant</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">                <span class="n">y</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">                <span class="n">y</span><span class="o">-&gt;</span><span class="n">Right</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">Parent</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Transplant</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">y</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">            <span class="n">y</span><span class="o">-&gt;</span><span class="n">Left</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">Parent</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">y</span><span class="o">-&gt;</span><span class="n">Color</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">Color</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">original_color</span> <span class="o">==</span> <span class="n">RedBlackNode</span><span class="o">::</span><span class="n">BLACK</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Delete_Fixup</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></div><p>The Smart Pointer pointer idiom really flexes its power here. The most difficult part about the Red-Black Tree implementation is deleting nodes. One needs to be careful not to delete nodes too soon and cause a <a href="http://en.wikipedia.org/wiki/Dangling_pointer"target="_blank" rel="noopener noreferrer"><em>dangling-pointer</em></a>
 _ _yet, its important that one does delete the nodes to prevent a leak memory, however as you can see there are no delete calls above. The Smart Pointers handle delete when the node falls out of scope.  This implementation does not leak memory! (See the valgrind scripts for evidence).  That is a powerful statement in C++, and difficult to achieve with manual memory management.</p>
 <p>Additionally, smart pointers indirectly offer a very powerful tool: Division of responsibility. The Smart pointers are responsible for managing memory. In the spirit of the <em>Single-Responsibility-Theorem</em>, they only manage memory, and they do it well. So well, that the developer can focus on the algorithm alone, instead of disrupting the flow with extra memory management code.</p>
 <h4 id="conclusion">Conclusion</h4>
@@ -153,12 +153,12 @@ _ _yet, its important that one does delete the nodes to prevent a leak memory, h
 <p>D provides a number of features that helps one write transactional, <strong>correct</strong> code. One issue, is in C++, exceptions are much of a “bolt-on” feature.  Much as exceptions are pervasive in our daily lives so in D, exceptions are pervasive in the language.  Its naïve to believe that code will not fail, yet this is how exception management in C++ feels. As evidence of this, one may throw an exception from anywhere in D, even in a destructor; C++ cannot do <a href="http://www.parashift.com/c&#43;&#43;-faq-lite/exceptions.html#faq-17.9"target="_blank" rel="noopener noreferrer">this</a>
 .</p>
 <p>In Part 2, we’ll look at how D’s exception management, garbage collection, and the <a href="http://www.d-programming-language.org/exception-safe.html"target="_blank" rel="noopener noreferrer">scope() statement</a>
- help us write clear, correct code, while lowering incidental complexity.</p></article><section class="article labels"><a class="tag" href=/tags/algorithm/>Algorithm</a><a class="tag" href=/tags/comparison/>comparison</a><a class="tag" href=/tags/data-structure/>Data Structure</a><a class="tag" href=/tags/tree/>Tree</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.99872df1091f055fca553e0b74b13c09bd383ef42b1c56a9edb651a91f122d56e7bc9a2fad73528246215b379b043226.js#pubid=ra-1234567890" integrity="sha384-mYct8QkfBV/KVT4LdLE8Cb04PvQrHFap7bZRqR8SLVbnvJovrXNSgkYhWzebBDIm"></script>
+ help us write clear, correct code, while lowering incidental complexity.</p></article><section class="article labels"><a class="tag" href=/tags/algorithm/>Algorithm</a><a class="tag" href=/tags/comparison/>comparison</a><a class="tag" href=/tags/data-structure/>Data Structure</a><a class="tag" href=/tags/tree/>Tree</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.26acbe1a2ce9f782f6bbf368cc6d28f1d234a8ab8310cbcbb6eb69dcd155f2067db37beaa642aedf370075d14d02d307.js#pubid=ra-1234567890" integrity="sha384-Jqy&#43;Gizp94L2u/NozG0o8dI0qKuDEMvLtutp3NFV8gZ9s3vqpkKu3zcAddFNAtMH"></script>
 </div>
 <div class="article bottom"><div class="article navigation"><h3 id="series">This series</h3>
     <ol><li><span class="iconfont icon-article"></span><b>The Red-Black Tree</b></li><li><a class="link" href="https://quiescent.us/series/the-red-black-tree/class-invariants-red-black-tree-part-2/"><span class="iconfont icon-article"></span>Class Invariants</a></li><li><a class="link" href="https://quiescent.us/series/the-red-black-tree/d-for-the-c-programmer-red-black-tree-part-3/"><span class="iconfont icon-article"></span>D for the C++ Programmer</a></li></ol></div><section class="article discussion"><div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

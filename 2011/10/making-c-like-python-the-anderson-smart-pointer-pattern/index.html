@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.89.4" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.97.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <meta name="supported-color-schemes" content="light dark"><title>Making C&#43;&#43; like Python: The Anderson Smart Pointer Pattern&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Making C&#43;&#43; like Python: The Anderson Smart Pointer Pattern" /><body><section id="header">
@@ -55,11 +55,11 @@ Name::Ptr Name::construct()
 <pre><code>Name::Ptr myInstance = Name::construct();
 </code></pre>
 <p>This Pattern will make one extra virtual call as it performs the reference counting, but the performance hit is typically nominal compared to the safety it provides to the system. The Anderson Smart-Pointer Pattern increases robustness of your programs, but interestingly it also provides a new elegance. Since one is not managing memory, and resources constantly, it makes C++ perform more like a high level language. For example, I implemented a <a href="https://bitbucket.org/jwright/cse310-red-black-tree/src/d787e75b724a/BaseCode/RedBlackTree.cpp#cl-137"target="_blank" rel="noopener noreferrer">red black tree</a>
- using this pattern.  I didn&rsquo;t need to worry about deleting nodes, just the requirements of my program. With the incidental complexity relegated to a single class, I am left with the elegant, expressiveness of Python, yet retain the raw performance of C++.</p></article><section class="article labels"><a class="tag" href=/tags/coding/>Coding</a><a class="tag" href=/tags/memory/>memory</a><a class="tag" href=/tags/python/>Python</a><a class="tag" href=/tags/raii/>RAII</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.99872df1091f055fca553e0b74b13c09bd383ef42b1c56a9edb651a91f122d56e7bc9a2fad73528246215b379b043226.js#pubid=ra-1234567890" integrity="sha384-mYct8QkfBV/KVT4LdLE8Cb04PvQrHFap7bZRqR8SLVbnvJovrXNSgkYhWzebBDIm"></script>
+ using this pattern.  I didn&rsquo;t need to worry about deleting nodes, just the requirements of my program. With the incidental complexity relegated to a single class, I am left with the elegant, expressiveness of Python, yet retain the raw performance of C++.</p></article><section class="article labels"><a class="tag" href=/tags/coding/>Coding</a><a class="tag" href=/tags/memory/>memory</a><a class="tag" href=/tags/python/>Python</a><a class="tag" href=/tags/raii/>RAII</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.26acbe1a2ce9f782f6bbf368cc6d28f1d234a8ab8310cbcbb6eb69dcd155f2067db37beaa642aedf370075d14d02d307.js#pubid=ra-1234567890" integrity="sha384-Jqy&#43;Gizp94L2u/NozG0o8dI0qKuDEMvLtutp3NFV8gZ9s3vqpkKu3zcAddFNAtMH"></script>
 </div>
 <div class="article bottom"><section class="article navigation"><p><a class="link" href="/2011/11/parallel-binary-buddy-the-friendly-memory-manager/"><span class="iconfont icon-article"></span>Parallel Binary Buddy: The Friendly Memory Manager</a></p><p><a class="link" href="/2011/10/parallel-game-of-life/"><span class="iconfont icon-article"></span>Parallel Game-of-Life</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

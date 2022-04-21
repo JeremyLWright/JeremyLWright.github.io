@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.89.4" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.97.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <meta name="supported-color-schemes" content="light dark"><title>Using QuickCheck&#39;s Positive Type Level Modifier&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Using QuickCheck&#39;s Positive Type Level Modifier" /><body><section id="header">
@@ -36,17 +36,17 @@ completely lost at trying to build a property with only positive generator
 values.</p>
 <p>This particular test is trying to show that the height of the pyramid is the
 length of the out put array/list.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-haskell" data-lang="haskell"><span class="nf">prop_heightIsLength</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span>  <span class="kt">Bool</span>
-<span class="nf">prop_heightIsLength</span> <span class="n">height</span> <span class="ow">=</span> <span class="n">length</span> <span class="p">(</span> <span class="n">buildTower</span> <span class="n">height</span> <span class="p">)</span> <span class="o">==</span> <span class="n">height</span>
-</code></pre></div><p>However, <code>buildTower</code> only defined for positive values. My first pass of
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-haskell" data-lang="haskell"><span class="line"><span class="cl"><span class="nf">prop_heightIsLength</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span>  <span class="kt">Bool</span>
+</span></span><span class="line"><span class="cl"><span class="nf">prop_heightIsLength</span> <span class="n">height</span> <span class="ow">=</span> <span class="n">length</span> <span class="p">(</span> <span class="n">buildTower</span> <span class="n">height</span> <span class="p">)</span> <span class="o">==</span> <span class="n">height</span>
+</span></span></code></pre></div><p>However, <code>buildTower</code> only defined for positive values. My first pass of
 the property is generates negative values (and 0 values) as input. After some
 searching I was able to find the Positive type modifier for quickcheck.</p>
 <p><a href="https://hackage.haskell.org/package/QuickCheck-2.4.1.1/docs/Test-QuickCheck.html#t:Positive"target="_blank" rel="noopener noreferrer">https://hackage.haskell.org/package/QuickCheck-2.4.1.1/docs/Test-QuickCheck.html#t:Positive</a>
 </p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-haskell" data-lang="haskell"><span class="nf">prop_heightIsLength</span> <span class="ow">::</span> <span class="kt">Positive</span> <span class="kt">Int</span> <span class="ow">-&gt;</span>  <span class="kt">Bool</span>
-<span class="nf">prop_heightIsLength</span> <span class="n">height</span> <span class="ow">=</span> <span class="n">length</span> <span class="p">(</span> <span class="n">buildTower</span> <span class="n">height</span> <span class="p">)</span> <span class="o">==</span> <span class="n">height</span>
-</code></pre></div><p>However, this doesn&rsquo;t compile.</p>
-<pre tabindex="0"><code>Couldn't match expected type ‘Positive Int’
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-haskell" data-lang="haskell"><span class="line"><span class="cl"><span class="nf">prop_heightIsLength</span> <span class="ow">::</span> <span class="kt">Positive</span> <span class="kt">Int</span> <span class="ow">-&gt;</span>  <span class="kt">Bool</span>
+</span></span><span class="line"><span class="cl"><span class="nf">prop_heightIsLength</span> <span class="n">height</span> <span class="ow">=</span> <span class="n">length</span> <span class="p">(</span> <span class="n">buildTower</span> <span class="n">height</span> <span class="p">)</span> <span class="o">==</span> <span class="n">height</span>
+</span></span></code></pre></div><p>However, this doesn&rsquo;t compile.</p>
+<pre tabindex="0"><code>Couldn&#39;t match expected type ‘Positive Int’
                   with actual type ‘Int’
 </code></pre><p>Which brings me to my biggest challenge in learning anything new. Frequently
 in learning something new I don&rsquo;t have enough knowledge to ask the right
@@ -66,15 +66,15 @@ use the built in constraints!</p>
 <p>Why is this so hard?
 Because I didn&rsquo;t know how to read the type signature of the Postive type.</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-haskell" data-lang="haskell"><span class="c1">-- This property does not compile</span>
-<span class="nf">prop_heightIsLength</span> <span class="ow">::</span> <span class="kt">Positive</span> <span class="kt">Int</span> <span class="ow">-&gt;</span>  <span class="kt">Bool</span>
-<span class="nf">prop_heightIsLength</span> <span class="n">height</span> <span class="ow">=</span> <span class="n">length</span> <span class="p">(</span> <span class="n">buildTower</span> <span class="n">height</span> <span class="p">)</span> <span class="o">==</span> <span class="n">height</span>
-
-
-<span class="c1">-- This property compiles</span>
-<span class="nf">prop_heightIsLength&#39;</span> <span class="ow">::</span> <span class="kt">Positive</span> <span class="kt">Int</span> <span class="ow">-&gt;</span>  <span class="kt">Bool</span>
-<span class="nf">prop_heightIsLength&#39;</span> <span class="p">(</span><span class="kt">Positive</span> <span class="n">height</span><span class="p">)</span> <span class="ow">=</span> <span class="n">length</span> <span class="p">(</span> <span class="n">buildTower</span> <span class="n">height</span> <span class="p">)</span> <span class="o">==</span> <span class="n">height</span>
-</code></pre></div><p>Naively, I thought the different is the parenthesis. Remember, parenthesis are
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-haskell" data-lang="haskell"><span class="line"><span class="cl"><span class="c1">-- This property does not compile</span>
+</span></span><span class="line"><span class="cl"><span class="nf">prop_heightIsLength</span> <span class="ow">::</span> <span class="kt">Positive</span> <span class="kt">Int</span> <span class="ow">-&gt;</span>  <span class="kt">Bool</span>
+</span></span><span class="line"><span class="cl"><span class="nf">prop_heightIsLength</span> <span class="n">height</span> <span class="ow">=</span> <span class="n">length</span> <span class="p">(</span> <span class="n">buildTower</span> <span class="n">height</span> <span class="p">)</span> <span class="o">==</span> <span class="n">height</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">-- This property compiles</span>
+</span></span><span class="line"><span class="cl"><span class="nf">prop_heightIsLength&#39;</span> <span class="ow">::</span> <span class="kt">Positive</span> <span class="kt">Int</span> <span class="ow">-&gt;</span>  <span class="kt">Bool</span>
+</span></span><span class="line"><span class="cl"><span class="nf">prop_heightIsLength&#39;</span> <span class="p">(</span><span class="kt">Positive</span> <span class="n">height</span><span class="p">)</span> <span class="ow">=</span> <span class="n">length</span> <span class="p">(</span> <span class="n">buildTower</span> <span class="n">height</span> <span class="p">)</span> <span class="o">==</span> <span class="n">height</span>
+</span></span></code></pre></div><p>Naively, I thought the different is the parenthesis. Remember, parenthesis are
 <em>only used for grouping</em> in haskell. They have no other purpose. The different
 is <em>what is bound to the name <code>height</code></em>. In the first version, I&rsquo;m binding
 a <code>Positive Int</code> to the name <code>height</code> in the second version I&rsquo;m
@@ -83,11 +83,11 @@ assures that the values bound to it&rsquo;s parameter are always positive. The b
 value however will retain the <code>Int</code> type, even though it&rsquo;s value is always
 positive.</p>
 <p>I&rsquo;m unstuck now. Moving on.</p>
-</article><section class="article labels"><a class="tag" href=/tags/quickcheck/>QuickCheck</a><a class="tag" href=/tags/im-stuck/>I&#39;m Stuck</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.99872df1091f055fca553e0b74b13c09bd383ef42b1c56a9edb651a91f122d56e7bc9a2fad73528246215b379b043226.js#pubid=ra-1234567890" integrity="sha384-mYct8QkfBV/KVT4LdLE8Cb04PvQrHFap7bZRqR8SLVbnvJovrXNSgkYhWzebBDIm"></script>
+</article><section class="article labels"><a class="tag" href=/tags/quickcheck/>QuickCheck</a><a class="tag" href=/tags/im-stuck/>I&#39;m Stuck</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.26acbe1a2ce9f782f6bbf368cc6d28f1d234a8ab8310cbcbb6eb69dcd155f2067db37beaa642aedf370075d14d02d307.js#pubid=ra-1234567890" integrity="sha384-Jqy&#43;Gizp94L2u/NozG0o8dI0qKuDEMvLtutp3NFV8gZ9s3vqpkKu3zcAddFNAtMH"></script>
 </div>
 <div class="article bottom"><section class="article navigation"><p><a class="link" href="/2021/03/not-incremental/"><span class="iconfont icon-article"></span>The World Is Not Incremental</a></p><p><a class="link" href="/2020/05/learning-process/"><span class="iconfont icon-article"></span>My Learning Process</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
