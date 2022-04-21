@@ -4,6 +4,7 @@ author: Jeremy
 nocomment: true
 date: 2020-12-20 17:30:00-07:00
 slug: about
+layout: page
 ---
 
 > When you do things right, no one can be sure you did anything at all.
