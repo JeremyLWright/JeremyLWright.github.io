@@ -6,10 +6,38 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>©2021 Jeremy Wright</copyright>
-    <lastBuildDate>Sun, 28 Nov 2021 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 05 Apr 2022 00:00:00 -0700</lastBuildDate>
     
         <atom:link href="https://quiescent.us/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Modulus in 5 minutes</title>
+      <link>https://quiescent.us/2022/04/5-min-pointers/</link>
+      <pubDate>Tue, 05 Apr 2022 00:00:00 -0700</pubDate>
+      
+      <guid>https://quiescent.us/2022/04/5-min-pointers/</guid>
+      <description>
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/JOm9V89d1Qk&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>Pointers in 5 minutes</title>
+      <link>https://quiescent.us/2022/04/5-min-pointers/</link>
+      <pubDate>Tue, 05 Apr 2022 00:00:00 -0700</pubDate>
+      
+      <guid>https://quiescent.us/2022/04/5-min-pointers/</guid>
+      <description>
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/C10NkwcoMPM&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+</description>
+    </item>
     
     <item>
       <title>Why is bool one byte: Wasting space to save time</title>
@@ -153,302 +181,6 @@ $$2^{64} / 2^{50} = 16384 Petabytes $$&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
 &lt;p&gt;Katz, Jon. &lt;em&gt;Did Gates Really Say 640K is Enough For Anyone?&lt;/em&gt; &lt;a href=&#34;https://www.wired.com/1997/01/did-gates-really-say-640k-is-enough-for-anyone/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;https://www.wired.com/1997/01/did-gates-really-say-640k-is-enough-for-anyone/&lt;/a&gt;
-&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/section&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Flowcharts as a Conversation: Rubber Ducking our Designs</title>
-      <link>https://quiescent.us/series/refined-software-development/rsd-vending/</link>
-      <pubDate>Mon, 08 Nov 2021 00:00:00 -0700</pubDate>
-      
-      <guid>https://quiescent.us/series/refined-software-development/rsd-vending/</guid>
-      <description>&lt;p&gt;Imagine a design process as a conversation. What could you accomplish if you could
-ask your designs questions? That flow chart on the wall or whiteboard&amp;hellip; What
-would you ask it if you could?&lt;/p&gt;
-&lt;h1 id=&#34;the-devil-is-in-the-details&#34;&gt;The Devil is in the Details&lt;/h1&gt;
-&lt;p&gt;Have you ever worked with a detail-oriented colleague? One of those
-individuals who consistently asks you to clarify your position. Whenever you
-make an adjustment, this colleague goes back and rechecks all previous
-statements. They&amp;rsquo;re your partner.  They aren&amp;rsquo;t there to affirm you, or your ego.
-They are there to assure the work you do is as correct as it can be. They
-allow you to remain mentally at the high-level concepts, while they concern
-themselves with the minutia.  Our experience shows us that it is the minutia
-that introduces fundamental flaws, concepts we addressed, but relaxed for some
-other constraint suddenly renders our algorithms errant. The English idiom,
-&lt;em&gt;the devil is in the details&lt;/em&gt; is nowhere less true than software.&lt;/p&gt;
-&lt;p&gt;In this post, I propose &lt;a href=&#34;https://github.com/tlaplus&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;TLA+&lt;/a&gt;
-&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; is your
-detail-oriented colleague, a mechanical friend for transforming your
-flowcharts and design sketches into a conversation where the computer helps
-you identify gaps and fallacies. We&amp;rsquo;ll also see how &lt;a href=&#34;https://quiescent.us/img/soda.png&#34;&gt;TLA+ can draw your flowcharts&lt;/a&gt;
- as well so you don&amp;rsquo;t lose that visual feedback.&lt;/p&gt;
-&lt;p&gt;TLA+ is a specification language. TLA+ targets a tool called TLC. Together
-they can help you design applications, especially concurrent and parallel
-systems. TLA+ while being a deeply rigorous verification tool for parallel
-systems, can also be used for sketching simple systems. Engineers and students
-alike use flow charts to sketch their programs. TLA+ can be used for these
-simple use cases as well a conversational transformation from a static description
-of boxes and arrows to a interactive conversation.&lt;/p&gt;
-&lt;h2 id=&#34;caveats-to-the-reader&#34;&gt;Caveats to the reader&lt;/h2&gt;
-&lt;p&gt;If you are a reader who&amp;rsquo;s an accomplished programmer, or you know programming
-and software engineering well, this post may seem simplistic, however I encourage
-you to read this post and watch the video&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. TLA+ is a deep tool but it is
-only through humility that we can learn to express it&amp;rsquo;s power. TLA+ will
-render you a beginner again. This is a good thing, although you will not feel
-productive immediately. You will not skim the book over a weekend and apply it
-to your problem on Monday.  This will take time, but I believe it is time well
-spent.&lt;/p&gt;
-&lt;p&gt;Give TLA+ a chance to work &lt;em&gt;on&lt;/em&gt; you, so that it can work &lt;em&gt;for&lt;/em&gt; you.&lt;/p&gt;
-&lt;p&gt;This post is intended to be paired with the video&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; below.&lt;/p&gt;
-
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://www.youtube.com/embed/alyqcphUaiI&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-
-&lt;!-- raw HTML omitted --&gt;
-&lt;h1 id=&#34;without-tla-we-design-with-a-yes-man&#34;&gt;Without TLA+ we design with a &amp;lsquo;Yes-Man&amp;rsquo;&lt;/h1&gt;
-&lt;p&gt;Whiteboards don&amp;rsquo;t check anything. They are a medium for getting
-your thoughts out of your head. This is a great technique for slowing down,
-yes. When you need to brainstorm, or &lt;em&gt;ideation&lt;/em&gt; you don&amp;rsquo;t want that detail
-focus. In that phase, Whiteboards are great! Use them! However, once that
-phase is done, jumping from whiteboards to coding could be a mistake.
-Whiteboards don&amp;rsquo;t check anything. They don&amp;rsquo;t help reason through the details.
-They don&amp;rsquo;t check that the system actually achieves your goal. They don&amp;rsquo;t check
-that the system has subtlety errant transitions.&lt;/p&gt;
-&lt;h2 id=&#34;a-simple-vending-machine&#34;&gt;A Simple Vending Machine&lt;/h2&gt;
-&lt;p&gt;For example, given a sketch of a vending machine, you could ask questions such
-as, &amp;ldquo;Will you vend soda without money?&amp;rdquo; Or potentially you could ask, &amp;ldquo;What
-would you do if you ran out of soda?&amp;rdquo; Conversation is a powerful tool for
-thought, however the quality of the conversation as a diagnostic tool is
-dependent on who the conversation is with.&lt;/p&gt;
-
-
-  
-    
-  
-
-
-&lt;figure&gt;
-  &lt;img
-    src=&#39;https://g.gravizo.com/svg?%0adigraph%20A%20%7b%0a%22Want%20Soda%22%20-%3e%20%22Have%20Soda%22%20%5blabel%3d%22Money%20in%20Machine%22%5d%3b%0a%22Have%20Soda%22%20-%3e%20%22Want%20Soda%22%20%5blabel%3d%22Drink%20Soda%22%5d%3b%0a%7d%0a&#39;
-    alt=&#39;What would you ask a flowchart?&#39;
-    /&gt;
-    &lt;figcaption&gt;What would you ask a flowchart?&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;This graph is simple, but as we can immediately see it&amp;rsquo;s too simple to express
-our needs. It doesn&amp;rsquo;t capture how much money we have, or that our money is
-decreasing as we drink soda. In the traditional paradigm, we just add more
-states&lt;/p&gt;
-
-
-  
-    
-  
-
-
-&lt;figure&gt;
-  &lt;img
-    src=&#39;https://g.gravizo.com/svg?%0adigraph%20A%20%7b%0a%22I%20have%20money%3f%22%20-%3e%20%22I%20Want%20Soda%22%20%5blabel%3d%22Yes%22%5d%3b%0a%22I%20have%20money%3f%22%20-%3e%20%22%3f%3f%3f%22%20%5blabel%3d%22No%22%5d%3b%20%0a%22I%20Want%20Soda%22%20-%3e%20%22I%20Have%20Soda%22%20%5blabel%3d%22Money%20in%20Machine%22%5d%3b%0a%22I%20Have%20Soda%22%20-%3e%20%22I%20Want%20Soda%22%20%5blabel%3d%22Drink%20Soda%22%5d%3b%0a%7d%0a&#39;
-    alt=&#39;More detail, but still hard to &amp;#39;check&amp;#39;&#39;
-    /&gt;
-    &lt;figcaption&gt;More detail, but still hard to &amp;#39;check&amp;#39;&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;What happens when you don&amp;rsquo;t have money? If your design as a conversation, and
-entity you could interview, not only would the design process be more
-collaborative, but your designs would be more resistant to change.  Finally,
-instead of just drawing within a design tool, using the computer for little
-more than a collaborative scratch-pad the computer itself would be a colleague
-assisting your design and though process.  Helping to identify details you may
-mentally &lt;em&gt;skip over&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Now, herein lies the value of leaving the whiteboard, and providing
-a checkable system definition. We could, with enough effort and time prove to
-ourselves that the system is sound. Given enough effort and time, we could
-potentially be correct. However we don&amp;rsquo;t build systems alone. For your next
-colleague to understand the system they&amp;rsquo;d have to apply the same thought
-process, the same rigorous, tedious, process to prove to themselves they
-understand the system and that it achieves the goal. Furthermore, this process?
-Includes you. You have to be present in transferring that knowledge. Other
-engineering disciplines don&amp;rsquo;t do this. They produce blueprints, models,
-&lt;em&gt;finite element analyses&lt;/em&gt;, that serve are checkable artifacts the system
-design is sound, that the components chosen meet specified criteria. We
-software engineers should be so bold to follow the footsteps of the
-hard-sciences and specify our systems.&lt;/p&gt;
-&lt;h1 id=&#34;setting-up-tla&#34;&gt;Setting up TLA+&lt;/h1&gt;
-&lt;p&gt;Markus Kuppe has a great walk through of using the toolbox&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;. If you simply hate Eclipse, that&amp;rsquo;s
-understandable and there is a VS Code offering as well. However, if you are
-using TLA+ for the first time, I recommend trying the toolbox since it&amp;rsquo;s the
-easiest to get started. In my experience defining the models takes some tribal
-knowledge in the VS code style. While it&amp;rsquo;s easier for a git workflow, it takes
-some getting used to. Try the toolbox first, then decide if you should choose
-VS Code instead.&lt;/p&gt;
-&lt;h2 id=&#34;setup-tlc-to-draw-flowchartsstate-diagrams&#34;&gt;Setup TLC to draw flowcharts/state-diagrams&lt;/h2&gt;
-&lt;p&gt;Add parameters to the TLC command line in the toolbox &lt;code&gt;-dump dot,actionlabels,colorize,snapshot  soda.dot&lt;/code&gt;
-&lt;a href=&#34;https://quiescent.us/img/2021-11-03-tla-plus-as-a-flowchart.png&#34;&gt;Configure TLC to dump state diagram&lt;/a&gt;
-&lt;/p&gt;
-&lt;p&gt;Doing this will dump a new file &lt;code&gt;soda.dot&lt;/code&gt; every time the model is run.
-I like to put an fswatch on the dot file so the diagram redraws automatically.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;fswatch -o soda.dot | xargs -n1 dot soda.dot -Tpng -osoda.png&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Now everytime soda.dot changes, the dot compiler will make a new png.&lt;/p&gt;
-&lt;h1 id=&#34;sketching-out-soda-machine&#34;&gt;Sketching out soda machine&lt;/h1&gt;
-&lt;p&gt;Imagine we have the following toy program or assignment.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Design a vending machine.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;The machine must take money, and deliver soda.&lt;/li&gt;
-&lt;li&gt;If no soda is available then the machine must not keep the money.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;What&amp;rsquo;s your traditional design process? Sketch a flowchart, or some UML? Let&amp;rsquo;s
-take a step back and recall how we used to design things before we were
-programmers. Those first programs we design where it all fit inside &lt;code&gt;main() &lt;/code&gt;  because we didn&amp;rsquo;t know how to make functions yet. In a word, Let&amp;rsquo;s Start
-Simply.&lt;/p&gt;
-&lt;h2 id=&#34;what-are-the-variables&#34;&gt;What are the variables?&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;I, the user, wants soda, so lets make a variable for that &lt;code&gt;IWantSoda&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Next, there is a soda machine with some number of sodas inside
-&lt;code&gt;sodaMachine&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;I could presently have a soda or not, &lt;code&gt;IHaveSoda&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Finally, I have some amount of money, &lt;code&gt;Money&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The professional programmers among you may be thinking
-now about abstractions. The electrical engineers among you may be thinking how
-the hardware will function or what interrupts need to be configured. These are
-good, but let&amp;rsquo;s come &lt;em&gt;up&lt;/em&gt; a level of detail. In a future post I will describe
-&lt;em&gt;refinement&lt;/em&gt; as a method of connecting a very high-level description, the
-essence/pseudocode of our designs to an actual design.&lt;/p&gt;
-&lt;p&gt;Great, now that we have the variables let&amp;rsquo;s consider what possible values
-those variables have.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;Money&lt;/code&gt; must be greater than or equal to 0.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;sodaMachine&lt;/code&gt; must be greater than or equal to 0 sodas.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;IWantSoda&lt;/code&gt; is true or false.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;IHaveSoda&lt;/code&gt; is true or false.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;That&amp;rsquo;s it. That&amp;rsquo;s our domain. So let&amp;rsquo;s next consider our actions.&lt;/p&gt;
-&lt;h2 id=&#34;what-are-the-actions&#34;&gt;What are the Actions?&lt;/h2&gt;
-&lt;p&gt;An action in TLA+ is a transition between states. It&amp;rsquo;s simply the edges of our
-flowchart.&lt;/p&gt;
-
-
-  
-    
-  
-
-
-&lt;figure&gt;
-  &lt;img
-    src=&#39;https://g.gravizo.com/svg?%0adigraph%20A%20%7b%0a%22Some%20State%20A%22%20-%3e%20%22Some%20State%20B%22%20%5blabel%3d%22Edges%20are%20actions%22%5d%3b%0a%7d%0a&#39;
-    alt=&#39;Edges are actions&#39;
-    /&gt;
-    &lt;figcaption&gt;Edges are actions&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;ol&gt;
-&lt;li&gt;If the soda machine has soda, and I don&amp;rsquo;t, then I put money in the machine.
-That&amp;rsquo;s an action &lt;code&gt;PutMoneyInMachine&lt;/code&gt; (This might become
-a function/procedure in our final program, but for now, let&amp;rsquo;s just call it
-an action)
-&lt;ol&gt;
-&lt;li&gt;When I put money in the machine either the machine has soda, or it
-doesn&amp;rsquo;t. If it does then the machine takes my money and gives me
-a soda.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;That&amp;rsquo;s it. Our system is pretty simple, when we have money, we buy soda until
-the machine is out of soda, or we are out of money. So far, TLA+ hasn&amp;rsquo;t given
-us anything a normal flowchart can&amp;rsquo;t, but we&amp;rsquo;re about to make our flowchart
-answer questions.&lt;/p&gt;
-&lt;h2 id=&#34;interviewing-our-flowchart&#34;&gt;Interviewing our Flowchart&lt;/h2&gt;
-&lt;p&gt;What would you ask our design if you could? Perhaps, Do I eventually got soda?
-TLA+ uses a branch of mathematics called Temporal Logic, which allows us to
-ask questions such as &lt;em&gt;eventually&lt;/em&gt; and &lt;em&gt;always&lt;/em&gt;. Additionally, we can combine
-these to ask if &amp;ldquo;once something happens it remains&amp;rdquo;. In TLA+ we express these
-questions with &lt;code&gt;&amp;lt;&amp;gt; means eventually&lt;/code&gt; and &lt;code&gt;[] means always&lt;/code&gt;.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;English&lt;/th&gt;
-&lt;th&gt;TLA+&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;eventually&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;always&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;[]&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Thus our question:&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;English&lt;/th&gt;
-&lt;th&gt;TLA+&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&amp;ldquo;Do I eventually get soda&amp;rdquo;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;&amp;gt;IHaveSoda&lt;/code&gt; (Remember IHaveSoda TRUE or FALSE, i.e., &lt;code&gt;IHaveSoda \in {TRUE, FALSE}&lt;/code&gt;).&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;However, we can only have soda, if we have money, hence we need to express the
-idea if &amp;ldquo;&lt;em&gt;always&lt;/em&gt; when I have money, then &lt;em&gt;eventually&lt;/em&gt; I have soda&amp;rdquo; This is called
-&amp;ldquo;implication&amp;rdquo; in TLA+ we express this as &lt;code&gt;[](IHaveMoney =&amp;gt; &amp;lt;&amp;gt;IHaveSoda)&lt;/code&gt;&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;English&lt;/th&gt;
-&lt;th&gt;TLA+&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;em&gt;always&lt;/em&gt; when I have money, then &lt;em&gt;eventually&lt;/em&gt; I have soda&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;[](IHaveMoney =&amp;gt; &amp;lt;&amp;gt;IHaveSoda)&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;However, as we&amp;rsquo;ll see in the video&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;, TLC finds a counter-example for this
-temporal equation. TLC shows us a case we didn&amp;rsquo;t consider.&lt;/p&gt;
-&lt;p&gt;That&amp;rsquo;s it! Let&amp;rsquo;s model this in TLA+ and see how the process makes our designs
-interactive. Follow along with the video&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;, or check-out the spec and play with
-it yourself.&lt;/p&gt;
-&lt;h1 id=&#34;acknowledgements&#34;&gt;Acknowledgements&lt;/h1&gt;
-&lt;p&gt;My deepest thanks to my colleagues for providing an environment conducive of
-learning and applying this material. I&amp;rsquo;d like to thank &lt;a href=&#34;https://github.com/Alexander-N&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Alexander Niederbühl&lt;/a&gt;
- for his review of this post and his
-consistent attendance of our TLA+ study group. I&amp;rsquo;d like to thank &lt;a href=&#34;https://github.com/johnmcconnell&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;John McConnell&lt;/a&gt;
- for asking thought provoking
-questions that drive me to better understand. Finally, I&amp;rsquo;d like to thank the TLA+
-mailing list for kindly engaging with my questions and taking each question as
-an opportunity to teach.&lt;/p&gt;
-&lt;h1 id=&#34;references&#34;&gt;References&lt;/h1&gt;
-&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;TLC is an explicit state model checker for specifications written in TLA+. The TLA+Toolbox is an IDE for TLA+.  &lt;a href=&#34;https://github.com/tlaplus&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;https://github.com/tlaplus&lt;/a&gt;
-&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;Wright, Jeremy. Sketching Designs with TLA+. &lt;a href=&#34;https://youtu.be/alyqcphUaiI&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;https://youtu.be/alyqcphUaiI&lt;/a&gt;
-&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;Kuppe, Markus. TLA+ Toolbox. &lt;a href=&#34;https://www.youtube.com/watch?v=U2FAnyPygrA&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;https://www.youtube.com/watch?v=U2FAnyPygrA&lt;/a&gt;
 &amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
@@ -779,64 +511,6 @@ facts and ideas into Anki cards. These cards serve as a foundation for
 understanding. Facts themselves cannot build intuition but they provide
 anchors for a framework of understanding.&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>TLA&#43; Chapter 1: Reflection</title>
-      <link>https://quiescent.us/series/pratical-tla&#43;/tla-chap1/</link>
-      <pubDate>Mon, 25 May 2020 15:00:14 -0700</pubDate>
-      
-      <guid>https://quiescent.us/series/pratical-tla&#43;/tla-chap1/</guid>
-      <description>&lt;p&gt;The first time I opened &lt;a href=&#34;https://www.hillelwayne.com/post/practical-tla/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Hillel&amp;rsquo;s
-book&lt;/a&gt;
- and skimmed the first
-chapter I was subconsciously looking for a reason not to sink a bunch of time
-into yet another language/ecosystem project. That bias prevented me from
-seeing the point of the first chapter.&lt;/p&gt;
-&lt;p&gt;Hillel&amp;rsquo;s first chapter ends with a definition of stuttering and how in the
-presence of real world temporal effects, a safe, reliable in all cases wire
-transfer system borders on impossible. This initially turned me off,
-sophomorically reflecting, &amp;ldquo;Well if this book won&amp;rsquo;t let me make reliable
-software then forget it.&amp;rdquo;&lt;/p&gt;
-&lt;p&gt;This result however is precisely what formal methods and TLA+ in particular
-seeks to provide. These tools tell you, in 22 lines of PlusCal that your
-assumptions about the eventual consistency of your system is invalid.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;PlusCal shows you in 22 lines that your assumptions of your are invalid.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;This simply wire transfer specification generates 25 unique system states, and
-the seemingly obvious property that no money gets created or lost &lt;em&gt;doesn&amp;rsquo;t
-hold&lt;/em&gt;.  In my experience, these types of fundamental properties are exactly
-the type of thing that get&amp;rsquo;s lost in requirements, and never gets checked in
-testing. This is where PlusCal shines: showing you that your assumptions need
-refinement.&lt;/p&gt;
-&lt;h2 id=&#34;learning-questionshahahugoshortcode-s0-hbhb&#34;&gt;&lt;a href=&#34;https://quiescent.us/2020/05/learning-process/&#34;&gt;Learning Questions&lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;This leads me to refine my motivation for learning TLA+ (and PlusCal).
-Throughout this journey, we&amp;rsquo;ll see what of these motivations hold to be true
-and which are refined:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Build intuitive models to validate system assumptions.&lt;/li&gt;
-&lt;li&gt;Build models to verify the &amp;ldquo;obvious stuff&amp;rdquo;.&lt;/li&gt;
-&lt;li&gt;Identify when system properties change.
-&lt;ol&gt;
-&lt;li&gt;When working on a legacy system are assumptions and practices that were
-try at the beginning of the design still true? Id est, do the
-invariants and eventual consistent properties of the system still hold
-after the countless features and patches added over time?&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;anki-cardshahahugoshortcode-s1-hbhb&#34;&gt;&lt;a href=&#34;https://quiescent.us/2020/05/learning-process/&#34;&gt;Anki Cards&lt;/a&gt;
-&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;In temporal logic {{c1::Stuttering}} is when a process simply stops.&lt;/li&gt;
-&lt;li&gt;Stuttering models what real world phenomena?
-&lt;ol&gt;
-&lt;li&gt;Timeouts, slow consumers, server crashes.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;</description>
     </item>
     
     <item>
