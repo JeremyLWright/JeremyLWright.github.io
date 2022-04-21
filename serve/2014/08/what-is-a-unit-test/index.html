@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.88.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>What is a Unit Test?&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What is a Unit Test?" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">What is a Unit Test?</h1><p class="article date">Thursday, August 28, 2014</p></section><article class="article markdown-body"><p>I&rsquo;m taking a Software Testing and Verification course as part of my Master&rsquo;s work. Our first assignment was to write a short paper describing a unit test, then implement selection sort and test it under that philosophy. Sarcastically, I commented to my colleagues the triviality of this question. The first response was, &ldquo;Wow, I don&rsquo;t think that is such an easy question.&rdquo; A technical discussion ensued. This is that log.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>I proposed the first definition above, which is mostly influence from my Haskell QuickCheck experience.  During lecture today the professor presented levels of testing.</p>
+<p>Unit Testing
+Integration Testing
+System Testing
+Alpha Testing
+Beta Testing</p>
+<p>The theme here? Each successive layer of testing include more modules and more functionality. Unit testing is the most basic. It doesn&rsquo;t  have to provide a pure interface, it can be dirty, it can have side effects, but before I promote some software module to the next stage, I want some confidence its working. The professor went on to ask, &ldquo;What if we had a test team, a separately paid person to write the unit tests? Would that work? Would that be a good idea?&rdquo;</p>
+<p>My initial response was, &ldquo;No! those tests are mine!&rdquo; This is my definition of a unit test, private tests.</p>
+<p>Definition I hold now:
+A unit test is a test to provide the developer some confidence a region of code works as intended before other people see the code and the developer is open to mockery and scandal.</p>
+<p>This definition supposed unit tests are more emotional, or egocentric than technical, but when I think about how, and where I choose to unit test heavily, and where I choose to test more lightly it centers around areas of code I would be embarrassed to get wrong. To get back to the homework assignment, the first goal was to implement selection sort:</p>
+<p>Unit under test</p>
+<pre><code>#include &lt;iterator&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+template &lt;typename InputIterator&gt;
+void selection_sort(InputIterator b, InputIterator e)
+{
+    for(InputIterator c = b; c != e ; ++c){
+        auto m = std::min_element(c, e);
+        std::swap(*m, *c);
+    }
+}
+</code></pre>
+<p>Selection sort is pretty naive (O(n^2)) but its straight-forward to implement, and std::algorithms make it even easier to understand. As a side note, this is the real strength of the STL algorithms: clarity. This code has very few opportunities for bugs because of the reliance on STL algorithms. Additionally, it&rsquo;s readable! Additionally, it&rsquo;s templated so everyone will think you are a badass (unless there is a bug in it, in which case they judge you every time you whip out the <em>typename</em>). To prevent this horrific alternate future we can unit test.  Furthermore, we can take a page from the FPGA/ASIC guys and use randomized tests. (As opposed to direct tests).</p>
+<p>Randomized tests construct random input and feed it through the unit under test.  A secondary implementation of the function verifies the result. In this case we are luck that the invariant of a &ldquo;sorted list&rdquo; is easy to check.  In fact there is a standard algorithm for it: std::is_sorted().</p>
+<p>Using GTest we construct a parameterized test. We then construct a list of random vectors and instantiate the test with the 10000 separate vectors. GTest provides a lot of value here.  If a single test fails, GTest will print out the parameter value when that particular test failed the build. Since we are using random data, this is critical so we can setup regression tests.</p>
+<pre><code>#include &quot;sort.hpp&quot;
+#include &quot;gtest/gtest.h&quot;
+#include &lt;vector&gt;
+#include &lt;random&gt;
+#include &lt;limits&gt;
+#include &lt;cassert&gt;
+#include &lt;iostream&gt;
+
+using TestInput = std::vector&lt;int&gt;;
+
+class RandomizedTest : public testing::TestWithParam&lt;TestInput&gt; {};
+TEST_P(RandomizedTest, Sorting)
+{
+   auto vs = GetParam();
+   selection_sort(std::begin(vs), std::end(vs));
+   ASSERT_TRUE(std::is_sorted(std::begin(vs), std::end(vs)));
+}
+
+std::vector&lt;std::vector&lt;int&gt;&gt; GenerateTestCases()
+{
+ std::vector&lt;TestInput&gt; test_cases;
+ std::numeric_limits&lt;int&gt; limits;
+
+ std::mt19937 engine(time(0)); // Fixed seed of 0
+ std::uniform_int_distribution&lt;int&gt; range_dist(0,1500);
+ std::uniform_int_distribution&lt;int&gt; element_dist(0, limits.max());
+
+ size_t n = 10000;
+ auto f = [&amp;](){return element_dist(engine);};
+ std::generate_n(std::back_inserter(test_cases), n, 
+     [&amp;](){ 
+         TestInput vs;
+         std::generate_n(std::back_inserter(vs), range_dist(engine), f);
+         return vs;
+     });
+ return test_cases;
+}
+
+INSTANTIATE_TEST_CASE_P(
+ GeneralAndSpecial,
+ RandomizedTest,
+ testing::ValuesIn(GenerateTestCases()));
+</code></pre>
+<p>Build Script</p>
+<pre><code>project(hw1)
+
+include(ExternalProject)
+ExternalProject_Add(
+    GTest 
+    URL http://googletest.googlecode.com/files/gtest-1.7.0.zip
+    INSTALL_COMMAND &quot;&quot;
+    )
+
+ExternalProject_Get_Property(GTest source_dir)
+include_directories(${source_dir}/include)
+
+
+ExternalProject_Get_Property(GTest binary_dir)
+link_directories(${binary_dir})
+
+
+set(CMAKE_CXX_FLAGS &quot;-O3 -std=gnu++11&quot;)
+add_executable(hw1 main.cpp)
+add_executable(test test.cpp)
+add_dependencies(test GTest)
+target_link_libraries(test gtest gtest_main pthread rt)
+</code></pre>
+<p>These tests take nearly 5 seconds to run, but randomization gives us another cool feature. Typically with directed tests, once the tests pass the probability of that test failing int he future is pretty low. Randomized tests are different every time you run them. While the invariant of the input are constant the input itself changes greatly, and exercises code in ways a human may not imagine.</p>
+<p>tldr;</p>
+<ul>
+<li>Unit tests help you save face.</li>
+<li>Random tests kick directed tests' teeth in.</li>
+</ul></article><section class="article labels"><a class="tag" href=/tags/testing/>Testing</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.99872df1091f055fca553e0b74b13c09bd383ef42b1c56a9edb651a91f122d56e7bc9a2fad73528246215b379b043226.js#pubid=ra-1234567890" integrity="sha384-mYct8QkfBV/KVT4LdLE8Cb04PvQrHFap7bZRqR8SLVbnvJovrXNSgkYhWzebBDIm"></script>
+</div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2014/09/property-testing-in-c/"><span class="iconfont icon-article"></span>Property Testing in C++</a></p><p><a class="link" href="/2014/08/hello-project-euler-sorry-i-doubted-you/"><span class="iconfont icon-article"></span>Hello Project Euler, Sorry I doubted you</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2021 Jeremy Wright</p>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></body>
+
+</html>

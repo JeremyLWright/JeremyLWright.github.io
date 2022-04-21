@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.88.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Sean Parent: No Raw Loops&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Sean Parent: No Raw Loops" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Sean Parent: No Raw Loops</h1><p class="article date">Sunday, November 24, 2013</p></section><article class="article markdown-body"><p>A group of colleagues and I watched Sean Parent&rsquo;s Going Native Talk on &ldquo;<a href="http://channel9.msdn.com/Events/GoingNative/2013/Cpp-Seasoning"target="_blank" rel="noopener noreferrer">C++ Seasoning</a>
+&rdquo;. Parent takes some extreme views on how to use C++, but his examples for using the STL to simplify code are phenomenal. For a recent AI project I decided to apply Parent&rsquo;s <em>goal</em> of &ldquo;no raw loops&rdquo;, I was blown away by the transformation&hellip; err std::transformation this had on my code. In this post I indented to demonstrate several complex code blocks, or overly specific code blocks what were replaced by some STL magic. Alexander Stepanov says, &ldquo;<a href="http://www.youtube.com/watch?v=COuHLky7E2Q"target="_blank" rel="noopener noreferrer">&hellip;code is a liability.</a>
+&rdquo; The more code a program has the more likely it contains bugs. The fewer lines of code, the lesser the opportunity for a bug. I haven&rsquo;t quiet decided if I agree with this point, but it does induce thought either way. Sean Parent&rsquo;s methodology seems to agree, for the purposes of this post we&rsquo;ll agree as well.</p>
+<p>So the assignment statement:</p>
+<!-- raw HTML omitted -->
+<blockquote>
+</blockquote>
+<blockquote>
+<ol>
+<li>100% cherry (10% likely)</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>75% cherry (20% likely)</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>50% cherry (40% likely)</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="4">
+<li>25% cherry (20% likely)</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="5">
+<li>0% cherry (10% likely)</li>
+</ol>
+</blockquote>
+<p>You take 11 pieces of candy, all happen to be lime. What bag do you most likely have, and what is the probability the next candy will be a lime?<!-- raw HTML omitted --></p>
+<p>So lets start with encoding our data.  First we have 2 types of candy: cherry and lime.  Lets represent that:</p>
+<pre><code>class lime_type{};
+class cherry_type{};
+</code></pre>
+<p>We might expand this later, but for now we just need a way to overload functions on lime candies or cherry candies. This will work just fine.</p>
+<p>Next we have some bags, and associated probabilities</p>
+<pre><code>enum Bag {
+Bag1 =1,
+Bag2,
+Bag3,
+Bag4,
+Bag5};
+
+std::vector&lt;Bag&gt; const bags{Bag1, Bag2, Bag3, Bag4, Bag5};
+
+map&lt;Bag, double&gt; apriori{
+{Bag1, 0.1},
+{Bag2, 0.2},
+{Bag3, 0.4},
+{Bag4, 0.2},
+{Bag5, 0.1}
+};
+
+map&lt;Bag, std::pair&lt;double, double&gt;&gt; candy_dist{
+{Bag1, {1.00, 0.00}},
+{Bag2, {0.75, 0.25}},
+{Bag3, {0.50, 0.50}},
+{Bag4, {0.25, 0.75}},
+{Bag5, {0.00, 1.00}}
+};
+</code></pre>
+<p>Again, pretty straight forward, but the magic is about to happen&hellip;</p>
+<p>Next we have to consume data from a file. Each data set is represented by a series of l or c on a single line. We need to print a graph for each line.  Our example data file looks like this:</p>
+<pre><code>jwright@jwright-LinuxAwesome:~/workspaces/school/cse471/hw15$ cat data1.txt
+l l
+l l l l l l l l l l l l
+</code></pre>
+<p>So for our first STL use case. (Actually Boost here, since gcc 4.7.1 doesn&rsquo;t support regex yet, but this functionality will work in gcc 4.9.1).</p>
+<p>The before:</p>
+<pre><code>std::ifstream fin(filename);
+    string line;
+    while(fin &gt;&gt; line)
+    {
+        if(line == &quot;l&quot;)
+            cout &lt;&lt; &quot;Lime&quot; &lt;&lt; endl;
+        if(line == &quot;c&quot;)
+            cout &lt;&lt; &quot;cherry&quot; &lt;&lt; endl;
+    }
+</code></pre>
+<p>What&rsquo;s wrong with this code block? Consider if our ls and cs aren&rsquo;t white space delimited. Sensor data is noisy/messy all the time. It would be prudent to deal with this case. This code doesn&rsquo;t block on newlines, and streams all the newlines together. We could wrap this code block with a std::getline() loop, but that&rsquo;s going the wrong direction. No raw loops&hellip; What does the STL provide to deal with this? Essentially we want to tokenize each line with _c_s or _l_s as tokens.</p>
+<pre><code>boost::regex reg(&quot;c|l&quot;); //Construct the regular expression here, since it's expensive
+while(std::getline(fin,line))
+{ 
+    boost::sregex_token_iterator pos(begin(line), end(line), reg);
+    boost::sregex_token_iterator end;
+    std::for_each(pos, end, [](boost::sregex_token_iterator tok)
+    {
+        process(tok-&gt;str());
+    });
+}
+</code></pre>
+<p>This code isn&rsquo;t directly shorter, but it is certainly more robust. We can deal with extra noise in our data file, and the regex will skip over it gracefully calling our process function once for each l and c it finds on each line.</p>
+<p>Now that we&rsquo;re warmed up, lets check out some better examples. Conditional probabilities have lots of summations, and product chains in them. My initial hack unrolled all these summations. This is both verbose, which can hide errors, but if we can reduce the number of lines we will increase our reliability. First up.</p>
+<p>$$ P( Candy = Lime | Data) = \Sigma_{Bags}(P(lime, Bag_i | Data) $$</p>
+<p>My first hack, looks like something that congealed in a gutter:</p>
+<pre><code>double p(cherry_type, data_type)
+{
+//
+// \sigma_bags(p(lime, Bag_i | data))
+//
+double a =
+p(lime_type(), Bag1)*p(Bag1, data_type()) +
+p(lime_type(), Bag2)*p(Bag2, data_type()) +
+p(lime_type(), Bag3)*p(Bag3, data_type()) +
+p(lime_type(), Bag3)*p(Bag4, data_type()) +
+p(lime_type(), Bag5)*p(Bag5, data_type());
+
+return a;
+}
+</code></pre>
+<p>This version is has the sad property that a C programmer might say, &ldquo;Awesome, he unrolled the loops. That code will be fast.&rdquo; Stephan T. Lavavej says , &ldquo;<a href="http://channel9.msdn.com/Events/GoingNative/2013/Don-t-Help-the-Compiler"target="_blank" rel="noopener noreferrer">Don&rsquo;t help the compiler</a>
+&rdquo;. I agree. -funroll-loops will unroll the loops much better than I can.In fact this code as a bug in it. See it?</p>
+<pre><code>double p(cherry_type, data_type)
+{
+//
+// \sigma_bags(p(lime, Bag_i | data))
+//
+double a =
+p(lime_type(), Bag1)*p(Bag1, data_type()) +
+p(lime_type(), Bag2)*p(Bag2, data_type()) +
+p(lime_type(), Bag3)*p(Bag3, data_type()) +
+p(lime_type(), Bag3)*p(Bag4, data_type()) + //Boom, check out that hot copy-paste error.
+p(lime_type(), Bag5)*p(Bag5, data_type());
+
+return a;
+}
+</code></pre>
+<p>Corrected, but still not &ldquo;correct&rdquo;</p>
+<pre><code>double p(lime_type, data_type)
+{
+//
+// \sigma_bags(p(lime, Bag_i | data))
+//
+double a =
+p(lime_type(), Bag1)*p(Bag1, data_type()) +
+p(lime_type(), Bag2)*p(Bag2, data_type()) +
+p(lime_type(), Bag3)*p(Bag3, data_type()) +
+p(lime_type(), Bag4)*p(Bag4, data_type()) + //Boom, check out that hot copy-paste error.
+p(lime_type(), Bag5)*p(Bag5, data_type());
+
+return a;
+}
+</code></pre>
+<p>Beside being verbose, and prone to error. It isn&rsquo;t generate. If we grow our dataset, the loop is not wrong. Can we be sure that we&rsquo;ll find every unrolled loop, and fix it? We can do better.</p>
+<pre><code>double p(lime_type, data_type)
+{
+    //
+    // \sigma_bags(p(lime, Bag_i | data))
+    //   
+    std::vector&lt;double&gt; partials(bags.size());
+    std::transform(begin(bags), end(bags), begin(partials), [](Bag b){ return p(lime_type(), b)*p(b, data_type()); });
+    double a = std::accumulate(begin(partials), end(partials), 0.0 ); //Gotcha 0.0 instead of 0. 0 will cast the result to an int
+    return a;
+}
+</code></pre>
+<p>This version is shorter. The compiler is free to optimize the STL algorithms as needed even unrolling the loops if the compiler deems it will improve the code. This code is readable, but futhermore we can explain this code to a mathematician. Stroustroup says, &ldquo;Express abstracts as the expert in the field does.&rdquo; This function does exactly that. The first step is to compute partial products of $$ P( Lime, Bag_i) * P(Bag_i | Data) $$. Then add the products together. We are agnostic to the number of bags.</p>
+<p>Next what about debugging. I&rsquo;m searching for a bug, and sometimes print statements are the best way to work it out. Lets print out a vector.</p>
+<pre><code>vector prob;
+//...
+cout &lt;&lt; &quot;{&quot;;
+for(auto&amp; p : prob)
+    cout &lt;&lt; p &lt;&lt; &quot;, &quot;;
+cout &lt;&lt; &quot;}&quot;;
+</code></pre>
+<p>This cannot be bad right? We used the new, shiny range-based for. What can one complain about.</p>
+<pre><code>vector prob;
+//...
+cout &lt;&lt; &quot;{&quot;;
+std::copy(std::begin(prob), std::end(prob), std::ostream_iterator&lt;double&gt;(cout, &quot;, &quot;));
+cout &lt;&lt; &quot;}&quot;;
+</code></pre>
+<p>However we can do <a href="https://github.com/louisdx/cxx-prettyprint"target="_blank" rel="noopener noreferrer">even better</a>
+:</p>
+<pre><code>#include 
+cout &lt;&lt; prob;
+</code></pre>
+<p>Even though this program was small, the opportunity to improve quality, and robustness, is ever present. C++ is a growing language, and it&rsquo;s new capabilities are really improving the corner cases in software. One key tool in doing so is learning the STL.  I encourage you to study the STL.</p></article><section class="article labels"><a class="tag" href=/tags/productivity/>Productivity</a><a class="tag" href=/tags/c&#43;&#43;11/>C&#43;&#43;11</a><a class="tag" href=/tags/stepanov/>Stepanov</a><a class="tag" href=/tags/stl/>STL</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.99872df1091f055fca553e0b74b13c09bd383ef42b1c56a9edb651a91f122d56e7bc9a2fad73528246215b379b043226.js#pubid=ra-1234567890" integrity="sha384-mYct8QkfBV/KVT4LdLE8Cb04PvQrHFap7bZRqR8SLVbnvJovrXNSgkYhWzebBDIm"></script>
+</div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2014/02/cracking-subciphercpp/"><span class="iconfont icon-article"></span>Massively Intelligent Non-Deterministic Luminating Effortless Super Solver</a></p><p><a class="link" href="/2013/11/rand-considered-harmful/"><span class="iconfont icon-article"></span>rand() Considered Harmful</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2021 Jeremy Wright</p>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></body>
+
+</html>

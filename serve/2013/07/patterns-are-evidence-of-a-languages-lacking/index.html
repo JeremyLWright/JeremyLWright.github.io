@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.88.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Patterns are evidence of a language&#39;s lacking&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Patterns are evidence of a language&#39;s lacking" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Patterns are evidence of a language's lacking</h1><p class="article date">Sunday, July 7, 2013</p></section><article class="article markdown-body"><p>A coworker of mine stated something interesting, &ldquo;&hellip;a pattern is evidence of missing feature in the language&hellip;&rdquo;. At first I struggled with this statement. How can you design a language general enough to be widely used, and simultaneously cover all the desirable idioms such that patterns are built in? At first this seemed silly to me, until I heard Erik Meijer state in a Haskell lecture, &ldquo;..this is why we implemented LINQ as a pattern instead of a language feature&hellip;&rdquo;</p>
+<p>It&rsquo;s an interesting concept that a language is responsible for reducing patterns into the language itself. My coworker cited that subroutines were once a pattern for managing groups of functionality. Wikipedia defines a design pattern as a solution to a common problem in software engineering. In this respect, subroutines indeed were a pattern to assembly programmers.  Complex Instruction Sets allowed for a very different programming model than today’s assembly languages who are intended primarily for compilers, but humans. In this environment parameter passing was defined by convention, and even a companies coding standard. Adding a standard method for parameter passing, i.e. stack organization would massive improve productivity. C solved this and did so extremely efficiently. C’s parameter passing syntax makes it easy for programmers to describe small abstractions of functionality into individual blocks, or subroutines. Thus the language incorporated a prevalent pattern from industry.</p>
+<p>Additionally, by incorporating this pattern into the syntax, the compiler writer is free to change the underlying implementation for each architecture. The PIC for instance has a hardware stack, thus the default pattern offered for some assemblers wouldn’t work directly. Ostensibly, one could adjust the pattern to work, and this is the recommended practice of patterns, to adjust their structure to fit the existing architecture however this incurs technical debt. Both in the original design to develop the correct adjustments to the pattern, as well as maintenance since the maintenance programmer is most likely left to rediscover the pattern’s structure. Thus while the subroutine pattern originally intended to reduce the complexity, once modified it incurs a new technical debt, translating the complexity to another part of the system. Luckily, Microchip offers a C compiler for the PIC thus, the syntax of C abstracts out the different methods the PIC manages a stack from different architectures. This is a massive productivity booster, and since the mechanical structure of a subroutine is abstracted away by the compiler, systems don’t incur the technical debt caused by modifying the pattern for this specific hardware.</p>
+<p>So what is a language without patterns? I suspect such a language would by necessity be domain specific. Take the subroutine pattern again. C abstracted the subroutine into it’s syntax, much has Haskell has a function syntax. Haskell’s lazy semantics however have a more elaborate functional call hierarchy, as such ghc allocates all “stacks” as heap objects. In a talk Simon Peyton-Jones mentions that this made the LLVM port of Haskell more difficult. LLVM has a specific construct for stack allocated objects outside Haskell’s semantics. Currently, the LLVM backend is fantastic, and offers fantastic performance, especially for SIMD type programs, so the problem is obviously resolved. However it offers evidence to the point that any specific implementation forgoes some use cases.</p>
+<p>I personally, like patterns, especially since they give programmers a common vocabulary for communicating complex structures, and behaviors. Domain specific languages are becoming a very popular topic. My latest studies of Haskell, show many such languages. Each program designing a domain specific language for the given requirements. Perhaps this is the future patterns, and programming in general. Future idioms may in fact encourage the implementation of domain specific languages, in which the required software is written.</p>
+<p>Reference:</p>
+<ul>
+<li>
+<p><a href="http://blog.plover.com/prog/design-patterns.html"target="_blank" rel="noopener noreferrer">http://blog.plover.com/prog/design-patterns.html</a>
+</p>
+</li>
+<li>
+<p><a href="http://en.wikipedia.org/wiki/Complex_instruction_set_computing"target="_blank" rel="noopener noreferrer">http://en.wikipedia.org/wiki/Complex_instruction_set_computing</a>
+</p>
+</li>
+<li>
+<p><a href="http://en.wikipedia.org/wiki/IBM_Basic_assembly_language"target="_blank" rel="noopener noreferrer">http://en.wikipedia.org/wiki/IBM_Basic_assembly_language</a>
+</p>
+</li>
+<li>
+<p><a href="http://channel9.msdn.com/Series/C9-Lectures-Erik-Meijer-Functional-Programming-Fundamentals/Lecture-Series-Erik-Meijer-Functional-Programming-Fundamentals-Chapter-1"target="_blank" rel="noopener noreferrer">http://channel9.msdn.com/Series/C9-Lectures-Erik-Meijer-Functional-Programming-Fundamentals/Lecture-Series-Erik-Meijer-Functional-Programming-Fundamentals-Chapter-1</a>
+</p>
+</li>
+<li>
+<p><a href="http://www.haskell.org/pipermail/glasgow-haskell-users/2007-January/011838.html"target="_blank" rel="noopener noreferrer">http://www.haskell.org/pipermail/glasgow-haskell-users/2007-January/011838.html</a>
+</p>
+</li>
+</ul></article><section class="article labels"><a class="tag" href=/tags/algorithm/>Algorithm</a><a class="tag" href=/tags/dsl/>DSL</a><a class="tag" href=/tags/pattern/>pattern</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.99872df1091f055fca553e0b74b13c09bd383ef42b1c56a9edb651a91f122d56e7bc9a2fad73528246215b379b043226.js#pubid=ra-1234567890" integrity="sha384-mYct8QkfBV/KVT4LdLE8Cb04PvQrHFap7bZRqR8SLVbnvJovrXNSgkYhWzebBDIm"></script>
+</div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2013/07/is-monolithic-code-faster/"><span class="iconfont icon-article"></span>Is Monolithic Code Faster?</a></p><p><a class="link" href="/2013/05/haskell-a-few-problems-later/"><span class="iconfont icon-article"></span>Haskell a Few Problems Later</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2021 Jeremy Wright</p>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></body>
+
+</html>

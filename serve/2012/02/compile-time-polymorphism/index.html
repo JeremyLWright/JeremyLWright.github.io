@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.88.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Compile-Time Polymorphism&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Compile-Time Polymorphism" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Compile-Time Polymorphism</h1><p class="article date">Sunday, February 5, 2012</p></section><article class="article markdown-body"><p>Polymorphism is a tool in object orientation, which allows us to model behavior, while simultaneously leverage existing code. Polymorphism allows is behavior reuse.  In C++ polymorphism, comes in 2 flavors, the standard runtime variant, and a curious compile time variant.  Runtime polymorphism, like Java, leverages virtual functions to dynamically bind[1. With virtual functions the compiler doesn&rsquo;t know which method to call until runtime. In C++ this is implemented with the <a href="http://en.wikipedia.org/wiki/Virtual_method_table"target="_blank" rel="noopener noreferrer">virtual method table</a>
+] a method at the call site. Compile Time polymorphism uses templates, to bind at compile time, thus negating the performance affect of virtual functions.</p>
+<p>Polymorphism is a powerful concept. Polymorphism is a powerful tool in object-orientation, allowing one to realistically model the behavior or structure of some entity in software. This is key to any software design. Regardless, of idioms, language, paradigm, a realistic model is essential to a good design. If follow every best practice in software design, but your system doesn&rsquo;t accurately reflect the real-world model, your software will be difficult to work with, and it will be impossible to bring new people on your project.  An accurate portrayal is required.</p>
+<p>C++ affords us 2 forms of g: compile-time [2. Compile-Time polymorphism is also known as static polymorphism. I, however find this nomenclature confusing.  &ldquo;static dynamicism&rdquo;&hellip;. Um, what?], and runtime.  Runtime is the most straightforward, and uses virtual functions.  However, as we&rsquo;ll see later, virtual function have their own performance costs.</p>
+<p><a href="http://www.codestrokes.com/wp-content/uploads/2012/02/SuperSimplePolymorphism.png.jpg.jpeg"target="_blank" rel="noopener noreferrer"><img  src="http://www.codestrokes.com/wp-content/uploads/2012/02/SuperSimplePolymorphism.png.jpg.jpeg"
+        alt/></a>
+</p>
+<p>We&rsquo;re going to implement this very simple hierarchy, to demonstrate polymorphism is its most basic form.</p>
+<pre><code>struct Base {
+    Base (){}
+    virtual ~Base (){}
+    virtual void DoSomething(){
+        cout &lt;&lt; &quot;Hello From Base.&quot; &lt;&lt; endl;
+    }
+};
+
+struct Child : public Base {
+    Child (){}
+    virtual ~Child (){}
+    virtual void DoSomething() {
+        cout &lt;&lt; &quot;Hello from Child.&quot; &lt;&lt; endl;
+    }
+};
+</code></pre>
+<p>Using the following driver code.</p>
+<pre><code>int main(int argc, char const *argv[]){   
+    Base* b = new Child();
+    b-&gt;DoSomething();
+    delete b;
+}
+
+
+
+
+}
+</code></pre>
+<p>Produces the following output:</p>
+<pre><code>bash $ ./a.out
+Hello from Child
+</code></pre>
+<p>This works, and its a familiar idiom. However virtual functions have a some performance issues. Since the call isn&rsquo;t bound until until runtime, the methods cannot be inlined, and will probably incur a cache miss [1. <a href="http://coldattic.info/shvedsky/pro/blogs/a-foo-walks-into-a-bar/posts/3"target="_blank" rel="noopener noreferrer">A foo walks into a bar</a>
+] , which on modern processors with the very deep caches is a very costly effect.</p>
+<p><a href="http://www.codestrokes.com/wp-content/uploads/2012/02/Untitled-1.png"target="_blank" rel="noopener noreferrer"><img  src="http://www.codestrokes.com/wp-content/uploads/2012/02/Untitled-1.png"
+        alt/></a>
+</p>
+<p>Secondly, even with cacheing aside virtual functions are about 2.5 times slower than direct function calls; where as inlining, i.e. zero-function overhead is about 20 times faster [1. <a href="http://assemblyrequired.crashworks.org/2009/01/19/how-slow-are-virtual-functions-really/"target="_blank" rel="noopener noreferrer">How Slow Are Virtual Functions Really</a>
+]. So this is a major issue is performance critical code, such as games. The EA directly states that virtual functions forbidden in their code [1. <a href="http://assemblyrequired.crashworks.org/2008/12/22/ea-stl-prevents-memory-leaks/#more-92"target="_blank" rel="noopener noreferrer">How the EA prevents Memory Leaks</a>
+].  However, polymorphism is a powerful tool. Are we relegated to a &ldquo;lower&rdquo; form of Object-Orientation with writing performance critical code? No. In fact the opposite is true.  C++&rsquo;s template system is powerful and allows us to add dnasicm at compile time.</p>
+<p>We can implement the same behavior as the UML figure above using templates. This improves the performance of our code in two ways. Firstly, by omitting virtual function we pickup a ~2.5x boost. Secondly, by using composition instead of inheritance we also get a small bump, and the compiler is more likely to inline the &ldquo;inner&rdquo; function.</p>
+<pre><code>template &lt;typename ChildType&gt;
+struct Base {
+    Base (){}
+    virtual ~Base2 (){}
+    void DoSomething() {
+        myChild.DoSomething(); // This is the &quot;inner&quot; function.
+    }
+private:
+    ChildType myChild;
+};
+
+struct Child /* Notice the lack of inheritance here */{
+    Child () {}
+    virtual ~Child(){}
+    void DoSomething(){
+        cout &lt;&lt; &quot;Hello from Child.&quot; &lt;&lt; endl;
+    }
+};
+</code></pre>
+<p>Our driver is similar to before, except for the instantiation. Instead of inheriting behavior from a base class and overriding it, the Child, or implementing type, is passed in as an instantiation argument. This creates a new type, which is the dynamic behavior we want. Using the following driver code, we achieve the same output as before.</p>
+<pre><code>int main(int argc, char const *argv[]){   
+    Base&lt;Child&gt;* b = new Base&lt;Child2&gt;();
+    b-&gt;DoSomething();
+    delete b;
+}
+</code></pre>
+<p>C++11 (-std=c++0x in gcc4.6) allows one 1 more improvement in the driver code to prevent memory leaks.</p>
+<pre><code>int main(int argc, char const *argv[]){   
+auto b2 = make_shared&lt;Base2&lt;Child2&gt; &gt;();
+b2-&gt;DoSomething();
+//Notice we don't have to call delete. Woot, exception safety!
+}
+</code></pre>
+<p>So polymorphism is a powerful tool for creating dynamicism in programs, however with the inherent [1. Pun intended] performance issues the standard form of polymorphism is not the tool for every job. C++ templates allow use a manageable way to achieve similar behavior at compile time!</p>
+<hr>
+<h4 id="references">References</h4></article><section class="article labels"><a class="tag" href=/tags/coding/>Coding</a><a class="tag" href=/tags/idiom/>idiom</a><a class="tag" href=/tags/performance/>performance</a><a class="tag" href=/tags/template/>template</a><a class="tag" href=/tags/virtual/>virtual</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.99872df1091f055fca553e0b74b13c09bd383ef42b1c56a9edb651a91f122d56e7bc9a2fad73528246215b379b043226.js#pubid=ra-1234567890" integrity="sha384-mYct8QkfBV/KVT4LdLE8Cb04PvQrHFap7bZRqR8SLVbnvJovrXNSgkYhWzebBDIm"></script>
+</div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2012/02/branching-with-mercurial/"><span class="iconfont icon-article"></span>Branching with Mercurial</a></p><p><a class="link" href="/2011/11/parallel-binary-buddy-the-friendly-memory-manager/"><span class="iconfont icon-article"></span>Parallel Binary Buddy: The Friendly Memory Manager</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2021 Jeremy Wright</p>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></body>
+
+</html>

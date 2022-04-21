@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.88.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>The $1,000,000 Compile&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="The $1,000,000 Compile" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">The $1,000,000 Compile</h1><p class="article date">Thursday, September 22, 2011</p></section><article class="article markdown-body"><p>Hitting the compile and run button costs $1,000,000. How would such a cost affect your test strategy? As extreme as that sounds, its a harsh reality for ASIC designers. The start-up costs for an ASIC design are extreme, as a result ASIC verification is very important. Especially since you can&rsquo;t just update a buggy ASIC.  In software engineering, we design increasingly complex systems requiring more and more elegant test strategies.  I propose ASIC verification is in a more mature state, and software engineers could learn a lot from the translation of these techniques.</p>
+<p>SystemVerilog, the premier language in the ASIC verification space has an incredible feature I feel has a place in software verification: Random Constraints. Constrains allow the compiler to generate a set of test vectors that match some simple set of rules.  The verification bench may then use these test vectors to test the unit under test.  Conceptually, the random bench will test the device in ways the developer never thought of, either with a new test case, or a series of test cases totally unimaginable by the engineer. Find the bug before you<a href="http://en.wikipedia.org/wiki/Tape-out"target="_blank" rel="noopener noreferrer"> tape-out </a>
+=&gt; keep your job.</p>
+<p>Hardware verification also teaches us that no language feature is a panacea.  Random Constraints are a tool to help us find new test cases, but we need model the behavior of our system to get expected behavior.  Hardware Verification uses a pattern similar to the block diagram presented here. <a href="http://www.codestrokes.com/wp-content/uploads/2011/09/ASIC-Test-Bench.png"target="_blank" rel="noopener noreferrer"><img  src="http://www.codestrokes.com/wp-content/uploads/2011/09/ASIC-Test-Bench.png"
+        alt/></a>
+ Notice however that one requires a System Model in addition to the UUT (Unit Under Test. This System Model is ideally a &ldquo;clean-room&rdquo; designed block, entirely separate from the UUT developer&rsquo;s group.  This is difficult to do in smaller teams, but its important to understand that one is essentially designing the module twice. This is different from Mock objects however.  Mock Objects are not pure system models. Mock Objects are standins that implement the interface, but with a listing of recalculated responses.  However, one could use a higher level language for the Model such as python.  Such a language would make the design easier, and make provide insight on how to constraint the test vectors.</p>
+<p>So how does this apply to software? The generic pattern maps perfectly.  Using metaprogramming techniques we can build a driver that generates random constraints. Drive the blocks and iterate through the tests. Publish a report. Compile &amp; Run.</p></article><section class="article labels"><a class="tag" href=/tags/coding/>Coding</a><a class="tag" href=/tags/testing/>testing</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.99872df1091f055fca553e0b74b13c09bd383ef42b1c56a9edb651a91f122d56e7bc9a2fad73528246215b379b043226.js#pubid=ra-1234567890" integrity="sha384-mYct8QkfBV/KVT4LdLE8Cb04PvQrHFap7bZRqR8SLVbnvJovrXNSgkYhWzebBDIm"></script>
+</div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2011/10/parallel-game-of-life/"><span class="iconfont icon-article"></span>Parallel Game-of-Life</a></p><p><a class="link" href="/2011/08/good-tools-excellent-results/"><span class="iconfont icon-article"></span>Good Tools, Excellent Results</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2021 Jeremy Wright</p>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></body>
+
+</html>

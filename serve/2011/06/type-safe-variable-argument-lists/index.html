@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.88.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Type-Safe Variable Argument Lists&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Type-Safe Variable Argument Lists" /><body><section id="header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Type-Safe Variable Argument Lists</h1><p class="article date">Monday, June 6, 2011</p></section><article class="article markdown-body"><p>Type-safety is a popular topic. Perceived as a panacea for bad software, the Department of Defense implemented Ada.  The original thought was restriction synonymous with robustness. From this, opponents claim type safe languages place the programmer’s hands in handcuffs, thereby thwarting generic code. Modern languages, such as D, and Java leverage a statically checked type system with a focus on consistency, not restriction.  Modern type systems abet generic code, without sacrificing robustness.  Today, there seems to be a general trend toward strong typing.  Personally, I try to leverage the type system as a tool to ensure correct code.</p>
+<!-- raw HTML omitted -->
+<p>D’s focus of code correctness, provides a strong type system, in a manner conducive to generic code.  D’s type-safe variable argument list is an example of this.</p>
+<p><a href="http://research.microsoft.com/en-us/projects/singularity/"target="_blank" rel="noopener noreferrer">Singularity</a>
+, <a href="http://www.d-programming-language.org"target="_blank" rel="noopener noreferrer">D</a>
+, <a href="http://channel9.msdn.com/Shows/Going&#43;Deep/Verve-A-Type-Safe-Operating-System"target="_blank" rel="noopener noreferrer">Verve</a>
+, all make use of static typing as a tool to check program correctness.  Singularity is not a language, but rather an operating system written in a derivative of C# called <a href="http://en.wikipedia.org/wiki/Sing_Sharp"target="_blank" rel="noopener noreferrer">Sing#</a>
+.  Sing# exposes a statically check message passing system called channels for inter-process communication.  The Sing# compiler, <a href="http://en.wikipedia.org/wiki/Bartok_%28compiler%29"target="_blank" rel="noopener noreferrer">Bartok</a>
+, can statically verify space partitioning. Singularity calls this verification a software isolated process.</p>
+<!-- raw HTML omitted -->
+<p>The type guarantee within a SIP is so strong that Singularity doesn’t require a hardware MMU. Turning off the <a href="http://en.wikipedia.org/wiki/Memory_management_unit"target="_blank" rel="noopener noreferrer">MMU</a>
+ dramatically improves performance by essentially eliminating the cost of calling kernel code from application space.  Performance. That’s a pretty strong motivation for static type-checking.  Not to be left behind, D uses the <a href="http://www.d-programming-language.org/safed.html"target="_blank" rel="noopener noreferrer">Safe-D</a>
+ standard to make similar guarantees.  Furthermore, with a stricter environment leveraged by strong typing, the compiler may make extra optimizations to further improve performance.</p>
+<p>Strong typing can increase performance, but its original intent was to improve robustness.  Ada typifies this.  Ada was developed by the Department of Defense for missiles and avionic equipment.  VHDL, a hardware description language based on Ada, attempts to make the same guarantees to improve dependability of custom hardware in FPGAs and ASICs. Yet, one possible example against strong typing is restriction prevents generic, flexible code, the proverbial “handcuffs”. This, however is a <a href="http://www.urbandictionary.com/define.php?term=moo&#43;point"target="_blank" rel="noopener noreferrer">moo point</a>
+.</p>
+<p>I worked on a logging mechanism for an avionic platform a few years ago.  This platform was written in C++ and the logging interface used a variable argument list.  Our coding standard strictly forbade variable argument lists. Despite this the developer wanted a _printf like _interface.  The code looked similar to the following.</p>
+<pre><code>class BadIdea {
+public:
+    BadIdea (){}
+    virtual ~BadIdea (){}
+    int datum;
+private:
+};
+
+void logging_function(int g, ...)
+{
+    return;
+}
+
+int main(int argc, const char *argv[])
+{
+    BadIdea y;
+    logging_function(5, y);
+    return 0;
+}
+</code></pre>
+<p>Luckily, gcc 4.5 notices that one cannot pass a class object (Non-POD type) to a variable argument list.  The compiler issues the following error.  This is correct behavior and an excellent use of static type checking.
+<code>badidea.cpp: In function ‘int main(int, const char**)’: badidea.cpp:18:22: error: cannot pass objects of non-trivially-copyable type ‘class BadIdea’ through ‘...’</code>
+Sadly, however C++ has not always done this.  Instead the error was similar to the following.
+<code>badidea.cpp: In function ‘int main(int, const char**)’: badidea.cpp:18:22: warning: cannot pass non POD type through ‘...’ call will abort at runtime</code>
+Call will <em>abort</em> at runtime! This is only a warning? Seriously? Yes, this bug took our team several weeks to find.  The build system didn’t turn on warnings, so we never saw this.  As an aside this is an excellent argument for treating all warnings as errors.  The intention was a generic interface, yet C++’s type system wouldn’t support this. We turned on warnings, but left the offending code. The offending code flies to this day.</p>
+<p>This week I implemented a bloom filter in D. A bloom filter is a statistical data structure similar to a hash table; however, unlike a hash table, a bloom filter stores “if” the data exists, instead of the data itself. Common in large data environments, such as BigTable, bloom filters use a number of hash functions when inserting and querying the data structure. The number of hash functions used is called k, where k’s value determines the false positive rate. Increasing k lowers the false positive rate, but the tradeoff is that it also increases the time to insert an element.</p>
+<!-- raw HTML omitted -->
+<p>Implementing the hash functions as part of the bloom filter is a violation of the single-responsibility theorem.  Since the number of hash functions control the false positive rate, _and _the overall performance of the structure, the user should be able to control the hash functions.  The bloom filter’s sole purpose is store a value’s availability, nothing more.  Therefore, I needed to allow the user to pass in some arbitrary number of hash functions into the bloom filter.  D provides variable argument lists, but better still, it provides a type-safe version. The bloom filter’s constructor looks like the following.</p>
+<pre><code>/**
+ * Create a Bloom filter of a specified size.
+ * Params:
+ *	size = The number of bits for the bloom filter.
+ *	hash_fns =	accept an arbitrary number of hash functions as a
+ *     strongly typed array of function pointers.
+ */
+this(size_t size, uint function(string)[] hash_fns ...)
+{
+    this.hash_functions = hash_fns;
+    a.length = size;
+}
+
+/* ... */
+int main(...)
+{
+      /* Pass 2 function pointers to the variable argument list */
+      Bloom b1 = new Bloom(5, &amp;sax_hash, &amp;sdbm_hash);
+}
+</code></pre>
+<p>The bloom filter has no idea how big the hash list is, it just uses the hash functions generically.</p>
+<pre><code>void add(string s)
+{
+    foreach(fn; hash_functions)
+    {
+        a[fn(s)%a.length] = 1; //a is a BitArray from std.bitmanip
+    }
+}
+</code></pre>
+<p>Excellent, no warnings. Statically typed interface, yet generic and flexible.  D truly is a fantastic language.</p>
+<p>D provides a strongly typed variable argument list, to make code generic while maintaining correctness.  In fact D’s type system is very strong, and even provides a “safe” subset of the language to further increase the strictness.  Modules may be categorized into 1 of 3 classes: @safe, @trusted, @system.  The categories restrict which modules may be linked together, ensuring that code who claims to be safe, continues to be. D is a powerful  language, that statically checks code correctness via a strong type system, yet still offers flexible constructs.</p></article><section class="article labels"><a class="tag" href=/tags/coding/>Coding</a><a class="tag" href=/tags/algorithm/>Algorithm</a><a class="tag" href=/tags/d/>D</a><a class="tag" href=/tags/type-safety/>Type Safety</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.99872df1091f055fca553e0b74b13c09bd383ef42b1c56a9edb651a91f122d56e7bc9a2fad73528246215b379b043226.js#pubid=ra-1234567890" integrity="sha384-mYct8QkfBV/KVT4LdLE8Cb04PvQrHFap7bZRqR8SLVbnvJovrXNSgkYhWzebBDIm"></script>
+</div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2011/06/overview-of-upcoming-articles/"><span class="iconfont icon-article"></span>Overview of Upcoming Articles</a></p><p><a class="link" href="/2011/05/parallelism-in-d-bucket-sort-part-2/"><span class="iconfont icon-article"></span>Parallelism in D</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2021 Jeremy Wright</p>
+    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
+        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
+</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script></body>
+
+</html>
