@@ -27,7 +27,7 @@ jobs:
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
     - name: Setup Jekyll
-      uses: JeremyLWright/myjekyll@v3
+      uses: JeremyLWright/myjekyll@v4
 
     # Step 3 - Clean and don't fail
     - name: Clean public directory
