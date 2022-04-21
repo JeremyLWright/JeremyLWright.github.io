@@ -1,12 +1,190 @@
-<!DOCTYPE html>
-<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.97.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="color-scheme" content="light dark">
-<meta name="supported-color-schemes" content="light dark"><title>System languages should include Webapps&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="System languages should include Webapps" /><body><section id="header">
-    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
-        <span class="header right-side"></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
-    <h1 class="article title">System languages should include Webapps</h1><p class="article date">Saturday, October 3, 2015</p></section><article class="article markdown-body"><p>I was reading an <a href="https://isocpp.org/wiki/faq/strange-inheritance"target="_blank" rel="noopener noreferrer">FAQ</a>
- today about some subtle C++ point and I came across
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.97.3" />
+
+  
+  <meta name="description" content="Some description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://quiescent.us/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://quiescent.us/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://quiescent.us/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://quiescent.us/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://quiescent.us/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://quiescent.us/css/bootstrap.min.css" />
+
+  
+  <title>System languages should include Webapps | The Quiescent Current</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #212529;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/posts">Posts</a>
+    
+    <a href="/series">Series</a>
+    
+    <a href="/tags">Tags</a>
+    
+    <a href="/about">About</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1>System languages should include Webapps</h1>
+<p>I was reading an <a href="https://isocpp.org/wiki/faq/strange-inheritance">FAQ</a> today about some subtle C++ point and I came across
 a comment that explicitly excludes the beginning language-learner.</p>
 <blockquote>
 <p>By the way, it confuses most novice C++ programmers that private virtuals
@@ -17,8 +195,7 @@ enough that confusion of novices is less of a concern.</p>
 success so flippantly brushed aside its future user. The C++ community is
 certainly undergoing a transformation. There is active effort to modernize,
 and refresh C++.  However, lending a hand to beginners is not C++&rsquo;s forte.
-There are more <a href="codereview.stackexchange.com">resources</a>
- to learn programming
+There are more <a href="codereview.stackexchange.com">resources</a> to learn programming
 today than when I started, however the struggles of a beginner are largely
 unchanged. This comment left me thinking not that this C++ idiom is easier
 to understand, its that there aren&rsquo;t any novices left in the C++ community.</p>
@@ -26,16 +203,14 @@ to understand, its that there aren&rsquo;t any novices left in the C++ community
 I admire about the community. First, D is frank about the inconsistencies in
 their language, and actively try to make it easier to understand. Second,
 D embraces web application.</p>
-<p>During the <a href="http://dconf.org/2015/index.html"target="_blank" rel="noopener noreferrer">DConf videos</a>
- speakers voice pain points, and
+<p>During the <a href="http://dconf.org/2015/index.html">DConf videos</a> speakers voice pain points, and
 inconsistencies in the language. The point isn&rsquo;t to complain, but to
 acknowledge that language experts are not the only users.  With each point Walter
 Bright (the language&rsquo;s author) carefully considers each point.</p>
 <p>For example, one individual suggested that D&rsquo;s mixins are &ldquo;unprincipled&rdquo;.
 Unprincipled meaning mixins are strings rather than expression trees as in C#&rsquo;s
 LINQ, or Abstract Syntax Trees as in Rust&rsquo;s macros. Bright however
-<a href="https://www.youtube.com/watch?v=s83u5iw67TY"target="_blank" rel="noopener noreferrer">responded</a>
- that he agrees mixins are unprincipled, but
+<a href="https://www.youtube.com/watch?v=s83u5iw67TY">responded</a> that he agrees mixins are unprincipled, but
 &ldquo;&hellip;[that] they are easy to understand.&rdquo;  Making mixins as straightforward as string
 manipulation makes an otherwise advanced technique something a novice can use.</p>
 <p>I can certainly attest to the complexity of C#&rsquo;s LINQ. I&rsquo;ve
@@ -44,20 +219,13 @@ engine. LINQ Expression Trees are certainly in the upper echelons of advanced
 techniques. Implementing mixins as string manipulation is a beautiful
 concession to making a language easier to use.</p>
 <p>The second principle I loved about the D community, and the thesis of
-this post, is a single statement on <a href="http://wiki.dlang.org/Vision/2015H1"target="_blank" rel="noopener noreferrer">D&rsquo;s roadmap</a>
-
-&ldquo;Emphasize <a href="http://vibed.org/"target="_blank" rel="noopener noreferrer">vibe.d</a>
-&rdquo;.</p>
-<p><a href="http://vibed.org/"target="_blank" rel="noopener noreferrer">Vibe.d</a>
- is an asynchronous I/O and web framework library for D.
-I find the combination of I/O library and web framework similar to <a href="https://playframework.com/"target="_blank" rel="noopener noreferrer">Play
-Framework&rsquo;s</a>
- approach from Scala.  D is classified as a system
-language. The same class as C++. However the D community considers (as does the <a href="https://www.reddit.com/r/rust/comments/3n3b2d/trying_rust_for_web_services/cvl1lx1"target="_blank" rel="noopener noreferrer">Rust
-community</a>
-, <a href="https://blog.wearewizards.io/trying-rust-for-web-services"target="_blank" rel="noopener noreferrer">1</a>
-, <a href="http://arewewebyet.com/"target="_blank" rel="noopener noreferrer">2</a>
-) web
+this post, is a single statement on <a href="http://wiki.dlang.org/Vision/2015H1">D&rsquo;s roadmap</a>
+&ldquo;Emphasize <a href="http://vibed.org/">vibe.d</a>&rdquo;.</p>
+<p><a href="http://vibed.org/">Vibe.d</a> is an asynchronous I/O and web framework library for D.
+I find the combination of I/O library and web framework similar to <a href="https://playframework.com/">Play
+Framework&rsquo;s</a> approach from Scala.  D is classified as a system
+language. The same class as C++. However the D community considers (as does the <a href="https://www.reddit.com/r/rust/comments/3n3b2d/trying_rust_for_web_services/cvl1lx1">Rust
+community</a>, <a href="https://blog.wearewizards.io/trying-rust-for-web-services">1</a>, <a href="http://arewewebyet.com/">2</a>) web
 services a key enabler.</p>
 <p>C++ is entrenched in enterprise applications.  However languages like D, and
 Rust are among the few that can compete with C++&rsquo;s performance. This is,
@@ -65,8 +233,7 @@ I believe, C++&rsquo;s last life-preserving feature, entrenchment.  C++ is hard 
 learn, hard to use, tends to define language experts (also see Haskell).  But
 it is everywhere, and I can get a good paying job by knowing it.</p>
 <p>HTTP/REST has established itself as the lingua-franca of Service Oriented
-Architectures.  <a href="http://engineering.linkedin.com/play/play-framework-linkedin"target="_blank" rel="noopener noreferrer">LinkedIn</a>
- maintains a beautiful and informative
+Architectures.  <a href="http://engineering.linkedin.com/play/play-framework-linkedin">LinkedIn</a> maintains a beautiful and informative
 blog about engineering a massively-online-multiplayer-role-playing-game, also
 known as a social network. At it&rsquo;s heart are a number of services, written in
 various languages, all linked together via HTTP. HTTP is the key that binds
@@ -85,14 +252,41 @@ expertise in C++ to build my personal web service experiments, but there
 simply isn&rsquo;t a reasonable way to do that. Go is certainly a contender for this
 space, but I prefer languages that give me more of a hand in generic
 (parametric polymorphic) techniques. For me, now, that language is D.</p>
-</article><section class="article labels"><a class="tag" href=/tags/coding/>Coding</a></section>
-</div>
-<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2020/05/learning-process/"><span class="iconfont icon-article"></span>My Learning Process</a></p><p><a class="link" href="/2015/09/deploying-d-to-azure-webapp/"><span class="iconfont icon-article"></span>4 Simple Steps to Run D Language in Azure Websites</a></p></section></div></section><section id="footer"><div class="footer-wrap">
-    <p class="copyright">©2022 Jeremy Wright</p>
-    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
-        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
-        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
-</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-            onload="renderMathInElement(document.body);"></script></body>
+
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#216942",
+      "text": "#b2d192"
+    },
+    "button": {
+      "background": "#afed71"
+    }
+  }
+})});
+</script>
+
+</body>
 
 </html>

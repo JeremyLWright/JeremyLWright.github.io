@@ -1,14 +1,190 @@
-<!DOCTYPE html>
-<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.97.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="color-scheme" content="light dark">
-<meta name="supported-color-schemes" content="light dark"><title>Parallel Game-of-Life&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Parallel Game-of-Life" /><body><section id="header">
-    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
-        <span class="header right-side"></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
-    <h1 class="article title">Parallel Game-of-Life</h1><p class="article date">Sunday, October 23, 2011</p></section><article class="article markdown-body"><p>Conway&rsquo;s <a href="http://www.bitstorm.org/gameoflife/"target="_blank" rel="noopener noreferrer">Game of Life</a>
- is a dramatic illustration of emmergent behavior; that a seemingly complex system, such as cell mitosis can be governed by a set of simple rules. OpenMP is a fantastic set of language extensions which allows one to add dramatic parallelism without complex thread management.  As a demonstration of <a href="http://openmp.org/wp/"target="_blank" rel="noopener noreferrer">OpenMP</a>
-&rsquo;s simplicity I implemented the Game of Life. The code and all analysis is available on <a href="https://bitbucket.org/jwright/parallel-game-of-life"target="_blank" rel="noopener noreferrer">bitbucket.org</a>
-.</p>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.97.3" />
+
+  
+  <meta name="description" content="Some description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://quiescent.us/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://quiescent.us/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://quiescent.us/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://quiescent.us/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://quiescent.us/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://quiescent.us/css/bootstrap.min.css" />
+
+  
+  <title>Parallel Game-of-Life | The Quiescent Current</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #212529;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/posts">Posts</a>
+    
+    <a href="/series">Series</a>
+    
+    <a href="/tags">Tags</a>
+    
+    <a href="/about">About</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1>Parallel Game-of-Life</h1>
+<p>Conway&rsquo;s <a href="http://www.bitstorm.org/gameoflife/">Game of Life</a> is a dramatic illustration of emmergent behavior; that a seemingly complex system, such as cell mitosis can be governed by a set of simple rules. OpenMP is a fantastic set of language extensions which allows one to add dramatic parallelism without complex thread management.  As a demonstration of <a href="http://openmp.org/wp/">OpenMP</a>&rsquo;s simplicity I implemented the Game of Life. The code and all analysis is available on <a href="https://bitbucket.org/jwright/parallel-game-of-life">bitbucket.org</a>.</p>
 <p>In a real program, it common to have swathes of code which cannot be made parallel. OpenMP&rsquo;s limited perspective on data limits one further.  As such, OpenMP is most effective when the data is decomposed into independently manageable chunks. To evaluate the performance affect of OpenMP on my implementation I used a single Base Class to implement the serial portion of the code. Each child class makes small modifications to the generation calculation, decomposing the data in different ways.  I made three decompositions:</p>
 <ol>
 <li>
@@ -96,9 +272,7 @@
             uint32_t livingNeighbors = CountLivingNeighbors(col, row);
 </code></pre>
 <p>Here is the power of OpenMP, its simplicity.  OpenMP exposes a set of #pragma functions which apply parallelism to the beginning of a scope block, and a barrier at the end of the scope block. Automatic parallelism, it doesn&rsquo;t get easier than this. However OpenMP&rsquo;s simplicity does hamper it in a few ways. OpenMP directives for instance, cannot batch C++ iterators. Now we have a thread pool which will run segments of the game of life in parallel.</p>
-<p>[caption id=&ldquo;attachment_420&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;792&rdquo; caption=&ldquo;Column Order Decomposition&rdquo;]<a href="http://www.codestrokes.com/wp-content/uploads/2011/10/Screenshot-at-2011-10-22-215034.png"target="_blank" rel="noopener noreferrer"><img  src="http://www.codestrokes.com/wp-content/uploads/2011/10/Screenshot-at-2011-10-22-215034.png"
-        alt/></a>
-[/caption]</p>
+<p>[caption id=&ldquo;attachment_420&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;792&rdquo; caption=&ldquo;Column Order Decomposition&rdquo;]<a href="http://www.codestrokes.com/wp-content/uploads/2011/10/Screenshot-at-2011-10-22-215034.png"><img src="http://www.codestrokes.com/wp-content/uploads/2011/10/Screenshot-at-2011-10-22-215034.png" alt=""></a>[/caption]</p>
 <p>The right half of the image illustrates each thread, one for each color, as it updates a section of the game grid.  (Decomposition into rows is left as an exercise). Extending this we can make a fully parallel version.</p>
 <pre><code>#pragma omp parallel for collapse(2) schedule(dynamic)
    for(size_t row = 0; row &lt; GetGridSize(); ++row)
@@ -108,47 +282,49 @@
             uint32_t livingNeighbors = CountLivingNeighbors(col, row);
 </code></pre>
 <p>Rendering the following:</p>
-<p>[caption id=&ldquo;attachment_422&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;792&rdquo; caption=&ldquo;Full data decomposition with dynamic thread balancing&rdquo;]<a href="http://www.codestrokes.com/wp-content/uploads/2011/10/CorrectedFullThreadRender.png"target="_blank" rel="noopener noreferrer"><img  src="http://www.codestrokes.com/wp-content/uploads/2011/10/CorrectedFullThreadRender.png"
-        alt/></a>
-[/caption]</p>
+<p>[caption id=&ldquo;attachment_422&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;792&rdquo; caption=&ldquo;Full data decomposition with dynamic thread balancing&rdquo;]<a href="http://www.codestrokes.com/wp-content/uploads/2011/10/CorrectedFullThreadRender.png"><img src="http://www.codestrokes.com/wp-content/uploads/2011/10/CorrectedFullThreadRender.png" alt=""></a>[/caption]</p>
 <p>Now we have a fully parallel version where threads calculate cells at random, as the thread is available. Strangely, this isn&rsquo;t always the fastest algorithm.</p>
 <h2 id="analysis">Analysis</h2>
 <p>No single decomposition wins out. As such there is no generalization such that one threading mechanism is faster than another in all cases. The Full threading model was mst consistant, but the Row and Column decompositions actually got slower as more cores were added.</p>
-<p>[caption id=&ldquo;attachment_423&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;695&rdquo; caption=&ldquo;6-core Speedup&rdquo;]<a href="http://www.codestrokes.com/wp-content/uploads/2011/10/fitted-speedup.png"target="_blank" rel="noopener noreferrer"><img  src="http://www.codestrokes.com/wp-content/uploads/2011/10/fitted-speedup-1024x768.png"
-        alt/></a>
-[/caption]</p>
-<p>[caption id=&ldquo;attachment_424&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;695&rdquo; caption=&ldquo;12-core Speedup&rdquo;]<a href="http://www.codestrokes.com/wp-content/uploads/2011/10/fitted-speedup1.png"target="_blank" rel="noopener noreferrer"><img  src="http://www.codestrokes.com/wp-content/uploads/2011/10/fitted-speedup1-1024x768.png"
-        alt/></a>
-[/caption]</p>
+<p>[caption id=&ldquo;attachment_423&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;695&rdquo; caption=&ldquo;6-core Speedup&rdquo;]<a href="http://www.codestrokes.com/wp-content/uploads/2011/10/fitted-speedup.png"><img src="http://www.codestrokes.com/wp-content/uploads/2011/10/fitted-speedup-1024x768.png" alt=""></a>[/caption]</p>
+<p>[caption id=&ldquo;attachment_424&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;695&rdquo; caption=&ldquo;12-core Speedup&rdquo;]<a href="http://www.codestrokes.com/wp-content/uploads/2011/10/fitted-speedup1.png"><img src="http://www.codestrokes.com/wp-content/uploads/2011/10/fitted-speedup1-1024x768.png" alt=""></a>[/caption]</p>
 <p>Most interestingly, the row and column performance goes down with more cores, while the full decomposition stays pretty constant. I do not have a reason why this is happening.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>OpenMP makes adding parallelism to a serial program easy. The constructs allow one to sprinkle parallel code throughout the program, and the measure the performance boost. Sometimes it may be prudent to dive in deeper and manually thread some section of code, especially when using complex C++ constructs such as iterators, but if OpenMP meets the need, then its a low-cost, cross-platform mechanism.  Furthermore, OpenMP is exposed as a set of #pragma functions. Since #pragmas are by definition an extension to the language, if the compiler doesn&rsquo;t understand the directives, they are simply ignored. This allows one to liberally use OpenMP, and if the compiler of choice doesn&rsquo;t support the OpenMP directives, OpenMP will not break the build. OpenMP is a fantastic tool.</p></article><section class="article labels"><a class="tag" href=/tags/coding/>Coding</a><a class="tag" href=/tags/parallel/>parallel</a></section>
-</div>
-<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/"><span class="iconfont icon-article"></span>Making C++ like Python: The Anderson Smart Pointer Pattern</a></p><p><a class="link" href="/2011/09/the-1000000-compile/"><span class="iconfont icon-article"></span>The $1,000,000 Compile</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
-<script type="application/javascript">
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+<p>OpenMP makes adding parallelism to a serial program easy. The constructs allow one to sprinkle parallel code throughout the program, and the measure the performance boost. Sometimes it may be prudent to dive in deeper and manually thread some section of code, especially when using complex C++ constructs such as iterators, but if OpenMP meets the need, then its a low-cost, cross-platform mechanism.  Furthermore, OpenMP is exposed as a set of #pragma functions. Since #pragmas are by definition an extension to the language, if the compiler doesn&rsquo;t understand the directives, they are simply ignored. This allows one to liberally use OpenMP, and if the compiler of choice doesn&rsquo;t support the OpenMP directives, OpenMP will not break the build. OpenMP is a fantastic tool.</p>
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#216942",
+      "text": "#b2d192"
+    },
+    "button": {
+      "background": "#afed71"
+    }
+  }
+})});
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
-    <p class="copyright">©2022 Jeremy Wright</p>
-    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
-        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
-        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
-</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-            onload="renderMathInElement(document.body);"></script></body>
+
+</body>
 
 </html>

@@ -1,12 +1,190 @@
-<!DOCTYPE html>
-<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.97.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="color-scheme" content="light dark">
-<meta name="supported-color-schemes" content="light dark"><title>Parallelism in D&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Parallelism in D" /><body><section id="header">
-    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
-        <span class="header right-side"></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
-    <h1 class="article title">Parallelism in D</h1><p class="article date">Sunday, May 29, 2011</p></section><article class="article markdown-body"><p>Parallelism, it sounds like a religion, and in some sense it is. Like many facets of software engineering, writing good parallel code is more of an art than a science.  I come from a FPGA background where parallelism is part of the language; part of the culture! The tools are designed to find deadlocks, analyze timing and the language itself is fully aware of parallelism.  The hardware world understands parallelism, yet writing parallel software is still difficult.  D is making some pioneering steps in the right direction for <a href="http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html"target="_blank" rel="noopener noreferrer">parallelism</a>
-.  I use a parallel implementation of bucket sort to show how D makes writing parallel code, correct.</p>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.97.3" />
+
+  
+  <meta name="description" content="Some description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://quiescent.us/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://quiescent.us/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://quiescent.us/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://quiescent.us/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://quiescent.us/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://quiescent.us/css/bootstrap.min.css" />
+
+  
+  <title>Parallelism in D | The Quiescent Current</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #212529;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/posts">Posts</a>
+    
+    <a href="/series">Series</a>
+    
+    <a href="/tags">Tags</a>
+    
+    <a href="/about">About</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1>Parallelism in D</h1>
+<p>Parallelism, it sounds like a religion, and in some sense it is. Like many facets of software engineering, writing good parallel code is more of an art than a science.  I come from a FPGA background where parallelism is part of the language; part of the culture! The tools are designed to find deadlocks, analyze timing and the language itself is fully aware of parallelism.  The hardware world understands parallelism, yet writing parallel software is still difficult.  D is making some pioneering steps in the right direction for <a href="http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html">parallelism</a>.  I use a parallel implementation of bucket sort to show how D makes writing parallel code, correct.</p>
 <p>Parallelism is ingrained in the hardware engineer’s mind. The motivating purpose of parallelism is **performance. **There is simply no other justification for the pains of parallelism except the high performance potential it offers. The FPGA engineer’s tool-chain evolves around this fact.  The tools are designed to find deadlocks, analyze timing; however the most valuable feature is that the language itself is fully aware of parallelism. Take this simple Verilog example:</p>
 <pre><code>always @ (posedge clock or negedge reset_n)
 begin
@@ -20,12 +198,8 @@ begin
     end
 end
 </code></pre>
-<p>The &lt;= operator is called the non-blocking assignment.  In the example above, all three lines in the else condition execute simultaneously.  This is important; just by reading the code you can see that it is parallel.  Our software languages, C, C++, Java, do not make parallel code obvious.  In these languages parallelism tends to feel like a bolt-on, aftermarket feature that never really flows with the rest of the language, or design idioms.  While researching the background on this article, I found a fantastic write up on <a href="http://www.futurechips.org/tips-for-power-coders/parallel-programming.html"target="_blank" rel="noopener noreferrer">What Makes Parallel Programs Hard</a>
-.  The author contends that parallel programs are hard because of inter-task dependencies.  This is true, but I would further the point that if the language supported parallelism at its core, as Hardware Description Languages do, writing parallel software wouldn’t be so difficult. Furthermore, if a language offered parallel idioms, duplicating robust parallel code would also be easier.</p>
-<p>HDLs make it obvious that the code is parallel, until D I haven’t seen a language do it quite so well.  <a href="http://www.codestrokes.com/?p=101"target="_blank" rel="noopener noreferrer">Bucket Sort Part 1</a>
- was a quick introduction to Bucket Sort as an algorithm, but the real power of bucket sort is how easily it can be parallelized. Once the list is segmented or “bucketized” each bucket may be sorted simultaneously.  I wrote a D implementation of this, and parallelism really offers incredible performance here.  Take a look.<a href="http://www.codestrokes.com/wp-content/uploads/2011/05/threading_compared.png"target="_blank" rel="noopener noreferrer"><img  src="http://www.codestrokes.com/wp-content/uploads/2011/05/threading_compared_thumb.png"
-        alt="threading_compared"/></a>
-</p>
+<p>The &lt;= operator is called the non-blocking assignment.  In the example above, all three lines in the else condition execute simultaneously.  This is important; just by reading the code you can see that it is parallel.  Our software languages, C, C++, Java, do not make parallel code obvious.  In these languages parallelism tends to feel like a bolt-on, aftermarket feature that never really flows with the rest of the language, or design idioms.  While researching the background on this article, I found a fantastic write up on <a href="http://www.futurechips.org/tips-for-power-coders/parallel-programming.html">What Makes Parallel Programs Hard</a>.  The author contends that parallel programs are hard because of inter-task dependencies.  This is true, but I would further the point that if the language supported parallelism at its core, as Hardware Description Languages do, writing parallel software wouldn’t be so difficult. Furthermore, if a language offered parallel idioms, duplicating robust parallel code would also be easier.</p>
+<p>HDLs make it obvious that the code is parallel, until D I haven’t seen a language do it quite so well.  <a href="http://www.codestrokes.com/?p=101">Bucket Sort Part 1</a> was a quick introduction to Bucket Sort as an algorithm, but the real power of bucket sort is how easily it can be parallelized. Once the list is segmented or “bucketized” each bucket may be sorted simultaneously.  I wrote a D implementation of this, and parallelism really offers incredible performance here.  Take a look.<a href="http://www.codestrokes.com/wp-content/uploads/2011/05/threading_compared.png"><img src="http://www.codestrokes.com/wp-content/uploads/2011/05/threading_compared_thumb.png" alt="threading_compared"></a></p>
 <p>This compares the runtimes of sorting 10 million numbers using various configurations of bucket sort.  Consistently, the multithreaded version is faster.  So how does D makes this easy?</p>
 <pre><code>uint[] bucket_sort(uint[] unsorted_data, immutable uint num_buckets)
 {
@@ -62,46 +236,46 @@ end
     return s;
 }
 </code></pre>
-<p>This code has the obviousness we are looking for.  taskPool.parallel comes from the <a href="http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html"target="_blank" rel="noopener noreferrer">std.parallelism</a>
- module starting in <a href="http://www.digitalmars.com/d/download.html"target="_blank" rel="noopener noreferrer">D 2.053</a>
-.  Simply, by reading the source code, one can see that this code is parallel.  That’s it. The taskPool.parallel routine automatically divvies out units of work between new threads; more importantly, taskPool.parallel automatically joins all threads them at the end of the foreach scope.</p>
+<p>This code has the obviousness we are looking for.  taskPool.parallel comes from the <a href="http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html">std.parallelism</a> module starting in <a href="http://www.digitalmars.com/d/download.html">D 2.053</a>.  Simply, by reading the source code, one can see that this code is parallel.  That’s it. The taskPool.parallel routine automatically divvies out units of work between new threads; more importantly, taskPool.parallel automatically joins all threads them at the end of the foreach scope.</p>
 <p>Using this, we can find the optimal configuration of bucket size for both single-threaded and multi-threaded versions of the code.</p>
-<p><a href="http://www.codestrokes.com/wp-content/uploads/2011/05/single_threaded.png"target="_blank" rel="noopener noreferrer"><img  src="http://www.codestrokes.com/wp-content/uploads/2011/05/single_threaded_thumb.png"
-        alt="single_threaded"/></a>
-</p>
-<p><a href="http://www.codestrokes.com/wp-content/uploads/2011/05/multi_threaded.png"target="_blank" rel="noopener noreferrer"><img  src="http://www.codestrokes.com/wp-content/uploads/2011/05/multi_threaded_thumb.png"
-        alt="multi_threaded"/></a>
-</p>
+<p><a href="http://www.codestrokes.com/wp-content/uploads/2011/05/single_threaded.png"><img src="http://www.codestrokes.com/wp-content/uploads/2011/05/single_threaded_thumb.png" alt="single_threaded"></a></p>
+<p><a href="http://www.codestrokes.com/wp-content/uploads/2011/05/multi_threaded.png"><img src="http://www.codestrokes.com/wp-content/uploads/2011/05/multi_threaded_thumb.png" alt="multi_threaded"></a></p>
 <p>Interestingly, the optimal setting was different between the multithreaded and single threaded versions with multithreaded at 800 buckets and single threaded at 45,800 buckets.  However we can see from the standard deviation plots a sizable variation within a single configuration’s bucket size, while the average runtimes remains fairly flat.  Ergo, bucket size is not the performance bottle neck, it’s the actual sorting, and parallelism drastically illustrates this in the “Threading Compared” plot.</p>
-<p>D provides two primary multithreading techniques, <a href="http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html"target="_blank" rel="noopener noreferrer">std.parallelism</a>
-, discussed here, and <a href="http://www.digitalmars.com/d/2.0/phobos/std_concurrency.html"target="_blank" rel="noopener noreferrer">std.concurrency</a>
- with a powerful message passing framework for effective inter-thread communication.  D makes robust, readable, parallel code, easy and correct.  In our case of bucket sort, with only a single line of code.</p></article><section class="article labels"><a class="tag" href=/tags/d/>D</a><a class="tag" href=/tags/coding/>Coding</a><a class="tag" href=/tags/algorithm/>algorithm</a><a class="tag" href=/tags/parallel/>parallel</a><a class="tag" href=/tags/real-time/>real-time</a><a class="tag" href=/tags/realtime/>realtime</a><a class="tag" href=/tags/sorting/>Sorting</a></section>
-</div>
-<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2011/06/type-safe-variable-argument-lists/"><span class="iconfont icon-article"></span>Type-Safe Variable Argument Lists</a></p><p><a class="link" href="/2011/05/bucket-sort/"><span class="iconfont icon-article"></span>Bucket Sort</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
-<script type="application/javascript">
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+<p>D provides two primary multithreading techniques, <a href="http://www.digitalmars.com/d/2.0/phobos/std_parallelism.html">std.parallelism</a>, discussed here, and <a href="http://www.digitalmars.com/d/2.0/phobos/std_concurrency.html">std.concurrency</a> with a powerful message passing framework for effective inter-thread communication.  D makes robust, readable, parallel code, easy and correct.  In our case of bucket sort, with only a single line of code.</p>
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#216942",
+      "text": "#b2d192"
+    },
+    "button": {
+      "background": "#afed71"
+    }
+  }
+})});
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
-    <p class="copyright">©2022 Jeremy Wright</p>
-    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
-        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
-        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
-</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-            onload="renderMathInElement(document.body);"></script></body>
+
+</body>
 
 </html>

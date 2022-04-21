@@ -1,13 +1,191 @@
-<!DOCTYPE html>
-<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.97.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="color-scheme" content="light dark">
-<meta name="supported-color-schemes" content="light dark"><title>Abstraction in Plain English&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Abstraction in Plain English" /><body><section id="header">
-    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
-        <span class="header right-side"></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
-    <h1 class="article title">Abstraction in Plain English</h1><p class="article date">Tuesday, September 18, 2012</p></section><article class="article markdown-body"><p>Abstraction is an interesting concept. For me personally, abstraction was never clearly explained. I left school and entered my first job knowing I should abstract things, but I realize now my understanding of abstraction amounted to obscurity.</p>
-<p>Abstraction to me meant, “Don’t use that thing directly, <em>abstract it</em> and use some interface instead.&quot; &ldquo;That’s what <em>good</em> programmers do,&rdquo; I told myself. I taught myself a lot about function pointers, and advanced OO techniques using pure virtual classes all to avoid using something directly. This is wrong. My entire prespective on abstraction was wrong. A few days ago I was watching a <a href="http://channel9.msdn.com/Events/GoingNative/GoingNative-2012/Keynote-Bjarne-Stroustrup-Cpp11-Style"target="_blank" rel="noopener noreferrer">lecture from Bjarne Stroustrup</a>
-, comically, one I’ve watch before and it finally clicked.</p>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.97.3" />
+
+  
+  <meta name="description" content="Some description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://quiescent.us/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://quiescent.us/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://quiescent.us/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://quiescent.us/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://quiescent.us/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://quiescent.us/css/bootstrap.min.css" />
+
+  
+  <title>Abstraction in Plain English | The Quiescent Current</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #212529;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/posts">Posts</a>
+    
+    <a href="/series">Series</a>
+    
+    <a href="/tags">Tags</a>
+    
+    <a href="/about">About</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1>Abstraction in Plain English</h1>
+<p>Abstraction is an interesting concept. For me personally, abstraction was never clearly explained. I left school and entered my first job knowing I should abstract things, but I realize now my understanding of abstraction amounted to obscurity.</p>
+<p>Abstraction to me meant, “Don’t use that thing directly, <em>abstract it</em> and use some interface instead.&quot; &ldquo;That’s what <em>good</em> programmers do,&rdquo; I told myself. I taught myself a lot about function pointers, and advanced OO techniques using pure virtual classes all to avoid using something directly. This is wrong. My entire prespective on abstraction was wrong. A few days ago I was watching a <a href="http://channel9.msdn.com/Events/GoingNative/GoingNative-2012/Keynote-Bjarne-Stroustrup-Cpp11-Style">lecture from Bjarne Stroustrup</a>, comically, one I’ve watch before and it finally clicked.</p>
 <blockquote>Express notions as the expert in the field understands them. — Bjarne Stroustroup.</blockquote>
 <p>Wow, that is simple. Abstraction is not about creating layers or separating the programmer from anything, in fact abstraction has nothing to do with the programmer at all. Abstraction is about creating entities, may they be objects, functions or simply variables which describe the system as an expert would describe the system.</p>
 <p>For example think of building a blackjack game. In blackjack the dealer is our expert, so we need to describe the objects in our system in a vernacular which makes sense to her. First, let us describe a bad example of abstraction with respect to the deck used for dealing cards to the players. This bad example starts with the programmer’s perspective. To a programmer, a deck looks like an array. We’ve been taught that it is not good to allocate a bunch of memory into an array so we hold an array of pointers to cards which are allocated in the heap. Okay so now we have a container to hold the cards std::vector&lt;Card*&gt;. For this article lets ignore the ownership issues, and continue.</p>
@@ -21,8 +199,7 @@
     }
 }
 </code></pre>
-<p>Now try to explain to an actual dealer what this code is doing. Firstly, you&rsquo;ll never be able to justify dealing from the back of the deck, <a href="http://en.wikipedia.org/wiki/Cheating_%28casino%29"target="_blank" rel="noopener noreferrer">its cheating</a>
-. The problem here isn&rsquo;t functional. The code will probably work. the problem is perspective. Lets reevaluate this from a dealer&rsquo;s perspective. A dealer has a box, called the Shoe. In the shoe are all the decks. The dealer draws from the Shoe, and give the card to the player. With the dealer’s perspective in mind the code might look like this:</p>
+<p>Now try to explain to an actual dealer what this code is doing. Firstly, you&rsquo;ll never be able to justify dealing from the back of the deck, <a href="http://en.wikipedia.org/wiki/Cheating_(casino)">its cheating</a>. The problem here isn&rsquo;t functional. The code will probably work. the problem is perspective. Lets reevaluate this from a dealer&rsquo;s perspective. A dealer has a box, called the Shoe. In the shoe are all the decks. The dealer draws from the Shoe, and give the card to the player. With the dealer’s perspective in mind the code might look like this:</p>
 <pre><code>void DealInitialHand(Player* p)
 {
     //The rules of blackjack are defined there is no reason to make this code
@@ -37,44 +214,49 @@
 <p>References:</p>
 <ul>
 <li>
-<p><a href="http://www.artima.com/intv/abstreffi.html"target="_blank" rel="noopener noreferrer">http://www.artima.com/intv/abstreffi.html</a>
-</p>
+<p><a href="http://www.artima.com/intv/abstreffi.html">http://www.artima.com/intv/abstreffi.html</a></p>
 </li>
 <li>
-<p><a href="http://www.artima.com/intv/modern.html"target="_blank" rel="noopener noreferrer">http://www.artima.com/intv/modern.html</a>
-</p>
+<p><a href="http://www.artima.com/intv/modern.html">http://www.artima.com/intv/modern.html</a></p>
 </li>
 <li>
-<p><a href="http://www.artima.com/intv/goldilocks.html"target="_blank" rel="noopener noreferrer">http://www.artima.com/intv/goldilocks.html</a>
-</p>
+<p><a href="http://www.artima.com/intv/goldilocks.html">http://www.artima.com/intv/goldilocks.html</a></p>
 </li>
-</ul></article><section class="article labels"><a class="tag" href=/tags/system/>System</a><a class="tag" href=/tags/explaination/>explaination</a><a class="tag" href=/tags/explanation/>explanation</a><a class="tag" href=/tags/newbie/>newbie</a></section>
-</div>
-<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2012/09/asulug-talk-django-web-framework/"><span class="iconfont icon-article"></span>ASULUG Talk: Django Web Framework</a></p><p><a class="link" href="/2012/09/open-source-ctf-game-server/"><span class="iconfont icon-article"></span>Open Source CTF Game Server</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
-<script type="application/javascript">
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+</ul>
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#216942",
+      "text": "#b2d192"
+    },
+    "button": {
+      "background": "#afed71"
+    }
+  }
+})});
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
-    <p class="copyright">©2022 Jeremy Wright</p>
-    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
-        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
-        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
-</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-            onload="renderMathInElement(document.body);"></script></body>
+
+</body>
 
 </html>

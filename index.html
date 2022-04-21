@@ -1,35 +1,1402 @@
-<!DOCTYPE html>
-<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.97.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="color-scheme" content="light dark">
-<meta name="supported-color-schemes" content="light dark"><title>The Quiescent Current&nbsp;&ndash;&nbsp;Go Far. Go Together.</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><link rel="alternate" type="application/rss+xml" href="/index.xml" title="The Quiescent Current" /><meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="The Quiescent Current" /><body><section id="header">
-    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
-        <span class="header right-side"></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><ul class="note list"><li class="item"><a class="note" href="/2022/04/5-min-pointers/">
-            <p class="note title">Modulus in 5 minutes</p><p class="note date">Tuesday, April 5, 2022</p><p class="note content">   </p></a><p class="note labels"><a class="tag" href="/tags/low-level/">low-level</a></p></li><li class="item"><a class="note" href="/2022/04/5-min-pointers/">
-            <p class="note title">Pointers in 5 minutes</p><p class="note date">Tuesday, April 5, 2022</p><p class="note content">   </p></a><p class="note labels"><a class="tag" href="/tags/low-level/">low-level</a></p></li><li class="item"><a class="note" href="/2021/11/why-bool-is-one-byte/">
-            <p class="note title">Why is bool one byte: Wasting space to save time</p><p class="note date">Sunday, November 28, 2021</p><p class="note content">Boolean carries 1 bit of information. The canonical example of binary, On/Off, True/False. Yet, the bool type in C and C++ is 1 byte large, 8 bits of information. Carrying thus $$2^8 = 256$$ representable values. This may not sound like much, but consider an array of bools (a common misunderstanding beginning C++ students make trying to formulate a bit-field): bool fatBitField[8]
-This wasted space however has a useful purpose. It a common reason in many optimizations we make in data structures, we trade space for time.<span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="tag" href="/tags/hardware/">hardware</a><a class="tag" href="/tags/low-level/">low-level</a></p></li><li class="item"><a class="note" href="/2021/09/twenty-first-century-proof/">
-            <p class="note title">21st Century Proof :: Structure makes it possible, hard work makes it probable</p><p class="note date">Monday, September 13, 2021</p><p class="note content"> A new way of expressing: &ldquo;work smarter not harder&rdquo; -&gt; Structure makes it possible, hard work makes it probable. Detail can obscure the big picture. Structure can help, if it allows for a personalized, or tunable about of illumination. A proof is not easy if we must read the entire proof to understand.  Source <span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="tag" href="/tags/papers/">papers</a></p></li><li class="item"><a class="note" href="/2021/09/my-tla-saga/">
-            <p class="note title">My TLA+ Saga</p><p class="note date">Wednesday, September 8, 2021</p><p class="note content"> Learning together is more fun, and you may not be as self-taught as you believe. The stories we tell ourselves deeply impact our ability (or inability) to grow. The more you learn, the more challenging the material becomes to continue growing. (a.k.a. Duh, but it took me time to realize it, regardless) <span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="tag" href="/tags/reflection/">reflection</a></p></li><li class="item"><a class="note" href="/2021/03/not-incremental/">
-            <p class="note title">The World Is Not Incremental</p><p class="note date">Wednesday, March 3, 2021</p><p class="note content">I&rsquo;ve been struggling to understand the stress the TLA⁺ community is putting on the presence of math in the specifications. Namely, that specifications are not programming, and the math simplifies, by abstraction, the system.
- What exactly is being simplified by using math, instead of &ldquo;programming&rdquo;?
- During TLA⁺ study group this week, we discussed at least 1 aspect that applying math simplifies the description of our systems $$\rightarrow$$ The number of states.
-<span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="tag" href="/tags/design/">Design</a><a class="tag" href="/tags/model/">model</a></p></li><li class="item"><a class="note" href="/2020/12/quickcheck-type-level-modifiers/">
-            <p class="note title">Using QuickCheck's Positive Type Level Modifier</p><p class="note date">Thursday, December 24, 2020</p><p class="note content">One of my students this semester was struggling with the material. This student is a very diligent worker and has been researching the problems trying to get a better understanding of the material before digging in. Sometimes however, there is no replacement for just digging in and coding something. This does at least two things, it solidifies the material you&rsquo;re read so far, and most importantly it shows you the limits of what you currently understand and urges you to learn more.<span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="tag" href="/tags/quickcheck/">QuickCheck</a><a class="tag" href="/tags/im-stuck/">I&#39;m Stuck</a></p></li><li class="item"><a class="note" href="/2020/05/learning-process/">
-            <p class="note title">My Learning Process</p><p class="note date">Monday, May 25, 2020</p><p class="note content">As of 2020 Learning Questions My learning process consists of a set of learning questions. These questions are almost certainly wrong and reflect at least the following:
- My motivation for learning a topic. My misconceptions of a given topic and the seemingly magic qualities a beginner believes it can provide.  The learning questions are initially, almost certainly wrong. This is good. It shows my current understanding or lack there-of.<span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="tag" href="/tags/learning/">learning</a><a class="tag" href="/tags/study/">study</a><a class="tag" href="/tags/reflection/">reflection</a></p></li><li class="item"><a class="note" href="/2015/10/system-languages-include-web/">
-            <p class="note title">System languages should include Webapps</p><p class="note date">Saturday, October 3, 2015</p><p class="note content">I was reading an FAQ today about some subtle C++ point and I came across a comment that explicitly excludes the beginning language-learner.
- By the way, it confuses most novice C++ programmers that private virtuals can be overridden&hellip; However the private virtual approach is now common enough that confusion of novices is less of a concern.
- This left me frustrated that a language that has been core to my personal success so flippantly brushed aside its future user.<span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="tag" href="/tags/coding/">Coding</a></p></li><li class="item"><a class="note" href="/2015/09/deploying-d-to-azure-webapp/">
-            <p class="note title">4 Simple Steps to Run D Language in Azure Websites</p><p class="note date">Friday, September 25, 2015</p><p class="note content">I shameless stole these steps from 4 Simple Steps to Run Go Language in Azure Websites . This post is simply a transliteration to D. Thank you very much to Wade Wegner for the original post.
-4 Simple Steps  Create your Azure Website in Azure Portal.  Configure FTP deployment    2. Run dub init vibed_hello_world --type=vibe.d and change the default app.d to read the port from an environment variable.<span class="mldr">&mldr;</span></p></a><p class="note labels"><a class="tag" href="/tags/d/">D</a><a class="tag" href="/tags/azure/">Azure</a></p></li></ul><div class="pagination">
-    <ul><li><a class="active" href="/">1</a></li><li><a class="" href="/page/2/">2</a></li><li><a class="" href="/page/3/">3</a></li><li><a class="" href="/page/4/">4</a></li><li><a class="" href="/page/5/">5</a></li><li><a href="/page/2/"><span class="iconfont icon-pagenext"></span></a></li></ul>
-</div></section><section id="footer"><div class="footer-wrap">
-    <p class="copyright">©2022 Jeremy Wright</p>
-    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
-        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
-        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
-</section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-            onload="renderMathInElement(document.body);"></script></body>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.97.3" />
+
+  
+  <meta name="description" content="Some description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://quiescent.us/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://quiescent.us/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://quiescent.us/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://quiescent.us/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://quiescent.us/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://quiescent.us/css/bootstrap.min.css" />
+
+  
+  
+  
+    
+      
+    
+  
+  <title>Posts | The Quiescent Current</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #212529;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/posts">Posts</a>
+    
+    <a href="/series">Series</a>
+    
+    <a href="/tags">Tags</a>
+    
+    <a href="/about">About</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      
+
+  
+    
+  
+
+<h1>Posts</h1>
+
+
+
+  <p>
+    <a href="https://quiescent.us/2022/04/5-min-pointers/">Pointers in 5 minutes</a>
+    
+    
+    <br>
+    <small class="text-secondary">Apr 5, 2022</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/low-level">low-level</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2022/04/5-min-pointers/">Modulus in 5 minutes</a>
+    
+    
+    <br>
+    <small class="text-secondary">Apr 5, 2022</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/low-level">low-level</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2021/11/why-bool-is-one-byte/">Why is bool one byte: Wasting space to save time</a>
+    
+    
+    <br>
+    <small class="text-secondary">Nov 28, 2021</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/hardware">hardware</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/low-level">low-level</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2021/09/twenty-first-century-proof/">21st Century Proof :: Structure makes it possible, hard work makes it probable</a>
+    
+    
+    <br>
+    <small class="text-secondary">Sep 13, 2021</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/papers">papers</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2021/09/my-tla-saga/">My TLA+ Saga</a>
+    
+    
+    <br>
+    <small class="text-secondary">Sep 8, 2021</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/reflection">reflection</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2021/03/not-incremental/">The World Is Not Incremental</a>
+    
+    
+    <br>
+    <small class="text-secondary">Mar 3, 2021</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/design">Design</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/model">model</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2020/12/quickcheck-type-level-modifiers/">Using QuickCheck&rsquo;s Positive Type Level Modifier</a>
+    
+    
+    <br>
+    <small class="text-secondary">Dec 24, 2020</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/quickcheck">QuickCheck</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/im-stuck">I&#39;m Stuck</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2020/05/learning-process/">My Learning Process</a>
+    
+    
+    <br>
+    <small class="text-secondary">May 25, 2020</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/learning">learning</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/study">study</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/reflection">reflection</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2015/10/system-languages-include-web/">System languages should include Webapps</a>
+    
+    
+    <br>
+    <small class="text-secondary">Oct 3, 2015</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/coding">Coding</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2015/09/deploying-d-to-azure-webapp/">4 Simple Steps to Run D Language in Azure Websites</a>
+    
+    
+    <br>
+    <small class="text-secondary">Sep 25, 2015</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/d">D</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/azure">Azure</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2015/07/property_driven_design_minmax/">Property Driven Design: MinMax</a>
+    
+    
+    <br>
+    <small class="text-secondary">Jul 5, 2015</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/c&#43;&#43;">C&#43;&#43;</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/property-driven-design">Property Driven Design</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/property-testing">property-testing</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/example">example</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/tutorial">tutorial</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2015/06/converting-to-static-blog/">Recasting how I blog</a>
+    
+    
+    <br>
+    <small class="text-secondary">Jun 7, 2015</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/writing">Writing</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/blogging">blogging</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2015/02/introduction-to-pointers/">Introduction to Pointers</a>
+    
+    
+    <br>
+    <small class="text-secondary">Feb 17, 2015</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/beginner">Beginner</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2014/09/property-testing-in-c/">Property Testing in C++</a>
+    
+    
+    <br>
+    <small class="text-secondary">Sep 3, 2014</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/c&#43;&#43;">c&#43;&#43;</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/unit-test">unit test</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2014/08/what-is-a-unit-test/">What is a Unit Test?</a>
+    
+    
+    <br>
+    <small class="text-secondary">Aug 28, 2014</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/testing">Testing</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2014/08/hello-project-euler-sorry-i-doubted-you/">Hello Project Euler, Sorry I doubted you</a>
+    
+    
+    <br>
+    <small class="text-secondary">Aug 28, 2014</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/functional">Functional</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2014/06/goodbye-project-euler/">Goodbye Project Euler</a>
+    
+    
+    <br>
+    <small class="text-secondary">Jun 18, 2014</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/functional">Functional</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2014/05/design-for-testability-via-security/">Design for Testability via Security</a>
+    
+    
+    <br>
+    <small class="text-secondary">May 3, 2014</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/security">Security</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/747">747</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/bootloader">bootloader</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/firmware">firmware</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/hash">hash</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/security">Security</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/test">test</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/verify">verify</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2014/02/cracking-subciphercpp/">Massively Intelligent Non-Deterministic Luminating Effortless Super Solver</a>
+    
+    
+    <br>
+    <small class="text-secondary">Feb 12, 2014</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/c&#43;&#43;">c&#43;&#43;</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/c&#43;&#43;11">c&#43;&#43;11</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/cipher">cipher</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/cryptogram">cryptogram</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/crytography">crytography</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/monoalphabetic">monoalphabetic</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/substitution-cipher">substitution cipher</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/11/sean-parent-no-raw-loops/">Sean Parent: No Raw Loops</a>
+    
+    
+    <br>
+    <small class="text-secondary">Nov 24, 2013</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/productivity">Productivity</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/c&#43;&#43;11">C&#43;&#43;11</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/stepanov">Stepanov</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/stl">STL</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/11/rand-considered-harmful/">rand() Considered Harmful</a>
+    
+    
+    <br>
+    <small class="text-secondary">Nov 17, 2013</small>
+    
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/11/simplicity-does-matter/">Simplicity Does Matter!</a>
+    
+    
+    <br>
+    <small class="text-secondary">Nov 12, 2013</small>
+    
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/10/a-thunk-on-laziness/">A Thunk on Laziness</a>
+    
+    
+    <br>
+    <small class="text-secondary">Oct 27, 2013</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/security">Security</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/10/idiomatic-learning/">Idiomatic Learning</a>
+    
+    
+    <br>
+    <small class="text-secondary">Oct 20, 2013</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/idiom">Idiom</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/10/smaller-reviews-are-more-effective/">&ldquo;Smaller&rdquo; Reviews are More Effective</a>
+    
+    
+    <br>
+    <small class="text-secondary">Oct 13, 2013</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/review">Review</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/10/the-itanium-flop/">The Itanium Flop</a>
+    
+    
+    <br>
+    <small class="text-secondary">Oct 7, 2013</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/necromancy">Necromancy</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/itanium">itanium</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/knuth">knuth</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/multicore">multicore</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/09/linux-users-group-ctf-2013/">Linux User&rsquo;s Group CTF 2013</a>
+    
+    
+    <br>
+    <small class="text-secondary">Sep 8, 2013</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/ctf">CTF</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/contest">Contest</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/security">Security</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/cracking">cracking</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/hack-a-thon">hack-a-thon</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/hacking">hacking</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/09/my-first-logic-program/">My First Logic Program</a>
+    
+    
+    <br>
+    <small class="text-secondary">Sep 1, 2013</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/ai">AI</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/08/artifical-intelligence-impact-on-medicine/">Artifical Intelligence Impact on Medicine</a>
+    
+    
+    <br>
+    <small class="text-secondary">Aug 28, 2013</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/writing">Writing</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/08/interesting-article-about-monads/">Interesting article about Monads</a>
+    
+    
+    <br>
+    <small class="text-secondary">Aug 2, 2013</small>
+    
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/08/my-haskell-environment-for-project-euler/">My Haskell Environment for Project Euler</a>
+    
+    
+    <br>
+    <small class="text-secondary">Aug 2, 2013</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/functional">Functional</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/automake">automake</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/dependencies">dependencies</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/dependency">dependency</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/euler">euler</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/generation">generation</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/make">make</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/project-euler">project euler</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/07/review-how-to-write-a-thesis-2/">How to Write a Thesis</a>
+    
+    
+    <br>
+    <small class="text-secondary">Jul 24, 2013</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/review">Review</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/book">book</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/07/is-monolithic-code-faster/">Is Monolithic Code Faster?</a>
+    
+    
+    <br>
+    <small class="text-secondary">Jul 14, 2013</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/compilation">Compilation</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/optimization">optimization</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/performance">performance</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/07/patterns-are-evidence-of-a-languages-lacking/">Patterns are evidence of a language&rsquo;s lacking</a>
+    
+    
+    <br>
+    <small class="text-secondary">Jul 7, 2013</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/algorithm">Algorithm</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/dsl">DSL</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/pattern">pattern</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/05/haskell-a-few-problems-later/">Haskell a Few Problems Later</a>
+    
+    
+    <br>
+    <small class="text-secondary">May 14, 2013</small>
+    
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/04/haskell-day-1-again/">Haskell Day 1 (Again)</a>
+    
+    
+    <br>
+    <small class="text-secondary">Apr 22, 2013</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/functional">functional</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/03/latex-walkthrough/">Latex Walkthrough</a>
+    
+    
+    <br>
+    <small class="text-secondary">Mar 24, 2013</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/latex">latex</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/tools">tools</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/writing">writing</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/03/beagle-board-cluster-demod-at-asu/">Beagle Board Cluster Demo&rsquo;d at ASU</a>
+    
+    
+    <br>
+    <small class="text-secondary">Mar 4, 2013</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/club">Club</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/02/duplicating-sd-cards-for-beagleboard/">Duplicating SD Cards for Beagleboard</a>
+    
+    
+    <br>
+    <small class="text-secondary">Feb 24, 2013</small>
+    
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2013/02/text-processing-for-programmers/">Text Processing for Programmers</a>
+    
+    
+    <br>
+    <small class="text-secondary">Feb 17, 2013</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/productivity">Productivity</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/unix">unix</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2012/11/short-valgrind-video-tutorial/">Short Valgrind Video Tutorial</a>
+    
+    
+    <br>
+    <small class="text-secondary">Nov 12, 2012</small>
+    
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2012/09/asulug-talk-django-web-framework/">ASULUG Talk: Django Web Framework</a>
+    
+    
+    <br>
+    <small class="text-secondary">Sep 22, 2012</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/talk">Talk</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/python">Python</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2012/09/abstraction-in-plain-english/">Abstraction in Plain English</a>
+    
+    
+    <br>
+    <small class="text-secondary">Sep 18, 2012</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/system">System</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/explaination">explaination</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/explanation">explanation</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/newbie">newbie</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2012/09/open-source-ctf-game-server/">Open Source CTF Game Server</a>
+    
+    
+    <br>
+    <small class="text-secondary">Sep 9, 2012</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/ctf">CTF</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2012/08/the-turbulent-history-of-managed-code/">The Turbulent History of Managed Code</a>
+    
+    
+    <br>
+    <small class="text-secondary">Aug 28, 2012</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/productivity">Productivity</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/java">Java</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/managed-code">Managed Code</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2012/07/know-its-name/">Know Its Name</a>
+    
+    
+    <br>
+    <small class="text-secondary">Jul 21, 2012</small>
+    
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2012/07/the-importance-of-system-design/">The Importance of System Design</a>
+    
+    
+    <br>
+    <small class="text-secondary">Jul 15, 2012</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/design">Design</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/bottom-up">bottom-up</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/top-down">top-down</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2012/05/building-an-interpreter/">Building an Interpreter</a>
+    
+    
+    <br>
+    <small class="text-secondary">May 28, 2012</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/compilation">Compilation</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/ast">AST</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/bison">Bison</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/c&#43;&#43;">C&#43;&#43;</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/compiler">compiler</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/flex">Flex</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2012/03/multicast-delegates-in-c11/">Multicast Delegates in C++11</a>
+    
+    
+    <br>
+    <small class="text-secondary">Mar 25, 2012</small>
+    
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2012/03/abstract-syntax-trees-introduction-to-flex/">Abstract Syntax Trees: Introduction to Flex</a>
+    
+    
+    <br>
+    <small class="text-secondary">Mar 18, 2012</small>
+    
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2012/02/branching-with-mercurial/">Branching with Mercurial</a>
+    
+    
+    <br>
+    <small class="text-secondary">Feb 20, 2012</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/project">Project</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2012/02/compile-time-polymorphism/">Compile-Time Polymorphism</a>
+    
+    
+    <br>
+    <small class="text-secondary">Feb 5, 2012</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/coding">Coding</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/idiom">idiom</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/performance">performance</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/template">template</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/virtual">virtual</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2011/11/parallel-binary-buddy-the-friendly-memory-manager/">Parallel Binary Buddy: The Friendly Memory Manager</a>
+    
+    
+    <br>
+    <small class="text-secondary">Nov 23, 2011</small>
+    
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2011/10/making-c-like-python-the-anderson-smart-pointer-pattern/">Making C++ like Python: The Anderson Smart Pointer Pattern</a>
+    
+    
+    <br>
+    <small class="text-secondary">Oct 23, 2011</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/coding">Coding</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/memory">memory</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/python">Python</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/raii">RAII</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2011/10/parallel-game-of-life/">Parallel Game-of-Life</a>
+    
+    
+    <br>
+    <small class="text-secondary">Oct 23, 2011</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/coding">Coding</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/parallel">parallel</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2011/09/the-1000000-compile/">The $1,000,000 Compile</a>
+    
+    
+    <br>
+    <small class="text-secondary">Sep 22, 2011</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/coding">Coding</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/testing">testing</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2011/08/good-tools-excellent-results/">Good Tools, Excellent Results</a>
+    
+    
+    <br>
+    <small class="text-secondary">Aug 21, 2011</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/coding">Coding</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/productivity">productivity</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/python">Python</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/tools">tools</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2011/08/why-do-some-tutorials-use-stdcout-and-others-use-just-cout/">Why do some tutorials use std::cout and others use just cout?</a>
+    
+    
+    <br>
+    <small class="text-secondary">Aug 19, 2011</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/coding">Coding</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/tutorial">tutorial</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2011/08/hijacking-system-programs/">Hijacking System Programs</a>
+    
+    
+    <br>
+    <small class="text-secondary">Aug 12, 2011</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/teaching">teaching</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/talks">talks</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/command-line">command line</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/customize">customize</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/vim">vim</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2011/07/version-control-more-than-collaboration/">Version Control More Than Collaboration</a>
+    
+    
+    <br>
+    <small class="text-secondary">Jul 6, 2011</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/teaching">Teaching</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/talks">Talks</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/mercurial">mercurial</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/subversion">subversion</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/version-control">version control</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2011/06/game-framework-for-c-practicum/">Game Framework for C++ Practicum</a>
+    
+    
+    <br>
+    <small class="text-secondary">Jun 25, 2011</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/teaching/talks">Teaching/Talks</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2011/06/being-truely-productive/">Being Truely Productive</a>
+    
+    
+    <br>
+    <small class="text-secondary">Jun 19, 2011</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/writing">Writing</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/process">process</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/vim">vim</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2011/06/overview-of-upcoming-articles/">Overview of Upcoming Articles</a>
+    
+    
+    <br>
+    <small class="text-secondary">Jun 16, 2011</small>
+    
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2011/06/type-safe-variable-argument-lists/">Type-Safe Variable Argument Lists</a>
+    
+    
+    <br>
+    <small class="text-secondary">Jun 6, 2011</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/coding">Coding</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/algorithm">Algorithm</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/d">D</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/type-safety">Type Safety</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2011/05/parallelism-in-d-bucket-sort-part-2/">Parallelism in D</a>
+    
+    
+    <br>
+    <small class="text-secondary">May 29, 2011</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/d">D</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/coding">Coding</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/algorithm">algorithm</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/parallel">parallel</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/real-time">real-time</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/realtime">realtime</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/sorting">Sorting</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2011/05/bucket-sort/">Bucket Sort</a>
+    
+    
+    <br>
+    <small class="text-secondary">May 24, 2011</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/coding">Coding</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/d">D</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/sorting">Sorting</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2011/05/java-4k-contest/">Java 4K Contest</a>
+    
+    
+    <br>
+    <small class="text-secondary">May 7, 2011</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/project">Project</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/contest">Contest</a></code></small>
+
+
+<small><code><a href="https://quiescent.us/tags/java">Java</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2011/05/thing-a-week-algorithm-edition/">Thing a Week: Algorithm Edition</a>
+    
+    
+    <br>
+    <small class="text-secondary">May 3, 2011</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/coding">Coding</a></code></small>
+
+    
+  </p>
+
+  <p>
+    <a href="https://quiescent.us/2011/02/hello-world/">Welcome to Code Strokes</a>
+    
+    
+    <br>
+    <small class="text-secondary">Feb 11, 2011</small>
+    
+
+<small><code><a href="https://quiescent.us/tags/about">About</a></code></small>
+
+    
+  </p>
+
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#216942",
+      "text": "#b2d192"
+    },
+    "button": {
+      "background": "#afed71"
+    }
+  }
+})});
+</script>
+
+</body>
 
 </html>
