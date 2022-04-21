@@ -28,29 +28,27 @@ C++ makes memory management difficult in practice. Memory management, an incide
 
 There are a few idioms in C++ to help; Resource Acquisition Is Initialization, or RAII for short, states that “…the only code that can be guaranteed to be executed after an [exception](http://en.wikipedia.org/wiki/Exception_handling) is thrown are the [destructors](http://en.wikipedia.org/wiki/Destructor_%28computer_science%29) of objects residing on the [stack](http://en.wikipedia.org/wiki/Stack_%28data_structure%29) ([Wikipedia](http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization))”. Smart Pointers help achieve this.  The Smart pointer offloads much of this responsibility, hiding the complexity, thereby allowing the programmer to focus solely on the task at hand. I use an idiom I learned from my friend [Chris](http://www.chrisanderman.com/), to hide all raw pointers.
 ```cpp
+#include <memory>
 
-    
-    #include 
-    
-    //Smart Class Idiom for RAII in C++
-    class SmartClass
+//Smart Class Idiom for RAII in C++
+class SmartClass
+{
+public:
+    typedef std::tr1::shared_ptr Ptr;
+    typedef std::tr1::weak_ptr WeakPtr;
+    static SmartClass::Ptr construct(arguments)
     {
-    public:
-        typedef std::tr1::shared_ptr Ptr;
-        typedef std::tr1::weak_ptr WeakPtr;
-        static SmartClass::Ptr construct(arguments)
-        {
-    	SmartClass::Ptr c(new SmartClass());
-    	c->self = c;
-    	return c;
-        }
-    
-        virtual ~SmartClass();
-    private:
-        SmartClass();
-        SmartClass::WeakPtr self;
-    
-    };
+        SmartClass::Ptr c(new SmartClass());
+        c->self = c;
+        return c;
+    }
+
+    virtual ~SmartClass();
+private:
+    SmartClass();
+    SmartClass::WeakPtr self;
+
+};
 ```
 
 
