@@ -36,6 +36,7 @@ jobs:
     # Step 4 - Builds the site using the latest version of Hugo
     # Also specifies the theme we want to use
     - name: Build
+      uses: JeremyLWright/myjekyll@v1
       run: jekyll build
 
     # Step 5 - Create name file
