@@ -34,6 +34,9 @@
   <link rel="stylesheet" href="https://quiescent.us/css/bootstrap.min.css" />
 
   
+  <link rel="stylesheet" href="https://quiescent.us/css/syntax.css" />
+  
+  
   <title>The Red-Black Tree | The Quiescent Current</title>
   
 
@@ -189,29 +192,27 @@ blockquote,
 <p>D provides a number of features that simplify designing software, especially in the embedded environment.  I will show in this 2 part comparison, between C++ and D, that D helps one write <strong>correct code</strong>.  Correct code is something <a href="http://erdani.com/">Andrei Alexandrescu</a>, stresses heavily as a prominent feature of D.   I use the Red-Black Tree for such a comparison since its complicated enough to make memory management difficult, while retaining real-world application.</p>
 <p>C++ makes memory management difficult in practice. Memory management, an incidental complexity of C++, is especially difficult in the presence of exceptions. Our goal is to make a fast, correct data structure, not manage memory.  C++ obfuscates this goal.</p>
 <p>There are a few idioms in C++ to help; Resource Acquisition Is Initialization, or RAII for short, states that “…the only code that can be guaranteed to be executed after an <a href="http://en.wikipedia.org/wiki/Exception_handling">exception</a> is thrown are the <a href="http://en.wikipedia.org/wiki/Destructor_%28computer_science%29">destructors</a> of objects residing on the <a href="http://en.wikipedia.org/wiki/Stack_%28data_structure%29">stack</a> (<a href="http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization">Wikipedia</a>)”. Smart Pointers help achieve this.  The Smart pointer offloads much of this responsibility, hiding the complexity, thereby allowing the programmer to focus solely on the task at hand. I use an idiom I learned from my friend <a href="http://www.chrisanderman.com/">Chris</a>, to hide all raw pointers.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="cp">#include</span> 
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="cpf">//Smart Class Idiom for RAII in C++</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>    <span class="k">class</span> <span class="nc">SmartClass</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">//Smart Class Idiom for RAII in C++
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">SmartClass</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">shared_ptr</span> <span class="n">Ptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">weak_ptr</span> <span class="n">WeakPtr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="n">SmartClass</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">construct</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">        <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">shared_ptr</span> <span class="n">Ptr</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">weak_ptr</span> <span class="n">WeakPtr</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="k">static</span> <span class="n">SmartClass</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">construct</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    	<span class="n">SmartClass</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">c</span><span class="p">(</span><span class="k">new</span> <span class="n">SmartClass</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl">    	<span class="n">c</span><span class="o">-&gt;</span><span class="n">self</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    	<span class="k">return</span> <span class="n">c</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">        <span class="k">virtual</span> <span class="o">~</span><span class="n">SmartClass</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">    <span class="k">private</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">        <span class="n">SmartClass</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">SmartClass</span><span class="o">::</span><span class="n">WeakPtr</span> <span class="n">self</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SmartClass</span><span class="o">::</span><span class="n">Ptr</span> <span class="n">c</span><span class="p">(</span><span class="k">new</span> <span class="n">SmartClass</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">c</span><span class="o">-&gt;</span><span class="n">self</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="o">~</span><span class="n">SmartClass</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">SmartClass</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">SmartClass</span><span class="o">::</span><span class="n">WeakPtr</span> <span class="n">self</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></div><p>This is a very useful pattern for managing memory. The developer is not
 required to call delete, the smart pointer will do it automatically. Memory
 management is still not automatic, however. The programmer needs to resolve
