@@ -4,12 +4,12 @@
 <meta name="supported-color-schemes" content="light dark"><title>Why is bool one byte: Wasting space to save time&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Why is bool one byte: Wasting space to save time" /><body><section id="header">
     <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
-        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+        <span class="header right-side"></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
     <h1 class="article title">Why is bool one byte: Wasting space to save time</h1><p class="article date">Sunday, November 28, 2021</p></section><article class="article markdown-body"><p>Boolean carries 1 bit of information. The canonical example of binary, On/Off,
 True/False. Yet, the bool type in C and C++ is 1 byte large, 8 bits of
 information. Carrying thus $$2^8 = 256$$ representable values. This may not sound like much, but consider an array of bools (a common misunderstanding beginning C++ students make trying to formulate a bit-field): <code>bool fatBitField[8]</code></p>
 <p>This <em>wasted</em> space however has a useful purpose. It a common reason in many optimizations we make in data structures, we trade space for time. In this instance we&rsquo;re trading space for a hardware design principle, addressable memory.</p>
-<!-- raw HTML omitted -->
+<!-- more -->
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdbool.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
@@ -145,29 +145,10 @@ $$2^{64} / 2^{50} = 16384 Petabytes $$</p>
 </li>
 </ol>
 </section>
-</article><section class="article labels"><a class="tag" href=/tags/hardware/>hardware</a><a class="tag" href=/tags/low-level/>low-level</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.26acbe1a2ce9f782f6bbf368cc6d28f1d234a8ab8310cbcbb6eb69dcd155f2067db37beaa642aedf370075d14d02d307.js#pubid=ra-1234567890" integrity="sha384-Jqy&#43;Gizp94L2u/NozG0o8dI0qKuDEMvLtutp3NFV8gZ9s3vqpkKu3zcAddFNAtMH"></script>
+</article><section class="article labels"><a class="tag" href=/tags/hardware/>hardware</a><a class="tag" href=/tags/low-level/>low-level</a></section>
 </div>
-<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2022/04/5-min-pointers/"><span class="iconfont icon-article"></span>Pointers in 5 minutes</a></p><p><a class="link" href="/2021/09/twenty-first-century-proof/"><span class="iconfont icon-article"></span>21st Century Proof :: Structure makes it possible, hard work makes it probable</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
-<script type="application/javascript">
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
-    <p class="copyright">©2021 Jeremy Wright</p>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2022/04/5-min-pointers/"><span class="iconfont icon-article"></span>Pointers in 5 minutes</a></p><p><a class="link" href="/2021/09/twenty-first-century-proof/"><span class="iconfont icon-article"></span>21st Century Proof :: Structure makes it possible, hard work makes it probable</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2022 Jeremy Wright</p>
     <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
         target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
         target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>

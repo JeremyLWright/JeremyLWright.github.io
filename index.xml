@@ -5,7 +5,7 @@
     <description>Recent content on The Quiescent Current</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>©2021 Jeremy Wright</copyright>
+    <copyright>©2022 Jeremy Wright</copyright>
     <lastBuildDate>Tue, 05 Apr 2022 00:00:00 -0700</lastBuildDate>
     
         <atom:link href="https://quiescent.us/index.xml" rel="self" type="application/rss+xml" />
@@ -49,7 +49,7 @@
 True/False. Yet, the bool type in C and C++ is 1 byte large, 8 bits of
 information. Carrying thus $$2^8 = 256$$ representable values. This may not sound like much, but consider an array of bools (a common misunderstanding beginning C++ students make trying to formulate a bit-field): &lt;code&gt;bool fatBitField[8]&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;This &lt;em&gt;wasted&lt;/em&gt; space however has a useful purpose. It a common reason in many optimizations we make in data structures, we trade space for time. In this instance we&amp;rsquo;re trading space for a hardware design principle, addressable memory.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;!-- more --&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;stdbool.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
@@ -453,7 +453,7 @@ classes.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;talks&#34;&gt;Talks&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;2&lt;!-- raw HTML omitted --&gt;nd&lt;!-- raw HTML omitted --&gt; Place Arizona State &lt;a href=&#34;https://aztoastmasters.org/spring-2018-contest-results/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Toastmasters International Speech 2018&lt;/a&gt;
+&lt;li&gt;2&lt;sup&gt;nd&lt;/sup&gt; Place Arizona State &lt;a href=&#34;https://aztoastmasters.org/spring-2018-contest-results/&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Toastmasters International Speech 2018&lt;/a&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://vimeo.com/39505796&#34;target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Hosted Script for Games&lt;/a&gt;
 &lt;/li&gt;
@@ -553,7 +553,7 @@ LINQ, or Abstract Syntax Trees as in Rust&amp;rsquo;s macros. Bright however
 &amp;ldquo;&amp;hellip;[that] they are easy to understand.&amp;rdquo;  Making mixins as straightforward as string
 manipulation makes an otherwise advanced technique something a novice can use.&lt;/p&gt;
 &lt;p&gt;I can certainly attest to the complexity of C#&amp;rsquo;s LINQ. I&amp;rsquo;ve
-&lt;!-- raw HTML omitted --&gt;worked&lt;!-- raw HTML omitted --&gt; struggled on a LINQ provider for a in-house database
+&lt;strike&gt;worked&lt;/strike&gt; struggled on a LINQ provider for a in-house database
 engine. LINQ Expression Trees are certainly in the upper echelons of advanced
 techniques. Implementing mixins as string manipulation is a beautiful
 concession to making a language easier to use.&lt;/p&gt;

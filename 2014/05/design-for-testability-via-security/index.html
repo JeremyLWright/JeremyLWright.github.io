@@ -4,7 +4,7 @@
 <meta name="supported-color-schemes" content="light dark"><title>Design for Testability via Security &nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Design for Testability via Security " /><body><section id="header">
     <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
-        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+        <span class="header right-side"></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
     <h1 class="article title">Design for Testability via Security </h1><p class="article date">Saturday, May 3, 2014</p></section><article class="article markdown-body"><p>I was discussing bootloader design with a colleague of mine the other day. We were attempting to load new a third-party hardware component. The device has a poor protocol, and a useless verification step. This discussion got me thinking however how the concepts used to build a strong self-enforcing security protocol, also apply to building a testable, and reliable communication protocol. Thus, security helps us build better products not because they are secure, but because they are verifiable.</p>
 <p>This idea initially struck me as strange, since many of the secure software interfaces I&rsquo;ve used in the past, are quite obtuse. This is not a fundamental aspect of security, by rather an artifact of poor design (think OpenSSL). This is sad, since security is already a difficult concept, and requires a great deal of study to maintain throughout the life cycle of a product. Secure interfaces should make security easier, not more difficult. This is however a separate rant. So back to the bootloader.</p>
 <p>This specific device is connected by a CAN bus. This is not critical to my argument except the fact that CAN is a reliable, but slow and message order is not guaranteed. In fact, within a window of 4 packets, order is essentially random. Think about this for a moment: load firmware with random message order. The goal is to design a protocol to work with this. Firmware loading fits into a three step process: Prepare, Load, Verify. This process works independent of underlying storage techniques. For example, NAND must be erased on a full page boundary, that can be done in the prepare step. Loading to a file system, Prepare might be a simple NOP.</p>
@@ -19,39 +19,56 @@ Loader Loader Verifies data matches.
 <h3 id="prepare">Prepare</h3>
 <p>Alice and Bob want to exchange a document. (Any protocol can be made more &ldquo;secure&rdquo; by describing it with <a href="https://xkcd.com/1323/"target="_blank" rel="noopener noreferrer">Alice and Bob.</a>
 ) The communication channel is UDP, untrusted, and public. How should Alice and Bob communicate? Every security protocol starts with authentication. Bob wants to verify the sender is Alice. Alice wants to verify it&rsquo;s sending the document to Bob, and not someone else. So lets negotiate a key based on a preshared secret. This will form the prepare step of our high-level bootloader model.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<table >
+<tr >
+<td >Alice generates a nonce.
+</td>
+<td >
+</td>
+<td >Bob waiting for message.
+</td>
+</tr>
+<tr >
+<td >Alice encrypts bob_public_key(nonce_alice:sha256(nonce_alice))
+</td>
+<td >->
+</td>
+<td >Bob
+</td>
+</tr>
+<tr >
+<td >Alice
+</td>
+<td ><-
+</td>
+<td >Bob decrypts the message.
+Bob generates a new nonce. Bob encrypts 
+alice_public_key(nonce_bob:sha256(nonce_bob):nonce_alice:sha256(nonce_alice))
+</td>
+</tr>
+</table>
 <p>Alice now has Bob&rsquo;s nonce. Bob has Alice&rsquo;s nonce. Any listening attacker only has 2 messages of cipher text. Bob know&rsquo;s the message was sent from Alice because only Alice has Alice&rsquo;s private key,thus only Alice could have made the nonce message. Bob knows the nonce was intentional because Alice included the secure hash of the nonce.</p>
 <p>This protocol is protected against replay attack since Bob decrypts the nonce and hash, and reencrypts with Alice&rsquo;s public key. This allows Alice to verify Bob received her original message. Furthermore the messages are protected against manipulation because all messages include hashes. Bob, and Alice are authenticated. Additionally, they share a new, secret session key.</p>
 <p>Alice builds the session key, &ldquo;sha256(nonce_bob:nonce_alice)&rdquo;.</p>
 <p>Bob builds the session key, &ldquo;sha256(nonce_bob:nonce_alice)&rdquo;.</p>
-<p>Now only Bob and Alice at this time instance can have this new shared secret. Alice and Bob can now communicate securely. <!-- raw HTML omitted -->Let&rsquo;s load some firmware to Bob now.<!-- raw HTML omitted --> Let&rsquo;s transfer a document to Bob now.</p>
+<p>Now only Bob and Alice at this time instance can have this new shared secret. Alice and Bob can now communicate securely. <del>Let&rsquo;s load some firmware to Bob now.</del> Let&rsquo;s transfer a document to Bob now.</p>
 <h3 id="transfer">Transfer</h3>
 <p>Alice creates a document and signs it e.g. document:alice_private_key(sha256(document)).  Notice that Alice&rsquo;s private key is used to encrypt here. This is correct. We want Bob to receive the document, create a hash of the document. Bob then uses Alice&rsquo;s public key to &ldquo;encrypt&rdquo; the signature sent by Alice. He will get the plain text hash, and compare. The signature does not protect the hash i.e. it does not provide confidentiality since anyone can decrypt with the public key. Instead the signature provides integrity. The hash protects that the document was unchanged. The signature of the hash protects that the hash was computed only by Alice.</p>
 <p>Alice breaks up the document into packets to send over UDP. Each packet includes a sequence number and a hash of that message.</p>
 <p>packet = aes(session_key, i:document[i]:sha256(i:document[i]))</p>
-<p>The session key encrypts the entire message to provide confidentiality. This also strengthens the Man in the middle attack, since this session_key is ephemeral. Since it exists for only this authenticated session, an attacker cannot resend this data later to Bob. The sha256 hash provides integrity i.e. <!-- raw HTML omitted -->transmission errors<!-- raw HTML omitted --> malicious corruption. Bob verifies each individual packet by calculating the has of the received document[i], and comparing it. If the packets arrive out of order, which in <!-- raw HTML omitted -->CAN<!-- raw HTML omitted --> UDP they will, Bob can sort them.</p>
-<p>Once Bob has the entire message he can verify the signature.  Bob now has the document, all listeners only have cipher version of the document. Furthermore, Bob can verify the entire document is valid. Bob will <!-- raw HTML omitted -->erase his flash, and load the new firmware into memory<!-- raw HTML omitted --> PROFIT!</p>
+<p>The session key encrypts the entire message to provide confidentiality. This also strengthens the Man in the middle attack, since this session_key is ephemeral. Since it exists for only this authenticated session, an attacker cannot resend this data later to Bob. The sha256 hash provides integrity i.e. <del>transmission errors</del> malicious corruption. Bob verifies each individual packet by calculating the has of the received document[i], and comparing it. If the packets arrive out of order, which in <del>CAN</del> UDP they will, Bob can sort them.</p>
+<p>Once Bob has the entire message he can verify the signature.  Bob now has the document, all listeners only have cipher version of the document. Furthermore, Bob can verify the entire document is valid. Bob will <del>erase his flash, and load the new firmware into memory</del> PROFIT!</p>
 <h3 id="verify">Verify</h3>
 <p>The device my colleague and I are trying to fix simply dumped the document back to Alice.  Essentially:</p>
 <p>packet = document[i]</p>
 <p>Each packet isn&rsquo;t protected from corruption. The order of the document is unverifiable. The best Alice can do is attempt to verify multiple times hoping the document messages randomly converge on the document Alice originally sent. This is the same as using <a href="http://en.wikipedia.org/wiki/Bogosort"target="_blank" rel="noopener noreferrer">Bogosort</a>
- as a verification step. Not awesome. Instead we&rsquo;ve built up some very secure machinery to <!-- raw HTML omitted -->load software reliably<!-- raw HTML omitted --> transfer a document securely.</p>
+ as a verification step. Not awesome. Instead we&rsquo;ve built up some very secure machinery to <del>load software reliably</del> transfer a document securely.</p>
 <p>One method, although rather naive would be for Bob to send back the document to Alice in the same manner, encrypting each packet and the final signature. This however is very wasteful. Instead Alice only needs to confirm that Bob has the document in its entirely, that it is in the flash, and that all packets were loaded in the correct order. Bob simply needs to send a signature. Bob then reads his flash, and calculates a sha256. Bob then sends 1 message:</p>
 <p>packet = aes(session_key, bob_private_key(sha256(flash_read)))</p>
 <p>The packet is confidential because it is encrypted by aes. The message is protected from integrity because Alice already has the hash, she simple needs to verify that it matches the know value. Note that if Alice didn&rsquo;t have the hash already we would include a hash of the hash to provide further integrity. Alice knows that it was Bob who verified the flash because the hash is signed with Bob&rsquo;s key. Lastly, Alice knows the message is part of this load session and not a previous one replayed by an attacker because the whole message is encrypted by a session key.</p>
 <h3 id="conclusion">Conclusion</h3>
 <p>Alice and Bob now have a protocol secure against a number of attacks, but how is this useful for a bootloader? Each attack can be modeled as random noise, transmission errors, or other external effects would impede the flow of traffic. Security simply provides a more common vernacular for discussing transmission issues. It&rsquo;s also easier to reason about adversarial attackers rather than electrical interference. By translating the problem into a security one, we can model all these affects as &ldquo;bad people&rdquo; and it is a lot more fun to slay dragons, than it is to protect against some amorphous something.</p>
-<p>Okay, but what does this have to do with testability? Ah. It&rsquo;s subtle, but the same process we took to make our protocol secure also made each step verifiable. For instance, the final verification step could have been as simple as Bob sending an ACK that he verified the document&rsquo;s signature. This however isn&rsquo;t secure. An ACK can be faked, or replayed. Instead Bob build a cryptographically secure signature for Alice to verify. From a tester&rsquo;s perspective Alice is the &ldquo;verifier&rdquo;, and Bob generates test data. Bob cannot be trusted to verify something himself, the test must generate auditable output. Thus the same process which drove us to make a secure response, also generated a auditable one for the tester to report. Thus security is more useful than simply protecting our data, it helps us design better products.</p></article><section class="article labels"><a class="tag" href=/tags/security/>Security</a><a class="tag" href=/tags/747/>747</a><a class="tag" href=/tags/bootloader/>bootloader</a><a class="tag" href=/tags/firmware/>firmware</a><a class="tag" href=/tags/hash/>hash</a><a class="tag" href=/tags/security/>Security</a><a class="tag" href=/tags/test/>test</a><a class="tag" href=/tags/verify/>verify</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.26acbe1a2ce9f782f6bbf368cc6d28f1d234a8ab8310cbcbb6eb69dcd155f2067db37beaa642aedf370075d14d02d307.js#pubid=ra-1234567890" integrity="sha384-Jqy&#43;Gizp94L2u/NozG0o8dI0qKuDEMvLtutp3NFV8gZ9s3vqpkKu3zcAddFNAtMH"></script>
+<p>Okay, but what does this have to do with testability? Ah. It&rsquo;s subtle, but the same process we took to make our protocol secure also made each step verifiable. For instance, the final verification step could have been as simple as Bob sending an ACK that he verified the document&rsquo;s signature. This however isn&rsquo;t secure. An ACK can be faked, or replayed. Instead Bob build a cryptographically secure signature for Alice to verify. From a tester&rsquo;s perspective Alice is the &ldquo;verifier&rdquo;, and Bob generates test data. Bob cannot be trusted to verify something himself, the test must generate auditable output. Thus the same process which drove us to make a secure response, also generated a auditable one for the tester to report. Thus security is more useful than simply protecting our data, it helps us design better products.</p></article><section class="article labels"><a class="tag" href=/tags/security/>Security</a><a class="tag" href=/tags/747/>747</a><a class="tag" href=/tags/bootloader/>bootloader</a><a class="tag" href=/tags/firmware/>firmware</a><a class="tag" href=/tags/hash/>hash</a><a class="tag" href=/tags/security/>Security</a><a class="tag" href=/tags/test/>test</a><a class="tag" href=/tags/verify/>verify</a></section>
 </div>
 <div class="article bottom"><section class="article navigation"><p><a class="link" href="/2014/06/goodbye-project-euler/"><span class="iconfont icon-article"></span>Goodbye Project Euler</a></p><p><a class="link" href="/2014/02/cracking-subciphercpp/"><span class="iconfont icon-article"></span>Massively Intelligent Non-Deterministic Luminating Effortless Super Solver</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
 <script type="application/javascript">
@@ -73,7 +90,7 @@ Loader Loader Verifies data matches.
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
-    <p class="copyright">©2021 Jeremy Wright</p>
+    <p class="copyright">©2022 Jeremy Wright</p>
     <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
         target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
         target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>

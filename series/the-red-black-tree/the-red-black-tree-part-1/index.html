@@ -4,7 +4,7 @@
 <meta name="supported-color-schemes" content="light dark"><title>The Red-Black Tree&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="The Red-Black Tree" /><body><section id="header">
     <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
-        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+        <span class="header right-side"></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
     <h1 class="article title">The Red-Black Tree</h1><p class="article date">Monday, May 9, 2011</p><div class="notice--info">
       <p>This post is part of the <a href="https://quiescent.us/series/the-red-black-tree/" style="font-weight: bold">The Red-Black Tree</a> series.</p>
     </div></section><article class="article markdown-body"><p><a href="https://bitbucket.org/jwright/cse310-red-black-tree/overview"target="_blank" rel="noopener noreferrer">C++ Source Code</a>
@@ -153,7 +153,7 @@ _ _yet, its important that one does delete the nodes to prevent a leak memory, h
 <p>D provides a number of features that helps one write transactional, <strong>correct</strong> code. One issue, is in C++, exceptions are much of a “bolt-on” feature.  Much as exceptions are pervasive in our daily lives so in D, exceptions are pervasive in the language.  Its naïve to believe that code will not fail, yet this is how exception management in C++ feels. As evidence of this, one may throw an exception from anywhere in D, even in a destructor; C++ cannot do <a href="http://www.parashift.com/c&#43;&#43;-faq-lite/exceptions.html#faq-17.9"target="_blank" rel="noopener noreferrer">this</a>
 .</p>
 <p>In Part 2, we’ll look at how D’s exception management, garbage collection, and the <a href="http://www.d-programming-language.org/exception-safe.html"target="_blank" rel="noopener noreferrer">scope() statement</a>
- help us write clear, correct code, while lowering incidental complexity.</p></article><section class="article labels"><a class="tag" href=/tags/algorithm/>Algorithm</a><a class="tag" href=/tags/comparison/>comparison</a><a class="tag" href=/tags/data-structure/>Data Structure</a><a class="tag" href=/tags/tree/>Tree</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.26acbe1a2ce9f782f6bbf368cc6d28f1d234a8ab8310cbcbb6eb69dcd155f2067db37beaa642aedf370075d14d02d307.js#pubid=ra-1234567890" integrity="sha384-Jqy&#43;Gizp94L2u/NozG0o8dI0qKuDEMvLtutp3NFV8gZ9s3vqpkKu3zcAddFNAtMH"></script>
+ help us write clear, correct code, while lowering incidental complexity.</p></article><section class="article labels"><a class="tag" href=/tags/algorithm/>Algorithm</a><a class="tag" href=/tags/comparison/>comparison</a><a class="tag" href=/tags/data-structure/>Data Structure</a><a class="tag" href=/tags/tree/>Tree</a></section>
 </div>
 <div class="article bottom"><div class="article navigation"><h3 id="series">This series</h3>
     <ol><li><span class="iconfont icon-article"></span><b>The Red-Black Tree</b></li><li><a class="link" href="https://quiescent.us/series/the-red-black-tree/class-invariants-red-black-tree-part-2/"><span class="iconfont icon-article"></span>Class Invariants</a></li><li><a class="link" href="https://quiescent.us/series/the-red-black-tree/d-for-the-c-programmer-red-black-tree-part-3/"><span class="iconfont icon-article"></span>D for the C++ Programmer</a></li></ol></div><section class="article discussion"><div id="disqus_thread"></div>
@@ -176,7 +176,7 @@ _ _yet, its important that one does delete the nodes to prevent a leak memory, h
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
-    <p class="copyright">©2021 Jeremy Wright</p>
+    <p class="copyright">©2022 Jeremy Wright</p>
     <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
         target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
         target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>

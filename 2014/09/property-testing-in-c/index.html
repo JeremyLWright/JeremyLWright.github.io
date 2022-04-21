@@ -4,9 +4,43 @@
 <meta name="supported-color-schemes" content="light dark"><title>Property Testing in C&#43;&#43;&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Property Testing in C&#43;&#43;" /><body><section id="header">
     <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
-        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
-    <h1 class="article title">Property Testing in C++</h1><p class="article date">Wednesday, September 3, 2014</p></section><article class="article markdown-body"><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+        <span class="header right-side"></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Property Testing in C++</h1><p class="article date">Wednesday, September 3, 2014</p></section><article class="article markdown-body"><p>
+Currently, I'm on a testing kick. One might say tests are shiny. I don't
+know if they are really shiny as much as I found another cool use for
+uniform_int_distribution<>. A use which, as a side effect, might make me
+appear to be a better software developer. (This assumes a negative bug rate is
+proportional to better software). I've started playing with Property Testing.
+Property Testing is a form of unit testing where the programmers defines
+properties, or invariants about the code. A <del>framework</del> library (ok,
+seriously its a framework because it calls your code) generates random
+constrained inputs and calls your test functions. It's pretty cool, and while
+I was playing around with the framework, I found a real bug, related to my
+ignorance of C++'s auto type deduction.</p>
+<p>Let's steal a simple
+example from my CSE 565 Software Verification class: a payroll function. Here
+is the specification:</p> <blockquote> <p>Design a function that calculates
+payroll for an employee.</p> <h3>Inputs</h3> <p>Employee Id number<br>Number
+of Hours</p> <h3>Outputs</h3> <p>Amount to pay employee as a floating point
+value.</p> <h3>Constraints</h3> <p>Pay is calculated at $10 for standard time,
+$15 for overtime over 40 hours.<br>Overtime starts over 40 hours<br>Maximum
+number of hours is 100.</p></blockquote> <p>For this demonstration, I’m using
+a C++ port of Haskell’s QuickCheck, CppQuickCheck (<a
+title="https://github.com/grogers0/CppQuickCheck"
+href="https://github.com/grogers0/CppQuickCheck">https://github.com/grogers0/CppQuickCheck</a>,
+my fork and the examples in this post are available here: <a
+title="https://github.com/jwright85/CppQuickCheck"
+href="https://github.com/jwright85/CppQuickCheck">https://github.com/jwright85/CppQuickCheck</a>).
+QuickCheck was designed by John Hughes who has gone on to support a commercial
+version of the library for verifying (and validating) automotive requirements
+for Volvo (<a title="http://vimeo.com/68331689"
+href="http://vimeo.com/68331689">http://vimeo.com/68331689</a>).&nbsp; His
+presentations have motivated me to try this testing strategy for my own
+programs. Lets start with a quick implementation for our payroll function.
+We'll then apply properties against the function until we are satisfied with
+the implementation. Although property testing can provide more confidence in
+an implementation Dijkstra's famous quote still stands, "Testing shows the
+presence, not the absence of bugs."</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">float</span> <span class="nf">payroll</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">size_t</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">person_id</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">hours</span><span class="p">)</span> <span class="p">{</span> 
 </span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">hours</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span> 
 </span></span><span class="line"><span class="cl">        <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&#34;Hours cannot be greater than 100&#34;</span><span class="p">);</span> 
@@ -46,7 +80,7 @@ pay.</p>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">v</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span></code></pre></div><!-- raw HTML omitted -->
+</span></span></code></pre></div><p>Now the input range of this function is small (101 values) so we could run an exhaustive test, but for larger input domains the random generators can really shine. </p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jwright@phaseshift-linux:~/art/CppQuickCheck/b$ ./examples/testPayroll
 </span></span><span class="line"><span class="cl">* Checking property <span class="s2">&#34;Pay should be positive&#34;</span> ...
 </span></span><span class="line"><span class="cl">* *** Failed! Falsifiable after <span class="m">32</span> tests <span class="k">for</span> input:
@@ -68,7 +102,7 @@ property will be true. Multiple properties together then test the fuller input
 domain without requiring 1 single verifier to duplicate behavior. This
 property doesn’t exactly know what the correct payroll is. It isn’t
 calculating the correct value, it’s just excluding values that it cannot be.</p>
-<!-- raw HTML omitted -->
+</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">PropTestOvertimeRateHigher</span> <span class="o">:</span> <span class="n">cppqc</span><span class="o">::</span><span class="n">Property</span> 
 </span></span><span class="line"><span class="cl"><span class="p">{</span> 
 </span></span><span class="line"><span class="cl">    <span class="n">PropTestOvertimeRateHigher</span><span class="p">()</span>
@@ -128,7 +162,7 @@ calculation is simple so we can provide a full implementation.</p>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">v</span> <span class="o">==</span> <span class="mi">40</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span></code></pre></div><p>We run the tests a few times and see the failing test cases. These data are random. Running the test multiple times fails differently, but minimization results in the same or similar values each time to help the programmer debug. So let&rsquo;s fix this code and watch the tests pass to avoid the <!-- raw HTML omitted -->mockery and scandal of code review<!-- raw HTML omitted --></p>
+</span></span></code></pre></div><p>We run the tests a few times and see the failing test cases. These data are random. Running the test multiple times fails differently, but minimization results in the same or similar values each time to help the programmer debug. So let&rsquo;s fix this code and watch the tests pass to avoid the <a href="http://www.codestrokes.com/2014/08/what-is-a-unit-test/">mockery and scandal of code review</a></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">float</span> <span class="nf">payroll</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">size_t</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">person_id</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">hours</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">hours</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span>
@@ -151,7 +185,7 @@ a printf to the code to get a sense what&rsquo;s happening</p>
 </span></span><span class="line"><span class="cl">*** Failed! Falsifiable after <span class="m">1</span> <span class="nb">test</span> and <span class="m">1</span> shrink <span class="k">for</span> input:
 </span></span><span class="line"><span class="cl">0: <span class="m">0</span>
 </span></span></code></pre></div><p>Overtime seems to be an unsigned value, and passing in 0 causes the value to wrap around. The rule (<a href="http://scottmeyers.blogspot.com/2013/07/when-decltype-meets-auto.html"target="_blank" rel="noopener noreferrer">http://scottmeyers.blogspot.com/2013/07/when-decltype-meets-auto.html</a>
-) assures that overtime becomes a size_t since hours is size_t. We can force floating conversion by stating that 40 is a floating point number.<!-- raw HTML omitted --></p>
+) assures that overtime becomes a size_t since hours is size_t. We can force floating conversion by stating that 40 is a floating point number.</p></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">float</span> <span class="nf">payroll</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">size_t</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">person_id</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">hours</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">hours</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span>
@@ -197,29 +231,10 @@ I would have missed the 60 hours bug, and there is the possibility that
 I missed typed the numbers on my calculator and type in a wrong expected
 value. This example is quite simple but still an interesting demonstration of
 property testing. I&rsquo;m looking forward to applying property testing to my next
-project.</p></article><section class="article labels"><a class="tag" href=/tags/c&#43;&#43;/>c&#43;&#43;</a><a class="tag" href=/tags/unit-test/>unit test</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.26acbe1a2ce9f782f6bbf368cc6d28f1d234a8ab8310cbcbb6eb69dcd155f2067db37beaa642aedf370075d14d02d307.js#pubid=ra-1234567890" integrity="sha384-Jqy&#43;Gizp94L2u/NozG0o8dI0qKuDEMvLtutp3NFV8gZ9s3vqpkKu3zcAddFNAtMH"></script>
+project.</p></article><section class="article labels"><a class="tag" href=/tags/c&#43;&#43;/>c&#43;&#43;</a><a class="tag" href=/tags/unit-test/>unit test</a></section>
 </div>
-<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2015/02/introduction-to-pointers/"><span class="iconfont icon-article"></span>Introduction to Pointers</a></p><p><a class="link" href="/2014/08/what-is-a-unit-test/"><span class="iconfont icon-article"></span>What is a Unit Test?</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
-<script type="application/javascript">
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
-    <p class="copyright">©2021 Jeremy Wright</p>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2015/02/introduction-to-pointers/"><span class="iconfont icon-article"></span>Introduction to Pointers</a></p><p><a class="link" href="/2014/08/what-is-a-unit-test/"><span class="iconfont icon-article"></span>What is a Unit Test?</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2022 Jeremy Wright</p>
     <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
         target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
         target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>

@@ -4,7 +4,7 @@
 <meta name="supported-color-schemes" content="light dark"><title>Class Invariants&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Class Invariants" /><body><section id="header">
     <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
-        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+        <span class="header right-side"></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
     <h1 class="article title">Class Invariants</h1><p class="article date">Friday, May 13, 2011</p><div class="notice--info">
       <p>This post is part of the <a href="https://quiescent.us/series/the-red-black-tree/" style="font-weight: bold">The Red-Black Tree</a> series.</p>
     </div></section><article class="article markdown-body"><p>This week, I started porting my <a href="http://www.codestrokes.com/archives/59"target="_blank" rel="noopener noreferrer">C++ implementation</a>
@@ -13,7 +13,7 @@
  in the D language.</p>
 <p>Invariants come from the same “<a href="http://en.wikipedia.org/wiki/Design_by_contract"target="_blank" rel="noopener noreferrer">design-by-contract</a>
 ” idiom, famous for pre- and post- conditions. Essentially, invariants describe a state, or behavior which must remain true for a class.  If the invariant fails, during the classes life-cycle something is wrong; either the assumptions underlying the class’s behavior (the invariant is wrong), or a bug in the class itself.  In either case, the invariant help the you, the developer find a problem.  While discussing this feature a colleague asked,</p>
-<!-- raw HTML omitted -->
+<blockquote>Why would I want to maintain a ‘fixed’ state in my class. How does this not interfere with the classes behavior?  I don’t see how I would use this in a nontrivial application.</blockquote>
 <p>“How do I use this in a real application?” its quite a loaded question, however valuable. For my small red-black tree, I’m using invariants to check that the “<a href="http://en.wikipedia.org/wiki/Red-black_tree#Properties"target="_blank" rel="noopener noreferrer">black-height</a>
 ” is maintained.  This is essential to the performance of the class, both in terms of correctness, and run-time complexity.  The Delete operation, for instance, will not function correctly if the black height is incorrect. This “black-height” is a property of the entire class as a whole, it must be maintained at all time for the class to be correct.  This is the very definition of the <a href="http://en.wikipedia.org/wiki/Class_invariant"target="_blank" rel="noopener noreferrer">class invariant</a>
 . Excellent! However this still doesn’t satisfy our question; in a more general context, how does the class invariant help us?</p>
@@ -53,7 +53,7 @@
 </code></pre>
 <p>D provides a custom function that will automatically be called before and after any public method is called.  This functionality is compiled out in release versions. So when the class is <a href="http://en.wikipedia.org/wiki/Open/closed_principle"target="_blank" rel="noopener noreferrer">closed</a>
 , we can compile for release and automatically remove the runtime overhead. This makes for an extremely useful, yet low-cost vector toward writing <strong>correct code</strong>.</p>
-<p>D’s support for class invariants helps one achieve correct code simply, and concisely.  The language support permits the asserts to be checked automatically with minimal affect to the programmer’s flow. The class invariant contracts do not affect final performance in release builds. Consequently, invariants are a powerful tool in the quest for correct code and D leverages that perfectly!</p></article><section class="article labels"><a class="tag" href=/tags/algorithm/>Algorithm</a><a class="tag" href=/tags/correct-code/>correct code</a><a class="tag" href=/tags/d/>D</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.26acbe1a2ce9f782f6bbf368cc6d28f1d234a8ab8310cbcbb6eb69dcd155f2067db37beaa642aedf370075d14d02d307.js#pubid=ra-1234567890" integrity="sha384-Jqy&#43;Gizp94L2u/NozG0o8dI0qKuDEMvLtutp3NFV8gZ9s3vqpkKu3zcAddFNAtMH"></script>
+<p>D’s support for class invariants helps one achieve correct code simply, and concisely.  The language support permits the asserts to be checked automatically with minimal affect to the programmer’s flow. The class invariant contracts do not affect final performance in release builds. Consequently, invariants are a powerful tool in the quest for correct code and D leverages that perfectly!</p></article><section class="article labels"><a class="tag" href=/tags/algorithm/>Algorithm</a><a class="tag" href=/tags/correct-code/>correct code</a><a class="tag" href=/tags/d/>D</a></section>
 </div>
 <div class="article bottom"><div class="article navigation"><h3 id="series">This series</h3>
     <ol><li><a class="link" href="https://quiescent.us/series/the-red-black-tree/the-red-black-tree-part-1/"><span class="iconfont icon-article"></span>The Red-Black Tree</a></li><li><span class="iconfont icon-article"></span><b>Class Invariants</b></li><li><a class="link" href="https://quiescent.us/series/the-red-black-tree/d-for-the-c-programmer-red-black-tree-part-3/"><span class="iconfont icon-article"></span>D for the C++ Programmer</a></li></ol></div><section class="article discussion"><div id="disqus_thread"></div>
@@ -76,7 +76,7 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
-    <p class="copyright">©2021 Jeremy Wright</p>
+    <p class="copyright">©2022 Jeremy Wright</p>
     <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
         target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
         target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>

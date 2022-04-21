@@ -4,50 +4,149 @@
 <meta name="supported-color-schemes" content="light dark"><title>Massively Intelligent Non-Deterministic Luminating Effortless Super Solver&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Massively Intelligent Non-Deterministic Luminating Effortless Super Solver" /><body><section id="header">
     <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
-        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
-    <h1 class="article title">Massively Intelligent Non-Deterministic Luminating Effortless Super Solver</h1><p class="article date">Wednesday, February 12, 2014</p></section><article class="article markdown-body"><p>I worked the title of this article several times before I finally settled on the subtly epic heading you see above. Hopefully this title will funnel people off google into my blog (delicious SEO). I wanted to push the A.I. component of my solution because A.I. is awesome and mysterious, and cool (and can like solve jeopardy). I was quickly disillusioned however. Really, A.I. isn&rsquo;t magic, rather it&rsquo;s just the same thing computers have been doing for a long time: computing. Sadly this realization took several months in an A.I. class before I was sufficiently crestfallen. A.I. patterns including the hill climbing algorithm used here are indeed &ldquo;intelligent&rdquo; but really it a reflecting of the algorithm designer, not the entity executing the algorithm. So I built a substitution cipher solver in C++. It&rsquo;s fast it uses random numbers i.e. non-deterministic, it uses an A.I. algorithm i.e. Intelligent, it uses threads i.e. Massively, it deciphers i.e. luminates the text and it solves super stuff therefore the title is completely justified. I give you my Massively Intelligent Non-Deterministic Luminating Effortless Super Solver (MINDLESS). If none of that interests you then please stick around and follow the side quest of looking for <!-- raw HTML omitted -->emotionally charged parenthesis<!-- raw HTML omitted -->.</p>
+        <span class="header right-side"></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Massively Intelligent Non-Deterministic Luminating Effortless Super Solver</h1><p class="article date">Wednesday, February 12, 2014</p></section><article class="article markdown-body"><p>I worked the title of this article several times before I finally settled on the subtly epic heading you see above. Hopefully this title will funnel people off google into my blog (delicious SEO). I wanted to push the A.I. component of my solution because A.I. is awesome and mysterious, and cool (and can like solve jeopardy). I was quickly disillusioned however. Really, A.I. isn&rsquo;t magic, rather it&rsquo;s just the same thing computers have been doing for a long time: computing. Sadly this realization took several months in an A.I. class before I was sufficiently crestfallen. A.I. patterns including the hill climbing algorithm used here are indeed &ldquo;intelligent&rdquo; but really it a reflecting of the algorithm designer, not the entity executing the algorithm. So I built a substitution cipher solver in C++. It&rsquo;s fast it uses random numbers i.e. non-deterministic, it uses an A.I. algorithm i.e. Intelligent, it uses threads i.e. Massively, it deciphers i.e. luminates the text and it solves super stuff therefore the title is completely justified. I give you my Massively Intelligent Non-Deterministic Luminating Effortless Super Solver (MINDLESS). If none of that interests you then please stick around and follow the side quest of looking for <a href="http://justenoughcraig.blogspot.com/2014/01/just-say-no-to-passive-aggressive.html">emotionally charged parenthesis</a>.</p>
 <p>Cracking substitution ciphers were a fun puzzle I pursued as a child. Substitution ciphers are monoalphabetic ciphers. Meaning a single letter maps to a single letter and that mapping is static. This is opposed to polyalphabetic ciphers where the mapping of letters changes throughout the message. Vigenère Cipher is an example. Given a substitution cipher what are tools are available to the &ldquo;cryptanalyst&rdquo; (the person to breaks ciphers). Firstly, frequency analysis. Frequency analysis supposes the the distribution of letters within the message is essentially the same as the distribution of letters in the English language (<a href="http://en.wikipedia.org/wiki/Frequency_analysis%29"target="_blank" rel="noopener noreferrer">http://en.wikipedia.org/wiki/Frequency_analysis)</a>
 . However if the message is short, or if the message is intentionally written to skew the letter distribution this technique is difficult. This post looks at a different approach, an artificial intelligence technique called hill climbing.</p>
 <p>Hill Climbing is simply a search technique that uses a &ldquo;fitness&rdquo; measurement (fancy word for number or quality) to determine if the current search path is a useful one.</p>
 <p>First step in building the substitution solver is to assemble some functions that will perform the substitution. I love the string functions in Python to I ported str.translate() to a form useful for my needs</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre lang="cpp" escaped="true">std::string translate( cost std::string &amp; str, const std::string &amp; table)
+{
+    std::string s(str);
+    std::string::size_type len = str.size();
+
+    if ( table.size() != 256 )
+    {
+        throw std::runtime_error("Improper table size. Size must be 256 chars");
+    }
+
+    for ( std::string::size_type i = 0; i &lt; len; ++i )
+    {
+        s[i] = table[ s[i] ];
+    }
+    return s;
+}
+
+std::string maketrans(std::string key)
+{
+    char t1data[256];
+    std::iota(std::begin(t1data), std::end(t1data), 0);
+    size_t i = 'A';
+    size_t d = 'a' - 'A';
+
+    for(auto k = std::begin(key); k != std::end(key); ++i, ++k)
+    {
+        t1data[i] = *k;
+        t1data[i+d] = std::tolower(*k);
+    }
+    return std::string(t1data, 256);
+}</pre>
 <p>This leverages the fact that in C/C++, characters are simply numbers in ascii. Given a key, we can translate any text:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Now we need a fitness measurement. Ngrams are a useful tool here. Ngrams are partial words, and since we are more likely to find partial words in our search than full words, we need to give the program a mechanism for measuring this. This <!-- raw HTML omitted -->ngram<!-- raw HTML omitted --> database is a list of quadgrams and their relative frequency in the English language.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>We can use this as a scorer for a length of text.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>We now have a substitution tool to make substitutions, and we have a numerical way of measuring the resultant quality. Next is to implement the search, this is the mystical artificial intelligence in the program.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>So artificial intelligence, it&rsquo;s just computation.  The trick is that we are a little more intelligent that brute force.  Our algorithm is to generate a random key, substitute the cipher text with that key and measure the quality of the result, i.e., how many partial words are in the result.  Now swap 2 characters, and measure it again. If the result is better continue swapping with that key, if the result is worse throw away that key (branch of the search tree), and return to the previous key (p in this example).</p>
-<p>In this post we looked at how MINDLESS can break substitution ciphers using hill climbing.  If you were following the side-quest, I hope you enjoyed yourself (or rather are overwhelming cross (because of the parenthesis), but be thankful they are balanced).</p></article><section class="article labels"><a class="tag" href=/tags/c&#43;&#43;/>c&#43;&#43;</a><a class="tag" href=/tags/c&#43;&#43;11/>c&#43;&#43;11</a><a class="tag" href=/tags/cipher/>cipher</a><a class="tag" href=/tags/cryptogram/>cryptogram</a><a class="tag" href=/tags/crytography/>crytography</a><a class="tag" href=/tags/monoalphabetic/>monoalphabetic</a><a class="tag" href=/tags/substitution-cipher/>substitution cipher</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.26acbe1a2ce9f782f6bbf368cc6d28f1d234a8ab8310cbcbb6eb69dcd155f2067db37beaa642aedf370075d14d02d307.js#pubid=ra-1234567890" integrity="sha384-Jqy&#43;Gizp94L2u/NozG0o8dI0qKuDEMvLtutp3NFV8gZ9s3vqpkKu3zcAddFNAtMH"></script>
-</div>
-<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2014/05/design-for-testability-via-security/"><span class="iconfont icon-article"></span>Design for Testability via Security </a></p><p><a class="link" href="/2013/11/sean-parent-no-raw-loops/"><span class="iconfont icon-article"></span>Sean Parent: No Raw Loops</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
-<script type="application/javascript">
-    window.disqus_config = function () {
-    
-    
-    
+<pre lang="cpp" escaped="true">std::string substitute(std::string text, std::string key)
+{
+    auto t1 = pystring::maketrans(key);
+    return pystring::translate(text, t1);
+}</pre>
+<p>Now we need a fitness measurement. Ngrams are a useful tool here. Ngrams are partial words, and since we are more likely to find partial words in our search than full words, we need to give the program a mechanism for measuring this. This <a href="http://www.codestrokes.com/wp-content/uploads/2014/02/quadgrams.7z">ngram</a> database is a list of quadgrams and their relative frequency in the English language.</p>
+<pre lang="cpp" escaped="false">#include <map>
+#include <istream>
+#include <string>
+#include <ctgmath>
+#include <iostream>
+struct ngram_score 
+{
+    struct ngram_datum {
+        int freq;
+        double weight;
     };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
+    std::map<std::string, ngram_datum> ngrams;
+    double floor;
+    size_t l;
+    size_t n{0};
+    ngram_score(std::istream& in)
+    {
+        std::string line;
+        while(in)
+        {
+            std::string ngram;
+            int freq;
+            in >> ngram;
+            in >> freq;
+            ngrams[ngram].freq = freq;
+            n += freq;
         }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "codestrokes2" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
-    <p class="copyright">©2021 Jeremy Wright</p>
+
+        for(auto& i : ngrams)
+        {
+            i.second.weight = std::log10((double)(i.second.freq)/n);
+        }
+        floor = std::log10(0.01/n);
+        l = 4; //for quadgrams.
+    }
+
+    double score(std::string text)
+    {
+        double score{0};
+        auto c = std::begin(text);
+        auto e = std::end(text);
+        for(; c+l-1 != e; ++c)
+        {
+            //Get a string of correct length
+            std::string ngram(c, c+l);
+            auto it=ngrams.find(ngram);
+            if(it != ngrams.end())
+                score += it->second.weight;
+            else
+                score += floor;
+        }
+        return score;
+    }
+};</pre>
+<p>We can use this as a scorer for a length of text.</p>
+<pre lang="cpp" escaped="false">std::ifstream fin("../quadgrams.txt");
+ngram_score fitness(fin);
+auto score = fitness.score(plaintext);</pre>
+<p>We now have a substitution tool to make substitutions, and we have a numerical way of measuring the resultant quality. Next is to implement the search, this is the mystical artificial intelligence in the program.</p>
+<pre lang="cpp" escaped="false">
+struct cipher {
+    std::string key;
+    double score;
+    std::string plaintext;
+    friend std::ostream& operator<<(std::ostream& os, cipher const & c);
+};
+
+
+cipher break_substitution(std::string cipher_text, std::string skey)
+{
+    std::transform(std::begin(cipher_text), std::end(cipher_text), std::begin(cipher_text), ::toupper);
+    std::uniform_int_distribution<int> distribution(0,25); 
+    
+    cipher p;
+    p.key = skey;
+    p.plaintext = substitute(cipher_text, p.key);
+    p.score = fitness.score(p.plaintext); 
+    for(size_t i = 0; i < 1000; ++i) //Look at that intelligent for loop
+    {
+        cipher c(p);
+        auto a = distribution(g);
+        auto b = distribution(g);
+        std::iter_swap(std::begin(c.key)+a, std::begin(c.key)+b); //randomly tweak our key
+        c.plaintext = substitute(cipher_text, c.key);
+        c.score = fitness.score(c.plaintext);  //Measure the quality of the new key.
+        if(c.score > p.score)
+        {
+            p = c; //update the parent
+            i = 0; //We've made an improvement
+        }
+    }
+    return p;
+}
+</pre>
+<p>So artificial intelligence, it&rsquo;s just computation.  The trick is that we are a little more intelligent that brute force.  Our algorithm is to generate a random key, substitute the cipher text with that key and measure the quality of the result, i.e., how many partial words are in the result.  Now swap 2 characters, and measure it again. If the result is better continue swapping with that key, if the result is worse throw away that key (branch of the search tree), and return to the previous key (p in this example).</p>
+<p>In this post we looked at how MINDLESS can break substitution ciphers using hill climbing.  If you were following the side-quest, I hope you enjoyed yourself (or rather are overwhelming cross (because of the parenthesis), but be thankful they are balanced).</p></article><section class="article labels"><a class="tag" href=/tags/c&#43;&#43;/>c&#43;&#43;</a><a class="tag" href=/tags/c&#43;&#43;11/>c&#43;&#43;11</a><a class="tag" href=/tags/cipher/>cipher</a><a class="tag" href=/tags/cryptogram/>cryptogram</a><a class="tag" href=/tags/crytography/>crytography</a><a class="tag" href=/tags/monoalphabetic/>monoalphabetic</a><a class="tag" href=/tags/substitution-cipher/>substitution cipher</a></section>
+</div>
+<div class="article bottom"><section class="article navigation"><p><a class="link" href="/2014/05/design-for-testability-via-security/"><span class="iconfont icon-article"></span>Design for Testability via Security </a></p><p><a class="link" href="/2013/11/sean-parent-no-raw-loops/"><span class="iconfont icon-article"></span>Sean Parent: No Raw Loops</a></p></section></div></section><section id="footer"><div class="footer-wrap">
+    <p class="copyright">©2022 Jeremy Wright</p>
     <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
         target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
         target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>

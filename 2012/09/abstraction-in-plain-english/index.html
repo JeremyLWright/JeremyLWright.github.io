@@ -4,11 +4,11 @@
 <meta name="supported-color-schemes" content="light dark"><title>Abstraction in Plain English&nbsp;&ndash;&nbsp;The Quiescent Current</title><link rel="stylesheet" href="/css/core.min.6794bc167e4ce0026d21831c61e605e88a70ef6cc11b090df06de3ed8be76f69afa57c9dcd7ba7210c777e124e943258.css" integrity="sha384-Z5S8Fn5M4AJtIYMcYeYF6Ipw72zBGwkN8G3j7Yvnb2mvpXydzXunIQx3fhJOlDJY"><meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Abstraction in Plain English" /><body><section id="header">
     <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">The Quiescent Current</span></a></span>
-        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/posts">Blog</a><a class="nav item" href="/series">Series</a><a class="nav item" href="/languages">Languages</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
+        <span class="header right-side"></span></div><div class="site slogan"><span class="title">Go Far. Go Together.</span></div></section><section id="content"><div class="article-container"><section class="article header">
     <h1 class="article title">Abstraction in Plain English</h1><p class="article date">Tuesday, September 18, 2012</p></section><article class="article markdown-body"><p>Abstraction is an interesting concept. For me personally, abstraction was never clearly explained. I left school and entered my first job knowing I should abstract things, but I realize now my understanding of abstraction amounted to obscurity.</p>
 <p>Abstraction to me meant, “Don’t use that thing directly, <em>abstract it</em> and use some interface instead.&quot; &ldquo;That’s what <em>good</em> programmers do,&rdquo; I told myself. I taught myself a lot about function pointers, and advanced OO techniques using pure virtual classes all to avoid using something directly. This is wrong. My entire prespective on abstraction was wrong. A few days ago I was watching a <a href="http://channel9.msdn.com/Events/GoingNative/GoingNative-2012/Keynote-Bjarne-Stroustrup-Cpp11-Style"target="_blank" rel="noopener noreferrer">lecture from Bjarne Stroustrup</a>
 , comically, one I’ve watch before and it finally clicked.</p>
-<!-- raw HTML omitted -->
+<blockquote>Express notions as the expert in the field understands them. — Bjarne Stroustroup.</blockquote>
 <p>Wow, that is simple. Abstraction is not about creating layers or separating the programmer from anything, in fact abstraction has nothing to do with the programmer at all. Abstraction is about creating entities, may they be objects, functions or simply variables which describe the system as an expert would describe the system.</p>
 <p>For example think of building a blackjack game. In blackjack the dealer is our expert, so we need to describe the objects in our system in a vernacular which makes sense to her. First, let us describe a bad example of abstraction with respect to the deck used for dealing cards to the players. This bad example starts with the programmer’s perspective. To a programmer, a deck looks like an array. We’ve been taught that it is not good to allocate a bunch of memory into an array so we hold an array of pointers to cards which are allocated in the heap. Okay so now we have a container to hold the cards std::vector&lt;Card*&gt;. For this article lets ignore the ownership issues, and continue.</p>
 <p>What does dealing look like? Oh that’s simple, just index over the vector to give a pointer of each card to the Player.  Your code might look like this:</p>
@@ -48,7 +48,7 @@
 <p><a href="http://www.artima.com/intv/goldilocks.html"target="_blank" rel="noopener noreferrer">http://www.artima.com/intv/goldilocks.html</a>
 </p>
 </li>
-</ul></article><section class="article labels"><a class="tag" href=/tags/system/>System</a><a class="tag" href=/tags/explaination/>explaination</a><a class="tag" href=/tags/explanation/>explanation</a><a class="tag" href=/tags/newbie/>newbie</a></section><div class="article share addthis_inline_share_toolbox"></div><script defer src="/js/addthis_widget.min.26acbe1a2ce9f782f6bbf368cc6d28f1d234a8ab8310cbcbb6eb69dcd155f2067db37beaa642aedf370075d14d02d307.js#pubid=ra-1234567890" integrity="sha384-Jqy&#43;Gizp94L2u/NozG0o8dI0qKuDEMvLtutp3NFV8gZ9s3vqpkKu3zcAddFNAtMH"></script>
+</ul></article><section class="article labels"><a class="tag" href=/tags/system/>System</a><a class="tag" href=/tags/explaination/>explaination</a><a class="tag" href=/tags/explanation/>explanation</a><a class="tag" href=/tags/newbie/>newbie</a></section>
 </div>
 <div class="article bottom"><section class="article navigation"><p><a class="link" href="/2012/09/asulug-talk-django-web-framework/"><span class="iconfont icon-article"></span>ASULUG Talk: Django Web Framework</a></p><p><a class="link" href="/2012/09/open-source-ctf-game-server/"><span class="iconfont icon-article"></span>Open Source CTF Game Server</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
 <script type="application/javascript">
@@ -70,7 +70,7 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
-    <p class="copyright">©2021 Jeremy Wright</p>
+    <p class="copyright">©2022 Jeremy Wright</p>
     <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
         target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
         target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
