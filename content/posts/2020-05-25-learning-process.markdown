@@ -8,7 +8,7 @@ tags:
 - reflection
 ---
 
-# As of 2020
+> Update 2022-04: I've improved this process. [How to write a thesis]({{< ref "2022-04-24-how-to-write-a-thesis.md" >}})
 
 ## Learning Questions
 
