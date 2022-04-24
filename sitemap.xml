@@ -2,6 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://quiescent.us/2022/04/how-to-write-a-thesis/</loc>
+    <lastmod>2022-04-24T00:00:00-07:00</lastmod>
+  </url><url>
+    <loc>https://quiescent.us/posts/</loc>
+    <lastmod>2022-04-24T00:00:00-07:00</lastmod>
+  </url><url>
+    <loc>https://quiescent.us/tags/study/</loc>
+    <lastmod>2022-04-24T00:00:00-07:00</lastmod>
+  </url><url>
+    <loc>https://quiescent.us/tags/</loc>
+    <lastmod>2022-04-24T00:00:00-07:00</lastmod>
+  </url><url>
+    <loc>https://quiescent.us/</loc>
+    <lastmod>2022-04-24T00:00:00-07:00</lastmod>
+  </url><url>
     <loc>https://quiescent.us/languages/c/</loc>
     <lastmod>2022-04-05T00:00:00-07:00</lastmod>
   </url><url>
@@ -15,15 +30,6 @@
     <lastmod>2022-04-05T00:00:00-07:00</lastmod>
   </url><url>
     <loc>https://quiescent.us/2022/04/5-min-pointers/</loc>
-    <lastmod>2022-04-05T00:00:00-07:00</lastmod>
-  </url><url>
-    <loc>https://quiescent.us/posts/</loc>
-    <lastmod>2022-04-05T00:00:00-07:00</lastmod>
-  </url><url>
-    <loc>https://quiescent.us/tags/</loc>
-    <lastmod>2022-04-05T00:00:00-07:00</lastmod>
-  </url><url>
-    <loc>https://quiescent.us/</loc>
     <lastmod>2022-04-05T00:00:00-07:00</lastmod>
   </url><url>
     <loc>https://quiescent.us/tags/hardware/</loc>
@@ -78,9 +84,6 @@
     <lastmod>2020-05-25T15:31:21-07:00</lastmod>
   </url><url>
     <loc>https://quiescent.us/2020/05/learning-process/</loc>
-    <lastmod>2020-05-25T15:31:21-07:00</lastmod>
-  </url><url>
-    <loc>https://quiescent.us/tags/study/</loc>
     <lastmod>2020-05-25T15:31:21-07:00</lastmod>
   </url><url>
     <loc>https://quiescent.us/languages/c&#43;&#43;/</loc>

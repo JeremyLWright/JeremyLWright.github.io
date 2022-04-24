@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>©2022 Jeremy Wright</copyright>
-    <lastBuildDate>Tue, 05 Apr 2022 00:00:00 -0700</lastBuildDate><atom:link href="https://quiescent.us/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Apr 2022 00:00:00 -0700</lastBuildDate><atom:link href="https://quiescent.us/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>study</title>
+      <link>https://quiescent.us/tags/study/</link>
+      <pubDate>Sun, 24 Apr 2022 00:00:00 -0700</pubDate>
+      
+      <guid>https://quiescent.us/tags/study/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>low-level</title>
       <link>https://quiescent.us/tags/low-level/</link>
@@ -86,15 +95,6 @@
       <pubDate>Mon, 25 May 2020 15:31:21 -0700</pubDate>
       
       <guid>https://quiescent.us/tags/learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>study</title>
-      <link>https://quiescent.us/tags/study/</link>
-      <pubDate>Mon, 25 May 2020 15:31:21 -0700</pubDate>
-      
-      <guid>https://quiescent.us/tags/study/</guid>
       <description></description>
     </item>
     
