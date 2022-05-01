@@ -19,6 +19,15 @@ I have not been such an individual. My learning required a deliberate process. T
     </item>
     
     <item>
+      <title>What can&#39;t flowcharts do?</title>
+      <link>https://quiescent.us/2022/04/flowcharts-cant/</link>
+      <pubDate>Sun, 24 Apr 2022 00:00:00 -0700</pubDate>
+      
+      <guid>https://quiescent.us/2022/04/flowcharts-cant/</guid>
+      <description>When we begin programming we&amp;rsquo;re often taught to start with flowcharts. This is not bad advice. Flowcharts are a tool to help you slowdown and focus on an ordering of events or actions. Together these actions achieve some outcome. This series of actions to achieve an outcome we call an algorithm. Great! Now we&amp;rsquo;re really programming. However, it can seem (at the beginning) that flowcharts can capture any set of ordered work.</description>
+    </item>
+    
+    <item>
       <title>Modulus in 5 minutes</title>
       <link>https://quiescent.us/2022/04/5-min-pointers/</link>
       <pubDate>Tue, 05 Apr 2022 00:00:00 -0700</pubDate>
