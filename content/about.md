@@ -10,6 +10,8 @@ slug: about
 >  
 > &mdash; Futurama Season 3
 
+If you find one my posts or videos helpful perhaps buy me a [``${coffee|context.suitableBeverage()}``](https://www.buymeacoffee.com/wrightj)
+
 I specialize in the software no one sees. The high performance, concurrent,
 hard real-time, high-reliability systems that enable our way of life. 
 
