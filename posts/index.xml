@@ -33,7 +33,7 @@ I have not been such an individual. My learning required a deliberate process. T
       <pubDate>Tue, 05 Apr 2022 00:00:00 -0700</pubDate>
       
       <guid>https://quiescent.us/2022/04/5-min-pointers/</guid>
-      <description>   </description>
+      <description> </description>
     </item>
     
     <item>
@@ -42,7 +42,7 @@ I have not been such an individual. My learning required a deliberate process. T
       <pubDate>Tue, 05 Apr 2022 00:00:00 -0700</pubDate>
       
       <guid>https://quiescent.us/2022/04/5-min-pointers/</guid>
-      <description>   </description>
+      <description> </description>
     </item>
     
     <item>
@@ -112,8 +112,8 @@ Namely, that specifications are not programming, and the math simplifies, by abs
       
       <guid>https://quiescent.us/2020/05/learning-process/</guid>
       <description>Update 2022-04: I&amp;rsquo;ve improved this process. How to write a thesis
- Learning Questions My learning process consists of a set of learning questions. These questions are almost certainly wrong and reflect at least the following:
- My motivation for learning a topic. My misconceptions of a given topic and the seemingly magic qualities a beginner believes it can provide.  The learning questions are initially, almost certainly wrong. This is good.</description>
+Learning Questions My learning process consists of a set of learning questions. These questions are almost certainly wrong and reflect at least the following:
+My motivation for learning a topic. My misconceptions of a given topic and the seemingly magic qualities a beginner believes it can provide. The learning questions are initially, almost certainly wrong. This is good. It shows my current understanding or lack there-of.</description>
     </item>
     
     <item>
@@ -123,8 +123,8 @@ Namely, that specifications are not programming, and the math simplifies, by abs
       
       <guid>https://quiescent.us/2015/10/system-languages-include-web/</guid>
       <description>I was reading an FAQ today about some subtle C++ point and I came across a comment that explicitly excludes the beginning language-learner.
- By the way, it confuses most novice C++ programmers that private virtuals can be overridden&amp;hellip; However the private virtual approach is now common enough that confusion of novices is less of a concern.
- This left me frustrated that a language that has been core to my personal success so flippantly brushed aside its future user.</description>
+By the way, it confuses most novice C++ programmers that private virtuals can be overridden&amp;hellip; However the private virtual approach is now common enough that confusion of novices is less of a concern.
+This left me frustrated that a language that has been core to my personal success so flippantly brushed aside its future user.</description>
     </item>
     
     <item>
@@ -134,7 +134,8 @@ Namely, that specifications are not programming, and the math simplifies, by abs
       
       <guid>https://quiescent.us/2015/09/deploying-d-to-azure-webapp/</guid>
       <description>I shameless stole these steps from 4 Simple Steps to Run Go Language in Azure Websites. This post is simply a transliteration to D. Thank you very much to Wade Wegner for the original post.
-4 Simple Steps  Create your Azure Website in Azure Portal.  Configure FTP deployment    2. Run dub init vibed_hello_world --type=vibe.d and change the default app.d to read the port from an environment variable.</description>
+4 Simple Steps Create your Azure Website in Azure Portal. Configure FTP deployment 2. Run dub init vibed_hello_world --type=vibe.d and change the default app.d to read the port from an environment variable. Docs
+import vibe.d; shared static this() { import std.</description>
     </item>
     
     <item>
