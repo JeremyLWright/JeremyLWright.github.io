@@ -581,25 +581,16 @@
     <loc>https://quiescent.us/tags/correct-code/</loc>
     <lastmod>2011-05-18T03:06:36+00:00</lastmod>
   </url><url>
-    <loc>https://quiescent.us/series/the-red-black-tree/d-for-the-c-programmer-red-black-tree-part-3/</loc>
+    <loc>https://quiescent.us/2011/05/d-for-the-c-programmer-red-black-tree-part-3/</loc>
     <lastmod>2011-05-18T03:06:36+00:00</lastmod>
   </url><url>
-    <loc>https://quiescent.us/series/</loc>
-    <lastmod>2011-05-18T03:06:36+00:00</lastmod>
-  </url><url>
-    <loc>https://quiescent.us/series/</loc>
-    <lastmod>2011-05-18T03:06:36+00:00</lastmod>
-  </url><url>
-    <loc>https://quiescent.us/series/the-red-black-tree/</loc>
-    <lastmod>2011-05-18T03:06:36+00:00</lastmod>
-  </url><url>
-    <loc>https://quiescent.us/series/the-red-black-tree/class-invariants-red-black-tree-part-2/</loc>
+    <loc>https://quiescent.us/2011/05/class-invariants-red-black-tree-part-2/</loc>
     <lastmod>2011-05-13T02:40:48+00:00</lastmod>
   </url><url>
     <loc>https://quiescent.us/tags/data-structure/</loc>
     <lastmod>2011-05-09T06:59:01+00:00</lastmod>
   </url><url>
-    <loc>https://quiescent.us/series/the-red-black-tree/the-red-black-tree-part-1/</loc>
+    <loc>https://quiescent.us/2011/05/the-red-black-tree-part-1/</loc>
     <lastmod>2011-05-09T06:59:01+00:00</lastmod>
   </url><url>
     <loc>https://quiescent.us/tags/tree/</loc>
@@ -618,6 +609,8 @@
     <lastmod>2011-02-11T02:37:45+00:00</lastmod>
   </url><url>
     <loc>https://quiescent.us/projects/</loc>
+  </url><url>
+    <loc>https://quiescent.us/series/</loc>
   </url><url>
     <loc>https://quiescent.us/tags/teaching/talks/</loc>
   </url>

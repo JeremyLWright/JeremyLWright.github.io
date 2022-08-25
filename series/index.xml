@@ -6,16 +6,6 @@
     <description>Recent content in Series on The Quiescent Current</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>©2022 Jeremy Wright</copyright>
-    <lastBuildDate>Wed, 18 May 2011 03:06:36 +0000</lastBuildDate><atom:link href="https://quiescent.us/series/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>The Red-Black Tree</title>
-      <link>https://quiescent.us/series/the-red-black-tree/</link>
-      <pubDate>Wed, 18 May 2011 03:06:36 +0000</pubDate>
-      
-      <guid>https://quiescent.us/series/the-red-black-tree/</guid>
-      <description></description>
-    </item>
-    
+    <copyright>©2022 Jeremy Wright</copyright><atom:link href="https://quiescent.us/series/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

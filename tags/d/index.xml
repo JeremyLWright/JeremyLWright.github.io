@@ -51,10 +51,10 @@ import vibe.d; shared static this() { import std.</description>
     
     <item>
       <title>Class Invariants</title>
-      <link>https://quiescent.us/series/the-red-black-tree/class-invariants-red-black-tree-part-2/</link>
+      <link>https://quiescent.us/2011/05/class-invariants-red-black-tree-part-2/</link>
       <pubDate>Fri, 13 May 2011 02:40:48 +0000</pubDate>
       
-      <guid>https://quiescent.us/series/the-red-black-tree/class-invariants-red-black-tree-part-2/</guid>
+      <guid>https://quiescent.us/2011/05/class-invariants-red-black-tree-part-2/</guid>
       <description>&lt;p&gt;This week, I started porting my &lt;a href=&#34;http://www.codestrokes.com/archives/59&#34;&gt;C++ implementation&lt;/a&gt; of the Red-Black tree to D.  I am trying to pay special attention to the features of D, intended to make writing correct code easier. While on that vane,  I was reading an excellent &lt;a href=&#34;http://reprog.wordpress.com/2010/04/25/writing-correct-code-part-1-invariants-binary-search-part-4a/&#34;&gt;article&lt;/a&gt;, discussing invariants, and I was pleased to find such a useful implementation of the &lt;a href=&#34;http://www.digitalmars.com/d/2.0/class.html#Invariant&#34;&gt;class invariant&lt;/a&gt; in the D language.&lt;/p&gt;</description>
     </item>
     
