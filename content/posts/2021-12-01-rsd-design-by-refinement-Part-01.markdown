@@ -1,8 +1,7 @@
 ---
-title: "Design by Refinement Part 1: TDD is not Design"
+title: "Design by Refinement: TDD is not Design"
 date: 2021-12-01T00:00:00-07:00
 slug: rsd-sorting 
-series: ["Refined Software Development"]
 languages:
 - tla+
 tags:  

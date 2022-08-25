@@ -1,9 +1,7 @@
 ---
-title: "Design by Refinement Part 3: Sorting by Refinement"
+title: "Design by Refinement: Sorting by Refinement"
 date: 2021-12-28T00:00:00-07:00
 slug: rsd-sorting 
-draft: true
-series: ["Refined Software Development"]
 languages:
 - tla+
 tags:  
@@ -11,7 +9,11 @@ tags:
 - book
 ---
 
-In the last two posts we've been studying refinement, and how to utilize refinement into a methodical approach to describe a system and a proposed solutions. Now let's apply it to a simple example, sorting. 
+In the last posts we've been studying refinement, and how to utilize refinement into a methodical approach to describe a system and a proposed solutions. Now let's apply it to a simple example, sorting. 
+
+This post has a paring with a video
+
+{{< youtube id="U0GS_X2NVXk" >}}
 
 # Designing Sorting
 
