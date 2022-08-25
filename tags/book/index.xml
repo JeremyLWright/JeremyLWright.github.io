@@ -7,7 +7,30 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>©2022 Jeremy Wright</copyright>
-    <lastBuildDate>Wed, 24 Jul 2013 04:48:01 +0000</lastBuildDate><atom:link href="https://quiescent.us/tags/book/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 28 Dec 2021 00:00:00 -0700</lastBuildDate><atom:link href="https://quiescent.us/tags/book/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Design by Refinement: Sorting by Refinement</title>
+      <link>https://quiescent.us/2021/12/rsd-sorting/</link>
+      <pubDate>Tue, 28 Dec 2021 00:00:00 -0700</pubDate>
+      
+      <guid>https://quiescent.us/2021/12/rsd-sorting/</guid>
+      <description>In the last posts we&amp;rsquo;ve been studying refinement, and how to utilize refinement into a methodical approach to describe a system and a proposed solutions. Now let&amp;rsquo;s apply it to a simple example, sorting.
+This post has a paring with a video
+Designing Sorting This article is intended to be paired with it&amp;rsquo;s accompanying video.
+Before we begin, let&amp;rsquo;s think about what we want to accomplish:
+We want to express the essence of sorting.</description>
+    </item>
+    
+    <item>
+      <title>Design by Refinement: TDD is not Design</title>
+      <link>https://quiescent.us/2021/12/rsd-sorting/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 -0700</pubDate>
+      
+      <guid>https://quiescent.us/2021/12/rsd-sorting/</guid>
+      <description>American Sign Language has this beautiful word roughly translated to blur or smear. It means to blur details of a situation in order to see some greater value. It&amp;rsquo;s similar to the idea of not seeing the forest for the trees&amp;hellip; in order to see the forest, the bigger picture, you need to blur the details.
+In principle Test Driven Development (TDD1) is an implementation technique. TDD promises to help it&amp;rsquo;s practitioners build the described design, and not overbuild.</description>
+    </item>
+    
     <item>
       <title>How to Write a Thesis</title>
       <link>https://quiescent.us/2013/07/review-how-to-write-a-thesis-2/</link>
