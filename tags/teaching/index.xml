@@ -26,14 +26,5 @@
       <description>&lt;p&gt;I&amp;rsquo;ve used version control in some form or another since I was a freshman in college, however I&amp;rsquo;m quite the anomaly.  I will use a tool fully knowing that its more than I need, just to learn something new.  Initially, this is how I approached version control. Except for a few unique situations version control of my homework, seemed like more work than it was worth.  I used to think version control was merely a collaboration tool for teams of people.  I couldn&amp;rsquo;t have been more wrong.&lt;/p&gt;</description>
     </item>
     
-    <item>
-      <title>Game Framework for C&#43;&#43; Practicum</title>
-      <link>https://quiescent.us/2011/06/game-framework-for-c-practicum/</link>
-      <pubDate>Sat, 25 Jun 2011 22:37:51 +0000</pubDate>
-      
-      <guid>https://quiescent.us/2011/06/game-framework-for-c-practicum/</guid>
-      <description>For this year&amp;rsquo;s C++ practicum, we are going to build a small game engine. I&amp;rsquo;m keeping the code on bitbucket: http://bitbucket.org/jwright/gamecomponents Join us, or fork the code and make your own design. I look forward to seeing how this progresses.</description>
-    </item>
-    
   </channel>
 </rss>
