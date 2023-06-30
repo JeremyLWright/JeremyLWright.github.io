@@ -1,0 +1,59 @@
+portfolioitems:
+  # portfolio category
+  - title: Research
+    portfolioitem:
+      - name: 'Abstraction and Refinement (4 Part Series)'
+        image: '/images/portfolio/markus-spiske-Y8R6_97_6Ps-unsplash.jpg'
+        link: https://youtube.com/playlist?list=PLacslU3Fwm5sJx5fTcYgOt1oOj0JMKKc5
+        description: 'TLA+ is a powerful tool that allows you to define a system or algorithm at an arbitrary level of detail or complexity.'
+        tags:
+          - distributed systems
+          - TLA+
+          - formal methods
+      - name:  Topic Chains for Determining Risk of Unauthorized Information Transfer
+        image: '/images/portfolio/markus-spiske-Skf7HxARcoc-unsplash.jpg'
+        description: 'This thesis motivates the need for a quantitative leakage risk metric, and provides a risk assessment system, called Whispers, for computing it. Using unsupervised machine learning techniques, Whispers uncovers themes in an organization’s document corpus, including previously unknown or unclassified data. Then, by correlating the document with its authors, Whispers can identify which data are easier to contain, and conversely which are at risk.'
+        tags:
+          - thesis
+          - education
+        linktext: 'Download'
+        link: '/publications/WRIGHT_JEREMY-1000738685.pdf'
+  #    - name: Project 3
+  #      image: '/images/portfolio/code.jpg'
+  #      link: https://gohugo.io/
+  #      description: 'A description'
+  #      tags:
+  #        - Tag 1
+  #        - Tag 2
+  # portfolio category
+  #- title: Coding Projects
+  #  portfolioitem:
+  #    - name: Project 1
+  #      image: '/images/portfolio/code.jpg'
+  #      link: https://gohugo.io/
+  #      linktext: 'Visit project website'
+  #      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+  #      tags:
+  #        - Tag 1
+  #        - Tag 2
+  #      status: 'Finished'
+  #      start: '2020'
+  #      end: '2021'
+  #      authors:
+  #        - lxndrblz
+  #        - alexanderdavide
+  #    - name: Project 2
+  #      image: '/images/portfolio/code.jpg'
+  #      link: https://gohugo.io/
+  #      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+  #      status: 'On Hold'
+  #      tags:
+  #        - Tag 1
+  #        - Tag 2
+  #    - name: Project 3
+  #      link: https://gohugo.io/
+  #      status: 'Finished'
+  #      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+  #      tags:
+  #        - Tag 1
+  #        - Tag 2

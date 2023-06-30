@@ -1,3 +1,5 @@
 public
 serve
 *.lock
+.DS_Store
+resources
