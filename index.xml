@@ -12,7 +12,9 @@
       <pubDate>Fri, 30 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://quiescent.us/about/</guid>
-      <description>When you do things right, no one can be sure you did anything at all.</description>
+      
+        <description>When you do things right, no one can be sure you did anything at all.</description>
+      
     </item>
     
     <item>
@@ -21,8 +23,9 @@
       <pubDate>Sun, 10 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://quiescent.us/awards/</guid>
-      <description>Hugo Award - from Wikipedia: Hugo Award
-The Hugo Award is an annual literary award for the best science fiction or fantasy works and achievements of the previous year, given at the World Science Fiction Convention and chosen by its members.</description>
+      
+        <description>Hugo Awards, an annual literary award for the best science fiction or fantasy works</description>
+      
     </item>
     
     <item>
@@ -31,7 +34,9 @@ The Hugo Award is an annual literary award for the best science fiction or fanta
       <pubDate>Sun, 10 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://quiescent.us/certifications/</guid>
-      <description>3 Best Hugo Courses, Training, Classes &amp;amp; Tutorials Online “Migrate from WordPress to Hugo, Step by Step” Our Best Pick 2022 Create a Static Site With Hugo 2021 Créez votre site statique avec Hugo 2020 </description>
+      
+        <description>Hugo Certifications</description>
+      
     </item>
     
     <item>
@@ -40,7 +45,9 @@ The Hugo Award is an annual literary award for the best science fiction or fanta
       <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://quiescent.us/archives/</guid>
-      <description></description>
+      
+        <description></description>
+      
     </item>
     
     <item>
@@ -49,7 +56,9 @@ The Hugo Award is an annual literary award for the best science fiction or fanta
       <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://quiescent.us/contact/</guid>
-      <description></description>
+      
+        <description>Contact Page</description>
+      
     </item>
     
     <item>
@@ -58,8 +67,10 @@ The Hugo Award is an annual literary award for the best science fiction or fanta
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://quiescent.us/imprint/</guid>
-      <description>Legal Disclosure Information in accordance with the applicable law
+      
+        <description>Legal Disclosure Information in accordance with the applicable law
 Jane Doe</description>
+      
     </item>
     
   </channel>
