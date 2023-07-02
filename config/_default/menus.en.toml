@@ -41,11 +41,11 @@
   #url = "/certifications/"
   #parent = "accomplishments"
 
-  #[[main]]
-  #name = "Contact"
-  #weight = 600
-  #identifier = "contact"
-  #url = "/contact/"
+  [[main]]
+  name = "Contact"
+  weight = 600
+  identifier = "contact"
+  url = "/contact/"
 
 #  [[footer]]
 #  name = "imprint"

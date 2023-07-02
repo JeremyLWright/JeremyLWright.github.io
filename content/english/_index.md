@@ -7,6 +7,10 @@ I write a hand-written monthly newsletter.
 
 If getting a paper letter in the mail each month sounds cool I encourage you to [Sign Up!](https://buy.stripe.com/4gweV24G3ah29rOfYZ)
 
+If you aren't quite ready to subscribe and you just wanna hear more, sign up for our light information emails
+
+<iframe width="600px" height="800px" src="https://cdn.forms-content.sg-form.com/1d99b94d-1921-11ee-b9ab-92bf1db48e95"/>
+
 ![Fountain Pen](images/aaron-burden-y02jEX_B0O0-unsplash.jpg)
 
 <!--
